@@ -20,7 +20,7 @@
                 <a href="#research">研究方向</a>
                 <a href="#notes">笔记</a>
                 <a href="#frameworks">框架</a>
-                <a href="#tracking">关注</a>
+                <a href="#tracking">标的追踪</a>
             </div>
             <button class="nav-toggle" id="nav-toggle" aria-label="菜单">
                 <span></span><span></span><span></span>
@@ -89,26 +89,44 @@
             </div>
         </section>
 
-        <!-- ====== Now Tracking ====== -->
+        <!-- ====== Stock Tracking ====== -->
         <section class="section section-alt" id="tracking">
             <div class="container">
                 <div class="section-header">
-                    <div class="label">Now Tracking</div>
-                    <h2>最近关注</h2>
-                    <p>当前在跟踪的方向与议题。</p>
+                    <div class="label">Stock Tracking</div>
+                    <h2>标的追踪</h2>
+                    <p>长线持有与波段操作的标的，每只独立维护资讯、财报与机构研判。</p>
                 </div>
-                <div class="tracking-grid">
-                    <span class="tracking-tag">存储·MU/DRAM</span>
-                    <span class="tracking-tag">光互连·LITE/COHR</span>
-                    <span class="tracking-tag">AI算力·IREN/CBRS</span>
-                    <span class="tracking-tag">航天·RKLB/ASTS</span>
-                    <span class="tracking-tag">核电·CEG/OKLO</span>
-                    <span class="tracking-tag">InP衬底·AXTI</span>
-                    <span class="tracking-tag">加密·CRCL/CBRS</span>
-                    <span class="tracking-tag">亚盘联动·KOSPI</span>
+
+                <!-- 方向标签（快速定位）-->
+                <div class="trk-direction-tags">
+                    <span class="trk-direction-tag">存储·DRAM</span>
+                    <span class="trk-direction-tag">AI 算力·IREN/CBRS</span>
+                    <span class="trk-direction-tag">航天·RKLB/ASTS</span>
+                    <span class="trk-direction-tag">核电·CEG/OKLO</span>
+                    <span class="trk-direction-tag">加密·CRCL</span>
+                    <span class="trk-direction-tag">亚盘联动·KOSPI</span>
                 </div>
+
+                <!-- 市场分类 Tab -->
+                <div class="trk-tabs">
+                    <span class="trk-tab active" data-mkt="a">🇨🇳 A 股</span>
+                    <span class="trk-tab" data-mkt="us">🇺🇸 美股</span>
+                </div>
+
+                <!-- 标的卡片网格 -->
+                <div class="trk-grid" id="trk-grid"></div>
             </div>
         </section>
+
+        <!-- ====== Tracking Drawer ====== -->
+        <div class="trk-drawer-overlay" id="trk-drawer-overlay"></div>
+        <div class="trk-drawer" id="trk-drawer">
+            <div class="trk-drawer-inner">
+                <button class="trk-drawer-close" id="trk-drawer-close" aria-label="关闭">✕</button>
+                <div id="trk-drawer-content"></div>
+            </div>
+        </div>
 
     
         <!-- ====== Contact ====== -->
@@ -145,6 +163,7 @@
     </footer>
 
     <script src="js/articles.js"></script>
+    <script src="js/tracking-data.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

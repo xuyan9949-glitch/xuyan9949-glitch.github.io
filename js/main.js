@@ -137,4 +137,195 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `).join('');
     }
+
+    // =====================================================
+    // Stock Tracking
+    // =====================================================
+
+    function getTypeBadge(type) {
+        const colors = { '长线': '#22c55e', '波段': '#f59e0b', '监控': '#6366f1' };
+        return `<span class="trk-card-type" style="background:${colors[type] || '#6b6b80'}15; color:${colors[type] || '#6b6b80'}">${type}</span>`;
+    }
+
+    function getRatingTag(rating) {
+        const cls = rating.includes('买入') || rating.includes('增持') || rating.includes('买') ? 'buy'
+            : rating.includes('持有') || rating.includes('中性') ? 'hold'
+            : 'hold';
+        return `<span class="rating-tag ${cls}">${rating}</span>`;
+    }
+
+    function renderCards(market) {
+        const grid = document.getElementById('trk-grid');
+        if (!grid || typeof trackingData === 'undefined') return;
+
+        const stocks = trackingData[market];
+        if (!stocks || stocks.length === 0) {
+            grid.innerHTML = '<div class="trk-empty">暂无可展示的标的</div>';
+            return;
+        }
+
+        grid.innerHTML = stocks.map(s => `
+            <div class="trk-card" data-id="${s.id}" data-mkt="${market}">
+                <div class="trk-card-header">
+                    <span class="trk-card-name">${s.name}</span>
+                    <span class="trk-card-code">${s.code}</span>
+                </div>
+                <div>
+                    ${getTypeBadge(s.type)}
+                    <span style="margin-left:6px;font-size:12px;color:var(--text-muted)">${s.sector}</span>
+                </div>
+                <p class="trk-card-reason">${s.reason}</p>
+                <div class="trk-card-meta">
+                    <span>📰 ${s.news.length}</span>
+                    <span class="dot"></span>
+                    <span>📊 ${s.earnings.length}</span>
+                    <span class="dot"></span>
+                    <span>🏦 ${s.ratings.length}</span>
+                    <span style="margin-left:auto">${s.lastUpdated} 更新</span>
+                </div>
+                <span class="trk-card-arrow">→</span>
+            </div>
+        `).join('');
+
+        // Card click → open drawer
+        grid.querySelectorAll('.trk-card').forEach(el => {
+            el.addEventListener('click', () => {
+                openDrawer(el.dataset.id, el.dataset.mkt);
+            });
+        });
+    }
+
+    // ---- Tracking Tabs ----
+    const tabs = document.querySelectorAll('.trk-tab');
+    if (tabs.length > 0) {
+        let currentMarket = 'a';
+        renderCards(currentMarket);
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentMarket = tab.dataset.mkt;
+                renderCards(currentMarket);
+            });
+        });
+    }
+
+    // =====================================================
+    // Drawer
+    // =====================================================
+
+    function openDrawer(id, market) {
+        const overlay = document.getElementById('trk-drawer-overlay');
+        const drawer = document.getElementById('trk-drawer');
+        const content = document.getElementById('trk-drawer-content');
+        if (!overlay || !drawer || !content) return;
+
+        const stocks = trackingData[market];
+        const s = stocks.find(x => x.id === id);
+        if (!s) return;
+
+        const newsHtml = s.news.length > 0
+            ? s.news.map(n => `
+                <div class="trk-news-item">
+                    <span class="date">${n.date}</span>
+                    <span class="title">${n.title}</span>
+                    <span class="source">${n.source}</span>
+                </div>
+            `).join('')
+            : '<div class="trk-empty-data">暂无资讯记录</div>';
+
+        const earningsHtml = s.earnings.length > 0
+            ? `<div class="trk-table-wrap"><table class="trk-table">
+                <thead><tr><th>季度</th><th>营收</th><th>净利润</th><th>毛利率</th><th>同比</th></tr></thead>
+                <tbody>${s.earnings.map(e => `
+                    <tr><td>${e.period}</td><td>${e.revenue}</td><td>${e.netProfit}</td><td>${e.grossMargin}</td><td>${e.yoy || '—'}</td></tr>
+                `).join('')}</tbody>
+            </table></div>`
+            : '<div class="trk-empty-data">暂无财报记录</div>';
+
+        const ratingsHtml = s.ratings.length > 0
+            ? s.ratings.map(r => `
+                <div class="trk-rating-item">
+                    <span class="date">${r.date}</span>
+                    <span class="inst">${r.institution}</span>
+                    ${getRatingTag(r.rating)}
+                    <span class="tp">目标 ${r.targetPrice}</span>
+                    <span class="change">${r.change}</span>
+                </div>
+            `).join('')
+            : '<div class="trk-empty-data">暂无机构评级</div>';
+
+        content.innerHTML = `
+            <div class="trk-detail-header">
+                <div class="name-row">
+                    <h2>${s.name}</h2>
+                    <span class="code">${s.code}</span>
+                </div>
+                ${getTypeBadge(s.type)}
+                <span style="margin-left:6px;font-size:13px;color:var(--text-muted)">${s.sector}</span>
+            </div>
+
+            <div class="trk-detail-section">
+                <h3><span class="sec-icon">📋</span> 概览</h3>
+                <div class="trk-ov-grid">
+                    <div class="trk-ov-item">
+                        <div class="label">跟踪理由</div>
+                        <div class="value">${s.reason}</div>
+                    </div>
+                    <div class="trk-ov-item">
+                        <div class="label">策略</div>
+                        <div class="value">${s.strategy}</div>
+                    </div>
+                    ${s.stopLoss ? `<div class="trk-ov-item"><div class="label">止损</div><div class="value">${s.stopLoss}</div></div>` : ''}
+                    ${s.targetPrice ? `<div class="trk-ov-item"><div class="label">目标价</div><div class="value">${s.targetPrice}</div></div>` : ''}
+                    <div class="trk-ov-item">
+                        <div class="label">最后更新</div>
+                        <div class="value">${s.lastUpdated}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trk-detail-section">
+                <h3><span class="sec-icon">📰</span> 资讯</h3>
+                <div class="trk-news-list">${newsHtml}</div>
+            </div>
+
+            <div class="trk-detail-section">
+                <h3><span class="sec-icon">📊</span> 财报</h3>
+                ${earningsHtml}
+            </div>
+
+            <div class="trk-detail-section">
+                <h3><span class="sec-icon">🏦</span> 机构研判</h3>
+                <div class="trk-ratings-list">${ratingsHtml}</div>
+            </div>
+        `;
+
+        // Open
+        overlay.classList.add('open');
+        drawer.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+        const overlay = document.getElementById('trk-drawer-overlay');
+        const drawer = document.getElementById('trk-drawer');
+        if (!overlay || !drawer) return;
+        overlay.classList.remove('open');
+        drawer.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    // Close drawer events
+    const closeBtn = document.getElementById('trk-drawer-close');
+    const overlay = document.getElementById('trk-drawer-overlay');
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+
+    // ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeDrawer();
+    });
+
 });

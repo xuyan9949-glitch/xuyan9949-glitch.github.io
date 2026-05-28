@@ -201,14 +201,244 @@ body {
     background: var(--accent); opacity: 0.5;
 }
 
-/* ---- Now Tracking ---- */
-.tracking-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-.tracking-tag {
-    padding: 8px 18px; border-radius: 20px; font-size: 13px;
-    background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary);
-    transition: all .2s;
+/* ---- Stock Tracking ---- */
+
+/* Direction tags */
+.trk-direction-tags {
+    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+    margin-bottom: 36px;
 }
-.tracking-tag:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+.trk-direction-tag {
+    padding: 5px 14px; border-radius: 16px; font-size: 12px;
+    background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted);
+    cursor: default; user-select: none;
+}
+.trk-direction-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Market tabs */
+.trk-tabs {
+    display: flex; gap: 8px; justify-content: center;
+    margin-bottom: 28px;
+}
+.trk-tab {
+    padding: 8px 24px; border-radius: var(--radius-sm);
+    font-size: 14px; font-weight: 500; cursor: pointer;
+    background: var(--bg-card); color: var(--text-secondary);
+    border: 1px solid var(--border);
+    transition: all .2s; user-select: none;
+}
+.trk-tab:hover { border-color: var(--accent); color: var(--text); }
+.trk-tab.active {
+    background: var(--accent); color: #fff; border-color: var(--accent);
+}
+
+/* Stock cards */
+.trk-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+}
+.trk-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius-md); padding: 20px;
+    cursor: pointer; transition: all .25s;
+    display: flex; flex-direction: column; gap: 8px;
+    position: relative;
+}
+.trk-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.trk-card-header {
+    display: flex; align-items: center; justify-content: space-between;
+}
+.trk-card-name {
+    font-size: 15px; font-weight: 600; color: var(--text);
+}
+.trk-card-code {
+    font-size: 12px; font-family: var(--mono); color: var(--text-muted);
+}
+.trk-card-type {
+    display: inline-block; padding: 2px 10px; border-radius: 10px;
+    font-size: 11px; font-weight: 500;
+}
+.trk-card-sector {
+    font-size: 12px; color: var(--text-muted);
+}
+.trk-card-reason {
+    font-size: 13px; color: var(--text-secondary); line-height: 1.5;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.trk-card-meta {
+    display: flex; gap: 12px; align-items: center;
+    font-size: 11px; color: var(--text-muted); margin-top: auto;
+}
+.trk-card-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-muted); }
+.trk-card-arrow {
+    position: absolute; bottom: 18px; right: 18px;
+    font-size: 14px; color: var(--text-muted); transition: transform .2s;
+}
+.trk-card:hover .trk-card-arrow { transform: translateX(3px); color: var(--accent); }
+
+/* Empty state */
+.trk-empty {
+    grid-column: 1 / -1; text-align: center;
+    padding: 48px 20px; color: var(--text-muted); font-size: 14px;
+    background: var(--bg-alt); border-radius: var(--radius-md);
+    border: 1px dashed var(--border);
+}
+
+/* ======== Drawer ======== */
+.trk-drawer-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.3);
+    opacity: 0; pointer-events: none;
+    transition: opacity .3s;
+}
+.trk-drawer-overlay.open { opacity: 1; pointer-events: auto; }
+
+.trk-drawer {
+    position: fixed; top: 0; right: 0; bottom: 0;
+    width: 520px; max-width: 92vw;
+    z-index: 201;
+    background: var(--bg);
+    box-shadow: -8px 0 32px rgba(0,0,0,0.1);
+    transform: translateX(100%);
+    transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;
+}
+.trk-drawer.open { transform: translateX(0); }
+
+.trk-drawer-inner {
+    padding: 24px 28px 40px;
+    position: relative;
+}
+
+.trk-drawer-close {
+    position: sticky; top: 0; float: right;
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 1px solid var(--border); background: var(--bg-card);
+    cursor: pointer; font-size: 14px; color: var(--text-muted);
+    display: flex; align-items: center; justify-content: center;
+    transition: all .2s; z-index: 1;
+}
+.trk-drawer-close:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Drawer content sections */
+.trk-drawer-content { clear: both; }
+
+/* Stock header */
+.trk-detail-header {
+    margin-bottom: 24px; padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+.trk-detail-header .name-row {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 4px;
+}
+.trk-detail-header h2 {
+    font-size: 22px; font-weight: 700; letter-spacing: -0.3px;
+}
+.trk-detail-header .code {
+    font-family: var(--mono); font-size: 14px; color: var(--text-muted);
+}
+.trk-detail-header .trk-card-type { margin-top: 4px; }
+
+/* Detail sections */
+.trk-detail-section {
+    margin-bottom: 28px;
+}
+.trk-detail-section h3 {
+    font-size: 14px; font-weight: 600; color: var(--text);
+    margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+}
+.trk-detail-section h3 .sec-icon { font-size: 16px; }
+.trk-detail-section p {
+    font-size: 14px; color: var(--text-secondary); line-height: 1.6;
+}
+
+/* Overview grid */
+.trk-ov-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.trk-ov-item {
+    background: var(--bg-alt); border-radius: var(--radius-sm);
+    padding: 12px 14px;
+}
+.trk-ov-item .label {
+    font-size: 11px; color: var(--text-muted); text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 3px;
+}
+.trk-ov-item .value {
+    font-size: 13px; color: var(--text); font-weight: 500;
+}
+
+/* News timeline */
+.trk-news-list { display: flex; flex-direction: column; gap: 8px; }
+.trk-news-item {
+    display: flex; gap: 12px; align-items: baseline;
+    font-size: 13px; padding: 8px 12px;
+    background: var(--bg-alt); border-radius: var(--radius-sm);
+}
+.trk-news-item .date {
+    flex-shrink: 0; font-family: var(--mono); font-size: 11px;
+    color: var(--text-muted); min-width: 72px;
+}
+.trk-news-item .title { color: var(--text-secondary); line-height: 1.4; flex: 1; }
+.trk-news-item .source {
+    flex-shrink: 0; font-size: 11px; color: var(--text-muted);
+}
+
+/* Earnings table */
+.trk-table-wrap { overflow-x: auto; }
+.trk-table {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+}
+.trk-table th {
+    background: var(--bg-alt); color: var(--text-muted);
+    font-weight: 500; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 8px 12px;
+    border: 1px solid var(--border); text-align: left;
+}
+.trk-table td {
+    padding: 8px 12px; border: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+.trk-table td:first-child { font-weight: 500; color: var(--text); }
+
+/* Ratings timeline */
+.trk-ratings-list { display: flex; flex-direction: column; gap: 8px; }
+.trk-rating-item {
+    display: flex; gap: 12px; align-items: center;
+    font-size: 13px; padding: 8px 12px;
+    background: var(--bg-alt); border-radius: var(--radius-sm);
+}
+.trk-rating-item .date {
+    flex-shrink: 0; font-family: var(--mono); font-size: 11px;
+    color: var(--text-muted); min-width: 72px;
+}
+.trk-rating-item .inst { color: var(--text); font-weight: 500; }
+.trk-rating-item .rating-tag {
+    display: inline-block; padding: 1px 8px; border-radius: 8px;
+    font-size: 11px; font-weight: 500;
+}
+.trk-rating-item .rating-tag.buy { background: #dcfce7; color: #166534; }
+.trk-rating-item .rating-tag.hold { background: #fef9c3; color: #854d0e; }
+.trk-rating-item .rating-tag.sell { background: #fee2e2; color: #991b1b; }
+.trk-rating-item .tp { color: var(--text-muted); }
+.trk-rating-item .change { color: var(--text-muted); }
+.trk-empty-data {
+    font-size: 13px; color: var(--text-muted);
+    background: var(--bg-alt); border-radius: var(--radius-sm);
+    padding: 16px; text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .trk-grid { grid-template-columns: 1fr; }
+    .trk-ov-grid { grid-template-columns: 1fr; }
+    .trk-drawer { width: 100vw; max-width: 100vw; }
+    .trk-drawer-inner { padding: 16px; }
+    .trk-news-item { flex-wrap: wrap; gap: 4px; }
+}
 
 /* ---- Footer ---- */
 .footer {
