@@ -19,19 +19,43 @@ const trackingData = {
       stopLoss: null,
       targetPrice: null,
       lastUpdated: "2026-05-27",
-      links: [],
-      news: [
-        { date: "2026-05-25", title: "公司公告：xxx", source: "公告" },
-        { date: "2026-05-20", title: "PCB 行业景气度持续，AI 服务器需求拉动", source: "行业资讯" },
+      // ---- 投资逻辑 ----
+      investmentLogic: {
+        oneLiner: "AI 数据中心拉动 PCB 高端需求，公司作为内资 PCB 龙头直接受益。",
+        currentHypothesis: "北美大客户导入 + 高端 HDI/封装基板产能扩张 → 量价齐升。",
+        coreReason: "PCB 是 AI 服务器和交换机不可或缺的基础硬件，东山在软板/硬板/封装基板三线布局齐全。",
+        status: "验证中",
+        validUntil: "2026-08",
+        questionsToVerify: "北美大客户 Q3 是否开始批量供货？封装基板良率是否达到盈亏平衡？"
+      },
+      // ---- 催化剂看板 ----
+      catalysts: [
+        {
+          catalyst: "北美大客户 PCB 批量供货公告",
+          timeWindow: "2026年6-7月",
+          importance: "高",
+          status: "待确认",
+          evidence: "客户认证公告或供应链调研确认量产排期",
+          direction: "利好"
+        },
+        {
+          catalyst: "Q2 财报——封装基板业务收入披露",
+          timeWindow: "2026年8月",
+          importance: "中",
+          status: "等待中",
+          evidence: "封装基板营收占比是否提升至 10% 以上，毛利率趋势",
+          direction: "中性"
+        },
       ],
-      earnings: [
-        { period: "2026Q1", revenue: "85.6亿", netProfit: "5.2亿", grossMargin: "18.5%", yoy: "+12%" },
-        { period: "2025Q4", revenue: "92.1亿", netProfit: "6.8亿", grossMargin: "19.2%", yoy: "+15%" },
-      ],
-      ratings: [
-        { date: "2026-05-27", institution: "中信证券", rating: "买入", targetPrice: "—", change: "维持" },
-        { date: "2026-05-20", institution: "中金公司", rating: "增持", targetPrice: "—", change: "维持" },
-      ],
+      // ---- 操作计划 ----
+      operationPlan: {
+        currentStatus: "底仓持有，等待回踩加仓",
+        buyPlan: "回调至 20 日线附近分批建仓底仓",
+        addConditions: "北美大客户公告确认 + 股价放量突破前高",
+        reduceConditions: "连续 3 日缩量滞涨，减 1/3 T 仓",
+        invalidateConditions: "北美大客户导入失败或大幅延期；封装基板量产持续亏损",
+        maxPosition: "总仓位的 15%"
+      },
     },
     {
       id: "jianqiao",
@@ -46,12 +70,40 @@ const trackingData = {
       stopLoss: null,
       targetPrice: null,
       lastUpdated: "2026-05-26",
-      links: [],
-      news: [
-        { date: "2026-05-26", title: "公司公告：xxx", source: "公告" },
+      investmentLogic: {
+        oneLiner: "800G→1.6T 升级周期中，光模块环节确定性最强。",
+        currentHypothesis: "北美云厂商 800G 需求持续放量 + 1.6T 开始小批量出货 → 营收和毛利率双升。",
+        coreReason: "光模块是 AI 集群互联瓶颈环节，剑桥在数通光模块有核心客户关系。",
+        status: "持有中",
+        validUntil: "2026-12",
+        questionsToVerify: "1.6T 产品何时进入量产？毛利率能否维持在 35% 以上？"
+      },
+      catalysts: [
+        {
+          catalyst: "800G 订单指引更新",
+          timeWindow: "2026年6-7月",
+          importance: "高",
+          status: "等待中",
+          evidence: "季报或公告中的 800G 出货量指引边际变化",
+          direction: "利好"
+        },
+        {
+          catalyst: "1.6T 光模块客户认证",
+          timeWindow: "2026年H2",
+          importance: "高",
+          status: "待确认",
+          evidence: "客户认证公告或行业调研信息",
+          direction: "利好"
+        },
       ],
-      earnings: [],
-      ratings: [],
+      operationPlan: {
+        currentStatus: "底仓已建，等待回调加仓",
+        buyPlan: "长线底仓已建，剩余仓位等回调至 60 日线",
+        addConditions: "800G 出货指引超预期 + 股价站稳前高",
+        reduceConditions: "逻辑未破坏，不减仓",
+        invalidateConditions: "1.6T 认证失败或大幅落后同业；核心客户流失",
+        maxPosition: "总仓位的 20%"
+      },
     },
     {
       id: "hengtong",
@@ -66,10 +118,9 @@ const trackingData = {
       stopLoss: null,
       targetPrice: null,
       lastUpdated: "2026-05-24",
-      links: [],
-      news: [],
-      earnings: [],
-      ratings: [],
+      investmentLogic: null,
+      catalysts: [],
+      operationPlan: null,
     },
     {
       id: "yunnan",
@@ -84,10 +135,9 @@ const trackingData = {
       stopLoss: null,
       targetPrice: null,
       lastUpdated: "2026-05-22",
-      links: [],
-      news: [],
-      earnings: [],
-      ratings: [],
+      investmentLogic: null,
+      catalysts: [],
+      operationPlan: null,
     },
     {
       id: "hangtian",
@@ -102,10 +152,9 @@ const trackingData = {
       stopLoss: null,
       targetPrice: null,
       lastUpdated: "2026-05-20",
-      links: [],
-      news: [],
-      earnings: [],
-      ratings: [],
+      investmentLogic: null,
+      catalysts: [],
+      operationPlan: null,
     },
   ],
 
@@ -124,10 +173,32 @@ const trackingData = {
       stopLoss: null,
       targetPrice: null,
       lastUpdated: "2026-05-27",
-      links: [],
-      news: [],
-      earnings: [],
-      ratings: [],
+      investmentLogic: {
+        oneLiner: "AI 光互连上游稀缺标的，光源/接收器/调制器全栈布局。",
+        currentHypothesis: "800G EML 激光器供不应求 + 1.6T 硅光方案客户导入 → 营收加速。",
+        coreReason: "LITE 是少数能同时提供 EML（外调制）+ 硅光（集成）方案的光器件公司，AI 互联升级双重受益。",
+        status: "波段操作中",
+        validUntil: "2026-09",
+        questionsToVerify: "云厂商 CapEx 是否持续上修？1.6T 硅光模组何时获得大客户认证？"
+      },
+      catalysts: [
+        {
+          catalyst: "下季度营收指引上修",
+          timeWindow: "2026年8月（Q4 财报）",
+          importance: "高",
+          status: "等待中",
+          evidence: "营收指引环比增长 > 15%，云厂商光模块订单可见度延长",
+          direction: "利好"
+        },
+      ],
+      operationPlan: {
+        currentStatus: "波段持仓中",
+        buyPlan: "回调至 50 日线附近回补",
+        addConditions: "股价缩量回踩支撑位 + 行业催化剂临近",
+        reduceConditions: "连续 3 日放量不创新高，减半",
+        invalidateConditions: "云厂商 CapEx 指引下修；竞争格局恶化（份额流失）",
+        maxPosition: "总仓位的 12%"
+      },
     },
     {
       id: "cohr",
@@ -142,10 +213,9 @@ const trackingData = {
       stopLoss: null,
       targetPrice: null,
       lastUpdated: "2026-05-26",
-      links: [],
-      news: [],
-      earnings: [],
-      ratings: [],
+      investmentLogic: null,
+      catalysts: [],
+      operationPlan: null,
     },
     {
       id: "aaoi",
@@ -160,10 +230,9 @@ const trackingData = {
       stopLoss: null,
       targetPrice: null,
       lastUpdated: "2026-05-25",
-      links: [],
-      news: [],
-      earnings: [],
-      ratings: [],
+      investmentLogic: null,
+      catalysts: [],
+      operationPlan: null,
     },
     {
       id: "axti",
@@ -178,10 +247,9 @@ const trackingData = {
       stopLoss: null,
       targetPrice: null,
       lastUpdated: "2026-05-24",
-      links: [],
-      news: [],
-      earnings: [],
-      ratings: [],
+      investmentLogic: null,
+      catalysts: [],
+      operationPlan: null,
     },
     {
       id: "mrvl",
@@ -196,10 +264,9 @@ const trackingData = {
       stopLoss: null,
       targetPrice: null,
       lastUpdated: "2026-05-23",
-      links: [],
-      news: [],
-      earnings: [],
-      ratings: [],
+      investmentLogic: null,
+      catalysts: [],
+      operationPlan: null,
     },
   ],
 };

@@ -431,6 +431,68 @@ body {
     padding: 16px; text-align: center;
 }
 
+/* ---- Investment Logic Grid ---- */
+.trk-logic-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.trk-logic-item.full { grid-column: 1 / -1; }
+.trk-logic-item {
+    background: var(--bg-alt); border-radius: var(--radius-sm);
+    padding: 10px 12px;
+}
+.trk-logic-item .label {
+    font-size: 10px; color: var(--text-muted); text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 3px;
+}
+.trk-logic-item .value {
+    font-size: 13px; color: var(--text); line-height: 1.5;
+}
+
+/* ---- Catalyst Cards ---- */
+.trk-catalyst-card {
+    background: var(--bg-alt); border-radius: var(--radius-sm);
+    padding: 12px 14px; margin-bottom: 8px;
+}
+.trk-catalyst-card:last-child { margin-bottom: 0; }
+.trk-catalyst-header {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 8px; margin-bottom: 8px;
+}
+.trk-catalyst-name {
+    font-size: 13px; font-weight: 600; color: var(--text);
+    flex: 1;
+}
+.trk-catalyst-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+.trk-catalyst-item.full { grid-column: 1 / -1; }
+.trk-catalyst-item .label {
+    font-size: 10px; color: var(--text-muted); text-transform: uppercase;
+    letter-spacing: 0.3px; margin-bottom: 2px;
+}
+.trk-catalyst-item .value {
+    font-size: 12px; color: var(--text-secondary); line-height: 1.4;
+}
+
+/* ---- Operation Plan Grid ---- */
+.trk-plan-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.trk-plan-item {
+    background: var(--bg-alt); border-radius: var(--radius-sm);
+    padding: 10px 12px;
+}
+.trk-plan-item .label {
+    font-size: 10px; color: var(--text-muted); text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 3px;
+}
+.trk-plan-item .value {
+    font-size: 13px; color: var(--text-secondary); line-height: 1.5;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     .trk-grid { grid-template-columns: 1fr; }

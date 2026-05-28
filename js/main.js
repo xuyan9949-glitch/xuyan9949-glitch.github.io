@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         renderNotes('all');
     } else if (notesEl && typeof articles !== 'undefined') {
-        // Fallback: render all articles
         renderNotes('all');
     }
 
@@ -147,11 +146,24 @@ document.addEventListener('DOMContentLoaded', () => {
         return `<span class="trk-card-type" style="background:${colors[type] || '#6b6b80'}15; color:${colors[type] || '#6b6b80'}">${type}</span>`;
     }
 
-    function getRatingTag(rating) {
-        const cls = rating.includes('买入') || rating.includes('增持') || rating.includes('买') ? 'buy'
-            : rating.includes('持有') || rating.includes('中性') ? 'hold'
-            : 'hold';
-        return `<span class="rating-tag ${cls}">${rating}</span>`;
+    function getStatusBadge(status) {
+        const colors = {
+            '持有中': '#22c55e',
+            '验证中': '#3b82f6',
+            '波段操作中': '#f59e0b',
+            '等待中': '#6366f1',
+            '待确认': '#f59e0b',
+            '已兑现': '#22c55e',
+            '已失效': '#ef4444',
+        };
+        const color = colors[status] || '#6b6b80';
+        return `<span style="display:inline-block;padding:1px 8px;border-radius:8px;font-size:11px;font-weight:500;background:${color}15;color:${color}">${status}</span>`;
+    }
+
+    function getImportanceBadge(importance) {
+        const colors = { '高': '#ef4444', '中': '#f59e0b', '低': '#6b6b80' };
+        const color = colors[importance] || '#6b6b80';
+        return `<span style="font-size:11px;font-weight:500;color:${color}">${importance}</span>`;
     }
 
     function renderCards(market) {
@@ -165,7 +177,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        grid.innerHTML = stocks.map(s => `
+        grid.innerHTML = stocks.map(s => {
+            const hasLogic = s.investmentLogic !== null;
+            const catalystCount = s.catalysts ? s.catalysts.length : 0;
+            const hasPlan = s.operationPlan !== null;
+            return `
             <div class="trk-card" data-id="${s.id}" data-mkt="${market}">
                 <div class="trk-card-header">
                     <span class="trk-card-name">${s.name}</span>
@@ -177,18 +193,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <p class="trk-card-reason">${s.reason}</p>
                 <div class="trk-card-meta">
-                    <span>📰 ${s.news.length}</span>
+                    ${hasLogic ? `<span>📋 ${s.investmentLogic.status || '—'}</span>` : '<span>📋 待补充</span>'}
                     <span class="dot"></span>
-                    <span>📊 ${s.earnings.length}</span>
-                    <span class="dot"></span>
-                    <span>🏦 ${s.ratings.length}</span>
+                    <span>⚡ ${catalystCount} 催化</span>
+                    ${hasPlan ? '' : '<span class="dot"></span><span>📄 待补充</span>'}
                     <span style="margin-left:auto">${s.lastUpdated} 更新</span>
                 </div>
                 <span class="trk-card-arrow">→</span>
             </div>
-        `).join('');
+        `}).join('');
 
-        // Card click → open drawer
         grid.querySelectorAll('.trk-card').forEach(el => {
             el.addEventListener('click', () => {
                 openDrawer(el.dataset.id, el.dataset.mkt);
@@ -213,8 +227,122 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =====================================================
-    // Drawer
+    // Drawer — 投资逻辑 · 催化剂看板 · 操作计划
     // =====================================================
+
+    function renderInvestmentLogic(logic) {
+        if (!logic) return `
+            <div class="trk-detail-section">
+                <h3><span class="sec-icon">📋</span> 投资逻辑</h3>
+                <div class="trk-empty-data">暂未填写</div>
+            </div>`;
+        return `
+            <div class="trk-detail-section">
+                <h3><span class="sec-icon">📋</span> 投资逻辑</h3>
+                <div class="trk-logic-grid">
+                    <div class="trk-logic-item full">
+                        <div class="label">一句话逻辑</div>
+                        <div class="value">${logic.oneLiner}</div>
+                    </div>
+                    <div class="trk-logic-item full">
+                        <div class="label">当前假设</div>
+                        <div class="value">${logic.currentHypothesis}</div>
+                    </div>
+                    <div class="trk-logic-item full">
+                        <div class="label">核心跟踪理由</div>
+                        <div class="value">${logic.coreReason}</div>
+                    </div>
+                    <div class="trk-logic-item">
+                        <div class="label">逻辑状态</div>
+                        <div class="value">${getStatusBadge(logic.status)}</div>
+                    </div>
+                    <div class="trk-logic-item">
+                        <div class="label">逻辑有效期</div>
+                        <div class="value">${logic.validUntil || '—'}</div>
+                    </div>
+                    <div class="trk-logic-item full">
+                        <div class="label">需要验证的问题</div>
+                        <div class="value">${logic.questionsToVerify || '—'}</div>
+                    </div>
+                </div>
+            </div>`;
+    }
+
+    function renderCatalysts(catalysts) {
+        if (!catalysts || catalysts.length === 0) return `
+            <div class="trk-detail-section">
+                <h3><span class="sec-icon">⚡</span> 催化剂看板</h3>
+                <div class="trk-empty-data">暂未填写</div>
+            </div>`;
+        return `
+            <div class="trk-detail-section">
+                <h3><span class="sec-icon">⚡</span> 催化剂看板</h3>
+                ${catalysts.map(c => `
+                    <div class="trk-catalyst-card">
+                        <div class="trk-catalyst-header">
+                            <span class="trk-catalyst-name">${c.catalyst}</span>
+                            ${getStatusBadge(c.status)}
+                        </div>
+                        <div class="trk-catalyst-grid">
+                            <div class="trk-catalyst-item">
+                                <div class="label">时间窗口</div>
+                                <div class="value">${c.timeWindow}</div>
+                            </div>
+                            <div class="trk-catalyst-item">
+                                <div class="label">重要性</div>
+                                <div class="value">${getImportanceBadge(c.importance)}</div>
+                            </div>
+                            <div class="trk-catalyst-item full">
+                                <div class="label">需要看到的证据</div>
+                                <div class="value">${c.evidence}</div>
+                            </div>
+                            <div class="trk-catalyst-item">
+                                <div class="label">影响方向</div>
+                                <div class="value">${c.direction === '利好' ? '📈 ' : '📉 '}${c.direction}</div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>`;
+    }
+
+    function renderOperationPlan(plan) {
+        if (!plan) return `
+            <div class="trk-detail-section">
+                <h3><span class="sec-icon">🎯</span> 操作计划</h3>
+                <div class="trk-empty-data">暂未填写</div>
+            </div>`;
+        return `
+            <div class="trk-detail-section">
+                <h3><span class="sec-icon">🎯</span> 操作计划</h3>
+                <div class="trk-plan-grid">
+                    <div class="trk-plan-item">
+                        <div class="label">当前状态</div>
+                        <div class="value">${plan.currentStatus}</div>
+                    </div>
+                    <div class="trk-plan-item">
+                        <div class="label">买入计划</div>
+                        <div class="value">${plan.buyPlan || '—'}</div>
+                    </div>
+                    <div class="trk-plan-item">
+                        <div class="label">加仓条件</div>
+                        <div class="value">${plan.addConditions || '—'}</div>
+                    </div>
+                    <div class="trk-plan-item">
+                        <div class="label">减仓条件</div>
+                        <div class="value">${plan.reduceConditions || '—'}</div>
+                    </div>
+                    <div class="trk-plan-item">
+                        <div class="label">逻辑破坏条件</div>
+                        <div class="value">${plan.invalidateConditions || '—'}</div>
+                    </div>
+                    <div class="trk-plan-item">
+                        <div class="label">最大仓位</div>
+                        <div class="value">${plan.maxPosition || '—'}</div>
+                    </div>
+                </div>
+            </div>`;
+    }
 
     function openDrawer(id, market) {
         const overlay = document.getElementById('trk-drawer-overlay');
@@ -227,37 +355,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const s = stocks.find(x => x.id === id);
         if (!s) return;
 
-        const newsHtml = s.news.length > 0
-            ? s.news.map(n => `
-                <div class="trk-news-item">
-                    <span class="date">${n.date}</span>
-                    <span class="title">${n.title}</span>
-                    <span class="source">${n.source}</span>
-                </div>
-            `).join('')
-            : '<div class="trk-empty-data">暂无资讯记录</div>';
-
-        const earningsHtml = s.earnings.length > 0
-            ? `<div class="trk-table-wrap"><table class="trk-table">
-                <thead><tr><th>季度</th><th>营收</th><th>净利润</th><th>毛利率</th><th>同比</th></tr></thead>
-                <tbody>${s.earnings.map(e => `
-                    <tr><td>${e.period}</td><td>${e.revenue}</td><td>${e.netProfit}</td><td>${e.grossMargin}</td><td>${e.yoy || '—'}</td></tr>
-                `).join('')}</tbody>
-            </table></div>`
-            : '<div class="trk-empty-data">暂无财报记录</div>';
-
-        const ratingsHtml = s.ratings.length > 0
-            ? s.ratings.map(r => `
-                <div class="trk-rating-item">
-                    <span class="date">${r.date}</span>
-                    <span class="inst">${r.institution}</span>
-                    ${getRatingTag(r.rating)}
-                    <span class="tp">目标 ${r.targetPrice}</span>
-                    <span class="change">${r.change}</span>
-                </div>
-            `).join('')
-            : '<div class="trk-empty-data">暂无机构评级</div>';
-
         content.innerHTML = `
             <div class="trk-detail-header">
                 <div class="name-row">
@@ -266,45 +363,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 ${getTypeBadge(s.type)}
                 <span style="margin-left:6px;font-size:13px;color:var(--text-muted)">${s.sector}</span>
+                <span style="margin-left:8px;font-size:12px;color:var(--text-muted)">最后更新 ${s.lastUpdated}</span>
             </div>
 
+            <!-- 概览 — 一句话快照 -->
             <div class="trk-detail-section">
-                <h3><span class="sec-icon">📋</span> 概览</h3>
-                <div class="trk-ov-grid">
-                    <div class="trk-ov-item">
-                        <div class="label">跟踪理由</div>
-                        <div class="value">${s.reason}</div>
-                    </div>
-                    <div class="trk-ov-item">
-                        <div class="label">策略</div>
-                        <div class="value">${s.strategy}</div>
-                    </div>
-                    ${s.stopLoss ? `<div class="trk-ov-item"><div class="label">止损</div><div class="value">${s.stopLoss}</div></div>` : ''}
-                    ${s.targetPrice ? `<div class="trk-ov-item"><div class="label">目标价</div><div class="value">${s.targetPrice}</div></div>` : ''}
-                    <div class="trk-ov-item">
-                        <div class="label">最后更新</div>
-                        <div class="value">${s.lastUpdated}</div>
-                    </div>
-                </div>
+                <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;background:var(--bg-alt);padding:12px 14px;border-radius:8px;">
+                    ${s.reason}<br>
+                    <span style="color:var(--text-muted)">策略：${s.strategy}</span>
+                </p>
             </div>
 
-            <div class="trk-detail-section">
-                <h3><span class="sec-icon">📰</span> 资讯</h3>
-                <div class="trk-news-list">${newsHtml}</div>
-            </div>
-
-            <div class="trk-detail-section">
-                <h3><span class="sec-icon">📊</span> 财报</h3>
-                ${earningsHtml}
-            </div>
-
-            <div class="trk-detail-section">
-                <h3><span class="sec-icon">🏦</span> 机构研判</h3>
-                <div class="trk-ratings-list">${ratingsHtml}</div>
-            </div>
+            ${renderInvestmentLogic(s.investmentLogic)}
+            ${renderCatalysts(s.catalysts)}
+            ${renderOperationPlan(s.operationPlan)}
         `;
 
-        // Open
         overlay.classList.add('open');
         drawer.classList.add('open');
         document.body.style.overflow = 'hidden';
@@ -319,13 +393,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
     }
 
-    // Close drawer events
     const closeBtn = document.getElementById('trk-drawer-close');
     const overlay = document.getElementById('trk-drawer-overlay');
     if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
     if (overlay) overlay.addEventListener('click', closeDrawer);
 
-    // ESC key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeDrawer();
     });
