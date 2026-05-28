@@ -186,6 +186,20 @@ body {
 }
 .framework-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
 .framework-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.framework-card .fw-desc { margin-bottom: 10px; }
+.framework-card .fw-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 5px;
+}
+.framework-card .fw-list li {
+    font-size: 13px; color: var(--text-secondary); line-height: 1.5;
+    padding-left: 14px; position: relative;
+}
+.framework-card .fw-list li::before {
+    content: ''; position: absolute; left: 0; top: 8px;
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent); opacity: 0.5;
+}
 
 /* ---- Now Tracking ---- */
 .tracking-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }

@@ -82,16 +82,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const frameworksEl = document.getElementById('frameworks-list');
     if (frameworksEl) {
         const frameworks = [
-            { num: '01', title: '公司研究框架', desc: '从商业模式、竞争壁垒、财务健康、管理层、估值五个维度扫描标的。' },
-            { num: '02', title: '产业趋势判断', desc: 'Follow the Money：CapEx → 订单 → 产能 → 涨价 → 设备交期 → 财报指引 → 客户认证。' },
-            { num: '03', title: 'A 股题材传导', desc: '龙一兑现 → 龙二补涨 → 上游扩散 → 设备耗材 → 低位小市值 → 蹭概念 → 退潮。' },
-            { num: '04', title: '交易纪律框架', desc: '三类资产（0→1 / 1→100 / 供需失衡）对应的不同买卖点与风控规则。' },
+            { 
+                num: '01', title: '公司研究框架',
+                items: [
+                    '卖什么 → 卖给谁（产品定位与客户画像）',
+                    '为什么持续买（复购逻辑 / 护城河）',
+                    '怎么收钱（现金流质量）',
+                    '市场在交易什么（当前price in了什么预期）',
+                    '未来 12-24 个月验证点',
+                ]
+            },
+            { 
+                num: '02', title: '财务分析框架',
+                items: [
+                    '利润是否被现金撑住',
+                    '营运资本是否健康',
+                    '产能是否在扩张',
+                    '扩张是否有危险（供过于求风险）',
+                ]
+            },
+            { 
+                num: '03', title: '产业趋势判断',
+                desc: 'Follow the Money：巨头CapEx → 供应链订单 → 产能扩张 → 上游涨价 → 设备交期拉长 → 财报指引上修 → 客户认证加速。'
+            },
+            { 
+                num: '04', title: 'A 股题材框架',
+                items: [
+                    '龙一兑现',
+                    '龙二补涨',
+                    '上游材料扩散',
+                    '设备耗材扩散',
+                    '低位小市值补涨',
+                    '参股蹭概念',
+                    '退潮',
+                ]
+            },
+            { 
+                num: '05', title: '交易纪律框架',
+                items: [
+                    '不熟不重仓',
+                    '短期期权必须止损',
+                    '趋势破位先尊重盘面',
+                    '好公司也要有好价格',
+                ],
+                desc: '三类资产（0→1 / 1→100 / 供需失衡）对应不同的买卖点与风控规则。'
+            },
         ];
         frameworksEl.innerHTML = frameworks.map(f => `
             <div class="framework-card">
                 <div class="num">${f.num}</div>
                 <h3>${f.title}</h3>
-                <p>${f.desc}</p>
+                ${f.desc ? `<p class="fw-desc">${f.desc}</p>` : ''}
+                ${f.items ? `<ul class="fw-list">${f.items.map(i => `<li>${i}</li>`).join('')}</ul>` : ''}
             </div>
         `).join('');
     }
