@@ -158,7 +158,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const grid = document.getElementById('trk-grid');
         if (!grid || typeof trackingData === 'undefined') return;
 
-        const stocks = trackingData[market];
+        const marketKey = market === 'a' ? 'a-shares' : 'us-stocks';
+        const stocks = trackingData[marketKey];
         if (!stocks || stocks.length === 0) {
             grid.innerHTML = '<div class="trk-empty">暂无可展示的标的</div>';
             return;
@@ -221,7 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const content = document.getElementById('trk-drawer-content');
         if (!overlay || !drawer || !content) return;
 
-        const stocks = trackingData[market];
+        const marketKey = market === 'a' ? 'a-shares' : 'us-stocks';
+        const stocks = trackingData[marketKey];
         const s = stocks.find(x => x.id === id);
         if (!s) return;
 
