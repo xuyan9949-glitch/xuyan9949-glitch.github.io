@@ -27,6 +27,24 @@ const articles = [
     file: "/articles/ai-nuclear-chain/"
   },
   {
+    id: "a-share-rules",
+    title: "A股市场定价规则",
+    date: "2026-05-25",
+    category: "A股",
+    tags: ["A股", "框架"],
+    summary: "叙事弹性、题材节奏、估值潜规则、产业链轮动——A股21条不成文的市场定价规则。",
+    file: "/articles/a-share-rules/"
+  },
+  {
+    id: "ai-industry-profit-chain",
+    title: "AI产业链收益排序分析",
+    date: "2026-05-25",
+    category: "产业思考",
+    tags: ["AI", "产业链", "A股"],
+    summary: "利润兑现、卡脖子、受益时序、A股弹性——四维度拆解AI基础设施链条的投资顺序。",
+    file: "/articles/ai-industry-profit-chain/"
+  },
+  {
     id: "asia-market-correlation",
     title: "亚盘四国联动分析",
     date: "2026-05-28",
