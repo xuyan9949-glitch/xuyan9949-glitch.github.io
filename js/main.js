@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     // ---- Mobile nav toggle ----
     const toggle = document.getElementById('nav-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -6,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
         toggle.addEventListener('click', () => {
             navLinks.classList.toggle('open');
         });
-        // Close on link click
         navLinks.querySelectorAll('a').forEach(a => {
             a.addEventListener('click', () => navLinks.classList.remove('open'));
         });
@@ -16,11 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const researchEl = document.getElementById('research-list');
     if (researchEl) {
         const research = [
-            { icon: '🏛️', title: '美股科技投资', desc: '半导体、存储、光互连、AI 基础设施——以产业链研究驱动配置决策。' },
-            { icon: '⚡', title: 'AI 基础设施', desc: '数据中心、电力/核电、液冷、PCB、光模块——从 CapEx 到产业链的逐层传导。' },
-            { icon: '🔬', title: '光通信 / 半导体', desc: 'InP 衬底、EML 激光器、硅光技术——AI 时代最上游的物理入口。' },
-            { icon: '📈', title: 'A 股产业映射', desc: '美股→A 股产业链对标，题材轮动节奏，龙一→龙二→补涨扩散规律。' },
-            { icon: '🧠', title: '投资方法论', desc: '三类资产框架、Follow the Money、周期定位——可复用的思维模型。' },
+            { icon: '\u{1F3DB}\u{FE0F}', title: '美股科技投资', desc: '半导体、存储、光互连、AI 基础设施——以产业链研究驱动配置决策。' },
+            { icon: '\u26A1', title: 'AI 基础设施', desc: '数据中心、电力/核电、液冷、PCB、光模块——从 CapEx 到产业链的逐层传导。' },
+            { icon: '\u{1F52C}', title: '光通信 / 半导体', desc: 'InP 衬底、EML 激光器、硅光技术——AI 时代最上游的物理入口。' },
+            { icon: '\u{1F4C8}', title: 'A 股产业映射', desc: '美股→A 股产业链对标，题材轮动节奏，龙一→龙二→补涨扩散规律。' },
+            { icon: '\u{1F9E0}', title: '投资方法论', desc: '三类资产框架、Follow the Money、周期定位——可复用的思维模型。' },
         ];
         researchEl.innerHTML = research.map(r => `
             <div class="research-card">
@@ -31,27 +31,51 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
     }
 
-    // ---- Render Featured Notes ----
+    // ---- Category filter + Notes ----
     const notesEl = document.getElementById('notes-list');
-    if (notesEl && typeof articles !== 'undefined') {
-        if (articles.length === 0) {
-            notesEl.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:40px 0;">笔记整理中，即将发布。</p>';
-        } else {
-            notesEl.innerHTML = articles.map(a => `
-                <a href="${a.file}" class="note-card">
-                    <div class="meta">
-                        <span>${a.date}</span>
-                        <span class="dot"></span>
-                        <span>${a.tags.join(' · ')}</span>
-                    </div>
-                    <h3>${a.title}</h3>
-                    <p>${a.summary}</p>
-                    <div class="tags">
-                        ${a.tags.map(t => `<span>${t}</span>`).join('')}
-                    </div>
-                </a>
-            `).join('');
+    const catTags = document.querySelectorAll('.cat-tag');
+
+    function renderNotes(category) {
+        if (!notesEl || typeof articles === 'undefined') return;
+
+        let filtered = articles;
+        if (category !== 'all') {
+            filtered = articles.filter(a => a.category === category);
         }
+
+        if (filtered.length === 0) {
+            notesEl.innerHTML = '<div class="empty-notes">暂无内容，持续更新中。</div>';
+            return;
+        }
+
+        notesEl.innerHTML = filtered.map(a => `
+            <a href="${a.file}" class="note-card">
+                <div class="meta">
+                    <span>${a.date}</span>
+                    <span class="dot"></span>
+                    <span>${a.tags.join(' · ')}</span>
+                </div>
+                <h3>${a.title}</h3>
+                <p>${a.summary}</p>
+                <div class="tags">
+                    ${a.tags.map(t => `<span>${t}</span>`).join('')}
+                </div>
+            </a>
+        `).join('');
+    }
+
+    if (catTags.length > 0) {
+        catTags.forEach(el => {
+            el.addEventListener('click', () => {
+                catTags.forEach(t => t.classList.remove('active'));
+                el.classList.add('active');
+                renderNotes(el.dataset.cat);
+            });
+        });
+        renderNotes('all');
+    } else if (notesEl && typeof articles !== 'undefined') {
+        // Fallback: render all articles
+        renderNotes('all');
     }
 
     // ---- Render Frameworks ----
