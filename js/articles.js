@@ -5,7 +5,7 @@ const articles = [
     date: "2026-05-28",
     tags: ["框架", "A股", "美股"],
     summary: "底层信念、Follow the Money、三类钱框架、买卖点、A股轮动规律——投资的完整思维模型。",
-    file: "articles/investment-framework.html"
+    file: "/articles/investment-framework"
   },
   {
     id: "asia-market-correlation",
@@ -13,7 +13,7 @@ const articles = [
     date: "2026-05-28",
     tags: ["复盘", "A股"],
     summary: "上证 vs KOSPI vs 日经 vs 台股——85%方向同步率背后的幅度差异与A股独立性。",
-    file: "articles/asia-market-correlation.html"
+    file: "/articles/asia-market-correlation"
   },
   {
     id: "inp-industry-chain",
@@ -21,6 +21,6 @@ const articles = [
     date: "2026-05-28",
     tags: ["产业链", "AI"],
     summary: "从衬底到光模块到AI数据中心——InP是AI光通信最上游的\"卖水人\"。",
-    file: "articles/inp-industry-chain.html"
+    file: "/articles/inp-industry-chain"
   }
 ];
