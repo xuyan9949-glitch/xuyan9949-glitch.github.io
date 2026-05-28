@@ -54,6 +54,15 @@ const articles = [
     file: "/articles/asia-market-correlation/"
   },
   {
+    id: "eml-bottleneck",
+    title: "EML涨价背后：AI光通信产业链的真实瓶颈正在上移",
+    date: "2026-05-28",
+    category: "产业思考",
+    tags: ["光通信", "产业链", "AI"],
+    summary: "EML涨价、交期拉长、InP产能紧张——AI光通信瓶颈从光模块上移至光芯片，LITE/COHR最直接受益，国产替代有窗口但需验证。",
+    file: "/articles/eml-bottleneck/"
+  },
+  {
     id: "inp-industry-chain",
     title: "InP（磷化铟）产业链全景",
     date: "2026-05-28",
