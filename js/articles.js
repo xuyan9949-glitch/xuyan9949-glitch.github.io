@@ -54,6 +54,15 @@ const articles = [
     file: "/articles/asia-market-correlation/"
   },
   {
+    id: "a-share-optical-mapping",
+    title: "AI光通信下一层瓶颈：从光模块到EML、InP与互联芯片",
+    date: "2026-05-28",
+    category: "A股",
+    tags: ["A股", "光通信"],
+    summary: "A股光通信五层映射模型——从EML/激光器到InP衬底到互联芯片到平台型到模块龙头，三种排序框架（瓶颈/确定性/弹性）。",
+    file: "/articles/a-share-optical-mapping/"
+  },
+  {
     id: "eml-bottleneck",
     title: "EML涨价背后：AI光通信产业链的真实瓶颈正在上移",
     date: "2026-05-28",
