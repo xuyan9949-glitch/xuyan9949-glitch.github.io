@@ -9,6 +9,24 @@ const articles = [
     file: "/articles/investment-framework/"
   },
   {
+    id: "server-bom-analysis",
+    title: "AI服务器代际升级BOM分析",
+    date: "2026-05-21",
+    category: "美股",
+    tags: ["AI", "产业链", "美股"],
+    summary: "从GB300到VR200——AI服务器单柜BOM成本+95%，HBM增+435%，PCB增+233%，系统级价值量全面升级。",
+    file: "/articles/server-bom-analysis/"
+  },
+  {
+    id: "ai-nuclear-chain",
+    title: "AI核电全产业链拆解",
+    date: "2026-05-27",
+    category: "美股",
+    tags: ["AI", "产业链", "美股"],
+    summary: "从铀矿到SMR到核电运营商——AI数据中心电力需求驱动核电价值重估。LEU逻辑最硬，CEG最稳，OKLO彩票最高。",
+    file: "/articles/ai-nuclear-chain/"
+  },
+  {
     id: "asia-market-correlation",
     title: "亚盘四国联动分析",
     date: "2026-05-28",
