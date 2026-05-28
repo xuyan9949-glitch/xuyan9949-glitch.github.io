@@ -3,45 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leslie 投资笔记</title>
+    <title>Leslie 投资笔记 — 科技投资 · 产业研究 · 认知成长</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav class="nav">
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
         <div class="nav-inner">
-            <a href="/" class="logo">📈 Leslie 投资笔记</a>
+            <a href="/" class="logo">
+                <span class="logo-mark">L</span>
+                <span class="logo-text">Leslie 研究笔记</span>
+            </a>
             <div class="nav-links">
-                <a href="/" class="active">文章</a>
-                <a href="/about.html">关于</a>
+                <a href="/" class="active">首页</a>
+                <a href="#research">研究方向</a>
+                <a href="#notes">笔记</a>
+                <a href="#frameworks">框架</a>
+                <a href="#tracking">关注</a>
             </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="菜单">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
-    <main class="container">
-        <header class="hero">
-            <h1>投资不是奖励过去</h1>
-            <p>而是定价未来新增量</p>
-            <p class="hero-sub">记录对产业链、资金流向和市场结构的思考</p>
-        </header>
+    <main>
 
-        <section class="tags">
-            <span class="tag active" data-tag="all">全部</span>
-            <span class="tag" data-tag="框架">框架</span>
-            <span class="tag" data-tag="AI">AI</span>
-            <span class="tag" data-tag="A股">A股</span>
-            <span class="tag" data-tag="产业链">产业链</span>
-            <span class="tag" data-tag="复盘">复盘</span>
-            <span class="tag" data-tag="美股">美股</span>
+        <!-- ====== Hero ====== -->
+        <section class="hero">
+            <div class="container hero-inner">
+                <div class="hero-badge">个人研究主页</div>
+                <h1>用第一性原理<br>理解公司、产业与时代变化</h1>
+                <p class="hero-sub">这里记录我对美股科技、AI 基础设施、资本市场和个人认知成长的长期研究。</p>
+                <div class="hero-actions">
+                    <a href="#notes" class="btn btn-primary">浏览笔记</a>
+                    <a href="#research" class="btn btn-ghost">研究方向</a>
+                </div>
+            </div>
         </section>
 
-        <section class="article-list" id="article-list">
-            <!-- 由 JS 动态渲染 -->
+        <!-- ====== Research Map ====== -->
+        <section class="section" id="research">
+            <div class="container">
+                <div class="section-header">
+                    <div class="label">Research Map</div>
+                    <h2>研究方向</h2>
+                    <p>从产业链第一性原理出发，构建系统化的研究覆盖。</p>
+                </div>
+                <div class="research-grid" id="research-list"></div>
+            </div>
         </section>
+
+        <!-- ====== Featured Notes ====== -->
+        <section class="section section-alt" id="notes">
+            <div class="container">
+                <div class="section-header">
+                    <div class="label">Featured Notes</div>
+                    <h2>精选笔记</h2>
+                    <p>产业链拆解、交易复盘、方法论沉淀。</p>
+                </div>
+                <div class="notes-grid" id="notes-list"></div>
+            </div>
+        </section>
+
+        <!-- ====== Frameworks ====== -->
+        <section class="section" id="frameworks">
+            <div class="container">
+                <div class="section-header">
+                    <div class="label">Frameworks</div>
+                    <h2>研究框架</h2>
+                    <p>可复用的思维模型，贯穿于每一篇笔记。</p>
+                </div>
+                <div class="framework-grid" id="frameworks-list"></div>
+            </div>
+        </section>
+
+        <!-- ====== Now Tracking ====== -->
+        <section class="section section-alt" id="tracking">
+            <div class="container">
+                <div class="section-header">
+                    <div class="label">Now Tracking</div>
+                    <h2>最近关注</h2>
+                    <p>当前在跟踪的方向与议题。</p>
+                </div>
+                <div class="tracking-grid">
+                    <span class="tracking-tag">存储·MU/DRAM</span>
+                    <span class="tracking-tag">光互连·LITE/COHR</span>
+                    <span class="tracking-tag">AI算力·IREN/CBRS</span>
+                    <span class="tracking-tag">航天·RKLB/ASTS</span>
+                    <span class="tracking-tag">核电·CEG/OKLO</span>
+                    <span class="tracking-tag">InP衬底·AXTI</span>
+                    <span class="tracking-tag">加密·CRCL/CBRS</span>
+                    <span class="tracking-tag">亚盘联动·KOSPI</span>
+                </div>
+            </div>
+        </section>
+
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>© 2026 Leslie · 投资笔记 · 基于个人研究，不构成投资建议</p>
+            <p>© 2026 Leslie · 基于个人研究，不构成投资建议 · <a href="/about.html">关于</a></p>
         </div>
     </footer>
 
