@@ -13,48 +13,102 @@ const trackingData = {
       sector: "PCB / 光通信",
       mkt: "a",
       type: "波段",
+      trackingStatus: "持有中",
+      tradeCycle: "中线 / 波段",
+      themeTags: "AI PCB / 光模块 / 北美客户",
+      logicStatus: "逻辑增强",
       color: "#f59e0b",
-      reason: "PCB 龙头，AI 数据中心互联需求驱动，北美大客户导入中。",
-      strategy: "回调至支撑位分批建仓，突破前高加仓。",
+      reason: "AI PCB + 光模块双主线，正在从消费电子周期股被重新定价为AI基础设施成长股。",
+      strategy: "中线波段，回踩关键支撑或财报验证后分批配置。",
       stopLoss: null,
       targetPrice: null,
-      lastUpdated: "2026-05-27",
+      lastUpdated: "2026-05-29",
       // ---- 投资逻辑 ----
       investmentLogic: {
-        oneLiner: "AI 数据中心拉动 PCB 高端需求，公司作为内资 PCB 龙头直接受益。",
-        currentHypothesis: "北美大客户导入 + 高端 HDI/封装基板产能扩张 → 量价齐升。",
-        coreReason: "PCB 是 AI 服务器和交换机不可或缺的基础硬件，东山在软板/硬板/封装基板三线布局齐全。",
-        status: "验证中",
-        validUntil: "2026-08",
-        questionsToVerify: "北美大客户 Q3 是否开始批量供货？封装基板良率是否达到盈亏平衡？"
+        oneLiner: "东山精密正在从传统消费电子/FPC公司，向AI PCB + 光模块双主线切换；如果AI服务器高端PCB和光模块订单持续兑现，公司可能从周期制造股被重新定价为AI基础设施链条成长股。",
+        currentHypothesis: "AI数据中心建设带动高速高频PCB、光模块需求增长，东山精密通过Multek等PCB能力和索尔思光电等光通信资产切入AI基础设施链条，未来业绩增长不再只依赖传统消费电子，而是由AI PCB和光模块共同驱动。",
+        coreReason: [
+          "AI PCB主线：AI服务器/交换机/数据中心互联升级，需要更高层数、更高频、更低损耗的PCB，若稳定进入核心客户供应链，收入和估值弹性可能提升。",
+          "光模块主线：收购索尔思后具备光模块/光芯片相关布局，成为第二条AI基础设施主线。",
+          "业绩已有验证：2026Q1营收和归母净利润大幅增长，AI相关业务已开始反映到财报。",
+          "定价正在切换：市场正在从消费电子周期股转向AI PCB + 光模块 + 北美客户 + 算力基础设施逻辑重估。",
+          "关键在持续性：后续要看AI PCB和光模块能否持续贡献收入、毛利率和现金流。"
+        ],
+        status: "逻辑增强，但进入估值和情绪验证阶段",
+        statusNote: "业绩层面已有验证；AI PCB和光模块仍处高景气链条；但股价若已大幅反映预期，后续需要订单、毛利率和现金流继续确认。",
+        validUntil: "2026Q2 - 2026Q4",
+        validNote: "重点看：2026年中报；2026Q3订单延续性；AI PCB客户导入进展；光模块业务是否延续高增长；PCB板块行情是否进入后排补涨和退潮阶段。",
+        questionsToVerify: [
+          "AI PCB收入是否继续放量？",
+          "光模块业务高增长是否可持续？",
+          "毛利率是否继续改善？",
+          "经营现金流是否跟得上利润？",
+          "北美客户导入是否有更明确证据？",
+          "当前估值是否已经提前透支2026年业绩？"
+        ]
       },
       // ---- 催化剂看板 ----
       catalysts: [
         {
-          catalyst: "北美大客户 PCB 批量供货公告",
-          timeWindow: "2026年6-7月",
+          catalyst: "2026年中报验证",
+          timeWindow: "2026Q2 / 中报",
           importance: "高",
-          status: "待确认",
-          evidence: "客户认证公告或供应链调研确认量产排期",
-          direction: "利好"
+          status: "跟踪中",
+          evidence: "AI PCB、光模块收入增长；毛利率改善；现金流不恶化",
+          direction: "强正面 / 强负面"
         },
         {
-          catalyst: "Q2 财报——封装基板业务收入披露",
-          timeWindow: "2026年8月",
-          importance: "中",
-          status: "等待中",
-          evidence: "封装基板营收占比是否提升至 10% 以上，毛利率趋势",
-          direction: "中性"
+          catalyst: "AI PCB客户导入进展",
+          timeWindow: "1-3个月",
+          importance: "高",
+          status: "跟踪中",
+          evidence: "公告、调研纪要、财报表述、订单或产能扩张",
+          direction: "正面"
+        },
+        {
+          catalyst: "光模块订单延续",
+          timeWindow: "1-2个季度",
+          importance: "高",
+          status: "正在兑现",
+          evidence: "索尔思并表后收入持续增长，而不是一次性高增",
+          direction: "正面"
+        },
+        {
+          catalyst: "PCB板块继续扩散",
+          timeWindow: "短期",
+          importance: "中高",
+          status: "进行中",
+          evidence: "沪电、胜宏、生益、华正、东山等强势联动",
+          direction: "正面 / 过热"
+        },
+        {
+          catalyst: "高速材料升级趋势",
+          timeWindow: "中期",
+          importance: "中高",
+          status: "跟踪中",
+          evidence: "M9/M10、PTFE、二代布、Q布方案推进",
+          direction: "正面"
+        },
+        {
+          catalyst: "财报低于高预期",
+          timeWindow: "中报 / 三季报",
+          importance: "高",
+          status: "风险观察",
+          evidence: "收入、毛利率、现金流任一核心指标低于市场预期",
+          direction: "强负面"
         },
       ],
       // ---- 操作计划 ----
       operationPlan: {
-        currentStatus: "底仓持有，等待回踩加仓",
-        buyPlan: "回调至 20 日线附近分批建仓底仓",
-        addConditions: "北美大客户公告确认 + 股价放量突破前高",
-        reduceConditions: "连续 3 日缩量滞涨，减 1/3 T 仓",
-        invalidateConditions: "北美大客户导入失败或大幅延期；封装基板量产持续亏损",
-        maxPosition: "总仓位的 15%"
+        currentStatus: "重点观察 / 不适合无脑追高 / 等待回踩或财报继续验证。如果已经持有：继续跟踪，不因短线波动轻易下车。如果还没持有：等回踩、板块分歧或财报验证后的二次买点。",
+        buyPlan: [
+          "第一买点：回踩关键支撑后企稳——回踩20日线或前期平台，缩量止跌，板块龙头没有明显退潮。",
+          "第二买点：财报验证后再加——中报继续高增长，毛利率改善，经营现金流没有恶化。",
+          "不买条件：连续大涨后放量滞涨，板块后排乱炒，只靠小作文推动没有订单或财报验证。"
+        ],
+        addConditions: "财报继续验证AI PCB和光模块放量；毛利率、现金流、应收账款没有恶化；板块龙头仍强，股价回踩后重新放量。",
+        reduceConditions: "短期涨幅明显透支基本面；利好不涨出现放量滞涨；PCB板块进入一致性高潮或后排乱炒；财报低于高预期。",
+        invalidateConditions: "AI PCB和光模块收入无法持续兑现；毛利率和现金流没有改善；北美客户导入低于预期；板块龙头退潮，公司只剩补涨属性；市场重新把公司定价为传统消费电子/FPC周期股。"
       },
     },
     {

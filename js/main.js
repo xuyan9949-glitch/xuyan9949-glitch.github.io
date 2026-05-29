@@ -185,23 +185,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const hasLogic = s.investmentLogic !== null;
             const catalystCount = s.catalysts ? s.catalysts.length : 0;
             const hasPlan = s.operationPlan !== null;
+            const status = s.trackingStatus || (s.investmentLogic ? s.investmentLogic.status : '—');
             return `
             <div class="trk-card" data-id="${s.id}" data-mkt="${market}">
                 <div class="trk-card-header">
                     <span class="trk-card-name">${s.name}</span>
                     <span class="trk-card-code">${s.code}</span>
                 </div>
-                <div>
+                <div style="display:flex;flex-wrap:wrap;gap:4px">
                     ${getTypeBadge(s.type)}
-                    <span style="margin-left:6px;font-size:12px;color:var(--text-muted)">${s.sector}</span>
+                    ${s.logicStatus ? `<span class="trk-card-type" style="background:#22c55e15;color:#22c55e;font-size:11px">${s.logicStatus}</span>` : ''}
                 </div>
                 <p class="trk-card-reason">${s.reason}</p>
                 <div class="trk-card-meta">
-                    ${hasLogic ? `<span>📋 ${s.investmentLogic.status || '—'}</span>` : '<span>📋 待补充</span>'}
+                    <span>${status}</span>
                     <span class="dot"></span>
                     <span>⚡ ${catalystCount} 催化</span>
-                    ${hasPlan ? '' : '<span class="dot"></span><span>📄 待补充</span>'}
-                    <span style="margin-left:auto">${s.lastUpdated} 更新</span>
+                    ${s.tradeCycle ? `<span class="dot"></span><span>${s.tradeCycle}</span>` : ''}
+                    <span style="margin-left:auto">${s.lastUpdated}</span>
                 </div>
                 <span class="trk-card-arrow">→</span>
             </div>
@@ -240,6 +241,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3><span class="sec-icon">📋</span> 投资逻辑</h3>
                 <div class="trk-empty-data">暂未填写</div>
             </div>`;
+        
+        const coreReasons = Array.isArray(logic.coreReason) 
+            ? logic.coreReason.map((r, i) => `<strong>${i+1}.</strong> ${r}`).join('<br>') 
+            : logic.coreReason;
+        
+        const questions = Array.isArray(logic.questionsToVerify)
+            ? logic.questionsToVerify.map(q => `<li>${q}</li>`).join('')
+            : logic.questionsToVerify;
+        
         return `
             <div class="trk-detail-section">
                 <h3><span class="sec-icon">📋</span> 投资逻辑</h3>
@@ -254,19 +264,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="trk-logic-item full">
                         <div class="label">核心跟踪理由</div>
-                        <div class="value">${logic.coreReason}</div>
+                        <div class="value" style="line-height:1.7">${coreReasons}</div>
                     </div>
-                    <div class="trk-logic-item">
+                    <div class="trk-logic-item" style="grid-column:1/-1">
                         <div class="label">逻辑状态</div>
-                        <div class="value">${getStatusBadge(logic.status)}</div>
+                        <div class="value">${getStatusBadge(logic.status)}${logic.statusNote ? `<br><span style="font-size:12px;color:var(--text-muted);margin-top:4px;display:inline-block">${logic.statusNote}</span>` : ''}</div>
                     </div>
-                    <div class="trk-logic-item">
+                    <div class="trk-logic-item" style="grid-column:1/-1">
                         <div class="label">逻辑有效期</div>
-                        <div class="value">${logic.validUntil || '—'}</div>
+                        <div class="value">${logic.validUntil || '—'}${logic.validNote ? `<br><span style="font-size:12px;color:var(--text-muted);margin-top:4px;display:inline-block">${logic.validNote}</span>` : ''}</div>
                     </div>
                     <div class="trk-logic-item full">
                         <div class="label">需要验证的问题</div>
-                        <div class="value">${logic.questionsToVerify || '—'}</div>
+                        <ul style="margin:4px 0 0;padding-left:16px;font-size:13px;color:var(--text-secondary);line-height:1.6">${questions}</ul>
                     </div>
                 </div>
             </div>`;
@@ -316,17 +326,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3><span class="sec-icon">🎯</span> 操作计划</h3>
                 <div class="trk-empty-data">暂未填写</div>
             </div>`;
+        
+        const buyHtml = Array.isArray(plan.buyPlan)
+            ? `<ul style="margin:4px 0 0;padding-left:16px;font-size:13px;color:var(--text-secondary);line-height:1.6">${plan.buyPlan.map(b => `<li>${b}</li>`).join('')}</ul>`
+            : plan.buyPlan || '—';
+        
         return `
             <div class="trk-detail-section">
                 <h3><span class="sec-icon">🎯</span> 操作计划</h3>
                 <div class="trk-plan-grid">
-                    <div class="trk-plan-item">
+                    <div class="trk-plan-item" style="grid-column:1/-1">
                         <div class="label">当前状态</div>
                         <div class="value">${plan.currentStatus}</div>
                     </div>
-                    <div class="trk-plan-item">
+                    <div class="trk-plan-item" style="grid-column:1/-1">
                         <div class="label">买入计划</div>
-                        <div class="value">${plan.buyPlan || '—'}</div>
+                        <div class="value">${buyHtml}</div>
                     </div>
                     <div class="trk-plan-item">
                         <div class="label">加仓条件</div>
@@ -336,13 +351,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="label">减仓条件</div>
                         <div class="value">${plan.reduceConditions || '—'}</div>
                     </div>
-                    <div class="trk-plan-item">
+                    <div class="trk-plan-item" style="grid-column:1/-1">
                         <div class="label">逻辑破坏条件</div>
                         <div class="value">${plan.invalidateConditions || '—'}</div>
-                    </div>
-                    <div class="trk-plan-item">
-                        <div class="label">最大仓位</div>
-                        <div class="value">${plan.maxPosition || '—'}</div>
                     </div>
                 </div>
             </div>`;
@@ -359,15 +370,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const s = stocks.find(x => x.id === id);
         if (!s) return;
 
+        // Header badges
+        const badges = [];
+        if (s.trackingStatus) badges.push(`<span class="trk-card-type" style="background:#22c55e15;color:#22c55e">${s.trackingStatus}</span>`);
+        if (s.tradeCycle) badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500;background:#6366f115;color:#6366f1">${s.tradeCycle}</span>`);
+        if (s.logicStatus) {
+            const colors = {'逻辑增强':'#22c55e','验证中':'#3b82f6','持有中':'#22c55e'};
+            const c = colors[s.logicStatus] || '#6b6b80';
+            badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500;background:${c}15;color:${c}">${s.logicStatus}</span>`);
+        }
+        if (s.themeTags) badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:400;background:var(--bg-alt);color:var(--text-muted)">${s.themeTags}</span>`);
+        
         content.innerHTML = `
             <div class="trk-detail-header">
                 <div class="name-row">
                     <h2>${s.name}</h2>
                     <span class="code">${s.code}</span>
                 </div>
-                ${getTypeBadge(s.type)}
-                <span style="margin-left:6px;font-size:13px;color:var(--text-muted)">${s.sector}</span>
-                <span style="margin-left:8px;font-size:12px;color:var(--text-muted)">最后更新 ${s.lastUpdated}</span>
+                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">
+                    ${badges.join('')}
+                </div>
+                <div style="margin-top:6px;font-size:12px;color:var(--text-muted)">${s.sector} · 最后更新 ${s.lastUpdated}</div>
             </div>
 
             <!-- 概览 — 一句话快照 -->
