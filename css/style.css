@@ -526,18 +526,28 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
 .share-bar-top { padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
 .share-bar-bottom { padding-top: 24px; border-top: 1px solid var(--border); margin-top: 20px; }
 .share-btn {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 8px 18px; border-radius: var(--radius-sm);
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 20px; border-radius: var(--radius-sm);
     border: 1px solid var(--border); background: var(--bg-card);
     font-size: 13px; font-weight: 500; color: var(--text-secondary);
-    cursor: pointer; transition: all .2s;
+    cursor: pointer; transition: all .25s;
     font-family: var(--font);
 }
 .share-btn:hover {
     border-color: var(--accent); color: var(--accent);
     background: var(--accent-bg); transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
 }
-.share-btn .share-icon { font-size: 15px; }
+.share-btn svg {
+    width: 16px; height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+    transition: transform .2s;
+}
+.share-btn:hover svg { transform: translateY(-1px); }
 
 /* ---- About page ---- */
 .about-page { padding: 60px 0 80px; }
