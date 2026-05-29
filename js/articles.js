@@ -72,6 +72,15 @@ const articles = [
     file: "/articles/a-share-optical-mapping/"
   },
   {
+    id: "daodejing-chapter-1",
+    title: "《道德经》第一章：不要急着给世界命名",
+    date: "2026-05-29",
+    category: "学点道德经",
+    tags: ["学点道德经"],
+    summary: "不要急着给世界命名，也不要被自己起的名字困住。世界比我们的判断更大，人生比某个阶段更长，市场也比任何一个故事更复杂。",
+    file: "/articles/daodejing-chapter-1/"
+  },
+  {
     id: "eml-bottleneck",
     title: "EML涨价背后：AI光通信产业链的真实瓶颈正在上移",
     date: "2026-05-28",
