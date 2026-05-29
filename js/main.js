@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ${f.items ? `<ul class="fw-list">${f.items.map(i => `<li>${i}</li>`).join('')}</ul>` : ''}
             `;
             return f.link 
-                ? `<a href="${f.link}" class="framework-card" style="text-decoration:none;color:inherit">${card}</a>`
+                ? `<a href="${f.link}" class="framework-card" style="text-decoration:none;color:inherit">${card}<span class="fw-arrow">→</span></a>`
                 : `<div class="framework-card">${card}</div>`;
         }).join('');
     }
