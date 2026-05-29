@@ -191,11 +191,21 @@ document.addEventListener('DOMContentLoaded', () => {
             return `
             <div class="trk-card" data-id="${s.id}" data-mkt="${market}">
                 <div class="trk-card-header">
-                    <span class="trk-card-name">${s.name}</span>
+                    <span class="trk-card-name">
+                        ${(() => {
+                            const c = getStatusColor(s.trackingStatus);
+                            return c ? `<span class="status-dot" style="background:${c.dot}"></span> ` : '';
+                        })()}
+                        ${s.name}
+                    </span>
                     <span class="trk-card-code">${s.code}</span>
                 </div>
                 <div style="display:flex;flex-wrap:wrap;gap:4px">
                     ${getTypeBadge(s.type)}
+                    ${(() => {
+                        const c = getStatusColor(s.trackingStatus);
+                        return c ? `<span class="status-label" style="background:${c.bg};color:${c.text}">${s.trackingStatus}</span>` : '';
+                    })()}
                     ${s.logicStatus ? `<span class="trk-card-type" style="background:#22c55e15;color:#22c55e;font-size:11px">${s.logicStatus}</span>` : ''}
                     ${s.priority ? `<span class="trk-card-type" style="background:#ef444415;color:#ef4444;font-size:11px">优先级${s.priority}</span>` : ''}
                 </div>
@@ -375,7 +385,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Header badges
         const badges = [];
-        if (s.trackingStatus) badges.push(`<span class="trk-card-type" style="background:#22c55e15;color:#22c55e">${s.trackingStatus}</span>`);
+        if (s.trackingStatus) {
+            const sc = getStatusColor(s.trackingStatus);
+            const bg = sc ? sc.bg : '#22c55e15';
+            const cl = sc ? sc.text : '#22c55e';
+            if (sc) badges.push(`<span class="status-dot" style="background:${sc.dot};width:8px;height:8px;display:inline-block;border-radius:50%"></span> `);
+            badges.push(`<span class="trk-card-type" style="background:${bg};color:${cl}">${s.trackingStatus}</span>`);
+        }
         if (s.tradeCycle) badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500;background:#6366f115;color:#6366f1">${s.tradeCycle}</span>`);
         if (s.logicStatus) {
             const colors = {'逻辑增强':'#22c55e','验证中':'#3b82f6','持有中':'#22c55e'};
