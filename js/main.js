@@ -106,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             { 
                 num: '04', title: 'A 股题材框架',
+                link: '/articles/a-share-framework/',
                 items: [
                     '龙一兑现',
                     '龙二补涨',
@@ -127,14 +128,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 desc: '三类资产（0→1 / 1→100 / 供需失衡）对应不同的买卖点与风控规则。'
             },
         ];
-        frameworksEl.innerHTML = frameworks.map(f => `
-            <div class="framework-card">
+        frameworksEl.innerHTML = frameworks.map(f => {
+            const card = `
                 <div class="num">${f.num}</div>
                 <h3>${f.title}</h3>
                 ${f.desc ? `<p class="fw-desc">${f.desc}</p>` : ''}
                 ${f.items ? `<ul class="fw-list">${f.items.map(i => `<li>${i}</li>`).join('')}</ul>` : ''}
-            </div>
-        `).join('');
+            `;
+            return f.link 
+                ? `<a href="${f.link}" class="framework-card" style="text-decoration:none;color:inherit">${card}</a>`
+                : `<div class="framework-card">${card}</div>`;
+        }).join('');
     }
 
     // =====================================================

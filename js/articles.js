@@ -54,6 +54,15 @@ const articles = [
     file: "/articles/asia-market-correlation/"
   },
   {
+    id: "a-share-framework",
+    title: "A股炒作传导逻辑框架",
+    date: "2026-05-29",
+    category: "A股",
+    tags: ["A股", "框架"],
+    summary: "龙一→龙二→细分瓶颈→低位补涨→参股蹭概念→退潮——A股题材炒作从启动到退潮的完整传导路径与判断框架。",
+    file: "/articles/a-share-framework/"
+  },
+  {
     id: "a-share-optical-mapping",
     title: "AI光通信下一层瓶颈：从光模块到EML、InP与互联芯片",
     date: "2026-05-28",
