@@ -30,6 +30,20 @@ function shareArticle() {
     }
 }
 
+// 标的分享（抽屉页用）
+function shareStock(name, code) {
+    const url = window.location.href;
+    const text = `📄 ${name} (${code})
+${url}`;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+            _showToast('已复制，可分享到微信等');
+        }).catch(() => _fallbackCopy(text));
+    } else {
+        _fallbackCopy(text);
+    }
+}
+
 function _fallbackCopy(text) {
     const ta = document.createElement('textarea');
     ta.value = text;
