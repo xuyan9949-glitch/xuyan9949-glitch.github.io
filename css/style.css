@@ -518,6 +518,27 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
 .footer a { color: var(--text-secondary); text-decoration: none; }
 .footer a:hover { color: var(--text); }
 
+/* ---- Share Bar ---- */
+.share-bar {
+    display: flex; gap: 10px; justify-content: center;
+    padding: 20px 0; flex-wrap: wrap;
+}
+.share-bar-top { padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+.share-bar-bottom { padding-top: 24px; border-top: 1px solid var(--border); margin-top: 20px; }
+.share-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 18px; border-radius: var(--radius-sm);
+    border: 1px solid var(--border); background: var(--bg-card);
+    font-size: 13px; font-weight: 500; color: var(--text-secondary);
+    cursor: pointer; transition: all .2s;
+    font-family: var(--font);
+}
+.share-btn:hover {
+    border-color: var(--accent); color: var(--accent);
+    background: var(--accent-bg); transform: translateY(-1px);
+}
+.share-btn .share-icon { font-size: 15px; }
+
 /* ---- About page ---- */
 .about-page { padding: 60px 0 80px; }
 .about-page h1 { font-size: 30px; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.5px; }
