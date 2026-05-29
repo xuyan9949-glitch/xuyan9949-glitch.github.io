@@ -195,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="display:flex;flex-wrap:wrap;gap:4px">
                     ${getTypeBadge(s.type)}
                     ${s.logicStatus ? `<span class="trk-card-type" style="background:#22c55e15;color:#22c55e;font-size:11px">${s.logicStatus}</span>` : ''}
+                    ${s.priority ? `<span class="trk-card-type" style="background:#ef444415;color:#ef4444;font-size:11px">优先级${s.priority}</span>` : ''}
                 </div>
                 <p class="trk-card-reason">${s.reason}</p>
                 <div class="trk-card-meta">
@@ -379,6 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const c = colors[s.logicStatus] || '#6b6b80';
             badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500;background:${c}15;color:${c}">${s.logicStatus}</span>`);
         }
+        if (s.priority) badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:600;background:#ef444415;color:#ef4444">优先级:${s.priority}</span>`);
         if (s.themeTags) badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:400;background:var(--bg-alt);color:var(--text-muted)">${s.themeTags}</span>`);
         
         content.innerHTML = `
