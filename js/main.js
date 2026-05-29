@@ -440,4 +440,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') closeDrawer();
     });
 
+    // ---- Quick Track Card Tab Switch ----
+    window.switchTrackingTab = function(market) {
+        // Give the page time to scroll to #tracking
+        setTimeout(() => {
+            const tab = document.querySelector(`.trk-tab[data-mkt="${market}"]`);
+            if (tab) tab.click();
+        }, 100);
+    };
+
+    // Auto-switch tab if URL has tracking hash with market param
+    if (window.location.hash === '#tracking') {
+        // check if there's a stored preference or just show A-shares by default
+    }
+
 });
