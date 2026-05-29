@@ -520,16 +520,18 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
 
 /* ---- Share: Meta inline button (Scheme A) ---- */
 .meta-share {
-    display: inline-flex; align-items: center; gap: 4px;
-    margin-left: auto; padding: 2px 10px;
-    border: 1px solid var(--border); border-radius: 12px;
-    background: var(--bg-alt); color: var(--text-muted);
-    font-size: 11px; font-weight: 500; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 5px;
+    margin-left: auto; padding: 3px 12px 3px 10px;
+    border: 1px solid var(--accent); border-radius: 14px;
+    background: var(--accent-bg); color: var(--accent-text);
+    font-size: 11px; font-weight: 600; cursor: pointer;
     font-family: var(--font); transition: all .2s;
+    letter-spacing: 0.2px;
 }
 .meta-share:hover {
-    border-color: var(--accent); color: var(--accent);
-    background: var(--accent-bg);
+    background: var(--accent); color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(45,108,255,0.3);
 }
 .meta-share svg { flex-shrink: 0; }
 
