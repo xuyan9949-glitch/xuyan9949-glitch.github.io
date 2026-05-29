@@ -27,11 +27,19 @@
         <a href="/" class="back">← 返回首页</a>
 
         <h1>投资框架笔记</h1>
-        <div class="article-meta">
-            <span>2026-05-28</span>
-            <span>·</span>
-            <span>框架 · A股 · 美股</span>
+                <div class="article-meta">
+            <span class="meta-left">2026-05-28</span>
+            <span class="meta-dot">·</span>
+            <span class="meta-cat">框架 · A股 · 美股</span>
+            <button class="meta-share" onclick="shareArticle()" title="分享">
+                <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+                分享
+            </button>
         </div>
+
 
         <article class="article-content">
 
@@ -178,16 +186,14 @@
             </div>
 
         </article>
-                <div class="share-bar share-bar-bottom">
-            <button class="share-btn" onclick="shareArticle()">
-                <svg viewBox="0 0 24 24">
-                    <circle cx="18" cy="5" r="3"/>
-                    <circle cx="6" cy="12" r="3"/>
-                    <circle cx="18" cy="19" r="3"/>
-                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                        <div class="share-ending">
+            <p>如果对你有帮助，欢迎分享给更多人</p>
+            <button class="share-ending-btn" onclick="shareArticle()">
+                <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
                 </svg>
-                分享
+                分享这篇文章
             </button>
         </div>
 </main>

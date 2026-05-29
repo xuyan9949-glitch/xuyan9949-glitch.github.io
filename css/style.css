@@ -518,36 +518,43 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
 .footer a { color: var(--text-secondary); text-decoration: none; }
 .footer a:hover { color: var(--text); }
 
-/* ---- Share Bar ---- */
-.share-bar {
-    display: flex; gap: 10px; justify-content: center;
-    padding: 20px 0; flex-wrap: wrap;
+/* ---- Share: Meta inline button (Scheme A) ---- */
+.meta-share {
+    display: inline-flex; align-items: center; gap: 4px;
+    margin-left: auto; padding: 2px 10px;
+    border: 1px solid var(--border); border-radius: 12px;
+    background: var(--bg-alt); color: var(--text-muted);
+    font-size: 11px; font-weight: 500; cursor: pointer;
+    font-family: var(--font); transition: all .2s;
 }
-.share-bar-top { padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
-.share-bar-bottom { padding-top: 24px; border-top: 1px solid var(--border); margin-top: 20px; }
-.share-btn {
+.meta-share:hover {
+    border-color: var(--accent); color: var(--accent);
+    background: var(--accent-bg);
+}
+.meta-share svg { flex-shrink: 0; }
+
+/* ---- Share: Ending section (Scheme B) ---- */
+.share-ending {
+    text-align: center; padding: 32px 0 24px;
+    border-top: 1px solid var(--border); margin-top: 32px;
+}
+.share-ending p {
+    font-size: 13px; color: var(--text-muted);
+    margin-bottom: 12px;
+}
+.share-ending-btn {
     display: inline-flex; align-items: center; gap: 8px;
-    padding: 8px 20px; border-radius: var(--radius-sm);
+    padding: 10px 24px; border-radius: var(--radius-sm);
     border: 1px solid var(--border); background: var(--bg-card);
-    font-size: 13px; font-weight: 500; color: var(--text-secondary);
+    color: var(--text-secondary); font-size: 14px; font-weight: 500;
     cursor: pointer; transition: all .25s;
     font-family: var(--font);
 }
-.share-btn:hover {
+.share-ending-btn:hover {
     border-color: var(--accent); color: var(--accent);
     background: var(--accent-bg); transform: translateY(-1px);
     box-shadow: var(--shadow-sm);
 }
-.share-btn svg {
-    width: 16px; height: 16px;
-    stroke: currentColor;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 1.8;
-    transition: transform .2s;
-}
-.share-btn:hover svg { transform: translateY(-1px); }
 
 /* ---- About page ---- */
 .about-page { padding: 60px 0 80px; }

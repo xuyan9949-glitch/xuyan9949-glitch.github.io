@@ -18,7 +18,19 @@
     <main class="container article-page">
         <a href="/" class="back">← 返回首页</a>
         <h1>A股市场定价规则</h1>
-        <div class="article-meta"><span>2026-05-25</span><span>·</span><span>A股 · 框架</span></div>
+                <div class="article-meta">
+            <span class="meta-left">2026-05-25</span>
+            <span class="meta-dot">·</span>
+            <span class="meta-cat">A股 · 框架</span>
+            <button class="meta-share" onclick="shareArticle()" title="分享">
+                <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+                分享
+            </button>
+        </div>
+
         <article class="article-content">
 
             <div class="highlight"><p><strong>这不是铁律，是市场定价习惯和资金行为规则。理解它们不是为了迷信，而是知道：为什么有些票看起来贵还会涨，有些看起来便宜却长期不动。</strong></p></div>
@@ -100,16 +112,14 @@
             </div>
 
         </article>
-                <div class="share-bar share-bar-bottom">
-            <button class="share-btn" onclick="shareArticle()">
-                <svg viewBox="0 0 24 24">
-                    <circle cx="18" cy="5" r="3"/>
-                    <circle cx="6" cy="12" r="3"/>
-                    <circle cx="18" cy="19" r="3"/>
-                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                        <div class="share-ending">
+            <p>如果对你有帮助，欢迎分享给更多人</p>
+            <button class="share-ending-btn" onclick="shareArticle()">
+                <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
                 </svg>
-                分享
+                分享这篇文章
             </button>
         </div>
 </main>
