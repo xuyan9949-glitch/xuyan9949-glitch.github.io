@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =====================================================
 
     function getTypeBadge(type) {
-        const colors = { '长线': '#22c55e', '波段': '#f59e0b', '监控': '#6366f1' };
+        const colors = { '长线': '#22c55e', '波段': '#f59e0b', '监控': '#6366f1', '短线': '#ef4444' };
         return `<span class="trk-card-type" style="background:${colors[type] || '#6b6b80'}15; color:${colors[type] || '#6b6b80'}">${type}</span>`;
     }
 
@@ -159,6 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
             '待确认': '#f59e0b',
             '已兑现': '#22c55e',
             '已失效': '#ef4444',
+            '逻辑增强': '#22c55e',
+            '短线逻辑增强': '#f59e0b',
         };
         const color = colors[status] || '#6b6b80';
         return `<span style="display:inline-block;padding:1px 8px;border-radius:8px;font-size:11px;font-weight:500;background:${color}15;color:${color}">${status}</span>`;
