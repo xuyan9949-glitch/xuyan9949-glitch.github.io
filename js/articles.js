@@ -72,6 +72,15 @@ const articles = [
     file: "/articles/a-share-optical-mapping/"
   },
   {
+    id: "daodejing-chapter-2",
+    title: "《道德经》第二章：不要在比较里失去自己",
+    date: "2026-05-29",
+    category: "学点道德经",
+    tags: ["学点道德经"],
+    summary: "比较可以帮助我们认识差异，但执着于比较，会让人失去自己。知道世界有高下，但心不必随之倾斜。",
+    file: "/articles/daodejing-chapter-2/"
+  },
+  {
     id: "daodejing-chapter-1",
     title: "《道德经》第一章：不要急着给世界命名",
     date: "2026-05-29",
