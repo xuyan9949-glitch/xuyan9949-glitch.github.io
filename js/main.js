@@ -333,6 +333,48 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>`;
     }
 
+    function renderValuation(val) {
+        if (!val) return `
+            <div class="trk-detail-section">
+                <h3><span class="sec-icon">💰</span> 估值分析</h3>
+                <div class="trk-empty-data">暂未填写</div>
+            </div>`;
+        return `
+            <div class="trk-detail-section">
+                <h3><span class="sec-icon">💰</span> 估值分析</h3>
+                <div class="trk-val-grid">
+                    <div class="trk-val-item">
+                        <div class="label">PE(TTM)</div>
+                        <div class="value">${val.peTTM || '—'}</div>
+                    </div>
+                    <div class="trk-val-item">
+                        <div class="label">PE(Forward)</div>
+                        <div class="value">${val.peForward || '—'}</div>
+                    </div>
+                    <div class="trk-val-item">
+                        <div class="label">PB</div>
+                        <div class="value">${val.pb || '—'}</div>
+                    </div>
+                    <div class="trk-val-item">
+                        <div class="label">总市值</div>
+                        <div class="value">${val.marketCap || '—'}</div>
+                    </div>
+                    <div class="trk-val-item full">
+                        <div class="label">估值评价</div>
+                        <div class="value">${val.assessment || '—'}</div>
+                    </div>
+                    <div class="trk-val-item full">
+                        <div class="label">同业对比</div>
+                        <div class="value">${val.peerComparison || '—'}</div>
+                    </div>
+                    <div class="trk-val-item full">
+                        <div class="label">估值风险</div>
+                        <div class="value" style="color:var(--text-secondary)">${val.riskNote || '—'}</div>
+                    </div>
+                </div>
+            </div>`;
+    }
+
     function renderOperationPlan(plan) {
         if (!plan) return `
             <div class="trk-detail-section">
@@ -430,6 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             ${renderInvestmentLogic(s.investmentLogic)}
             ${renderCatalysts(s.catalysts)}
+            ${renderValuation(s.valuation)}
             ${renderOperationPlan(s.operationPlan)}
         `;
 

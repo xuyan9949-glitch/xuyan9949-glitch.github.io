@@ -535,6 +535,24 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
     font-size: 12px; color: var(--text-secondary); line-height: 1.4;
 }
 
+/* ---- Valuation Grid ---- */
+.trk-val-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.trk-val-item.full { grid-column: 1 / -1; }
+.trk-val-item {
+    background: var(--bg-alt); border-radius: var(--radius-sm);
+    padding: 10px 12px;
+}
+.trk-val-item .label {
+    font-size: 10px; color: var(--text-muted); text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 3px;
+}
+.trk-val-item .value {
+    font-size: 13px; color: var(--text); line-height: 1.5;
+}
+
 /* ---- Operation Plan Grid ---- */
 .trk-plan-grid {
     display: grid; grid-template-columns: 1fr 1fr;
