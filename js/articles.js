@@ -72,6 +72,15 @@ const articles = [
     file: "/articles/a-share-optical-mapping/"
   },
   {
+    id: "space-sector-analysis",
+    title: "SpaceX估值下修、Blue Origin事故，对太空股到底意味着什么？",
+    date: "2026-05-30",
+    category: "近期热点",
+    tags: ["航天", "美股"],
+    summary: "SpaceX估值锚从2万亿下修到1.8万亿，Blue Origin事故影响发射排期——12个Q&A拆解太空股调整的本质：从主题行情进入兑现行情。",
+    file: "/articles/space-sector-analysis/"
+  },
+  {
     id: "daodejing-chapter-2",
     title: "《道德经》第二章：不要在比较里失去自己",
     date: "2026-05-29",
