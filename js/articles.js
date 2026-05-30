@@ -4,6 +4,7 @@ const articles = [
     title: "投资框架笔记",
     date: "2026-05-28",
     category: "产业思考",
+    pinned: true,
     tags: ["框架", "A股", "美股"],
     summary: "底层信念、Follow the Money、三类钱框架、买卖点、A股轮动规律——投资的完整思维模型。",
     file: "/articles/investment-framework/"

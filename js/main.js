@@ -99,7 +99,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (category !== 'all') {
             filtered = articles.filter(a => a.category === category);
         }
-
+        // Pinned articles first, then by date descending
+        filtered.sort((a, b) => {
+            if (a.pinned && !b.pinned) return -1;
+            if (!a.pinned && b.pinned) return 1;
+            return new Date(b.date) - new Date(a.date);
+        });
+        
         if (filtered.length === 0) {
             notesEl.innerHTML = '<div class="empty-notes">暂无内容，持续更新中。</div>';
             return;
@@ -111,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span>${a.date}</span>
                     <span class="dot"></span>
                     <span>${a.tags.join(' · ')}</span>
+                    ${a.pinned ? '<span class="pin-badge">📌 置顶</span>' : ''}
                 </div>
                 <h3>${a.title}</h3>
                 <p>${a.summary}</p>

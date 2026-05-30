@@ -168,6 +168,10 @@ body {
     display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--text-muted); margin-bottom: 10px;
 }
 .note-card .meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-muted); }
+.pin-badge {
+    margin-left: auto; font-size: 10px; color: var(--accent);
+    font-weight: 500;
+}
 .note-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; line-height: 1.4; }
 .note-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
 .note-card .tags { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
