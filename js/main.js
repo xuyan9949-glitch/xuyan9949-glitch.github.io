@@ -524,4 +524,47 @@ document.addEventListener('DOMContentLoaded', () => {
         // check if there's a stored preference or just show A-shares by default
     }
 
+    // ---- Render News Flash ----
+    const newsList = document.getElementById('news-flash-list');
+    if (newsList && typeof newsItems !== 'undefined') {
+        const latest = newsItems.slice(0, 5);
+        newsList.innerHTML = latest.map(n => {
+            const impactColor = n.impact === '利好' ? '#22c55e' : n.impact === '利空' ? '#ef4444' : '#f59e0b';
+            const stocksHtml = n.stocks && n.stocks.length > 0
+                ? n.stocks.map(s => `<span class="nf-stock">${s}</span>`).join('')
+                : '';
+            return `
+                <div class="nf-card">
+                    <div class="nf-head">
+                        <span class="nf-date">${n.date}</span>
+                        <span class="nf-impact" style="background:${impactColor}15;color:${impactColor}">${n.impact}</span>
+                    </div>
+                    <div class="nf-title">${n.title}</div>
+                    <div class="nf-summary">${n.summary}</div>
+                    <div class="nf-footer">
+                        ${stocksHtml}
+                        <span class="nf-tag">${n.tags.join(' · ')}</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        // Click to expand detail
+        newsList.querySelectorAll('.nf-card').forEach((el, i) => {
+            el.addEventListener('click', () => {
+                el.classList.toggle('expanded');
+                const detail = el.querySelector('.nf-detail');
+                if (detail) {
+                    detail.style.display = detail.style.display === 'block' ? 'none' : 'block';
+                } else if (!el.querySelector('.nf-detail')) {
+                    const n = latest[i];
+                    const div = document.createElement('div');
+                    div.className = 'nf-detail';
+                    div.innerHTML = `${n.detail}${n.source ? `<br><br><span style="color:var(--text-muted);font-size:11px">来源：${n.source}</span>` : ''}`;
+                    el.appendChild(div);
+                }
+            });
+        });
+    }
+
 });
