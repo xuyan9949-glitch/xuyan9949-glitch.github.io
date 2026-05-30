@@ -73,6 +73,15 @@ const articles = [
     file: "/articles/a-share-optical-mapping/"
   },
   {
+    id: "daodejing-chapter-3",
+    title: "《道德经》第三章：少一点刺激，心就不容易乱",
+    date: "2026-05-31",
+    category: "学点道德经",
+    tags: ["学点道德经"],
+    summary: "少一点外界的刺激，心就少一点混乱；多一点真实的根基，人就多一点安定。人不是靠更多刺激变清醒，而是靠减少刺激恢复清醒。",
+    file: "/articles/daodejing-chapter-3/"
+  },
+  {
     id: "space-sector-analysis",
     title: "SpaceX估值下修、Blue Origin事故，对太空股到底意味着什么？",
     date: "2026-05-30",
