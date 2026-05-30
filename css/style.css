@@ -754,9 +754,15 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
     margin-bottom: 28px;
 }
 .cat-tag {
+    position: relative;
     padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 500;
     background: var(--bg-alt); color: var(--text-secondary); cursor: pointer;
     border: 1px solid transparent; transition: all .2s; user-select: none;
+}
+.cat-dot {
+    display: inline-block; width: 5px; height: 5px;
+    border-radius: 50%; background: var(--accent);
+    margin-left: 3px; vertical-align: super;
 }
 .cat-tag:hover { border-color: var(--accent); color: var(--text); }
 .cat-tag.active {

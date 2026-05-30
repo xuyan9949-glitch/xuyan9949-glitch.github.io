@@ -130,6 +130,35 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         renderNotes('all');
+        
+        // Category notification dots
+        if (typeof articles !== 'undefined') {
+            const catSeen = JSON.parse(localStorage.getItem('cat_seen') || '{}');
+            document.querySelectorAll('.cat-tag').forEach(tag => {
+                const cat = tag.dataset.cat;
+                if (cat === 'all') return;
+                const catArticles = articles.filter(a => a.category === cat);
+                const latestDate = Math.max(...catArticles.map(a => new Date(a.date).getTime()));
+                const lastSeen = catSeen[cat] || 0;
+                if (latestDate > lastSeen) {
+                    const dot = document.createElement('span');
+                    dot.className = 'cat-dot';
+                    tag.appendChild(dot);
+                }
+            });
+            // Mark category as seen on click
+            document.querySelectorAll('.cat-tag').forEach(tag => {
+                tag.addEventListener('click', () => {
+                    const cat = tag.dataset.cat;
+                    if (cat === 'all') return;
+                    const seen = JSON.parse(localStorage.getItem('cat_seen') || '{}');
+                    seen[cat] = Date.now();
+                    localStorage.setItem('cat_seen', JSON.stringify(seen));
+                    const dot = tag.querySelector('.cat-dot');
+                    if (dot) dot.remove();
+                });
+            });
+        }
     } else if (notesEl && typeof articles !== 'undefined') {
         renderNotes('all');
     }
