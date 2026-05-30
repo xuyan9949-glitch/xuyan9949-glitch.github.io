@@ -528,40 +528,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const newsList = document.getElementById('news-flash-list');
     if (newsList && typeof newsItems !== 'undefined') {
         const latest = newsItems.slice(0, 5);
-        newsList.innerHTML = latest.map(n => {
-            const impactColor = n.impact === '利好' ? '#22c55e' : n.impact === '利空' ? '#ef4444' : '#f59e0b';
+        newsList.innerHTML = latest.map((n, idx) => {
+            const impactIcon = n.impact === '利好' ? '🟢' : n.impact === '利空' ? '🔴' : '🟡';
             const stocksHtml = n.stocks && n.stocks.length > 0
-                ? n.stocks.map(s => `<span class="nf-stock">${s}</span>`).join('')
+                ? ' · ' + n.stocks.map(s => `<span class="nf-stock">${s}</span>`).join(' ')
                 : '';
             return `
-                <div class="nf-card">
-                    <div class="nf-head">
-                        <span class="nf-date">${n.date}</span>
-                        <span class="nf-impact" style="background:${impactColor}15;color:${impactColor}">${n.impact}</span>
-                    </div>
-                    <div class="nf-title">${n.title}</div>
-                    <div class="nf-summary">${n.summary}</div>
-                    <div class="nf-footer">
-                        ${stocksHtml}
-                        <span class="nf-tag">${n.tags.join(' · ')}</span>
-                    </div>
+                <div class="nf-row" data-idx="${idx}">
+                    <span class="nf-date">${n.date.slice(5)}</span>
+                    <span class="nf-dot">·</span>
+                    <span class="nf-impact-icon">${impactIcon}</span>
+                    <span class="nf-title">${n.title}</span>
+                    <span class="nf-footer-info">${stocksHtml}</span>
+                </div>
+                <div class="nf-detail" id="nf-detail-${idx}" style="display:none">
+                    <p>${n.detail}</p>
+                    ${n.source ? `<p style="color:var(--text-muted);font-size:11px;margin-top:4px">来源：${n.source}</p>` : ''}
                 </div>
             `;
         }).join('');
         
-        // Click to expand detail
-        newsList.querySelectorAll('.nf-card').forEach((el, i) => {
+        // Click to expand
+        newsList.querySelectorAll('.nf-row').forEach(el => {
             el.addEventListener('click', () => {
-                el.classList.toggle('expanded');
-                const detail = el.querySelector('.nf-detail');
+                const idx = el.dataset.idx;
+                const detail = document.getElementById(`nf-detail-${idx}`);
                 if (detail) {
-                    detail.style.display = detail.style.display === 'block' ? 'none' : 'block';
-                } else if (!el.querySelector('.nf-detail')) {
-                    const n = latest[i];
-                    const div = document.createElement('div');
-                    div.className = 'nf-detail';
-                    div.innerHTML = `${n.detail}${n.source ? `<br><br><span style="color:var(--text-muted);font-size:11px">来源：${n.source}</span>` : ''}`;
-                    el.appendChild(div);
+                    const isOpen = detail.style.display === 'block';
+                    detail.style.display = isOpen ? 'none' : 'block';
+                    el.classList.toggle('active', !isOpen);
                 }
             });
         });
