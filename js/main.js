@@ -340,39 +340,48 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3><span class="sec-icon">💰</span> 估值分析</h3>
                 <div class="trk-empty-data">暂未填写</div>
             </div>`;
+        
+        const rows = val.tiers ? val.tiers.map(t => `
+            <tr>
+                <td class="trk-val-tier">${t.label}</td>
+                <td class="trk-val-num">${t.marketCap}</td>
+                <td class="trk-val-num">${t.price}</td>
+                <td class="trk-val-desc">${t.logic}</td>
+            </tr>
+        `).join('') : '';
+        
         return `
             <div class="trk-detail-section">
                 <h3><span class="sec-icon">💰</span> 估值分析</h3>
-                <div class="trk-val-grid">
-                    <div class="trk-val-item">
-                        <div class="label">PE(TTM)</div>
-                        <div class="value">${val.peTTM || '—'}</div>
-                    </div>
-                    <div class="trk-val-item">
-                        <div class="label">PE(Forward)</div>
-                        <div class="value">${val.peForward || '—'}</div>
-                    </div>
-                    <div class="trk-val-item">
-                        <div class="label">PB</div>
-                        <div class="value">${val.pb || '—'}</div>
-                    </div>
-                    <div class="trk-val-item">
-                        <div class="label">总市值</div>
-                        <div class="value">${val.marketCap || '—'}</div>
-                    </div>
-                    <div class="trk-val-item full">
-                        <div class="label">估值评价</div>
-                        <div class="value">${val.assessment || '—'}</div>
-                    </div>
-                    <div class="trk-val-item full">
-                        <div class="label">同业对比</div>
-                        <div class="value">${val.peerComparison || '—'}</div>
-                    </div>
-                    <div class="trk-val-item full">
-                        <div class="label">估值风险</div>
-                        <div class="value" style="color:var(--text-secondary)">${val.riskNote || '—'}</div>
-                    </div>
+                <div style="margin-bottom:12px">
+                    <span style="font-size:12px;color:var(--text-muted)">PE(TTM) ${val.peTTM || '—'} · PE(Fwd) ${val.peForward || '—'} · PB ${val.pb || '—'} · 总市值 ${val.marketCap || '—'}</span>
                 </div>
+                ${rows ? `
+                <div class="trk-val-table-wrap">
+                    <table class="trk-val-table">
+                        <thead>
+                            <tr>
+                                <th>版本</th>
+                                <th>合理市值</th>
+                                <th>对应A股股价</th>
+                                <th>对应逻辑</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rows}
+                        </tbody>
+                    </table>
+                </div>
+                ` : ''}
+                <div style="margin-top:12px;font-size:13px;color:var(--text-secondary);line-height:1.7">
+                    ${val.assessment || ''}
+                    ${val.hkNote ? `<br><br><span style="color:var(--text-muted)">${val.hkNote}</span>` : ''}
+                </div>
+                ${val.riskNote ? `
+                <div style="margin-top:10px;padding:10px 12px;background:var(--bg-alt);border-radius:8px;font-size:12px;color:var(--text-muted);line-height:1.6">
+                    ⚠️ ${val.riskNote}
+                </div>
+                ` : ''}
             </div>`;
     }
 

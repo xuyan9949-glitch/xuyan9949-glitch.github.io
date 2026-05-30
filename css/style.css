@@ -535,23 +535,25 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
     font-size: 12px; color: var(--text-secondary); line-height: 1.4;
 }
 
-/* ---- Valuation Grid ---- */
-.trk-val-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 10px;
+/* ---- Valuation Table ---- */
+.trk-val-table-wrap { overflow-x: auto; }
+.trk-val-table {
+    width: 100%; border-collapse: collapse; font-size: 13px;
 }
-.trk-val-item.full { grid-column: 1 / -1; }
-.trk-val-item {
-    background: var(--bg-alt); border-radius: var(--radius-sm);
-    padding: 10px 12px;
+.trk-val-table th {
+    background: var(--bg-alt); color: var(--text-muted);
+    font-weight: 500; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 8px 10px;
+    border-bottom: 1px solid var(--border); text-align: left;
 }
-.trk-val-item .label {
-    font-size: 10px; color: var(--text-muted); text-transform: uppercase;
-    letter-spacing: 0.5px; margin-bottom: 3px;
+.trk-val-table td {
+    padding: 10px 10px; border-bottom: 1px solid #e8e8ee;
+    color: var(--text); line-height: 1.5;
 }
-.trk-val-item .value {
-    font-size: 13px; color: var(--text); line-height: 1.5;
-}
+.trk-val-tier { font-weight: 600; white-space: nowrap; }
+.trk-val-num { white-space: nowrap; font-weight: 600; }
+.trk-val-desc { color: var(--text-secondary); font-size: 12px; }
+.trk-val-table tbody tr:last-child td { border-bottom: none; }
 
 /* ---- Operation Plan Grid ---- */
 .trk-plan-grid {
