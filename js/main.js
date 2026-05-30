@@ -1,5 +1,62 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ---- Nav notification dots ----
+    function updateNavDots() {
+        const now = Date.now();
+        const DAY_MS = 86400000;
+        const seen = JSON.parse(localStorage.getItem('nav_seen') || '{}');
+        
+        // 速报：最近一条是否在最后访问之后
+        if (typeof newsItems !== 'undefined' && newsItems.length > 0) {
+            const latest = new Date(newsItems[0].date).getTime();
+            const lastSeen = seen.news || 0;
+            const dot = document.querySelector('.nav-dot[data-section="news"]');
+            if (dot) dot.classList.toggle('show', latest > lastSeen);
+        }
+        
+        // 标的追踪：最近更新是否在最后访问之后
+        if (typeof trackingData !== 'undefined') {
+            const allStocks = [...(trackingData['a-shares'] || []), ...(trackingData['us-stocks'] || [])];
+            const dates = allStocks.map(s => new Date(s.lastUpdated).getTime()).filter(d => !isNaN(d));
+            if (dates.length > 0) {
+                const latest = Math.max(...dates);
+                const lastSeen = seen.tracking || 0;
+                const dot = document.querySelector('.nav-dot[data-section="tracking"]');
+                if (dot) dot.classList.toggle('show', latest > lastSeen);
+            }
+        }
+        
+        // 笔记：最近文章日期
+        if (typeof articles !== 'undefined' && articles.length > 0) {
+            const dates = articles.map(a => new Date(a.date).getTime()).filter(d => !isNaN(d));
+            if (dates.length > 0) {
+                const latest = Math.max(...dates);
+                const lastSeen = seen.notes || 0;
+                const dot = document.querySelector('.nav-dot[data-section="notes"]');
+                if (dot) dot.classList.toggle('show', latest > lastSeen);
+            }
+        }
+    }
+    
+    // Mark section as seen on click
+    document.querySelectorAll('.nav-links a[href]').forEach(a => {
+        a.addEventListener('click', () => {
+            const href = a.getAttribute('href');
+            const section = href.replace('#', '');
+            const seen = JSON.parse(localStorage.getItem('nav_seen') || '{}');
+            seen[section] = Date.now();
+            localStorage.setItem('nav_seen', JSON.stringify(seen));
+            // Hide dot immediately
+            const dot = a.querySelector('.nav-dot');
+            if (dot) dot.classList.remove('show');
+        });
+    });
+    
+    updateNavDots();
+    
+    // Re-check after page fully loads (data might arrive late)
+    setTimeout(updateNavDots, 500);
+
     // ---- Mobile nav toggle ----
     const toggle = document.getElementById('nav-toggle');
     const navLinks = document.querySelector('.nav-links');

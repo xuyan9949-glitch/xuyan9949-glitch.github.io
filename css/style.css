@@ -71,6 +71,13 @@ body {
     transition: color .2s; position: relative;
 }
 .nav-links a:hover, .nav-links a.active { color: var(--text); }
+.nav-dot {
+    display: inline-block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--accent);
+    margin-left: 3px; vertical-align: super;
+    opacity: 0; transition: opacity .3s;
+}
+.nav-dot.show { opacity: 1; }
 .nav-links a.active::after {
     content: ''; position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%);
     width: 4px; height: 4px; border-radius: 50%; background: var(--accent);
