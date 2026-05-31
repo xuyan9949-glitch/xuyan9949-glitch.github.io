@@ -478,7 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>`;
     }
 
-    function renderOperationPlan(plan) {
+    function renderOperationPlan(plan, optStrategy) {
         if (!plan) return `
             <div class="trk-detail-section">
                 <h3><span class="sec-icon">🎯</span> 操作计划</h3>
@@ -513,10 +513,93 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="label">逻辑破坏条件</div>
                         <div class="value">${plan.invalidateConditions || '—'}</div>
                     </div>
+                    ${optStrategy ? `
+                    <div class="trk-plan-item" style="grid-column:1/-1">
+                        <div class="label">期权策略</div>
+                        <div class="value" style="font-size:12px">${optStrategy}</div>
+                    </div>` : ''}
                 </div>
             </div>`;
     }
 
+    // =====================================================
+    // US Stock Drawer — 基本面验证系统
+    // =====================================================
+    
+    function renderExpectedDiff(ed) {
+        if (!ed) return '';
+        return `
+            <div class="trk-detail-section">
+                <h3><span class="sec-icon">🔮</span> 预期差</h3>
+                <div class="trk-logic-grid">
+                    <div class="trk-logic-item full">
+                        <div class="label">市场共识</div>
+                        <div class="value" style="color:var(--text-muted)">${ed.consensus}</div>
+                    </div>
+                    <div class="trk-logic-item full">
+                        <div class="label">我的判断</div>
+                        <div class="value">${ed.myView}</div>
+                    </div>
+                    <div class="trk-logic-item full">
+                        <div class="label">需要验证的证据</div>
+                        <div class="value" style="color:var(--text-muted)">${ed.evidence}</div>
+                    </div>
+                    <div class="trk-logic-item" style="grid-column:1/-1">
+                        <div class="label">如果对了</div>
+                        <div class="value" style="color:#22c55e">${ed.rightCase}</div>
+                    </div>
+                    <div class="trk-logic-item" style="grid-column:1/-1">
+                        <div class="label">如果错了</div>
+                        <div class="value" style="color:#ef4444">${ed.wrongCase}</div>
+                    </div>
+                </div>
+            </div>`;
+    }
+    
+    function renderKeyMetrics(metrics) {
+        if (!metrics || metrics.length === 0) return '';
+        return `
+            <div class="trk-detail-section">
+                <h3><span class="sec-icon">📊</span> 核心验证指标</h3>
+                <div class="trk-val-table-wrap">
+                    <table class="trk-val-table">
+                        <thead>
+                            <tr><th>指标</th><th>当前状态</th><th>重要性</th><th>观察方向</th><th>说明</th></tr>
+                        </thead>
+                        <tbody>
+                            ${metrics.map(m => `
+                            <tr>
+                                <td style="font-weight:500">${m.metric}</td>
+                                <td>${m.status}</td>
+                                <td style="color:${m.importance === '高' ? '#ef4444' : '#f59e0b'}">${m.importance}</td>
+                                <td>${m.trend}</td>
+                                <td style="color:var(--text-muted);font-size:12px">${m.note}</td>
+                            </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            </div>`;
+    }
+    
+    function renderMarketTrading(mt) {
+        if (!mt) return '';
+        return `
+            <div class="trk-detail-section">
+                <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;background:var(--bg-alt);padding:12px 14px;border-radius:8px;border-left:3px solid var(--accent)">
+                    <strong style="color:var(--text)">市场正在交易：</strong><br>${mt}</p>
+            </div>`;
+    }
+    
+    function renderOptionStrategy(os) {
+        if (!os) return '';
+        return `
+            <div class="trk-plan-item" style="grid-column:1/-1">
+                <div class="label">期权策略</div>
+                <div class="value" style="font-size:12px">${os}</div>
+            </div>`;
+    }
+    
     function openDrawer(id, market) {
         const overlay = document.getElementById('trk-drawer-overlay');
         const drawer = document.getElementById('trk-drawer');
@@ -544,6 +627,7 @@ document.addEventListener('DOMContentLoaded', () => {
             badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500;background:${c}15;color:${c}">${s.logicStatus}</span>`);
         }
         if (s.priority) badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:600;background:#ef444415;color:#ef4444">优先级:${s.priority}</span>`);
+        if (s.accountPosition) badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500;background:#8b5cf615;color:#8b5cf6">${s.accountPosition}</span>`);
         if (s.ahShare) badges.push(`<span style="display:inline-block;padding:1px 8px;border-radius:8px;font-size:10px;font-weight:600;background:#8b5cf615;color:#8b5cf6;border:1px solid #8b5cf640">A+H 港股:${s.ahShare}</span>`);
         if (s.themeTags) badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:400;background:var(--bg-alt);color:var(--text-muted)">${s.themeTags}</span>`);
         
@@ -574,10 +658,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 </p>
             </div>
 
+            ${renderMarketTrading(s.marketTrading)}
             ${renderInvestmentLogic(s.investmentLogic)}
+            ${renderExpectedDiff(s.expectedDiff)}
+            ${renderKeyMetrics(s.keyMetrics)}
             ${renderCatalysts(s.catalysts)}
             ${renderValuation(s.valuation)}
-            ${renderOperationPlan(s.operationPlan)}
+            ${renderOperationPlan(s.operationPlan, s.operationPlan ? s.operationPlan.optionStrategy : null)}
         `;
 
         overlay.classList.add('open');
