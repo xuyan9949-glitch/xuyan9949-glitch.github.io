@@ -267,12 +267,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderCards(market) {
         const grid = document.getElementById('trk-grid');
+        const summary = document.getElementById('trk-summary');
         if (!grid || typeof trackingData === 'undefined') return;
 
         const marketKey = market === 'a' ? 'a-shares' : 'us-stocks';
         let stocks = trackingData[marketKey];
         if (!stocks || stocks.length === 0) {
             grid.innerHTML = '<div class="trk-empty">暂无可展示的标的</div>';
+            if (summary) summary.innerHTML = '';
             return;
         }
         
@@ -283,8 +285,27 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (stocks.length === 0) {
             grid.innerHTML = '<div class="trk-empty">该分类下暂无可展示的标的</div>';
-            grid.innerHTML = '<div class="trk-empty">暂无可展示的标的</div>';
+            if (summary) summary.innerHTML = '<div class="trk-summary-inner">共 0 只标的</div>';
             return;
+        }
+        
+        // Summary bar
+        if (summary) {
+            const total = stocks.length;
+            const catMap = { '持有': 0, '观察': 0, '等回调': 0, '高风险': 0 };
+            stocks.forEach(s => {
+                const st = s.trackingStatus || '';
+                if (st.includes('持有') || st.includes('底仓')) catMap['持有']++;
+                else if (st.includes('观察')) catMap['观察']++;
+                else if (st.includes('回调')) catMap['等回调']++;
+                else catMap['观察']++;
+            });
+            const labels = [
+                catMap['持有'] ? `<span><span class="status-dot" style="background:#22c55e"></span>持有 ${catMap['持有']}</span>` : '',
+                catMap['观察'] ? `<span><span class="status-dot" style="background:#3b82f6"></span>观察 ${catMap['观察']}</span>` : '',
+                catMap['等回调'] ? `<span><span class="status-dot" style="background:#f59e0b"></span>等回调 ${catMap['等回调']}</span>` : '',
+            ].filter(Boolean).join(' · ');
+            summary.innerHTML = `<div class="trk-summary-inner">共 ${total} 只${labels ? ' · ' + labels : ''}</div>`;
         }
 
         grid.innerHTML = stocks.map(s => {
@@ -756,7 +777,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newsList.innerHTML = latest.map((n, idx) => {
             const impactIcon = n.impact === '利好' ? '🟢' : n.impact === '利空' ? '🔴' : '🟡';
             const stocksHtml = n.stocks && n.stocks.length > 0
-                ? ' · ' + n.stocks.map(s => `<span class="nf-stock">${s}</span>`).join(' ')
+                ? ' · ' + n.stocks.map(s => `<span class="nf-stock" data-stock="${s.toLowerCase()}">${s}</span>`).join(' ')
                 : '';
             return `
                 <div class="nf-row" data-idx="${idx}">
@@ -774,14 +795,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('');
         
         // Click to expand
+        // Click row to expand/collapse
         newsList.querySelectorAll('.nf-row').forEach(el => {
-            el.addEventListener('click', () => {
+            el.addEventListener('click', (e) => {
+                if (e.target.closest('.nf-stock')) return; // let stock clicks handle separately
                 const idx = el.dataset.idx;
                 const detail = document.getElementById(`nf-detail-${idx}`);
                 if (detail) {
                     const isOpen = detail.style.display === 'block';
                     detail.style.display = isOpen ? 'none' : 'block';
                     el.classList.toggle('active', !isOpen);
+                }
+            });
+        });
+        
+        // Stock tag clicks → navigate to tracking drawer
+        document.querySelectorAll('.nf-stock').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const stockId = this.dataset.stock;
+                if (!stockId) return;
+                // Navigate to tracking section
+                window.location.hash = '#tracking';
+                // Determine market by checking the stock in trackingData
+                for (const mkt of ['a-shares', 'us-stocks']) {
+                    const found = trackingData[mkt]?.find(s => s.id === stockId);
+                    if (found) {
+                        const marketCode = mkt === 'a-shares' ? 'a' : 'us';
+                        setTimeout(() => {
+                            // Switch to correct market tab
+                            const tab = document.querySelector(`.trk-tab[data-mkt="${marketCode}"]`);
+                            if (tab) tab.click();
+                            // Open drawer after a brief delay for rendering
+                            setTimeout(() => {
+                                openDrawer(stockId, marketCode);
+                            }, 400);
+                        }, 100);
+                        break;
+                    }
                 }
             });
         });
