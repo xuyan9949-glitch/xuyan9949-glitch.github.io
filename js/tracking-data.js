@@ -487,7 +487,8 @@ const trackingData = {
       sector: "光通信 / 光源",
       mkt: "us",
 
-      usSector: "光互联",      type: "中线",
+      usSector: "光互联",
+      type: "中线",
       trackingStatus: "持有中",
       tradeCycle: "中线趋势 + 波段",
       themeTags: "AI光互联 / EML激光器 / InP / CPO",
@@ -586,7 +587,8 @@ const trackingData = {
       sector: "光通信 / 激光器",
       mkt: "us",
 
-      usSector: "光互联",      type: "监控",
+      usSector: "光互联",
+      type: "监控",
       color: "#6366f1",
       reason: "光通信+材料+激光器多业务平台，AI 数据中心需求催化。",
       strategy: "保持监控，等待合适买点。",
@@ -604,7 +606,8 @@ const trackingData = {
       sector: "光模块",
       mkt: "us",
 
-      usSector: "光互联",      type: "波段",
+      usSector: "光互联",
+      type: "波段",
       color: "#f59e0b",
       reason: "数据中心光模块供应商，受益 AI 集群互联需求。",
       strategy: "波段操作，关注订单公告和客户验证进展。",
@@ -622,7 +625,8 @@ const trackingData = {
       sector: "衬底材料",
       mkt: "us",
 
-      usSector: "光互联",      type: "监控",
+      usSector: "光互联",
+      type: "监控",
       color: "#6366f1",
       reason: "InP/GaAs 衬底龙头，AI 光模块上游关键材料。",
       strategy: "保持监控，关注衬底认证和出货量。",
@@ -640,7 +644,8 @@ const trackingData = {
       sector: "数据中心芯片",
       mkt: "us",
 
-      usSector: "光互联",      type: "监控",
+      usSector: "光互联",
+      type: "监控",
       color: "#6366f1",
       reason: "数据中心芯片（交换/DPU/PHY），光互连生态链关键节点。",
       strategy: "保持监控，关注定制 ASIC 进展和光模块配套。",
@@ -649,7 +654,8 @@ const trackingData = {
       lastUpdated: "2026-05-23",
       investmentLogic: null,
       catalysts: [],
-      
+      operationPlan: null,
+    },
     {
       id: "nvda",
       code: "NVDA",
@@ -1011,8 +1017,6 @@ const trackingData = {
       strategy: "中线趋势持有，波段做T。",
       lastUpdated: "2026-05-31",
       investmentLogic: null, catalysts: [], operationPlan: null,
-    },
-operationPlan: null,
     },
   ],
 };
