@@ -270,8 +270,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!grid || typeof trackingData === 'undefined') return;
 
         const marketKey = market === 'a' ? 'a-shares' : 'us-stocks';
-        const stocks = trackingData[marketKey];
+        let stocks = trackingData[marketKey];
         if (!stocks || stocks.length === 0) {
+            grid.innerHTML = '<div class="trk-empty">暂无可展示的标的</div>';
+            return;
+        }
+        
+        // US stocks: filter by sector
+        if (market === 'us' && currentSector) {
+            stocks = stocks.filter(s => s.usSector === currentSector);
+        }
+        
+        if (stocks.length === 0) {
+            grid.innerHTML = '<div class="trk-empty">该分类下暂无可展示的标的</div>';
             grid.innerHTML = '<div class="trk-empty">暂无可展示的标的</div>';
             return;
         }
@@ -322,8 +333,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ---- US Stock Sector Tabs ----
+    const usSectors = ['光互联','半导体','AI基础设施','加密/金融','太空','七姐妹'];
+    const US_SECTOR_COLORS = {
+        '光互联': '#3b82f6', '半导体': '#ef4444', 'AI基础设施': '#f59e0b',
+        '加密/金融': '#22c55e', '太空': '#8b5cf6', '七姐妹': '#6366f1'
+    };
+    
+    let currentSector = null;
+    
+    function renderSectorTabs() {
+        const container = document.getElementById('trk-sector-tabs');
+        if (!container) return;
+        container.innerHTML = usSectors.map(s => `
+            <span class="trk-sector-tab ${currentSector === s ? 'active' : ''}" data-sector="${s}" style="--sector-color:${US_SECTOR_COLORS[s] || '#6b6b80'}">${s}</span>
+        `).join('');
+        container.style.display = 'flex';
+        
+        container.querySelectorAll('.trk-sector-tab').forEach(el => {
+            el.addEventListener('click', () => {
+                container.querySelectorAll('.trk-sector-tab').forEach(t => t.classList.remove('active'));
+                el.classList.add('active');
+                currentSector = el.dataset.sector;
+                renderCards('us');
+            });
+        });
+    }
+    
     // ---- Tracking Tabs ----
     const tabs = document.querySelectorAll('.trk-tab');
+    const sectorContainer = document.getElementById('trk-sector-tabs');
     if (tabs.length > 0) {
         let currentMarket = 'a';
         renderCards(currentMarket);
@@ -333,6 +372,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 tabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
                 currentMarket = tab.dataset.mkt;
+                currentSector = currentMarket === 'us' ? (currentSector || usSectors[0]) : null;
+                if (currentMarket === 'us') {
+                    renderSectorTabs();
+                } else {
+                    if (sectorContainer) sectorContainer.style.display = 'none';
+                }
                 renderCards(currentMarket);
             });
         });
