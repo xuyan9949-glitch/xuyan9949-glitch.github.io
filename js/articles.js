@@ -73,6 +73,16 @@ const articles = [
     file: "/articles/a-share-optical-mapping/"
   },
   {
+    id: "june-market-outlook",
+    title: "六月行情展望：不是简单看多看空，而是进入'产业约束筛选月'",
+    date: "2026-05-31",
+    category: "近期热点",
+    tags: ["美股", "A股", "AI"],
+    pinned: true,
+    summary: "世界杯注意力折价、巨型IPO再平衡、FOMC利率定价、AI硬件扩散——六月不是简单看多看空，而是产业约束筛选月。",
+    file: "/articles/june-market-outlook/"
+  },
+  {
     id: "ai-pcb-hvlp-copper-foil",
     title: "AI PCB 上游材料扩散：HVLP 铜箔正在成为新一轮瓶颈",
     date: "2026-05-31",
