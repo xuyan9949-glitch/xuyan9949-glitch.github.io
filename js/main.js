@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ---- US Stock Sector Tabs ----
-    const usSectors = ['光互联','半导体','AI基础设施','加密/金融','太空','七姐妹'];
+    const usSectors = ['七姐妹','光互联','半导体','AI基础设施','加密/金融','太空'];
     const US_SECTOR_COLORS = {
         '光互联': '#3b82f6', '半导体': '#ef4444', 'AI基础设施': '#f59e0b',
         '加密/金融': '#22c55e', '太空': '#8b5cf6', '七姐妹': '#6366f1'
