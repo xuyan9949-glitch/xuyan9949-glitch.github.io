@@ -1,5 +1,72 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ---- Search ----
+    const searchToggle = document.getElementById('nav-search-toggle');
+    const searchDropdown = document.getElementById('nav-search-dropdown');
+    const searchInput = document.getElementById('nav-search-input');
+    const searchResults = document.getElementById('nav-search-results');
+    
+    if (searchToggle && searchDropdown) {
+        searchToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = searchDropdown.style.display === 'block';
+            searchDropdown.style.display = isOpen ? 'none' : 'block';
+            if (!isOpen) {
+                setTimeout(() => searchInput?.focus(), 100);
+                if (typeof articles !== 'undefined') renderSearchResults('');
+            }
+        });
+        
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#nav-search')) {
+                searchDropdown.style.display = 'none';
+            }
+        });
+    }
+    
+    if (searchInput && searchResults) {
+        searchInput.addEventListener('input', () => {
+            renderSearchResults(searchInput.value.trim());
+        });
+    }
+    
+    function renderSearchResults(query) {
+        if (typeof articles === 'undefined') return;
+        if (!searchResults) return;
+        
+        if (!query) {
+            searchResults.innerHTML = '<div class="nav-search-empty">输入关键词搜索笔记</div>';
+            return;
+        }
+        
+        const q = query.toLowerCase();
+        const matches = articles.filter(a => {
+            return a.title.toLowerCase().includes(q)
+                || a.tags.some(t => t.toLowerCase().includes(q))
+                || a.summary.toLowerCase().includes(q);
+        }).slice(0, 8);
+        
+        if (matches.length === 0) {
+            searchResults.innerHTML = '<div class="nav-search-empty">未找到匹配的笔记</div>';
+            return;
+        }
+        
+        searchResults.innerHTML = matches.map(a => `
+            <a href="${a.file}" class="nav-search-result" onclick="document.getElementById('nav-search-dropdown').style.display='none'">
+                <div class="nsr-title">${highlight(a.title, query)}</div>
+                <div class="nsr-meta">${a.date} · ${a.tags.map(t => highlight(t, query)).join(' · ')}</div>
+            </a>
+        `).join('');
+    }
+    
+    function highlight(text, query) {
+        if (!query) return text;
+        const idx = text.toLowerCase().indexOf(query.toLowerCase());
+        if (idx < 0) return text;
+        return text.slice(0, idx) + '<strong style="color:var(--accent)">' + text.slice(idx, idx + query.length) + '</strong>' + text.slice(idx + query.length);
+    }
+
     // ---- Nav notification dots ----
     function updateNavDots() {
         const now = Date.now();
