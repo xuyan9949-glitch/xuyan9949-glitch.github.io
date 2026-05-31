@@ -69,13 +69,22 @@ body {
 .nav-links a {
     color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 450;
     transition: color .2s; position: relative;
+    display: flex; flex-direction: column; align-items: center; gap: 1px;
 }
 .nav-links a:hover, .nav-links a.active { color: var(--text); }
+.nav-en {
+    font-size: 9px; font-weight: 400; color: var(--text-muted);
+    letter-spacing: 0.5px; opacity: 0.6;
+    transition: opacity .2s;
+    text-transform: uppercase;
+}
+.nav-links a:hover .nav-en, .nav-links a.active .nav-en { opacity: 1; }
 .nav-dot {
-    display: inline-block; width: 6px; height: 6px;
+    display: inline-block; width: 5px; height: 5px;
     border-radius: 50%; background: var(--accent);
-    margin-left: 3px; vertical-align: super;
+    margin-left: 2px; vertical-align: super;
     opacity: 0; transition: opacity .3s;
+    position: relative; top: -3px;
 }
 .nav-dot.show { opacity: 1; }
 
