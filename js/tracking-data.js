@@ -688,7 +688,7 @@ const trackingData = {
       tradeCycle: "长线核心",
       themeTags: "AI GPU / Blackwell / Rubin / AI Factory",
       logicStatus: "观察",
-      priority: "最高",
+      priority: "中",
       accountPosition: "核心仓",
       color: "#f59e0b",
       reason: "AI基础设施总龙头，FY27 Q1收入816亿美元(+85%)，数据中心收入752亿美元(+92%)，网络收入148亿美元(+199%)。",
