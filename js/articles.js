@@ -73,6 +73,15 @@ const articles = [
     file: "/articles/a-share-optical-mapping/"
   },
   {
+    id: "ai-pcb-hvlp-copper-foil",
+    title: "AI PCB 上游材料扩散：HVLP 铜箔正在成为新一轮瓶颈",
+    date: "2026-05-31",
+    category: "A股",
+    tags: ["A股", "产业链"],
+    summary: "AI服务器高速互联推动PCB材料体系整体升级——从HVLP4/5铜箔到电子布、硅微粉、mSAP药水，资金从PCB龙头扩散到上游瓶颈环节。",
+    file: "/articles/ai-pcb-hvlp-copper-foil/"
+  },
+  {
     id: "daodejing-chapter-3",
     title: "《道德经》第三章：少一点刺激，心就不容易乱",
     date: "2026-05-31",
