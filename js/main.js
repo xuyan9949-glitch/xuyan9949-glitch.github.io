@@ -42,9 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const q = query.toLowerCase();
         const matches = articles.filter(a => {
+            const keywords = a.keywords ? a.keywords.toLowerCase() : '';
             return a.title.toLowerCase().includes(q)
                 || a.tags.some(t => t.toLowerCase().includes(q))
-                || a.summary.toLowerCase().includes(q);
+                || a.summary.toLowerCase().includes(q)
+                || keywords.includes(q);
         }).slice(0, 8);
         
         if (matches.length === 0) {
