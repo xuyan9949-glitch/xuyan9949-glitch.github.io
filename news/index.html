@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>市场速报 — Leslie 投资笔记</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <span class="logo-mark">L</span>
+                <span class="logo-text">Leslie 研究笔记</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">首页</a>
+                <a href="/#research">研究方向</a>
+                <a href="/#notes">笔记</a>
+                <a href="/#frameworks">框架</a>
+                <a href="/#tracking">标的追踪</a>
+                <a href="/news/">市场速报</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="padding:40px 24px 60px">
+        <a href="/" class="back" style="margin-bottom:24px;display:inline-flex;align-items:center;gap:4px;color:var(--accent);text-decoration:none;font-size:14px">← 返回首页</a>
+
+        <h1 style="font-size:28px;font-weight:700;letter-spacing:-0.5px;margin-bottom:6px">📡 市场速报</h1>
+        <p style="font-size:14px;color:var(--text-secondary);margin-bottom:28px">近期的关键市场动态，影响方向与关联标的一目了然。</p>
+
+        <div id="news-full-list"></div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Leslie · 基于个人研究，不构成投资建议 · <a href="/about">关于</a></p>
+        </div>
+    </footer>
+
+    <script src="/js/news-data.js"></script>
+    <script>
+        (function() {
+            const list = document.getElementById('news-full-list');
+            if (!list || typeof newsItems === 'undefined') return;
+
+            // Group by date
+            const groups = {};
+            newsItems.forEach(n => {
+                if (!groups[n.date]) groups[n.date] = [];
+                groups[n.date].push(n);
+            });
+
+            const dates = Object.keys(groups).sort().reverse();
+
+            list.innerHTML = dates.map(date => `
+                <div class="nf-date-group">
+                    <div class="nf-date-header">${date}</div>
+                    ${groups[date].map((n, idx) => {
+                        const impactIcon = n.impact === '利好' ? '🟢' : n.impact === '利空' ? '🔴' : '🟡';
+                        const stocksHtml = n.stocks && n.stocks.length > 0
+                            ? ' · ' + n.stocks.map(s => '<span class="nf-stock">' + s + '</span>').join(' ')
+                            : '';
+                        return `
+                            <div class="nf-full-row" data-idx="${idx}">
+                                <span class="nf-impact-icon">${impactIcon}</span>
+                                <span class="nf-title">${n.title}</span>
+                                <span class="nf-footer-info">${stocksHtml}</span>
+                            </div>
+                            <div class="nf-full-detail" style="display:none">
+                                <p>${n.detail}</p>
+                                ${n.source ? '<p style="color:var(--text-muted);font-size:12px;margin-top:6px">来源：' + n.source + '</p>' : ''}
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `).join('');
+
+            // Click to expand
+            list.querySelectorAll('.nf-full-row').forEach((el, i) => {
+                el.addEventListener('click', () => {
+                    const detail = el.nextElementSibling;
+                    if (detail && detail.classList.contains('nf-full-detail')) {
+                        const isOpen = detail.style.display === 'block';
+                        detail.style.display = isOpen ? 'none' : 'block';
+                        el.classList.toggle('active', !isOpen);
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
