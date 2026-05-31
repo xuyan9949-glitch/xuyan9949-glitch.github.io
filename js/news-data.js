@@ -4,6 +4,17 @@
 
 const newsItems = [
   {
+    id: "n20260531-01",
+    date: "2026-05-31",
+    title: "Rosenblatt：InP 激光器或成 AI 光互联核心瓶颈，供需紧张延续至 2030",
+    summary: "Rosenblatt 报告指出，AI 数据中心对 800G/1.6T/CPO 光互联需求快速提升，InP 磷化铟激光器、EML 与 CW 光源正成为关键瓶颈。产能虽将扩张约 12 倍，但到 2030 年供给仍可能落后需求约 50%，是多年结构性约束而非短期紧缺。",
+    impact: "利好",
+    tags: ["光通信", "英伟达链"],
+    stocks: ["COHR", "LITE", "AAOI", "VIAV"],
+    detail: "Rosenblatt 分析师 Mike Genovese 5 月 28 日 InP 供需模型报告显示：2025–2030 年相关产能虽将扩张约 12 倍，但到 2030 年供给仍可能落后需求约 50%。看好 COHR（6 英寸 InP 激光器产能+800G/1.6T放量）、LITE（Greensboro 新厂+CW 光源扩产）、AAOI（份额预期上调+UHP CW/CPO 外部光源切入）、VIAV（CPO/硅光测试瓶颈）。A 股映射方向：源杰科技、光迅科技、天孚通信、罗博特科、中际旭创、新易盛。CPO 大规模放量基准判断为 2027 年下半年 build、2028 年开始 ship。",
+    source: "Rosenblatt / 市场研报",
+  },
+  {
     id: "n20260530-01",
     date: "2026-05-30",
     title: "英伟达下一代AI服务器M10材料：生益科技PTFE正交背板测试突破",
