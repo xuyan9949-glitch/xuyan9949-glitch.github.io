@@ -321,6 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
             '待确认': '#f59e0b',
             '已兑现': '#22c55e',
             '已失效': '#ef4444',
+            '已清仓': '#6b6b80',
             '逻辑增强': '#22c55e',
             '短线逻辑增强': '#f59e0b',
         };
