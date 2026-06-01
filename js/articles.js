@@ -1,5 +1,15 @@
 const articles = [
   {
+    id: "industry-glossary-2026",
+    title: "AI产业术语全解：从CPO到TGV的23个核心概念",
+    date: "2026-06-02",
+    category: "产业思考",
+    tags: ["光通信", "产业链", "AI", "先进封装"],
+    summary: "按'它是什么→产业链位置→投资含义'拆解CPO、NPO、PD、OCS、DSP、EML、CW Laser、FAU、TIA、Driver、SerDes、硅光、轻相干、AEC、CoWoS、TGV、Interposer、Glass Core、ABF等23个核心概念。",
+    keywords: "CPO NPO PD OCS DSP EML CW Laser FAU TIA Driver SerDes 硅光 轻相干 AEC Scale-up Scale-out CoWoS TGV Interposer Glass Core ABF 光互连 先进封装",
+    file: "/articles/industry-glossary-2026/"
+  },
+  {
     id: "investment-framework",
     title: "投资框架笔记",
     date: "2026-05-28",

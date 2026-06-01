@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI产业术语全解：从CPO到TGV的23个核心概念 — Leslie 投资笔记</title>
+    <link rel="stylesheet" href="/css/style.css">
+        <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "cfat_EXNTwlqYXnvP6KZpLTangEZdMvy0IdqGZRKap3Me3690d699"}'></script>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <span class="logo-mark">L</span>
+                <span class="logo-text">Leslie 研究笔记</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">首页</a>
+                <a href="/#research">研究方向</a>
+                <a href="/#notes">笔记</a>
+                <a href="/#frameworks">框架</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container article-page">
+        <a href="/" class="back">← 返回首页</a>
+
+        <h1>AI产业术语全解：从CPO到TGV的23个核心概念</h1>
+                <div class="article-meta">
+            <span class="meta-left">2026-06-02</span>
+            <span class="meta-dot">·</span>
+            <span class="meta-cat">产业思考</span>
+            <button class="meta-share" onclick="shareArticle()" title="分享">
+                <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+                分享
+            </button>
+        </div>
+
+        <div class="article-content">
+
+<p>AI 产业链投资涉及大量技术术语，从光互连到先进封装，每个名词背后都对应一条供应链逻辑。本文按<strong>"它是什么 → 放在产业链哪里 → 为什么对投资重要"</strong>三个维度，梳理 23 个高频出现的核心概念。</p>
+
+<hr>
+
+<h2>一、光互连与交换</h2>
+
+<h3>1. CPO：Co-Packaged Optics，共封装光学</h3>
+<p><strong>它是什么？</strong>把光学引擎和交换芯片/ASIC 封装在一起，而非插在交换机前面板。核心是缩短光电转换之间的距离，降低功耗和延迟。</p>
+<p><strong>为什么需要？</strong>AI 集群数据交换量太大——传统架构电信号走远损耗大、前面板空间有限插不了更多光模块、高速信号完整性压力大。</p>
+<p><strong>投资含义：</strong>CPO 利好高功率 CW Laser、硅光芯片、FAU 光纤阵列、光引擎封装、光电测试设备、高端交换芯片生态。代表标的：LITE、COHR、AVGO、MRVL、VIAV、天孚通信、太辰光。</p>
+
+<h3>2. NPO：Near-Packaged Optics，近封装光学</h3>
+<p><strong>它是什么？</strong>把光学引擎放到 GPU/ASIC 附近，但还没有像 CPO 那样完全集成进去。</p>
+<table>
+<tr><th>对比</th><th>NPO</th><th>CPO</th></tr>
+<tr><td>集成程度</td><td>中等</td><td>很高</td></tr>
+<tr><td>距离芯片</td><td>很近</td><td>几乎贴在一起</td></tr>
+<tr><td>量产难度</td><td>较低</td><td>较高</td></tr>
+<tr><td>维护难度</td><td>较低</td><td>较高</td></tr>
+<tr><td>适用阶段</td><td>过渡/现实方案</td><td>长期方案</td></tr>
+<tr><td>模块厂参与度</td><td>仍然较高</td><td>可能下降</td></tr>
+</table>
+<p><strong>为什么重要？</strong>NPO 可能比 CPO 更早放量。AI 服务器内部 GPU 之间高速互联，铜线功耗和距离开始吃紧时，NPO 是把光互联推进到更靠近 GPU 位置的现实路径。可能是 <strong>2027 年最值得跟踪的光互联升级方向</strong>。</p>
+<p><strong>利好：</strong>光引擎、硅光、SerDes、Driver/TIA、FAU、高速封装测试、部分光模块厂。</p>
+
+<h3>3. OCS：Optical Circuit Switch，全光交换</h3>
+<p><strong>它是什么？</strong>用光信号直接切换通信路径，不经过"光→电→光"的转换。</p>
+<p><strong>为什么 AI 集群需要？</strong>大模型训练中 GPU 集群数据流量巨大。传统电交换带来功耗、延迟、设备成本、网络拥塞。OCS 可以提高调度效率，尤其适合大规模集群。</p>
+<p><strong>投资含义：</strong>利好光交换设备、MEMS 光开关、硅光、轻相干模块、光纤连接器、网络系统厂商。Google 在 OCS 方向布局激进，值得单独跟踪。</p>
+
+<hr>
+
+<h2>二、光模块电芯片</h2>
+
+<h3>4. DSP：Digital Signal Processor，数字信号处理芯片</h3>
+<p><strong>它是什么？</strong>高速光模块里的"大脑"，负责修正高速信号失真、噪声、补偿和编码。速率越高，信号越容易失真，DSP 负责把信号修正回来。</p>
+<p><strong>功能：</strong>信号补偿、PAM4 编码解码、均衡抵消通道损耗、降低误码率、管理功耗和链路状态。</p>
+<p><strong>投资含义：</strong>800G/1.6T 光模块的重要电芯片。受益：Broadcom、Marvell、Credo、MaxLinear、Semtech、部分国产 DSP 厂商。但行业也在发展 LPO/LRO 等低功耗方案试图减少或简化 DSP。</p>
+
+<h3>5. TIA：Transimpedance Amplifier，跨阻放大器</h3>
+<p><strong>它是什么？</strong>接收端电芯片，把 PD 产生的微弱电流信号放大成可处理的电压信号。光信号→PD 转电流→TIA 放大→DSP/CDR 处理。</p>
+<p><strong>投资含义：</strong>速率升级后，TIA 需要更高带宽、更低噪声、更低功耗、更好线性度。受益：MACOM、Broadcom、Marvell、Semtech、MaxLinear。</p>
+
+<h3>6. Driver：驱动芯片</h3>
+<p><strong>它是什么？</strong>发射端电芯片，控制激光器或调制器如何发光。DSP/SerDes → Driver → EML 或调制器 → 光信号发出。</p>
+<p><strong>投资含义：</strong>与 TIA 一样，属于光模块关键电芯片。高速模块升级到 800G/1.6T 后，Driver 难度同步提升。</p>
+
+<h3>7. SerDes：Serializer/Deserializer，串并转换器</h3>
+<p><strong>它是什么？</strong>高速数据接口芯片，在并行数据和串行高速数据之间互相转换。NPO/CPO 中 GPU、ASIC、光引擎之间都需要高速数据传输，SerDes 速度和功耗直接影响系统带宽和能效。</p>
+<p><strong>投资含义：</strong>SerDes 是 AI 芯片之间高速通信的底层能力。受益：Broadcom、Marvell、Credo、Astera Labs、Rambus。</p>
+
+<hr>
+
+<h2>三、光芯片与激光器</h2>
+
+<h3>8. PD：Photodiode，光电二极管/探测器</h3>
+<p><strong>它是什么？</strong>接收端器件，把光信号转换成电信号。如果说激光器是"发光的人"，PD 就是"看光的人"。</p>
+<p><strong>为什么 200G PD 会紧缺？</strong>800G/1.6T 光模块从 100G/lane 走向 200G/lane，要求 PD 响应更快、带宽更高、噪声更低、良率更难、和 TIA 配合要求更高。</p>
+<p><strong>投资含义：</strong>利好 InP 光芯片厂、高速接收端器件厂、光模块上游供应链。但注意：如果 NPO/CPO 中 PD 被集成进硅光芯片，传统独立 PD 的长期逻辑可能会弱化。</p>
+
+<h3>9. EML：Electro-Absorption Modulated Laser，电吸收调制激光器</h3>
+<p><strong>它是什么？</strong>高速光模块中常用的发射端激光器，把电信号转换成高速光信号。在长距离和高速场景下表现好。</p>
+<p><strong>为什么重要？</strong>800G/1.6T 光模块放量 → 高速 EML 需求增加 → InP 光芯片、外延、衬底、封装测试受益。这是当前光通信紧缺环节之一。</p>
+<p><strong>受益：</strong>Lumentum、Coherent、源杰科技、长光华芯、AXT/云南锗业等 InP 衬底映射。</p>
+
+<h3>10. CW Laser：Continuous Wave Laser，连续波激光器</h3>
+<p><strong>它是什么？</strong>持续稳定发光的激光器。不像 EML 自己完成高速调制，它提供稳定光源，由调制器把信息加载到光上。</p>
+<p><strong>为什么 CPO/硅光需要它？</strong>硅光方案中光源外置，由 CW Laser 提供持续光，再通过硅光芯片中的调制器处理信号。CPO/NPO/硅光越发展，高功率高可靠性 CW Laser 越重要。</p>
+<p><strong>一句话：</strong>EML 偏传统高速模块放量，CW Laser 偏 CPO/硅光/外部光源路线。</p>
+
+<h3>11. 硅光：Silicon Photonics</h3>
+<p><strong>它是什么？</strong>用硅基半导体工艺制造光学器件，提高集成度、降低成本、提升规模化能力。</p>
+<table>
+<tr><th>传统分立光器件</th><th>硅光</th></tr>
+<tr><td>器件分散</td><td>集成度高</td></tr>
+<tr><td>装配复杂</td><td>更适合规模制造</td></tr>
+<tr><td>成本较高</td><td>长期有降本潜力</td></tr>
+<tr><td>一致性较难控制</td><td>工艺平台化更强</td></tr>
+</table>
+<p><strong>短板：</strong>硅本身不擅长发光，因此仍需要外部光源（如 CW Laser）。利好 CPO、NPO、光引擎、硅光代工、外部激光器、光电测试。</p>
+
+<h3>12. 轻相干：Light Coherent</h3>
+<p><strong>它是什么？</strong>介于传统强度调制和完整相干通信之间的折中方案。保留部分相干优势，同时控制成本和功耗。</p>
+<p><strong>为什么可能重要？</strong>AI 集群规模扩大后，光纤数量、链路距离、网络调度复杂化。轻相干可减少光纤占用、提高链路效率。</p>
+<p><strong>偏中长期路线：</strong>利好相干 DSP、硅光、OCS、高端光模块、光通信测试。短期不如 800G/1.6T 模块直接。</p>
+
+<h3>13. FAU：Fiber Array Unit，光纤阵列单元</h3>
+<p><strong>它是什么？</strong>把多根光纤精准排列并与光芯片连接的无源器件——光芯片和光纤之间的"精密接口"。</p>
+<p><strong>为什么重要？</strong>CPO/NPO/硅光方案中光纤数量多、排列密度高、耦合精度要求极高。FAU 对不准，光信号损耗变大。属于<strong>"不起眼但很关键"</strong>的环节。</p>
+<p><strong>受益：</strong>天孚通信、太辰光、其他精密光器件厂商。A 股常被当做 CPO/硅光/光引擎核心配套来炒。</p>
+
+<hr>
+
+<h2>四、电缆与互联架构</h2>
+
+<h3>14. AEC：Active Electrical Cable，有源电缆</h3>
+<p><strong>它是什么？</strong>带有主动电芯片的高速铜缆，比普通铜线传输更远、信号更稳定，但本质仍是电信号传输。</p>
+<p><strong>为什么 NPO 可能替代部分 AEC？</strong>AI 服务器内部 GPU 连接速率越来越高，铜缆面临距离限制、功耗提升、散热压力、信号完整性问题。NPO 把部分链路光化，可能替代一部分 AEC 市场。</p>
+<p><strong>投资含义：</strong>AEC 利好 Credo、Astera Labs 等互联芯片公司。若 NPO 渗透加快，部分 AEC 增量可能被光互联吃掉。</p>
+
+<h3>15. Scale-up 与 Scale-out</h3>
+<p><strong>Scale-up（机柜内扩展）：</strong>把多个 GPU/ASIC 更紧密地连在一起，像一台更大的计算机。重点：低延迟、高带宽、近距离。NPO 主要服务 Scale-up。</p>
+<p><strong>Scale-out（集群间扩展）：</strong>把很多服务器/机柜连成一个大集群。重点：大规模、远距离、高吞吐。传统 800G/1.6T 光模块主要服务 Scale-out。</p>
+
+<hr>
+
+<h2>五、先进封装</h2>
+
+<h3>16. Interposer：中介层</h3>
+<p><strong>它是什么？</strong>先进封装中连接 GPU、HBM、芯片之间的中间层——就像一块高密度转接板。</p>
+<p><strong>为什么从硅到玻璃？</strong>传统 CoWoS 用硅中介层。AI GPU 越来越大、HBM 越来越多，封装面积变大。硅中介层在尺寸、成本、加工效率上遇到压力。玻璃 Interposer 可做更大尺寸、损耗低、平整度好、成本有潜力下降、适合面板级加工。</p>
+<p><strong>利好：</strong>特种玻璃、TGV 设备、研磨设备、涂胶设备、检测设备、先进封装厂。</p>
+
+<h3>17. TGV：Through Glass Via，玻璃通孔</h3>
+<p><strong>它是什么？</strong>在玻璃里打垂直通孔实现上下层电连接。类比 TSV（硅通孔）：TSV 用在硅上，TGV 用在玻璃上。</p>
+<p><strong>为什么难？</strong>玻璃硬、脆、容易裂。要在玻璃上打大量微孔，还要保证孔壁质量、金属填充和可靠性。TGV 是玻璃基板/玻璃 Interposer 的<strong>关键工艺瓶颈</strong>。</p>
+
+<h3>18. CoWoS：Chip on Wafer on Substrate</h3>
+<p><strong>它是什么？</strong>台积电先进封装技术，通过中介层把 GPU 和 HBM 放在同一个封装里。NVIDIA 高端 GPU（H100、B100、B200、GB200 等）高度依赖 CoWoS 产能。这是过去两年 AI GPU 放量的<strong>关键瓶颈之一</strong>。</p>
+<p><strong>利好：</strong>TSMC、HBM、先进封装设备、载板、中介层、封测、材料。</p>
+
+<h3>19. Glass Core：玻璃核心载板</h3>
+<p><strong>它是什么？</strong>用玻璃作为封装基板核心材料，未来可能替代部分有机 ABF 载板。和 Glass Interposer 不同——Glass Core 更像是把封装基板中间的"骨架"换成玻璃。</p>
+<p><strong>优势：</strong>尺寸稳定性好、平整度好、适合高密度布线、热稳定性好、可能支持更大封装。</p>
+<p><strong>节奏偏慢：</strong>这条线目前仍偏长期。Intel、Samsung、AMD 均有探索，但真正大规模替代 ABF 不会太快，不能当成 2026 年主线。</p>
+
+<h3>20. ABF：Ajinomoto Build-up Film，ABF 载板材料</h3>
+<p><strong>它是什么？</strong>高端封装基板里的核心绝缘材料。高性能 CPU、GPU、AI 加速器都需要 ABF 载板。</p>
+<p><strong>和玻璃的关系：</strong>更现实的路径：CoWoS/硅中介层先升级 → 玻璃 Interposer 进入先进封装 → Glass Core 未来再挑战 ABF 载板部分市场。短期不会马上颠覆。</p>
+
+<hr>
+
+<h2>六、产业链关系图</h2>
+
+<p><strong>AI 集群互联链：</strong></p>
+<pre style="background:#f5f5f7;padding:16px;border-radius:8px;font-size:13px;line-height:1.7;">
+GPU / ASIC 算力提升
+    → HBM 数量增加、I/O 密度提升
+    → CoWoS 面积压力上升
+    → 玻璃 Interposer / TGV / 翘曲控制</pre>
+
+<p><strong>高速互联链：</strong></p>
+<pre style="background:#f5f5f7;padding:16px;border-radius:8px;font-size:13px;line-height:1.7;">
+AI 集群规模扩大
+    → GPU 之间、机柜之间数据交换暴增
+    → 800G / 1.6T 光模块放量
+    → EML / PD / DSP / TIA / Driver / FAU 紧缺
+    → NPO / CPO / OCS / 轻相干演进</pre>
+
+<hr>
+
+<h2>七、投资时间维度</h2>
+
+<table>
+<tr><th>时间</th><th>名词</th><th>逻辑</th></tr>
+<tr><td rowspan="5"><strong>短期最易兑现</strong></td><td>800G/1.6T</td><td>已在出货放量</td></tr>
+<tr><td>EML</td><td>高速模块直接需要</td></tr>
+<tr><td>PD</td><td>接收端紧缺，受 1.6T 放量拉动</td></tr>
+<tr><td>DSP/TIA/Driver</td><td>光模块电芯片直接受益</td></tr>
+<tr><td>FAU/CW Laser</td><td>高速模块和 CPO/硅光路线提前备货</td></tr>
+<tr><td rowspan="4"><strong>中期值得跟踪</strong></td><td>NPO</td><td>可能 2027 年切入 GPU 近端互联</td></tr>
+<tr><td>CPO</td><td>交换机长期方向，量产节奏有分歧</td></tr>
+<tr><td>OCS</td><td>Google 等大厂可能推动架构变化</td></tr>
+<tr><td>轻相干</td><td>数据中心网络效率升级路线</td></tr>
+<tr><td rowspan="3"><strong>长期大空间</strong></td><td>Glass Interposer</td><td>先进封装新路线，2028 年后更关键</td></tr>
+<tr><td>Glass Core</td><td>更长期，可能 2029 年后挑战 ABF</td></tr>
+<tr><td>TGV</td><td>玻璃封装核心工艺，但仍需验证</td></tr>
+</table>
+
+<hr>
+
+<h2>八、最简记忆版</h2>
+
+<table>
+<tr><th>名词</th><th>一句话解释</th></tr>
+<tr><td>CPO</td><td>把光引擎和交换芯片封在一起，降低功耗、提高带宽密度</td></tr>
+<tr><td>NPO</td><td>把光引擎放到 GPU/ASIC 附近，比 CPO 更现实的过渡方案</td></tr>
+<tr><td>PD</td><td>接收端光电探测器，把光信号变成电信号</td></tr>
+<tr><td>OCS</td><td>全光交换，减少光电转换，提高大集群网络效率</td></tr>
+<tr><td>DSP</td><td>光模块里的信号处理芯片，负责修正高速信号失真</td></tr>
+<tr><td>EML</td><td>高速光模块常用激光器，负责发射光信号</td></tr>
+<tr><td>CW Laser</td><td>连续波激光器，CPO/硅光外部光源核心</td></tr>
+<tr><td>FAU</td><td>光纤阵列，把光纤和光芯片精准连接</td></tr>
+<tr><td>TIA</td><td>接收端放大器，把 PD 的微弱电信号放大</td></tr>
+<tr><td>Driver</td><td>发射端驱动芯片，控制激光器或调制器</td></tr>
+<tr><td>SerDes</td><td>高速串并转换接口，芯片间高速通信基础</td></tr>
+<tr><td>硅光</td><td>用硅工艺做光器件，提高集成度和规模化能力</td></tr>
+<tr><td>轻相干</td><td>比传统光模块更高效、比完整相干更轻量的传输方案</td></tr>
+<tr><td>AEC</td><td>有源铜缆，短距离高速电连接，部分可能被 NPO 替代</td></tr>
+<tr><td>Scale-up</td><td>GPU 近距离互联，偏机柜内</td></tr>
+<tr><td>Scale-out</td><td>大规模服务器互联，偏机柜间和集群间</td></tr>
+<tr><td>Interposer</td><td>先进封装中连接 GPU 和 HBM 的中介层</td></tr>
+<tr><td>TGV</td><td>玻璃通孔，是玻璃 Interposer/基板关键工艺</td></tr>
+<tr><td>CoWoS</td><td>台积电先进封装，把 GPU 和 HBM 封装在一起</td></tr>
+<tr><td>Glass Core</td><td>玻璃核心载板，长期可能替代部分 ABF</td></tr>
+<tr><td>ABF</td><td>高端芯片封装基板核心绝缘材料</td></tr>
+</table>
+
+        </div>
+    </main>
+
+    <script src="/js/share.js"></script>
+</body>
+</html>
