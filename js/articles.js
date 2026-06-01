@@ -81,6 +81,15 @@ const articles = [
     file: "/articles/a-share-optical-mapping/"
   },
   {
+    id: "gtc-taipei-2026",
+    title: "英伟达台北 GTC 2026：AI 投资从'买 GPU'进入'建 AI 工厂'",
+    date: "2026-06-01",
+    category: "近期热点",
+    tags: ["美股", "AI", "产业链"],
+    summary: "Vera Rubin量产爬坡、Spectrum-X CPO光互联方案、AI Factory BOM价值量重估——台北GTC确认AI投资从买GPU进入建AI工厂阶段。",
+    file: "/articles/gtc-taipei-2026/"
+  },
+  {
     id: "june-market-outlook",
     title: "六月行情展望：不是简单看多看空，而是进入'产业约束筛选月'",
     date: "2026-05-31",
