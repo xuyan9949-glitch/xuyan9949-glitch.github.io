@@ -160,6 +160,45 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---- Category filter + Notes ----
     const notesEl = document.getElementById('notes-list');
     const catTags = document.querySelectorAll('.cat-tag');
+    const subcatTags = document.querySelectorAll('.subcat-tag');
+    const subcatBar = document.querySelector('.sub-categories');
+
+    let currentSubcat = 'all';
+
+    function getSubcategories(category) {
+        const cats = new Set();
+        articles.forEach(a => {
+            if (a.category === category && a.subcategory) {
+                cats.add(a.subcategory);
+            }
+        });
+        return Array.from(cats);
+    }
+
+    function renderSubcatTags(category) {
+        if (!subcatBar) return;
+        const subcats = getSubcategories(category);
+        if (subcats.length === 0) {
+            subcatBar.style.display = 'none';
+            return;
+        }
+        subcatBar.style.display = 'flex';
+        let html = '<span class="subcat-tag active" data-subcat="all">全部</span>';
+        subcats.forEach(s => {
+            html += `<span class="subcat-tag" data-subcat="${s}">${s}</span>`;
+        });
+        subcatBar.innerHTML = html;
+        // Re-bind events
+        document.querySelectorAll('.subcat-tag').forEach(el => {
+            el.addEventListener('click', () => {
+                document.querySelectorAll('.subcat-tag').forEach(t => t.classList.remove('active'));
+                el.classList.add('active');
+                currentSubcat = el.dataset.subcat;
+                const activeCat = document.querySelector('.cat-tag.active');
+                renderNotes(activeCat ? activeCat.dataset.cat : 'all');
+            });
+        });
+    }
 
     function renderNotes(category) {
         if (!notesEl || typeof articles === 'undefined') return;
@@ -167,6 +206,14 @@ document.addEventListener('DOMContentLoaded', () => {
         let filtered = articles;
         if (category !== 'all') {
             filtered = articles.filter(a => a.category === category);
+            renderSubcatTags(category);
+            // Apply sub-category filter
+            if (currentSubcat !== 'all') {
+                filtered = filtered.filter(a => a.subcategory === currentSubcat);
+            }
+        } else {
+            if (subcatBar) subcatBar.style.display = 'none';
+            currentSubcat = 'all';
         }
         // Pinned articles first, then by date descending
         filtered.sort((a, b) => {

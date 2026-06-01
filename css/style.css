@@ -913,6 +913,24 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
 }
 .cat-tag:empty { display: none; }
 
+/* ---- Sub-categories ---- */
+.sub-categories {
+    display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.subcat-tag {
+    position: relative;
+    padding: 4px 14px; border-radius: 16px; font-size: 12px; font-weight: 400;
+    background: var(--bg-alt); color: var(--text-muted); cursor: pointer;
+    border: 1px solid transparent; transition: all .2s; user-select: none;
+    opacity: 0.8;
+}
+.subcat-tag:hover { border-color: var(--accent); color: var(--text); opacity: 1; }
+.subcat-tag.active {
+    background: var(--accent-bg); color: var(--accent); border-color: var(--accent);
+    font-weight: 500; opacity: 1;
+}
+
 /* ---- Contact Form ---- */
 .contact-form { margin-top: 16px; }
 .cf-input {
