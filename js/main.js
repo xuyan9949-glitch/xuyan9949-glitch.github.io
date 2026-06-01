@@ -185,7 +185,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="meta">
                     <span>${a.date}</span>
                     <span class="dot"></span>
-                    <span>${a.tags.join(' · ')}</span>
+                    <span>${a.tags.map(t => {
+                        // Make stock-name tags clickable → jump to tracking
+                        const stockId = findStockIdByTag(t);
+                        return stockId 
+                            ? `<span class="tag-stock-link" onclick="event.preventDefault();event.stopPropagation();openStockTracking('${stockId}')">${t}</span>`
+                            : t;
+                    }).join(' · ')}</span>
                     ${a.pinned ? '<span class="pin-badge">📌 置顶</span>' : ''}
                 </div>
                 <h3>${a.title}</h3>
@@ -909,3 +915,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+// ---- Global: stock tag click → tracking drawer ----
+function findStockIdByTag(tag) {
+    if (typeof trackingData === 'undefined') return null;
+    for (const key of ['a-shares', 'us-stocks']) {
+        const stock = trackingData[key]?.find(s => s.name === tag || s.code === tag);
+        if (stock) return stock.id;
+    }
+    return null;
+}
+
+function openStockTracking(stockId) {
+    if (!stockId) return;
+    for (const key of ['a-shares', 'us-stocks']) {
+        const found = trackingData[key]?.find(s => s.id === stockId);
+        if (found) {
+            const marketCode = key === 'a-shares' ? 'a' : 'us';
+            window.location.hash = '#tracking';
+            setTimeout(() => {
+                const tab = document.querySelector(`.trk-tab[data-mkt="${marketCode}"]`);
+                if (tab) tab.click();
+                setTimeout(() => openDrawer(stockId, marketCode), 400);
+            }, 100);
+            break;
+        }
+    }
+}

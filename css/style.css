@@ -233,6 +233,15 @@ body {
     margin-left: auto; font-size: 10px; color: var(--accent);
     font-weight: 500;
 }
+.tag-stock-link {
+    color: var(--accent); cursor: pointer;
+    border-bottom: 1px dashed var(--accent);
+    transition: all .2s;
+}
+.tag-stock-link:hover {
+    background: var(--accent-bg);
+    border-bottom-style: solid;
+}
 .note-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; line-height: 1.4; }
 .note-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
 .note-card .tags { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }

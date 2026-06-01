@@ -81,6 +81,15 @@ const articles = [
     file: "/articles/a-share-optical-mapping/"
   },
   {
+    id: "dongshan-clarification",
+    title: "东山精密：市场传言澄清与核心基本面梳理",
+    date: "2026-06-01",
+    category: "A股",
+    tags: ["A股", "东山精密"],
+    summary: "针对网络三条谣言的逐一澄清——收购审批已全部通关、实控人正常履职、港股上市独立推进。光芯片产能22KK→28KK/月，AWS/Oracle/Meta订单落地。",
+    file: "/articles/dongshan-clarification/"
+  },
+  {
     id: "gtc-taipei-2026",
     title: "英伟达台北 GTC 2026：AI 投资从'买 GPU'进入'建 AI 工厂'",
     date: "2026-06-01",
