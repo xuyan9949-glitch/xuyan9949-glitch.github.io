@@ -484,100 +484,76 @@ const trackingData = {
       id: "lite",
       code: "LITE",
       name: "Lumentum",
-      sector: "光通信 / 光源",
+      sector: "光通信 / 激光器 / CPO",
       mkt: "us",
-
       usSector: "光互联",
-      type: "中线",
-      trackingStatus: "持有中",
-      tradeCycle: "中线趋势 + 波段",
-      themeTags: "AI光互联 / EML激光器 / InP / CPO",
+      type: "中线 + 波段",
+      trackingStatus: "核心观察",
+      tradeCycle: "中线 + 波段",
+      themeTags: "EML激光器 / 窄线宽激光器 / CPO / OCS / 1.6T",
       logicStatus: "逻辑增强",
       priority: "高",
-      accountPosition: "弹性仓",
+      accountPosition: "光互联核心观察仓",
       color: "#f59e0b",
-      reason: "AI 光互联核心瓶颈资产，EML 激光器 + CW 光源全栈布局，Rosenblatt 预计供给侧缺口持续至 2030。",
-      strategy: "中线趋势持有，财报前后重点观察指引变化。",
+      reason: "LITE是AI光互联升级中更靠近激光器和高端光器件瓶颈的核心公司，弹性低于AAOI但产业地位更关键。英伟达20亿美元投资+长期采购/产能安排。",
+      strategy: "优先等大盘或光通信板块回调时分批买入，而不是追单日暴涨。",
       stopLoss: null,
       targetPrice: null,
-      lastUpdated: "2026-05-31",
-      // ---- 投资逻辑 ----
-      marketTrading: "市场正在交易AI数据中心对800G/1.6T/CPO光互联需求的确定性增长，以及EML和InP产能作为关键瓶颈的结构性溢价。",
+      lastUpdated: "2026-06-03",
+      marketTrading: "市场不是只交易光模块，而是在交易英伟达AI Factory架构下，光器件从配套件升级为系统瓶颈。",
       investmentLogic: {
-        oneLiner: "LITE 是 AI 光互联上游最纯的 EML/CW 光源资产，供给侧结构性缺口（Rosenblatt预计2030年仍落后需求50%）提供多年定价权。",
-        currentHypothesis: "800G EML 激光器供不应求 + 1.6T 硅光方案客户导入 → 营收加速 + 毛利率改善 + 估值倍数扩张。",
+        oneLiner: "LITE是AI光互联升级中更靠近激光器和高端光器件瓶颈的核心公司，弹性低于AAOI但产业地位更关键。",
+        currentHypothesis: "AI数据中心从800G升级到1.6T/3.2T后，对EML、窄线宽激光器、外部光源、CPO/OCS的需求快速上升，LITE的器件价值量和议价权提升。",
         coreReason: [
-          "上游瓶颈资产：EML/CW激光器是800G/1.6T/CPO光模块的核心器件，供需缺口预计持续至2030年（Rosenblatt），LITE作为龙头直接受益。",
-          "产能扩张可见性：Greensboro新厂投产+CW光源扩产，2026年产能将在2025年基础上显著提升，收入增速确定性高。",
-          "技术壁垒明确：同时覆盖EML（外调制）和硅光（集成）两条技术路线，客户切换成本高，竞争格局稳定。",
-          "催化剂密集：Q4财报（8月）指引上修概率大、CPO生态推进（COUPE光引擎）、云厂商CapEx持续上修。",
-          "估值有安全边际：相比COHR的平台型折价，LITE在光互联上行周期中弹性更大，当前估值未完全反映结构性短缺溢价。"
+          "英伟达20亿美元投资+长期采购：英伟达宣布对LITE和COHR各投资20亿美元，配套长期采购/产能安排，高端光器件已成为英伟达下一代AI数据中心架构的关键瓶颈。",
+          "收入和利润率已强兑现：FY2026 Q3收入8.084亿美元，同比+90.1%；Non-GAAP毛利率47.9%，经营利润率32.2%，不只是收入增长，利润率也进入强兑现状态。",
+          "1.6T产品已展示：展示1.6T DR4 OSFP可插拔光模块原型，使用4颗400G differential EML激光器，为未来3.2T做铺垫。",
+          "CPO/OCS布局：在共封装光学和全光交换方向有明确技术储备，受益于Google等大厂OCS路线。",
+          "产业地位关键：相比AAOI的模块弹性，LITE的器件地位更接近瓶颈，更适合核心观察仓定位。"
         ],
-        status: "逻辑增强，等待Q4财报指引验证",
-        statusNote: "中短期看800G/1.6T出货节奏，中长期看CPO光引擎标准化和InP产能扩张进度。股价波动性较高，适合正股+期权结合操作。",
-        validUntil: "2026Q3 - 2026Q4",
-        validNote: "重点看：Q4财报（8月）营收指引；云厂商CapEx上修节奏；Greensboro产能爬坡；EML/InP价格走势；CPO COUPE光引擎认证进展。",
+        status: "从光通信修复升级为英伟达AI光互联核心供应链重估",
+        statusNote: "当前价格已不是便宜买入，更适合等回踩或财报继续兑现后顺势加仓。",
+        validUntil: "12-24个月",
+        validNote: "核心看CPO、OCS、1.6T/3.2T、外部激光源产能扩张。",
         questionsToVerify: [
-          "Q4营收指引是否环比增长 > 15%？",
-          "EML价格是否继续上涨或维持高位？",
-          "Greensboro新厂产能爬坡是否顺利？",
-          "1.6T硅光方案是否存在大客户认证？",
-          "云厂商CapEx指引是否持续上修？",
-          "COUPE光引擎在NVIDIA CPO生态中的角色是否明确？",
-          "毛利率是否维持在45%+水平？"
+          "当前高估值能否被收入run-rate和毛利率持续兑现支撑？",
+          "CPO/OCS贡献何时从小规模走向大规模收入？",
+          "毛利率能否维持高位？",
+          "英伟达订单是否进一步明确？"
         ]
       },
-      // ---- 预期差 ----
-      expectedDiff: {
-        consensus: "市场认为LITE受益于800G/1.6T光模块放量，是光互联周期标的。",
-        myView: "真正被低估的不是周期性出货增长，而是EML/InP作为结构性瓶颈带来的多年定价权。Rosenblatt 2030年缺口50%的预测如果得到更多机构认可，LITE的估值锚将从'周期股'切换为'瓶颈资产'。",
-        evidence: "EML/CW激光器价格走势、InP衬底供给紧张程度、LITE毛利率韧性、客户长协签订情况。",
-        rightCase: "供给缺口确认 + 涨价持续 → 估值倍数扩张 → 目标价上调至$1200+。",
-        wrongCase: "产能扩张超预期 + 价格松动 → 回到周期股估值逻辑，当前估值偏高。"
-      },
-      // ---- 核心验证指标 ----
       keyMetrics: [
-        { metric: "AI相关收入占比", status: "待更新", importance: "高", trend: "是否提升", note: "验证AI光互联需求是否真实渗透" },
-        { metric: "800G/1.6T出货量", status: "环比增长", importance: "高", trend: "是否加速", note: "800G是当前主力，1.6T是下一阶段弹性来源" },
-        { metric: "毛利率", status: "~45%", importance: "高", trend: "是否维持", note: "反映产品结构和定价权，45%+为健康" },
-        { metric: "EML/CW激光器均价", status: "上涨中", importance: "高", trend: "是否持续", note: "涨价能力直接验证供给侧瓶颈" },
-        { metric: "订单能见度", status: "待更新", importance: "高", trend: "是否延长", note: "云厂商长协订单可见度决定未来收入确定性" },
-        { metric: "自由现金流", status: "待更新", importance: "中高", trend: "是否改善", note: "验证盈利质量" },
-        { metric: "Greensboro产能爬坡", status: "推进中", importance: "高", trend: "是否如期", note: "决定2026年下半年交付能力" },
+        { metric: "季度收入", status: "Q3 FY2026 8.084亿美元", importance: "高", trend: "是否继续上修", note: "当前增长已很强" },
+        { metric: "Non-GAAP毛利率", status: "47.9%", importance: "高", trend: "是否维持高位", note: "代表器件壁垒和定价权" },
+        { metric: "Components业务", status: "高速增长", importance: "高", trend: "是否继续供不应求", note: "核心瓶颈环节" },
+        { metric: "1.6T产品", status: "已展示原型", importance: "高", trend: "量产节奏", note: "决定下一阶段成长" },
+        { metric: "CPO/OCS收入", status: "仍在早期", importance: "高", trend: "何时放量", note: "决定估值上限" }
       ],
-      // ---- 催化剂看板 ----
       catalysts: [
-        { catalyst: "Q4财报（8月）", timeWindow: "2026年8月", importance: "高", status: "跟踪中", evidence: "营收超预期 + 全年指引上修", direction: "强正面 / 强负面" },
-        { catalyst: "云厂商CapEx上修", timeWindow: "2026Q2-Q3", importance: "高", status: "跟踪中", evidence: "MSFT/AMZN/GOOGL/META资本开支指引上调", direction: "正面" },
-        { catalyst: "Greensboro产能投产", timeWindow: "2026H2", importance: "中高", status: "推进中", evidence: "新厂如期投产，产能利用率爬坡", direction: "正面" },
-        { catalyst: "CPO/COUPE光引擎认证", timeWindow: "2026年下半年", importance: "中高", status: "跟踪中", evidence: "COUPE在NVIDIA CPO生态中规格明确化", direction: "正面" },
-        { catalyst: "Rosenblatt研报扩散", timeWindow: "短期", importance: "中", status: "正在交易", evidence: "更多机构认同InP缺口2030年50%的判断", direction: "正面" },
-        { catalyst: "EML价格松动", timeWindow: "持续", importance: "高", status: "风险观察", evidence: "供给侧产能释放快于预期导致价格下行", direction: "负面" },
+        { catalyst: "1.6T放量", timeWindow: "2026下半年", importance: "高", status: "产品已展示", evidence: "出货、客户认证、收入确认", direction: "强正面" },
+        { catalyst: "CPO/OCS进展", timeWindow: "2026-2027", importance: "高", status: "早期阶段", evidence: "英伟达/云厂商订单", direction: "正面" },
+        { catalyst: "英伟达采购绑定", timeWindow: "2026-2030", importance: "高", status: "已宣布", evidence: "长协订单和产能扩张", direction: "正面" },
+        { catalyst: "毛利率维持", timeWindow: "每季财报", importance: "高", status: "当前较强", evidence: "毛利率不回落", direction: "正面" },
+        { catalyst: "S&P 500/机构配置", timeWindow: "近期", importance: "中", status: "市场关注度高", evidence: "被动资金和机构覆盖", direction: "正面" }
       ],
-      // ---- 估值分析 ----
       valuation: {
-        peTTM: "~35x",
-        peForward: "~25x",
-        evRevenue: "~5x",
-        marketCap: "~$120亿",
-        anchor: "EV/Revenue + P/E",
-        assessment: "当前~25x Forward PE、~5x EV/Revenue，处于光通信历史上行周期的中位水平。如果市场将LITE从'周期光器件股'重新定价为'AI光互联瓶颈资产'，估值中枢可上移至30-35x Forward PE。",
-        hkNote: null,
-        riskNote: "主要风险：产能扩张超预期导致价格松动；1.6T放量慢于预期；云厂商CapEx下修；竞争格局恶化（COHR等大举扩产）。",
+        peForward: "~182x",
+        marketCap: "~972亿美元",
+        assessment: "更适合看收入run-rate、Non-GAAP operating margin和CPO/OCS远期空间。当前PE约182倍，市场已给很高AI光互联溢价。",
+        riskNote: "如果CPO/OCS放量慢于预期、毛利率从高位回落或光器件供给缓解，估值需要消化。",
         tiers: [
-          { label: "保守", marketCap: "$80-100亿", price: "$650-820", logic: "800G正常放量，EML价格维持，无重大催化" },
-          { label: "中性", marketCap: "$110-140亿", price: "$900-1150", logic: "800G持续高景气，1.6T逐步放量，瓶颈溢价确认" },
-          { label: "乐观", marketCap: "$150-200亿", price: "$1230-1650", logic: "供给缺口共识 + CPO/COUPE标准化 + 毛利率45%+" },
+          { label: "保守", marketCap: "$600-800亿", price: "$622-830", logic: "只按1.6T光器件放量定价" },
+          { label: "中性", marketCap: "$850-1100亿", price: "$882-1141", logic: "1.6T+EML持续供不应求" },
+          { label: "乐观", marketCap: "$1200-1600亿", price: "$1245-1660", logic: "CPO/OCS进入大规模收入阶段" }
         ]
       },
-      // ---- 交易计划 ----
       operationPlan: {
-        currentStatus: "中线趋势持有，正股+Call期权组合。",
-        buyPlan: ["回调至$800-850区间加仓正股", "财报前择机买入下季度ATM Call博指引上修"],
-        addConditions: "Q4财报营收指引上修 + 毛利率维持45%+ + 云厂商CapEx持续上修。",
-        reduceConditions: "大涨后分批T出1/3弹性仓；若EML价格松动(供给侧竞争加剧)降低仓位。",
-        optionStrategy: "财报前买入下季度ATM Call（~$900-950行权价），财报后根据指引情况平仓或Rollover。正股为主，期权占比不超过弹性仓的30%。",
-        invalidateConditions: "云厂商CapEx指引下修；EML价格竞争加剧导致毛利率跌破40%；1.6T产品竞争力不及COHR/AVGO；客户集中度风险暴露。"
+        currentStatus: "核心逻辑强+估值也强，适合核心观察不适合追涨重仓。",
+        buyPlan: ["优先等大盘或光通信板块回调时分批，而不是追单日暴涨"],
+        addConditions: "财报继续超预期且高毛利率维持，CPO/OCS收入路径更清晰。",
+        reduceConditions: "股价连续加速但财报没有同步上修，高位放量滞涨，AAOI等高弹性后排乱炒过热。",
+        optionStrategy: "可考虑中长期Call Spread，避免裸买短期高IV Call。",
+        invalidateConditions: "英伟达订单兑现不及预期、CPO进度推迟、毛利率明显下滑、器件供给不再紧张。"
       },
     },
     {
