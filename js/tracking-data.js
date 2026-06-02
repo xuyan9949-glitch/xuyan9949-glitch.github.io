@@ -790,25 +790,78 @@ const trackingData = {
       id: "mrvl",
       code: "MRVL",
       name: "Marvell Technology",
-      sector: "数据中心芯片",
+      sector: "AI定制芯片 / 数据中心互联",
       mkt: "us",
-
       usSector: "光互联",
-      type: "监控",
-      trackingStatus: "观察中",
-      tradeCycle: "中线",
-      themeTags: "互联芯片 / DSP / 数据中心",
-      logicStatus: "观察",
-      priority: "中",
+      type: "中线 + 波段",
+      trackingStatus: "强趋势核心观察",
+      tradeCycle: "中线 + 波段",
+      themeTags: "定制ASIC / XPU / 800G / 1.6T / NPO / CPO / AI数据中心互联",
+      logicStatus: "逻辑增强",
+      priority: "高",
+      accountPosition: "AI互联核心仓候选",
       color: "#6366f1",
-      reason: "数据中心芯片（交换/DPU/PHY），光互连生态链关键节点。",
-      strategy: "保持监控，关注定制 ASIC 进展和光模块配套。",
+      reason: "MRVL是AI数据中心从GPU堆算力走向定制计算+高速互联+光电网络的核心受益者，被市场从通信芯片公司重估为AI基础设施连接层平台公司。",
+      strategy: "优先等回踩10日线/20日线，或等下次财报确认收入/毛利率/指引继续超预期；不适合情绪高点追大仓。",
       stopLoss: null,
       targetPrice: null,
-      lastUpdated: "2026-05-23",
-      investmentLogic: null,
-      catalysts: [],
-      operationPlan: null,
+      lastUpdated: "2026-06-03",
+      marketTrading: "市场正在交易：英伟达生态背书、hyperscaler定制芯片需求、800G/1.6T光互联升级、NPO/CPO下一代互联架构、'下一个万亿市值半导体公司'叙事溢价。",
+      investmentLogic: {
+        oneLiner: "MRVL是AI数据中心从GPU堆算力走向定制计算+高速互联+光电网络的核心受益者，市场正在把它从普通通信芯片重估为AI基础设施连接层平台公司。",
+        currentHypothesis: "未来AI数据中心不只买GPU，需要大规模XPU、交换芯片、光互联、数据中心互联模块和定制ASIC，Marvell正好卡在这些环节。",
+        coreReason: [
+          "英伟达生态背书：黄仁勋在Computex称MRVL可能成为'下一个万亿美元公司'，股价当日暴涨超25%；英伟达此前向MRVL投资20亿美元。",
+          "营收创历史新高：FY2027 Q1收入24.18亿美元，同比+28%，Non-GAAP毛利率58.9%，经营现金流6.388亿美元",
+          "Q2指引强劲：27亿美元±5%，管理层明确数据中心业务驱动增长，覆盖800G/1.6T optics、51.2T以太网交换、NPO/CPO光方案",
+          "多条AI产品线并行：custom XPU/XPU-attach、光互联、DSP、交换芯片，不是单一产品依赖"
+        ],
+        status: "已从AI连接受益股升级为英伟达生态+定制ASIC+AI网络互联核心股",
+        statusNote: "逻辑极强但不是低位资产，最重要的不是问公司好不好，而是后续财报能不能跟上当前市值扩张速度。",
+        validUntil: "12-24个月",
+        validNote: "重点看FY2027-FY2028收入上修、定制芯片订单、1.6T和NPO/CPO放量。",
+        questionsToVerify: [
+          "收入能否继续加速？",
+          "毛利率能否维持58-60%？",
+          "Custom XPU能否兑现到2028-2029年的收入预期？",
+          "Q2/Q3收入能否继续上修？",
+          "股价加速后利好是否还能推动上涨？"
+        ]
+      },
+      keyMetrics: [
+        { metric: "总收入", status: "FY2027 Q1 24.18亿", importance: "高", trend: "Q2指引27亿±5%", note: "判断AI数据中心需求强度" },
+        { metric: "Non-GAAP毛利率", status: "58.9%", importance: "高", trend: "是否维持58-60%", note: "证明产品壁垒" },
+        { metric: "数据中心业务", status: "管理层称增长由数据中心驱动", importance: "高", trend: "是否继续扩大占比", note: "MRVL重估核心" },
+        { metric: "800G/1.6T optics", status: "已被管理层点名", importance: "高", trend: "出货和客户认证", note: "光互联链条验证" },
+        { metric: "NPO/CPO", status: "管理层点名", importance: "高", trend: "从样品到量产", note: "决定远期估值上限" },
+        { metric: "Custom XPU", status: "核心远期逻辑", importance: "高", trend: "订单与收入节奏", note: "能否靠近AVGO估值体系" }
+      ],
+      catalysts: [
+        { catalyst: "FY2027 Q2财报", timeWindow: "下一季", importance: "高", status: "指引强", evidence: "收入、毛利率、数据中心继续超预期", direction: "强正面 / 强负面" },
+        { catalyst: "英伟达合作深化", timeWindow: "2026-2027", importance: "高", status: "已有投资与生态背书", evidence: "订单、产品集成、客户落地", direction: "正面" },
+        { catalyst: "Custom XPU收入上修", timeWindow: "2026-2029", importance: "高", status: "公司目标提高", evidence: "大客户项目明确", direction: "正面" },
+        { catalyst: "800G/1.6T放量", timeWindow: "2026下半年", importance: "高", status: "已进入验证阶段", evidence: "optics收入继续增长", direction: "正面" },
+        { catalyst: "NPO/CPO进展", timeWindow: "2026-2028", importance: "高", status: "早期但被点名", evidence: "客户采用、量产时间表", direction: "正面" }
+      ],
+      valuation: {
+        peForward: "~96.8x",
+        marketCap: "~2515亿美元",
+        assessment: "应按AI定制芯片+数据中心互联平台股估值，而非通信芯片股。当前市值约2515亿美元，PE约96.8倍，市场已给强AI溢价。",
+        riskNote: "如果custom XPU订单不及预期、数据中心增长放缓或NPO/CPO延后，高估值难以维持。",
+        tiers: [
+          { label: "保守", marketCap: "$1500-2000亿", price: "$168-224", logic: "数据中心继续增长但custom XPU慢" },
+          { label: "中性", marketCap: "$2200-2800亿", price: "$246-314", logic: "FY2027/FY2028收入持续上修" },
+          { label: "乐观", marketCap: "$3000-4500亿", price: "$336-504", logic: "Custom XPU百亿美元级+NPO/CPO放量" }
+        ]
+      },
+      operationPlan: {
+        currentStatus: "核心逻辑非常强，但位置已高，适合回踩观察+财报验证。",
+        buyPlan: ["优先等回踩10日线/20日线，或等下次财报确认收入、毛利率、指引继续超预期"],
+        addConditions: "财报后继续上修全年收入预期，且数据中心/custom XPU/光互联三条线同时增强。",
+        reduceConditions: "单日大涨后放量滞涨、黄仁勋背书后短期情绪退潮、财报强但股价不涨。",
+        optionStrategy: "不适合短期期权追涨。若做，只适合2-4个月以上轻虚值或Call Spread，避免高IV被杀。",
+        invalidateConditions: "Custom XPU订单不及预期、数据中心增长放缓、NPO/CPO延后、毛利率下滑。"
+      }
     },
     {
             id: "nvda",
@@ -1434,20 +1487,81 @@ const trackingData = {
       id: "avgo",
       code: "AVGO",
       name: "Broadcom",
-      sector: "AI芯片 / 网络互联",
+      sector: "AI定制ASIC / 网络互联 / 软件",
       mkt: "us",
       usSector: "光互联",
-      type: "中线",
-      trackingStatus: "观察中",
-      tradeCycle: "中线",
-      themeTags: "AI定制芯片 / 网络交换 / 光互联 / VMware",
-      logicStatus: "观察",
-      priority: "中",
-      color: "#6366f1",
-      reason: "AI定制ASIC+网络交换芯片龙头，光互联链条中DSP/PHY/PAM4定位与MRVL互补。",
-      strategy: "观察为主。",
-      lastUpdated: "2026-06-01",
-      investmentLogic: null, catalysts: [], operationPlan: null,
+      type: "中长线 + 波段",
+      trackingStatus: "核心观察（财报焦点）",
+      tradeCycle: "中长线 + 波段",
+      themeTags: "定制ASIC / TPU / XPU / AI Networking / Tomahawk / VMware",
+      logicStatus: "逻辑增强",
+      priority: "最高",
+      accountPosition: "AI基础设施核心仓候选",
+      color: "#f59e0b",
+      reason: "AI定制芯片时代最确定的核心公司——Google/Meta/OpenAI定制ASIC+AI网络芯片+VMware现金流的AI基础设施核心资产。6月3日盘后财报。",
+      strategy: "已有仓位持有观察，无仓位等财报后方向确认。不适合财报前重仓追涨。",
+      stopLoss: null,
+      targetPrice: null,
+      lastUpdated: "2026-06-03",
+      marketTrading: "市场正在交易：Google TPU扩张、OpenAI/Anthropic定制芯片放量、AI networking持续增长、VMware稳定高现金流，AVGO具备从AI CapEx持续分账的能力。",
+      investmentLogic: {
+        oneLiner: "AVGO是AI定制芯片时代最确定的核心公司——Google/Meta/OpenAI/Anthropic等大客户定制ASIC+AI网络芯片+VMware软件现金流三条线共振。",
+        currentHypothesis: "随着hyperscaler降低对通用GPU的单一路径依赖，定制ASIC/XPU成为AI训练和推理的重要补充，Broadcom是最强的定制芯片和网络硅供应商之一。",
+        coreReason: [
+          "AI收入爆炸性增长：FY2026 Q1 AI收入84亿美元，同比+106%，由custom AI accelerators和AI networking驱动。",
+          "全球最强定制ASIC平台：Google TPU持续扩张，OpenAI/Anthropic定制芯片放量预期强。",
+          "AI网络芯片龙头：Tomahawk/Ethernet交换芯片在AI数据中心网络核心位置。",
+          "VMware软件现金流底座：提供稳定高现金流，降低半导体周期波动。",
+          "6月3日盘后FY2026 Q2财报：Q2总收入指引220亿美元同比+47%，AI半导体指引107亿美元——是当前最重要验证点。"
+        ],
+        status: "已从半导体+软件并购公司升级为AI定制芯片核心平台+软件现金流巨头",
+        statusNote: "当前市值~2.34万亿美元，市场预期极高。不是便宜股，但它是AI基础设施里少数收入、利润率、现金流、客户确定性同时很强的公司。",
+        validUntil: "24-36个月",
+        validNote: "重点看2026-2027年AI收入曲线、客户扩展、AI networking和VMware协同现金流。",
+        questionsToVerify: [
+          "Q2 AI半导体收入能否超107亿美元指引？",
+          "Q3总收入和AI收入能否继续强指引？",
+          "AI收入增速是否会边际放缓？",
+          "定制ASIC能否从Google扩散到更多大客户？",
+          "EBITDA margin能否维持68%左右？"
+        ]
+      },
+      keyMetrics: [
+        { metric: "总收入", status: "FY2026 Q1 193.11亿", importance: "高", trend: "Q2指引220亿", note: "公司整体增长质量" },
+        { metric: "AI收入", status: "Q1 84亿美元, 同比+106%", importance: "高", trend: "Q2指引AI半导体107亿", note: "AVGO重估核心" },
+        { metric: "Q2 AI半导体指引", status: "107亿美元", importance: "高", trend: "是否超过", note: "判断AI需求强度" },
+        { metric: "Adjusted EBITDA Margin", status: "Q1约68%", importance: "高", trend: "是否维持", note: "现金流质量极强" },
+        { metric: "AI Networking", status: "高增长", importance: "高", trend: "Tomahawk需求", note: "数据中心网络核心" },
+        { metric: "Custom ASIC客户", status: "Google/Meta/OpenAI等", importance: "高", trend: "客户数量和项目规模", note: "决定远期天花板" },
+        { metric: "VMware", status: "软件现金流底座", importance: "中高", trend: "是否稳定增长", note: "降低周期波动" }
+      ],
+      catalysts: [
+        { catalyst: "FY2026 Q2财报", timeWindow: "2026-06-03盘后", importance: "极高", status: "即将发布", evidence: "AI收入、Q3指引、EBITDA margin", direction: "强正面 / 强负面" },
+        { catalyst: "AI收入继续上修", timeWindow: "2026全年", importance: "极高", status: "Q1已+106%", evidence: "Q2/Q3 AI收入继续超预期", direction: "正面" },
+        { catalyst: "Google/Alphabet CapEx", timeWindow: "2026全年", importance: "高", status: "市场关注强", evidence: "TPU/ASIC需求持续", direction: "正面" },
+        { catalyst: "OpenAI/Anthropic定制ASIC", timeWindow: "2026-2029", importance: "高", status: "市场预期强", evidence: "项目规模、出货时间", direction: "正面" },
+        { catalyst: "Tomahawk/AI Networking", timeWindow: "2026-2027", importance: "高", status: "需求强", evidence: "交换芯片出货和份额", direction: "正面" },
+        { catalyst: "VMware现金流", timeWindow: "每季", importance: "中高", status: "稳定", evidence: "软件利润率和现金流", direction: "正面" }
+      ],
+      valuation: {
+        peForward: "~120x",
+        marketCap: "~2.34万亿美元",
+        assessment: "AVGO是AI基础设施里的核心确定性资产，不是单纯半导体周期股。应同时看三套锚：AI半导体收入增速、Adjusted EBITDA/FCF、定制ASIC客户长期订单能见度。当前PE约120倍，估值已把AI定制芯片长期高增长计入很大一部分，财报容错率低。",
+        riskNote: "如果Q2仅符合预期而Q3指引不够强、AI收入增速边际放缓或Google/Meta资本开支预期降温，高估值可能回调。",
+        tiers: [
+          { label: "保守", marketCap: "$1.5-2.0万亿", price: "$308-411", logic: "AI增长放缓，Q3指引仅符合预期" },
+          { label: "中性", marketCap: "$2.0-2.7万亿", price: "$411-555", logic: "AI收入继续超预期，EBITDA维持" },
+          { label: "乐观", marketCap: "$2.8-3.5万亿", price: "$575-719", logic: "定制ASIC客户扩张+AI Networking爆发" }
+        ]
+      },
+      operationPlan: {
+        currentStatus: "核心资产，高估值高确定性，短期重点看6月3日盘后财报。",
+        buyPlan: ["已有仓位持有观察，无仓位等财报后方向确认。若财报强但高开过多，等回踩确认再看。"],
+        addConditions: "Q2 AI收入超预期，Q3指引强，EBITDA margin稳定，且股价没有出现利好兑现式冲高回落。",
+        reduceConditions: "财报强但股价高开低走、Q3指引不够强、AI半导体增速低于市场期待、板块情绪过热。",
+        optionStrategy: "财报前不建议裸买短期期权，IV已很高。更适合用Call Spread或财报后方向确认再做。",
+        invalidateConditions: "定制ASIC需求低于预期、AI networking订单放缓、毛利率下行、主要hyperscaler自研绕开AVGO供应链。"
+      }
     },
     {
       id: "wqtm",
