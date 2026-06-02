@@ -1795,6 +1795,236 @@ const trackingData = {
       }
     },
     {
+      id: "sivef",
+      code: "SIVEF",
+      name: "Sivers Semiconductors",
+      sector: "AI光源 / DFB激光器 / InP",
+      mkt: "us",
+      usSector: "光互联",
+      type: "短线情绪 + 中线验证",
+      trackingStatus: "光源题材弹性",
+      tradeCycle: "短线 + 中线",
+      themeTags: "DFB激光器 / CW激光器 / InP / 1.6T LRO / AI数据中心 / CPO外部光源",
+      logicStatus: "验证中",
+      priority: "中高",
+      accountPosition: "小仓弹性跟踪",
+      color: "#f59e0b",
+      reason: "Sivers是AI光互联上游光源环节的高弹性标的，核心看点是高功率DFB激光器、1.6T LRO模块和Jabil合作。机会管线7.99亿美元YTD+77%，但收入同比-22%。",
+      strategy: "只适合回踩后分批，不适合连续暴涨后追高。核心买点应等Jabil进展、订单、财报恢复增长。",
+      stopLoss: null,
+      targetPrice: null,
+      lastUpdated: "2026-06-03",
+      marketTrading: "市场交易的不是当前收入，而是Sivers可能进入AI数据中心高速光互联光源供应链。",
+      investmentLogic: {
+        oneLiner: "Sivers是AI光互联上游光源环节的高弹性标的，核心看点是高功率DFB激光器、1.6T LRO模块、AI数据中心光源需求和未来CPO/外部光源扩散。",
+        currentHypothesis: "AI集群从800G走向1.6T/3.2T后，光模块和CPO对低功耗/高功率/稳定光源需求上升，Sivers若被Jabil等供应链带入量产就可能变成AI光源受益股。",
+        coreReason: [
+          "Jabil合作开发1.6T LRO模块：使用Sivers的高性能DFB激光器，目标服务下一代hyperscale AI数据中心",
+          "机会管线强劲：YTD增长77%至7.99亿美元",
+          "技术卡位好：DFB/CW激光器在1.6T和CPO外部光源方向定位清晰",
+          "2027产品ramp仍在推进"
+        ],
+        status: "强预期>当前业绩阶段，技术位置性感但收入兑现早",
+        statusNote: "Sivers最大问题不是逻辑有没有，而是能不能从pipeline变成订单、从订单变成收入、从收入变成毛利率和现金流。",
+        validUntil: "6-18个月",
+        validNote: "重点看Jabil合作是否进入样品、客户认证、量产订单和收入确认。",
+        questionsToVerify: [
+          "Jabil合作能否进入客户验证或量产？",
+          "Pipeline能否转化为订单？",
+          "Q2/Q3收入能否恢复增长？",
+          "2027 ramp是否按期？",
+          "现金消耗和融资需求能否控制？"
+        ]
+      },
+      keyMetrics: [
+        { metric: "Q1收入", status: "6190万SEK, -22%", importance: "高", trend: "是否恢复增长", note: "业绩尚未兑现AI逻辑" },
+        { metric: "Adjusted EBITDA", status: "-1380万SEK", importance: "高", trend: "亏损是否收窄", note: "经营杠杆" },
+        { metric: "Pipeline", status: "7.99亿美元, +77%", importance: "高", trend: "是否转订单", note: "核心领先指标" },
+        { metric: "Jabil 1.6T LRO", status: "已宣布合作", importance: "极高", trend: "是否进入客户验证", note: "股价最大催化" },
+        { metric: "DFB/CW激光器", status: "AI数据中心光源方向", importance: "高", trend: "是否批量出货", note: "决定产业地位" }
+      ],
+      catalysts: [
+        { catalyst: "Jabil 1.6T LRO进展", timeWindow: "2026-2027", importance: "极高", status: "已合作", evidence: "样品、客户认证、量产订单", direction: "强正面" },
+        { catalyst: "DFB激光器需求", timeWindow: "2026-2027", importance: "高", status: "行业需求上升", evidence: "出货、ASP、客户名单", direction: "正面" },
+        { catalyst: "Pipeline转订单", timeWindow: "每季", importance: "高", status: "管线很大", evidence: "backlog/PO/revenue", direction: "正面" },
+        { catalyst: "财报恢复增长", timeWindow: "每季", importance: "高", status: "Q1较弱", evidence: "收入重新增长", direction: "正面" },
+        { catalyst: "CPO/外部光源", timeWindow: "2026-2028", importance: "高", status: "早期", evidence: "被系统厂采用", direction: "正面" }
+      ],
+      valuation: {
+        peForward: null,
+        marketCap: "~179.8-289亿SEK",
+        assessment: "AI光源瓶颈预期股，更像高弹性技术映射不是成熟业绩股。不能按当前收入简单估值，需看Jabil合作量产、DFB激光器客户和2027 ramp。",
+        riskNote: "如果Jabil合作停留在样品阶段、收入继续低迷或现金流压力扩大，当前估值压力很大。",
+        tiers: [
+          { label: "保守", marketCap: "$10-18亿", price: "按换算", logic: "Jabil停留在样品阶段" },
+          { label: "中性", marketCap: "$18-28亿", price: "按换算", logic: "1.6T LRO客户验证推进" },
+          { label: "乐观", marketCap: "$28-40亿", price: "按换算", logic: "DFB/CW成为AI光源瓶颈供应" }
+        ]
+      },
+      operationPlan: {
+        currentStatus: "极强题材股，波动巨大，适合观察和小仓参与。",
+        buyPlan: ["只适合回踩后分批，不适合连续暴涨后追高。核心买点应等Jabil进展、订单、财报恢复增长"],
+        addConditions: "Jabil合作进入客户验证或量产订单，Q2/Q3收入恢复增长。",
+        reduceConditions: "股价继续大涨但财报收入不跟，pipeline无订单转化，光互联板块情绪过热。",
+        optionStrategy: "不建议短期期权。Sivers本身已高波动，正股小仓更合理。",
+        invalidateConditions: "1.6T LRO项目推迟、DFB激光器未进入主流客户、收入继续下降、融资稀释风险扩大。"
+      }
+    },
+    {
+      id: "poet",
+      code: "POET",
+      name: "POET Technologies",
+      sector: "光引擎 / Optical Interposer",
+      mkt: "us",
+      usSector: "光互联",
+      type: "短线情绪 + 中线验证",
+      trackingStatus: "高风险观察",
+      tradeCycle: "短线 + 中线",
+      themeTags: "Optical Interposer / 光引擎 / CPO / AI Optical Networks / LITEON",
+      logicStatus: "验证中",
+      priority: "中",
+      accountPosition: "高风险高弹性观察仓",
+      color: "#ef4444",
+      reason: "POET的核心逻辑是用Optical Interposer平台把光器件封装做得更小/更低功耗/更低成本，适合AI光互联和未来CPO。但Q1收入仅50万美元，商业化仍非常早期。",
+      strategy: "只适合在明显回调后用极小仓位跟踪商业化进展。核心买点不是概念热而是订单和收入确认。",
+      stopLoss: null,
+      targetPrice: null,
+      lastUpdated: "2026-06-03",
+      marketTrading: "市场不是交易当前收入，而是在交易POET平台可能成为AI光互联封装基础方案之一。",
+      investmentLogic: {
+        oneLiner: "POET的核心逻辑是用Optical Interposer平台把光器件封装得更小/更低功耗/更低成本，理论上适合AI光互联和未来CPO，但当前商业化收入仍非常早期。",
+        currentHypothesis: "AI芯片和数据中心互联升级后，光引擎封装难度提高，POET的Optical Interposer如果被模块厂/光引擎厂/hyperscaler采用，就可能获得非线性成长。",
+        coreReason: [
+          "Optical Interposer平台：理论上可降低光器件封装成本、功耗和尺寸",
+          "LITEON等合作：已有部分设计win和合作公告",
+          "2025Q4至2026年多轮融资：资金充足用于制造扩张",
+          "高弹性：市值~8.38亿，若订单放大弹性极高"
+        ],
+        status: "技术故事强、收入兑现弱、争议较大阶段",
+        statusNote: "最大问题是当前市值已按未来大规模商业化定价但真实收入还很小。后续必须看订单真实性、客户质量和收入规模。曾因Marvell/Celestial订单取消暴跌50%。",
+        validUntil: "6-18个月",
+        validNote: "重点看LITEON等合作是否真正转化为批量订单和产品收入。",
+        questionsToVerify: [
+          "大客户订单是否真实且可验证？",
+          "产品收入能否从几十万放大到千万级？",
+          "Optical Interposer是否被主流模块厂采用？",
+          "现金消耗和融资稀释是否可控？",
+          "争议事件是否影响客户信任？"
+        ]
+      },
+      keyMetrics: [
+        { metric: "Q1收入", status: "~50.34万美元", importance: "极高", trend: "是否快速放大", note: "收入基数很小" },
+        { metric: "经营现金流", status: "Q1 -880万美元", importance: "高", trend: "烧钱是否下降", note: "判断融资压力" },
+        { metric: "融资规模", status: "多轮数亿美元", importance: "高", trend: "稀释与产能使用", note: "有钱扩产但也稀释" },
+        { metric: "Optical Interposer", status: "核心平台", importance: "高", trend: "是否进入客户量产", note: "决定公司价值" },
+        { metric: "客户订单", status: "市场关注高", importance: "极高", trend: "真实PO/revenue", note: "去除题材化风险" }
+      ],
+      catalysts: [
+        { catalyst: "客户订单确认", timeWindow: "2026", importance: "极高", status: "市场高度关注", evidence: "明确PO、客户、金额", direction: "强正面" },
+        { catalyst: "LITEON合作推进", timeWindow: "2026-2027", importance: "高", status: "已被市场关注", evidence: "量产、出货、收入", direction: "正面" },
+        { catalyst: "Optical Interposer量产", timeWindow: "2026-2027", importance: "高", status: "早期", evidence: "yield、成本、客户采用", direction: "正面" },
+        { catalyst: "融资后制造扩张", timeWindow: "2026", importance: "高", status: "资金充足", evidence: "产能、客户需求匹配", direction: "正面" },
+        { catalyst: "Marvell/Celestial争议", timeWindow: "持续", importance: "高", status: "仍有争议", evidence: "披露透明、客户稳定", direction: "负面" }
+      ],
+      valuation: {
+        peForward: null,
+        marketCap: "~8.38亿美元",
+        assessment: "AI光引擎平台型高风险预期股，估值核心不在当前利润而在未来平台是否被大客户采用。市值8.38亿对应当前收入极高，市场几乎完全在买远期商业化预期。",
+        riskNote: "如果订单低于预期、收入仍停留在百万美元级或继续发生客户争议，估值压力很大。",
+        tiers: [
+          { label: "保守", marketCap: "$3-6亿", logic: "订单低于预期，收入级小" },
+          { label: "中性", marketCap: "$6-12亿", logic: "产品收入明显放大，客户稳定" },
+          { label: "乐观", marketCap: "$12-25亿", logic: "Optical Interposer被主流客户采用" }
+        ]
+      },
+      operationPlan: {
+        currentStatus: "高风险、高波动、高争议。适合小仓观察不适合重仓。",
+        buyPlan: ["只适合在明显回调后用极小仓位跟踪商业化进展。核心买点不是概念热而是订单和收入确认"],
+        addConditions: "明确大客户PO、产品收入连续放大、管理层披露量产节奏。",
+        reduceConditions: "股价因传闻暴涨但无订单公告，收入仍然很小，再出现客户关系或信息披露争议。",
+        optionStrategy: "不建议短期期权。波动和事件风险太高。",
+        invalidateConditions: "Optical Interposer无法获得大客户量产采用、订单被取消、融资持续稀释。"
+      }
+    },
+    {
+      id: "viav",
+      code: "VIAV",
+      name: "VIAVI Solutions",
+      sector: "AI光互联测试 / 高速以太网",
+      mkt: "us",
+      usSector: "光互联",
+      type: "中线 + 波段",
+      trackingStatus: "核心观察",
+      tradeCycle: "中线 + 波段",
+      themeTags: "1.6T测试 / AI Fabric / 硅光测试 / 高速以太网 / Spirent",
+      logicStatus: "逻辑增强",
+      priority: "高",
+      accountPosition: "光互联二阶核心观察",
+      color: "#06b6d4",
+      reason: "VIAV是AI光互联从制造什么扩散到如何验证/测试/量产的核心受益股。Q3收入4.068亿美元+42.8%，毛利率57.5%，经营利润+191.8%。",
+      strategy: "优先等回踩20日线或财报后确认。相比POET/Sivers，更适合作二阶核心仓候选，但不适合追高。",
+      stopLoss: null,
+      targetPrice: null,
+      lastUpdated: "2026-06-03",
+      marketTrading: "市场交易的是AI光互联量产前，测试验证成为瓶颈。",
+      investmentLogic: {
+        oneLiner: "VIAV是AI光互联从制造什么扩散到如何验证/测试/量产的核心受益股，核心逻辑是1.6T、硅光、AI Fabric、高速以太网和光模块测试需求上升。",
+        currentHypothesis: "AI数据中心进入800G/1.6T、CPO、硅光、PCIe、以太网交换和AI Fabric阶段后测试复杂度大幅上升，VIAV受益于这一轮验证瓶颈。",
+        coreReason: [
+          "Q3收入4.068亿+42.8%，毛利率57.5%，经营利润+191.8%——财务已验证",
+          "OFC2026展示1.6T/硅光/PCIe/AI Fabric测试方案",
+          "收购Spirent高速以太网和网络安全业务增强组合",
+          "IBD报道数据中心测试订单增长显著",
+          "三者中财务验证最强、技术位置最实、争议最少"
+        ],
+        status: "已经从传统通信测试升级为AI Fabric和高速光互联测试核心股",
+        statusNote: "最大看点是测试瓶颈，但也需验证这轮增长是一次性设备采购还是随AI代际升级持续。",
+        validUntil: "12-24个月",
+        validNote: "重点看1.6T、硅光、AI Fabric和Spirent业务整合。",
+        questionsToVerify: [
+          "下一季收入能否继续超预期？",
+          "毛利率能否维持57%以上？",
+          "AI Fabric/1.6T/硅光测试订单是否增加？",
+          "Spirent整合是否提升收入和利润率？",
+          "测试需求是一次性采购还是持续升级？"
+        ]
+      },
+      keyMetrics: [
+        { metric: "Q3 FY2026收入", status: "4.068亿, +42.8%", importance: "高", trend: "Q4指引是否继续", note: "财报已验证" },
+        { metric: "毛利率", status: "57.5%", importance: "高", trend: "是否维持", note: "测试设备壁垒" },
+        { metric: "经营利润", status: "同比+191.8%", importance: "高", trend: "是否继续扩张", note: "经营杠杆" },
+        { metric: "1.6T测试", status: "OFC2026展示", importance: "极高", trend: "客户采用", note: "AI光互联核心" },
+        { metric: "硅光测试", status: "公司重点展示", importance: "高", trend: "是否放量", note: "CPO/硅光扩散受益" },
+        { metric: "Spirent整合", status: "已增强组合", importance: "高", trend: "收入协同", note: "增强AI Fabric能力" }
+      ],
+      catalysts: [
+        { catalyst: "下一季财报", timeWindow: "下一季", importance: "极高", status: "Q3强劲", evidence: "收入、毛利率、订单继续超预期", direction: "强正面" },
+        { catalyst: "1.6T测试需求", timeWindow: "2026-2027", importance: "高", status: "正在放大", evidence: "模块厂/系统厂采购", direction: "正面" },
+        { catalyst: "硅光/CPO测试", timeWindow: "2026-2028", importance: "高", status: "早期", evidence: "客户导入、测试平台收入", direction: "正面" },
+        { catalyst: "Spirent整合", timeWindow: "2026", importance: "高", status: "已完成收购", evidence: "收入协同、利润率改善", direction: "正面" },
+        { catalyst: "AI Fabric测试", timeWindow: "2026-2027", importance: "高", status: "公司重点展示", evidence: "数据中心客户订单", direction: "正面" }
+      ],
+      valuation: {
+        peForward: "仍为负",
+        marketCap: "~129.6亿美元",
+        assessment: "AI光互联测试验证二阶核心股，不是光模块也不是光源，而是所有高速产品进入量产前必须经过的测试环节。收入增速、毛利率和Spirent整合是关键锚。",
+        riskNote: "如果测试需求被证明是一次性采购、毛利率下降或Spirent整合不及预期，估值需消化。",
+        tiers: [
+          { label: "保守", marketCap: "$80-110亿", price: "$32-44", logic: "数据中心测试需求阶段性" },
+          { label: "中性", marketCap: "$110-150亿", price: "$44-60", logic: "1.6T/AI Fabric测试放量" },
+          { label: "乐观", marketCap: "$150-200亿", price: "$60-80", logic: "成为AI光互联/硅光测试核心平台" }
+        ]
+      },
+      operationPlan: {
+        currentStatus: "逻辑清晰财报已验证，但股价也已明显重估。",
+        buyPlan: ["优先等回踩20日线或财报后确认。相比POET/Sivers，更适合作为二阶核心仓候选"],
+        addConditions: "下一季继续确认收入和毛利率双升，AI Fabric/1.6T测试订单明确。",
+        reduceConditions: "财报强但股价不涨，光互联后排乱炒，测试收入增长放缓。",
+        optionStrategy: "可以考虑2-4个月以上Call Spread，不建议财报前裸买短期期权。",
+        invalidateConditions: "AI测试需求不持续、1.6T推进放缓、硅光/CPO量产推迟、Spirent整合失败。"
+      }
+    },
+    {
       id: "wqtm",
       code: "WQTM",
       name: "WQTM",
