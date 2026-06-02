@@ -1564,6 +1564,237 @@ const trackingData = {
       }
     },
     {
+      id: "nok",
+      code: "NOK",
+      name: "Nokia",
+      sector: "AI网络 / 光传输 / 通信设备",
+      mkt: "us",
+      usSector: "光互联",
+      type: "中线观察 + 波段",
+      trackingStatus: "观察中",
+      tradeCycle: "中线 + 波段",
+      themeTags: "AI Cloud / Optical Networks / IP Networks / Infinera / AI-RAN",
+      logicStatus: "逻辑增强",
+      priority: "中高",
+      accountPosition: "低估值网络基础设施映射",
+      color: "#6366f1",
+      reason: "NOK的核心变化是从传统5G电信设备逻辑切换到AI数据中心光网络+IP网络+Infinera光传输整合逻辑。AI & Cloud客户销售额增长49%，Q1获约10亿欧元订单。",
+      strategy: "更适合回踩后中线跟踪，或在AI网络链条扩散到低估值资产时配置。",
+      stopLoss: null,
+      targetPrice: null,
+      lastUpdated: "2026-06-03",
+      marketTrading: "市场不是在炒手机时代的Nokia，而是在交易AI Cloud客户带来的网络基础设施重估。",
+      investmentLogic: {
+        oneLiner: "NOK的核心变化是从传统5G电信设备逻辑切换到AI数据中心光网络+IP网络+Infinera光传输整合逻辑。",
+        currentHypothesis: "AI数据中心扩大后，不只需要GPU/HBM/光模块，也需要更大规模的光传输系统、IP网络、数据中心互联和pluggables。Nokia通过Infinera、Optical Networks和IP Networks切入AI Cloud客户。",
+        coreReason: [
+          "AI & Cloud客户增长强劲：Q1销售额同比+49%，占集团8%，获得约10亿欧元订单",
+          "Optical Networks增长20%：是AI光传输核心受益部门",
+          "可服务市场CAGR上调：管理层将2025-2028 AI & Cloud TAM CAGR从16%上调至27%",
+          "低估值：相比AI光互联核心标的，NOK估值压力小得多"
+        ],
+        status: "从传统电信周期股逐步转向AI光网络基础设施股",
+        statusNote: "AI&Cloud只占8%还不是主收入来源，必须观察这块能否持续扩大占比。",
+        validUntil: "12-24个月",
+        validNote: "重点看Infinera整合、AI Cloud订单、Optical Networks增长、IP Networks进入数据中心进展。",
+        questionsToVerify: [
+          "AI & Cloud占比能否从8%持续提升？",
+          "Optical Networks能否维持20%左右增长？",
+          "Q2/Q3 AI Cloud订单是否持续？",
+          "Infinera整合后利润率是否改善？",
+          "经营利润能否靠近25亿欧元上沿？"
+        ]
+      },
+      keyMetrics: [
+        { metric: "AI & Cloud销售额", status: "Q1同比+49%，占集团8%", importance: "高", trend: "占比继续提升", note: "转型是否真实" },
+        { metric: "AI & Cloud订单", status: "Q1约10亿欧元", importance: "高", trend: "是否持续", note: "判断需求持续性" },
+        { metric: "Optical Networks", status: "Q1增长20%", importance: "高", trend: "是否维持高增", note: "AI光传输核心" },
+        { metric: "Network Infrastructure", status: "2026指引增长12-14%", importance: "高", trend: "是否兑现", note: "公司重估核心" },
+        { metric: "经营利润", status: "目标20-25亿欧元", importance: "高", trend: "是否靠近上沿", note: "判断盈利弹性" }
+      ],
+      catalysts: [
+        { catalyst: "Infinera整合", timeWindow: "2026全年", importance: "高", status: "正在消化", evidence: "光网络收入、协同成本", direction: "正面" },
+        { catalyst: "AI Cloud订单", timeWindow: "每季", importance: "高", status: "Q1强劲", evidence: "新订单、book-to-bill", direction: "正面" },
+        { catalyst: "Optical Networks投资", timeWindow: "2026-2027", importance: "高", status: "公司增加投入", evidence: "收入和毛利率同步改善", direction: "正面" },
+        { catalyst: "San Jose InP产能", timeWindow: "2026下半年", importance: "中高", status: "计划开始爬坡", evidence: "产能、良率、客户导入", direction: "正面" },
+        { catalyst: "AI-RAN客户试验", timeWindow: "2026", importance: "中", status: "10个公开客户", evidence: "试验落地、商用进展", direction: "正面" }
+      ],
+      valuation: {
+        peForward: null,
+        marketCap: "~930.6亿美元",
+        assessment: "低估值AI网络基础设施转型股，弹性不如AAOI/LITE/COHR，但安全边际和估值压力相对低。更适合看Network Infrastructure增速、AI&Cloud占比和可比经营利润。",
+        riskNote: "如果传统电信业务继续拖累，AI Cloud订单不可持续，或Infinera整合低于预期，估值维持低位。",
+        tiers: [
+          { label: "保守", marketCap: "$700-850亿", price: "$12.7-15.4", logic: "AI Cloud增长但被传统电信拖累" },
+          { label: "中性", marketCap: "$850-1100亿", price: "$15.4-19.9", logic: "Optical+IP按18-20%指引兑现" },
+          { label: "乐观", marketCap: "$1100-1400亿", price: "$19.9-25.4", logic: "AI Cloud占比持续提升" }
+        ]
+      },
+      operationPlan: {
+        currentStatus: "逻辑改善，估值相对不极端，但不是最强趋势票。",
+        buyPlan: ["更适合回踩后中线跟踪，或在AI网络链条扩散到低估值资产时配置"],
+        addConditions: "Q2/Q3继续确认AI & Cloud高增长，Optical+IP指引上修。",
+        reduceConditions: "AI光网络主线降温、财报只靠传统电信修复、AI&Cloud占比不再提升。",
+        optionStrategy: "不适合短期期权，弹性不够纯。若做，更适合中长期低成本Call Spread。",
+        invalidateConditions: "AI&Cloud订单回落、Infinera整合失败、Optical Networks增长放缓。"
+      }
+    },
+    {
+      id: "glw",
+      code: "GLW",
+      name: "Corning",
+      sector: "光纤 / 玻璃材料 / AI数据中心",
+      mkt: "us",
+      usSector: "光互联",
+      type: "中线 + 长线观察",
+      trackingStatus: "核心观察",
+      tradeCycle: "中线 + 长线",
+      themeTags: "光纤 / 光缆 / 连接器 / AI数据中心 / Photonics / 玻璃材料",
+      logicStatus: "逻辑增强",
+      priority: "高",
+      accountPosition: "AI基础设施铲子股",
+      color: "#06b6d4",
+      reason: "GLW是AI数据中心扩张中最容易被忽略的底层基础设施公司——光纤、连接器、玻璃材料、数据中心布线密度提升和hyperscaler长协。",
+      strategy: "不适合单日大涨追高。更适合等20日线附近回踩，或财报确认Optical继续高增后分批。",
+      stopLoss: null,
+      targetPrice: null,
+      lastUpdated: "2026-06-03",
+      marketTrading: "市场正在把GLW从传统玻璃材料公司重新定价为AI数据中心光连接基础设施供应商。",
+      investmentLogic: {
+        oneLiner: "GLW是AI数据中心扩张中最容易被忽略的底层基础设施公司，核心逻辑是光纤、连接器、玻璃材料、数据中心布线密度提升和hyperscaler长协。",
+        currentHypothesis: "AI数据中心从单机柜走向集群化后，数据传输密度、光纤连接数量、线缆复杂度、低损耗玻璃材料需求都会上升，Corning的Optical Communications业务直接受益。",
+        coreReason: [
+          "Optical Communications高增长：Q1销售额18.46亿美元，同比+36%，净利润同比+93%",
+          "Hyperscaler长协加速：新增两个大型长期协议，规模和期限类似此前与Meta的60亿美元多年协议",
+          "Q1 core sales 43.45亿美元，同比+18%",
+          "Q2指引core sales约46亿美元，core EPS 0.73-0.77美元",
+          "非AI板块分化：太阳能业务+80%，但显示/汽车有压力"
+        ],
+        status: "已从玻璃周期股升级为AI光纤基础设施核心受益股",
+        statusNote: "GLW不只是AI业务，还有显示玻璃、汽车、太阳能、生命科学等板块；非AI业务拖累可能稀释AI弹性。",
+        validUntil: "12-36个月",
+        validNote: "重点看hyperscaler长协兑现、Optical Communications增速、Photonics平台进展。",
+        questionsToVerify: [
+          "Optical Communications能否继续25-35%高增长？",
+          "Hyperscaler长协能否转化为收入？",
+          "Q2 core sales/EPS能否超指引？",
+          "非AI板块是否拖累利润？",
+          "Photonics平台能否带来新客户？"
+        ]
+      },
+      keyMetrics: [
+        { metric: "Core Sales", status: "Q1 43.45亿美元, +18%", importance: "高", trend: "Q2指引约46亿", note: "整体经营状态" },
+        { metric: "Optical Communications", status: "Q1 18.46亿, +36%", importance: "极高", trend: "是否持续高增", note: "AI数据中心核心验证" },
+        { metric: "Optical净利润", status: "Q1同比+93%", importance: "高", trend: "利润率继续改善", note: "不只增收" },
+        { metric: "Hyperscaler长协", status: "新增两个大型协议", importance: "高", trend: "订单转收入节奏", note: "判断需求能见度" },
+        { metric: "Q2指引", status: "core sales 46亿, EPS 0.73-0.77", importance: "高", trend: "是否兑现/上修", note: "短期财报验证" },
+        { metric: "Photonics平台", status: "2026年重点新平台", importance: "中高", trend: "是否带来新客户", note: "决定远期AI溢价" }
+      ],
+      catalysts: [
+        { catalyst: "Hyperscaler长协兑现", timeWindow: "2026-2030", importance: "高", status: "已签多份协议", evidence: "收入确认、产能扩张", direction: "正面" },
+        { catalyst: "Optical Communications高增", timeWindow: "每季", importance: "高", status: "Q1+36%", evidence: "Q2/Q3持续增长", direction: "正面" },
+        { catalyst: "Photonics新平台", timeWindow: "2026", importance: "中高", status: "正在推出", evidence: "AI OEM客户采用", direction: "正面" },
+        { catalyst: "Meta/新客户订单", timeWindow: "2026-2027", importance: "高", status: "多年长协", evidence: "订单细节和执行节奏", direction: "正面" },
+        { catalyst: "非AI板块拖累", timeWindow: "每季", importance: "中", status: "分化", evidence: "显示、汽车不拖累", direction: "负面" }
+      ],
+      valuation: {
+        peForward: "~95.3x",
+        marketCap: "~1705.8亿美元",
+        assessment: "AI数据中心基础设施材料股，确定性高于小票，弹性弱于光模块和光器件。更适合看Optical Communications增速、hyperscaler长协和core EPS。当前PE约95.3倍。",
+        riskNote: "如果Optical增速回落、长协兑现慢、非AI业务拖累或估值过快抬升后财报仅符合预期，高估值可能回调。",
+        tiers: [
+          { label: "保守", marketCap: "$1200-1500亿", price: "$140-174", logic: "光通信增长放缓" },
+          { label: "中性", marketCap: "$1500-1900亿", price: "$174-221", logic: "Optical维持25-35%增长" },
+          { label: "乐观", marketCap: "$2000-2500亿", price: "$233-291", logic: "长协持续兑现+Photonics新空间" }
+        ]
+      },
+      operationPlan: {
+        currentStatus: "核心逻辑强，但股价已进入重估区间。",
+        buyPlan: ["不适合单日大涨追高。等20日线附近回踩，或财报确认Optical继续高增后分批"],
+        addConditions: "Q2 core sales/EPS超指引，Optical Communications继续高增长，管理层上调全年目标。",
+        reduceConditions: "光通信板块情绪过热、财报强但股价不涨、非AI业务开始拖累。",
+        optionStrategy: "更适合中期Call Spread或正股波段，不适合短期期权追涨。",
+        invalidateConditions: "Optical Communications增速显著放缓、hyperscaler长协无法转化、非AI板块利润下滑。"
+      }
+    },
+    {
+      id: "tsem",
+      code: "TSEM",
+      name: "Tower Semiconductor",
+      sector: "硅光代工 / 特色工艺",
+      mkt: "us",
+      usSector: "光互联",
+      type: "中线 + 波段",
+      trackingStatus: "核心观察",
+      tradeCycle: "中线 + 波段",
+      themeTags: "Silicon Photonics / 特色工艺代工 / AI数据中心 / 300mm / SiPho",
+      logicStatus: "逻辑增强",
+      priority: "高",
+      accountPosition: "AI光互联二阶核心",
+      color: "#f59e0b",
+      reason: "TSEM是AI光互联从光模块/激光器扩散到硅光代工和特色工艺产能瓶颈的关键映射。Q1收入4.14亿美元+15%，已获2027年13亿美元硅光收入合同。",
+      strategy: "优先等回踩后右侧确认，或财报后收入和毛利率继续超预期再看。",
+      stopLoss: null,
+      targetPrice: null,
+      lastUpdated: "2026-06-03",
+      marketTrading: "市场正在交易硅光代工从边缘题材变成AI数据中心刚需产能。",
+      investmentLogic: {
+        oneLiner: "TSEM是AI光互联从光模块/激光器扩散到硅光代工和特色工艺产能瓶颈的关键映射股。",
+        currentHypothesis: "随着800G/1.6T/CPO/NPO发展，硅光芯片需求显著上升；Tower作为特色工艺代工厂，通过SiPho客户长协和产能扩张获得高确定性增长。",
+        coreReason: [
+          "Q1收入4.14亿美元+15%，净利润6500万美元，经营利润+96%",
+          "Q2指引4.55亿美元±5%为历史新高，预计2026年逐季增长",
+          "已获最大SiPho客户2027年13亿美元硅光收入合同",
+          "2028年目标：28亿美元年收入、7.5亿美元净利润",
+          "含SiPho预付款的经营现金流2.9亿美元"
+        ],
+        status: "从普通特色工艺代工厂升级为AI硅光代工核心受益股",
+        statusNote: "核心不是有没有SiPho逻辑，而是13亿美元合同能否按期转收入、产能和良率能否跟上、利润率能否扩张。",
+        validUntil: "12-36个月",
+        validNote: "重点看2027年SiPho合同兑现、Fab 7完全控股、300mm产能扩张、毛利率提升。",
+        questionsToVerify: [
+          "13亿美元SiPho合同能否按期转收入？",
+          "Q2收入能否超过4.55亿美元指引？",
+          "毛利率是否继续扩张？",
+          "Fab 7或300mm产能爬坡是否顺利？",
+          "SiPho客户预付款是否继续增加？"
+        ]
+      },
+      keyMetrics: [
+        { metric: "Q1收入", status: "4.14亿美元, +15%", importance: "高", trend: "Q2指引4.55亿历史新高", note: "基本面已改善" },
+        { metric: "经营利润", status: "Q1同比+96%", importance: "高", trend: "杠杆是否继续", note: "增长质量" },
+        { metric: "经营现金流", status: "含SiPho预付款2.9亿", importance: "高", trend: "客户预付款持续性", note: "需求能见度" },
+        { metric: "2027 SiPho合同", status: "13亿美元", importance: "极高", trend: "是否按期转收入", note: "远期估值核心" },
+        { metric: "2028目标", status: "28亿收入/7.5亿净利", importance: "高", trend: "逐年兑现", note: "估值锚" }
+      ],
+      catalysts: [
+        { catalyst: "Q2财报", timeWindow: "下一季", importance: "高", status: "指引历史新高", evidence: "收入、毛利率、订单", direction: "正面" },
+        { catalyst: "2027 SiPho合同", timeWindow: "2026-2027", importance: "极高", status: "已披露13亿美元", evidence: "预付款、产能、收入确认", direction: "强正面" },
+        { catalyst: "Fab 7完全控股", timeWindow: "2026", importance: "高", status: "推进中", evidence: "300mm产能提升", direction: "正面" },
+        { catalyst: "AI光互联升级", timeWindow: "2026-2028", importance: "高", status: "行业强趋势", evidence: "1.6T/CPO/NPO带动SiPho", direction: "正面" },
+        { catalyst: "2028财务模型", timeWindow: "2027-2028", importance: "高", status: "管理层目标明确", evidence: "收入/净利逐步靠近", direction: "正面" }
+      ],
+      valuation: {
+        peForward: null,
+        marketCap: "~301.1亿美元",
+        assessment: "AI硅光代工核心二阶扩散股，确定性高于纯题材材料股但估值已明显重估。更适合看2027 SiPho合同收入、2028目标净利和毛利率。",
+        riskNote: "如果SiPho合同兑现慢、Fab 7或300mm爬坡不顺、毛利率没有跟随收入提升，估值需回调。",
+        tiers: [
+          { label: "保守", marketCap: "$200-260亿", price: "$180-234", logic: "SiPho合同慢，利润率改善有限" },
+          { label: "中性", marketCap: "$260-350亿", price: "$234-315", logic: "2027年13亿SiPho合同顺利确认" },
+          { label: "乐观", marketCap: "$350-500亿", price: "$315-450", logic: "2028年接近28亿收入/7.5亿净利模型" }
+        ]
+      },
+      operationPlan: {
+        currentStatus: "逻辑强趋势强估值也强，需财报继续验证。",
+        buyPlan: ["优先等回踩后右侧确认，或财报后收入和毛利率继续超预期再看"],
+        addConditions: "Q2财报超指引，管理层确认2027 SiPho合同兑现顺利，毛利率继续改善。",
+        reduceConditions: "股价连续加速但财报没同步上修、SiPho预付款减少、板块后排乱炒。",
+        optionStrategy: "不建议短期期权追涨。若做，只适合3个月以上控制仓位的Call Spread。",
+        invalidateConditions: "SiPho合同推迟、产能爬坡失败、良率低于预期、客户集中风险暴露。"
+      }
+    },
+    {
       id: "wqtm",
       code: "WQTM",
       name: "WQTM",
