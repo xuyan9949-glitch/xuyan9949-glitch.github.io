@@ -584,73 +584,231 @@ const trackingData = {
       id: "cohr",
       code: "COHR",
       name: "Coherent",
-      sector: "光通信 / 激光器",
+      sector: "光通信 / 激光器 / 平台",
       mkt: "us",
-
       usSector: "光互联",
-      type: "监控",
-      trackingStatus: "观察中",
-      tradeCycle: "中线",
-      themeTags: "光通信 / 激光器 / 平台",
-      logicStatus: "观察",
-      priority: "中",
+      type: "中线 + 长线观察",
+      trackingStatus: "核心观察",
+      tradeCycle: "中线 + 长线",
+      themeTags: "InP 激光器 / 光模块 / OCS / 硅光 / 材料 / 英伟达绑定",
+      logicStatus: "逻辑增强",
+      priority: "高",
+      accountPosition: "核心观察仓",
       color: "#6366f1",
-      reason: "光通信+材料+激光器多业务平台，AI 数据中心需求催化。",
-      strategy: "保持监控，等待合适买点。",
+      reason: "AI光互联核心平台型公司，兼具光模块、激光器、InP、材料和系统能力；英伟达20亿美元战略投资+多年采购协议，已完成从普通光电子到AI战略供应商的重估。",
+      strategy: "优先等板块回调、财报后分歧或20日线附近企稳；加仓需收入指引继续上修且AI订单明确；减仓需利好不涨或连续放量滞涨。",
       stopLoss: null,
       targetPrice: null,
-      lastUpdated: "2026-05-26",
-      investmentLogic: null,
-      catalysts: [],
-      operationPlan: null,
+      lastUpdated: "2026-06-03",
+      marketTrading: "市场正在交易英伟达绑定 + AI数据中心光互联平台化重估，不是单一产品周期。",
+      investmentLogic: {
+        oneLiner: "COHR 是AI光互联链条里更偏平台型和垂直整合的核心公司，既有光模块也有激光器、InP、材料和系统能力。",
+        currentHypothesis: "AI集群从电互联走向更高比例光互联后，COHR凭借垂直整合能力在激光器、光模块、OCS、InP产能中获得系统性份额。",
+        coreReason: [
+          "英伟达战略合作+20亿美元投资：多年采购承诺、未来先进激光和光网络产品产能权，是最核心背书。",
+          "平台型优势：同时覆盖光模块、激光器、InP衬底、材料科学和OCS系统，比单一产品公司更抗周期。",
+          "收入规模领先：最新季度收入约18.1亿美元，Q4指引19.1-20.5亿美元，规模明显大于AAOI/LITE。",
+          "InP产能扩张：作为全球最大InP衬底和器件供应商之一，直接受益于AI光互联上游瓶颈逻辑。",
+          "OCS/CPO布局：全光交换和共封装光学为Google等大厂路线，COHR具备系统级能力。"
+        ],
+        status: "已完成从普通光电子到AI光互联战略供应商的重估，逻辑强但短期涨幅大",
+        statusNote: "当前更像持有验证而非低位买入，等待Q4/Q1指引和英伟达订单兑现。",
+        validUntil: "12-36个月",
+        validNote: "重点看：英伟达订单兑现、InP产能扩张、OCS和1.6T/3.2T迭代、毛利率改善。",
+        questionsToVerify: [
+          "英伟达投资是否带来实质订单和产能利用率？",
+          "Q4/Q1指引能否继续超预期？",
+          "毛利率是否持续上行？",
+          "OCS/CPO是否从小规模走向大规模收入？",
+          "工业/通信传统业务是否拖累增速？"
+        ]
+      },
+      keyMetrics: [
+        { metric: "季度收入", status: "~18.1亿美元", importance: "高", trend: "Q4指引19.1-20.5亿", note: "规模明显大于AAOI/LITE" },
+        { metric: "Q4指引", status: "19.1-20.5亿", importance: "高", trend: "是否上修", note: "判断需求强度" },
+        { metric: "英伟达投资", status: "20亿美元", importance: "高", trend: "订单和产能兑现", note: "最核心背书" },
+        { metric: "数据中心收入", status: "高速增长", importance: "高", trend: "占比提升", note: "AI光互联主线" },
+        { metric: "InP产能", status: "正在扩张", importance: "高", trend: "良率/产能利用率", note: "判断瓶颈兑现" },
+        { metric: "毛利率", status: "正改善", importance: "高", trend: "指引继续上行", note: "从收入增长转向利润增长" }
+      ],
+      catalysts: [
+        { catalyst: "英伟达订单兑现", timeWindow: "2026-2030", importance: "高", status: "已签战略合作", evidence: "收入确认、长期产能协议", direction: "强正面" },
+        { catalyst: "1.6T/3.2T产品", timeWindow: "2026-2027", importance: "高", status: "推进中", evidence: "新产品收入占比提升", direction: "正面" },
+        { catalyst: "OCS放量", timeWindow: "2026-2027", importance: "高", status: "初期", evidence: "数据中心客户采用", direction: "正面" },
+        { catalyst: "InP产能扩张", timeWindow: "2026-2028", importance: "高", status: "推进中", evidence: "产能、良率、毛利率", direction: "正面" },
+        { catalyst: "毛利率提升", timeWindow: "每季财报", importance: "高", status: "正改善", evidence: "指引继续上行", direction: "正面" },
+        { catalyst: "高估值消化", timeWindow: "当前", importance: "高", status: "风险观察", evidence: "涨幅过大后的调整压力", direction: "负面" }
+      ],
+      valuation: {
+        peForward: "~200x",
+        marketCap: "~843亿美元",
+        assessment: "适合看收入规模、AI数据中心占比、毛利率改善和英伟达订单兑现率。当前PE约204倍，估值已高度反映AI光互联预期。",
+        riskNote: "如果英伟达合作兑现慢、数据中心增长放缓或传统业务拖累，高估值下财报仅符合预期就可能有压力。",
+        tiers: [
+          { label: "保守", marketCap: "$500-650亿", price: "$255-332", logic: "AI增长已price in，需回调消化" },
+          { label: "中性", marketCap: "$700-900亿", price: "$358-460", logic: "收入和毛利率继续兑现，平台型溢价" },
+          { label: "乐观", marketCap: "$950-1200亿", price: "$486-614", logic: "OCS/CPO/InP全部进入强周期" }
+        ]
+      },
+      operationPlan: {
+        currentStatus: "核心观察仓，短期涨幅大，等待换手和回踩。",
+        buyPlan: ["优先等板块回调、财报后分歧或20日线附近企稳买入"],
+        addConditions: "收入指引继续上修，管理层明确AI数据中心订单强度。",
+        reduceConditions: "利好不涨、连续放量滞涨、LITE/AAOI等同板块高弹性股见顶。",
+        optionStrategy: "更适合中期Call Spread，不适合短期追高裸Call。",
+        invalidateConditions: "英伟达合作未转化为实质订单、OCS/CPO放量推迟、毛利率改善失败。"
+      }
     },
     {
       id: "aaoi",
       code: "AAOI",
       name: "Applied Optoelectronics",
-      sector: "光模块",
+      sector: "光模块 / 800G / 1.6T",
       mkt: "us",
-
       usSector: "光互联",
-      type: "波段",
-      trackingStatus: "观察中",
-      tradeCycle: "中线 + 事件驱动",
-      themeTags: "光模块 / AAOI / 数据中心",
-      logicStatus: "观察",
-      priority: "中",
+      type: "短线 + 中线跟踪",
+      trackingStatus: "弹性跟踪",
+      tradeCycle: "短线 + 中线",
+      themeTags: "800G 光模块 / 1.6T 预期 / AI 数据中心 / 美国产能",
+      logicStatus: "验证中",
+      priority: "中高",
+      accountPosition: "弹性仓，不适合低波动核心仓",
       color: "#f59e0b",
-      reason: "数据中心光模块供应商，受益 AI 集群互联需求。",
-      strategy: "波段操作，关注订单公告和客户验证进展。",
+      reason: "AAOI是当前AI光模块交易中弹性最大的标的之一，核心看点800G放量、1.6T预期、北美云厂商需求和非中国供应链替代。",
+      strategy: "优先等回踩10日线/20日线附近企稳，或财报后确认订单继续增长再看。",
       stopLoss: null,
       targetPrice: null,
-      lastUpdated: "2026-05-25",
-      investmentLogic: null,
-      catalysts: [],
-      operationPlan: null,
+      lastUpdated: "2026-06-03",
+      marketTrading: "市场正在交易AI数据中心光模块从800G向1.6T升级的高弹性份额提升，不是传统光通信修复。",
+      investmentLogic: {
+        oneLiner: "AAOI是当前AI光模块交易中弹性最大的标的之一，核心看点是800G放量、1.6T预期、北美云厂商需求和非中国供应链替代。",
+        currentHypothesis: "AI集群规模扩大后，800G光模块需求继续放量，AAOI通过产能爬坡和客户导入获得超额成长。",
+        coreReason: [
+          "800G已进入量产出货：完成向大型hyperscale客户首批量产出货，产能接近每月10万只。",
+          "数据中心收入快速增长：Q1 2026数据中心收入8140万美元，同比从3205万美元大幅增长，AI数据中心已成为主增长来源。",
+          "高弹性：市值152亿美元、收入仍在快速增长阶段，弹性优于LITE/COHR但波动也更大。",
+          "北美产能优势：美国本土制造能力在非中国供应链趋势下具备差异化竞争力。"
+        ],
+        status: "已从预期验证前进入业绩开始验证+股价提前高弹性定价阶段",
+        statusNote: "逻辑强但股价已明显交易未来收入，适合跟踪回踩后右侧机会，不适合极度亢奋位置追高。",
+        validUntil: "未来2-4个季度",
+        validNote: "重点看2026年Q2-Q4的800G出货、毛利率和1.6T订单信号。",
+        questionsToVerify: [
+          "AAOI能否从收入高增长真正走向持续盈利？",
+          "800G放量是否带来毛利率改善？",
+          "1.6T是否能顺利接上第二增长曲线？",
+          "800G收入能否连续两个季度超预期？"
+        ]
+      },
+      keyMetrics: [
+        { metric: "数据中心收入", status: "Q1 2026为8140万美元", importance: "高", trend: "继续环比增长", note: "判断AI数据中心是否继续拉动" },
+        { metric: "800G出货", status: "已完成首批量产出货", importance: "高", trend: "Q2/Q3是否加速", note: "核心业绩验证点" },
+        { metric: "月产能", status: "接近10万只800G/月", importance: "高", trend: "产能利用率", note: "产能需订单消化" },
+        { metric: "毛利率", status: "Q1 GAAP 29.1%", importance: "高", trend: "是否回升至30%+", note: "高增长但不能恶化" },
+        { metric: "盈利能力", status: "未完全稳定盈利", importance: "高", trend: "EPS/EBITDA转正", note: "估值能否从PS切到利润逻辑" }
+      ],
+      catalysts: [
+        { catalyst: "800G出货爬坡", timeWindow: "2026 Q2-Q4", importance: "高", status: "已开始", evidence: "收入环比增长、客户订单持续", direction: "强正面" },
+        { catalyst: "1.6T产品进展", timeWindow: "2026下半年", importance: "高", status: "预期阶段", evidence: "客户认证、样品、量产计划", direction: "强正面" },
+        { catalyst: "云厂商资本开支", timeWindow: "全年", importance: "高", status: "AI CapEx强", evidence: "MSFT/AMZN/ORCL扩张", direction: "正面" },
+        { catalyst: "毛利率改善", timeWindow: "每季财报", importance: "高", status: "仍需验证", evidence: "规模效应兑现", direction: "正面" },
+        { catalyst: "股价高位震荡", timeWindow: "当前", importance: "高", status: "涨幅极大", evidence: "放量滞涨/利好不涨", direction: "负面" }
+      ],
+      valuation: {
+        peForward: "仍为负",
+        marketCap: "~152亿美元",
+        assessment: "当前适合看2026年收入兑现率+PS倍数，暂不适合只看PE。市场主要按成长预期而非利润定价。",
+        riskNote: "如果800G放量不及预期、毛利率下滑或大客户订单延迟，高估值难以维持。",
+        tiers: [
+          { label: "保守", marketCap: "$80-110亿", price: "$106-145", logic: "收入高增长但盈利兑现慢" },
+          { label: "中性", marketCap: "$120-160亿", price: "$159-212", logic: "800G放量顺利，1.6T有清晰订单" },
+          { label: "乐观", marketCap: "$170-220亿", price: "$225-291", logic: "收入接近或超过激进预期，毛利率改善" }
+        ]
+      },
+      operationPlan: {
+        currentStatus: "逻辑强、位置高，适合跟踪不适合无脑追。",
+        buyPlan: ["优先等回踩10日线/20日线附近企稳，或财报后确认订单继续增长"],
+        addConditions: "放量突破后不回落，或财报确认收入/毛利率/订单三者同时改善。",
+        reduceConditions: "连续大涨后放量滞涨、利好公布但股价不涨、板块后排乱炒。",
+        optionStrategy: "不适合短期期权追涨。若做，只考虑2-3个月以上轻虚值或接近平值Call，并设置硬止损。",
+        invalidateConditions: "800G放量不及预期、1.6T延迟、毛利率明显恶化、客户集中度风险暴露。"
+      }
     },
     {
       id: "axti",
       code: "AXTI",
       name: "AXT Inc.",
-      sector: "衬底材料",
+      sector: "InP衬底 / 材料",
       mkt: "us",
-
       usSector: "光互联",
-      type: "监控",
-      trackingStatus: "观察中",
+      type: "短线题材 + 中线验证",
+      trackingStatus: "材料映射跟踪",
       tradeCycle: "中线 + 波段",
-      themeTags: "InP衬底 / 光通信上游 / 材料",
-      logicStatus: "观察",
+      themeTags: "InP衬底 / 6英寸InP / AI光通信上游 / 出口管制",
+      logicStatus: "验证中",
       priority: "中",
+      accountPosition: "小仓弹性跟踪",
       color: "#6366f1",
-      reason: "InP/GaAs 衬底龙头，AI 光模块上游关键材料。",
-      strategy: "保持监控，关注衬底认证和出货量。",
+      reason: "AXTI是AI光互联上游InP衬底瓶颈的直接映射，逻辑纯但风险在出口管制、产能兑现和客户认证。",
+      strategy: "只考虑回踩后分批小仓跟踪，等待财报确认收入转化，不适合重仓追涨。",
       stopLoss: null,
       targetPrice: null,
-      lastUpdated: "2026-05-24",
-      investmentLogic: null,
-      catalysts: [],
-      operationPlan: null,
+      lastUpdated: "2026-06-03",
+      marketTrading: "市场正在交易InP从小众化合物半导体材料变成AI光互联基础材料瓶颈。",
+      investmentLogic: {
+        oneLiner: "AXTI是AI光互联上游InP衬底瓶颈的直接映射，逻辑很纯但风险在出口管制、产能兑现和客户认证。",
+        currentHypothesis: "AI数据中心光互联需求爆发后，EML/CW激光器/CPO外部光源拉动InP衬底需求；AXTI若能扩产并稳定出口，将成为上游材料弹性标的。",
+        coreReason: [
+          "InP需求强：EML/CW激光器是800G/1.6T光模块核心器件，InP衬底是最上游基础材料。",
+          "融资扩产中：已完成6.325亿美元融资用于子公司Tongmei的InP产能扩张和6英寸InP研发。",
+          "行业瓶颈传导：COHR/LITE/AAOI扩产将向上游传导，AXTI作为重要InP衬底供应商受益。",
+          "弹性极高：市值~62亿美元，比LITE/COHR更早期、更不稳定但弹性也更高。"
+        ],
+        status: "从材料小票升级为AI光互联上游瓶颈股，但仍处强预期阶段",
+        statusNote: "InP需求强不等于AXTI必然兑现，必须验证许可证、产能、客户认证和收入增长。",
+        validUntil: "6-18个月",
+        validNote: "核心看出口许可、6英寸InP研发、订单和收入兑现。",
+        questionsToVerify: [
+          "InP订单能否转化为收入？",
+          "出口许可是否稳定？",
+          "6英寸InP良率和客户认证进展？",
+          "融资产能何时落地？",
+          "收入能否连续环比增长？"
+        ]
+      },
+      keyMetrics: [
+        { metric: "InP订单", status: "公司称需求强", importance: "高", trend: "是否转化为收入", note: "不能只看行业需求" },
+        { metric: "出口许可", status: "存在不确定性", importance: "高", trend: "审批是否稳定", note: "最大风险变量" },
+        { metric: "6英寸InP", status: "正在研发投入", importance: "高", trend: "良率和客户认证", note: "决定估值上限" },
+        { metric: "融资扩产", status: "6.325亿美元", importance: "高", trend: "产能落地节奏", note: "资金已有，执行待验证" },
+        { metric: "收入增长", status: "仍需确认", importance: "高", trend: "是否连续环比增长", note: "题材转业绩关键" }
+      ],
+      catalysts: [
+        { catalyst: "InP出口许可改善", timeWindow: "随时", importance: "高", status: "不确定", evidence: "许可证数量增加", direction: "强正面" },
+        { catalyst: "6英寸InP进展", timeWindow: "2026-2027", importance: "高", status: "研发投入", evidence: "良率、客户验证", direction: "正面" },
+        { catalyst: "AI光器件扩产", timeWindow: "2026全年", importance: "高", status: "行业需求强", evidence: "COHR/LITE扩产带动上游", direction: "正面" },
+        { catalyst: "财报收入确认", timeWindow: "每季", importance: "高", status: "待验证", evidence: "InP收入环比增长", direction: "正面" },
+        { catalyst: "地缘/出口政策", timeWindow: "持续", importance: "高", status: "风险较大", evidence: "政策稳定", direction: "负面" }
+      ],
+      valuation: {
+        peForward: "仍为负",
+        marketCap: "~62.6亿美元",
+        assessment: "不能只按传统半导体材料估值，要看InP产能、6英寸进展、出口许可和AI光器件订单传导。市场主要按远期InP瓶颈预期定价。",
+        riskNote: "出口管制若持续压制收入，估值应明显打折。不适合用COHR/LITE的确定性估值方式去重仓。",
+        tiers: [
+          { label: "保守", marketCap: "$30-45亿", price: "$56-84", logic: "出口管制压制收入" },
+          { label: "中性", marketCap: "$50-70亿", price: "$94-131", logic: "许可恢复、InP订单增长" },
+          { label: "乐观", marketCap: "$80-120亿", price: "$150-225", logic: "6英寸InP客户认证落地" }
+        ]
+      },
+      operationPlan: {
+        currentStatus: "小仓弹性跟踪，只适合观察不适合重仓追涨。",
+        buyPlan: ["只考虑回踩后分批，小仓跟踪，等待财报确认收入转化"],
+        addConditions: "出口许可改善+InP收入增长+6英寸进展三者至少验证两个。",
+        reduceConditions: "出口管制再次扰动、股价大涨但财报收入没跟上、上游材料集体情绪过热。",
+        optionStrategy: "不建议做短期期权。AXTI本身波动足够大，正股小仓更合适。",
+        invalidateConditions: "出口长期受限、6英寸InP推进失败、客户验证不及预期、行业转向其他材料路线。"
+      }
     },
     {
       id: "mrvl",
