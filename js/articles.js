@@ -1,5 +1,15 @@
 const articles = [
   {
+    id: "hormuz-strait-crisis",
+    title: "霍尔木兹海峡'通行许可系统'开放：危机解除了吗？",
+    date: "2026-06-02",
+    category: "近期热点",
+    tags: ["宏观", "地缘政治", "能源"],
+    summary: "短线是缓和信号，中线是伊朗把霍尔木兹海峡制度化为地缘谈判筹码。从硬封锁转向软管制——对原油、黄金、美元、美股科技和板块分化的完整分析。",
+    keywords: "霍尔木兹 伊朗 原油 地缘政治 黄金 避险 能源 LNG 中东 战争溢价 航运",
+    file: "/articles/hormuz-strait-crisis/"
+  },
+  {
     id: "industry-glossary-2026",
     title: "AI产业术语全解：从CPO到TGV的23个核心概念",
     date: "2026-06-02",
