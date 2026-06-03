@@ -1,5 +1,16 @@
 const articles = [
   {
+    id: "optical-communication-learning-path",
+    title: "AI光通信学习路径：从信号路径到投资价值链",
+    date: "2026-06-03",
+    category: "产业思考",
+    subcategory: "光通信",
+    tags: ["光通信", "产业链", "学习路径"],
+    summary: "不要从名词表硬背，按信号路径+投资价值链理解。6个核心概念搞懂光通信：EML/PD/DSP/FAU/NPO/CPO，附公司映射和投资优先级排序。",
+    keywords: "光通信 学习 EML PD DSP FAU NPO CPO 800G 1.6T 硅光 OCS 投资 产业链",
+    file: "/articles/optical-communication-learning-path/"
+  },
+  {
     id: "hormuz-strait-crisis",
     title: "霍尔木兹海峡'通行许可系统'开放：危机解除了吗？",
     date: "2026-06-02",

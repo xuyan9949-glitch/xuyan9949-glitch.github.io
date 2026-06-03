@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI光通信学习路径：从信号路径到投资价值链 — Leslie 投资笔记</title>
+    <link rel="stylesheet" href="/css/style.css">
+        <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "***"}'></script>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <span class="logo-mark">L</span>
+                <span class="logo-text">Leslie 研究笔记</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">首页</a>
+                <a href="/#research">研究方向</a>
+                <a href="/#notes">笔记</a>
+                <a href="/#frameworks">框架</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container article-page">
+        <a href="/" class="back">← 返回首页</a>
+
+        <h1>AI光通信学习路径：从信号路径到投资价值链</h1>
+                <div class="article-meta">
+            <span class="meta-left">2026-06-03</span>
+            <span class="meta-dot">·</span>
+            <span class="meta-cat">产业思考 · 光通信</span>
+            <button class="meta-share" onclick="shareArticle()" title="分享">
+                <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+                分享
+            </button>
+        </div>
+
+        <div class="article-content">
+
+<p>光通信名词太多，从名词表硬背很难记住。更有效的方法是按<strong>信号路径 + 投资价值链</strong>来理解——先搞懂"一束光怎么完成通信"，再把公司放到链条上。</p>
+
+<hr>
+
+<h2>一、最有效的理解方法：从"一束光怎么完成通信"开始</h2>
+
+<p>把AI光通信想成一句话：<strong>GPU产生数据，电信号太难远距离高速传输，所以要把电信号变成光信号，用光纤传出去，再变回电信号。</strong></p>
+
+<p>整条链路只有四步：</p>
+<pre style="background:#f5f5f7;padding:16px;border-radius:8px;font-size:13px;line-height:1.7;">
+电信号产生
+↓
+电 → 光
+↓
+光纤传输
+↓
+光 → 电</pre>
+
+<p>对应产业链：</p>
+<table>
+<tr><th>环节</th><th>要理解的问题</th><th>对应名词</th></tr>
+<tr><td>发射端</td><td>怎么把电信号变成光？</td><td>EML、CW Laser、Driver、调制器</td></tr>
+<tr><td>传输端</td><td>光怎么传、怎么连接？</td><td>光纤、FAU、连接器、OCS</td></tr>
+<tr><td>接收端</td><td>怎么把光变回电？</td><td>PD、TIA</td></tr>
+<tr><td>信号处理</td><td>怎么修正高速传输失真？</td><td>DSP、SerDes</td></tr>
+</table>
+<p>按这个顺序学，不要一上来就看CPO、NPO、轻相干。</p>
+
+<hr>
+
+<h2>二、第一层：先搞懂"传统光模块"</h2>
+
+<p>这是最重要的起点。现在最先兑现业绩的，仍然是 <strong>800G / 1.6T 可插拔光模块</strong>。</p>
+
+<pre style="background:#f5f5f7;padding:16px;border-radius:8px;font-size:13px;line-height:1.7;">
+交换芯片 / GPU
+↓ 电信号
+DSP / Driver
+↓
+EML 发光
+↓
+光纤传输
+↓
+PD 接收光
+↓
+TIA 放大
+↓
+DSP 修正信号
+↓
+电信号回到设备</pre>
+
+<h3>先掌握5个词</h3>
+<table>
+<tr><th>优先级</th><th>名词</th><th>本质</th></tr>
+<tr><td>1</td><td><strong>EML</strong></td><td>发射端激光器，把电信号变成光信号</td></tr>
+<tr><td>2</td><td><strong>PD</strong></td><td>接收端探测器，把光信号变回电信号</td></tr>
+<tr><td>3</td><td><strong>DSP</strong></td><td>光模块大脑，修正高速信号失真</td></tr>
+<tr><td>4</td><td><strong>TIA / Driver</strong></td><td>接收端放大、发射端驱动</td></tr>
+<tr><td>5</td><td><strong>FAU</strong></td><td>光纤和光芯片之间的精密接口</td></tr>
+</table>
+
+<hr>
+
+<h2>三、第二层：为什么从800G走向1.6T</h2>
+
+<p>不要先记数字，理解背后的变化：<strong>AI集群越大，GPU之间交换的数据越多，光模块速率必须提高。</strong></p>
+
+<p>升级结果与受益方：</p>
+<table>
+<tr><th>升级结果</th><th>谁受益</th></tr>
+<tr><td>速率提高</td><td>EML、PD、DSP、TIA、Driver 难度提升</td></tr>
+<tr><td>模块数量增加</td><td>中际旭创、新易盛、AAOI 等模块厂</td></tr>
+<tr><td>光纤连接更多</td><td>FAU、连接器、光纤厂商</td></tr>
+<tr><td>测试更复杂</td><td>VIAV、罗博特科等测试设备</td></tr>
+</table>
+
+<hr>
+
+<h2>四、第三层：CPO / NPO</h2>
+
+<p>传统光模块插在交换机面板上，芯片到光模块之间要走一段电信号。速率越高，电信号越难走远，功耗变高、信号失真、散热压力变大。</p>
+
+<p>行业开始想：能不能把光模块搬得离芯片更近？这就产生了NPO和CPO。</p>
+
+<p><strong>NPO（近封装光学）：</strong>光引擎靠近GPU/ASIC，但没有完全封进去。中间方案，比CPO量产难度低。<br>
+<strong>CPO（共封装光学）：</strong>光引擎和交换芯片/ASIC封装在一起。更激进，长期空间大，但量产难度更高。</p>
+
+<hr>
+
+<h2>五、按投资重要性，目前最该先弄懂的顺序</h2>
+
+<h3>第一优先级：800G / 1.6T 传统光模块（业绩最先兑现）</h3>
+<pre style="background:#f5f5f7;padding:16px;border-radius:8px;font-size:13px;line-height:1.7;">
+AI 集群扩大
+↓
+800G / 1.6T 光模块放量
+↓
+模块厂收入增长
+↓
+EML / PD / DSP / FAU 紧缺
+↓
+上游器件、芯片、测试设备涨价或订单增加</pre>
+
+<h3>第二优先级：CPO / NPO（下一阶段估值拔高）</h3>
+<p>传统铜互联/可插拔模块接近瓶颈 → 光引擎向芯片靠近 → NPO先导入 → CPO中长期放量 → CW Laser/硅光/FAU/测试设备受益。</p>
+
+<h3>第三优先级：OCS / 轻相干（架构级变化）</h3>
+<p>AI集群越来越大 → 网络调度复杂化 → 传统交换效率不够 → OCS/轻相干进入大厂方案。更适合跟踪Google、Meta、Amazon的数据中心架构变化。</p>
+
+<h3>第四优先级：玻璃基板/Glass Interposer（先进封装）</h3>
+<p>GPU越来越大 → HBM越来越多 → CoWoS面积不够 → 玻璃Interposer成为新路线。节奏更远，不要和当前光模块业绩线混在一起。</p>
+
+<hr>
+
+<h2>六、当前最该先掌握的10个词</h2>
+
+<table>
+<tr><th>优先级</th><th>名词</th><th>学到什么程度就够</th></tr>
+<tr><td>1</td><td><strong>800G / 1.6T</strong></td><td>光模块速率升级，直接对应出货放量</td></tr>
+<tr><td>2</td><td><strong>EML</strong></td><td>发射端激光器，当前高速模块关键瓶颈</td></tr>
+<tr><td>3</td><td><strong>PD</strong></td><td>接收端探测器，200G/lane可能紧缺</td></tr>
+<tr><td>4</td><td><strong>DSP</strong></td><td>光模块信号处理芯片，价值量高、功耗也高</td></tr>
+<tr><td>5</td><td><strong>FAU</strong></td><td>光纤和光芯片的精密连接器件</td></tr>
+<tr><td>6</td><td><strong>CW Laser</strong></td><td>CPO/硅光外部光源核心</td></tr>
+<tr><td>7</td><td><strong>NPO</strong></td><td>光引擎靠近GPU，可能比CPO更早落地</td></tr>
+<tr><td>8</td><td><strong>CPO</strong></td><td>光引擎和芯片共封装，长期方向但节奏不确定</td></tr>
+<tr><td>9</td><td><strong>硅光</strong></td><td>把光器件集成到硅工艺平台上</td></tr>
+<tr><td>10</td><td><strong>OCS</strong></td><td>全光交换，主要看Google等大厂路线</td></tr>
+</table>
+
+<hr>
+
+<h2>七、最适合的学习路径</h2>
+
+<h3>第一步：画一条传统光模块链</h3>
+<pre style="background:#f5f5f7;padding:16px;border-radius:8px;font-size:13px;line-height:1.7;">
+电信号
+↓
+DSP 处理
+↓
+Driver 驱动
+↓
+EML 发光
+↓
+光纤传输
+↓
+PD 接收
+↓
+TIA 放大
+↓
+DSP 修正
+↓
+电信号</pre>
+
+<h3>第二步：把公司放到链条上</h3>
+<table>
+<tr><th>公司/标的</th><th>主要位置</th></tr>
+<tr><td>中际旭创、新易盛、AAOI</td><td>光模块</td></tr>
+<tr><td>LITE、COHR</td><td>EML、CW Laser、光器件</td></tr>
+<tr><td>AXTI、云南锗业</td><td>InP衬底，上游材料</td></tr>
+<tr><td>AVGO、MRVL、MACOM</td><td>DSP、Driver、TIA、SerDes</td></tr>
+<tr><td>天孚通信、太辰光</td><td>FAU、无源器件</td></tr>
+<tr><td>VIAV、罗博特科</td><td>测试设备</td></tr>
+<tr><td>GLW、AGC</td><td>玻璃、光纤、先进封装材料</td></tr>
+</table>
+
+<h3>第三步：判断"短期业绩"还是"长期估值"</h3>
+<table>
+<tr><th>类型</th><th>代表名词</th><th>投资属性</th></tr>
+<tr><td>当前兑现</td><td>800G、1.6T、EML、PD、DSP、FAU</td><td>业绩线</td></tr>
+<tr><td>未来升级</td><td>NPO、CPO、CW Laser、硅光</td><td>估值重估线</td></tr>
+<tr><td>架构变化</td><td>OCS、轻相干</td><td>中长期路线线</td></tr>
+<tr><td>封装突破</td><td>Glass Interposer、TGV、CoWoS</td><td>先进封装线</td></tr>
+</table>
+<p>投资优先顺序：先买业绩线 → 再看估值重估线 → 最后跟踪长期路线线。</p>
+
+<hr>
+
+<h2>八、最重要的一张投资地图</h2>
+
+<pre style="background:#f5f5f7;padding:16px;border-radius:8px;font-size:13px;line-height:1.7;">
+AI 集群扩大
+↓
+GPU 之间数据交换暴增
+↓
+800G / 1.6T 光模块先放量
+↓
+EML、PD、DSP、FAU、测试设备紧缺
+↓
+铜互联和传统模块逐渐遇到功耗瓶颈
+↓
+NPO 先靠近 GPU
+↓
+CPO 靠近交换芯片
+↓
+OCS / 轻相干改变更大规模网络架构</pre>
+
+<hr>
+
+<h2>九、当前投资优先级</h2>
+
+<p>按"更容易兑现 + 技术壁垒 + 估值重估空间"综合排序：</p>
+
+<pre style="background:#f5f5f7;padding:16px;border-radius:8px;font-size:13px;line-height:1.7;">
+EML / CW Laser
+>
+800G / 1.6T 光模块
+>
+PD / TIA
+>
+DSP / SerDes
+>
+FAU / 无源器件
+>
+NPO
+>
+CPO
+>
+OCS / 轻相干
+>
+玻璃 Interposer / TGV</pre>
+
+<p>按公司映射，当前优先理解：</p>
+<pre style="background:#f5f5f7;padding:16px;border-radius:8px;font-size:13px;line-height:1.7;">
+LITE / COHR
+>
+中际旭创 / 新易盛 / AAOI
+>
+MACOM / AVGO / MRVL
+>
+天孚通信 / 太辰光
+>
+VIAV / 罗博特科
+>
+GLW / 玻璃基板链</pre>
+
+<hr>
+
+<h2>十、最简学习清单</h2>
+
+<p>先学这6个：</p>
+<ol>
+<li><strong>800G / 1.6T：</strong>为什么光模块升级？</li>
+<li><strong>EML：</strong>为什么发射端光源紧缺？</li>
+<li><strong>PD：</strong>为什么接收端也会缺？</li>
+<li><strong>DSP：</strong>为什么高速光模块离不开信号处理？</li>
+<li><strong>FAU：</strong>为什么光芯片和光纤连接很难？</li>
+<li><strong>NPO / CPO：</strong>为什么光要越来越靠近芯片？</li>
+</ol>
+<p>这6个搞懂后，再学OCS、轻相干、玻璃基板，难度会下降很多。</p>
+
+        </div>
+    </main>
+
+    <script src="/js/share.js"></script>
+</body>
+</html>
