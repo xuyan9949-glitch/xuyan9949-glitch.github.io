@@ -4,6 +4,17 @@
 
 const newsItems = [
   {
+    id: "n20260603-01",
+    date: "2026-06-03",
+    title: "NVIDIA Spectrum-X以太网硅光技术全面量产，CPO卡点被逐一打破",
+    summary: "NVIDIA宣布Spectrum-X以太网硅光技术现已全面量产，较传统收发器网络能效提升5倍。直接回应了市场对CPO推迟、CSP没意愿、2026年只有几千套的质疑。",
+    impact: "利好",
+    tags: ["光通信", "英伟达链", "CPO"],
+    stocks: ["NVDA", "LITE", "COHR", "MRVL", "AAOI"],
+    detail: "NVIDIA用行动逐一回答市场质疑：①台积电做硅光制造+SPIL做芯片封装+TFC做激光芯片+富士康做系统组装，完整量产链条已落地，不是实验室样品；②CoreWeave、Lambda、Oracle等NVIDIA自有AI工厂客户已采用，绕过传统CSP采购卡点；③能效提升5倍、AI正常运行时间提升5倍，百万GPU级别AI工厂中CPO不是更好选择而是唯一选择。",
+    source: "NVIDIA官方公告",
+  },
+  {
     id: "n20260602-01",
     date: "2026-06-02",
     title: "被动元件涨价扩散：芯片电阻器加入涨价行列，国巨/风华高科最直接受益",
