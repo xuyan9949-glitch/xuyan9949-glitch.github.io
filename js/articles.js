@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "avgo-fy2026-q2-earnings",
+    title: "博通 AVGO 财报笔记：AI 需求继续上修，但股价输给了过高预期",
+    date: "2026-06-04",
+    category: "美股",
+    subcategory: "财报分析",
+    tags: ["财报", "AVGO", "AI", "ASIC", "产业链"],
+    pinned: true,
+    summary: "总收入+48%、AI半导体+143%、FCF margin 46%——基本面继续强化，但2027年目标未上修导致短期交易预期降温。核心确认：AI投资正从GPU单点扩散到定制ASIC、AI网络、光互联、HBM和先进封装。",
+    keywords: "AVGO 博通 财报 FY2026 AI ASIC 定制芯片 英伟达 Semiconductors Networking 产业链 光通信",
+    file: "/articles/avgo-fy2026-q2-earnings/"
+  },
+  {
     id: "optical-communication-learning-path",
     title: "AI光通信学习路径：从信号路径到投资价值链",
     date: "2026-06-03",
