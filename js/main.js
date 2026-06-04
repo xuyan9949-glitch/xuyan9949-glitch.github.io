@@ -645,7 +645,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <tr>
                                 <th>版本</th>
                                 <th>合理市值</th>
-                                <th>对应A股股价</th>
+                                <th>对应股价</th>
                                 <th>对应逻辑</th>
                             </tr>
                         </thead>
