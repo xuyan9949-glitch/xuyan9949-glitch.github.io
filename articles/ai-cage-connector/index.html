@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cage：AI互联升级里容易被忽略的小环节 — Leslie 投资笔记</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo"><span class="logo-mark">L</span><span class="logo-text">Leslie 研究笔记</span></a>
+            <div class="nav-links">
+                <a href="/">首页</a>
+                <a href="/#research">研究方向</a>
+                <a href="/#notes">笔记</a>
+                <a href="/#frameworks">框架</a>
+            </div>
+        </div>
+    </nav>
+    <main class="container article-page">
+        <a href="/" class="back">← 返回首页</a>
+        <h1>Cage：AI互联升级里容易被忽略的小环节</h1>
+        <div class="article-meta">
+            <span class="meta-left">2026-06-04</span>
+            <span class="meta-dot">·</span>
+            <span class="meta-cat">产业思考 · 光通信</span>
+            <button class="meta-share" onclick="shareArticle()" title="分享">
+                <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>分享
+            </button>
+        </div>
+        <div class="article-content">
+
+<p>AI服务器硬件链条里，市场最容易先关注GPU、HBM、光模块、交换机、PCB、CCL，但还有一个更细的小环节值得留意：<strong>cage</strong>。</p>
+<p>这里的cage不是普通意义上的"笼子"，而是高速接口里的<strong>金属插槽 / 屏蔽笼 / 模块承载框架</strong>。简单说：光模块、铜缆模块插进去的那个金属框架，就是cage。</p>
+
+<hr>
+
+<h2>一、Cage是什么？</h2>
+<table>
+<tr><th>功能</th><th>作用</th></tr>
+<tr><td>机械固定</td><td>稳定固定光模块或铜缆模块</td></tr>
+<tr><td>电磁屏蔽</td><td>减少高速信号干扰</td></tr>
+<tr><td>散热</td><td>帮助模块把热量导出去</td></tr>
+<tr><td>插拔承载</td><td>保证接口多次插拔后的稳定性</td></tr>
+<tr><td>结构保护</td><td>保护高速接口和连接器</td></tr>
+</table>
+
+<hr>
+
+<h2>二、为什么AI服务器会带动cage？</h2>
+<pre style="background:#f5f5f7;padding:16px;border-radius:8px;font-size:13px;line-height:1.7;">
+AI集群扩大
+→ 高速互联需求增加
+→ 铜缆/光模块数量增加
+→ 高速接口数量增加
+→ cage需求增加</pre>
+
+<hr>
+
+<h2>三、铜缆和光模块都离不开cage</h2>
+<table>
+<tr><th>连接方式</th><th>优点</th><th>缺点</th><th>主要场景</th></tr>
+<tr><td>铜缆</td><td>成本低、功耗低、延迟低</td><td>距离短、速率受限</td><td>柜内scale-up</td></tr>
+<tr><td>光模块</td><td>距离远、带宽高</td><td>成本高、功耗高、散热压力大</td><td>柜外scale-out</td></tr>
+</table>
+<p>铜互联和光互联并不是互斥地压制cage，反而都会增加高速cage的使用场景。</p>
+
+<hr>
+
+<h2>四、1.6T之后，cage价值量可能提升</h2>
+<p>从400G到800G再到1.6T，接口速率提升的同时功耗和散热压力也在上升。这会推动cage从普通结构件升级为更高价值量的散热结构件：</p>
+<pre style="background:#f5f5f7;padding:16px;border-radius:8px;font-size:13px;line-height:1.7;">
+普通cage → 加强散热cage → 带散热片cage → 液冷cage</pre>
+<p>投资逻辑不只是"数量增加"，还包括<strong>单个cage价值量提升</strong>。</p>
+
+<hr>
+
+<h2>五、投资链条位置</h2>
+<pre style="background:#f5f5f7;padding:16px;border-radius:8px;font-size:13px;line-height:1.7;">
+AI算力需求
+→ GPU/ASIC放量
+→ 交换机、网卡、光模块、铜缆需求增加
+→ 高速接口密度提升
+→ cage、连接器、散热结构件需求提升</pre>
+<p>它不是第一层核心瓶颈，而是高速互联放量后，向连接器和精密结构件扩散的<strong>二阶机会</strong>。</p>
+
+<hr>
+
+<h2>六、验证框架</h2>
+<table>
+<tr><th>验证点</th><th>关键问题</th></tr>
+<tr><td>产品真实性</td><td>是否真的有高速cage/高速连接器/光模块结构件</td></tr>
+<tr><td>客户认证</td><td>是否进入NVIDIA、交换机厂、光模块厂、服务器厂供应链</td></tr>
+<tr><td>收入占比</td><td>这块业务占比是否足够高</td></tr>
+<tr><td>技术门槛</td><td>是否只是普通冲压件，还是高频高速、高散热结构件</td></tr>
+<tr><td>放量节奏</td><td>800G/1.6T/液冷cage是否进入批量阶段</td></tr>
+<tr><td>毛利率变化</td><td>产品升级是否带来毛利率提升</td></tr>
+</table>
+
+<hr>
+
+<h2>七、核心结论</h2>
+<pre style="background:#f5f5f7;padding:16px;border-radius:8px;font-size:13px;line-height:1.7;">
+AI集群扩大
+→ 高速互联升级
+→ 铜缆和光模块数量增加
+→ 高速接口密度提升
+→ cage需求增加
+→ 1.6T功耗提升
+→ 普通cage向散热cage/液冷cage升级
+→ 连接器与精密结构件公司获得二阶扩散机会</pre>
+<p>这条线优先级低于GPU、HBM、光模块、PCB/CCL，但在A股交易中，可能因为"小环节+高弹性+AI互联扩散"而被资金阶段性挖掘。适合放在<strong>AI互联二阶扩散 / 高速连接器 / 精密结构件 / 液冷散热升级</strong>框架里跟踪。</p>
+
+        </div>
+    </main>
+    <script src="/js/share.js"></script>
+</body>
+</html>

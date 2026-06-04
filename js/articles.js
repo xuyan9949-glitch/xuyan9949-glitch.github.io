@@ -1,5 +1,16 @@
 const articles = [
   {
+    id: "ai-cage-connector",
+    title: "Cage：AI互联升级里容易被忽略的小环节",
+    date: "2026-06-04",
+    category: "产业思考",
+    subcategory: "光通信",
+    tags: ["光通信", "产业链", "连接器", "散热", "二阶扩散"],
+    summary: "AI集群扩大→高速接口密度提升→cage需求增加→1.6T功耗提升驱动普通cage向散热/液冷cage升级。连接器与精密结构件公司获得AI互联二阶扩散机会。",
+    keywords: "cage 连接器 鼎通 奕东 光模块 铜缆 散热 液冷 AI互联 二阶扩散 结构件",
+    file: "/articles/ai-cage-connector/"
+  },
+  {
     id: "avgo-fy2026-q2-earnings",
     title: "博通 AVGO 财报笔记：AI 需求继续上修，但股价输给了过高预期",
     date: "2026-06-04",
