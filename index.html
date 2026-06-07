@@ -63,29 +63,17 @@
         <div class="container" style="padding:24px 24px 0">
             <div id="daily-obs" style="display:none">
                 <div class="obs-header">
-                    <span class="obs-badge obs-badge-radar">📡 交易环境雷达</span>
+                    <span class="obs-badge">今日观察</span>
                     <span class="obs-date" id="obs-date"></span>
                 </div>
-
-                <!-- 总状态 + 一句话总结 -->
-                <div class="obs-top" id="obs-top"></div>
-
-                <!-- 四类资产表现 -->
-                <div class="obs-section">
-                    <div class="obs-section-title">🌍 资产表现</div>
-                    <div class="obs-asset-groups" id="obs-asset-groups"></div>
+                <div class="obs-grid">
+                    <div class="obs-item"><span class="obs-label">市场状态</span><span class="obs-value" id="obs-market"></span></div>
+                    <div class="obs-item"><span class="obs-label">主线方向</span><span class="obs-value" id="obs-theme"></span></div>
+                    <div class="obs-item"><span class="obs-label">重点标的</span><span class="obs-value" id="obs-stocks"></span></div>
+                    <div class="obs-item"><span class="obs-label">操作倾向</span><span class="obs-value" id="obs-bias"></span></div>
+                    <div class="obs-item"><span class="obs-label">风险信号</span><span class="obs-value obs-risk" id="obs-risk"></span></div>
                 </div>
-
-                <!-- 下一交易日提示 -->
-                <div class="obs-section">
-                    <div class="obs-section-title">📋 下一交易日</div>
-                    <div class="obs-next-grid" id="obs-next-grid"></div>
-                </div>
-
-                <!-- 历史回看 -->
-                <div class="obs-section">
-                    <div class="obs-hindsight" id="obs-hindsight"></div>
-                </div>
+                <div class="obs-detail" id="obs-detail"></div>
             </div>
         </div>
 

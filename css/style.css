@@ -1036,99 +1036,26 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
     border-radius: 12px; padding: 20px 24px; margin-bottom: 20px;
 }
 .obs-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.obs-badge-radar {
+.obs-badge {
     font-size: 12px; font-weight: 600; color: #fff; background: var(--accent);
     padding: 3px 12px; border-radius: 20px; letter-spacing: 0.3px;
 }
 .obs-date { font-size: 12px; color: var(--text-muted); }
-.obs-section {
-    margin-bottom: 16px;
+.obs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+.obs-item {
+    display: flex; align-items: baseline; gap: 8px;
+    padding: 6px 0; border-bottom: 1px solid var(--border);
 }
-.obs-section-title {
-    font-size: 13px; font-weight: 600; color: var(--text);
-    margin-bottom: 8px;
+.obs-label { font-size: 12px; font-weight: 600; color: var(--text-secondary); white-space: nowrap; }
+.obs-value { font-size: 13px; color: var(--text); }
+.obs-risk { color: #ef4444; }
+.obs-detail {
+    margin-top: 12px; padding: 10px 14px; background: var(--bg-card);
+    border-radius: 8px; font-size: 13px; line-height: 1.7;
+    color: var(--text-secondary); border: 1px solid var(--border);
 }
-
-/* ---- Top: regime + summary ---- */
-.obs-top {
-    margin-bottom: 16px;
-}
-.obs-top-row {
-    margin-bottom: 10px;
-}
-.obs-regime {
-    display: inline-block;
-    font-size: 12px; font-weight: 600;
-    padding: 3px 14px; border-radius: 16px;
-}
-.obs-summary-text {
-    font-size: 13px; line-height: 1.7;
-    color: var(--text-secondary);
-}
-
-/* ---- 四类资产表现 (table) ---- */
-.obs-asset-groups {
-    display: flex; flex-direction: column; gap: 10px;
-}
-.obs-asset-group-wide {
-    padding: 12px 14px;
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 8px;
-}
-.obs-group-label {
-    font-size: 11px; font-weight: 600;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-    text-transform: uppercase; letter-spacing: .3px;
-}
-.obs-group-table-wrap {
-    overflow-x: auto;
-}
-.obs-astable {
-    width: 100%; border-collapse: collapse;
-    font-size: 12px;
-}
-.obs-astable th {
-    text-align: left; padding: 4px 8px;
-    font-weight: 600; font-size: 10px; color: var(--text-muted);
-    border-bottom: 1px solid var(--border);
-    white-space: nowrap;
-}
-.obs-astable td {
-    padding: 4px 8px;
-    border-bottom: 1px solid var(--border);
-    color: var(--text);
-    vertical-align: top;
-}
-.obs-astable tr:last-child td { border-bottom: none; }
-.obs-at-name { font-weight: 500; }
-.obs-at-close { font-variant-numeric: tabular-nums; }
-.obs-at-struct { color: var(--text-secondary); }
-.obs-at-meaning { color: var(--text-secondary); }
-
-/* ---- 下一交易日 ---- */
-.obs-next-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
-}
-.obs-next-card {
-    padding: 12px 14px;
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 8px;
-}
-.obs-next-risk {
-    grid-column: 1 / -1;
-}
-.obs-next-label {
-    font-size: 11px; font-weight: 600;
-    margin-bottom: 6px;
-}
-.obs-next-text {
-    font-size: 13px; line-height: 1.6;
-    color: var(--text-secondary);
-}
-
 @media (max-width: 640px) {
-    .obs-next-grid { grid-template-columns: 1fr; }
+    .obs-grid { grid-template-columns: 1fr; }
 }
 /* ---- 逻辑验证日历 ---- */
 .cal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
