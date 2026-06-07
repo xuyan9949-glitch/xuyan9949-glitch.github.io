@@ -1034,17 +1034,63 @@ if (updatesList && typeof updateLog !== 'undefined') {
     }).join('');
 }
 
-// ---- 今日观察 ----
+// ---- 交易环境雷达 ----
 const obsEl = document.getElementById('daily-obs');
 if (obsEl && typeof dailyObservation !== 'undefined') {
     const o = dailyObservation;
     document.getElementById('obs-date').textContent = o.date;
-    document.getElementById('obs-market').textContent = o.marketState;
-    document.getElementById('obs-theme').textContent = o.mainTheme;
-    document.getElementById('obs-stocks').textContent = o.keyStocks;
-    document.getElementById('obs-bias').textContent = o.bias;
-    document.getElementById('obs-risk').textContent = o.riskSignals;
-    document.getElementById('obs-detail').textContent = o.detail;
+    
+    // 今日总判断
+    const verdictEl = document.getElementById('obs-verdict');
+    if (verdictEl) {
+        verdictEl.innerHTML = `
+            <div class="obs-verdict-badge" style="background:#f59e0b15;color:#f59e0b;border:1px solid #f59e0b30">${o.environment}</div>
+            <div class="obs-verdict-text">${o.verdict}</div>
+        `;
+    }
+    
+    // 全球资产状态
+    const assetsTbody = document.querySelector('#obs-assets tbody');
+    if (assetsTbody) {
+        assetsTbody.innerHTML = o.assets.map(a => {
+            const isNeg = a.status.includes('偏弱') || a.status.includes('回调') || a.status.includes('未确认') || a.status.includes('上行');
+            const statusColor = a.status.includes('偏强') || a.status.includes('上行') ? '#ef4444' :
+                               a.status.includes('偏弱') || a.status.includes('回调') ? '#22c55e' :
+                               '#f59e0b';
+            return `<tr><td>${a.name}</td><td style="color:${statusColor};font-weight:500">${a.status}</td><td class="obs-td-muted">${a.meaning}</td></tr>`;
+        }).join('');
+    }
+    
+    // 今日交易模式
+    const summaryEl = document.getElementById('obs-trading-summary');
+    if (summaryEl) summaryEl.textContent = o.tradingMode.summary;
+    const aShareEl = document.getElementById('obs-ashare');
+    if (aShareEl) aShareEl.textContent = o.tradingMode.aShare;
+    const usStockEl = document.getElementById('obs-usstock');
+    if (usStockEl) usStockEl.textContent = o.tradingMode.usStock;
+    
+    // 今日机会
+    const oppsEl = document.getElementById('obs-opps');
+    if (oppsEl) oppsEl.innerHTML = o.opportunities.map(t => `<li>${t}</li>`).join('');
+    
+    // 今日风险
+    const risksEl = document.getElementById('obs-risks');
+    if (risksEl) risksEl.innerHTML = o.risks.map(t => `<li>${t}</li>`).join('');
+    
+    // 关键验证点
+    const cpTbody = document.querySelector('#obs-checkpoints tbody');
+    if (cpTbody) {
+        cpTbody.innerHTML = o.checkpoints.map(c => {
+            const resultColor = c.result.includes('不') ? '#ef4444' : c.result.includes('是') ? '#22c55e' : '#f59e0b';
+            const actionColor = c.action.includes('降') || c.action.includes('不加') || c.action.includes('不追') ? '#ef444430' : '#22c55e30';
+            return `<tr><td>${c.point}</td><td style="color:${resultColor};font-weight:500">${c.result}</td><td>${c.action}</td></tr>`;
+        }).join('');
+    }
+    
+    // 明日复盘
+    const reviewEl = document.getElementById('obs-review');
+    if (reviewEl) reviewEl.innerHTML = o.review.map(q => `<li>${q}</li>`).join('');
+    
     obsEl.style.display = 'block';
 }
 
