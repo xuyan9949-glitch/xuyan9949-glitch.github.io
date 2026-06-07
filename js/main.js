@@ -1051,6 +1051,7 @@ function renderCalendar(filter = 'all') {
         const weekEnd = new Date(today); weekEnd.setDate(today.getDate() + 7);
         filtered = sorted.filter(e => {
             if (e.date.includes('Q') || e.date.includes('H')) return false;
+            if (e.date.includes('中旬') || e.date.includes('下旬') || e.date.includes('上旬')) return true;
             const d = new Date(e.date);
             return d >= today && d <= weekEnd;
         });
@@ -1059,6 +1060,7 @@ function renderCalendar(filter = 'all') {
         const monthEnd = new Date(today); monthEnd.setDate(today.getDate() + 30);
         filtered = sorted.filter(e => {
             if (e.date.includes('Q') || e.date.includes('H')) return false;
+            if (e.date.includes('中旬') || e.date.includes('下旬') || e.date.includes('上旬')) return true;
             const d = new Date(e.date);
             return d >= today && d <= monthEnd;
         });
@@ -1081,7 +1083,9 @@ function renderCalendar(filter = 'all') {
     calGrid.innerHTML = filtered.map(e => {
         // Countdown
         let countdown = '';
-        if (!e.date.includes('Q') && !e.date.includes('H')) {
+        if (e.date.includes('中旬') || e.date.includes('下旬') || e.date.includes('上旬')) {
+            countdown = e.date.includes('中旬') ? '本月' : e.date.includes('下旬') ? '本月' : '本月';
+        } else if (!e.date.includes('Q') && !e.date.includes('H')) {
             const eventDate = new Date(e.date);
             const today = new Date(now);
             const diff = Math.ceil((eventDate - today) / (1000*60*60*24));
