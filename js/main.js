@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ---- US Stock Sectors (defined early for cross-references) ----
+    const usSectors = ['七姐妹','光互联','半导体','AI基础设施','加密/金融','太空','量子计算'];
+    const US_SECTOR_COLORS = {
+        '光互联': '#3b82f6', '半导体': '#ef4444', 'AI基础设施': '#f59e0b',
+        '加密/金融': '#22c55e', '太空': '#8b5cf6', '七姐妹': '#6366f1', '量子计算': '#06b6d4'
+    };
 
     // ---- Search ----
     const searchToggle = document.getElementById('nav-search-toggle');
@@ -87,11 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof trackingData !== 'undefined') {
             const aList = trackingData['a-shares'] || [];
             const usList = trackingData['us-stocks'] || [];
-            const aSectors = [...new Set(aList.map(s => s.sector).filter(Boolean))];
-            const usSectors = [...new Set(usList.map(s => s.sector).filter(Boolean))];
             const aCard = document.querySelector('.track-quick-card[data-mkt="a"] .tqc-sub');
             const usCard = document.querySelector('.track-quick-card[data-mkt="us"] .tqc-sub');
-            if (aCard) aCard.textContent = aSectors.length + '个板块，' + aList.length + '只标的';
+            if (aCard) aCard.textContent = aList.length + '只标的';
             if (usCard) usCard.textContent = usSectors.length + '个板块，' + usList.length + '只标的';
         }
         // 标的追踪：最近更新是否在最后访问之后
@@ -492,12 +496,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ---- US Stock Sector Tabs ----
-    const usSectors = ['七姐妹','光互联','半导体','AI基础设施','加密/金融','太空','量子计算'];
-    const US_SECTOR_COLORS = {
-        '光互联': '#3b82f6', '半导体': '#ef4444', 'AI基础设施': '#f59e0b',
-        '加密/金融': '#22c55e', '太空': '#8b5cf6', '七姐妹': '#6366f1', '量子计算': '#06b6d4'
-    };
-    
     let currentSector = null;
     
     function renderSectorTabs() {
