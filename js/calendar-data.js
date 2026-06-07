@@ -1,20 +1,32 @@
 // ========================================
-// 逻辑验证日历 — 月度聚焦
-// 规则：只保留未来 30 天内有明确时间锚点的催化事件
+// 关键验证日历 — 月度聚焦
+// 规则：只保留未来 30 天内有明确时间锚点、可能影响定价的关键事件
 // 虚的（Q3/H1/下旬无日期、验证描述）不入库
 // ========================================
 
 const calendarEvents = [
   {
-    date: "2026-06-12",
-    title: "SpaceX IPO 上市",
+    date: "2026-06-11",
+    title: "SpaceX IPO 定价日",
     type: "IPO",
-    stocks: "SpaceX / RKLB / ASTS / 太空概念",
+    stocks: "SPCX / RKLB / ASTS / 太空概念",
     importance: "极高",
-    status: "等待验证",
-    marketExpect: "传闻6月12日上市，SpaceX估值或超3000亿美元",
-    verifyPoint: "上市日期是否确认、发行定价、市场反应",
-    impactPath: "若成功上市，可能重塑太空经济板块估值体系，RKLB/ASTS或面临比价压力或联动上涨",
+    status: "待验证:定价",
+    marketExpect: "路演6/4开始，预计6/11定价$135/股，目标估值~$1.77T，融资~$750亿，史上最大IPO",
+    verifyPoint: "最终定价是否$135、发行规模、超额认购倍数、机构需求",
+    impactPath: "定价结果决定上市首日走势；若大幅超募，首日可能高开；若定价偏保守，首日涨幅可观",
+    topPriority: true,
+  },
+  {
+    date: "2026-06-12",
+    title: "SpaceX 上市首日（Nasdaq: SPCX）",
+    type: "IPO",
+    stocks: "SPCX / RKLB / ASTS / 太空概念",
+    importance: "极高",
+    status: "已确认",
+    marketExpect: "S-1已公开（5/20），SEC文件确认Nasdaq上市，代码SPCX，固定价$135/股，估值~$1.77T（超Tesla）",
+    verifyPoint: "首日开盘价、换手率、收盘涨跌幅、市值变化、是否触发S&P 500入指讨论",
+    impactPath: "若首日大涨，可能带动太空板块（RKLB/ASTS）比价重估；S&P 500要求12个月 seasoning period，短期不入指",
     topPriority: true,
   },
   {
@@ -69,7 +81,7 @@ const calendarEvents = [
 
 // 近期最重要三件事
 const topThree = [
-  { date: "2026-06-12", title: "SpaceX IPO上市：太空板块估值重塑", stocks: "SpaceX / RKLB / ASTS" },
+  { date: "2026-06-12", title: "SpaceX 上市首日：太空板块估值重塑", stocks: "SPCX / RKLB / ASTS" },
   { date: "2026-06-16", title: "FOMC利率决议：点阵图决定Q3方向", stocks: "QQQ / 10Y" },
   { date: "2026-06-25", title: "MU财报 + GTC中国站：AI链核心验证日", stocks: "MU / NVDA / LITE / COHR" },
 ];
