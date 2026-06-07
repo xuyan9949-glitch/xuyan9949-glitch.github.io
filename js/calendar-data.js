@@ -4,7 +4,7 @@
 
 const calendarEvents = [
   {
-    date: "2026-06-10",
+    date: "2026-06-25",
     title: "美光（MU）FY2026 Q3 财报",
     type: "财报",
     stocks: "MU / DRAM / HBM",
@@ -187,7 +187,7 @@ const calendarEvents = [
 
 // 近期最重要的三件事
 const topThree = [
-  { date: "2026-06-10", title: "MU财报：验证HBM与DRAM涨价弹性", stocks: "MU / DRAM" },
+  { date: "2026-06-25", title: "MU财报：验证HBM与DRAM涨价弹性", stocks: "MU / DRAM" },
   { date: "2026-06-25", title: "NVIDIA GTC中国站：验证CPO与AI Factory线索", stocks: "NVDA / LITE / COHR / AAOI" },
   { date: "2026-06中旬", title: "ASTS发射窗口：验证卫星部署节奏", stocks: "ASTS" },
 ];

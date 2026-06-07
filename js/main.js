@@ -1042,7 +1042,7 @@ function renderCalendar(filter = 'all') {
     if (!calGrid || typeof calendarEvents === 'undefined') return;
     
     const sorted = [...calendarEvents].sort((a, b) => a.date.localeCompare(b.date));
-    const now = '2026-06-07';
+    const now = new Date().toISOString().slice(0,10);
     
     // Determine which events to show
     let filtered = sorted;
