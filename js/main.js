@@ -906,11 +906,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // check if there's a stored preference or just show A-shares by default
     }
 
-    // ---- Render News Flash ----
+    // ---- Render News Flash (分页) ----
     const newsList = document.getElementById('news-flash-list');
-    if (newsList && typeof newsItems !== 'undefined') {
-        const latest = newsItems.slice(0, 5);
-        newsList.innerHTML = latest.map((n, idx) => {
+    const NEWS_PAGE_SIZE = 5;
+    let newsPage = 1;
+    
+    function renderNews(page) {
+        if (!newsList || typeof newsItems === 'undefined') return;
+        const total = newsItems.length;
+        const end = Math.min(page * NEWS_PAGE_SIZE, total);
+        const items = newsItems.slice(0, end);
+        
+        let html = items.map((n, idx) => {
             const impactIcon = n.impact === '利好' ? '🟢' : n.impact === '利空' ? '🔴' : '🟡';
             const stocksHtml = n.stocks && n.stocks.length > 0
                 ? ' · ' + n.stocks.map(s => `<span class="nf-stock" data-stock="${s.toLowerCase()}">${s}</span>`).join(' ')
@@ -929,12 +936,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
         }).join('');
-
-        // Click to expand
-        // Click row to expand/collapse
+        
+        // Show more button
+        if (end < total) {
+            html += `<div class="nf-more-wrap"><button class="nf-more-btn" id="nf-more-btn">展开更多（共${total}条）</button></div>`;
+        }
+        
+        newsList.innerHTML = html;
+        
+        // Click to expand detail
         newsList.querySelectorAll('.nf-row').forEach(el => {
             el.addEventListener('click', (e) => {
-                if (e.target.closest('.nf-stock')) return; // let stock clicks handle separately
+                if (e.target.closest('.nf-stock')) return;
                 const idx = el.dataset.idx;
                 const detail = document.getElementById(`nf-detail-${idx}`);
                 if (detail) {
@@ -944,25 +957,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-
-        // Stock tag clicks → navigate to tracking drawer
+        
+        // Show more button click
+        const moreBtn = document.getElementById('nf-more-btn');
+        if (moreBtn) {
+            moreBtn.addEventListener('click', () => {
+                newsPage++;
+                renderNews(newsPage);
+            });
+        }
+        
+        // Stock tag clicks
         document.querySelectorAll('.nf-stock').forEach(el => {
             el.addEventListener('click', function(e) {
                 e.stopPropagation();
                 const stockId = this.dataset.stock;
                 if (!stockId) return;
-                // Navigate to tracking section
                 window.location.hash = '#tracking';
-                // Determine market by checking the stock in trackingData
                 for (const mkt of ['a-shares', 'us-stocks']) {
                     const found = trackingData[mkt]?.find(s => s.id === stockId);
                     if (found) {
                         const marketCode = mkt === 'a-shares' ? 'a' : 'us';
                         setTimeout(() => {
-                            // Switch to correct market tab
                             const tab = document.querySelector(`.trk-tab[data-mkt="${marketCode}"]`);
                             if (tab) tab.click();
-                            // Open drawer after a brief delay for rendering
                             setTimeout(() => {
                                 openDrawer(stockId, marketCode);
                             }, 400);
@@ -973,6 +991,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    
+    renderNews(1);
 
 });
 
