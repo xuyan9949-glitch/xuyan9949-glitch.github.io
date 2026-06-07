@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchDropdown = document.getElementById('nav-search-dropdown');
     const searchInput = document.getElementById('nav-search-input');
     const searchResults = document.getElementById('nav-search-results');
-    
+
     if (searchToggle && searchDropdown) {
         searchToggle.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (typeof articles !== 'undefined') renderSearchResults('');
             }
         });
-        
+
         // Close on outside click
         document.addEventListener('click', (e) => {
             if (!e.target.closest('#nav-search')) {
@@ -30,22 +30,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     if (searchInput && searchResults) {
         searchInput.addEventListener('input', () => {
             renderSearchResults(searchInput.value.trim());
         });
     }
-    
+
     function renderSearchResults(query) {
         if (typeof articles === 'undefined') return;
         if (!searchResults) return;
-        
+
         if (!query) {
             searchResults.innerHTML = '<div class="nav-search-empty">输入关键词搜索笔记</div>';
             return;
         }
-        
+
         const q = query.toLowerCase();
         const matches = articles.filter(a => {
             const keywords = a.keywords ? a.keywords.toLowerCase() : '';
@@ -54,12 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 || a.summary.toLowerCase().includes(q)
                 || keywords.includes(q);
         }).slice(0, 8);
-        
+
         if (matches.length === 0) {
             searchResults.innerHTML = '<div class="nav-search-empty">未找到匹配的笔记</div>';
             return;
         }
-        
+
         searchResults.innerHTML = matches.map(a => `
             <a href="${a.file}" class="nav-search-result" onclick="document.getElementById('nav-search-dropdown').style.display='none'">
                 <div class="nsr-title">${highlight(a.title, query)}</div>
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </a>
         `).join('');
     }
-    
+
     function highlight(text, query) {
         if (!query) return text;
         const idx = text.toLowerCase().indexOf(query.toLowerCase());
@@ -80,25 +80,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const now = Date.now();
         const DAY_MS = 86400000;
         const seen = JSON.parse(localStorage.getItem('nav_seen') || '{}');
-        
-        // 速报：最近一条是否在最后访问之后
+
+        // 速报:最近一条是否在最后访问之后
         if (typeof newsItems !== 'undefined' && newsItems.length > 0) {
             const latest = new Date(newsItems[0].date).getTime();
             const lastSeen = seen.news || 0;
             const dot = document.querySelector('.nav-dot[data-section="news"]');
             if (dot) dot.classList.toggle('show', latest > lastSeen);
         }
-        
-        // 标的追踪：更新快速卡片数量
+
+        // 标的追踪:更新快速卡片数量
         if (typeof trackingData !== 'undefined') {
             const aList = trackingData['a-shares'] || [];
             const usList = trackingData['us-stocks'] || [];
             const aCard = document.querySelector('.track-quick-card[data-mkt="a"] .tqc-sub');
             const usCard = document.querySelector('.track-quick-card[data-mkt="us"] .tqc-sub');
             if (aCard) aCard.textContent = aList.length + '只标的';
-            if (usCard) usCard.textContent = usSectors.length + '个板块，' + usList.length + '只标的';
+            if (usCard) usCard.textContent = usSectors.length + '个板块,' + usList.length + '只标的';
         }
-        // 标的追踪：最近更新是否在最后访问之后
+        // 标的追踪:最近更新是否在最后访问之后
         if (typeof trackingData !== 'undefined') {
             const allStocks = [...(trackingData['a-shares'] || []), ...(trackingData['us-stocks'] || [])];
             const dates = allStocks.map(s => new Date(s.lastUpdated).getTime()).filter(d => !isNaN(d));
@@ -109,8 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (dot) dot.classList.toggle('show', latest > lastSeen);
             }
         }
-        
-        // 笔记：最近文章日期
+
+        // 笔记:最近文章日期
         if (typeof articles !== 'undefined' && articles.length > 0) {
             const dates = articles.map(a => new Date(a.date).getTime()).filter(d => !isNaN(d));
             if (dates.length > 0) {
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-    
+
     // Mark section as seen on click
     document.querySelectorAll('.nav-links a[href]').forEach(a => {
         a.addEventListener('click', () => {
@@ -135,9 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (dot) dot.classList.remove('show');
         });
     });
-    
+
     updateNavDots();
-    
+
     // Re-check after page fully loads (data might arrive late)
     setTimeout(updateNavDots, 500);
 
@@ -239,9 +239,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!a.pinned && b.pinned) return 1;
             return new Date(b.date) - new Date(a.date);
         });
-        
+
         if (filtered.length === 0) {
-            notesEl.innerHTML = '<div class="empty-notes">暂无内容，持续更新中。</div>';
+            notesEl.innerHTML = '<div class="empty-notes">暂无内容,持续更新中。</div>';
             return;
         }
 
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span>${a.tags.map(t => {
                         // Make stock-name tags clickable → jump to tracking
                         const stockId = findStockIdByTag(t);
-                        return stockId 
+                        return stockId
                             ? `<span class="tag-stock-link" onclick="event.preventDefault();event.stopPropagation();openStockTracking('${stockId}')">${t}</span>`
                             : t;
                     }).join(' · ')}</span>
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         renderNotes('all');
-        
+
         // Category notification dots
         if (typeof articles !== 'undefined') {
             const catSeen = JSON.parse(localStorage.getItem('cat_seen') || '{}');
@@ -314,30 +314,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const frameworksEl = document.getElementById('frameworks-list');
     if (frameworksEl) {
         const frameworks = [
-            { 
+            {
                 num: '01', title: '公司研究框架',
                 items: [
-                    '卖什么 → 卖给谁（产品定位与客户画像）',
-                    '为什么持续买（复购逻辑 / 护城河）',
-                    '怎么收钱（现金流质量）',
-                    '市场在交易什么（当前price in了什么预期）',
+                    '卖什么 → 卖给谁(产品定位与客户画像)',
+                    '为什么持续买(复购逻辑 / 护城河)',
+                    '怎么收钱(现金流质量)',
+                    '市场在交易什么(当前price in了什么预期)',
                     '未来 12-24 个月验证点',
                 ]
             },
-            { 
+            {
                 num: '02', title: '财务分析框架',
                 items: [
                     '利润是否被现金撑住',
                     '营运资本是否健康',
                     '产能是否在扩张',
-                    '扩张是否有危险（供过于求风险）',
+                    '扩张是否有危险(供过于求风险)',
                 ]
             },
-            { 
+            {
                 num: '03', title: '产业趋势判断',
-                desc: 'Follow the Money：巨头CapEx → 供应链订单 → 产能扩张 → 上游涨价 → 设备交期拉长 → 财报指引上修 → 客户认证加速。'
+                desc: 'Follow the Money:巨头CapEx → 供应链订单 → 产能扩张 → 上游涨价 → 设备交期拉长 → 财报指引上修 → 客户认证加速。'
             },
-            { 
+            {
                 num: '04', title: 'A 股题材框架',
                 link: '/articles/a-share-framework/',
                 items: [
@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     '退潮',
                 ]
             },
-            { 
+            {
                 num: '05', title: '交易纪律框架',
                 items: [
                     '不熟不重仓',
@@ -358,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     '趋势破位先尊重盘面',
                     '好公司也要有好价格',
                 ],
-                desc: '三类资产（0→1 / 1→100 / 供需失衡）对应不同的买卖点与风控规则。'
+                desc: '三类资产(0→1 / 1→100 / 供需失衡)对应不同的买卖点与风控规则。'
             },
         ];
         frameworksEl.innerHTML = frameworks.map(f => {
@@ -368,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ${f.desc ? `<p class="fw-desc">${f.desc}</p>` : ''}
                 ${f.items ? `<ul class="fw-list">${f.items.map(i => `<li>${i}</li>`).join('')}</ul>` : ''}
             `;
-            return f.link 
+            return f.link
                 ? `<a href="${f.link}" class="framework-card" style="text-decoration:none;color:inherit">${card}<span class="fw-arrow">→</span></a>`
                 : `<div class="framework-card">${card}</div>`;
         }).join('');
@@ -418,18 +418,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (summary) summary.innerHTML = '';
             return;
         }
-        
+
         // US stocks: filter by sector
         if (market === 'us' && currentSector) {
             stocks = stocks.filter(s => s.usSector === currentSector);
         }
-        
+
         if (stocks.length === 0) {
             grid.innerHTML = '<div class="trk-empty">该分类下暂无可展示的标的</div>';
             if (summary) summary.innerHTML = '<div class="trk-summary-inner">共 0 只标的</div>';
             return;
         }
-        
+
         // Summary bar
         if (summary) {
             const total = stocks.length;
@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const hasLogic = s.investmentLogic !== null;
             const catalystCount = s.catalysts ? s.catalysts.length : 0;
             const hasPlan = s.operationPlan !== null;
-            const status = s.trackingStatus || (s.investmentLogic ? s.investmentLogic.status : '—');
+            const status = s.trackingStatus || (s.investmentLogic ? s.investmentLogic.status : '-');
             const isHolding = s.trackingStatus && (s.trackingStatus.includes('持有') || s.trackingStatus.includes('底仓'));
             return `
             <div class="trk-card${isHolding ? ' trk-card-holding' : ''}" data-id="${s.id}" data-mkt="${market}">
@@ -498,7 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ---- US Stock Sector Tabs ----
     let currentSector = null;
-    
+
     function renderSectorTabs() {
         const container = document.getElementById('trk-sector-tabs');
         if (!container) return;
@@ -506,7 +506,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="trk-sector-tab ${currentSector === s ? 'active' : ''}" data-sector="${s}" style="--sector-color:${US_SECTOR_COLORS[s] || '#6b6b80'}">${s}</span>
         `).join('');
         container.style.display = 'flex';
-        
+
         container.querySelectorAll('.trk-sector-tab').forEach(el => {
             el.addEventListener('click', () => {
                 container.querySelectorAll('.trk-sector-tab').forEach(t => t.classList.remove('active'));
@@ -516,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-    
+
     // ---- Tracking Tabs ----
     const tabs = document.querySelectorAll('.trk-tab');
     const sectorContainer = document.getElementById('trk-sector-tabs');
@@ -541,7 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =====================================================
-    // Drawer — 投资逻辑 · 催化剂看板 · 操作计划
+    // Drawer - 投资逻辑 · 催化剂看板 · 操作计划
     // =====================================================
 
     function renderInvestmentLogic(logic) {
@@ -550,15 +550,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3><span class="sec-icon">📋</span> 投资逻辑</h3>
                 <div class="trk-empty-data">暂未填写</div>
             </div>`;
-        
-        const coreReasons = Array.isArray(logic.coreReason) 
-            ? logic.coreReason.map((r, i) => `<strong>${i+1}.</strong> ${r}`).join('<br>') 
+
+        const coreReasons = Array.isArray(logic.coreReason)
+            ? logic.coreReason.map((r, i) => `<strong>${i+1}.</strong> ${r}`).join('<br>')
             : logic.coreReason;
-        
+
         const questions = Array.isArray(logic.questionsToVerify)
             ? logic.questionsToVerify.map(q => `<li>${q}</li>`).join('')
             : logic.questionsToVerify;
-        
+
         return `
             <div class="trk-detail-section">
                 <h3><span class="sec-icon">📋</span> 投资逻辑</h3>
@@ -581,7 +581,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="trk-logic-item" style="grid-column:1/-1">
                         <div class="label">逻辑有效期</div>
-                        <div class="value">${logic.validUntil || '—'}${logic.validNote ? `<br><span style="font-size:12px;color:var(--text-muted);margin-top:4px;display:inline-block">${logic.validNote}</span>` : ''}</div>
+                        <div class="value">${logic.validUntil || '-'}${logic.validNote ? `<br><span style="font-size:12px;color:var(--text-muted);margin-top:4px;display:inline-block">${logic.validNote}</span>` : ''}</div>
                     </div>
                     <div class="trk-logic-item full">
                         <div class="label">需要验证的问题</div>
@@ -635,7 +635,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3><span class="sec-icon">💰</span> 估值分析</h3>
                 <div class="trk-empty-data">暂未填写</div>
             </div>`;
-        
+
         const rows = val.tiers ? val.tiers.map(t => `
             <tr>
                 <td class="trk-val-tier">${t.label}</td>
@@ -644,12 +644,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td class="trk-val-desc">${t.logic}</td>
             </tr>
         `).join('') : '';
-        
+
         return `
             <div class="trk-detail-section">
                 <h3><span class="sec-icon">💰</span> 估值分析</h3>
                 <div style="margin-bottom:12px">
-                    <span style="font-size:12px;color:var(--text-muted)">PE(TTM) ${val.peTTM || '—'} · PE(Fwd) ${val.peForward || '—'} · PB ${val.pb || '—'} · 总市值 ${val.marketCap || '—'}</span>
+                    <span style="font-size:12px;color:var(--text-muted)">PE(TTM) ${val.peTTM || '-'} · PE(Fwd) ${val.peForward || '-'} · PB ${val.pb || '-'} · 总市值 ${val.marketCap || '-'}</span>
                 </div>
                 ${rows ? `
                 <div class="trk-val-table-wrap">
@@ -686,11 +686,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3><span class="sec-icon">🎯</span> 操作计划</h3>
                 <div class="trk-empty-data">暂未填写</div>
             </div>`;
-        
+
         const buyHtml = Array.isArray(plan.buyPlan)
             ? `<ul style="margin:4px 0 0;padding-left:16px;font-size:13px;color:var(--text-secondary);line-height:1.6">${plan.buyPlan.map(b => `<li>${b}</li>`).join('')}</ul>`
-            : plan.buyPlan || '—';
-        
+            : plan.buyPlan || '-';
+
         return `
             <div class="trk-detail-section">
                 <h3><span class="sec-icon">🎯</span> 操作计划</h3>
@@ -705,15 +705,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="trk-plan-item">
                         <div class="label">加仓条件</div>
-                        <div class="value">${plan.addConditions || '—'}</div>
+                        <div class="value">${plan.addConditions || '-'}</div>
                     </div>
                     <div class="trk-plan-item">
                         <div class="label">减仓条件</div>
-                        <div class="value">${plan.reduceConditions || '—'}</div>
+                        <div class="value">${plan.reduceConditions || '-'}</div>
                     </div>
                     <div class="trk-plan-item" style="grid-column:1/-1">
                         <div class="label">逻辑破坏条件</div>
-                        <div class="value">${plan.invalidateConditions || '—'}</div>
+                        <div class="value">${plan.invalidateConditions || '-'}</div>
                     </div>
                     ${optStrategy ? `
                     <div class="trk-plan-item" style="grid-column:1/-1">
@@ -725,9 +725,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =====================================================
-    // US Stock Drawer — 基本面验证系统
+    // US Stock Drawer - 基本面验证系统
     // =====================================================
-    
+
     function renderExpectedDiff(ed) {
         if (!ed) return '';
         return `
@@ -757,7 +757,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>`;
     }
-    
+
     function renderKeyMetrics(metrics) {
         if (!metrics || metrics.length === 0) return '';
         return `
@@ -783,16 +783,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>`;
     }
-    
+
     function renderMarketTrading(mt) {
         if (!mt) return '';
         return `
             <div class="trk-detail-section">
                 <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;background:var(--bg-alt);padding:12px 14px;border-radius:8px;border-left:3px solid var(--accent)">
-                    <strong style="color:var(--text)">市场正在交易：</strong><br>${mt}</p>
+                    <strong style="color:var(--text)">市场正在交易:</strong><br>${mt}</p>
             </div>`;
     }
-    
+
     function renderOptionStrategy(os) {
         if (!os) return '';
         return `
@@ -801,7 +801,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="value" style="font-size:12px">${os}</div>
             </div>`;
     }
-    
+
     function openDrawer(id, market) {
         const overlay = document.getElementById('trk-drawer-overlay');
         const drawer = document.getElementById('trk-drawer');
@@ -832,7 +832,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (s.accountPosition) badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500;background:#8b5cf615;color:#8b5cf6">${s.accountPosition}</span>`);
         if (s.ahShare) badges.push(`<span style="display:inline-block;padding:1px 8px;border-radius:8px;font-size:10px;font-weight:600;background:#8b5cf615;color:#8b5cf6;border:1px solid #8b5cf640">A+H 港股:${s.ahShare}</span>`);
         if (s.themeTags) badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:400;background:var(--bg-alt);color:var(--text-muted)">${s.themeTags}</span>`);
-        
+
         content.innerHTML = `
             <div class="trk-detail-header">
                 <div class="name-row">
@@ -852,11 +852,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="margin-top:6px;font-size:12px;color:var(--text-muted)">${s.sector} · 最后更新 ${s.lastUpdated}</div>
             </div>
 
-            <!-- 概览 — 一句话快照 -->
+            <!-- 概览 - 一句话快照 -->
             <div class="trk-detail-section">
                 <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;background:var(--bg-alt);padding:12px 14px;border-radius:8px;">
                     ${s.reason}<br>
-                    <span style="color:var(--text-muted)">策略：${s.strategy}</span>
+                    <span style="color:var(--text-muted)">策略:${s.strategy}</span>
                 </p>
             </div>
 
@@ -925,11 +925,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="nf-detail" id="nf-detail-${idx}" style="display:none">
                     <p>${n.detail}</p>
-                    ${n.source ? `<p style="color:var(--text-muted);font-size:11px;margin-top:4px">来源：${n.source}</p>` : ''}
+                    ${n.source ? `<p style="color:var(--text-muted);font-size:11px;margin-top:4px">来源:${n.source}</p>` : ''}
                 </div>
             `;
         }).join('');
-        
+
         // Click to expand
         // Click row to expand/collapse
         newsList.querySelectorAll('.nf-row').forEach(el => {
@@ -944,7 +944,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-        
+
         // Stock tag clicks → navigate to tracking drawer
         document.querySelectorAll('.nf-stock').forEach(el => {
             el.addEventListener('click', function(e) {
@@ -1014,14 +1014,14 @@ if (updatesList && typeof updateLog !== 'undefined') {
             '财报分析':'#f59e0b','产业研究':'#06b6d4'
         };
         const typeColor = typeColors[u.type] || '#6b6b80';
-        
+
         // Status badge
         const statusColors = {
             '继续跟踪':'#22c55e15,#22c55e','已归档':'#6b6b8015,#6b6b80','长期框架':'#8b5cf615,#8b5cf6'
         };
         const sc = statusColors[u.status] || '#6b6b8015,#6b6b80';
         const [sbg, scl] = sc.split(',');
-        
+
         return `
             <div class="up-row">
                 <span class="up-date">${u.date.slice(5)}</span>
@@ -1040,44 +1040,76 @@ if (obsEl && typeof dailyObservation !== 'undefined') {
     const o = dailyObservation;
     document.getElementById('obs-date').textContent = o.date;
     
-    // 今日总判断
-    const verdictEl = document.getElementById('obs-verdict');
-    if (verdictEl) {
-        verdictEl.innerHTML = `
-            <div class="obs-verdict-badge" style="background:#f59e0b15;color:#f59e0b;border:1px solid #f59e0b30">${o.environment}</div>
-            <div class="obs-verdict-text">${o.verdict}</div>
+    // Regime colors
+    const regimeColors = {
+        'Risk-on': '#22c55e', '中性': '#3b82f6', '中性偏防御': '#f59e0b', 'Risk-off': '#ef4444'
+    };
+    const regimeColor = regimeColors[o.regime] || '#6b6b80';
+    
+    // 总状态 + 一句话总结
+    const topEl = document.getElementById('obs-top');
+    if (topEl) {
+        topEl.innerHTML = `
+            <div class="obs-top-row">
+                <span class="obs-regime" style="background:${regimeColor}15;color:${regimeColor};border:1px solid ${regimeColor}30">${o.regime}</span>
+            </div>
+            <div class="obs-summary-text">${o.summary}</div>
         `;
     }
     
-    // 全球资产状态
-    const assetsTbody = document.querySelector('#obs-assets tbody');
-    if (assetsTbody) {
-        assetsTbody.innerHTML = o.assets.map(a => {
-            const isNeg = a.status.includes('偏弱') || a.status.includes('回调') || a.status.includes('未确认') || a.status.includes('上行');
-            const statusColor = a.status.includes('偏强') || a.status.includes('上行') ? '#ef4444' :
-                               a.status.includes('偏弱') || a.status.includes('回调') ? '#22c55e' :
-                               '#f59e0b';
-            return `<tr><td>${a.name}</td><td style="color:${statusColor};font-weight:500">${a.status}</td><td class="obs-td-muted">${a.meaning}</td></tr>`;
-        }).join('');
+    // 四类资产表现
+    const groupsEl = document.getElementById('obs-asset-groups');
+    if (groupsEl) {
+        const dirIcon = { up: '\u2191', down: '\u2193', neutral: '\u2192' };
+        const dirColor = { up: '#ef4444', down: '#22c55e', neutral: '#f59e0b' };
+        groupsEl.innerHTML = o.assetGroups.map(g => `
+            <div class="obs-asset-group">
+                <div class="obs-group-label">${g.label}</div>
+                <div class="obs-group-items">
+                    ${g.items.map(i => `
+                        <span class="obs-asset-item">
+                            <span class="obs-asset-name">${i.name}</span>
+                            <span class="obs-asset-change" style="color:${dirColor[i.direction]}">${dirIcon[i.direction]} ${i.change}</span>
+                        </span>
+                    `).join('')}
+                </div>
+            </div>
+        `).join('');
     }
     
-    // 今日交易模式
-    const summaryEl = document.getElementById('obs-trading-summary');
-    if (summaryEl) summaryEl.textContent = o.tradingMode.summary;
-    const aShareEl = document.getElementById('obs-ashare');
-    if (aShareEl) aShareEl.textContent = o.tradingMode.aShare;
-    const usStockEl = document.getElementById('obs-usstock');
-    if (usStockEl) usStockEl.textContent = o.tradingMode.usStock;
+    // 下一交易日提示
+    const nextEl = document.getElementById('obs-next-grid');
+    if (nextEl) {
+        nextEl.innerHTML = `
+            <div class="obs-next-card">
+                <div class="obs-next-label">\u{1F1E8}\u{1F1F3} A\u80A1</div>
+                <div class="obs-next-text">${o.nextSession.aShare}</div>
+            </div>
+            <div class="obs-next-card">
+                <div class="obs-next-label">\u{1F1FA}\u{1F1F8} \u7F8E\u80A1</div>
+                <div class="obs-next-text">${o.nextSession.usStock}</div>
+            </div>
+            <div class="obs-next-card obs-next-risk">
+                <div class="obs-next-label">\u26A0\uFE0F \u98CE\u9669</div>
+                <div class="obs-next-text">${o.nextSession.risk}</div>
+            </div>
+        `;
+    }
     
-    // 今日机会
-    const oppsEl = document.getElementById('obs-opps');
-    if (oppsEl) oppsEl.innerHTML = o.opportunities.map(t => `<li>${t}</li>`).join('');
-    
-    // 今日风险
-    const risksEl = document.getElementById('obs-risks');
-    if (risksEl) risksEl.innerHTML = o.risks.map(t => `<li>${t}</li>`).join('');
-    
-
+    // 历史回看
+    const hindsightEl = document.getElementById('obs-hindsight');
+    if (hindsightEl && o.hindsight) {
+        const resultColors = { '\u5DF2\u9A8C\u8BC1': '#22c55e', '\u90E8\u5206\u9A8C\u8BC1': '#f59e0b', '\u672A\u9A8C\u8BC1': '#ef4444' };
+        const rc = resultColors[o.hindsight.verdictResult] || '#6b6b80';
+        hindsightEl.innerHTML = `
+            <div class="obs-hindsight-header">
+                <span class="obs-hindsight-icon">\u{1F504}</span>
+                <span class="obs-hindsight-title">\u6628\u65E5\u5224\u65AD\u56DE\u770B</span>
+                <span class="obs-hindsight-result" style="background:${rc}15;color:${rc};border:1px solid ${rc}30">${o.hindsight.verdictResult}</span>
+            </div>
+            <div class="obs-hindsight-text">${o.hindsight.verdict}</div>
+        `;
+    }
     
     obsEl.style.display = 'block';
 }
@@ -1087,10 +1119,10 @@ const calGrid = document.getElementById('cal-grid');
 
 function renderCalendar(filter = 'all') {
     if (!calGrid || typeof calendarEvents === 'undefined') return;
-    
+
     const sorted = [...calendarEvents].sort((a, b) => a.date.localeCompare(b.date));
     const now = new Date().toISOString().slice(0,10);
-    
+
     // Determine which events to show
     let filtered = sorted;
     if (filter === '本周') {
@@ -1114,19 +1146,19 @@ function renderCalendar(filter = 'all') {
     } else if (filter !== 'all') {
         filtered = sorted.filter(e => e.type === filter);
     }
-    
+
     const typeColors = {
         '财报':'#2d6cff','产品':'#22c55e','会议':'#8b5cf6','产能':'#06b6d4','订单':'#f59e0b','监管':'#ef4444','发射':'#1e40af','宏观':'#dc2626','IPO':'#e11d48'
     };
     const statusColors = {
         '等待验证':'#f59e0b15,#f59e0b','预期升温':'#3b82f615,#3b82f6','已验证':'#22c55e15,#22c55e','不及预期':'#ef444415,#ef4444','待复盘':'#8b5cf615,#8b5cf6'
     };
-    
+
     if (filtered.length === 0) {
         calGrid.innerHTML = '<div style="color:var(--text-muted);text-align:center;padding:24px;grid-column:1/-1;font-size:13px">该分类暂无事件</div>';
         return;
     }
-    
+
     calGrid.innerHTML = filtered.map(e => {
         // Countdown
         let countdown = '';
@@ -1142,9 +1174,9 @@ function renderCalendar(filter = 'all') {
         } else {
             countdown = e.date.includes('H') ? '6个月' : e.date.includes('Q') ? '季度' : '';
         }
-        
+
         const sc = (statusColors[e.status]||'#6b6b8015,#6b6b80').split(',');
-        
+
         return `
             <div class="cal-card ${e.topPriority && filter === 'all' ? 'cal-card-top' : ''}">
                 <div class="cal-top">
@@ -1155,9 +1187,9 @@ function renderCalendar(filter = 'all') {
                 <div class="cal-title">${e.title}</div>
                 <div class="cal-stocks">${e.stocks}</div>
                 <div class="cal-sec">
-                    <strong>市场预期：</strong>${e.marketExpect}<br>
-                    <strong>核心验证：</strong>${e.verifyPoint}<br>
-                    <strong>影响路径：</strong>${e.impactPath}
+                    <strong>市场预期:</strong>${e.marketExpect}<br>
+                    <strong>核心验证:</strong>${e.verifyPoint}<br>
+                    <strong>影响路径:</strong>${e.impactPath}
                 </div>
                 <div class="cal-bottom">
                     <span class="cal-status" style="background:${sc[0]};color:${sc[1]}">${e.status}</span>

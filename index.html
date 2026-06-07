@@ -63,55 +63,29 @@
         <div class="container" style="padding:24px 24px 0">
             <div id="daily-obs" style="display:none">
                 <div class="obs-header">
-                    <span class="obs-badge">💡 交易环境雷达</span>
+                    <span class="obs-badge obs-badge-radar">📡 交易环境雷达</span>
                     <span class="obs-date" id="obs-date"></span>
                 </div>
 
-                <!-- 今日总判断 -->
-                <div class="obs-verdict" id="obs-verdict"></div>
+                <!-- 总状态 + 一句话总结 -->
+                <div class="obs-top" id="obs-top"></div>
 
-                <!-- 全球资产状态 -->
+                <!-- 四类资产表现 -->
                 <div class="obs-section">
-                    <div class="obs-section-title">🌍 全球资产状态</div>
-                    <div class="obs-table-wrap">
-                        <table class="obs-table" id="obs-assets">
-                            <thead><tr><th>资产/变量</th><th>当前状态</th><th>交易含义</th></tr></thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
+                    <div class="obs-section-title">🌍 资产表现</div>
+                    <div class="obs-asset-groups" id="obs-asset-groups"></div>
                 </div>
 
-                <!-- 今日交易模式 -->
+                <!-- 下一交易日提示 -->
                 <div class="obs-section">
-                    <div class="obs-section-title">📋 今日交易模式</div>
-                    <div class="obs-summary" id="obs-trading-summary"></div>
-                    <div class="obs-mode-grid">
-                        <div class="obs-mode-card">
-                            <div class="obs-mode-flag">🇨🇳</div>
-                            <div class="obs-mode-content" id="obs-ashare"></div>
-                        </div>
-                        <div class="obs-mode-card">
-                            <div class="obs-mode-flag">🇺🇸</div>
-                            <div class="obs-mode-content" id="obs-usstock"></div>
-                        </div>
-                    </div>
+                    <div class="obs-section-title">📋 下一交易日</div>
+                    <div class="obs-next-grid" id="obs-next-grid"></div>
                 </div>
 
-                <!-- 今日机会 / 风险 -->
+                <!-- 历史回看 -->
                 <div class="obs-section">
-                    <div class="obs-two-col">
-                        <div class="obs-half">
-                            <div class="obs-half-title obs-opp-title">🟢 今日机会</div>
-                            <ul class="obs-list" id="obs-opps"></ul>
-                        </div>
-                        <div class="obs-half">
-                            <div class="obs-half-title obs-risk-title">🔴 今日风险</div>
-                            <ul class="obs-list" id="obs-risks"></ul>
-                        </div>
-                    </div>
+                    <div class="obs-hindsight" id="obs-hindsight"></div>
                 </div>
-
-
             </div>
         </div>
 
