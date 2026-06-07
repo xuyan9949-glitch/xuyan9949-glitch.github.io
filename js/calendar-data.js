@@ -6,6 +6,18 @@
 
 const calendarEvents = [
   {
+    date: "2026-06-12",
+    title: "SpaceX IPO 上市",
+    type: "IPO",
+    stocks: "SpaceX / RKLB / ASTS / 太空概念",
+    importance: "极高",
+    status: "等待验证",
+    marketExpect: "传闻6月12日上市，SpaceX估值或超3000亿美元",
+    verifyPoint: "上市日期是否确认、发行定价、市场反应",
+    impactPath: "若成功上市，可能重塑太空经济板块估值体系，RKLB/ASTS或面临比价压力或联动上涨",
+    topPriority: true,
+  },
+  {
     date: "2026-06-16",
     title: "FOMC 利率决议（6月会议·含新闻发布会）",
     type: "宏观",
@@ -57,7 +69,7 @@ const calendarEvents = [
 
 // 近期最重要三件事
 const topThree = [
+  { date: "2026-06-12", title: "SpaceX IPO上市：太空板块估值重塑", stocks: "SpaceX / RKLB / ASTS" },
   { date: "2026-06-16", title: "FOMC利率决议：点阵图决定Q3方向", stocks: "QQQ / 10Y" },
   { date: "2026-06-25", title: "MU财报 + GTC中国站：AI链核心验证日", stocks: "MU / NVDA / LITE / COHR" },
-  { date: "2026-06中旬", title: "ASTS发射：卫星部署节奏验证", stocks: "ASTS" },
 ];
