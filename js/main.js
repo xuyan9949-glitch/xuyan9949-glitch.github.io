@@ -833,7 +833,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const c = colors[s.logicStatus] || '#6b6b80';
             badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500;background:${c}15;color:${c}">${s.logicStatus}</span>`);
         }
-        if (s.priority) badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:600;background:#ef444415;color:#ef4444">优先级:${s.priority}</span>`);
         if (s.accountPosition) badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500;background:#8b5cf615;color:#8b5cf6">${s.accountPosition}</span>`);
         if (s.ahShare) badges.push(`<span style="display:inline-block;padding:1px 8px;border-radius:8px;font-size:10px;font-weight:600;background:#8b5cf615;color:#8b5cf6;border:1px solid #8b5cf640">A+H 港股:${s.ahShare}</span>`);
         if (s.themeTags) badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:400;background:var(--bg-alt);color:var(--text-muted)">${s.themeTags}</span>`);
