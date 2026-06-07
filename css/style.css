@@ -1066,11 +1066,11 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
     color: var(--text-secondary);
 }
 
-/* ---- 四类资产表现 ---- */
+/* ---- 四类资产表现 (table) ---- */
 .obs-asset-groups {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    display: flex; flex-direction: column; gap: 10px;
 }
-.obs-asset-group {
+.obs-asset-group-wide {
     padding: 12px 14px;
     background: var(--bg-card); border: 1px solid var(--border);
     border-radius: 8px;
@@ -1081,19 +1081,30 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
     margin-bottom: 8px;
     text-transform: uppercase; letter-spacing: .3px;
 }
-.obs-group-items {
-    display: flex; flex-direction: column; gap: 4px;
+.obs-group-table-wrap {
+    overflow-x: auto;
 }
-.obs-asset-item {
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 13px;
+.obs-astable {
+    width: 100%; border-collapse: collapse;
+    font-size: 12px;
 }
-.obs-asset-name {
+.obs-astable th {
+    text-align: left; padding: 4px 8px;
+    font-weight: 600; font-size: 10px; color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+.obs-astable td {
+    padding: 4px 8px;
+    border-bottom: 1px solid var(--border);
     color: var(--text);
+    vertical-align: top;
 }
-.obs-asset-change {
-    font-weight: 500; font-size: 12px;
-}
+.obs-astable tr:last-child td { border-bottom: none; }
+.obs-at-name { font-weight: 500; }
+.obs-at-close { font-variant-numeric: tabular-nums; }
+.obs-at-struct { color: var(--text-secondary); }
+.obs-at-meaning { color: var(--text-secondary); }
 
 /* ---- 下一交易日 ---- */
 .obs-next-grid {
@@ -1116,34 +1127,7 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
     color: var(--text-secondary);
 }
 
-/* ---- 历史回看 ---- */
-.obs-hindsight {
-    padding: 14px 16px;
-    background: #f59e0b04; border: 1px solid #f59e0b15;
-    border-radius: 10px;
-}
-.obs-hindsight-header {
-    display: flex; align-items: center; gap: 8px;
-    margin-bottom: 8px;
-}
-.obs-hindsight-icon {
-    font-size: 14px;
-}
-.obs-hindsight-title {
-    font-size: 12px; font-weight: 600; color: var(--text);
-}
-.obs-hindsight-result {
-    font-size: 10px; font-weight: 600;
-    padding: 1px 8px; border-radius: 10px;
-    margin-left: auto;
-}
-.obs-hindsight-text {
-    font-size: 13px; line-height: 1.7;
-    color: var(--text-secondary);
-}
-
 @media (max-width: 640px) {
-    .obs-asset-groups,
     .obs-next-grid { grid-template-columns: 1fr; }
 }
 /* ---- 逻辑验证日历 ---- */

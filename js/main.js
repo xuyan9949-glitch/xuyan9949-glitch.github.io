@@ -1046,32 +1046,52 @@ if (obsEl && typeof dailyObservation !== 'undefined') {
     };
     const regimeColor = regimeColors[o.regime] || '#6b6b80';
     
-    // 总状态 + 一句话总结
+    // 环境评级 + 一句话判断
     const topEl = document.getElementById('obs-top');
     if (topEl) {
         topEl.innerHTML = `
             <div class="obs-top-row">
-                <span class="obs-regime" style="background:${regimeColor}15;color:${regimeColor};border:1px solid ${regimeColor}30">${o.regime}</span>
+                <span class="obs-regime" style="background:${regimeColor}15;color:${regimeColor};border:1px solid ${regimeColor}30">${o.regime} → ${o.regimeDetail}</span>
             </div>
             <div class="obs-summary-text">${o.summary}</div>
         `;
     }
     
-    // 四类资产表现
+    // Level colors for severity
+    const levelColors = {
+        '极端大跌': '#ef4444', '极端杀估值': '#dc2626', '风险偏弱': '#f59e0b',
+        '明显走弱': '#ef4444', '偏弱': '#f59e0b', '普通回调': '#3b82f6',
+        '明显逆风': '#ef4444', '流动性收紧': '#dc2626',
+        '避险升温': '#f59e0b', '中性': '#6b6b80',
+    };
+    
+    // 四类资产表现 (tables)
     const groupsEl = document.getElementById('obs-asset-groups');
     if (groupsEl) {
-        const dirIcon = { up: '\u2191', down: '\u2193', neutral: '\u2192' };
-        const dirColor = { up: '#ef4444', down: '#22c55e', neutral: '#f59e0b' };
         groupsEl.innerHTML = o.assetGroups.map(g => `
-            <div class="obs-asset-group">
+            <div class="obs-asset-group obs-asset-group-wide">
                 <div class="obs-group-label">${g.label}</div>
-                <div class="obs-group-items">
-                    ${g.items.map(i => `
-                        <span class="obs-asset-item">
-                            <span class="obs-asset-name">${i.name}</span>
-                            <span class="obs-asset-change" style="color:${dirColor[i.direction]}">${dirIcon[i.direction]} ${i.change}</span>
-                        </span>
-                    `).join('')}
+                <div class="obs-group-table-wrap">
+                    <table class="obs-astable">
+                        <thead><tr>
+                            <th>\u8D44\u4EA7</th>
+                            <th>\u6536\u76D8\u8868\u73B0</th>
+                            <th>\u76D8\u4E2D\u7ED3\u6784</th>
+                            <th>\u5F02\u5E38\u7EA7\u522B</th>
+                            <th>\u4EA4\u6613\u542B\u4E49</th>
+                        </tr></thead>
+                        <tbody>
+                            ${g.items.map(i => `
+                                <tr>
+                                    <td class="obs-at-name">${i.name}</td>
+                                    <td class="obs-at-close">${i.close}</td>
+                                    <td class="obs-at-struct">${i.structure}</td>
+                                    <td class="obs-at-level" style="color:${levelColors[i.level] || '#6b6b80'};font-weight:500">${i.level}</td>
+                                    <td class="obs-at-meaning">${i.meaning}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         `).join('');
@@ -1093,21 +1113,6 @@ if (obsEl && typeof dailyObservation !== 'undefined') {
                 <div class="obs-next-label">\u26A0\uFE0F \u98CE\u9669</div>
                 <div class="obs-next-text">${o.nextSession.risk}</div>
             </div>
-        `;
-    }
-    
-    // 历史回看
-    const hindsightEl = document.getElementById('obs-hindsight');
-    if (hindsightEl && o.hindsight) {
-        const resultColors = { '\u5DF2\u9A8C\u8BC1': '#22c55e', '\u90E8\u5206\u9A8C\u8BC1': '#f59e0b', '\u672A\u9A8C\u8BC1': '#ef4444' };
-        const rc = resultColors[o.hindsight.verdictResult] || '#6b6b80';
-        hindsightEl.innerHTML = `
-            <div class="obs-hindsight-header">
-                <span class="obs-hindsight-icon">\u{1F504}</span>
-                <span class="obs-hindsight-title">\u6628\u65E5\u5224\u65AD\u56DE\u770B</span>
-                <span class="obs-hindsight-result" style="background:${rc}15;color:${rc};border:1px solid ${rc}30">${o.hindsight.verdictResult}</span>
-            </div>
-            <div class="obs-hindsight-text">${o.hindsight.verdict}</div>
         `;
     }
     
