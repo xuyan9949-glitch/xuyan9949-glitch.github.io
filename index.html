@@ -18,11 +18,12 @@
             </a>
             <div class="nav-links">
                 <a href="/" class="active"><span class="nav-label">首页</span><span class="nav-en">Home</span></a>
+                <a href="#updates"><span class="nav-label">最近更新<span class="nav-dot" data-section="updates"></span></span><span class="nav-en">Updates</span></a>
+                <a href="#news"><span class="nav-label">市场速报<span class="nav-dot" data-section="news"></span></span><span class="nav-en">Market</span></a>
+                <a href="#tracking"><span class="nav-label">标的追踪<span class="nav-dot" data-section="tracking"></span></span><span class="nav-en">Tracking</span></a>
                 <a href="#research"><span class="nav-label">研究方向</span><span class="nav-en">Research</span></a>
                 <a href="#notes"><span class="nav-label">笔记</span><span class="nav-en">Notes</span></a>
                 <a href="#frameworks"><span class="nav-label">框架</span><span class="nav-en">Frameworks</span></a>
-                <a href="#tracking"><span class="nav-label">标的追踪<span class="nav-dot" data-section="tracking"></span></span><span class="nav-en">Tracking</span></a>
-                <a href="#news"><span class="nav-label">市场速报<span class="nav-dot" data-section="news"></span></span><span class="nav-en">Market</span></a>
                 <a href="#contact"><span class="nav-label">联系我</span><span class="nav-en">Contact</span></a>
             </div>
             <div class="nav-search" id="nav-search">
@@ -113,8 +114,48 @@
             </div>
         </section>
 
-        <!-- ====== Research Map ====== -->
+        <!-- ====== Tracking ====== -->
+        <section class="section section-alt" id="tracking">
+            <div class="container">
+                <div class="section-header">
+                    <div class="label">Stock Tracking</div>
+                    <h2>标的追踪</h2>
+                    <p>长线持有与波段操作的标的，每只独立维护资讯、财报与机构研判。</p>
+                </div>
 
+                <!-- 方向标签（快速定位）-->
+                <div class="trk-direction-tags">
+                    <span class="trk-direction-tag">存储·DRAM</span>
+                    <span class="trk-direction-tag">AI 算力·IREN/CBRS</span>
+                    <span class="trk-direction-tag">航天·RKLB/ASTS</span>
+                    <span class="trk-direction-tag">核电·CEG/OKLO</span>
+                    <span class="trk-direction-tag">加密·CRCL</span>
+                    <span class="trk-direction-tag">亚盘联动·KOSPI</span>
+                </div>
+
+                <!-- 市场分类 Tab -->
+                <div class="trk-tabs">
+                    <span class="trk-tab active" data-mkt="a">🇨🇳 A 股</span>
+                    <span class="trk-tab" data-mkt="us">🇺🇸 美股</span>
+                </div>
+                <div class="trk-sector-tabs" id="trk-sector-tabs" style="display:none"></div>
+
+                <!-- 状态统计条 -->
+                <div class="trk-summary" id="trk-summary"></div>
+
+                <!-- 标的卡片网格 -->
+                <div class="trk-grid" id="trk-grid"></div>
+            </div>
+        </section>
+
+        <!-- ====== Tracking Drawer ====== -->
+        <div class="trk-drawer-overlay" id="trk-drawer-overlay"></div>
+        <div class="trk-drawer" id="trk-drawer">
+            <div class="trk-drawer-inner">
+                <button class="trk-drawer-close" id="trk-drawer-close" aria-label="关闭">✕</button>
+                <div id="trk-drawer-content"></div>
+            </div>
+        </div>
 
         <section class="section" id="research">
             <div class="container">
@@ -165,49 +206,6 @@
         </section>
 
         <!-- ====== Stock Tracking ====== -->
-        <section class="section section-alt" id="tracking">
-            <div class="container">
-                <div class="section-header">
-                    <div class="label">Stock Tracking</div>
-                    <h2>标的追踪</h2>
-                    <p>长线持有与波段操作的标的，每只独立维护资讯、财报与机构研判。</p>
-                </div>
-
-                <!-- 方向标签（快速定位）-->
-                <div class="trk-direction-tags">
-                    <span class="trk-direction-tag">存储·DRAM</span>
-                    <span class="trk-direction-tag">AI 算力·IREN/CBRS</span>
-                    <span class="trk-direction-tag">航天·RKLB/ASTS</span>
-                    <span class="trk-direction-tag">核电·CEG/OKLO</span>
-                    <span class="trk-direction-tag">加密·CRCL</span>
-                    <span class="trk-direction-tag">亚盘联动·KOSPI</span>
-                </div>
-
-                <!-- 市场分类 Tab -->
-                <div class="trk-tabs">
-                    <span class="trk-tab active" data-mkt="a">🇨🇳 A 股</span>
-                    <span class="trk-tab" data-mkt="us">🇺🇸 美股</span>
-                </div>
-                <div class="trk-sector-tabs" id="trk-sector-tabs" style="display:none"></div>
-
-                <!-- 状态统计条 -->
-                <div class="trk-summary" id="trk-summary"></div>
-
-                <!-- 标的卡片网格 -->
-                <div class="trk-grid" id="trk-grid"></div>
-            </div>
-        </section>
-
-        <!-- ====== Tracking Drawer ====== -->
-        <div class="trk-drawer-overlay" id="trk-drawer-overlay"></div>
-        <div class="trk-drawer" id="trk-drawer">
-            <div class="trk-drawer-inner">
-                <button class="trk-drawer-close" id="trk-drawer-close" aria-label="关闭">✕</button>
-                <div id="trk-drawer-content"></div>
-            </div>
-        </div>
-
-    
         <!-- ====== Contact ====== -->
         <section class="section" id="contact">
             <div class="container">
