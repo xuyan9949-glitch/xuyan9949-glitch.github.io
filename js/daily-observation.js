@@ -42,19 +42,5 @@ const dailyObservation = {
     "利率继续上行，压制成长股估值",
   ],
 
-  // 关键验证点
-  checkpoints: [
-    { point: "SOX是否止跌",          result: "待观察", action: "不止跌则半导体降仓" },
-    { point: "BTC是否企稳",          result: "待观察", action: "不企稳则加密链不加仓" },
-    { point: "AI光互联是否强于指数",  result: "待观察", action: "强于指数才保留进攻观察" },
-    { point: "美债利率是否继续上行",  result: "待观察", action: "上行则不追成长股" },
-  ],
 
-  // 明日复盘清单
-  review: [
-    "今日风险判断是否兑现？",
-    "A股策略是否有效？",
-    "美股策略是否有效？",
-    "有没有因为情绪而违反交易计划？",
-  ],
 };

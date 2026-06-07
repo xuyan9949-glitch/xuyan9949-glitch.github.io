@@ -1077,19 +1077,7 @@ if (obsEl && typeof dailyObservation !== 'undefined') {
     const risksEl = document.getElementById('obs-risks');
     if (risksEl) risksEl.innerHTML = o.risks.map(t => `<li>${t}</li>`).join('');
     
-    // 关键验证点
-    const cpTbody = document.querySelector('#obs-checkpoints tbody');
-    if (cpTbody) {
-        cpTbody.innerHTML = o.checkpoints.map(c => {
-            const resultColor = c.result.includes('不') ? '#ef4444' : c.result.includes('是') ? '#22c55e' : '#f59e0b';
-            const actionColor = c.action.includes('降') || c.action.includes('不加') || c.action.includes('不追') ? '#ef444430' : '#22c55e30';
-            return `<tr><td>${c.point}</td><td style="color:${resultColor};font-weight:500">${c.result}</td><td>${c.action}</td></tr>`;
-        }).join('');
-    }
-    
-    // 明日复盘
-    const reviewEl = document.getElementById('obs-review');
-    if (reviewEl) reviewEl.innerHTML = o.review.map(q => `<li>${q}</li>`).join('');
+
     
     obsEl.style.display = 'block';
 }
