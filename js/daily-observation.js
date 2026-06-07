@@ -10,7 +10,7 @@
 //   日经225代理 -> EWJ.US  上证指数 -> 000001.SH
 //   恒生科技 -> HSTECH.HK  10Y美债代理 -> IEF.US
 //   DXY代理 -> UUP.US  黄金 -> GLD.US
-//   布伦特原油 -> BNO.US
+//   布伦特原油 -> USO.US
 //
 // IEF注意事项：价格与收益率反向，上行=收益率下行
 // ========================================
@@ -54,8 +54,8 @@ const dailyObservation = {
     {
       label: "商品与避险",
       items: [
-        { name: "GLD",      close: "396.24（-3.65%）", structure: "放量下跌",      level: "异常",   meaning: "保证金追缴抛售，非避险买盘" },
-        { name: "BNO",      close: "51.20（-2.44%）",  structure: "冲高回落",      level: "偏弱",   meaning: "需求担忧而非供给驱动" },
+        { name: "GLD（黄金）",      close: "396.24（-3.65%）", structure: "放量下跌",      level: "异常",   meaning: "保证金追缴抛售，非避险买盘" },
+        { name: "USO（美国原油）",      close: "133.02（-2.72%）",  structure: "冲高回落",      level: "偏弱",   meaning: "需求担忧而非供给驱动" },
       ],
     },
   ],
