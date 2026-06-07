@@ -989,3 +989,34 @@ function openStockTracking(stockId) {
         }
     }
 }
+
+// ---- 最近更新 ----
+const updatesList = document.getElementById('updates-list');
+if (updatesList && typeof updateLog !== 'undefined') {
+    const recent = updateLog.slice(0, 12);
+    updatesList.innerHTML = recent.map(u => {
+        // Type badge color
+        const typeColors = {
+            '市场速报':'#2d6cff','标的维护':'#22c55e','投资框架':'#8b5cf6',
+            '财报分析':'#f59e0b','产业研究':'#06b6d4'
+        };
+        const typeColor = typeColors[u.type] || '#6b6b80';
+        
+        // Status badge
+        const statusColors = {
+            '继续跟踪':'#22c55e15,#22c55e','已归档':'#6b6b8015,#6b6b80','长期框架':'#8b5cf615,#8b5cf6'
+        };
+        const sc = statusColors[u.status] || '#6b6b8015,#6b6b80';
+        const [sbg, scl] = sc.split(',');
+        
+        return `
+            <div class="up-row">
+                <span class="up-date">${u.date.slice(5)}</span>
+                <span class="up-type" style="background:${typeColor}15;color:${typeColor}">${u.type}</span>
+                <a href="${u.link}" class="up-title">${u.title}</a>
+                <span class="up-stocks">${u.stocks}</span>
+                <span class="up-status" style="background:${sbg};color:${scl}">${u.status}</span>
+            </div>
+        `;
+    }).join('');
+}

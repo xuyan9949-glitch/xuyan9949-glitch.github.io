@@ -958,3 +958,43 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
     background: var(--bg-alt); border-radius: var(--radius-md);
     border: 1px dashed var(--border);
 }
+
+/* ---- 最近更新 ---- */
+.updates-list {
+    display: flex; flex-direction: column; gap: 6px;
+}
+.up-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 12px; border-radius: 8px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    font-size: 13px; transition: all .15s;
+}
+.up-row:hover {
+    background: var(--bg-hover); border-color: var(--border-hover);
+}
+.up-date {
+    font-size: 11px; color: var(--text-muted); white-space: nowrap;
+    min-width: 36px; text-align: right;
+}
+.up-type {
+    font-size: 11px; font-weight: 500; padding: 1px 8px;
+    border-radius: 4px; white-space: nowrap;
+}
+.up-title {
+    flex: 1; color: var(--text); text-decoration: none;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.up-title:hover { color: var(--accent); }
+.up-stocks {
+    font-size: 11px; color: var(--text-muted); white-space: nowrap;
+    max-width: 180px; overflow: hidden; text-overflow: ellipsis;
+}
+.up-status {
+    font-size: 11px; font-weight: 500; padding: 1px 8px;
+    border-radius: 4px; white-space: nowrap;
+}
+@media (max-width: 640px) {
+    .up-row { flex-wrap: wrap; gap: 4px 8px; padding: 6px 10px; }
+    .up-stocks { display: none; }
+    .up-title { min-width: 0; }
+}
