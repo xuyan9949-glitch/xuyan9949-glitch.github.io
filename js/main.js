@@ -83,6 +83,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (dot) dot.classList.toggle('show', latest > lastSeen);
         }
         
+        // 标的追踪：更新快速卡片数量
+        if (typeof trackingData !== 'undefined') {
+            const aCount = (trackingData['a-shares'] || []).length;
+            const usCount = (trackingData['us-stocks'] || []).length;
+            const aCard = document.querySelector('.track-quick-card[data-mkt="a"] .tqc-sub');
+            const usCard = document.querySelector('.track-quick-card[data-mkt="us"] .tqc-sub');
+            if (aCard) aCard.textContent = aCount + '只标的';
+            if (usCard) usCard.textContent = usCount + '只标的';
+        }
         // 标的追踪：最近更新是否在最后访问之后
         if (typeof trackingData !== 'undefined') {
             const allStocks = [...(trackingData['a-shares'] || []), ...(trackingData['us-stocks'] || [])];
