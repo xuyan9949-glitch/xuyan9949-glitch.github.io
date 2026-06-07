@@ -454,13 +454,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const catalystCount = s.catalysts ? s.catalysts.length : 0;
             const hasPlan = s.operationPlan !== null;
             const status = s.trackingStatus || (s.investmentLogic ? s.investmentLogic.status : '—');
+            const isHolding = s.trackingStatus && (s.trackingStatus.includes('持有') || s.trackingStatus.includes('底仓'));
             return `
-            <div class="trk-card" data-id="${s.id}" data-mkt="${market}">
+            <div class="trk-card${isHolding ? ' trk-card-holding' : ''}" data-id="${s.id}" data-mkt="${market}">
                 <div class="trk-card-header">
                     <span class="trk-card-name">
                         ${(() => {
                             const c = getStatusColor(s.trackingStatus);
-                            return c ? `<span class="status-dot" style="background:${c.dot}"></span> ` : '';
+                            return c ? `<span class="status-dot${isHolding ? ' status-dot-holding' : ''}" style="background:${c.dot}"></span> ` : '';
                         })()}
                         ${s.name}
                     </span>
