@@ -1044,3 +1044,70 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
 @media (max-width: 640px) {
     .cal-grid { grid-template-columns: 1fr; }
 }
+
+/* ---- 逻辑验证日历 ---- */
+.cal-top-three {
+    display: flex; flex-direction: column; gap: 8px;
+    background: linear-gradient(135deg, #fefce8 0%, #fafafa 100%);
+    border: 1px solid #fde68a; border-radius: 10px;
+    padding: 14px 20px; margin-bottom: 16px;
+}
+.cal-top-three-label {
+    font-size: 13px; font-weight: 600; color: #92400e;
+    margin-bottom: 2px;
+}
+.t3-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; line-height: 1.6;
+}
+.t3-date { font-size: 11px; color: #a16207; white-space: nowrap; }
+.t3-title { flex: 1; color: var(--text); }
+.t3-stocks { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+
+/* 筛选栏 */
+.cal-filters {
+    display: flex; flex-wrap: wrap; gap: 4px;
+    margin-bottom: 14px;
+}
+.cal-filter {
+    font-size: 12px; padding: 3px 12px;
+    border-radius: 14px; cursor: pointer;
+    color: var(--text-secondary); background: var(--bg-card);
+    border: 1px solid var(--border); transition: all .15s;
+    user-select: none;
+}
+.cal-filter:hover { border-color: var(--accent); color: var(--accent); }
+.cal-filter.active {
+    background: var(--accent); color: #fff; border-color: var(--accent);
+}
+.cal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.cal-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px; transition: all .15s;
+    display: flex; flex-direction: column; gap: 6px;
+}
+.cal-card:hover { border-color: var(--border-hover); background: var(--bg-hover); }
+.cal-card-top {
+    border-left: 3px solid var(--accent);
+}
+.cal-top { display: flex; align-items: center; gap: 6px; }
+.cal-date { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+.cal-type { font-size: 10px; font-weight: 500; padding: 1px 7px; border-radius: 4px; }
+.cal-countdown {
+    margin-left: auto; font-size: 12px; font-weight: 600;
+    color: var(--accent); white-space: nowrap;
+}
+.cal-title { font-size: 14px; font-weight: 600; color: var(--text); }
+.cal-stocks { font-size: 11px; color: var(--accent); }
+.cal-sec {
+    font-size: 12px; line-height: 1.7; color: var(--text-secondary);
+    padding: 8px 0; border-top: 1px solid var(--border);
+}
+.cal-sec strong { color: var(--text); font-weight: 500; }
+.cal-bottom { display: flex; align-items: center; gap: 8px; margin-top: auto; }
+.cal-status { font-size: 11px; font-weight: 500; padding: 2px 10px; border-radius: 4px; }
+@media (max-width: 640px) {
+    .cal-grid { grid-template-columns: 1fr; }
+    .cal-filters { gap: 3px; }
+    .cal-filter { font-size: 11px; padding: 2px 10px; }
+}

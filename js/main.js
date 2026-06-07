@@ -1037,26 +1037,105 @@ if (obsEl && typeof dailyObservation !== 'undefined') {
 
 // ---- 逻辑验证日历 ----
 const calGrid = document.getElementById('cal-grid');
-if (calGrid && typeof calendarEvents !== 'undefined') {
+
+function renderCalendar(filter = 'all') {
+    if (!calGrid || typeof calendarEvents === 'undefined') return;
+    
     const sorted = [...calendarEvents].sort((a, b) => a.date.localeCompare(b.date));
     const now = '2026-06-07';
-    const upcoming = sorted.filter(e => e.date >= now || e.date.includes('Q') || e.date.includes('H'));
-    const importanceColors = {
-        '极高':'#ef4444','高':'#f59e0b','中高':'#3b82f6','中':'#6b6b80'
-    };
+    
+    // Determine which events to show
+    let filtered = sorted;
+    if (filter === '本周') {
+        const today = new Date(now);
+        const weekEnd = new Date(today); weekEnd.setDate(today.getDate() + 7);
+        filtered = sorted.filter(e => {
+            if (e.date.includes('Q') || e.date.includes('H')) return false;
+            const d = new Date(e.date);
+            return d >= today && d <= weekEnd;
+        });
+    } else if (filter === '未来30天') {
+        const today = new Date(now);
+        const monthEnd = new Date(today); monthEnd.setDate(today.getDate() + 30);
+        filtered = sorted.filter(e => {
+            if (e.date.includes('Q') || e.date.includes('H')) return false;
+            const d = new Date(e.date);
+            return d >= today && d <= monthEnd;
+        });
+    } else if (filter !== 'all') {
+        filtered = sorted.filter(e => e.type === filter);
+    }
+    
     const typeColors = {
-        '财报':'#2d6cff','产品':'#22c55e','会议':'#8b5cf6','产能':'#06b6d4','订单':'#f59e0b','政策':'#ef4444'
+        '财报':'#2d6cff','产品':'#22c55e','会议':'#8b5cf6','产能':'#06b6d4','订单':'#f59e0b','监管':'#ef4444','发射':'#1e40af'
     };
-    calGrid.innerHTML = upcoming.map(e => `
-        <div class="cal-card">
-            <div class="cal-top">
-                <span class="cal-date">${e.date}</span>
-                <span class="cal-type" style="background:${(typeColors[e.type]||'#6b6b80')}15;color:${typeColors[e.type]||'#6b6b80'}">${e.type}</span>
-                <span class="cal-imp" style="background:${(importanceColors[e.importance]||'#6b6b80')}15;color:${importanceColors[e.importance]||'#6b6b80'}">${e.importance}</span>
+    const statusColors = {
+        '等待验证':'#f59e0b15,#f59e0b','预期升温':'#3b82f615,#3b82f6','已验证':'#22c55e15,#22c55e','不及预期':'#ef444415,#ef4444','待复盘':'#8b5cf615,#8b5cf6'
+    };
+    
+    if (filtered.length === 0) {
+        calGrid.innerHTML = '<div style="color:var(--text-muted);text-align:center;padding:24px;grid-column:1/-1;font-size:13px">该分类暂无事件</div>';
+        return;
+    }
+    
+    calGrid.innerHTML = filtered.map(e => {
+        // Countdown
+        let countdown = '';
+        if (!e.date.includes('Q') && !e.date.includes('H')) {
+            const eventDate = new Date(e.date);
+            const today = new Date(now);
+            const diff = Math.ceil((eventDate - today) / (1000*60*60*24));
+            if (diff > 0) countdown = `D-${diff}`;
+            else if (diff === 0) countdown = '今日';
+            else countdown = '已过';
+        } else {
+            countdown = e.date.includes('H') ? '6个月' : e.date.includes('Q') ? '季度' : '';
+        }
+        
+        const sc = (statusColors[e.status]||'#6b6b8015,#6b6b80').split(',');
+        
+        return `
+            <div class="cal-card ${e.topPriority && filter === 'all' ? 'cal-card-top' : ''}">
+                <div class="cal-top">
+                    <span class="cal-date">${e.date}</span>
+                    <span class="cal-type" style="background:${(typeColors[e.type]||'#6b6b80')}15;color:${typeColors[e.type]||'#6b6b80'}">${e.type}</span>
+                    <span class="cal-countdown">${countdown}</span>
+                </div>
+                <div class="cal-title">${e.title}</div>
+                <div class="cal-stocks">${e.stocks}</div>
+                <div class="cal-sec">
+                    <strong>市场预期：</strong>${e.marketExpect}<br>
+                    <strong>核心验证：</strong>${e.verifyPoint}<br>
+                    <strong>影响路径：</strong>${e.impactPath}
+                </div>
+                <div class="cal-bottom">
+                    <span class="cal-status" style="background:${sc[0]};color:${sc[1]}">${e.status}</span>
+                </div>
             </div>
-            <div class="cal-title">${e.title}</div>
-            <div class="cal-stocks">${e.stocks}</div>
-            <div class="cal-note">${e.note}</div>
+        `;
+    }).join('');
+}
+
+renderCalendar();
+
+// ---- 筛选栏点击切换 ----
+document.querySelectorAll('.cal-filter').forEach(el => {
+    el.addEventListener('click', function() {
+        document.querySelectorAll('.cal-filter').forEach(f => f.classList.remove('active'));
+        this.classList.add('active');
+        renderCalendar(this.dataset.filter);
+    });
+});
+
+// ---- 近期最重要三件事 ----
+const topEl = document.getElementById('cal-top-three');
+if (topEl && typeof topThree !== 'undefined') {
+    topEl.innerHTML = topThree.map(t => `
+        <div class="t3-item">
+            <span class="t3-date">${t.date}</span>
+            <span class="t3-title">${t.title}</span>
+            <span class="t3-stocks">${t.stocks}</span>
         </div>
     `).join('');
+    topEl.style.display = 'block';
 }
