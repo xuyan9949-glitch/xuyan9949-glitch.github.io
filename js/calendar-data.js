@@ -1,10 +1,22 @@
 // ========================================
 // 逻辑验证日历 — 月度聚焦
-// 规则：只保留未来 30 天内、有明确时间锚点的事件
-// 虚的（Q3/H1/中旬无日期）不入库
+// 规则：只保留未来 30 天内有明确时间锚点的催化事件
+// 虚的（Q3/H1/下旬无日期、验证描述）不入库
 // ========================================
 
 const calendarEvents = [
+  {
+    date: "2026-06-16",
+    title: "FOMC 利率决议（6月会议·含新闻发布会）",
+    type: "宏观",
+    stocks: "QQQ / 10Y / DXY / 所有风险资产",
+    importance: "极高",
+    status: "等待验证",
+    marketExpect: "市场Price in维持利率不变，关注点阵图和鲍威尔讲话",
+    verifyPoint: "点阵图是否暗示下半年降息路径、通胀预期是否上调、经济预测摘要",
+    impactPath: "若释放降息信号，科技成长股（NVDA/AVGO/LITE/AAOI）可能反弹；若偏鹰，继续压制估值",
+    topPriority: true,
+  },
   {
     date: "2026-06-25",
     title: "美光（MU）FY2026 Q3 财报",
@@ -45,7 +57,7 @@ const calendarEvents = [
 
 // 近期最重要三件事
 const topThree = [
-  { date: "2026-06-25", title: "MU财报：HBM与DRAM涨价弹性验证", stocks: "MU / DRAM" },
-  { date: "2026-06-25", title: "NVIDIA GTC中国站：CPO与AI Factory线索", stocks: "NVDA / LITE / COHR" },
+  { date: "2026-06-16", title: "FOMC利率决议：点阵图决定Q3方向", stocks: "QQQ / 10Y" },
+  { date: "2026-06-25", title: "MU财报 + GTC中国站：AI链核心验证日", stocks: "MU / NVDA / LITE / COHR" },
   { date: "2026-06中旬", title: "ASTS发射：卫星部署节奏验证", stocks: "ASTS" },
 ];
