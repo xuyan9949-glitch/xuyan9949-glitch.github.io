@@ -32,7 +32,7 @@ const dailyObservation = {
       items: [
         { name: "QQQ",  close: "705.06（-4.8%）",       structure: "单边下跌",  level: "极端大跌",     meaning: "成长股风险偏好急剧下降" },
         { name: "SMH", close: "569.69（-9.2%）",        structure: "放量单边杀跌", level: "极端杀估值",  meaning: "半导体恐慌性去杠杆" },
-        { name: "IBIT", close: "34.14（-5.2%）",         structure: "探底弱修复",  level: "加密风险释放", meaning: "加密链持续去杠杆" },
+        { name: "BTC", close: "34.14（-5.2%）",         structure: "探底弱修复",  level: "加密风险释放", meaning: "加密链持续去杠杆" },
       ],
     },
     {
