@@ -31,15 +31,15 @@ const dailyObservation = {
       label: "风险资产",
       items: [
         { name: "QQQ",  close: "705.06（-4.8%）",       structure: "单边下跌",  level: "极端大跌",     meaning: "成长股风险偏好急剧下降" },
-        { name: "SOXX", close: "539.77（-10.4%）",       structure: "放量单边杀跌", level: "极端杀估值",  meaning: "半导体恐慌性去杠杆" },
+        { name: "SMH", close: "569.69（-9.2%）",        structure: "放量单边杀跌", level: "极端杀估值",  meaning: "半导体恐慌性去杠杆" },
         { name: "IBIT", close: "34.14（-5.2%）",         structure: "探底弱修复",  level: "加密风险释放", meaning: "加密链持续去杠杆" },
       ],
     },
     {
       label: "亚洲市场",
       items: [
-        { name: "EWY",    close: "175.19（-14.1%）",     structure: "崩跌",     level: "极端",     meaning: "韩国政治风险叠加半导体恐慌" },
-        { name: "EWJ",    close: "90.72（-3.6%）",       structure: "低开低走",   level: "明显走弱",   meaning: "亚洲风险偏好急剧下降" },
+        { name: "KOSPI",  close: "175.19（-14.1%）",     structure: "崩跌",     level: "极端",     meaning: "韩国政治风险叠加半导体恐慌" },
+        { name: "日经225", close: "90.72（-3.6%）",       structure: "低开低走",   level: "明显走弱",   meaning: "亚洲风险偏好急剧下降" },
         { name: "上证指数", close: "4027.74（-0.74%）",  structure: "震荡走弱",   level: "普通回调",   meaning: "A股相对抗跌但情绪偏弱" },
         { name: "恒生科技", close: "4888.39（-1.75%）",  structure: "单边走低",   level: "明显走弱",   meaning: "中国科技映射承压" },
       ],
@@ -47,8 +47,8 @@ const dailyObservation = {
     {
       label: "利率与流动性",
       items: [
-        { name: "IEF",  close: "93.62（-0.53%→收益率+7bp）",  structure: "价格下跌(收益率上行)", level: "估值逆风",   meaning: "成长股估值承压" },
-        { name: "UUP",  close: "28.02（+0.65%）",               structure: "单边走强",          level: "流动性收紧", meaning: "全球风险资产承压" },
+        { name: "10Y美债",  close: "IEF 93.62（-0.53%→收益率+7bp）",  structure: "价格下跌(收益率上行)", level: "估值逆风",   meaning: "成长股估值承压" },
+        { name: "DXY",  close: "UUP 28.02（+0.65%）",               structure: "单边走强",          level: "流动性收紧", meaning: "全球风险资产承压" },
       ],
     },
     {
