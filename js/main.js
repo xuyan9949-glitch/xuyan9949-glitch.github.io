@@ -453,37 +453,42 @@ document.addEventListener('DOMContentLoaded', () => {
             const hasLogic = s.investmentLogic !== null;
             const catalystCount = s.catalysts ? s.catalysts.length : 0;
             const hasPlan = s.operationPlan !== null;
-            const status = s.trackingStatus || (s.investmentLogic ? s.investmentLogic.status : '-');
             const isHolding = s.trackingStatus && (s.trackingStatus.includes('持有') || s.trackingStatus.includes('底仓'));
+            
+            // Build tag array: [持仓状态, 周期, 板块, 概念] max 4
+            const statusShort = s.trackingStatus ? s.trackingStatus.replace(/ \/ .*$/, '').trim() : '';
+            const tags = [];
+            if (statusShort) tags.push({ text: statusShort, type: 'status' });
+            if (s.tradeCycle) tags.push({ text: s.tradeCycle, type: 'cycle' });
+            if (s.sector) {
+                s.sector.split(/\s*\/\s*/).slice(0, 2).forEach(t => tags.push({ text: t.trim(), type: 'sector' }));
+            }
+            if (tags.length < 4 && s.themeTags) {
+                const needed = 4 - tags.length;
+                s.themeTags.split(/\s*\/\s*/).slice(0, needed).forEach(t => tags.push({ text: t.trim(), type: 'concept' }));
+            }
+            
             return `
             <div class="trk-card${isHolding ? ' trk-card-holding' : ''}" data-id="${s.id}" data-mkt="${market}">
                 <div class="trk-card-header">
-                    <span class="trk-card-name">
-                        ${(() => {
-                            const c = getStatusColor(s.trackingStatus);
-                            return c ? `<span class="status-dot${isHolding ? ' status-dot-holding' : ''}" style="background:${c.dot}"></span> ` : '';
-                        })()}
-                        ${s.name}
-                    </span>
+                    <span class="trk-card-name">${s.name}</span>
                     <span class="trk-card-code">${s.code}</span>
                 </div>
-                <div style="display:flex;flex-wrap:wrap;gap:4px">
-                    ${getTypeBadge(s.type)}
-                    ${(() => {
-                        const c = getStatusColor(s.trackingStatus);
-                        return c ? `<span class="status-label" style="background:${c.bg};color:${c.text}">${s.trackingStatus}</span>` : '';
-                    })()}
-                    ${s.ahShare ? `<span class="trk-card-type" style="background:#8b5cf615;color:#8b5cf6;font-size:10px;border:1px solid #8b5cf640">A+H</span>` : ''}
-                    ${s.logicStatus ? `<span class="trk-card-type" style="background:#22c55e15;color:#22c55e;font-size:11px">${s.logicStatus}</span>` : ''}
-                    ${s.priority ? `<span class="trk-card-type" style="background:#ef444415;color:#ef4444;font-size:11px">优先级${s.priority}</span>` : ''}
+                <div class="trk-card-tags">
+                    ${tags.map(t => {
+                        let cls = 'trk-tag';
+                        if (t.type === 'status') cls += ' trk-tag-status';
+                        else if (t.type === 'cycle') cls += ' trk-tag-cycle';
+                        else if (t.type === 'sector') cls += ' trk-tag-sector';
+                        else if (t.type === 'concept') cls += ' trk-tag-concept';
+                        return `<span class="${cls}">${t.text}</span>`;
+                    }).join('')}
                 </div>
                 <p class="trk-card-reason">${s.reason}</p>
                 <div class="trk-card-meta">
-                    <span>${status}</span>
+                    <span>\u26A1 ${catalystCount} \u50AC\u5316</span>
                     <span class="dot"></span>
-                    <span>⚡ ${catalystCount} 催化</span>
-                    ${s.tradeCycle ? `<span class="dot"></span><span>${s.tradeCycle}</span>` : ''}
-                    <span style="margin-left:auto">${s.lastUpdated}</span>
+                    <span>\u66F4\u65B0 ${s.lastUpdated}</span>
                 </div>
                 <span class="trk-card-arrow">→</span>
             </div>

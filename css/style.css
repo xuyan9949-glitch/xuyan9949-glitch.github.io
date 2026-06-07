@@ -503,9 +503,9 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
 }
 .trk-card {
     background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: var(--radius-md); padding: 20px;
+    border-radius: var(--radius-md); padding: 16px 20px;
     cursor: pointer; transition: all .25s;
-    display: flex; flex-direction: column; gap: 8px;
+    display: flex; flex-direction: column; gap: 6px;
     position: relative;
 }
 .trk-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
@@ -518,50 +518,43 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
     border-left-color: #ef4444;
     box-shadow: 0 2px 12px rgba(239,68,68,.12);
 }
-.status-dot-holding {
-    animation: pulse-hold 2s ease-in-out infinite;
-}
-@keyframes pulse-hold {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: .6; transform: scale(.85); }
-}
 .trk-card-header {
     display: flex; align-items: center; justify-content: space-between;
 }
 .trk-card-name {
     font-size: 15px; font-weight: 600; color: var(--text);
-    display: flex; align-items: center; gap: 6px;
-}
-.status-dot {
-    display: inline-block; width: 8px; height: 8px;
-    border-radius: 50%; flex-shrink: 0;
-}
-.status-label {
-    display: inline-block; padding: 2px 8px;
-    border-radius: 8px; font-size: 11px; font-weight: 500;
 }
 .trk-card-code {
     font-size: 12px; font-family: var(--mono); color: var(--text-muted);
 }
-.trk-card-type {
-    display: inline-block; padding: 2px 10px; border-radius: 10px;
-    font-size: 11px; font-weight: 500;
+
+/* Card tags row */
+.trk-card-tags {
+    display: flex; flex-wrap: wrap; gap: 4px;
 }
-.trk-card-sector {
-    font-size: 12px; color: var(--text-muted);
+.trk-tag {
+    display: inline-block;
+    font-size: 10px; font-weight: 500;
+    padding: 1px 7px; border-radius: 8px;
+    line-height: 1.6;
 }
+.trk-tag-status { background: #22c55e15; color: #22c55e; }
+.trk-tag-cycle  { background: #3b82f615; color: #3b82f6; }
+.trk-tag-sector { background: #f59e0b15; color: #f59e0b; }
+.trk-tag-concept { background: #8b5cf615; color: #8b5cf6; }
+
 .trk-card-reason {
     font-size: 13px; color: var(--text-secondary); line-height: 1.5;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
     overflow: hidden;
 }
 .trk-card-meta {
-    display: flex; gap: 12px; align-items: center;
+    display: flex; gap: 8px; align-items: center;
     font-size: 11px; color: var(--text-muted); margin-top: auto;
 }
 .trk-card-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-muted); }
 .trk-card-arrow {
-    position: absolute; bottom: 18px; right: 18px;
+    position: absolute; bottom: 14px; right: 16px;
     font-size: 14px; color: var(--text-muted); transition: transform .2s;
 }
 .trk-card:hover .trk-card-arrow { transform: translateX(3px); color: var(--accent); }
