@@ -205,13 +205,27 @@ body {
 }
 .research-card {
     background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: var(--radius-md); padding: 24px;
-    transition: all .25s; cursor: default;
+    border-radius: var(--radius-md); padding: 20px 24px;
+    transition: all .25s; cursor: pointer;
+    display: flex; flex-direction: column;
 }
 .research-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
-.research-card .icon { font-size: 22px; margin-bottom: 12px; display: block; }
+.research-card .icon { font-size: 20px; margin-bottom: 8px; display: block; }
+.research-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 500;
+    color: var(--accent); background: var(--accent-bg, rgba(59,130,246,.08));
+    padding: 2px 8px; border-radius: 10px;
+    margin-bottom: 8px; align-self: flex-start;
+}
 .research-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
-.research-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+.research-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; flex: 1; }
+.research-stocks {
+    font-size: 11px; color: var(--text-muted);
+    margin-top: 12px; padding-top: 10px;
+    border-top: 1px solid var(--border);
+    letter-spacing: .02em;
+}
 
 /* ---- Featured Notes ---- */
 .notes-grid {
