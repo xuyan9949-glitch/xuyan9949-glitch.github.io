@@ -538,7 +538,8 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
     padding: 1px 7px; border-radius: 8px;
     line-height: 1.6;
 }
-.trk-tag-status { background: #22c55e15; color: #22c55e; }
+.trk-tag-status { background: #3b82f615; color: #3b82f6; }
+.trk-tag-hold { background: #22c55e15; color: #22c55e; }
 .trk-tag-cycle  { background: #3b82f615; color: #3b82f6; }
 .trk-tag-sector { background: #f59e0b15; color: #f59e0b; }
 .trk-tag-concept { background: #8b5cf615; color: #8b5cf6; }

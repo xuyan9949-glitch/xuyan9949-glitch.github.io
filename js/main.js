@@ -477,7 +477,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="trk-card-tags">
                     ${tags.map(t => {
                         let cls = 'trk-tag';
-                        if (t.type === 'status') cls += ' trk-tag-status';
+                        if (t.type === 'status') {
+                            cls += ' trk-tag-status';
+                            if (isHolding) cls += ' trk-tag-hold';
+                        }
                         else if (t.type === 'cycle') cls += ' trk-tag-cycle';
                         else if (t.type === 'sector') cls += ' trk-tag-sector';
                         else if (t.type === 'concept') cls += ' trk-tag-concept';
