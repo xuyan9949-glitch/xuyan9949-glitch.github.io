@@ -1020,3 +1020,43 @@ if (updatesList && typeof updateLog !== 'undefined') {
         `;
     }).join('');
 }
+
+// ---- 今日观察 ----
+const obsEl = document.getElementById('daily-obs');
+if (obsEl && typeof dailyObservation !== 'undefined') {
+    const o = dailyObservation;
+    document.getElementById('obs-date').textContent = o.date;
+    document.getElementById('obs-market').textContent = o.marketState;
+    document.getElementById('obs-theme').textContent = o.mainTheme;
+    document.getElementById('obs-stocks').textContent = o.keyStocks;
+    document.getElementById('obs-bias').textContent = o.bias;
+    document.getElementById('obs-risk').textContent = o.riskSignals;
+    document.getElementById('obs-detail').textContent = o.detail;
+    obsEl.style.display = 'block';
+}
+
+// ---- 逻辑验证日历 ----
+const calGrid = document.getElementById('cal-grid');
+if (calGrid && typeof calendarEvents !== 'undefined') {
+    const sorted = [...calendarEvents].sort((a, b) => a.date.localeCompare(b.date));
+    const now = '2026-06-07';
+    const upcoming = sorted.filter(e => e.date >= now || e.date.includes('Q') || e.date.includes('H'));
+    const importanceColors = {
+        '极高':'#ef4444','高':'#f59e0b','中高':'#3b82f6','中':'#6b6b80'
+    };
+    const typeColors = {
+        '财报':'#2d6cff','产品':'#22c55e','会议':'#8b5cf6','产能':'#06b6d4','订单':'#f59e0b','政策':'#ef4444'
+    };
+    calGrid.innerHTML = upcoming.map(e => `
+        <div class="cal-card">
+            <div class="cal-top">
+                <span class="cal-date">${e.date}</span>
+                <span class="cal-type" style="background:${(typeColors[e.type]||'#6b6b80')}15;color:${typeColors[e.type]||'#6b6b80'}">${e.type}</span>
+                <span class="cal-imp" style="background:${(importanceColors[e.importance]||'#6b6b80')}15;color:${importanceColors[e.importance]||'#6b6b80'}">${e.importance}</span>
+            </div>
+            <div class="cal-title">${e.title}</div>
+            <div class="cal-stocks">${e.stocks}</div>
+            <div class="cal-note">${e.note}</div>
+        </div>
+    `).join('');
+}

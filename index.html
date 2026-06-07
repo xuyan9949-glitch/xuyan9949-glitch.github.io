@@ -58,6 +58,24 @@
             </div>
         </section>
 
+        <!-- ====== 今日观察 ====== -->
+        <div class="container" style="padding:24px 24px 0">
+            <div id="daily-obs" style="display:none">
+                <div class="obs-header">
+                    <span class="obs-badge">今日观察</span>
+                    <span class="obs-date" id="obs-date"></span>
+                </div>
+                <div class="obs-grid">
+                    <div class="obs-item"><span class="obs-label">市场状态</span><span class="obs-value" id="obs-market"></span></div>
+                    <div class="obs-item"><span class="obs-label">主线方向</span><span class="obs-value" id="obs-theme"></span></div>
+                    <div class="obs-item"><span class="obs-label">重点标的</span><span class="obs-value" id="obs-stocks"></span></div>
+                    <div class="obs-item"><span class="obs-label">操作倾向</span><span class="obs-value" id="obs-bias"></span></div>
+                    <div class="obs-item"><span class="obs-label">风险信号</span><span class="obs-value obs-risk" id="obs-risk"></span></div>
+                </div>
+                <div class="obs-detail" id="obs-detail"></div>
+            </div>
+        </div>
+
         <!-- ====== Quick Track Cards ====== -->
         <section class="section" style="padding:24px 0 0">
             <div class="container">
@@ -206,6 +224,18 @@
         </section>
 
         <!-- ====== Stock Tracking ====== -->
+        <!-- ====== 逻辑验证日历 ====== -->
+        <section class="section" id="calendar" style="padding:16px 0 0">
+            <div class="container">
+                <div class="section-header">
+                    <div class="label">Verification Calendar</div>
+                    <h2>📅 逻辑验证日历</h2>
+                    <p>跟踪标的的未来关键验证节点——财报、产品、会议、订单与产能。</p>
+                </div>
+                <div class="cal-grid" id="cal-grid"></div>
+            </div>
+        </section>
+
         <!-- ====== Contact ====== -->
         <section class="section" id="contact">
             <div class="container">
@@ -242,6 +272,8 @@
     <script src="js/articles.js"></script>
     <script src="js/tracking-data.js"></script>
     <script src="js/updates-data.js"></script>
+    <script src="js/daily-observation.js"></script>
+    <script src="js/calendar-data.js"></script>
     <script src="js/news-data.js"></script>
     <script src="js/status-colors.js"></script>
     <script src="js/share.js"></script>
