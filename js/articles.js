@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "hbm-pricing-repricing",
+    title: "HBM4重新定价：SemiAnalysis杀的是SOCAMM，不是HBM",
+    date: "2026-06-08",
+    category: "美股",
+    subcategory: "存储",
+    tags: ["存储", "HBM", "MU", "SK海力士", "NVIDIA", "Rubin", "SOCAMM"],
+    pinned: true,
+    summary: "SemiAnalysis砍的是CPU侧SOCAMM高配预期，不是GPU侧HBM4。Bernstein指出Vera Rubin整柜成本不是$780万而是$910万，核心差异来自HBM4价格假设（16.6→53美元/GB）。HBM正从配套成本变成决定整柜利润分配的战略资源。",
+    keywords: "HBM HBM4 SOCAMM LPDDR NVIDIA Rubin Bernstein SemiAnalysis SK海力士 MU Micron 存储 DRAM",
+    file: "/articles/hbm-pricing-repricing/"
+  },
+  {
     id: "ai-cage-connector",
     title: "Cage：AI互联升级里容易被忽略的小环节",
     date: "2026-06-04",

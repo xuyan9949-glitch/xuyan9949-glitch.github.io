@@ -4,6 +4,14 @@
 
 const updateLog = [
   {
+    date: "2026-06-08",
+    type: "笔记",
+    title: "HBM4重新定价：SemiAnalysis杀的是SOCAMM，不是HBM",
+    stocks: "MU / SK hynix / NVDA",
+    status: "新笔记",
+    link: "/articles/hbm-pricing-repricing/",
+  },
+  {
     date: "2026-06-07",
     type: "网站维护",
     title: "研究方向页面重构：6张卡片+定位标签+代表标的",

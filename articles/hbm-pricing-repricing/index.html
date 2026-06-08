@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBM4重新定价：SemiAnalysis杀的是SOCAMM，不是HBM — Leslie 投资笔记</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "***"}'></script>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <span class="logo-mark">L</span>
+                <span class="logo-text">Leslie 研究笔记</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">首页</a>
+                <a href="/#research">研究方向</a>
+                <a href="/#notes">笔记</a>
+                <a href="/#frameworks">框架</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container article-page">
+        <a href="/" class="back">← 返回首页</a>
+
+        <h1>HBM4重新定价：SemiAnalysis杀的是SOCAMM，不是HBM</h1>
+
+        <div class="article-meta">
+            <span class="meta-left">2026-06-08</span>
+            <span class="meta-dot">·</span>
+            <span class="meta-cat">美股 · 存储</span>
+            <button class="meta-share" onclick="shareArticle()" title="分享">
+                <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+                分享
+            </button>
+        </div>
+
+        <div class="article-content">
+
+<p><strong>上周五市场对SemiAnalysis关于"NVIDIA砍内存"消息的反应，本质上是把两种不同位置、不同作用的内存混在一起了。Bernstein随即提出相反观点——Vera Rubin整柜成本不是780万而是910万美元，核心差异来自HBM4的价格假设。</strong></p>
+
+<ul>
+<li>SemiAnalysis杀的是CPU侧SOCAMM/LPDDR高配预期，与GPU侧HBM4无关</li>
+<li>Bernstein真正提示的是：HBM正在从"配套成本"变成"决定整柜利润分配的战略资源"</li>
+<li>对存储厂：利润池加速向HBM集中，SK hynix > Micron > Samsung</li>
+<li>对NVDA：成本能转嫁，关键看云厂商ROI能否支撑更高ASP</li>
+</ul>
+
+<p>这不是存储逻辑破坏，而是HBM4定价权重新定价的开始。</p>
+
+<hr>
+
+<h2>一、校准数字：Bernstein为什么从780万抬到910万？</h2>
+
+<p>Morgan Stanley此前估算，单个Vera Rubin VR200 NVL72机柜成本约780.3万美元，其中内存约200.2万美元，占比25.6%。</p>
+
+<p>Bernstein的差异来自HBM4价格假设：如果HBM4按约16.6美元/GB估算，确实得到Morgan Stanley的低成本结果；但Bernstein认为Vera Rubin放量时，HBM4价格应升至53美元/GB，于是整柜成本被推高到约910万美元，内存与存储合计约320万美元。</p>
+
+<table>
+<tr><th>项目</th><th>低价假设</th><th>Bernstein高价假设</th></tr>
+<tr><td>Rubin GPU数量</td><td>72颗</td><td>72颗</td></tr>
+<tr><td>每颗GPU HBM4</td><td>288GB</td><td>288GB</td></tr>
+<tr><td>整柜HBM4容量</td><td>20,736GB</td><td>20,736GB</td></tr>
+<tr><td>HBM4单价</td><td>16.6美元/GB</td><td>53美元/GB</td></tr>
+<tr><td>HBM4成本</td><td>约34.4万美元</td><td>约109.9万美元</td></tr>
+</table>
+
+<p>所以34万→109万美元，本质上不是容量变化，而是HBM4单价假设从16.6跳到53美元/GB。这就是Bernstein"打脸"的关键：不是你少算了几颗芯片，而是低估了HBM4价格权重。</p>
+
+<hr>
+
+<h2>二、SemiAnalysis所谓的"减半"，砍的是什么？</h2>
+
+<p>SemiAnalysis消息被市场理解成"NVIDIA砍内存"，但更准确说是CPU侧SOCAMM/LPDDR系统内存可能降配。报道称Rubin NVL72可能把SOCAMM DRAM从约55TB降到约28TB，主要是从192GB模块转向96GB模块。</p>
+
+<p>这跟HBM4不是一回事。NVIDIA官方资料显示，Vera CPU侧使用最高1.5TB LPDDR5X SOCAMM，通过NVLink-C2C与GPU侧HBM4形成统一地址空间。按NVL72结构推算：72颗GPU对应约36颗Vera CPU，36×1.5TB≈54TB——接近市场传的55TB满配。</p>
+
+<div class="callout-box" style="border-left: 3px solid #3b82f6; padding: 12px 16px; background: #3b82f608; border-radius: 6px; margin: 16px 0;">
+<strong>核心区分：</strong><br>
+55TB→28TB：Vera CPU侧SOCAMM/LPDDR容量降配<br>
+288GB×72颗GPU：Rubin GPU侧HBM4，没有被砍的公开证据<br>
+上周五砸内存股，是把SOCAMM高配下修误读成整个AI内存需求坍塌
+</div>
+
+<hr>
+
+<h2>三、对NVDA：成本上升不一定坏，关键看能否转嫁</h2>
+
+<p>910万美元机柜成本听起来高，但不一定压毛利，原因有二：</p>
+
+<p><strong>第一，</strong>NVIDIA卖的不是单颗GPU，而是整机柜系统。Vera Rubin NVL72的价值主张是更高token吞吐、更低单位推理成本。官方称相比Blackwell NVL72可实现最高10倍更低cost per token。这解释了为什么NVIDIA有价格转嫁能力。</p>
+
+<p><strong>第二，</strong>NVIDIA与SK hynix已宣布多年期技术合作，重点就是为AI factory共同开发下一代内存并保障供应。黄仁勋称SK hynix到2030年把产能翻倍仍不足以满足AI需求。</p>
+
+<p>NVDA核心风险不在于"HBM变贵"，而在于：如果HBM涨价后云厂商仍觉得单位token经济性划算，NVIDIA可以转嫁；如果云厂商ROI被压缩，才会影响订单节奏。</p>
+
+<hr>
+
+<h2>四、对存储厂：真正强的是HBM，不是所有内存都一样强</h2>
+
+<table>
+<tr><th>受益纯度</th><th>标的</th><th>逻辑</th></tr>
+<tr><td><strong>最高</strong></td><td>SK hynix</td><td>HBM领先，NVIDIA深度绑定，产能紧</td></tr>
+<tr><td><strong>高</strong></td><td>Micron (MU)</td><td>HBM份额提升预期，需验证客户放量节奏</td></tr>
+<tr><td><strong>中高</strong></td><td>Samsung Memory</td><td>技术追赶，HBM4/HBM5如追回认证弹性大</td></tr>
+<tr><td><strong>中</strong></td><td>LPDDR/SOCAMM</td><td>高配被砍压弹性，仍有系统内存需求</td></tr>
+<tr><td><strong>中</strong></td><td>NAND/eSSD</td><td>AI存储需求上行，但比HBM分散、更周期</td></tr>
+</table>
+
+<p>SK hynix 2026年一季度全球HBM市场份额约58%（Samsung 21%、Micron 21%），营业利润率72%。这不是传统DRAM周期弹性，而是HBM从标准品变成NVIDIA平台绑定的半定制战略物资。</p>
+
+<hr>
+
+<h2>五、对MU：不是逻辑破坏，是验证窗口更重要</h2>
+
+<p>MU的逻辑拆三层：</p>
+
+<ol>
+<li><strong>行业层：</strong>HBM4价格若真接近53美元/GB，整个HBM利润池上修</li>
+<li><strong>公司层：</strong>MU需要证明能拿到足够HBM4/HBM4E份额</li>
+<li><strong>交易层：</strong>上周五被SemiAnalysis消息砸下来，若市场重新区分HBM与SOCAMM，MU有修复逻辑</li>
+</ol>
+
+<p>MU的关键验证点：HBM出货量是否继续上修、HBM毛利率是否高于公司平均、NVIDIA客户认证是否扩大、普通DRAM涨价是否被PC/手机抵消、CapEx扩产是否导致2027供给过剩。</p>
+
+<p>如果MU只是跟DRAM/NAND涨价走，那是周期股；如果HBM绑定AI平台份额持续提升，才是估值重估。</p>
+
+<hr>
+
+<h2>一句话总结</h2>
+
+<p>Bernstein这次真正提示的是：<strong>Vera Rubin时代，GPU仍是主角，但HBM开始从"配套成本"变成"决定整柜利润分配的战略资源"。上周五市场砸内存股，更像是把SOCAMM降配误读成HBM需求坍塌；如果HBM4价格真从16.6走向53美元/GB，SK hynix、MU、Samsung的利润池反而要上修。</strong></p>
+
+<hr>
+
+<h2>参考资料</h2>
+<ol>
+<li><a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/nvidias-memory-costs-soar-485-percent-latest-ai-systems-now-cost-usd7-8-million-to-build-memory-now-comprises-25-percent-of-the-total-cost-rubin-gpus-a-mere-usd50-000-apiece" target="_blank">Tom's Hardware: Nvidia's memory costs soar 485%</a></li>
+<li><a href="https://wccftech.com/bernstein-warns-nvidias-vera-rubin-racks-will-hit-9-1-million-as-hbm4-prices-triple-to-53-per-gigabyte/" target="_blank">Wccftech: Bernstein Warns NVIDIA's Rubin Racks Will Hit $9.1M</a></li>
+<li><a href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank">NVIDIA Developer: Inside the Vera Rubin Platform</a></li>
+<li><a href="https://nvidianews.nvidia.com/news/sk-hynix-ai-factory" target="_blank">NVIDIA Newsroom: SK hynix AI Factory Partnership</a></li>
+<li><a href="https://www.reuters.com/business/media-telecom/sk-hynix-announces-multi-year-tech-deal-with-nvidia-ai-factories-2026-06-07/" target="_blank">Reuters: Nvidia clinches deals with SK Group</a></li>
+<li><a href="https://www.reuters.com/world/asia-pacific/sk-hynix-plans-double-wafer-capacity-next-five-years-group-chairman-says-2026-06-02/" target="_blank">Reuters: SK Hynix plans to double wafer capacity</a></li>
+<li><a href="https://www.trendforce.com/news/2026/04/23/news-sk-hynix-reports-5x-1q26-profit-surge-operating-margin-hits-72-outpacing-tsmc-and-micron/" target="_blank">TrendForce: SK Hynix 72% Operating Margin</a></li>
+</ol>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Leslie 投资笔记 · 内容仅代表个人研究观点</p>
+    </footer>
+
+    <script src="/js/share.js"></script>
+</body>
+</html>
