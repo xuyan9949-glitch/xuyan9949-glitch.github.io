@@ -518,6 +518,24 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
     border-left-color: #ef4444;
     box-shadow: 0 2px 12px rgba(239,68,68,.12);
 }
+.trk-card-abandoned {
+    opacity: .5;
+    background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 8px,
+        rgba(107,107,128,.04) 8px,
+        rgba(107,107,128,.04) 16px
+    );
+}
+.trk-card-abandoned:hover {
+    opacity: .7;
+}
+.trk-tag-abandoned {
+    background: #6b6b8015 !important;
+    color: #6b6b80 !important;
+    text-decoration: line-through;
+}
 .trk-card-header {
     display: flex; align-items: center; justify-content: space-between;
 }

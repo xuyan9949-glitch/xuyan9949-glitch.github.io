@@ -454,6 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const catalystCount = s.catalysts ? s.catalysts.length : 0;
             const hasPlan = s.operationPlan !== null;
             const isHolding = s.trackingStatus && (s.trackingStatus.includes('持有') || s.trackingStatus.includes('底仓'));
+            const isAbandoned = s.trackingStatus && s.trackingStatus.includes('已放弃');
             
             // Build tag array: [持仓状态, 周期, 板块, 概念] max 4
             const statusShort = s.trackingStatus ? s.trackingStatus.replace(/ \/ .*$/, '').trim() : '';
@@ -469,7 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             return `
-            <div class="trk-card${isHolding ? ' trk-card-holding' : ''}" data-id="${s.id}" data-mkt="${market}">
+            <div class="trk-card${isHolding ? ' trk-card-holding' : ''}${isAbandoned ? ' trk-card-abandoned' : ''}" data-id="${s.id}" data-mkt="${market}">
                 <div class="trk-card-header">
                     <span class="trk-card-name">${s.name}</span>
                     <span class="trk-card-code">${s.code}</span>
@@ -480,6 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (t.type === 'status') {
                             cls += ' trk-tag-status';
                             if (isHolding) cls += ' trk-tag-hold';
+                            if (isAbandoned) cls += ' trk-tag-abandoned';
                         }
                         else if (t.type === 'cycle') cls += ' trk-tag-cycle';
                         else if (t.type === 'sector') cls += ' trk-tag-sector';
