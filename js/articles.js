@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "global-ai-dc-industry-chain",
+    title: "全球AI数据中心产业链国家分工深度研报",
+    date: "2026-06-08",
+    category: "产业思考",
+    subcategory: "研报整理",
+    tags: ["AI产业链", "国家分工", "研报", "GPU", "HBM", "光模块", "电力冷却"],
+    pinned: true,
+    summary: "AI数据中心是一台全套协作的机器：美国定义架构，台湾制造算力，韩国提供HBM，日本和荷兰卡住设备/材料，欧洲提供电力，中国参与光模块和国产替代。利润池正从GPU单点外溢到HBM、先进封装、光互连、电力冷却。",
+    keywords: "AI DC 数据中心 产业链 国家分工 TSMC NVIDIA SK Hynix ASML 光模块 电力 冷却 国产替代",
+    file: "/articles/global-ai-dc-industry-chain/"
+  },
+  {
     id: "hbm-pricing-repricing",
     title: "HBM4重新定价：SemiAnalysis杀的是SOCAMM，不是HBM",
     date: "2026-06-08",

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全球AI数据中心产业链国家分工深度研报 — Leslie 投资笔记</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "cfat_EXNTwlqYXnvP6KZpLTangEZdMvy0IdqGZRKap3Me3690d699"}'></script>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo"><span class="logo-mark">L</span><span class="logo-text">Leslie 研究笔记</span></a>
+            <div class="nav-links">
+                <a href="/">首页</a><a href="/#notes">笔记</a><a href="/#frameworks">框架</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container article-page">
+        <a href="/" class="back">← 返回首页</a>
+
+        <h1>全球AI数据中心产业链国家分工深度研报</h1>
+
+        <div class="article-meta">
+            <span class="meta-left">2026-06-08</span>
+            <span class="meta-dot">·</span>
+            <span class="meta-cat">产业思考 · 研报整理</span>
+            <button class="meta-share" onclick="shareArticle()" title="分享">
+                <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+                分享
+            </button>
+        </div>
+
+        <div class="article-content">
+
+<style>
+.rc-overview { background: linear-gradient(135deg, #0f0c29, #1a1a4e, #24243e); color: #fff; border-radius: 12px; padding: 32px; margin-bottom: 24px; }
+.rc-overview h2 { color: #fff !important; border: none !important; font-size: 20px; margin-bottom: 12px; }
+.rc-overview p { opacity: .88; margin-bottom: 6px; }
+.rc-hl { background: #f0f4ff; border-left: 3px solid #3b82f6; padding: 14px 18px; border-radius: 6px; margin: 16px 0; }
+.rc-tbl { overflow-x: auto; margin: 16px 0; }
+.rc-tbl table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.rc-tbl th { background: #f0f2f6; text-align: left; padding: 10px 12px; font-weight: 600; white-space: nowrap; border: 1px solid #dde0e6; }
+.rc-tbl td { padding: 10px 12px; border: 1px solid #dde0e6; vertical-align: top; }
+.rc-tbl tr:hover td { background: #fafbfc; }
+.rc-tag { display: inline-block; background: #eef2ff; color: #3b82f6; font-size: 11px; padding: 2px 10px; border-radius: 10px; margin: 2px; }
+.rc-tag-rd { background: #fef2f2; color: #ef4444; }
+.rc-tag-gr { background: #f0fdf4; color: #16a34a; }
+.rc-tier { display: inline-block; width: 22px; height: 22px; border-radius: 50%; text-align: center; line-height: 22px; font-size: 11px; font-weight: 700; margin-right: 4px; }
+.rc-t1 { background: #f59e0b20; color: #d97706; }
+.rc-t2 { background: #3b82f620; color: #2563eb; }
+.rc-t3 { background: #22c55e20; color: #16a34a; }
+</style>
+
+<div class="rc-overview">
+  <h2>核心结论</h2>
+  <p>AI数据中心是一台全套协作的机器：<strong>美国定义架构，台湾制造算力，韩国提供HBM，日本和荷兰卡住设备/材料，欧洲提供电力，中国参与光模块和国产替代。</strong></p>
+  <p>利润池正在从GPU单点外溢到HBM、先进封装、测试、光互连、电源、液冷、变压器和数据中心电力基础设施。</p>
+  <p>未来2-3年最值得跟踪的脉络：不是GPU需求是否存在，而是<strong>网络瓶颈</strong>和<strong>电力瓶颈</strong>如何被资本市场重新定价。</p>
+</div>
+
+<p>本报告聚焦全球AI产业链第二轮结构泡沫形成与价格偏离，重点研究上游的硬件、基础设施和耗材，以及它们价格如何影响最终布局和订单价格。中国AI链条中最具成长空间的方向包括：光模块、PCB、液冷、变压器、数据中心用电力系统。</p>
+
+<hr>
+
+<h2>一、AI数据中心的瓶颈正在轮换</h2>
+
+<p><strong>第一阶段（2023-2025）：算力芯片瓶颈</strong> — GPU、HBM、先进封装决定训练集群效率上限。</p>
+<p><strong>第二阶段（2025-2027）：网络瓶颈</strong> — 交换机短缺、大芯片扩片、光模块、DSP、SerDes、AEC/CPO决定GPU利用率。</p>
+<p><strong>第三阶段（2028以后）：电力瓶颈</strong> — 机房变压器、配电、UPS、液冷、电力接入成为约束。</p>
+
+<div class="rc-tbl">
+<table>
+<tr><th>阶段</th><th>主瓶颈</th><th>核心公司</th><th>研究重点</th></tr>
+<tr><td>2023-2025</td><td>GPU、HBM、CoWoS</td><td>NVIDIA、TSMC、SK Hynix、Samsung、Advantest、DISCO、ASML</td><td>GPU供给、HBM产能迁移、CoWoS、先进封装价值量</td></tr>
+<tr><td>2025-2027</td><td>AI网络、光互连、1.6T/3.2T光模块</td><td>Broadcom、Marvell、Arista、Coherent、Lumentum、Credo、中际旭创、新易盛、Fujikura、Nokia</td><td>Ethernet vs InfiniBand、CPO、光模块ASP、毛利率</td></tr>
+<tr><td>2028以后</td><td>电力、冷却、电缆、液冷</td><td>Vertiv、Eaton、Schneider、Legrand、ABB、Siemens Energy、GE Vernova、Delta、Infineon、ROHM</td><td>电力接入时间、机柜功率密度、液冷渗透率</td></tr>
+</table>
+</div>
+
+<hr>
+
+<h2>二、全球AI数据中心产业链国家分工矩阵</h2>
+
+<div class="rc-tbl">
+<table>
+<tr><th>国家/地区</th><th>核心环节</th><th>龙头公司</th><th>投资含义</th></tr>
+<tr><td><strong>美国</strong> <span class="rc-tag rc-tag-gr">核心</span></td><td>GPU/ASIC、EDA、AI网络、云平台</td><td>NVIDIA、AMD、Broadcom、Marvell、Intel、Arista、Coherent、Credo、Vertiv、Eaton</td><td>最高利润和定价权中心</td></tr>
+<tr><td><strong>台湾</strong> <span class="rc-tag rc-tag-gr">核心</span></td><td>先进代工、CoWoS、OSAT、AI server ODM</td><td>TSMC、ASE、Foxconn、Quanta、Wiwynn、Delta、Unimicron</td><td>全球算力建设中轴</td></tr>
+<tr><td><strong>韩国</strong> <span class="rc-tag rc-tag-gr">核心</span></td><td>HBM、DRAM、NAND</td><td>SK Hynix、Samsung、Hanmi Semiconductor</td><td>HBM核心受益者</td></tr>
+<tr><td><strong>日本</strong> <span class="rc-tag">设备</span></td><td>半导体设备、精密加工、材料</td><td>Tokyo Electron、Advantest、DISCO、Lasertec、Shin-Etsu、Ibiden、Fujikura</td><td>精密制造"不可替代"位</td></tr>
+<tr><td><strong>荷兰</strong> <span class="rc-tag">设备</span></td><td>EUV/DUV光刻、ALD</td><td>ASML、ASM International、BESI</td><td>先进制程入口</td></tr>
+<tr><td><strong>欧洲</strong> <span class="rc-tag">电力</span></td><td>功率器件、配电、电源、光器件</td><td>Infineon、Siemens、Schneider、Legrand、ABB、Siemens Energy</td><td>AI电力墙核心受益</td></tr>
+<tr><td><strong>中国</strong> <span class="rc-tag-rd">追赶</span></td><td>光模块、AI server、液冷、PCB</td><td>中际旭创、新易盛、天孚通信、浪潮信息、工业富联</td><td>国产替代空间大</td></tr>
+</table>
+</div>
+
+<hr>
+
+<h2>三、美国：AI数据中心架构和利润池中心</h2>
+
+<p>美国的优势不只是NVIDIA，重点看背后的EDA/IP、GPU/ASIC、AI网络、云平台、算力发电等全产业链。</p>
+
+<div class="rc-tbl">
+<table>
+<tr><th>细分环节</th><th>龙头公司</th><th>为什么受益</th><th>核心变量</th></tr>
+<tr><td><strong>GPU/AI系统</strong></td><td>NVIDIA</td><td>NVLink、CUDA、AI rack-scale系统最强生态闭环</td><td>Blackwell/Rubin放量、机柜利润率、云厂Capex持续性</td></tr>
+<tr><td><strong>CPU/GPU/ASIC</strong></td><td>AMD、Intel、Broadcom、Marvell</td><td>Hyperscaler custom accelerator和互连</td><td>自研ASIC占比、SerDes/DSP能力</td></tr>
+<tr><td><strong>EDA/IP</strong></td><td>Synopsys、Cadence、Arm</td><td>AI芯片复杂度提升带动设计/IP使用强度</td><td>AI芯片项目数量、Arm Neoverse份额</td></tr>
+<tr><td><strong>网络/光通信</strong></td><td>Arista、Cisco、Coherent、Credo</td><td>从单节点到跨机房网络、光模块、AEC铜缆</td><td>800G/1.6T迭代、CPO、Ethernet份额</td></tr>
+<tr><td><strong>电力/冷却/地产</strong></td><td>Vertiv、Eaton、GE Vernova、Equinix</td><td>AI rack功率密度上升，UPS/配电/液冷</td><td>订单积压、液冷渗透率</td></tr>
+</table>
+</div>
+
+<hr>
+
+<h2>四、亚洲：台湾制造算力，韩国提供HBM，日本卡住精密环节，中国强在光模块</h2>
+
+<div class="rc-tbl">
+<table>
+<tr><th>地区</th><th>核心环节</th><th>龙头公司</th><th>深层逻辑</th></tr>
+<tr><td><strong>台湾</strong></td><td>先进代工、CoWoS、AI server、PCB</td><td>TSMC、ASE、Foxconn、Quanta、Wiwynn、Delta</td><td>从晶圆到ODM到电源模组的完整AI供应链</td></tr>
+<tr><td><strong>韩国</strong></td><td>HBM、DRAM、NAND</td><td>SK Hynix、Samsung、Hanmi</td><td>HBM从周边到高频叠高容量GPU性能瓶颈</td></tr>
+<tr><td><strong>日本</strong></td><td>设备、精密加工、材料、光纤</td><td>TEL、Advantest、DISCO、Shin-Etsu、Ibiden、Fujikura</td><td>供应链"不可替代"精密制造位</td></tr>
+<tr><td><strong>中国</strong></td><td>光模块、AI server、液冷、PCB</td><td>中际旭创、新易盛、天孚通信、浪潮、工业富联、沪电</td><td>竞争最激烈，国产替代空间最大</td></tr>
+</table>
+</div>
+
+<h3>亚洲资产排序</h3>
+<ul>
+<li><span class="rc-tier rc-t1">1</span> <strong>一线龙头资产：</strong>TSMC、SK Hynix、DISCO、Advantest、Murata、TDK、Delta</li>
+<li><span class="rc-tier rc-t2">2</span> <strong>二线制造：</strong>Wiwynn、Quanta、Hanmi、中际旭创、新易盛、ROHM</li>
+<li><span class="rc-tier rc-t3">3</span> <strong>区域配套：</strong>Celestica、YTL Power、Tenaga Nasional</li>
+</ul>
+
+<hr>
+
+<h2>五、欧洲：AI电力墙和先进设备的核心供给地</h2>
+
+<div class="rc-tbl">
+<table>
+<tr><th>国家</th><th>优势产业</th><th>龙头公司</th><th>投资建议</th></tr>
+<tr><td><strong>荷兰</strong></td><td>EUV/DUV光刻、ALD</td><td>ASML、ASM、BESI</td><td>先进制程入口，hybrid bonding弹性</td></tr>
+<tr><td><strong>德国</strong></td><td>功率半导体、电气自动化</td><td>Infineon、Siemens、Siemens Energy</td><td>AI电力墙核心受益</td></tr>
+<tr><td><strong>法国</strong></td><td>电力管理、PDU、工业气体</td><td>Schneider Electric、Legrand、Soitec</td><td>AI数据中心电气装备最佳受益组合</td></tr>
+<tr><td><strong>英国</strong></td><td>CPU/IP、数据中心供电</td><td>Arm、Oxford Instruments</td><td>Hyperscaler AI算力需求推动</td></tr>
+<tr><td><strong>瑞士</strong></td><td>配电自动化、真空泵</td><td>ABB、VAT Group、Comet</td><td>ABB与NVIDIA合作800VDC AI供电</td></tr>
+<tr><td><strong>意大利/比利时</strong></td><td>高压电网、SiC、光网络</td><td>Prysmian、STMicro、Nokia</td><td>AI电力扩容支撑</td></tr>
+</table>
+</div>
+
+<hr>
+
+<h2>六、投资框架：按利润池分，不是按AI标签买</h2>
+
+<div class="rc-tbl">
+<table>
+<tr><th>梯队</th><th>代表</th><th>特征</th><th>主要风险</th></tr>
+<tr><td><span class="rc-tier rc-t1">1</span> 架构平台芯片</td><td>美国：NVIDIA、Broadcom、Marvell、Synopsys</td><td>控制GPU/ASIC、EDA/IP、网络生态，毛利率高</td><td>估值高、客户自研ASIC</td></tr>
+<tr><td><span class="rc-tier rc-t2">2</span> 物理算力制造</td><td>台湾：TSMC、ASE<br>韩国：SK Hynix、Samsung</td><td>AI GPU/HBM/CoWoS/rack供给链整合</td><td>周期/库存、客户集中</td></tr>
+<tr><td><span class="rc-tier rc-t3">3</span> 设备材料</td><td>荷兰/日本：ASML、TEL、Advantest</td><td>不押单一芯片，押制程/设备景气度</td><td>半导体Capex、出口管制</td></tr>
+<tr><td><span class="rc-tier" style="background:#8882;color:#555">4</span> 电力/冷却</td><td>美/欧：Vertiv、Eaton、Schneider、ABB</td><td>AI站点能耗系统工程化</td><td>项目交付周期、电网审批</td></tr>
+<tr><td><span class="rc-tier" style="background:#8882;color:#555">5</span> 区域替代</td><td>中国/东南亚：中际旭创、浪潮、中芯</td><td>弹性强，光模块和国产替代</td><td>出口管制、价格竞争</td></tr>
+</table>
+</div>
+
+<h3>研究风向标清单</h3>
+<div class="rc-tbl">
+<table>
+<tr><th>主题</th><th>优先跟踪公司</th><th>跟踪指标</th></tr>
+<tr><td>GPU/ASIC架构</td><td>NVIDIA、Broadcom、Marvell、AMD、Arm</td><td>AI revenue、backlog、ASIC tape-out</td></tr>
+<tr><td>制造与先进封装</td><td>TSMC、ASE、ASML、BESI、DISCO</td><td>CoWoS产能、hybrid bonding订单</td></tr>
+<tr><td>HBM</td><td>SK Hynix、Samsung、Micron、Hanmi</td><td>HBM4份额、ASP、库存、客户认证</td></tr>
+<tr><td>AI网络与光通信</td><td>Broadcom、Arista、Coherent、中际旭创、新易盛</td><td>800G/1.6T出货、DSP/EML供给、CPO</td></tr>
+<tr><td>电力/冷却</td><td>Vertiv、Eaton、Schneider、ABB、Delta</td><td>订单能见度、液冷渗透率、800VDC架构</td></tr>
+</table>
+</div>
+
+<hr>
+
+<h2>七、核心洞见与风险</h2>
+
+<div class="rc-hl">
+<p><strong>一句话：</strong>AI数据中心的本质，是从芯片问题升级为系统工程问题，再升级为电力工程问题。</p>
+<p>美国仍是利润池中心，台湾和韩国是物理算力中心，日本和荷兰是设备材料枢纽，欧洲是电力冷却中心，中国是光模块和本土替代中心。</p>
+</div>
+
+<h3>主要风险</h3>
+<ol>
+<li><strong>AI Capex超预期回落</strong> — 若下游Capex收缩，上游产业链受影响</li>
+<li><strong>供应链短板</strong> — HBM、CoWoS、光模块订单和产能错配</li>
+<li><strong>技术路径风险</strong> — Ethernet vs InfiniBand、CPO路线切换</li>
+<li><strong>地缘风险</strong> — 出口管制、先进设备限制</li>
+<li><strong>估值风险</strong> — AI交易定价已较高</li>
+</ol>
+
+<div class="rc-hl">
+<p><strong>结论：</strong>高层次竞争将从芯片单点转向电力、液冷、网络、系统集成等更复杂的链条。当前最核心的预期差仍来自电力与冷却等基础设施，以及围绕GPU、先进封装和光互连的配套产业。</p>
+</div>
+
+<hr>
+
+<h2>八、主要参考来源</h2>
+<div class="rc-tbl">
+<table>
+<tr><th>机构</th><th>关键信息</th></tr>
+<tr><td>IEA</td><td>全球数据中心电力需求与AI能耗趋势</td></tr>
+<tr><td>McKinsey</td><td>2030年算力中心电力冷却需求预测</td></tr>
+<tr><td>NVIDIA</td><td>FY2026 AI数据中心收入</td></tr>
+<tr><td>Broadcom</td><td>FY2025 AI业务增长趋势</td></tr>
+<tr><td>AMD</td><td>2025年数据中心产品进展</td></tr>
+<tr><td>Arista</td><td>2025年云和AI网络趋势</td></tr>
+<tr><td>TSMC</td><td>HPC/AI需求增长</td></tr>
+<tr><td>Samsung</td><td>HBM/AI Memory增长</td></tr>
+<tr><td>ASML</td><td>EUV/DUV半导体AI需求</td></tr>
+</table>
+</div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Leslie 投资笔记 · 内容仅代表个人研究观点</p>
+    </footer>
+
+    <script src="/js/share.js"></script>
+</body>
+</html>

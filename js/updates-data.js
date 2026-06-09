@@ -5,6 +5,14 @@
 const updateLog = [
   {
     date: "2026-06-08",
+    type: "研报",
+    title: "全球AI数据中心产业链国家分工深度研报（PDF整理）",
+    stocks: "TSMC / SK Hynix / ASML / NVIDIA / Vertiv / 中际旭创",
+    status: "新笔记",
+    link: "/articles/global-ai-dc-industry-chain/",
+  },
+  {
+    date: "2026-06-08",
     type: "笔记",
     title: "HBM4重新定价：SemiAnalysis杀的是SOCAMM，不是HBM",
     stocks: "MU / SK hynix / NVDA",
