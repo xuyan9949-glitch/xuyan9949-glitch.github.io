@@ -476,6 +476,22 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
     border-color: var(--sector-color, var(--accent));
     color: var(--sector-color, var(--accent));
 }
+.trk-history-bar {
+    margin: 6px 0 4px;
+    text-align: right;
+}
+.trk-history-link {
+    font-size: 13px;
+    color: var(--text-muted, #888);
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: all .2s;
+}
+.trk-history-link:hover {
+    background: var(--bg-hover, #f0f0f6);
+    color: var(--accent, #3b82f6);
+}
 .trk-summary {
     margin-bottom: 14px;
 }

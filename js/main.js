@@ -406,7 +406,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return `<span style="font-size:11px;font-weight:500;color:${color}">${importance}</span>`;
     }
 
-    function renderCards(market) {
+    function renderCards(market, showAbandoned) {
         const grid = document.getElementById('trk-grid');
         const summary = document.getElementById('trk-summary');
         if (!grid || typeof trackingData === 'undefined') return;
@@ -417,6 +417,13 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.innerHTML = '<div class="trk-empty">暂无可展示的标的</div>';
             if (summary) summary.innerHTML = '';
             return;
+        }
+
+        // Filter abandoned unless showAbandoned
+        if (!showAbandoned) {
+            stocks = stocks.filter(s => !s.trackingStatus || !s.trackingStatus.includes('已放弃'));
+        } else {
+            stocks = stocks.filter(s => s.trackingStatus && s.trackingStatus.includes('已放弃'));
         }
 
         // US stocks: filter by sector
@@ -530,9 +537,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---- Tracking Tabs ----
     const tabs = document.querySelectorAll('.trk-tab');
     const sectorContainer = document.getElementById('trk-sector-tabs');
+    let showAbandoned = false;
+    const historyLink = document.getElementById('trk-history-link');
     if (tabs.length > 0) {
         let currentMarket = 'a';
-        renderCards(currentMarket);
+        renderCards(currentMarket, showAbandoned);
+
+        if (historyLink) {
+            historyLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                showAbandoned = !showAbandoned;
+                historyLink.textContent = showAbandoned ? '← 返回当前标的' : '📂 查看过往标的';
+                renderCards(currentMarket, showAbandoned);
+                // toggle history link visibility
+                const hisItems = document.getElementById('trk-history-items');
+                if (hisItems) hisItems.style.display = showAbandoned ? 'block' : 'none';
+            });
+        }
 
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
@@ -545,7 +566,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     if (sectorContainer) sectorContainer.style.display = 'none';
                 }
-                renderCards(currentMarket);
+                renderCards(currentMarket, showAbandoned);
             });
         });
     }
