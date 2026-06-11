@@ -6,6 +6,14 @@ const updateLog = [
   {
     date: "2026-06-12",
     type: "研究",
+    title: "AAOI参与笔记：可以做但不能当核心重仓",
+    stocks: "AAOI / LITE / COHR / CRDO",
+    status: "新笔记",
+    link: "/articles/aaoi-trading-note/",
+  },
+  {
+    date: "2026-06-12",
+    type: "研究",
     title: "光互连组合重建：CRDO/TSEM/VIAV拆解",
     stocks: "LITE / COHR / CRDO / TSEM / VIAV",
     status: "新笔记",

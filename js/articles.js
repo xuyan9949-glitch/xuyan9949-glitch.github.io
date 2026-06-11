@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "aaoi-trading-note",
+    title: "AAOI参与笔记：可以做，但不能当核心重仓",
+    date: "2026-06-12",
+    category: "美股",
+    subcategory: "光通信",
+    tags: ["AAOI", "光模块", "光通信", "弹性仓", "订单驱动", "800G", "1.6T"],
+    pinned: true,
+    summary: "AAOI不是光模块龙头老大，是AI光互连里弹性最大、波动最大、兑现压力也最大的订单驱动型标的。适合3%-5%弹性仓，不适合核心重仓。核心验证：订单、毛利率、现金流、融资节奏。",
+    keywords: "AAOI 光模块 800G 1.6T 弹性 订单 融资 风险 参与策略",
+    file: "/articles/aaoi-trading-note/"
+  },
+  {
     id: "optical-portfolio-rebuilding",
     title: "光互连组合重建：从光模块到全链条",
     date: "2026-06-12",
