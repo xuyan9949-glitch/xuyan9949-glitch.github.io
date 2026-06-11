@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "oracle-fy2026-q4-earnings",
+    title: "甲骨文FY26Q4财报：机构视角笔记",
+    date: "2026-06-11",
+    category: "美股",
+    subcategory: "财报分析",
+    tags: ["财报", "ORCL", "Oracle", "AI", "云", "OCI", "CapEx"],
+    pinned: true,
+    summary: "Oracle Q4营收$191.84亿(+21%)，OCI +93%，RPO达$6380亿(+363%)。但CapEx暴增至$556亿，FCF转负$-237亿，市场重新定价重资产AI基建逻辑。需求端极强，财务质量有压力。",
+    keywords: "Oracle ORCL 甲骨文 财报 FY2026 OCI AI 云 CapEx RPO 自由现金流",
+    file: "/articles/oracle-fy2026-q4-earnings/"
+  },
+  {
     id: "global-ai-dc-industry-chain",
     title: "全球AI数据中心产业链国家分工深度研报",
     date: "2026-06-08",

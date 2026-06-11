@@ -4,6 +4,14 @@
 
 const updateLog = [
   {
+    date: "2026-06-11",
+    type: "财报",
+    title: "甲骨文FY26Q4财报：机构视角笔记（RPO $6380亿）",
+    stocks: "ORCL / NVDA / MU / LITE / COHR",
+    status: "新笔记",
+    link: "/articles/oracle-fy2026-q4-earnings/",
+  },
+  {
     date: "2026-06-08",
     type: "研报",
     title: "全球AI数据中心产业链国家分工深度研报（PDF整理）",
