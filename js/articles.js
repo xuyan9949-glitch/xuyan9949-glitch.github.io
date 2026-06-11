@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "dongshan-intraday-t-note",
+    title: "东山精密日内做T思路笔记",
+    date: "2026-06-12",
+    category: "A股",
+    subcategory: "交易框架",
+    tags: ["东山精密", "做T", "A股", "交易体系", "PCB", "光模块"],
+    pinned: true,
+    summary: "东山精密日内做T的核心框架：大盘不杀→光/PCB不弱→东山有支撑→价差够→才做T。重点不是最低点最高点，是判断波动是板块回踩还是趋势走弱。",
+    keywords: "东山精密 做T 日内交易 T+1 正T 倒T 光模块 PCB AI PCB VWAP 支撑 压力",
+    file: "/articles/dongshan-intraday-t-note/"
+  },
+  {
     id: "cpi-round-two-analysis",
     title: "这次CPI的核心问题：AI牛市会不会遇到第二轮通胀冲击",
     date: "2026-06-11",

@@ -4,6 +4,14 @@
 
 const updateLog = [
   {
+    date: "2026-06-12",
+    type: "交易框架",
+    title: "东山精密日内做T思路笔记",
+    stocks: "东山精密 / 东山精密",
+    status: "新笔记",
+    link: "/articles/dongshan-intraday-t-note/",
+  },
+  {
     date: "2026-06-11",
     type: "市场分析",
     title: "这次CPI的核心问题：AI牛市会不会遇到第二轮通胀冲击",
