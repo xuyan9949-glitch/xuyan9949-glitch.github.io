@@ -5,6 +5,14 @@
 const updateLog = [
   {
     date: "2026-06-12",
+    type: "研究",
+    title: "光互连组合重建：CRDO/TSEM/VIAV拆解",
+    stocks: "LITE / COHR / CRDO / TSEM / VIAV",
+    status: "新笔记",
+    link: "/articles/optical-portfolio-rebuilding/",
+  },
+  {
+    date: "2026-06-12",
     type: "交易框架",
     title: "东山精密日内做T思路笔记",
     stocks: "东山精密 / 东山精密",
