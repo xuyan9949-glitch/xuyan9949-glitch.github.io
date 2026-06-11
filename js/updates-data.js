@@ -5,6 +5,14 @@
 const updateLog = [
   {
     date: "2026-06-11",
+    type: "市场分析",
+    title: "这次CPI的核心问题：AI牛市会不会遇到第二轮通胀冲击",
+    stocks: "QQQ / MU / LITE / COHR / DRAM",
+    status: "新笔记",
+    link: "/articles/cpi-round-two-analysis/",
+  },
+  {
+    date: "2026-06-11",
     type: "财报",
     title: "甲骨文FY26Q4财报：机构视角笔记（RPO $6380亿）",
     stocks: "ORCL / NVDA / MU / LITE / COHR",

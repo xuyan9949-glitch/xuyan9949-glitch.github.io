@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "cpi-round-two-analysis",
+    title: "这次CPI的核心问题：AI牛市会不会遇到第二轮通胀冲击",
+    date: "2026-06-11",
+    category: "近期热点",
+    subcategory: "宏观",
+    tags: ["CPI", "通胀", "FOMC", "AI", "宏观", "市场分析"],
+    pinned: true,
+    summary: "结合上周五QQQ-5%大跌看CPI：核心环比0.2%说明通胀上升主要是能源问题而非经济过热。上周五的暴跌是'预防性去风险'而非趋势反转。FOMC和日本央行是接下来两颗雷。光互联和存储仍是主线。",
+    keywords: "CPI 通胀 AI FOMC 日本央行 光通信 存储 DRAM HBM 去杠杆",
+    file: "/articles/cpi-round-two-analysis/"
+  },
+  {
     id: "oracle-fy2026-q4-earnings",
     title: "甲骨文FY26Q4财报：机构视角笔记",
     date: "2026-06-11",
