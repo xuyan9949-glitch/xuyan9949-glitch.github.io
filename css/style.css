@@ -527,12 +527,26 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
 .trk-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
 .trk-card-holding {
     border-left: 3px solid #ef4444;
-    background: linear-gradient(to right, #ef444404, transparent 8px);
+    background: linear-gradient(to right, #fff5f5, transparent 12px);
+    position: relative;
+}
+.trk-card-holding::before {
+    content: "持有";
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #ef4444;
+    background: #fef2f2;
+    padding: 1px 8px;
+    border-radius: 8px;
+    letter-spacing: 0.5px;
 }
 .trk-card-holding:hover {
     border-color: #ef4444;
     border-left-color: #ef4444;
-    box-shadow: 0 2px 12px rgba(239,68,68,.12);
+    box-shadow: 0 2px 16px rgba(239,68,68,.15);
 }
 .trk-card-abandoned {
     opacity: .5;

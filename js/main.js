@@ -437,6 +437,15 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Sort: holdings first, then observing
+        stocks.sort((a, b) => {
+            const aHold = a.trackingStatus && (a.trackingStatus.includes('持有') || a.trackingStatus.includes('底仓'));
+            const bHold = b.trackingStatus && (b.trackingStatus.includes('持有') || b.trackingStatus.includes('底仓'));
+            if (aHold && !bHold) return -1;
+            if (!aHold && bHold) return 1;
+            return 0;
+        });
+
         // Summary bar
         if (summary) {
             const total = stocks.length;
