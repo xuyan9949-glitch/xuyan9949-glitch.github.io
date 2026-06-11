@@ -5,8 +5,15 @@
 const updateLog = [
   {
     date: "2026-06-12",
+    type: "分析",
+    title: "中际旭创被列入1260H清单：供应链安全重新定价",
+    stocks: "中际旭创 / 新易盛 / LITE / COHR / AAOI",
+    status: "新笔记",
+    link: "/articles/innolight-1260h-analysis/",
+  },
+  {
+    date: "2026-06-12",
     type: "研究",
-    title: "AAOI参与笔记：可以做但不能当核心重仓",
     stocks: "AAOI / LITE / COHR / CRDO",
     status: "新笔记",
     link: "/articles/aaoi-trading-note/",

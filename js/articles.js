@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "innolight-1260h-analysis",
+    title: "中际旭创被列入美国1260H清单：供应链安全被重新定价",
+    date: "2026-06-12",
+    category: "A股",
+    subcategory: "光通信",
+    tags: ["中际旭创", "1260H", "光模块", "地缘", "供应链", "出口管制", "光通信"],
+    pinned: true,
+    summary: "中际旭创被美国列入1260H清单，光模块进入产业景气+供应链安全+地缘政治三重定价阶段。不是逻辑崩了，是定价框架变了。美股LITE/COHR/AAOI/GLW反而获得政策溢价。",
+    keywords: "中际旭创 1260H 光模块 供应链 出口管制 地缘政治 LITE COHR AAOI",
+    file: "/articles/innolight-1260h-analysis/"
+  },
+  {
     id: "aaoi-trading-note",
     title: "AAOI参与笔记：可以做，但不能当核心重仓",
     date: "2026-06-12",
