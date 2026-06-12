@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "aaoi-insider-selling-analysis",
+    title: "AAOI近期减持公告分析：高位集中兑现",
+    date: "2026-06-12",
+    category: "美股",
+    subcategory: "光通信",
+    tags: ["AAOI", "减持", "光模块", "内幕交易", "筹码分析"],
+    pinned: true,
+    summary: "AAOI 6/12集中披露5份Form 144，合计约184,053股（$3,182万），属高位集中兑现。偏利空但不是基本面爆雷，筹码利空>基本面利空。短线不建议追高，等回踩确认。",
+    keywords: "AAOI 减持 Form 144 Form 4 内幕交易 光模块 筹码 高位兑现",
+    file: "/articles/aaoi-insider-selling-analysis/"
+  },
+  {
     id: "innolight-1260h-analysis",
     title: "中际旭创被列入美国1260H清单：供应链安全被重新定价",
     date: "2026-06-12",

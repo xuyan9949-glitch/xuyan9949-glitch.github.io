@@ -6,6 +6,14 @@ const updateLog = [
   {
     date: "2026-06-12",
     type: "分析",
+    title: "AAOI减持分析：高管集中高位兑现",
+    stocks: "AAOI / LITE / COHR",
+    status: "新笔记",
+    link: "/articles/aaoi-insider-selling-analysis/",
+  },
+  {
+    date: "2026-06-12",
+    type: "分析",
     title: "中际旭创被列入1260H清单：供应链安全重新定价",
     stocks: "中际旭创 / 新易盛 / LITE / COHR / AAOI",
     status: "新笔记",
