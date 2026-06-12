@@ -1393,16 +1393,62 @@ const trackingData = {
       sector: "太空发射 / 卫星互联网",
       mkt: "us",
       usSector: "太空",
-      type: "",
-      trackingStatus: "观察中",
-      tradeCycle: "",
-      themeTags: "",
-      logicStatus: "",
+      type: "长线",
+      trackingStatus: "观察中 / 事件催化",
+      tradeCycle: "长线核心",
+      themeTags: "太空 / 火箭发射 / 卫星互联网 / 星链 / 星舰 / 太空探索",
+      logicStatus: "观察",
       color: "#8b5cf6",
-      reason: "",
-      strategy: "",
-      lastUpdated: "2026-06-07",
-      investmentLogic: null, catalysts: [], operationPlan: null,
+      reason: "史上最大IPO，$1.77T估值。核心看点：星链（Starlink）持续盈利、星舰（Starship）重型火箭迭代、NASA和政府合同、xAI算力整合。短期关注首日走势和估值锚定。",
+      strategy: "观察首日走势，不追高。等估值稳定后逢回调分批建仓。",
+      lastUpdated: "2026-06-12",
+      investmentLogic: {
+        oneLiner: "SpaceX的核心不是火箭，而是星链（Starlink）作为全球卫星互联网基础设施平台的商业化能力，以及星舰（Starship）大幅降低发射成本后打开的太空经济想象力。",
+        currentHypothesis: "星链已实现正向现金流并持续盈利，全球用户持续增长，成为SpaceX最稳定的收入来源。星舰的商业化将大幅降低发射成本，打开卫星部署和深空探索的商业空间。NASA、国防部、商业通信等政府和企业合同提供稳定收入底座。xAI/Grok的算力整合可能成为未来增量。",
+        coreReason: [
+          "星链是核心收入引擎：全球卫星互联网用户持续增长，已成为SpaceX最稳定的收入来源，现金流正向。",
+          "星舰降低发射成本：完全可重复使用重型火箭的迭代，将大幅降低每公斤发射成本，打开太空经济想象空间。",
+          "NASA和政府合同：作为NASA核心发射服务商，政府合同提供收入可见性和底线支撑。",
+          "太空经济稀缺标的：SpaceX是唯一具备星链+星舰双重能力且已商业化的太空公司，在公开市场具有稀缺溢价。",
+          "IPO估值$1.77T：首日最高$175（+30%），关注估值消化期后的合理建仓区间。"
+        ],
+        status: "新鲜上市，首日涨幅超30%，需要估值消化期",
+        statusNote: "首日IPO定价$135，盘中最高$175（+30%），收盘可能在此区间内。巨大的首日涨幅意味着短期内估值已被充分定价，建议等待流动性稳定和估值消化后再做配置决策。",
+        validUntil: "2026Q3 - 2027",
+        validNote: "重点看：首日之后的估值锚定区间；Q2星链用户增长数据；星舰下一次试飞计划和时间表；机构持仓变化；纳入指数的时间预期。",
+        questionsToVerify: [
+          "上市后1-2周，估值锚定在什么区间？",
+          "星链用户增速是否維持？",
+          "星舰下一次试飞进展如何？",
+          "机构投资者持仓占比如何？",
+          "是否有指数纳入预期？",
+          "xAI/Grok算力合作是否落地？",
+          "政府合同是否有新增量？"
+        ]
+      },
+      catalysts: [
+        { catalyst: "首日表现锚定", timeWindow: "1-2周", importance: "高", status: "跟踪中", evidence: "IPO定价$135，首日高$175，观察收盘价和后续1-2周估值锚定" },
+        { catalyst: "Q2星链用户数据", timeWindow: "2026Q3", importance: "高", status: "待验证", evidence: "星链用户增速和收入数据是SpaceX最核心的基本面指标" },
+        { catalyst: "星舰下次试飞", timeWindow: "2026年内", importance: "高", status: "跟踪中", evidence: "星舰重型火箭的迭代进度直接影响长期估值" },
+        { catalyst: "指数纳入预期", timeWindow: "3-12个月", importance: "中", status: "待验证", evidence: "满足S&P500上市时间要求后，指数纳入将带来被动资金流入" },
+        { catalyst: "机构持仓披露", timeWindow: "下个季度13F", importance: "中", status: "待验证", evidence: "大型机构投资者的仓位决策对市场情绪有引导作用" },
+      ],
+      valuation: {
+        assessment: "IPO定价$135（$1.77T估值），首日炒作区间$135-$175。$135-150为IPO定价区间，$150-175为首日溢价区间，$175以上为情绪化定价。等待2-4周流动性稳定后，$140-155可能是合理的长期建仓区间。",
+        riskNote: "$135是IPO定价锚，跌破$135意味着反转。首日上涨30%后存在获利回吐压力。高估值需要持续的业绩增长来支撑，任何不及预期的星链数据或发射延期都可能导致估值下修。",
+        tiers: [
+          { label: "IPO定价", price: "$135", logic: "IPO发行价，$1.77T估值基础" },
+          { label: "合理建仓区间", price: "$140-155", logic: "估值稳定后，流动性充足时的中长期建仓区间" },
+          { label: "首日溢价区间", price: "$155-175", logic: "首日情绪溢价带来的高估值区间，不适合追高" },
+        ]
+      },
+      operationPlan: {
+        currentStatus: "首日大幅上涨后处于估值消化期，当前不急于买入。",
+        buyPlan: ["等待上市2-4周，估值稳定后再考虑建仓。"],
+        addConditions: "估值稳定在$140-155区间，且Q2星链数据或试飞催化出现。",
+        reduceConditions: "股价跌破$135（IPO定价）且无基本面变化，需要重新评估。",
+        invalidateConditions: "星链用户增长明显放缓；星舰试飞重大失败；xAI算力整合不达预期；管理层重大变动。"
+      },
     },
     {
       id: "tsm",
