@@ -1365,8 +1365,35 @@ const trackingData = {
       color: "#8b5cf6",
       reason: "成熟小型火箭发射商+Space Systems业务，Neutron中型火箭为中长期期权。",
       strategy: "中线趋势持有，关注Neutron进展和Electron发射频率。",
-      lastUpdated: "2026-05-31",
-      investmentLogic: null, catalysts: [], operationPlan: null,
+      lastUpdated: "2026-06-12",
+      investmentLogic: {
+        oneLiner: "Rocket Lab是Electron小型火箭成熟运营商+Space Systems卫星制造业务快速增长+Neutron中型火箭作为中长期期权的太空复合标的。SpaceX上市后太空赛道估值重塑，RKLB作为唯一可比标的或被重估。",
+        currentHypothesis: "Electron已实现常态化商业发射，卫星制造业务（Space Systems）持续贡献收入增长，Neutron中型火箭开发是下一阶段估值弹性的核心驱动。",
+        coreReason: [
+          "Electron已证明商业可行性：常态化发射频率，客户涵盖商业和国防。",
+          "Space Systems快速增长：卫星制造和太空系统业务贡献多样化收入。",
+          "Neutron是中长期期权：中型火箭一旦成功将打开更大市场。",
+          "SpaceX上市后同类标的稀缺溢价：作为公开市场唯一独立火箭公司，估值或受益于太空板块关注度提升。"
+        ],
+        status: "受SPCX上市影响，太空板块短期承压，但中长期逻辑未变",
+        statusNote: "SpaceX上市首日大涨但ASTS/RKLB反而暴跌（利好出尽/资金切换），短期情绪扰动明显。中长期看，SPCX的高估值实际上打开了太空板块的天花板。",
+        validUntil: "2026Q3 - 2027",
+        questionsToVerify: ["Neutron试飞进展","Space Systems收入增速","发射频率是否提升","SPCX上市后太空板块资金流向"]
+      },
+      catalysts: [
+        { catalyst: "Neutron试飞", timeWindow: "2026年内", importance: "高", status: "跟踪中", evidence: "Neutron中型火箭试飞时间表和进展" },
+        { catalyst: "SPCX比价效应", timeWindow: "1-3个月", importance: "中高", status: "跟踪中", evidence: "SPCX稳定后市场对太空标的的估值框架重估" },
+        { catalyst: "Q2财报", timeWindow: "2026Q3", importance: "中", status: "待验证", evidence: "收入和发射频率是否继续增长" },
+      ],
+      valuation: {
+        assessment: "SPCX上市后，太空标的估值框架面临重估。RKLB相比SPCX规模较小，但作为唯一独立的公开火箭公司，存在稀缺溢价。当前价格受SPCX情绪扰动较大，等待估值稳定。",
+        tiers: [{label:"保守",price:"$80-95",logic:"Electron业务稳定+Neutron预期一般"},{label:"中性",price:"$95-115",logic:"Electron持续运营+Neutron稳步推进"},{label:"乐观",price:"$115-130",logic:"Neutron商业化+SPCX比价重估"}]
+      },
+      operationPlan: {
+        currentStatus: "SPCX上市后情绪扰动中，短期观望。",
+        buyPlan: ["等待$95-100区间企稳后考虑建仓"],
+        invalidateConditions: "Neutron试飞失败或显著延期"
+      },
     },
     {
       id: "asts",
@@ -1383,8 +1410,35 @@ const trackingData = {
       color: "#8b5cf6",
       reason: "卫星通信运营商，BlueBird星座部署进度决定商业化节奏。",
       strategy: "中线持有，重点跟踪发射节奏和运营商合作进展。",
-      lastUpdated: "2026-05-31",
-      investmentLogic: null, catalysts: [], operationPlan: null,
+      lastUpdated: "2026-06-12",
+      investmentLogic: {
+        oneLiner: "ASTS是卫星直连手机的直接卫星通信运营商，BlueBird星座是核心资产。SPCX上市后太空基础设施逻辑被重估，但ASTS在卫星通信赛道具有独特稀缺性。",
+        currentHypothesis: "BlueBird卫星星座部署是ASTS估值的核心驱动。5颗Block 2 BlueBird卫星的发射节奏和后续卫星生产进度将决定其覆盖能力和商业化进程。",
+        coreReason: [
+          "卫星直连手机是独特赛道：与T-Mobile/AT&T/Verizon等运营商合作已建立先发优势。",
+          "BlueBird星座是关键：覆盖范围和容量决定商业化价值。",
+          "SPCX上市双刃剑：正面是太空高估值天花板打开，负面是资金切换至SPCX。",
+          "商业合作验证：已与多家全球运营商签署协议，商业化路径较清晰。"
+        ],
+        status: "SPCX上市对ASTS产生直接资金分流，短期承压",
+        statusNote: "SPCX首日冲击下ASTS跌超-9%是典型的利好出尽+资金切换。中长期看，卫星直连手机的稀缺逻辑并未被证伪。",
+        validUntil: "2026Q3 - 2027",
+        questionsToVerify: ["BlueBird发射节奏","运营商合作是否加速","SPCX上市后的太空板块资金分布","收入何时开始规模化"]
+      },
+      catalysts: [
+        { catalyst: "BlueBird发射", timeWindow: "2026Q3", importance: "高", status: "跟踪中", evidence: "三颗BlueBird卫星发射进展" },
+        { catalyst: "SPCX比价效应", timeWindow: "1-3个月", importance: "中高", status: "跟踪中", evidence: "太空板块估值天花板上升" },
+        { catalyst: "运营商营收分成", timeWindow: "2026H2", importance: "高", status: "待验证", evidence: "商业服务收入确认" },
+      ],
+      valuation: {
+        assessment: "SPCX上市后太空赛道估值天花板打开，但短期ASTS面临资金分流压力。当前跌至$90以下，从年内高点已大幅回撤。等待BlueBird发射进度确认和SPCX稳定后的板块修复。",
+        tiers: [{label:"保守",price:"$75-90",logic:"BlueBird进度一般+太空情绪弱"},{label:"中性",price:"$95-115",logic:"BlueBird按计划发射+运营商合作推进"},{label:"乐观",price:"$120-150",logic:"BlueBird加速+SPCX比价重估+收入验证"}]
+      },
+      operationPlan: {
+        currentStatus: "SPCX上市冲击波中，短期不宜抄底。",
+        buyPlan: ["等BlueBird发射进度明确、太空板块情绪稳定后再考虑"],
+        invalidateConditions: "BlueBird发射重大推迟、运营商合作中断"
+      },
     },
     {
       id: "spcx",
@@ -1394,7 +1448,7 @@ const trackingData = {
       mkt: "us",
       usSector: "太空",
       type: "长线",
-      trackingStatus: "观察中 / 事件催化",
+      trackingStatus: "持有中 / 观察",
       tradeCycle: "长线核心",
       themeTags: "太空 / 火箭发射 / 卫星互联网 / 星链 / 星舰 / 太空探索",
       logicStatus: "观察",
@@ -1548,7 +1602,7 @@ const trackingData = {
       mkt: "us",
       usSector: "半导体",
       type: "中线",
-      trackingStatus: "持有中",
+      trackingStatus: "观察中",
       tradeCycle: "中线 + 事件驱动",
       themeTags: "AI芯片 / 大晶圆 / 训练推理",
       logicStatus: "逻辑增强",
@@ -2139,7 +2193,7 @@ const trackingData = {
       mkt: "us",
       usSector: "量子计算",
       type: "中线",
-      trackingStatus: "持有中",
+      trackingStatus: "观察中",
       tradeCycle: "中线",
       themeTags: "量子计算 / 量子芯片 / 量子比特",
       logicStatus: "验证中",
