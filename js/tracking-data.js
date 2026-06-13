@@ -1590,9 +1590,30 @@ const trackingData = {
       logicStatus: "观察",
       color: "#6366f1",
       reason: "NAND闪存龙头，受益于AI数据中心SSD需求增长和存储涨价周期。",
-      strategy: "观察为主，等待存储涨价趋势确认。",
-      lastUpdated: "2026-06-01",
-      investmentLogic: null, catalysts: [], operationPlan: null,
+      strategy: "观察为主，等待NAND涨价趋势确认。",
+      lastUpdated: "2026-06-13",
+      investmentLogic: {
+        oneLiner: "Sandisk（闪迪）是全球NAND闪存龙头，受益于AI数据中心SSD需求爆发、NAND涨价周期和企业级存储升级。",
+        currentHypothesis: "NAND闪存价格进入上升周期，AI数据中心对高容量SSD需求持续增长。Sandisk在企业级SSD市场有较强份额，AI服务器对存储容量和带宽的需求是结构性增量。",
+        coreReason: ["NAND涨价周期启动，价格上行直接改善利润","AI数据中心SSD需求持续增长，企业级产品是利润核心","韩国芯片出口+205%验证存储景气","PC/手机NAND需求仍偏弱，但数据中心需求可对冲"],
+        status: "NAND涨价周期+AI数据中心双驱动",
+        statusNote: "SNXX（2x SNDK）一周涨50%说明市场已经在交易NAND涨价逻辑。SNDK正股弹性不如杠杆产品，但胜在稳定。",
+        questionsToVerify: ["NAND价格趋势","企业级SSD收入增速","HBM对NAND产能的挤占效应"]
+      },
+      catalysts: [
+        { catalyst: "NAND涨价周期", timeWindow: "2026", importance: "高", status: "跟踪中", evidence: "NAND价格指数上行" },
+        { catalyst: "AI数据中心SSD需求", timeWindow: "2026", importance: "高", status: "跟踪中", evidence: "企业级SSD订单" },
+        { catalyst: "消费电子NAND需求恢复", timeWindow: "2026H2", importance: "中", status: "待验证", evidence: "PC/手机SSD出货量" },
+      ],
+      valuation: {
+        assessment: "SNXX一周50%涨幅后短期有获利回吐压力。SNDK正股位置相对合理，NAND涨价周期+AI SSD驱动下估值有支撑。",
+        tiers: [{label:"保守",price:"$1400-1600",logic:"NAND涨价温和"},{label:"中性",price:"$1650-1850",logic:"NAND涨价+AI SSD稳定增长"},{label:"乐观",price:"$1900-2100",logic:"NAND全面涨价+AI SSD爆发"}]
+      },
+      operationPlan: {
+        currentStatus: "观察中，等NAND涨价趋势进一步确认",
+        buyPlan: ["等回调至$1600-1700区间"],
+        invalidateConditions: "NAND涨价周期结束；AI数据中心SSD需求不及预期"
+      },
     },
     {
       id: "cbrs",
@@ -1628,8 +1649,28 @@ const trackingData = {
       color: "#f59e0b",
       reason: "存储芯片龙头，HBM和DRAM涨价周期核心受益。",
       strategy: "中线趋势持有，波段做T。",
-      lastUpdated: "2026-05-31",
-      investmentLogic: null, catalysts: [], operationPlan: null,
+      lastUpdated: "2026-06-13",
+      investmentLogic: {
+        oneLiner: "美光（MU）是存储芯片龙头，HBM3e/HBM4放量+DRAM涨价周期+数据中心SSD需求三重驱动。",
+        currentHypothesis: "HBM是美光当前最核心的增量逻辑。美光在HBM3e已获NVIDIA认证并开始放量，HBM4开发推进中。传统DRAM涨价周期仍在但消费电子疲软。韩国6月上旬芯片出口+205%验证存储需求延续。",
+        coreReason: ["HBM3e/HBM4放量：已通过NVIDIA认证，是股价重估核心驱动力","韩国芯片出口+205%验证存储涨价周期","数据中心DRAM/SSD需求强劲","消费电子疲软：智能手机SoC出货量降8%提示PC/手机DRAM拖累"],
+        status: "HBM驱动估值重估，但消费电子是拖累",
+        questionsToVerify: ["HBM4认证进展？","HBM收入占比季度变化","传统DRAM涨价持续性"]
+      },
+      catalysts: [
+        { catalyst: "FY2026 Q3财报（6/25）", timeWindow: "2026-06-25", importance: "极高", status: "核心跟踪", evidence: "HBM收入占比和毛利率趋势" },
+        { catalyst: "HBM3e/HBM4放量", timeWindow: "2026H2", importance: "极高", status: "跟踪中", evidence: "NVIDIA认证进展" },
+        { catalyst: "NVIDIA Rubin平台认证", timeWindow: "2026H2", importance: "高", status: "待验证", evidence: "HBM4进入下一代AI GPU平台" },
+      ],
+      valuation: {
+        assessment: "当前约$990，关注6/25 Q3财报。",
+        tiers: [{label:"保守",price:"$700-850",logic:"周期下行/HBM不及预期"},{label:"中性",price:"$900-1050",logic:"HBM持续放量"},{label:"乐观",price:"$1100-1300",logic:"HBM超预期+存储全面涨价"}]
+      },
+      operationPlan: {
+        currentStatus: "持有中，等6/25 Q3财报验证",
+        buyPlan: ["等回踩$900-920区间"],
+        invalidateConditions: "HBM认证失败；存储涨价周期结束"
+      },
     },
   
     {
