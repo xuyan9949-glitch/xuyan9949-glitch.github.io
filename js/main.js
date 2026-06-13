@@ -1317,6 +1317,31 @@ document.querySelectorAll('.cal-filter').forEach(el => {
     });
 });
 
+// ---- 历史事件 ----
+function toggleCalendarHistory() {
+    const grid = document.getElementById('cal-history-grid');
+    const link = document.querySelector('.cal-history-link');
+    if (!grid || typeof calendarHistory === 'undefined') return;
+    
+    const isHidden = grid.style.display === 'none';
+    grid.style.display = isHidden ? 'grid' : 'none';
+    link.textContent = isHidden ? '📂 收起历史事件' : '📂 查看历史事件';
+    
+    if (isHidden && grid.children.length === 0) {
+        grid.innerHTML = calendarHistory.sort((a, b) => b.date.localeCompare(a.date)).map(e => {
+            const impColor = { '极高':'#ef4444', '高':'#f59e0b', '中':'#6b6b80' }[e.importance] || '#6b6b80';
+            return `<div class="cal-card cal-past">
+                <div class="cal-date">${e.date}</div>
+                <div class="cal-type" style="background:${impColor}15;color:${impColor}">${e.type}</div>
+                <div class="cal-title">${e.title}</div>
+                <div class="cal-stocks">${e.stocks}</div>
+                <div class="cal-result"><strong>结果：</strong>${e.result}</div>
+                <div class="cal-verify"><strong>验证：</strong>${e.verification}</div>
+            </div>`;
+        }).join('');
+    }
+}
+
 // ---- 近期最重要三件事 ----
 const topEl = document.getElementById('cal-top-three');
 if (topEl && typeof topThree !== 'undefined') {
