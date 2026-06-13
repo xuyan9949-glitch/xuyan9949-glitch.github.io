@@ -274,17 +274,40 @@ document.addEventListener('DOMContentLoaded', () => {
             </a>
         `).join('');
 
-        // Add "展开更多" button if there are more
-        if (end < filtered.length) {
-            const btnWrap = document.createElement('div');
-            btnWrap.className = 'nf-more-wrap';
-            btnWrap.style.marginTop = '12px';
-            const btn = document.createElement('button');
-            btn.className = 'nf-more-btn';
-            btn.textContent = `展开更多（共${filtered.length}条）`;
-            btn.onclick = () => renderNotes(category, page + 1);
-            btnWrap.appendChild(btn);
-            notesEl.appendChild(btnWrap);
+        // Pagination
+        const totalPages = Math.ceil(filtered.length / NOTES_PAGE_SIZE);
+        if (totalPages > 1) {
+            const pagWrap = document.createElement('div');
+            pagWrap.className = 'notes-pagination';
+            pagWrap.style.cssText = 'display:flex;justify-content:center;align-items:center;gap:6px;margin-top:20px;';
+            
+            // Prev
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'notes-page-btn';
+            prevBtn.textContent = '‹';
+            prevBtn.disabled = page <= 1;
+            prevBtn.onclick = () => renderNotes(category, page - 1);
+            pagWrap.appendChild(prevBtn);
+            
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                const pBtn = document.createElement('button');
+                pBtn.className = 'notes-page-btn' + (i === page ? ' active' : '');
+                pBtn.textContent = i;
+                pBtn.onclick = () => renderNotes(category, i);
+                if (i === page) pBtn.disabled = true;
+                pagWrap.appendChild(pBtn);
+            }
+            
+            // Next
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'notes-page-btn';
+            nextBtn.textContent = '›';
+            nextBtn.disabled = page >= totalPages;
+            nextBtn.onclick = () => renderNotes(category, page + 1);
+            pagWrap.appendChild(nextBtn);
+            
+            notesEl.appendChild(pagWrap);
         }
     }
 
