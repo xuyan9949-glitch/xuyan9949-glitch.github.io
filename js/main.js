@@ -254,22 +254,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const shown = filtered.slice(0, end);
 
         notesEl.innerHTML = shown.map(a => `
-            <a href="${a.file}" class="note-card">
+            <a href="${a.file}" class="note-card${a.pinned ? ' note-pinned' : ''}">
                 <div class="meta">
                     <span>${a.date}</span>
                     <span class="dot"></span>
-                    <span>${a.tags.map(t => {
+                    <span>${a.category}</span>
+                </div>
+                <h3>${a.title}</h3>
+                <p>${a.summary.length > 80 ? a.summary.slice(0, 80) + '…' : a.summary}</p>
+                <div class="tags">
+                    ${a.tags.slice(0, 4).map(t => {
                         const stockId = findStockIdByTag(t);
                         return stockId
                             ? `<span class="tag-stock-link" onclick="event.preventDefault();event.stopPropagation();openStockTracking('${stockId}')">${t}</span>`
-                            : t;
-                    }).join(' · ')}</span>
-                    ${a.pinned ? '<span class="pin-badge">📌 置顶</span>' : ''}
-                </div>
-                <h3>${a.title}</h3>
-                <p>${a.summary}</p>
-                <div class="tags">
-                    ${a.tags.map(t => `<span>${t}</span>`).join('')}
+                            : `<span>${t}</span>`;
+                    }).join('')}
                 </div>
             </a>
         `).join('');
