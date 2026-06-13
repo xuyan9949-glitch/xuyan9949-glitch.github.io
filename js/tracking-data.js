@@ -1719,7 +1719,8 @@ const trackingData = {
         targetPrice: null,
         invalidateConditions: "HBM需求弱化、NVIDIA/云厂商平台放量延后、SK海力士/三星扩产导致供需明显转松、DRAM/NAND价格连续下行、公司capex被解读为新一轮过剩起点。"
       },
-
+    },
+  
     {
       id: "avgo",
       code: "AVGO",
