@@ -218,14 +218,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function renderNotes(category) {
+    const NOTES_PAGE_SIZE = 6;
+    let notesPage = 1;
+
+    function renderNotes(category, page) {
         if (!notesEl || typeof articles === 'undefined') return;
+
+        if (page === undefined) page = 1;
+        notesPage = page;
 
         let filtered = articles;
         if (category !== 'all') {
             filtered = articles.filter(a => a.category === category);
             renderSubcatTags(category);
-            // Apply sub-category filter
             if (currentSubcat !== 'all') {
                 filtered = filtered.filter(a => a.subcategory === currentSubcat);
             }
@@ -233,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (subcatBar) subcatBar.style.display = 'none';
             currentSubcat = 'all';
         }
-        // Pinned articles first, then by date descending
+        // Pinned first, then by date
         filtered.sort((a, b) => {
             if (a.pinned && !b.pinned) return -1;
             if (!a.pinned && b.pinned) return 1;
@@ -245,13 +250,15 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        notesEl.innerHTML = filtered.map(a => `
+        const end = Math.min(page * NOTES_PAGE_SIZE, filtered.length);
+        const shown = filtered.slice(0, end);
+
+        notesEl.innerHTML = shown.map(a => `
             <a href="${a.file}" class="note-card">
                 <div class="meta">
                     <span>${a.date}</span>
                     <span class="dot"></span>
                     <span>${a.tags.map(t => {
-                        // Make stock-name tags clickable → jump to tracking
                         const stockId = findStockIdByTag(t);
                         return stockId
                             ? `<span class="tag-stock-link" onclick="event.preventDefault();event.stopPropagation();openStockTracking('${stockId}')">${t}</span>`
@@ -266,6 +273,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </a>
         `).join('');
+
+        // Add "展开更多" button if there are more
+        if (end < filtered.length) {
+            const btnWrap = document.createElement('div');
+            btnWrap.className = 'nf-more-wrap';
+            btnWrap.style.marginTop = '12px';
+            const btn = document.createElement('button');
+            btn.className = 'nf-more-btn';
+            btn.textContent = `展开更多（共${filtered.length}条）`;
+            btn.onclick = () => renderNotes(category, page + 1);
+            btnWrap.appendChild(btn);
+            notesEl.appendChild(btnWrap);
+        }
     }
 
     if (catTags.length > 0) {
