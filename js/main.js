@@ -1131,6 +1131,53 @@ document.addEventListener('DOMContentLoaded', () => {
     
     renderNews(1);
 
+    // ---- Render Diagrams ----
+    const diagramsGrid = document.getElementById('diagrams-grid');
+    if (diagramsGrid && typeof diagrams !== 'undefined') {
+        diagramsGrid.innerHTML = diagrams.map(d => `
+            <div class="diagram-card" onclick="openDiagram('${d.file}')">
+                <img src="/images/diagrams/${d.file}" alt="${d.title}" loading="lazy">
+                <div class="diagram-label">${d.title}</div>
+            </div>
+        `).join('');
+    }
+
+    // Create lightbox HTML
+    const lb = document.createElement('div');
+    lb.className = 'diagram-lightbox';
+    lb.id = 'diagram-lightbox';
+    lb.innerHTML = '<span class="lb-close" onclick="closeDiagram()">✕</span><img id="lb-img" src="" alt=""><span class="lb-title" id="lb-title"></span>';
+    document.body.appendChild(lb);
+
+    function openDiagram(file) {
+        const lb = document.getElementById('diagram-lightbox');
+        const img = document.getElementById('lb-img');
+        const title = document.getElementById('lb-title');
+        if (!lb || !img) return;
+        const d = diagrams.find(x => x.file === file);
+        img.src = '/images/diagrams/' + file;
+        if (d) title.textContent = d.title;
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    window.openDiagram = openDiagram;
+
+    function closeDiagram() {
+        const lb = document.getElementById('diagram-lightbox');
+        if (!lb) return;
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    window.closeDiagram = closeDiagram;
+    // Close on overlay click
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('diagram-lightbox')) closeDiagram();
+    });
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeDiagram();
+    });
+
 });
 
 // ---- Global: stock tag click → tracking drawer ----
