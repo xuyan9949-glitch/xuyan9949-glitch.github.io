@@ -562,6 +562,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 openDrawer(el.dataset.id, el.dataset.mkt);
             });
         });
+        
+        // Check if there's a pending deep link
+        if (window._pendingDeepLink) {
+            const targetId = window._pendingDeepLink;
+            window._pendingDeepLink = null;
+            const card = grid.querySelector(`.trk-card[data-id="${targetId}"]`);
+            if (card) {
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => card.click(), 300);
+            }
+        }
     }
 
     // ---- US Stock Sector Tabs ----
@@ -990,32 +1001,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!match) return;
         const stockId = match[1];
         
-        // Wait for trackingData to be available
+        // Wait for trackingData then switch tab
         const checkData = setInterval(() => {
             if (typeof trackingData === 'undefined') return;
             clearInterval(checkData);
             
-            // Determine market
+            window._pendingDeepLink = stockId;
+            
             let market = 'a';
             const usIds = (trackingData['us-stocks'] || []).map(s => s.id);
             if (usIds.includes(stockId)) market = 'us';
             
-            // Switch to correct tab
             const tab = document.querySelector(`.trk-tab[data-mkt="${market}"]`);
-            if (tab) tab.click();
-            
-            // Watch for the card to appear in DOM
-            const grid = document.getElementById('trk-grid');
-            if (!grid) return;
-            const observer = new MutationObserver(() => {
-                const card = grid.querySelector(`.trk-card[data-id="${stockId}"]`);
-                if (card) {
-                    observer.disconnect();
-                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    setTimeout(() => card.click(), 200);
-                }
-            });
-            observer.observe(grid, { childList: true, subtree: true });
+            if (tab) {
+                tab.click();
+            } else {
+                // Tab not found, try clicking after a delay
+                setTimeout(() => {
+                    const t = document.querySelector(`.trk-tab[data-mkt="${market}"]`);
+                    if (t) t.click();
+                }, 500);
+            }
         }, 100);
     }
     handleDeepLink();
