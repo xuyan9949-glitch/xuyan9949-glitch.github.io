@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "semi-analysis-ai-gpu-scarcity",
+    title: "SemiAnalysis：AI算力紧缺并未结束，2026年或再次进入供给瓶颈",
+    date: "2026-06-14",
+    category: "产业思考",
+    subcategory: "研报分析",
+    tags: ["SemiAnalysis", "GPU", "AI算力", "HBM", "光互联", "推理", "供给瓶颈"],
+    pinned: true,
+    summary: "SemiAnalysis报告：GPU租赁价格反弹40%、Blackwell交付周期拉长至6-7个月，AI算力供给过剩逻辑正在被证伪。需求从训练转向推理，HBM存储和光互联是新一轮扩张中最容易形成瓶颈的环节。",
+    keywords: "SemiAnalysis GPU AI 算力 HBM 存储 光互联 推理 供给 瓶颈 NVDA MU LITE COHR",
+    file: "/articles/semi-analysis-ai-gpu-scarcity/"
+  },
+  {
     id: "aaoi-insider-selling-analysis",
     title: "AAOI近期减持公告分析：高位集中兑现",
     date: "2026-06-12",

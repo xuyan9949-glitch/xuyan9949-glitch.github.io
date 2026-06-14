@@ -4,6 +4,14 @@
 
 const updateLog = [
   {
+    date: "2026-06-14",
+    type: "研报",
+    title: "SemiAnalysis：AI算力紧缺并未结束，2026年或再次进入供给瓶颈",
+    stocks: "NVDA / MU / LITE / COHR / MRVL",
+    status: "新笔记",
+    link: "/articles/semi-analysis-ai-gpu-scarcity/",
+  },
+  {
     date: "2026-06-12",
     type: "分析",
     title: "AAOI减持分析：高管集中高位兑现",
