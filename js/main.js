@@ -985,26 +985,40 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ---- Deep linking: #tracking-stockId ----
-    const deepLinkMatch = window.location.hash.match(/^#tracking-(.+)$/);
-    if (deepLinkMatch) {
-        const stockId = deepLinkMatch[1];
-        setTimeout(() => {
-            // Determine market from tracking data
+    function handleDeepLink() {
+        const match = window.location.hash.match(/^#tracking-(.+)$/);
+        if (!match) return;
+        const stockId = match[1];
+        
+        // Wait for trackingData to be available
+        const checkData = setInterval(() => {
+            if (typeof trackingData === 'undefined') return;
+            clearInterval(checkData);
+            
+            // Determine market
             let market = 'a';
-            if (typeof trackingData !== 'undefined') {
-                const usIds = (trackingData['us-stocks'] || []).map(s => s.id);
-                if (usIds.includes(stockId)) market = 'us';
-            }
+            const usIds = (trackingData['us-stocks'] || []).map(s => s.id);
+            if (usIds.includes(stockId)) market = 'us';
+            
             // Switch to correct tab
             const tab = document.querySelector(`.trk-tab[data-mkt="${market}"]`);
             if (tab) tab.click();
-            // Wait for render then click the card
-            setTimeout(() => {
-                const card = document.querySelector(`.trk-card[data-id="${stockId}"]`);
-                if (card) card.click();
-            }, 300);
-        }, 300);
+            
+            // Watch for the card to appear in DOM
+            const grid = document.getElementById('trk-grid');
+            if (!grid) return;
+            const observer = new MutationObserver(() => {
+                const card = grid.querySelector(`.trk-card[data-id="${stockId}"]`);
+                if (card) {
+                    observer.disconnect();
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    setTimeout(() => card.click(), 200);
+                }
+            });
+            observer.observe(grid, { childList: true, subtree: true });
+        }, 100);
     }
+    handleDeepLink();
 
     // ---- Render News Flash (分页) ----
     const newsList = document.getElementById('news-flash-list');
