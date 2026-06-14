@@ -409,6 +409,33 @@ a.framework-card:hover .fw-arrow { transform: translateX(4px); color: var(--acce
 }
 .nf-full-detail p { margin: 0; }
 
+/* Diagram tabs */
+.diagram-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+.diagram-tab {
+    padding: 4px 14px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    background: var(--bg-alt);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    transition: all .2s;
+}
+.diagram-tab.active {
+    background: #3b82f620;
+    color: #3b82f6;
+    border-color: #3b82f640;
+}
+.diagram-tab:hover {
+    color: var(--text);
+    border-color: var(--text-muted);
+}
 /* Diagrams grid */
 .diagrams-grid {
     display: grid;

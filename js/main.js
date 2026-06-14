@@ -1133,13 +1133,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ---- Render Diagrams ----
     const diagramsGrid = document.getElementById('diagrams-grid');
-    if (diagramsGrid && typeof diagrams !== 'undefined') {
-        diagramsGrid.innerHTML = diagrams.map(d => `
-            <div class="diagram-card" onclick="openDiagram('${d.file}')">
-                <img src="/images/diagrams/${d.file}" alt="${d.title}" loading="lazy">
+    let currentDiagramCategory = 'all';
+
+    function renderDiagrams(cat) {
+        if (!diagramsGrid || typeof diagrams === 'undefined') return;
+        const filtered = cat === 'all' ? diagrams : diagrams.filter(d => d.category === cat);
+        diagramsGrid.innerHTML = filtered.map(d => {
+            const imgPath = d.dir ? '/images/diagrams/' + d.dir + '/' + d.file : '/images/diagrams/' + d.file;
+            return `<div class="diagram-card" onclick="openDiagram('${d.dir || '.'}/${d.file}', '${d.title}')">
+                <img src="${imgPath}" alt="${d.title}" loading="lazy">
                 <div class="diagram-label">${d.title}</div>
-            </div>
-        `).join('');
+            </div>`;
+        }).join('');
+    }
+
+    if (diagramsGrid && typeof diagrams !== 'undefined') {
+        renderDiagrams('all');
+    }
+
+    // Diagram tabs
+    const diagramTabs = document.getElementById('diagram-tabs');
+    if (diagramTabs) {
+        diagramTabs.querySelectorAll('.diagram-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                diagramTabs.querySelectorAll('.diagram-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentDiagramCategory = tab.dataset.dcat;
+                renderDiagrams(currentDiagramCategory);
+            });
+        });
     }
 
     // Create lightbox HTML
@@ -1149,14 +1171,13 @@ document.addEventListener('DOMContentLoaded', () => {
     lb.innerHTML = '<span class="lb-close" onclick="closeDiagram()">✕</span><img id="lb-img" src="" alt=""><span class="lb-title" id="lb-title"></span>';
     document.body.appendChild(lb);
 
-    function openDiagram(file) {
+    function openDiagram(path, title) {
         const lb = document.getElementById('diagram-lightbox');
         const img = document.getElementById('lb-img');
-        const title = document.getElementById('lb-title');
+        const titleEl = document.getElementById('lb-title');
         if (!lb || !img) return;
-        const d = diagrams.find(x => x.file === file);
-        img.src = '/images/diagrams/' + file;
-        if (d) title.textContent = d.title;
+        img.src = '/images/diagrams/' + path;
+        if (titleEl) titleEl.textContent = title || '';
         lb.classList.add('open');
         document.body.style.overflow = 'hidden';
     }
