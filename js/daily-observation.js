@@ -26,9 +26,9 @@ const dailyObservation = {
     {
       label: "亚洲市场",
       items: [
-        { name: "KOSPI（韩综）",  close: "198.94（+11.48%）",     structure: "暴涨",     level: "极端",     meaning: "出口数据+半导体双催化，但盘中一度闪崩" },
-        { name: "日经225", close: "92.18（+3.24%）",       structure: "大幅反弹",   level: "明显走强",   meaning: "跟随科技股反弹" },
-        { name: "上证指数", close: "3987.01（-0.4%）",  structure: "周五绿盘",   level: "偏弱",   meaning: "A股跑输美股，关注周一补涨" },
+        { name: "KOSPI（韩综）",  close: "8124（+4.63%）",     structure: "高开高走重返8000",     level: "极端",     meaning: "出口数据+半导体双催化，盘中一度闪崩后强势收回" },
+        { name: "日经225", close: "66020（+2.81%）",       structure: "稳步上行",   level: "明显走强",   meaning: "跟随科技股反弹，盘中创历史新高68786" },
+        { name: "上证指数", close: "4031.32（+1.11%）",  structure: "放量上攻重返4000点",   level: "明显走强",   meaning: "A股放量3.24万亿大涨，光模块/存储链跟随美股补涨" },
         { name: "恒生科技", close: "4713.29（+1.24%）",  structure: "温和跟涨",   level: "偏弱",   meaning: "弹性弱于美股" },
       ],
     },
