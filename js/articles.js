@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "wf6-hbm-bottleneck",
+    title: "WF6会成为HBM新的瓶颈吗？",
+    date: "2026-06-14",
+    category: "产业思考",
+    subcategory: "存储",
+    tags: ["产业:HBM", "产业:存储", "产业:WF6", "材料", "供应链", "Foosung", "瓶颈分析"],
+    pinned: true,
+    summary: "WF6（六氟化钨）是HBM制造必需的前驱体材料，中国钨出口管制引发供应链担忧。但WF6属于HBM产业链第四层瓶颈，远未达到HBM良率、CoWoS、GPU的战略级别。更可能复制霍尔木兹事件——先交易恐慌，然后发现库存充足。",
+    keywords: "WF6 六氟化钨 HBM 存储 供应链 出口管制 Foosung 瓶颈",
+    file: "/articles/wf6-hbm-bottleneck/"
+  },
+  {
     id: "semi-analysis-ai-gpu-scarcity",
     title: "SemiAnalysis：AI算力紧缺并未结束，2026年或再次进入供给瓶颈",
     date: "2026-06-14",
