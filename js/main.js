@@ -1009,21 +1009,30 @@ document.addEventListener('DOMContentLoaded', () => {
             
             let market = 'a';
             const usStocks = trackingData['us-stocks'] || [];
-            const matchingStock = usStocks.find(s => s.id === stockId);
-            if (matchingStock) {
-                market = 'us';
-                // Pre-set the sector so US tab picks it up instead of defaulting to first sector
-                if (matchingStock.usSector && usSectors.includes(matchingStock.usSector)) {
-                    currentSector = matchingStock.usSector;
-                }
-            }
+            const aStocks = trackingData['a-shares'] || [];
+            const matchingStock = usStocks.find(s => s.id === stockId) || aStocks.find(s => s.id === stockId);
+            const pendingSector = matchingStock && matchingStock.usSector ? matchingStock.usSector : null;
             
             // Switch to tracking section
             const section = document.getElementById('tracking');
             if (section) section.scrollIntoView({ behavior: 'smooth' });
             
+            // Click the correct market tab
+            if (matchingStock) {
+                if (matchingStock.mkt === 'us' || usStocks.includes(matchingStock)) {
+                    market = 'us';
+                } else {
+                    market = 'a';
+                }
+            }
             const tab = document.querySelector(`.trk-tab[data-mkt="${market}"]`);
-            if (tab) tab.click();
+            if (tab) {
+                // For US stocks, we need to set currentSector before clicking
+                if (market === 'us' && pendingSector && usSectors.includes(pendingSector)) {
+                    currentSector = pendingSector;
+                }
+                tab.click();
+            }
         }, 100);
     }
     handleDeepLink();
