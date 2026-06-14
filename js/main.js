@@ -894,6 +894,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const stocks = trackingData[marketKey];
         const s = stocks.find(x => x.id === id);
         if (!s) return;
+        drawer.dataset.id = id;
+        drawer.dataset.name = s.name;
 
         // Header badges
         const badges = [];
@@ -982,9 +984,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     };
 
-    // Auto-switch tab if URL has tracking hash with market param
-    if (window.location.hash === '#tracking') {
-        // check if there's a stored preference or just show A-shares by default
+    // ---- Deep linking: #tracking-stockId ----
+    const deepLinkMatch = window.location.hash.match(/^#tracking-(.+)$/);
+    if (deepLinkMatch) {
+        const stockId = deepLinkMatch[1];
+        setTimeout(() => {
+            // Determine market from tracking data
+            let market = 'a';
+            if (typeof trackingData !== 'undefined') {
+                const usIds = (trackingData['us-stocks'] || []).map(s => s.id);
+                if (usIds.includes(stockId)) market = 'us';
+            }
+            // Switch to correct tab
+            const tab = document.querySelector(`.trk-tab[data-mkt="${market}"]`);
+            if (tab) tab.click();
+            // Wait for render then click the card
+            setTimeout(() => {
+                const card = document.querySelector(`.trk-card[data-id="${stockId}"]`);
+                if (card) card.click();
+            }, 300);
+        }, 300);
     }
 
     // ---- Render News Flash (分页) ----
@@ -1317,6 +1336,20 @@ document.querySelectorAll('.cal-filter').forEach(el => {
 });
 
 // ---- 历史事件 ----
+
+
+// ---- Deep link share ----
+function copyStockLink() {
+    const drawer = document.getElementById('trk-drawer');
+    const stockId = drawer ? drawer.dataset.id : '';
+    if (!stockId) return;
+    const url = window.location.origin + window.location.pathname + '#tracking-' + stockId;
+    navigator.clipboard.writeText(url + ' ' + (drawer.dataset.name || '')).then(() => {
+        const btn = document.getElementById('trk-drawer-share');
+        if (btn) { btn.textContent = '✅ 已复制'; setTimeout(() => { btn.textContent = '🔗 分享'; }, 2000); }
+    }).catch(() => {});
+}
+
 function toggleCalendarHistory() {
     const grid = document.getElementById('cal-history-grid');
     const link = document.querySelector('.cal-history-link');
