@@ -995,13 +995,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     };
 
-    // ---- Deep linking: #tracking-stockId ----
+    // ---- Deep linking via query param: ?stock=xxx ----
     function handleDeepLink() {
-        const match = window.location.hash.match(/^#tracking-(.+)$/);
-        if (!match) return;
-        const stockId = match[1];
+        const params = new URLSearchParams(window.location.search);
+        const stockId = params.get('stock');
+        if (!stockId) return;
         
-        // Wait for trackingData then switch tab
         const checkData = setInterval(() => {
             if (typeof trackingData === 'undefined') return;
             clearInterval(checkData);
@@ -1012,16 +1011,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const usIds = (trackingData['us-stocks'] || []).map(s => s.id);
             if (usIds.includes(stockId)) market = 'us';
             
+            // Switch to tracking section
+            const section = document.getElementById('tracking');
+            if (section) section.scrollIntoView({ behavior: 'smooth' });
+            
             const tab = document.querySelector(`.trk-tab[data-mkt="${market}"]`);
-            if (tab) {
-                tab.click();
-            } else {
-                // Tab not found, try clicking after a delay
-                setTimeout(() => {
-                    const t = document.querySelector(`.trk-tab[data-mkt="${market}"]`);
-                    if (t) t.click();
-                }, 500);
-            }
+            if (tab) tab.click();
         }, 100);
     }
     handleDeepLink();
@@ -1363,8 +1358,9 @@ function copyStockLink() {
     const drawer = document.getElementById('trk-drawer');
     const stockId = drawer ? drawer.dataset.id : '';
     if (!stockId) return;
-    const url = window.location.origin + window.location.pathname + '#tracking-' + stockId;
-    navigator.clipboard.writeText(url + ' ' + (drawer.dataset.name || '')).then(() => {
+    const url = window.location.origin + window.location.pathname + '?stock=' + stockId;
+    const name = drawer.dataset.name || '';
+    navigator.clipboard.writeText(url + ' ' + name).then(() => {
         const btn = document.getElementById('trk-drawer-share');
         if (btn) { btn.textContent = '✅ 已复制'; setTimeout(() => { btn.textContent = '🔗 分享'; }, 2000); }
     }).catch(() => {});
