@@ -907,6 +907,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!s) return;
         drawer.dataset.id = id;
         drawer.dataset.name = s.name;
+        
+        // Update URL bar so copying gives deep link
+        history.replaceState(null, '', '?stock=' + id);
 
         // Header badges
         const badges = [];
@@ -975,6 +978,9 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.classList.remove('open');
         drawer.classList.remove('open');
         document.body.style.overflow = '';
+        // Restore URL bar
+        const clean = window.location.pathname + window.location.hash;
+        history.replaceState(null, '', clean);
     }
 
     const closeBtn = document.getElementById('trk-drawer-close');
