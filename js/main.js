@@ -1008,8 +1008,15 @@ document.addEventListener('DOMContentLoaded', () => {
             window._pendingDeepLink = stockId;
             
             let market = 'a';
-            const usIds = (trackingData['us-stocks'] || []).map(s => s.id);
-            if (usIds.includes(stockId)) market = 'us';
+            const usStocks = trackingData['us-stocks'] || [];
+            const matchingStock = usStocks.find(s => s.id === stockId);
+            if (matchingStock) {
+                market = 'us';
+                // Pre-set the sector so US tab picks it up instead of defaulting to first sector
+                if (matchingStock.usSector && usSectors.includes(matchingStock.usSector)) {
+                    currentSector = matchingStock.usSector;
+                }
+            }
             
             // Switch to tracking section
             const section = document.getElementById('tracking');
