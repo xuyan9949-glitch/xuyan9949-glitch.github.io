@@ -1579,40 +1579,85 @@ const trackingData = {
     {
       id: "sndk",
       code: "SNDK",
-      name: "Sandisk",
-      sector: "存储/NAND",
+      name: "闪迪",
+      sector: "半导体 / NAND Flash / 企业级SSD",
       mkt: "us",
       usSector: "存储",
       type: "中线",
       trackingStatus: "观察中",
       tradeCycle: "中线 + 波段",
-      themeTags: "NAND / 存储 / 数据中心SSD",
-      logicStatus: "观察",
-      color: "#6366f1",
-      reason: "NAND闪存龙头，受益于AI数据中心SSD需求增长和存储涨价周期。",
-      strategy: "观察为主，等待NAND涨价趋势确认。",
+      themeTags: "NAND / 企业级SSD / AI数据中心 / 存储周期 / NBM长协 / Kioxia",
+      logicStatus: "强逻辑兑现期",
+      color: "#0ea5e9",
+      reason: "AI数据中心把存储需求从DRAM/HBM扩散到NAND和企业级SSD，闪迪是美股里最纯的NAND弹性标的之一。",
+      strategy: "不按普通消费存储股看待，按AI数据中心NAND紧缺与企业级SSD放量逻辑跟踪；适合回调分批，不适合连续大涨后无计划追高。",
       lastUpdated: "2026-06-13",
       investmentLogic: {
-        oneLiner: "Sandisk（闪迪）是全球NAND闪存龙头，受益于AI数据中心SSD需求爆发、NAND涨价周期和企业级存储升级。",
-        currentHypothesis: "NAND闪存价格进入上升周期，AI数据中心对高容量SSD需求持续增长。Sandisk在企业级SSD市场有较强份额，AI服务器对存储容量和带宽的需求是结构性增量。",
-        coreReason: ["NAND涨价周期启动，价格上行直接改善利润","AI数据中心SSD需求持续增长，企业级产品是利润核心","韩国芯片出口+205%验证存储景气","PC/手机NAND需求仍偏弱，但数据中心需求可对冲"],
-        status: "NAND涨价周期+AI数据中心双驱动",
-        statusNote: "SNXX（2x SNDK）一周涨50%说明市场已经在交易NAND涨价逻辑。SNDK正股弹性不如杠杆产品，但胜在稳定。",
-        questionsToVerify: ["NAND价格趋势","企业级SSD收入增速","HBM对NAND产能的挤占效应"]
+        oneLiner: "闪迪是AI数据中心存储扩容周期中的NAND/企业级SSD高弹性标的，核心变量是NAND涨价、数据中心SSD放量和NBM长协锁定需求。",
+        currentHypothesis: "AI训练和推理带来持续的数据生成、缓存、归档和高性能存储需求，推动NAND从消费电子周期品重新定价为AI数据基础设施的一部分。闪迪通过企业级SSD、数据中心客户、Kioxia联合制造和NBM多年期协议，把原本高度周期化的NAND业务转向更高价格、更高毛利和更高可见度的收入结构。",
+        coreReason: [
+          "FY2026 Q3业绩已经出现爆发式兑现，营收59.5亿美元，环比增长97%，同比增长251%。",
+          "数据中心收入是本轮重估的核心，FY2026 Q3数据中心收入14.67亿美元，环比增长233%，同比增长645%。",
+          "FY2026 Q3毛利率达到78.4%，说明NAND涨价和客户结构改善已经明显进入利润表。",
+          "公司给出的FY2026 Q4指引继续大幅上修，营收77.5-82.5亿美元，Non-GAAP EPS 30-33美元。",
+          "NBM长协模式把传统NAND的短周期波动部分转化为多年期客户承诺，提高收入和现金流可见度。",
+          "与Kioxia的Yokkaichi和Kitakami联合制造协议延长至2034年，保障先进3D NAND产能和技术协同。"
+        ],
+        status: "逻辑强兑现，但股价已显著反映存储超级周期预期。",
+        statusNote: "闪迪不是HBM逻辑，不能简单对标美光。MU的核心是DRAM/HBM，SNDK的核心是NAND/企业级SSD。当前市场交易的是AI数据中心从算力芯片扩散到存储基础设施，尤其是NAND供需偏紧和企业级SSD价值量提升。问题在于，股价已经大幅上涨，市场对FY2027甚至FY2028的高利润可能已有较强折现。",
+        validUntil: "2026-2027",
+        validNote: "逻辑有效期取决于NAND供需紧张是否延续、企业级SSD需求是否持续强劲、NBM协议是否真正稳定毛利率、Kioxia联合产能爬坡是否可控，以及中国NAND新增产能是否冲击价格。",
+        questionsToVerify: [
+          "FY2026 Q4实际营收和EPS是否继续高于公司指引？",
+          "数据中心收入能否继续维持高增长，还是Q3/Q4属于一次性价格和拉货冲高？",
+          "NBM协议中的固定价格和浮动价格比例如何，是否能在NAND价格回落时保护利润率？",
+          "企业级SSD需求是否来自真实AI数据中心部署，而不是客户提前锁货？",
+          "Kioxia/闪迪新增产能是否会在2027年后造成供需松动？",
+          "YMTC等中国NAND厂商扩产是否会压低全球NAND价格？",
+          "80%左右毛利率是结构性新常态，还是存储周期高点？"
+        ]
       },
+      keyMetrics: [
+        {metric:"FY2026 Q3营收",status:"59.5亿美元，环比+97%，同比+251%",importance:"高",trend:"强上行",note:"这是闪迪从普通NAND周期股转为AI存储弹性股的核心验证。"},
+        {metric:"FY2026 Q3毛利率",status:"GAAP与Non-GAAP毛利率均为78.4%",importance:"高",trend:"大幅上行",note:"毛利率极强，但也需要警惕是否为周期高点。"},
+        {metric:"FY2026 Q3 Non-GAAP EPS",status:"23.41美元，环比大幅提升",importance:"高",trend:"强上行",note:"利润弹性远超传统NAND周期股模型。"},
+        {metric:"数据中心收入",status:"14.67亿美元，环比+233%，同比+645%",importance:"高",trend:"核心放量",note:"数据中心收入是闪迪区别于普通消费存储股的关键。"},
+        {metric:"Edge收入",status:"36.63亿美元，环比+118%，同比+295%",importance:"中高",trend:"强上行",note:"说明AI和高性能存储需求不只在云端，也向边缘设备、终端和嵌入式场景扩散。"},
+        {metric:"Consumer收入",status:"8.20亿美元，环比-10%，同比+44%",importance:"中",trend:"相对弱于数据中心",note:"消费业务不是本轮核心逻辑，重点看数据中心与Edge。"},
+        {metric:"FY2026 Q4指引",status:"营收77.5-82.5亿美元，Non-GAAP EPS 30-33美元",importance:"高",trend:"继续上修",note:"下一次财报需要验证这个高指引是否还能被继续上修。"},
+        {metric:"NBM协议",status:"Q3结束时已签3份，Q4又签2份",importance:"高",trend:"增强收入可见度",note:"NBM是市场给闪迪更高估值的关键，但合同价格机制需要继续跟踪。"},
+        {metric:"资产负债表",status:"公司称零债务资产负债表，并授权回购计划",importance:"中高",trend:"改善",note:"强现金流和回购增强股东回报，但高位回购效率需要观察。"}
+      ],
       catalysts: [
-        { catalyst: "NAND涨价周期", timeWindow: "2026", importance: "高", status: "跟踪中", evidence: "NAND价格指数上行" },
-        { catalyst: "AI数据中心SSD需求", timeWindow: "2026", importance: "高", status: "跟踪中", evidence: "企业级SSD订单" },
-        { catalyst: "消费电子NAND需求恢复", timeWindow: "2026H2", importance: "中", status: "待验证", evidence: "PC/手机SSD出货量" },
+        {catalyst:"FY2026 Q4财报",timeWindow:"预计2026年8月前后",importance:"高",status:"重点跟踪",evidence:"验证营收是否达到77.5-82.5亿美元、Non-GAAP EPS是否达到30-33美元，以及下一季度指引是否继续上修。",direction:"双向"},
+        {catalyst:"NBM长协继续增加",timeWindow:"2026-2027",importance:"高",status:"跟踪中",evidence:"新增协议数量、覆盖bit shipment比例、客户预付款/金融担保、固定价格与浮动价格条款。",direction:"正面"},
+        {catalyst:"数据中心SSD需求持续放量",timeWindow:"2026-2027",importance:"高",status:"跟踪中",evidence:"数据中心收入增速、企业级SSD出货、云厂商AI资本开支、推理工作负载增长。",direction:"正面"},
+        {catalyst:"NAND价格继续上涨",timeWindow:"2026年下半年",importance:"高",status:"跟踪中",evidence:"NAND合约价、企业级SSD价格、晶圆供需、客户提前锁货情况。",direction:"正面"},
+        {catalyst:"Kioxia联合制造协议延长至2034年",timeWindow:"2026-2034",importance:"中高",status:"已确认",evidence:"Yokkaichi与Kitakami联合制造协议延长，支持先进3D Flash稳定生产。",direction:"正面"},
+        {catalyst:"Kitakami Fab2产能爬坡",timeWindow:"2026年起",importance:"中",status:"跟踪中",evidence:"218层3D Flash、CBA技术量产节奏、产能释放速度是否与需求匹配。",direction:"双向"},
+        {catalyst:"NAND新增供给风险",timeWindow:"2027-2028",importance:"高",status:"风险跟踪",evidence:"Kioxia、三星、SK海力士、YMTC等厂商扩产节奏，若供给释放过快将压缩价格和毛利率。",direction:"负面"}
       ],
       valuation: {
-        assessment: "SNXX一周50%涨幅后短期有获利回吐压力。SNDK正股位置相对合理，NAND涨价周期+AI SSD驱动下估值有支撑。",
-        tiers: [{label:"保守",price:"$1400-1600",logic:"NAND涨价温和"},{label:"中性",price:"$1650-1850",logic:"NAND涨价+AI SSD稳定增长"},{label:"乐观",price:"$1900-2100",logic:"NAND全面涨价+AI SSD爆发"}]
+        assessment: "SNDK已经不是低位赔率型标的，而是高景气、高弹性、高波动的右侧趋势股。若FY2027 EPS继续被上修，当前估值仍可能被市场接受；但如果NAND价格、数据中心需求或NBM确定性出现瑕疵，估值压缩会非常快。",
+        riskNote: "最大风险不是公司短期业绩差，而是市场已经提前交易了非常强的FY2027/FY2028利润。NAND本质仍有商品周期属性，80%左右毛利率很难简单线性外推。",
+        tiers: [
+          {label:"保守",price:"$1,200-$1,500",logic:"NAND超级周期仍在，但市场开始担心毛利率见顶、NBM价格保护有限或2027年供给增加；适合观察是否只是估值回撤。"},
+          {label:"中性",price:"$1,700-$2,100",logic:"Q4指引兑现，数据中心SSD继续放量，NAND价格维持强势，市场按FY2027高利润给予中等周期估值。当前大致处于这个区间。"},
+          {label:"乐观",price:"$2,300-$2,800",logic:"FY2026 Q4继续超指引，NBM覆盖比例扩大，FY2027 EPS被大幅上修，市场把闪迪从NAND周期股进一步重估为AI数据基础设施瓶颈股。"}
+        ]
       },
       operationPlan: {
-        currentStatus: "观察中，等NAND涨价趋势进一步确认",
-        buyPlan: ["等回调至$1600-1700区间"],
-        invalidateConditions: "NAND涨价周期结束；AI数据中心SSD需求不及预期"
+        currentStatus: "观察中，适合作为存储板块里的NAND弹性仓；不建议和MU/DRAM ETF重复当作同一种逻辑处理。",
+        buyPlan: [
+          "若股价回踩但NAND价格、数据中心SSD需求和NBM逻辑未破，可小仓观察。",
+          "若FY2026 Q4财报继续超指引，且下一季指引继续上修，可按右侧确认参与。",
+          "若高位放量急跌，需要先判断是估值换手还是基本面变量恶化，不宜机械抄底。"
+        ],
+        addConditions: "加仓条件：Q4营收和EPS继续超预期，数据中心收入占比继续提升，NBM协议继续扩大，NAND合约价维持强势，股价回踩后重新站回关键均线或放量突破前高。",
+        reduceConditions: "减仓条件：Q4或下一季指引低于高预期、毛利率开始见顶回落、NBM条款被市场解读为价格保护不足、NAND价格松动、数据中心收入增速明显放缓，或股价高位放量滞涨。",
+        stopLoss: null,
+        targetPrice: null,
+        invalidateConditions: "逻辑失效条件：NAND供需转松、企业级SSD需求弱于预期、AI数据中心资本开支降速、NBM客户采购承诺无法兑现、Kioxia/行业新增产能导致价格下跌、YMTC等竞争对手扩产压低全球NAND价格。"
       },
     },
     {
