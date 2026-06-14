@@ -307,6 +307,16 @@ const articles = [
     file: "/articles/ai-pcb-hvlp-copper-foil/"
   },
   {
+    id: "daodejing-chapter-4",
+    title: "《道德经》第四章：真正强大的，往往看不见",
+    date: "2026-06-14",
+    category: "学点道德经",
+    tags: ["学点道德经"],
+    summary: "道冲，而用之或不盈。真正强大的东西，往往并不急于证明自己强大。世界上最深的力量，往往藏在最安静的地方。",
+    keywords: "道德经 第四章 道冲 冲而不盈 和光同尘 挫锐解纷 柔 留白 空间",
+    file: "/articles/daodejing-chapter-4/"
+  },
+  {
     id: "daodejing-chapter-3",
     title: "《道德经》第三章：少一点刺激，心就不容易乱",
     date: "2026-05-31",
