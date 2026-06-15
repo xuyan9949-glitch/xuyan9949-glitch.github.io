@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "supply-demand-storage-vs-mlcc-v3",
+    title: "存储 vs MLCC 供需失衡终版对比（v3.0，含大摩06012纪要重估）",
+    date: "2026-06-15",
+    category: "产业思考",
+    subcategory: "研报分析",
+    tags: ["研报:大摩", "产业:存储", "产业:MLCC", "产业:DRAM", "产业:HBM", "产业:NAND", "产业:钽电容", "供需失衡"],
+    pinned: false,
+    summary: "供需失衡投资模型v3.0：存储8.55逼近S级（LTA锁价+AI推理成本托底），MLCC高端7.20回落（村田主动按住高阶价格）。差距由1.10拉大到1.35。核心启示：进攻性话语权vs防御性话语权。",
+    keywords: "存储 MLCC 供需失衡 摩根士丹利 LTA 村田 海力士 三星 HBM DRAM NAND",
+    file: "/articles/supply-demand-storage-vs-mlcc-v3/"
+  },
+  {
     id: "nasdaq100-june-2026-rebalance",
     title: "纳指100六月调整：AI基础设施与商业航天被正式纳入主流指数视野",
     date: "2026-06-15",
