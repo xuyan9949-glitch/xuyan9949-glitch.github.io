@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "dongshan-precision-revaluation",
+    title: "重看东山精密：它的变化不止在光模块",
+    date: "2026-06-16",
+    category: "A股",
+    subcategory: "光通信",
+    tags: ["个股:东山精密", "产业:光模块", "产业:EML", "产业:光芯片", "产业:PCB", "索尔思", "AI光互联", "1.6T"],
+    pinned: false,
+    summary: "东山精密完成索尔思光电收购后，从PCB制造公司变为PCB+光芯片+光模块垂直一体化标的。200G EML紧缺+1.6T Blackwell验证是下一步核心看点。",
+    keywords: "东山精密 索尔思 光模块 EML 200G PCB AI光互联 1.6T Blackwell",
+    file: "/articles/dongshan-precision-revaluation/"
+  },
+  {
     id: "tsem-tower-semiconductor",
     title: "TSEM 美股档案｜Tower Semiconductor",
     date: "2026-06-15",
