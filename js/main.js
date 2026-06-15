@@ -183,6 +183,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentSubcat = 'all';
 
+    // Static subcategory overrides (show even without articles)
+    const STATIC_SUBCATS = {
+        '美股': ['美股档案'],
+    };
+
     function getSubcategories(category) {
         const cats = new Set();
         articles.forEach(a => {
@@ -190,6 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 cats.add(a.subcategory);
             }
         });
+        // Add static overrides
+        if (STATIC_SUBCATS[category]) {
+            STATIC_SUBCATS[category].forEach(s => cats.add(s));
+        }
         return Array.from(cats);
     }
 
