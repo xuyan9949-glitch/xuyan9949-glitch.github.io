@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "hk-us-internet-lof-160644",
+    title: "160644港美互联网LOF：AI持仓投资笔记",
+    date: "2026-06-15",
+    category: "A股",
+    subcategory: "海外ETF配置",
+    tags: ["个股:160644", "产业:AI", "策略:ETF", "策略:LOF", "港美互联网", "存储", "光通信"],
+    pinned: false,
+    summary: "160644已经从传统港美互联网基金变为AI硬件主线+存储周期+港美应用修复的主动型组合。前十大持仓中闪迪+美光合计16%，算力+存储合计超50%。核心看点：基金经理重押存储，不买溢价。",
+    keywords: "160644 港美互联网 LOF AI硬件 存储 美光 闪迪 台积电 英伟达",
+    file: "/articles/hk-us-internet-lof-160644/"
+  },
+  {
     id: "wf6-hbm-bottleneck",
     title: "WF6会成为HBM新的瓶颈吗？",
     date: "2026-06-14",
