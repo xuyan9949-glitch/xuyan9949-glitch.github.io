@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "nasdaq100-june-2026-rebalance",
+    title: "纳指100六月调整：AI基础设施与商业航天被正式纳入主流指数视野",
+    date: "2026-06-15",
+    category: "美股",
+    subcategory: "新进指数",
+    tags: ["策略:指数", "策略:纳指100", "个股:CRWV", "个股:NBIS", "个股:ALAB", "个股:RKLB", "个股:TER", "产业:AI基础设施", "产业:商业航天"],
+    pinned: false,
+    summary: "Nasdaq-100六月季度调整：新增CRWV/NBIS/ALAB/RKLB/TER，剔除CHTR/CTSH/INSM/VRSK/ZS。核心看点不是个股利好，而是指数层面对AI算力基础设施、AI互联、商业航天的主线确认。",
+    keywords: "纳指100 Nasdaq-100 CRWV NBIS ALAB RKLB TER AI基础设施 商业航天 指数调整",
+    file: "/articles/nasdaq100-june-2026-rebalance/"
+  },
+  {
     id: "hk-us-internet-lof-160644",
     title: "160644港美互联网LOF：AI持仓投资笔记",
     date: "2026-06-15",
