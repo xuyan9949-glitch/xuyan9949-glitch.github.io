@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "tsem-tower-semiconductor",
+    title: "TSEM 美股档案｜Tower Semiconductor",
+    date: "2026-06-15",
+    category: "美股",
+    subcategory: "美股档案",
+    tags: ["个股:TSEM", "产业:光互联", "产业:SiPho", "产业:代工", "策略:美股档案", "AI工厂", "二阶扩散"],
+    pinned: false,
+    summary: "Tower Semiconductor：特色晶圆代工厂，核心不是先进制程而是SiPho/SiGe特色工艺。市场交易的真正主线是AI数据中心光互联带来的SiPho产能价值重估。13亿美元2027合同+2.9亿预付款验证客户锁产能强度。当前$262已接近Bull情景，逻辑很硬估值不便宜。",
+    keywords: "TSEM Tower Semiconductor SiPho 硅光 特色代工 AI光互联 光通信 foundry",
+    file: "/articles/tsem-tower-semiconductor/"
+  },
+  {
     id: "btc-cycle-analysis-2026",
     title: "BTC行情推演：12.6万是否已是本轮顶部？",
     date: "2026-06-15",
