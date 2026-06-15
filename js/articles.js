@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "btc-cycle-analysis-2026",
+    title: "BTC行情推演：12.6万是否已是本轮顶部？",
+    date: "2026-06-15",
+    category: "产业思考",
+    subcategory: "加密",
+    tags: ["产业:加密", "产业:BTC", "策略:周期", "宏观:减半", "宏观:ETF", "个股:MSTR", "宏观:流动性", "宏观:中期选举"],
+    pinned: false,
+    summary: "如果2025年10月的$126K已是本轮顶部，熊市低点大概率在2026Q4的$45K-55K。历史规律减半后18个月见顶。最大变量：ETF、Strategy增持、美联储流动性和2026年中期选举的周期共振。",
+    keywords: "BTC 比特币 减半周期 微策略 Strategy ETF 中期选举 流动性 数字黄金",
+    file: "/articles/btc-cycle-analysis-2026/"
+  },
+  {
     id: "supply-demand-storage-vs-mlcc-v3",
     title: "存储 vs MLCC 供需失衡终版对比（v3.0，含大摩06012纪要重估）",
     date: "2026-06-15",
