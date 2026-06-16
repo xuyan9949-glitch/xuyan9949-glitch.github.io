@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "guoci-materials-optical-connect-2026",
+    title: "MLCC上游材料确定性 & 光互连体系的增量扩散",
+    date: "2026-06-16",
+    category: "产业思考",
+    subcategory: "光通信",
+    tags: ["个股:国瓷材料", "产业:MLCC", "产业:钛酸钡", "产业:光互联", "产业:800G", "产业:DWDM", "产业:DCI", "LightCounting"],
+    pinned: false,
+    summary: "国瓷材料代表MLCC上游粉体材料的确定性——钛酸钡粉体是真正壁垒。LightCounting预计2026光互联市场增长65%，800G ZR/ZR+和DWDM是增量方向，光互联体系正在向更高价值量组件扩散。",
+    keywords: "国瓷材料 MLCC 介质粉体 钛酸钡 光互联 LightCounting 800G ZR DWDM DCI",
+    file: "/articles/guoci-materials-optical-connect-2026/"
+  },
+  {
     id: "nvidia-25b-bond-issuance",
     title: "英伟达250亿美元发债：利好、利空，还是一个被误读的信号？",
     date: "2026-06-16",
