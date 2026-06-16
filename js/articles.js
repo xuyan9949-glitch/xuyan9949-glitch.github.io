@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "pcb-mlcc-supply-chain-2026",
+    title: "PCB长链条及衍生 & 重视MLCC高端化继续扩散",
+    date: "2026-06-16",
+    category: "产业思考",
+    subcategory: "AI电子材料",
+    tags: ["产业:PCB", "产业:CCL", "产业:电子布", "产业:钻针", "产业:MLCC", "产业:MLCC介质粉", "个股:生益科技", "个股:三环集团", "个股:风华高科", "个股:国瓷材料"],
+    pinned: false,
+    summary: "PCB长链：CCL（生益/华正/建渤）→电子布（中国巨石/宏和）→钻孔设备（大族数控）→钻针（鼎泰高科）→板厂后手确认。MLCC：三环逻辑最硬，风华看修复，国瓷代表上游粉体确定性。",
+    keywords: "PCB CCL 电子布 钻针 MLCC 三环集团 风华高科 国瓷材料 AI服务器",
+    file: "/articles/pcb-mlcc-supply-chain-2026/"
+  },
+  {
     id: "pcb-upstream-four-materials-scorecard",
     title: "PCB上游四大材料失衡环节评分卡",
     date: "2026-06-16",
