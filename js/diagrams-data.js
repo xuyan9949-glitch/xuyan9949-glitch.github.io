@@ -24,7 +24,19 @@ const diagrams = [
   // === 日历 ===
   { file: "june-calendar-part1.webp", title: "6月重点投资日历（上）", category: "日历", dir: "日历" },
   { file: "june-calendar-part2.webp", title: "6月重点投资日历（下）", category: "日历", dir: "日历" },
+
+  // === 光新增（CPO/硅光系列） ===
+  { file: "silicon-doesnt-emit-light.jpg", title: "硅自己不发光，那光从哪来", category: "光", dir: "光" },
+  { file: "cpo-timeline.jpg", title: "CPO渗透时间节奏", category: "光", dir: "光" },
+  { file: "cpo-fiber-alignment.jpg", title: "CPO最难一步：把光纤对准到0.5微米", category: "光", dir: "光" },
+  { file: "cpo-full-overview.jpg", title: "一张图看全CPO——什么里面有什么、谁做、到哪步", category: "光", dir: "光" },
+  { file: "cpo-vs-pluggable.jpg", title: "了解完CPO：可插拔的龙头会被颠覆吗", category: "光", dir: "光" },
+  { file: "silicon-photonics-guide.jpg", title: "图解硅光", category: "光", dir: "光" },
+  { file: "electricity-to-light.jpg", title: "把电变成光，怎么实现", category: "光", dir: "光" },
+  { file: "optical-engine-guide.jpg", title: "图解光引擎", category: "光", dir: "光" },
+  { file: "cpo-guide.jpg", title: "图解CPO", category: "光", dir: "光" },
   // === 电源 ===
+
   { file: "800v-power-system.jpg", title: "图解800V电源系统", category: "电源", dir: "电源" },
   { file: "from-grid-to-gpu.jpg", title: "跟着电走一遍：从电网到GPU", category: "电源", dir: "电源" },
   { file: "sic-vs-gan.jpg", title: "高压靠SiC，高频靠GaN", category: "电源", dir: "电源" },
