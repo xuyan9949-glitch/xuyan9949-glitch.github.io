@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "spacex-ipo-supply-chain",
+    title: "SpaceX IPO之后：仰望火箭，谁在卖铲子",
+    date: "2026-06-16",
+    category: "美股",
+    subcategory: "美股档案",
+    tags: ["个股:SpaceX", "个股:SPCX", "产业:商业航天", "产业:星链", "产业:火箭", "策略:供应链", "策略:IPO", "个股:EchoStar", "个股:STMicro"],
+    pinned: false,
+    summary: "SpaceX IPO定价1.77万亿（PS~95x），上市首日市值破2万亿。非同寻常的不是价格，而是三个飞轮（星链+火箭复用+轨道AI算力）叠在一起的资产结构。供应链拆解：频谱（EchoStar）、RF芯片（STMicro/Filtronic）、工业气体（Linde）。",
+    keywords: "SpaceX IPO 星链 Starlink 马斯克 商业航天 供应链 EchoStar STMicro Filtronic Linde",
+    file: "/articles/spacex-ipo-supply-chain/"
+  },
+  {
     id: "shengyi-tech-gs-report",
     title: "高盛：生益科技——AI CCL产能扩张+产品升级，目标价上调至217.6元",
     date: "2026-06-16",
