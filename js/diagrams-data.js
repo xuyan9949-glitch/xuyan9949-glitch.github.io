@@ -19,4 +19,6 @@ const diagrams = [
   { file: "industry-map-11.jpg", title: "AI集群为什么需要光模块？", category: "光", dir: "光" },
   { file: "industry-map-12.jpg", title: "光模块供应链看什么？", category: "光", dir: "光" },
   { file: "industry-map-13.jpg", title: "光模块未来往哪走？", category: "光", dir: "光" },
+  // === PCB / 电子材料 ===
+  { file: "pcb-market-cap.png", title: "PCB及载板市值空间测算（天风电新0614）", category: "PCB", dir: "pcb" },
 ];
