@@ -24,4 +24,13 @@ const diagrams = [
   // === 日历 ===
   { file: "june-calendar-part1.webp", title: "6月重点投资日历（上）", category: "日历", dir: "日历" },
   { file: "june-calendar-part2.webp", title: "6月重点投资日历（下）", category: "日历", dir: "日历" },
+  // === 电源 ===
+  { file: "800v-power-system.jpg", title: "图解800V电源系统", category: "电源", dir: "电源" },
+  { file: "from-grid-to-gpu.jpg", title: "跟着电走一遍：从电网到GPU", category: "电源", dir: "电源" },
+  { file: "sic-vs-gan.jpg", title: "高压靠SiC，高频靠GaN", category: "电源", dir: "电源" },
+  { file: "capacitor-types.jpg", title: "同样叫电容，一个当水库一个当水杯", category: "电源", dir: "电源" },
+  { file: "magnetic-materials.jpg", title: "磁芯是料，电感是用料绕成的成品", category: "电源", dir: "电源" },
+  { file: "power-backup-hierarchy.jpg", title: "砍了UPS，靠三层电接力不断电", category: "电源", dir: "电源" },
+  { file: "voltage-evolution.jpg", title: "12V→48V→800V", category: "电源", dir: "电源" },
+  { file: "800v-investment-map.jpg", title: "同样喊800V，谁在吃业绩、谁在讲故事", category: "电源", dir: "电源" },
 ];
