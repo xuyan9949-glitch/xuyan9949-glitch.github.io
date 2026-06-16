@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "shengyi-tech-gs-report",
+    title: "高盛：生益科技——AI CCL产能扩张+产品升级，目标价上调至217.6元",
+    date: "2026-06-16",
+    category: "产业思考",
+    subcategory: "AI电子材料",
+    tags: ["研报:高盛", "个股:生益科技", "产业:CCL", "产业:AI材料", "目标价217.6"],
+    pinned: false,
+    summary: "高盛将生益科技目标价从146.3上调至217.6元（+49%），维持买入。三重驱动：AI CCL产能扩张（52亿capex）+产品结构向高端升级+M9+放量。2027E EPS上调28%，估值基准切换至2027E P/E 45x。",
+    keywords: "生益科技 高盛 Goldman Sachs CCL AI覆铜板 600183 目标价217.6",
+    file: "/articles/shengyi-tech-gs-report/"
+  },
+  {
     id: "robot-supply-chain-2026",
     title: "机器人供应链拆解：从样机到量产的瓶颈在哪？",
     date: "2026-06-16",
