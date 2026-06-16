@@ -45,4 +45,7 @@ const diagrams = [
   { file: "power-backup-hierarchy.jpg", title: "砍了UPS，靠三层电接力不断电", category: "电源", dir: "电源" },
   { file: "voltage-evolution.jpg", title: "12V→48V→800V", category: "电源", dir: "电源" },
   { file: "800v-investment-map.jpg", title: "同样喊800V，谁在吃业绩、谁在讲故事", category: "电源", dir: "电源" },
+  // === 组合 ===
+  { file: "portfolio-0617.png", title: "AI主线核心组合（基础参考版）6.17", category: "组合", dir: "组合" },
 ];
+
