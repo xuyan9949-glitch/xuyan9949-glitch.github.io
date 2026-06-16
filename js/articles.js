@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "dongshan-86b-optical-expansion",
+    title: "东山精密86亿扩产光芯片：一家PCB龙头正在变成AI光互连公司？",
+    date: "2026-06-16",
+    category: "A股",
+    subcategory: "光通信",
+    tags: ["个股:东山精密", "产业:光芯片", "产业:光模块", "产业:索尔思", "产业:EML", "产业:InP", "个股:002384"],
+    pinned: false,
+    summary: "东山精密公告12亿美元（86亿元）扩产光芯片及光模块。索尔思Q1仅贡献16%收入却贡献53%利润。订单驱动扩产，不是预期扩产。估值体系可能从PCB公司向AI光互连公司迁移。",
+    keywords: "东山精密 索尔思 光芯片 光模块 86亿 扩产 AI光互连 002384",
+    file: "/articles/dongshan-86b-optical-expansion/"
+  },
+  {
     id: "spacex-ipo-supply-chain",
     title: "SpaceX IPO之后：仰望火箭，谁在卖铲子",
     date: "2026-06-16",
