@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "robot-supply-chain-2026",
+    title: "机器人供应链拆解：从样机到量产的瓶颈在哪？",
+    date: "2026-06-16",
+    category: "产业思考",
+    subcategory: "机器人",
+    tags: ["产业:机器人", "产业:灵巧手", "产业:减速器", "产业:执行器", "个股:双环传动", "个股:拓普集团", "个股:兆威机电", "个股:三花智控", "个股:科达利"],
+    pinned: false,
+    summary: "机器人进入小批量交付阶段，零部件端先于整机看到弹性。关注灵巧手（兆威机电）、减速器（双环传动）、执行器（三花/拓普）、结构件（科达利）。",
+    keywords: "机器人 人形机器人 灵巧手 减速器 执行器 双环传动 拓普集团 兆威机电 三花 科达利",
+    file: "/articles/robot-supply-chain-2026/"
+  },
+  {
     id: "pcb-mlcc-supply-chain-2026",
     title: "PCB长链条及衍生 & 重视MLCC高端化继续扩散",
     date: "2026-06-16",
