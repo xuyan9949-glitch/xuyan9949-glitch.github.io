@@ -186,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Static subcategory overrides (show even without articles)
     const STATIC_SUBCATS = {
         '美股': ['美股档案'],
+        '产业思考': ['AI电子材料'],
     };
 
     function getSubcategories(category) {
