@@ -1,5 +1,16 @@
 const articles = [
   {
+    id: "nvidia-25b-bond-issuance",
+    title: "英伟达250亿美元发债：利好、利空，还是一个被误读的信号？",
+    date: "2026-06-16",
+    category: "近期热点",
+    tags: ["产业:AI", "个股:NVDA", "宏观:融资", "宏观:债券", "策略:供需", "AI资本开支"],
+    pinned: false,
+    summary: "英伟达250亿美元发债，850亿美元认购（超额3.4倍）。不是缺钱，不是见顶，而是利用顶级信用锁定低成本长期弹药。核心看点：850亿认购验证全球资本仍在押注AI，强化AI资本开支周期信心。",
+    keywords: "英伟达 NVDA 发债 250亿 债券 AI资本开支 融资 认购",
+    file: "/articles/nvidia-25b-bond-issuance/"
+  },
+  {
     id: "dongshan-precision-revaluation",
     title: "重看东山精密：它的变化不止在光模块",
     date: "2026-06-16",
