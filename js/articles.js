@@ -1,17 +1,5 @@
 const articles = [
   {
-    id: "flexible-positions-0617",
-    title: "弹性仓位 6.17 — FOMC前持仓记录",
-    date: "2026-06-17",
-    category: "美股",
-    subcategory: "美股档案",
-    tags: ["策略:仓位", "策略:FOMC", "策略:弹性仓", "个股:LITE", "个股:COHR", "个股:MRVL", "个股:DRAM", "个股:SPCX"],
-    pinned: false,
-    summary: "FOMC前夜持仓记录：光互联两日累计跌超10%，存储松动，加密回落。SPCX/CRWV逆势收涨。关键FOMC决议6/18凌晨公布。",
-    keywords: "FOMC 弹性仓位 持仓记录 LITE COHR MRVL DRAM SPCX",
-    file: "/articles/flexible-positions-0617/"
-  },
-  {
     id: "dongshan-86b-optical-expansion",
     title: "东山精密86亿扩产光芯片：一家PCB龙头正在变成AI光互连公司？",
     date: "2026-06-16",
