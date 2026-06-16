@@ -4,6 +4,17 @@
 
 const newsItems = [
   {
+    id: "n20260616-01",
+    date: "2026-06-16",
+    title: "Trendforce：AMD争抢连续波激光器供应，光芯片上游瓶颈进一步收紧",
+    summary: "新报道称AMD正在争抢连续波激光器（CW Laser）供应，并谈判大规模订单以确保产能不受英伟达限制。Lumentum/Coherent产能已排至2028年。直接受益方：Sivers（SIVE）、AAOI。",
+    impact: "利好",
+    tags: ["光通信", "激光器", "CW Laser", "AMD", "供应链", "瓶颈"],
+    stocks: ["AMD", "AAOI", "SIVE", "LITE", "COHR"],
+    detail: "Trendforce数据报道，AMD正在争抢连续波激光器（CW Laser）供应，并正在谈判大规模连续波激光器订单，以确保其AI产能不受英伟达供应链限制。明确的连续波激光器受益方包括：Sivers（SIVE，AMD向GlobalFoundries寻求CPO方案时的参考激光等级）、AAOI（Rosenblatt分析师核查确认）。Lumentum/Coherent的CW产能已排至2028年。Lumentum因现有EML合同，CW产能尤为紧张，可能转向住友/古河等日本厂商采购。Macom及日本巨头或仍有富余产能。这验证了此前预判：超大规模企业应进一步向上游锁定产能——激光器、外延片乃至InP衬底层级，以避免被英伟达卡住瓶颈。",
+    source: "Trendforce / Rosenblatt / 社交媒体",
+  },
+  {
     id: "n20260614-02",
     date: "2026-06-14",
     title: "中信建投：SpaceX纳斯达克IPO重塑估值框架，看好商业航天投资",
