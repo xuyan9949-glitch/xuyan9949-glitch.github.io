@@ -7,7 +7,7 @@ const articles = [
     subcategory: "光通信",
     tags: ["产业:光互联", "产业:800G", "产业:DWDM", "产业:DCI", "LightCounting", "AI集群"],
     pinned: false,
-    summary: "LightCounting预计2026光互联市场增长65%，800G ZR/ZR+和DWDM是增量方向。光互联不再只是模块逻辑，体系正在向DSP、硅光、相干、DCI等更高价值量组件扩散。",
+    summary: "光互联2026市场增长65%，NPO/CPO交易逻辑开始分层。真正的高门槛在激光器和InP材料层。前三层受益路径：器件精密组件、MPO连接、光纤基础设施。OCS和DCI已成AI集群真实需求。",
     keywords: "光互联 LightCounting 800G ZR DWDM DCI 光模块 AI集群 CPO",
     file: "/articles/guoci-materials-optical-connect-2026/"
   },
