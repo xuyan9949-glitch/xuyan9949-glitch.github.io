@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "pcb-upstream-four-materials-scorecard",
+    title: "PCB上游四大材料失衡环节评分卡",
+    date: "2026-06-16",
+    category: "产业思考",
+    subcategory: "AI电子材料",
+    tags: ["研报:六便士", "产业:PCB", "产业:T-glass", "产业:铜箔", "产业:CCL", "产业:钻针", "供需失衡", "CICC"],
+    pinned: false,
+    summary: "PCB上游四大材料失衡评分：T-glass电子布93分/S级（日东纺垄断+丰田织布机排至2028），HVLP4铜箔90分/S级（供给缺口28-39%），M9 CCL 84分/A级（卖方定价周期），高阶钻针83分/A-级。含A股标的打分排序。",
+    keywords: "PCB T-glass 电子布 HVLP4 铜箔 CCL 覆铜板 钻针 供需失衡 六便士",
+    file: "/articles/pcb-upstream-four-materials-scorecard/"
+  },
+  {
     id: "guoci-materials-optical-connect-2026",
     title: "光互连体系的增量扩散：从模块到全体系价值量重估",
     date: "2026-06-16",
