@@ -12,6 +12,18 @@ const articles = [
     file: "/articles/storage-supercycle/"
   },
   {
+    id: "lite-vs-cohr-optical-showdown",
+    title: "LITE vs COHR 光通信双雄：谁的基本面弹性更强？",
+    date: "2026-06-19",
+    category: "美股",
+    subcategory: "光通信",
+    tags: ["个股:LITE", "个股:COHR", "个股:LITX", "产业:光通信", "产业:光互联", "产业:InP", "策略:对比分析", "策略:仓位配置"],
+    pinned: false,
+    summary: "LITE vs COHR基本面弹性对比。结论：LITE增速更快、利润率更高、目标价上行空间更大（+22-53%）；COHR受Sherman InP扩产+英伟达背书推动短期动量更强，但当前估值已消化较多预期。新增中期仓位优先选LITE正股而非LITX。",
+    keywords: "LITE Lumentum COHR Coherent 光通信 光互联 InP 磷化铟 Sherman 英伟达 CHIPS 可转债 估值 OCS CPO LITX",
+    file: "/articles/lite-vs-cohr-optical-showdown/"
+  },
+  {
     id: "dongshan-86b-optical-expansion",
     title: "东山精密86亿扩产光芯片：一家PCB龙头正在变成AI光互连公司？",
     date: "2026-06-16",
