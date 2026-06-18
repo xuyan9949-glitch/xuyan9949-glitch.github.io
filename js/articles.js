@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "storage-supercycle",
+    title: "存储超级周期跟踪：财报时间线、业绩预期与美光财报前仓位策略",
+    date: "2026-06-19",
+    category: "美股",
+    subcategory: "存储",
+    tags: ["个股:MU", "个股:DRAM", "个股:SNDK", "个股:STX", "个股:WDC", "产业:存储", "产业:HBM", "产业:NAND", "产业:HDD", "策略:仓位管理", "策略:财报"],
+    pinned: false,
+    summary: "美光6月24日财报定调前，全景盘点存储七大公司业绩预期，穿透35%仓位组合的结构风险。核心结论：DRAM从16%降至11%，两倍三星从8%降至4%，美光5%不动——保留收益、降低财报隔夜冲击与重复杠杆暴露。",
+    keywords: "美光 MU DRAM 存储 超级周期 三星 SK海力士 闪迪 SNDK 铠侠 希捷 STX 西部数据 WDC HBM NAND 财报 仓位管理 两倍杠杆 预期差",
+    file: "/articles/storage-supercycle/"
+  },
+  {
     id: "dongshan-86b-optical-expansion",
     title: "东山精密86亿扩产光芯片：一家PCB龙头正在变成AI光互连公司？",
     date: "2026-06-16",
