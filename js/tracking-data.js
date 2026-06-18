@@ -580,7 +580,7 @@ const trackingData = {
       sector: "军工航天 / 高端连接器",
       mkt: "a",
       type: "短线",
-      trackingStatus: "持有中 / 底仓",
+      trackingStatus: "已放弃",
       tradeCycle: "6月中旬 SpaceX 上市概念股短线博弈",
       themeTags: "商业航天 / 军工电子 / 高端连接器",
       logicStatus: "短线逻辑增强",
