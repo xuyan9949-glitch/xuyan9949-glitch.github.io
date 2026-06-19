@@ -24,6 +24,18 @@ const articles = [
     file: "/articles/lite-vs-cohr-optical-showdown/"
   },
   {
+    id: "avgo-vs-mrvl-platform-vs-chip",
+    title: "AVGO vs MRVL：平台型护城河 vs 高弹性AI互联芯片",
+    date: "2026-06-19",
+    category: "美股",
+    subcategory: "光通信",
+    tags: ["个股:AVGO", "个股:MRVL", "产业:AI芯片", "产业:光通信", "产业:ASIC", "产业:以太网", "策略:对比分析", "策略:核心仓位"],
+    pinned: false,
+    summary: "AVGO vs MRVL全方位对比。结论：长期核心仓选AVGO（平台型护城河+软件层锁定+分散化风险）；MRVL更适合阶段性高β仓位。MRVL会进一步强化光互联/存储的风险集中，AVGO提供定制计算+网络+软件+现金流的平衡。",
+    keywords: "AVGO Broadcom MRVL Marvell AI ASIC 定制芯片 光通信 光DSP 以太网 交换芯片 VMware 护城河 对比分析",
+    file: "/articles/avgo-vs-mrvl-platform-vs-chip/"
+  },
+  {
     id: "dongshan-86b-optical-expansion",
     title: "东山精密86亿扩产光芯片：一家PCB龙头正在变成AI光互连公司？",
     date: "2026-06-16",
