@@ -36,6 +36,18 @@ const articles = [
     file: "/articles/avgo-vs-mrvl-platform-vs-chip/"
   },
   {
+    id: "mlcc-analysis-2026",
+    title: "MLCC行业投资分析：大陆厂商能否进入高端，以及是否会复制HBM涨价",
+    date: "2026-06-19",
+    category: "产业思考",
+    subcategory: "AI材料",
+    tags: ["产业:MLCC", "产业:AI材料", "产业:涨价", "个股:三环集团", "个股:风华高科", "个股:国瓷材料", "个股:博迁新材", "个股:村田", "策略:产业链分析", "策略:估值"],
+    pinned: false,
+    summary: "MLCC行业全景分析：大陆厂商能进入高端市场但差距仍在；2026年MLCC进入结构性上行拐点，但非HBM式超级涨价。三环集团综合竞争力最强，但A股标的估值已普遍透支国产替代预期。",
+    keywords: "MLCC 三环集团 风华高科 国瓷材料 博迁新材 村田 太阳诱电 涨价 AI服务器 国产替代 HBM 电容器 钛酸钡 镍粉",
+    file: "/articles/mlcc-analysis-2026/"
+  },
+  {
     id: "dongshan-86b-optical-expansion",
     title: "东山精密86亿扩产光芯片：一家PCB龙头正在变成AI光互连公司？",
     date: "2026-06-16",
