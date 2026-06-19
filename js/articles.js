@@ -60,6 +60,18 @@ const articles = [
     file: "/articles/ccl-ai-material-2026/"
   },
   {
+    id: "china-ai-advantage-ranking",
+    title: "中国在本轮AI浪潮中最擅长的产业排名",
+    date: "2026-06-19",
+    category: "A股",
+    subcategory: "宏观",
+    tags: ["产业:AI", "产业:光模块", "产业:PCB", "产业:国产芯片", "产业:云计算", "产业:液冷", "产业:服务器", "策略:产业分析", "宏观:全球竞争力", "个股:中际旭创", "个股:新易盛", "个股:胜宏科技", "个股:沪电股份", "个股:寒武纪"],
+    pinned: false,
+    summary: "中国AI产业全球竞争力排名：1)高速光模块（全球领先，利润已兑现）；2)AI PCB/电子材料（规模优势向高端升级）；3)国产AI芯片（战略重要但商业质量待验证）。核心结论：中国赚全球AI资本开支的钱，光模块是当前最清晰的阿尔法。",
+    keywords: "中国 AI产业 光模块 PCB AI芯片 全球竞争力 中际旭创 新易盛 胜宏科技 寒武纪 沪电股份 英维克 浪潮信息",
+    file: "/articles/china-ai-advantage-ranking/"
+  },
+  {
     id: "dongshan-86b-optical-expansion",
     title: "东山精密86亿扩产光芯片：一家PCB龙头正在变成AI光互连公司？",
     date: "2026-06-16",
