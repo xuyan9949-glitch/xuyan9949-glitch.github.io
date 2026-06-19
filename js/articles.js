@@ -48,6 +48,18 @@ const articles = [
     file: "/articles/mlcc-analysis-2026/"
   },
   {
+    id: "ccl-ai-material-2026",
+    title: "AI服务器CCL全球竞争格局：谁在真正供应高速材料",
+    date: "2026-06-19",
+    category: "产业思考",
+    subcategory: "AI电子材料",
+    tags: ["产业:CCL", "产业:AI电子材料", "产业:覆铜板", "个股:台光电", "个股:台燿", "个股:联茂", "个股:生益科技", "个股:松下", "个股:斗山", "产业:PCB", "产业:T-glass", "策略:产业链分析"],
+    pinned: false,
+    summary: "全球AI服务器CCL真实格局：台光电商业化龙头，松下技术标杆，台燿份额追赶弹性最大，生益科技大陆最核心。CCL不会复制HBM式涨价，但高端结构性紧缺已出现。",
+    keywords: "CCL 覆铜板 AI服务器 台光电 台燿 联茂 生益科技 松下 Megtron 斗山 M8 M9 高速材料 PCB T-glass HVLP 电子布",
+    file: "/articles/ccl-ai-material-2026/"
+  },
+  {
     id: "dongshan-86b-optical-expansion",
     title: "东山精密86亿扩产光芯片：一家PCB龙头正在变成AI光互连公司？",
     date: "2026-06-16",
