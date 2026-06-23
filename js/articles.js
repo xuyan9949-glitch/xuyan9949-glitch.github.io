@@ -83,6 +83,17 @@ const articles = [
     file: "/articles/stagg-professionalism/"
   },
   {
+    id: "daodejing-chapter-5",
+    title: "《道德经》第五章：世界不会因为你的期待而改变规律",
+    date: "2026-06-23",
+    category: "见贤思齐",
+    tags: ["见贤思齐", "学点道德经"],
+    pinned: false,
+    summary: "天地不仁，以万物为刍狗。老子说的不是天地无情，而是规律对所有人都一样。世界不是单变量系统，努力值得尊重，但不要把努力当成与世界交换结果的契约。投zi里最重要的不是要求市场配合自己，而是理解市场如何运行。",
+    keywords: "道德经 第五章 天地不仁 刍狗 橐龠 虚而不屈 守中 规律 投资心态",
+    file: "/articles/daodejing-chapter-5/"
+  },
+  {
     id: "dongshan-86b-optical-expansion",
     title: "东山精密86亿扩产光芯片：一家PCB龙头正在变成AI光互连公司？",
     date: "2026-06-16",
