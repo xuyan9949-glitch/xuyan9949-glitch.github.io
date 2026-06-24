@@ -98,14 +98,7 @@ const updateLog = [
     status: "已发布",
     link: "/#calendar",
   },
-  {
-    date: "2026-06-07",
-    type: "网站维护",
-    title: "交易环境雷达上线：全球资产收盘分析+下一交易日提示",
-    stocks: "多维",
-    status: "已发布",
-    link: "/",
-  },
+
   {
     date: "2026-06-07",
     type: "持仓同步",
