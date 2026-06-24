@@ -638,5 +638,16 @@ const articles = [
     summary: "从衬底到光模块到AI数据中心——InP是AI光通信最上游的\"卖水人\"。",
     keywords: "InP 磷化铟 衬底 光通信 EML 激光器 LITE COHR AXTI 6英寸 外延 光模块",
     file: "/articles/inp-industry-chain/"
+  },
+  {
+    id: "a-share-stock-screening-2026",
+    title: "A股中报前瞻：业绩+估值筛出强性价比标的",
+    date: "2026-06-24",
+    category: "A股",
+    tags: ["个股:兆易创新", "个股:建滔积层板", "个股:广合科技", "个股:沪电股份", "个股:北京君正", "个股:星宸科技", "个股:睿创微纳", "产业:存储", "产业:PCB", "产业:CCL", "策略:估值"],
+    pinned: false,
+    summary: "从四维筛选A股中报标的：兆易创新单标最强（25-31倍年化PE），建滔积层板CCL涨价纯正（25-32倍），广合科技AI PCB中小市值阿尔法（41-45倍）。结合现有DRAM重仓，新增顺序：广合/建滔→沪电→兆易→北京君正。",
+    keywords: "A股 中报 业绩 估值 兆易创新 建滔积层板 广合科技 沪电股份 北京君正 存储周期 CCL PCB",
+    file: "/articles/a-share-stock-screening-2026/"
   }
 ];
