@@ -115,45 +115,9 @@
 
         <!-- ====== 方案A：最近更新（静态卡片式） ====== -->
         <!-- ====== Tracking ====== -->
-        <section class="section section-alt" id="tracking">
-            <div class="container">
-                <div class="section-header">
-                    <div class="label">Stock Tracking</div>
-                    <h2>标的追踪</h2>
-                    <p>长线持有与波段操作的标的，每只独立维护资讯、财报与机构研判。</p>
-                </div>
+        
 
-                <!-- 市场分类 Tab -->
-                <div class="trk-tabs">
-                    <span class="trk-tab active" data-mkt="a">🇨🇳 A 股</span>
-                    <span class="trk-tab" data-mkt="us">🇺🇸 美股</span>
-                </div>
-                <div class="trk-sector-tabs" id="trk-sector-tabs" style="display:none"></div>
-
-                <!-- 过往标的切换 -->
-                <div class="trk-history-bar">
-                    <span class="trk-history-link" id="trk-history-link">📂 查看过往标的</span>
-                </div>
-
-                <!-- 状态统计条 -->
-                <div class="trk-summary" id="trk-summary"></div>
-
-                <!-- 标的卡片网格 -->
-                <div class="trk-grid" id="trk-grid"></div>
-            </div>
-        </section>
-
-        <!-- ====== Tracking Drawer ====== -->
-        <div class="trk-drawer-overlay" id="trk-drawer-overlay"></div>
-        <div class="trk-drawer" id="trk-drawer">
-            <div class="trk-drawer-inner">
-                <button class="trk-drawer-close" id="trk-drawer-close" aria-label="关闭">✕</button>
-                <div id="trk-drawer-content"></div>
-                <button class="drawer-share" id="trk-drawer-share" onclick="copyStockLink()" title="复制链接">🔗 分享</button>
-            </div>
-        </div>
-
-        <section class="section" id="research">
+<section class="section" id="research">
             <div class="container">
                 <div class="section-header">
                     <div class="label">Research Direction</div>
@@ -167,7 +131,7 @@
                 <div class="rl1">
                     <div class="rc rc-large" style="background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;">
                         <div class="rc-hd">
-                            <span class="rc-icon">🧠</span>
+                            <span class="rc-icon" style="font-size:1.3rem;">🇺🇸</span>
                             <span class="rc-layer">核心配置</span>
                         </div>
                         <h3>美股AI核心资产</h3>
@@ -230,6 +194,46 @@
 
             </div>
         </section>
+
+<section class="section section-alt" id="tracking">
+            <div class="container">
+                <div class="section-header">
+                    <div class="label">Stock Tracking</div>
+                    <h2>标的追踪</h2>
+                    <p>长线持有与波段操作的标的，每只独立维护资讯、财报与机构研判。</p>
+                </div>
+
+                <!-- 市场分类 Tab -->
+                <div class="trk-tabs">
+                    <span class="trk-tab active" data-mkt="a">🇨🇳 A 股</span>
+                    <span class="trk-tab" data-mkt="us">🇺🇸 美股</span>
+                </div>
+                <div class="trk-sector-tabs" id="trk-sector-tabs" style="display:none"></div>
+
+                <!-- 过往标的切换 -->
+                <div class="trk-history-bar">
+                    <span class="trk-history-link" id="trk-history-link">📂 查看过往标的</span>
+                </div>
+
+                <!-- 状态统计条 -->
+                <div class="trk-summary" id="trk-summary"></div>
+
+                <!-- 标的卡片网格 -->
+                <div class="trk-grid" id="trk-grid"></div>
+            </div>
+        </section>
+
+        <!-- ====== Tracking Drawer ====== -->
+        <div class="trk-drawer-overlay" id="trk-drawer-overlay"></div>
+        <div class="trk-drawer" id="trk-drawer">
+            <div class="trk-drawer-inner">
+                <button class="trk-drawer-close" id="trk-drawer-close" aria-label="关闭">✕</button>
+                <div id="trk-drawer-content"></div>
+                <button class="drawer-share" id="trk-drawer-share" onclick="copyStockLink()" title="复制链接">🔗 分享</button>
+            </div>
+        </div>
+
+        
 
         <!-- ====== Featured Notes ====== -->
         <section class="section section-alt" id="notes">
