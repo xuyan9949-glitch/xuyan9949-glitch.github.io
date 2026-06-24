@@ -3,31 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>旅行攻略 — Leslie 旅行笔记</title>
+    <title>旅行日志 — Leslie</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;background:#f8f6f0;color:#2c2c2c;line-height:1.6}
-        .hero{position:relative;height:30vh;min-height:200px;background:linear-gradient(135deg,#2c1810,#5c3a28);overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
-        .hero h1{color:#fff;font-size:clamp(1.5rem,4vw,2rem);letter-spacing:4px}
-        .container{max-width:640px;margin:0 auto;padding:24px 20px}
-        .card{display:block;background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,0.05);text-decoration:none;color:inherit;margin-bottom:12px}
-        .card-img{height:140px;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#2c1810,#8b5e3c);margin-bottom:10px;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.3)}
-        .card h3{font-size:1rem;color:#2c1810}
-        .card .meta{font-size:0.78rem;color:#999;margin-top:3px}
-        .card p{font-size:0.84rem;color:#666;margin-top:6px}
-        .footer{text-align:center;padding:32px;color:#999;font-size:0.75rem}
+        body{font-family:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;background:#faf8f4;color:#2c2c2c;line-height:1.5}
+
+        /* Hero */
+        .hero{
+            position:relative;height:45vh;min-height:320px;
+            background:linear-gradient(160deg,#1a0f0a 0%,#3d2618 40%,#6b4a2e 70%,#8b6f50 100%);
+            display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+            overflow:hidden;
+        }
+        .hero::before{
+            content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+            background:url('https://picsum.photos/seed/travelbg/1200/600') center/cover no-repeat;
+            opacity:0.12;
+        }
+        .hero-content{position:relative;z-index:1;padding:0 24px;color:#fff}
+        .hero-icon{font-size:2.4rem;margin-bottom:8px}
+        .hero h1{font-size:clamp(1.6rem,4.5vw,2.4rem);font-weight:700;letter-spacing:6px}
+        .hero p{font-size:0.9rem;opacity:0.7;margin-top:8px;letter-spacing:2px}
+        .hero-line{width:40px;height:2px;background:rgba(255,255,255,0.3);margin:14px auto 0}
+
+        /* Container */
+        .container{max-width:560px;margin:0 auto;padding:28px 20px}
+
+        /* Section title */
+        .sec-label{
+            font-size:0.7rem;letter-spacing:2px;color:#8b6f50;font-weight:600;
+            margin-bottom:16px;display:flex;align-items:center;gap:8px;
+        }
+        .sec-label::after{content:'';flex:1;height:1px;background:#e8e0d6}
+
+        /* Card */
+        .card{
+            display:block;background:#fff;border-radius:16px;overflow:hidden;
+            box-shadow:0 2px 12px rgba(0,0,0,0.05);text-decoration:none;color:inherit;
+            transition:transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.08)}
+        .card-img{
+            height:180px;background:linear-gradient(135deg,#3d2618,#6b4a2e);
+            display:flex;align-items:center;justify-content:center;
+            font-size:3rem;color:rgba(255,255,255,0.15);position:relative;overflow:hidden;
+        }
+        .card-img::after{
+            content:'';position:absolute;bottom:0;left:0;right:0;height:60%;
+            background:linear-gradient(transparent,rgba(0,0,0,0.2));
+        }
+        .card-body{padding:18px 20px 20px}
+        .card-date{
+            font-size:0.72rem;color:#8b6f50;font-weight:600;letter-spacing:1px;
+            display:flex;align-items:center;gap:6px;
+        }
+        .card-date .dot{width:3px;height:3px;border-radius:50%;background:#ccc}
+        .card h3{font-size:1.05rem;font-weight:700;color:#2c1810;margin-top:4px}
+        .card .desc{font-size:0.82rem;color:#777;margin-top:6px;line-height:1.6}
+        .card-tag{
+            display:inline-block;font-size:0.68rem;color:#8b6f50;
+            background:#f5f0e8;padding:3px 10px;border-radius:12px;
+            margin-top:10px;font-weight:500;
+        }
+
+        /* Empty state */
+        .empty{text-align:center;padding:60px 20px;color:#bbb}
+        .empty-icon{font-size:2.4rem;margin-bottom:12px;opacity:0.4}
+        .empty p{font-size:0.85rem}
+
+        .footer{text-align:center;padding:32px;color:#ccc;font-size:0.72rem}
     </style>
 </head>
 <body>
-<div class="hero"><h1>🌏 旅行攻略</h1></div>
+
+<div class="hero">
+    <div class="hero-content">
+        <div class="hero-icon">🗺</div>
+        <h1>旅行日志</h1>
+        <p>每段行程都值得被认真记录</p>
+        <div class="hero-line"></div>
+    </div>
+</div>
+
 <div class="container">
+    <div class="sec-label">最近行程</div>
+
     <a href="/travel/quanzhou-2026/" class="card">
         <div class="card-img">🏛</div>
-        <h3>泉州·休闲深度游 2.0</h3>
-        <div class="meta">7月2日→5日 · 张震岳演唱会</div>
-        <p>三晚同酒店不搬家。古城·南洋·木偶·演唱会·洛伽寺·梧林。</p>
+        <div class="card-body">
+            <div class="card-date">
+                <span>2026年7月</span>
+                <span class="dot"></span>
+                <span>4天3晚</span>
+            </div>
+            <h3>泉州·休闲深度游</h3>
+            <p class="desc">古城寺庙与街巷生活 · 华侨南洋记忆 · 提线木偶戏 · 张震岳演唱会 · 洛伽寺与梧林侨乡。三晚同酒店，不搬行李。</p>
+            <span class="card-tag">🎤 含张震岳演唱会</span>
+        </div>
     </a>
 </div>
-<div class="footer">Leslie 旅行笔记 · 2026</div>
+
+<div class="footer">Leslie · 旅行日志</div>
 </body>
 </html>
