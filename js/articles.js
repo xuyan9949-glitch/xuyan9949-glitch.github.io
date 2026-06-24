@@ -649,5 +649,17 @@ const articles = [
     summary: "从四维筛选A股中报标的：兆易创新单标最强（25-31倍年化PE），建滔积层板CCL涨价纯正（25-32倍），广合科技AI PCB中小市值阿尔法（41-45倍）。结合现有DRAM重仓，新增顺序：广合/建滔→沪电→兆易→北京君正。",
     keywords: "A股 中报 业绩 估值 兆易创新 建滔积层板 广合科技 沪电股份 北京君正 存储周期 CCL PCB",
     file: "/articles/a-share-stock-screening-2026/"
+  },
+  {
+    id: "mu-earnings-preview",
+    title: "美光FY2026 Q3财报前瞻",
+    date: "2026-06-24",
+    category: "美股",
+    subcategory: "存储",
+    tags: ["个股:MU", "产业:存储", "产业:DRAM", "产业:HBM", "策略:财报"],
+    pinned: false,
+    summary: "美光6月24日盘后财报前瞻PDF，含业绩预期、关键观察指标、仓位策略与三种情景分析。",
+    keywords: "美光 MU Micron 财报 FY2026 Q3 存储 DRAM HBM",
+    file: "/articles/mu-earnings-preview/"
   }
 ];
