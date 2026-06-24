@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>泉州·晋江 四天三晚旅行攻略 — Leslie 旅行笔记</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, "PingFang SC", "Noto Sans SC", sans-serif;
+            background: #f8f6f0;
+            color: #2c2c2c;
+            line-height: 1.7;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 56vh;
+            min-height: 360px;
+            background: linear-gradient(135deg, #2c1810 0%, #5c3a28 50%, #8b5e3c 100%);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://picsum.photos/seed/quanzhou1/1200/600') center/cover no-repeat;
+            opacity: 0.35;
+        }
+        .hero-content { position: relative; z-index: 1; color: #fff; padding: 0 24px; }
+        .hero h1 {
+            font-size: clamp(1.6rem, 5vw, 2.4rem);
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+        .hero .sub {
+            margin-top: 10px; font-size: 1rem; opacity: 0.85; letter-spacing: 2px;
+        }
+        .hero .meta {
+            margin-top: 6px; font-size: 0.85rem; opacity: 0.7;
+        }
+        .hero .share-btn {
+            margin-top: 18px;
+            display: inline-block; padding: 10px 28px;
+            border: 1.5px solid rgba(255,255,255,0.6);
+            border-radius: 24px; color: #fff; font-size: 0.9rem;
+            cursor: pointer; background: transparent;
+            transition: all 0.3s;
+        }
+        .hero .share-btn:hover { background: rgba(255,255,255,0.15); }
+
+        .container { max-width: 700px; margin: 0 auto; padding: 0 20px; }
+
+        /* Fixed Info */
+        .info-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+            margin: 20px 0;
+        }
+        .info-card {
+            background: #fff; border-radius: 12px;
+            padding: 14px 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .info-card .label {
+            font-size: 0.72rem; color: #8b5e3c; font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .info-card .val {
+            margin-top: 3px; font-size: 0.88rem; font-weight: 500;
+        }
+
+        /* Section */
+        .section { padding: 32px 0; }
+        .sec-title {
+            font-size: 1.2rem; font-weight: 700; color: #2c1810;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .sec-line { width: 40px; height: 3px; background: #8b5e3c; margin: 6px 0 16px; }
+
+        /* Day Card */
+        .day-card {
+            background: #fff; border-radius: 16px;
+            padding: 24px; margin-bottom: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .day-photo {
+            height: 160px; border-radius: 10px; overflow: hidden;
+            margin-bottom: 14px; background: #e8e0d6;
+        }
+        .day-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+        .day-hd {
+            display: flex; align-items: center; gap: 12px;
+            margin-bottom: 14px; padding-bottom: 10px;
+            border-bottom: 1.5px solid #f0ebe3;
+        }
+        .day-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 42px; height: 42px; background: #2c1810; color: #fff;
+            border-radius: 10px; font-weight: 700; font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        .day-title { font-size: 1rem; font-weight: 700; color: #2c1810; }
+        .day-date { font-size: 0.78rem; color: #8b5e3c; }
+
+        .item { display: flex; gap: 10px; margin-bottom: 12px; }
+        .item:last-child { margin-bottom: 0; }
+        .item .t {
+            min-width: 80px; font-size: 0.78rem; font-weight: 600;
+            color: #8b5e3c; padding-top: 2px;
+        }
+        .item .d { flex: 1; font-size: 0.86rem; color: #444; }
+        .item .d strong { color: #2c1810; }
+
+        .hl {
+            background: #fdf6ed; border-left: 3px solid #8b5e3c;
+            padding: 10px 14px; margin: 12px 0;
+            border-radius: 0 8px 8px 0; font-size: 0.84rem; color: #555;
+        }
+
+        .footer {
+            text-align: center; padding: 40px 20px;
+            color: #999; font-size: 0.78rem;
+        }
+
+        @media (max-width: 500px) {
+            .info-grid { grid-template-columns: 1fr; }
+            .item { flex-direction: column; gap: 2px; }
+            .item .t { min-width: auto; }
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
+            background: #1d1d1f; color: #fff; padding: 10px 24px; border-radius: 10px;
+            font-size: 14px; font-weight: 500; opacity: 0;
+            transition: opacity .3s; z-index: 9999; pointer-events: none;
+            white-space: nowrap;
+        }
+        .toast.show { opacity: 1; }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <h1>泉州·晋江</h1>
+        <div class="sub">四天三晚旅行方案</div>
+        <div class="meta">7月2日→5日 · 张震岳演唱会</div>
+        <button class="share-btn" onclick="share()">📤 分享</button>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="section">
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="label">✈️ 去程</div>
+                <div class="val">7/2 07:15 北京→晋江</div>
+            </div>
+            <div class="info-card">
+                <div class="label">✈️ 回程</div>
+                <div class="val">7/5 20:50 晋江→北京</div>
+            </div>
+            <div class="info-card">
+                <div class="label">🏠 7/2—7/3</div>
+                <div class="val">全季·泉州西街中山路</div>
+            </div>
+            <div class="info-card">
+                <div class="label">🏠 7/4</div>
+                <div class="val">晋江机场万达亚朵</div>
+            </div>
+            <div class="info-card">
+                <div class="label">🎤 7/4 19:30</div>
+                <div class="val">张震岳·晋江第二体育中心</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- D1 -->
+    <div class="day-card">
+        <div class="day-photo">
+            <img src="https://picsum.photos/seed/quanzhou2/600/300" alt="泉州古城" loading="lazy"
+                 onerror="this.parentElement.style.background='linear-gradient(135deg,#2c1810,#5c3a28)';this.style.display='none'">
+        </div>
+        <div class="day-hd">
+            <div class="day-badge">D1</div>
+            <div>
+                <div class="day-title">开元寺、古城街巷与双塔黄昏</div>
+                <div class="day-date">7月2日 · 周五</div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="t">09:55</div>
+            <div class="d">抵达晋江机场 → 打车前往全季酒店（古城内）</div>
+        </div>
+        <div class="item">
+            <div class="t">11:30—14:30</div>
+            <div class="d"><strong>午饭·入住·午休</strong><br>面线糊+醋肉 或 牛肉羹+咸饭。早班机起得早，当天不要高强度。</div>
+        </div>
+        <div class="item">
+            <div class="t">15:00—17:00</div>
+            <div class="d"><strong>开元寺</strong><br>第一天唯一必去。山门→大雄宝殿→古桑树→东西塔→塔后院落。看寺院如何嵌入城市生活。</div>
+        </div>
+        <div class="item">
+            <div class="t">17:00—18:00</div>
+            <div class="d"><strong>旧馆驿与西街支巷</strong><br>不挤主街，转小巷看宗祠、旧宅和日常生活。</div>
+        </div>
+        <div class="item">
+            <div class="t">18:00—19:00</div>
+            <div class="d"><strong>☕ 咖啡时间</strong><br>天台咖啡馆看双塔黄昏。坐满40分钟，不是拍照任务。</div>
+        </div>
+        <div class="item">
+            <div class="t">19:15→</div>
+            <div class="d"><strong>闽南晚餐 + 中山路夜行</strong><br>完整闽南菜，沿中山路骑楼散步。累了就回酒店。</div>
+        </div>
+    </div>
+
+    <!-- D2 -->
+    <div class="day-card">
+        <div class="day-photo">
+            <img src="https://picsum.photos/seed/quanzhou3/600/300" alt="闽南建筑" loading="lazy"
+                 onerror="this.parentElement.style.background='linear-gradient(135deg,#5c3a28,#8b5e3c)';this.style.display='none'">
+        </div>
+        <div class="day-hd">
+            <div class="day-badge">D2</div>
+            <div>
+                <div class="day-title">南洋家书、海洋信仰与提线木偶</div>
+                <div class="day-date">7月3日 · 周六</div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="t">09:30—11:15</div>
+            <div class="d"><strong>泉州华侨历史博物馆</strong><br>核心项目。看侨批、南洋谋生、华侨返乡建房办学。追踪四个问题，控制90分钟。</div>
+        </div>
+        <div class="item">
+            <div class="t">11:30—15:00</div>
+            <div class="d"><strong>午饭·午休</strong><br>回古城吃饭休息，不叠加海交馆。</div>
+        </div>
+        <div class="item">
+            <div class="t">15:30—16:45</div>
+            <div class="d"><strong>天后宫—德济门遗址</strong><br>上午看离乡南洋，下午看海洋信仰。一组足够。</div>
+        </div>
+        <div class="item">
+            <div class="t">17:00—18:00</div>
+            <div class="d"><strong>☕ 咖啡时间</strong><br>后城或南俊巷古厝咖啡馆。安静院落坐一小时。</div>
+        </div>
+        <div class="item">
+            <div class="t">晚间</div>
+            <div class="d"><strong>🎭 泉州提线木偶戏</strong><br>通过微信公众号购票。首选经典折子戏专场。</div>
+        </div>
+        <div class="hl">⚡ 如果只有下午场：取消天后宫，下午先看木偶戏。</div>
+    </div>
+
+    <!-- D3 -->
+    <div class="day-card">
+        <div class="day-photo">
+            <img src="https://picsum.photos/seed/concert1/600/300" alt="演唱会" loading="lazy"
+                 onerror="this.parentElement.style.background='linear-gradient(135deg,#1a1a2e,#16213e)';this.style.display='none'">
+        </div>
+        <div class="day-hd">
+            <div class="day-badge">D3</div>
+            <div>
+                <div class="day-title">离开古城、充分休息、张震岳演唱会</div>
+                <div class="day-date">7月4日 · 周日</div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="t">08:30—10:00</div>
+            <div class="d"><strong>古城最后散步</strong><br>自然醒，早餐，最后走一次喜欢的小巷。</div>
+        </div>
+        <div class="item">
+            <div class="t">10:30</div>
+            <div class="d"><strong>退房 → 晋江亚朵</strong><br>跨江约1小时。</div>
+        </div>
+        <div class="item">
+            <div class="t">11:30—16:00</div>
+            <div class="d"><strong>午饭·入住·午睡</strong><br>演唱会体验的保障，不要压缩。当天不安排五店市。</div>
+        </div>
+        <div class="item">
+            <div class="t">16:00—17:00</div>
+            <div class="d"><strong>提前晚饭</strong><br>七分饱，避免过辣过油生冷海鲜。</div>
+        </div>
+        <div class="item">
+            <div class="t">17:30</div>
+            <div class="d"><strong>出发前往场馆</strong><br>目标18:15-18:30抵达，留出安检时间。</div>
+        </div>
+        <div class="item">
+            <div class="t">19:30</div>
+            <div class="d"><strong>🎤 张震岳《跟着感觉走》</strong></div>
+        </div>
+        <div class="item">
+            <div class="t">散场</div>
+            <div class="d"><strong>回酒店</strong><br>先步行离开管制区再叫车，预计30-60分钟。</div>
+        </div>
+    </div>
+
+    <!-- D4 -->
+    <div class="day-card">
+        <div class="day-photo">
+            <img src="https://picsum.photos/seed/quanzhou4/600/300" alt="闽南红砖" loading="lazy"
+                 onerror="this.parentElement.style.background='linear-gradient(135deg,#8b5e3c,#b8860b)';this.style.display='none'">
+        </div>
+        <div class="day-hd">
+            <div class="day-badge">D4</div>
+            <div>
+                <div class="day-title">洛伽寺、梧林侨乡与晚班机</div>
+                <div class="day-date">7月5日 · 周一</div>
+            </div>
+        </div>
+        <div class="hl">推荐包车：亚朵→洛伽寺→梧林→机场（行李全程跟车）</div>
+        <div class="item">
+            <div class="t">08:30</div>
+            <div class="d"><strong>退房，行李上车</strong> — 不放酒店回头取。</div>
+        </div>
+        <div class="item">
+            <div class="t">09:30—10:45</div>
+            <div class="d"><strong>石狮洛伽寺</strong><br>《天行健》取景线索。看寺院与礁石海水的关系。</div>
+        </div>
+        <div class="item">
+            <div class="t">10:45—11:15</div>
+            <div class="d">海边短走20分钟。天不好直接上车。</div>
+        </div>
+        <div class="item">
+            <div class="t">11:15—12:00</div>
+            <div class="d">前往梧林传统村落</div>
+        </div>
+        <div class="item">
+            <div class="t">13:00—15:30</div>
+            <div class="d"><strong>梧林传统村落</strong><br>"下南洋→侨批→返乡建房"的现实对应。看朝东楼、德鑨楼、顺意楼。红砖古厝与西式洋楼并存。</div>
+        </div>
+        <div class="item">
+            <div class="t">15:30—16:30</div>
+            <div class="d"><strong>☕ 梧林古厝咖啡</strong><br>最后一小时休息。</div>
+        </div>
+        <div class="item">
+            <div class="t">16:45</div>
+            <div class="d">前往机场</div>
+        </div>
+        <div class="item">
+            <div class="t">17:30—18:00</div>
+            <div class="d"><strong>抵达晋江机场</strong><br>20:50起飞，充裕时间托运+安检+晚饭。</div>
+        </div>
+    </div>
+
+    <!-- 下雨调整 -->
+    <div class="section">
+        <div class="sec-title">🌧 下雨调整方案</div>
+        <div class="sec-line"></div>
+        <div class="day-card" style="padding:16px 20px;">
+            <div class="item"><div class="t" style="min-width:120px;">7/2 下雨</div><div class="d">开元寺照常，缩短巷道散步；咖啡提前。</div></div>
+            <div class="item"><div class="t" style="min-width:120px;">7/3 下雨</div><div class="d">博物馆+木偶戏正常。取消天后宫，增加休息。</div></div>
+            <div class="item"><div class="t" style="min-width:120px;">7/5 大雨</div><div class="d">取消洛伽寺。亚朵→梧林→市区→机场。</div></div>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">Leslie 旅行笔记 · 2026.06</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+function share() {
+    const url = window.location.href;
+    const text = `📄 泉州·晋江 四天三晚\n7月2日→5日 张震岳演唱会\n${url}`;
+    if (navigator.share) {
+        navigator.share({ title: '泉州旅行攻略', text, url });
+    } else {
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.style.cssText = 'position:fixed;opacity:0';
+        document.body.appendChild(ta); ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        const t = document.getElementById('toast');
+        t.textContent = '✅ 已复制链接'; t.classList.add('show');
+        clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), 2000);
+    }
+}
+</script>
+</body>
+</html>
