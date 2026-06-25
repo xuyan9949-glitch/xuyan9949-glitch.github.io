@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "mu-fy2026-q3-earnings",
+    title: "美光FY2026 Q3财报及电话会深度分析",
+    date: "2026-06-25",
+    category: "美股",
+    subcategory: "存储",
+    tags: ["个股:MU", "产业:存储", "产业:HBM", "产业:DRAM", "产业:NAND", "策略:财报", "策略:仓位管理"],
+    pinned: false,
+    summary: "美光Q3系统性超预期：DRAM/NAND价格涨幅远超预期，供需紧张延长至2027年后，五年期战略客户协议重塑商业模式。核心仓持有但不追高，杠杆三星作为调节仓。",
+    keywords: "美光 MU 财报 HBM DRAM NAND 存储 超级周期 战略客户协议 五年期 take-or-pay 毛利率 84.9% ASP 供需紧缺 资本开支 估值 仓位管理 两倍三星",
+    file: "/articles/mu-fy2026-q3-earnings/"
+  },
+  {
     id: "storage-supercycle",
     title: "存储超级周期跟踪：财报时间线、业绩预期与美光财报前仓位策略",
     date: "2026-06-19",
