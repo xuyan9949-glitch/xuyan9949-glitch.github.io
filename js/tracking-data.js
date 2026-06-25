@@ -1816,82 +1816,90 @@ const trackingData = {
       mkt: "us",
       usSector: "存储",
       type: "中线",
-      trackingStatus: "观察中",
-      tradeCycle: "中线 + 波段",
-      themeTags: "HBM / DRAM / NAND / AI服务器 / Vera Rubin / 存储周期",
-      logicStatus: "强逻辑兑现期",
+      trackingStatus: "持有中 / 底仓",
+      tradeCycle: "中长线 + 波段",
+      themeTags: "HBM / DRAM / NAND / AI服务器 / Vera Rubin / 存储周期 / SCA / 数据中心SSD",
+      logicStatus: "逻辑全面兑现并上修",
       color: "#7c3aed",
-      reason: "AI算力从GPU扩散到存储价值量重估，美光受益于HBM、DRAM、NAND同步紧缺。",
-      strategy: "不按传统周期股低估逻辑看待，按AI存储瓶颈股处理；适合回调分批，财报节点前后做波段。",
-      lastUpdated: "2026-06-13",
+      reason: "FY2026 Q3财报系统超预期：营收414亿、毛利率84.9%、EPS 25.11均为历史纪录；供需紧张正式延长至2027年后；五年战略客户协议重塑商业模式。",
+      strategy: "核心仓继续持有，低位底仓不动，不因涨幅大主动清仓；但财报日跳空后不追高加仓，后续等待回踩或Q4财报前再做加仓决策。",
+      lastUpdated: "2026-06-25",
 
       investmentLogic: {
-        oneLiner: "美光是AI存储超级周期中最直接的美股纯标的之一，核心变量是HBM放量、DRAM/NAND涨价和数据中心存储价值量重估。",
-        currentHypothesis: "AI服务器、推理工作负载、Vera Rubin平台和数据中心SSD需求共同推高存储价值量，HBM占用更多DRAM晶圆与洁净室资源，导致传统DRAM和NAND供给也被动收紧，美光进入收入、毛利率、EPS和自由现金流同步上修阶段。",
+        oneLiner: "美光不再是传统周期存储股——FY2026 Q3财报验证了三条结构性逻辑：ASP定价权上行、供需紧张延长至2027年之后、五年期战略客户协议将部分收入改造为合同制造模式。",
+        currentHypothesis: "DRAM和NAND的AI需求扩散已从单纯HBM扩展至企业级SSD、数据中心DDR5、LPDRAM和SOCAMM等非HBM普通DRAM。经Q3财报验证，供需紧张不再只是一季度指引中的判断，而是已经量化为414亿营收、84.9%毛利率和183亿自由现金流的实际数据。战略客户协议改变了周期底部结构——价格下限+保量协议使未来下行幅度至少缩短一半。",
         coreReason: [
-          "FY2026 Q2已经出现业绩实质兑现：营收、毛利率、EPS和自由现金流均创公司纪录，说明不是单纯预期交易。",
-          "HBM4 36GB 12H已进入量产出货，并设计用于NVIDIA Vera Rubin，直接绑定下一代AI平台升级。",
-          "DRAM与NAND同时紧缺，且公司判断供需偏紧将延续至2026年以后，传统存储周期弹性被AI需求重新放大。",
-          "数据中心DRAM、HBM、LP DRAM、SOCAMM2和企业级SSD共同构成AI Factory存储BOM价值量上修链条。",
-          "公司退出Crucial消费业务，说明资源正在从低优先级消费渠道转向企业级与战略客户。"
+          "FY2026 Q3营收414.56亿美元，EPS 25.11美元，毛利率84.9%——三项均大幅超公司自己三个月前的激进指引，说明涨价和需求强度远超预期。",
+          "供需紧张正式延长至2027年后，且电话会明确不再提供bit CAGR预测——因为当前是供给侧（而非需求侧）决定出货量。",
+          "已签署16份不可取消的战略客户协议（SCA），覆盖20% DRAM、约1/3 NAND供给；剩余履约义务约1000亿美元，客户已提供~180亿美元现金押金——收入可见度显著提升。",
+          "价格下限机制使未来下行周期毛利率远高于历史周期峰值，但价格上限也限制极端上行空间——美光用部分超额收益换取了长期利润稳定。",
+          "HBM市场规模提前至2027年轻松超过1000亿美元；HBM4爬坡速度是HBM3E 12-high的两倍；HBM4E计划2027年量产——产品周期继续放量。",
+          "AI需求从HBM扩散至非HBM DRAM：数据中心SSD收入超50亿美元环比翻倍，年化数据中心收入超1000亿美元——server DDR5、SSD、LPDRAM全面紧缺。"
         ],
-        status: "逻辑正在兑现，但股价已明显提前反映强景气。",
-        statusNote: "当前不是左侧低估修复阶段，而是右侧业绩兑现+估值再定价阶段。核心风险不是短期业绩差，而是市场对FY2027 EPS峰值、HBM持续性和DRAM价格周期的折现是否过满。",
-        validUntil: "2026-2027",
-        validNote: "有效期取决于HBM4/HBM4E出货、DRAM/NAND价格强度、Vera Rubin放量节奏、云厂商AI资本开支持续性以及美光大规模扩产是否破坏供需平衡。",
+        status: "逻辑已全面Q3财报验证，进入业绩兑现阶段。",
+        statusNote: "当前不再是验证逻辑阶段，而是跟踪ASP涨价斜率何时从'每季度+60-80%'回归到'+10-20%'，以及市场对FY2027 EPS（110-160美元区间）的定价是否充分。1200美元对应FY2027约8-10倍PE，不算泡沫但也不是赔率极高。",
+        validUntil: "2027-2028",
+        validNote: "有效期取决于：ASP涨价斜率、HBM4/HBM4E放量节奏、SCA覆盖比例能否继续从20% DRAM增至50%+、2028年新产能供给释放速度、以及云厂商AI capex是否持续。",
         questionsToVerify: [
-          "FY2026 Q3实际营收、毛利率和EPS是否继续高于公司指引？",
-          "HBM4出货是否继续扩大，HBM4E是否能在2027年顺利放量？",
-          "DRAM ASP涨价是否由AI服务器扩散到传统服务器、PC和手机，还是只集中在高端产品？",
-          "NAND数据中心SSD需求是否继续超供给，能否维持高毛利率？",
-          "2027年大规模capex是否会被市场视为长期增长，还是重新担忧存储行业过剩？",
-          "SK海力士、三星扩产后，HBM和传统DRAM价格是否出现松动？"
+          "Q4营收500亿、EPS 31美元、毛利率86%的指引能否如期甚至超预期完成？",
+          "Q4价格涨幅'明显放缓'后，FY2027 Q1-Q2 ASP能否继续环比上行？",
+          "NAND涨价（+中80% ASP）是结构性还是短期供需错配？数据中心SSD能否维持高增速？",
+          "HBM4E是否能在2027年按计划进入量产，并继续绑定下一代AI平台？",
+          "SCA覆盖比例能否从20% DRAM提升至50%+？",
+          "FY2027 capex大幅扩张（>450亿美元）——市场会视为长期增长信号还是担忧周期过剩？",
+          "三星普通DRAM和NAND敞口更大——美光财报对三星/海力士的带动效应如何？"
         ]
       },
 
       keyMetrics: [
-        { metric: "FY2026 Q2营收", status: "238.6亿美元，环比大幅增长，同比接近三倍", importance: "高", trend: "上行", note: "证明AI存储需求已经进入收入兑现阶段。" },
-        { metric: "FY2026 Q2毛利率", status: "GAAP毛利率74.4%，非GAAP毛利率74.9%", importance: "高", trend: "强上行", note: "毛利率已脱离传统存储周期底部逻辑。" },
-        { metric: "FY2026 Q3指引", status: "营收335亿美元±7.5亿美元，毛利率约81%，EPS 19.15美元±0.40美元", importance: "高", trend: "继续上修", note: "6月24日财报是下一次关键验证点。" },
-        { metric: "DRAM收入占比", status: "Q2 DRAM收入188亿美元，占总收入约79%", importance: "高", trend: "上行", note: "DRAM仍是利润弹性的主引擎。" },
-        { metric: "NAND收入", status: "Q2 NAND收入50亿美元，约占21%", importance: "中高", trend: "上行", note: "数据中心SSD需求增强。" },
-        { metric: "HBM4进展", status: "HBM4 36GB 12H已量产出货，面向Vera Rubin", importance: "高", trend: "关键放量期", note: "从普通DRAM厂商向AI存储核心供应商重估的关键。" },
-        { metric: "供需状态", status: "DRAM和NAND供需偏紧将延续至2026年以后", importance: "高", trend: "偏紧", note: "若供需判断被证伪，估值会快速压缩。" },
-        { metric: "资本开支", status: "FY2026 capex预计超过250亿美元", importance: "中高", trend: "扩张", note: "长期也带来周期过剩风险。" }
+        { metric: "FY2026 Q3营收", status: "414.56亿美元，环比+74%，大幅超公司此前335亿指引", importance: "高", trend: "强上行", note: "营收增长主要由ASP推动（DRAM ASP +低60%，NAND +中80%），bit出货仅增低个位数。" },
+        { metric: "FY2026 Q3毛利率", status: "Non-GAAP 84.9%，较上季74.9%大幅扩张10个百分点", importance: "高", trend: "强上行", note: "ASP涨幅远超成本，单季进入历史最高利润率区间。" },
+        { metric: "FY2026 Q3 EPS", status: "25.11美元，环比+106%，大幅超市场预期20.78美元", importance: "高", trend: "强上行", note: "盈利弹性来自ASP定价权和固定成本基数。" },
+        { metric: "FY2026 Q4指引", status: "营收500亿±10亿、毛利率~86%、EPS 31±1美元", importance: "高", trend: "仍环比上行", note: "价格涨幅已出现'明显放缓'，但毛利率仍将扩张至86%。" },
+        { metric: "DRAM", status: "Q3收入313亿美元，占76%；ASP环比涨低60%，bit出货仅增低个位数", importance: "高", trend: "ASP驱动", note: "非HBM DRAM同样供不应求，管理层确认2027-2028不限于HBM。" },
+        { metric: "NAND", status: "Q3收入99亿美元，占24%；ASP涨中80%，bit出货增中个位数", importance: "高", trend: "ASP驱动", note: "数据中心SSD收入超50亿，环比翻倍。" },
+        { metric: "HBM进展", status: "HBM4 12-high爬坡速度是HBM3E 12-high两倍；HBM4累计收入超10亿；HBM4E计划2027年量产", importance: "高", trend: "加速放量", note: "HBM市场规模2027年即可轻松超过1000亿美元（此前预测2028年）。" },
+        { metric: "战略客户协议(SCA)", status: "16份不可取消协议，覆盖20% DRAM、~1/3 NAND，剩余履约义务~1000亿美元", importance: "极高", trend: "新变量", note: "客户提供~180亿美元现金押金。价格下限使下一轮下行周期毛利率远高于历史峰值。" },
+        { metric: "自由现金流", status: "183亿美元，自由现金流率约44%，单季历史新高", importance: "高", trend: "强", note: "经营现金流253.9亿，占收入61%。" },
+        { metric: "供需状态", status: "供需紧张延长至2027年之后，2028年产能释放也未必弥合缺口", importance: "高", trend: "继续偏紧", note: "管理层不再提供bit CAGR预测——当前由供给而非需求决定出货。" },
+        { metric: "资本开支", status: "FY2026约270亿美元；FY2027将高于市场预期的400-450亿美元", importance: "高", trend: "大幅扩张", note: "过半增量用于厂房建设，FY2027不会立即形成大量bit供给；但2028年后周期风险增加。" },
+        { metric: "资产负债表", status: "净现金约244亿美元（现金及投资302亿，债务57亿），库存86亿/库存天数约120天", importance: "中", trend: "健康", note: "DRAM库存尤其紧张。" }
       ],
 
       catalysts: [
-        { catalyst: "FY2026 Q3财报", timeWindow: "2026-06-24", importance: "高", status: "即将验证", evidence: "营收是否超335亿、毛利率是否接近81%、EPS是否超19.15、Q4指引是否继续上修", direction: "双向" },
-        { catalyst: "HBM4绑定NVIDIA Vera Rubin", timeWindow: "2026年内", importance: "高", status: "跟踪中", evidence: "HBM4 36GB量产、48GB样品、客户验证和良率爬坡", direction: "正面" },
-        { catalyst: "HBM4E研发与2027年放量", timeWindow: "2027年", importance: "高", status: "中期跟踪", evidence: "HBM4E是否能继续进入下一代AI平台供应链", direction: "正面" },
-        { catalyst: "DRAM/NAND价格继续上行", timeWindow: "2026Q3-Q4", importance: "高", status: "跟踪中", evidence: "DRAM ASP、NAND ASP、合约价、数据中心SSD订单强度", direction: "正面" },
-        { catalyst: "战略客户协议SCA扩大", timeWindow: "2026-2027", importance: "中高", status: "跟踪中", evidence: "更多多年期价格和数量协议，提升收入可见度", direction: "正面" },
-        { catalyst: "产能扩张", timeWindow: "2027-2028", importance: "中", status: "长期跟踪", evidence: "Idaho、New York、Singapore、Tongluo产能爬坡节奏", direction: "双向" },
-        { catalyst: "AI PC与端侧AI内存升级", timeWindow: "2026-2027", importance: "中", status: "次级跟踪", evidence: "AI PC 32GB+配置占比、旗舰手机DRAM升级", direction: "正面" }
+        { catalyst: "FY2026 Q4财报", timeWindow: "2026-09-29前后（公司间H2）", importance: "高", status: "下个验证", evidence: "营收能否达到500亿美元指引、毛利率是否接近86%、EPS是否超31美元、FY2027 Q1指引", direction: "双向" },
+        { catalyst: "ASP涨价斜率监测", timeWindow: "2026Q4-FY2027Q2", importance: "高", status: "跟踪中", evidence: "DRAM ASP从Q3的+低60%环比降至什么水平、NAND ASP从+中80%回归", direction: "关键风险" },
+        { catalyst: "HBM4绑定NVIDIA Vera Rubin", timeWindow: "2026年下半年", importance: "高", status: "跟踪中", evidence: "HBM4 48GB样品、客户认证、良率爬坡、Vera Rubin平台出货节奏", direction: "正面" },
+        { catalyst: "HBM4E进入量产", timeWindow: "2027年", importance: "高", status: "中期跟踪", evidence: "HBM4E能否继续进入下一代AI平台供应链，认证进度", direction: "正面" },
+        { catalyst: "DRAM/NAND价格继续上行", timeWindow: "2026Q3-Q4", importance: "高", status: "跟踪中，斜率放缓", evidence: "Q4价格涨幅已确认'明显放缓'，需观察FY2027 Q1能否维持环比上行", direction: "正转中性" },
+        { catalyst: "战略客户协议SCA继续扩大", timeWindow: "2026-2027", importance: "高", status: "新框架验证中", evidence: "当前覆盖20% DRAM、~1/3 NAND，能否提升至50%+收入", direction: "正面" },
+        { catalyst: "FY2027资本开支指引", timeWindow: "2026年下", importance: "中高", status: "即将出炉", evidence: "高于400-450亿的具体数字、产能建设节奏和资金用途分配", direction: "双向" },
+        { catalyst: "AI需求扩散至非HBM DRAM", timeWindow: "2026H2-2027", importance: "中高", status: "跟踪中", evidence: "服务器DDR5、数据中心SSD、LPDRAM、SOCAMM需求能否维持高增速", direction: "正面" },
+        { catalyst: "产能扩张节奏", timeWindow: "2027-2028", importance: "中", status: "长期跟踪", evidence: "Idaho、New York、Singapore、Tongluo产能爬坡节奏及对供需平衡的影响", direction: "双向" }
       ],
 
       valuation: {
-        assessment: "当前估值已不便宜，但仍可能因FY2026 Q3/Q4业绩继续上修而维持强势。更适合按业绩兑现与价格趋势做波段。",
-        riskNote: "最大风险是市场已提前交易FY2027高峰利润，一旦DRAM/NAND价格涨幅放缓、HBM供给放大或云厂商资本开支降速，可能出现高位估值压缩。",
+        assessment: "约1200美元对应FY2026 PE约16.4倍（参考价值有限），年化Q4 EPS约124倍PE约9.7倍。市场大致计入FY2027 EPS 115-125美元，不算泡沫但赔率不再极高。中枢估值1300-1500美元，乐观1700以上。",
+        riskNote: "Q4价格涨幅'明显放缓'的表述是本次财报唯一警告。当前最大风险不是周期突然结束，而是ASP斜率下降后市场对FY2027 EPS的预期是否需要调整。HBM4E认证进度、SCA覆盖率提升、FY2027 capex具体数字是下一个关键观察。",
         tiers: [
-          { label: "保守", price: "$750-$850", logic: "AI存储逻辑仍成立，但市场开始担心周期峰值或FY2027利润见顶" },
-          { label: "中性", price: "$950-$1,150", logic: "业绩强劲兑现，市场维持对HBM和DRAM供需紧张的定价" },
-          { label: "乐观", price: "$1,300-$1,600", logic: "Q3/Q4继续大幅超预期，HBM出货与定价强于预期" }
+          { label: "保守", price: "$800-$990", logic: "价格涨幅持续放缓，毛利率见顶，HBM竞争加剧；FY2027 EPS 100-110美元" },
+          { label: "基准", price: "$1,250-$1,540", logic: "ASP仍环比上行，供需持续偏紧，SCA覆盖扩大；FY2027 EPS 125-140美元" },
+          { label: "乐观", price: "$1,650-$1,980", logic: "价格环境维持强势，HBM大幅放量，SCA覆盖收入50%+；FY2027 EPS 150-165美元" }
         ]
       },
 
       operationPlan: {
-        currentStatus: "强趋势观察中，适合中线关注和波段交易；不建议在财报前连续大涨后无计划追高。",
+        currentStatus: "核心仓继续格局持有，低位底仓不动。Q3财报已全面确认三条逻辑（ASP/供需/SCA），不因涨幅大而主动清仓，但1200附近不追高加仓。",
         buyPlan: [
-          "财报前若回踩但不破短期趋势，且DRAM/NAND/HBM消息面无负面变化，可小仓试探。",
-          "财报后若营收、毛利率、EPS和下季指引全部超过市场预期，可按右侧确认加仓。",
-          "若股价大跌但Q3指引和HBM逻辑未破坏，可优先判断为高位换手。"
+          "当前不追高——财报跳空后的缺口区域追入赔率已显著下降。",
+          "等待回踩关键均线（20日/50日线）或下个催化剂节点（Q4财报前1-2周）再考虑加仓。",
+          "若出现市场系统性回调但存储基本面不变，则是加仓窗口。"
         ],
-        addConditions: "Q3财报确认营收和毛利率继续上修，HBM4出货进度明确，DRAM/NAND价格仍在上涨，且股价回踩后重新站回短期均线。",
-        reduceConditions: "财报不及市场高预期、Q4指引低于预期、毛利率见顶、HBM客户进度不清晰、DRAM/NAND合约价松动。",
+        addConditions: "股价回踩20/50日均线且DRAM/NAND合约价无负面变化、SCA覆盖率继续扩大、HBM4出货节奏符合或超预期。",
+        reduceConditions: "ASP涨价斜率持续两个季度低于预期、Q4毛利率不达86%、HBM4E认证延迟、FY2027 capex大幅超预期并被解读为过剩信号。",
         stopLoss: null,
         targetPrice: null,
-        invalidateConditions: "HBM需求弱化、NVIDIA/云厂商平台放量延后、SK海力士/三星扩产导致供需明显转松、DRAM/NAND价格连续下行、公司capex被解读为新一轮过剩起点。"
+        invalidateConditions: "DRAM/NAND合约价连续两个季度环比下行、HBM竞争导致份额明显流失、云厂商AI capex增速拐头向下、2028年新产能集中落地同时需求增速放缓。"
       },
     },
   
