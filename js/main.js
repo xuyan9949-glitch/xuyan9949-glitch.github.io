@@ -1024,7 +1024,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     handleDeepLink();
 
-    // ---- 逻辑验证日历 ----
+});
+
+// ---- 逻辑验证日历 ----
 const calGrid = document.getElementById('cal-grid');
 
 function renderCalendar(filter = 'all') {
