@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>${a.summary.length > 80 ? a.summary.slice(0, 80) + '…' : a.summary}</p>
                 <div class="tags">
                     ${a.tags.slice(0, 4).map(t => {
-                        const stockId = findStockIdByTag(t);
+                        const stockId = typeof findStockIdByTag === 'function' ? findStockIdByTag(t) : null;
                         return stockId
                             ? `<span class="tag-stock-link" onclick="event.preventDefault();event.stopPropagation();openStockTracking('${stockId}')">${t}</span>`
                             : `<span>${t}</span>`;
@@ -1173,4 +1173,51 @@ if (topEl && typeof topThree !== 'undefined') {
         </div>
     `).join('');
     topEl.style.display = 'block';
+}
+
+// ---- 追踪颜色 - STATUS_COLORS + getStatusColor ----
+const STATUS_COLORS = {
+    '持有':   { bg: '#22c55e15', text: '#22c55e', dot: '#22c55e' },
+    '观察':   { bg: '#3b82f615', text: '#3b82f6', dot: '#3b82f6' },
+    '等回调':  { bg: '#f59e0b15', text: '#f59e0b', dot: '#f59e0b' },
+    '高风险':  { bg: '#ef444415', text: '#ef4444', dot: '#ef4444' },
+    '已放弃':  { bg: '#6b6b8015', text: '#6b6b80', dot: '#6b6b80' },
+};
+
+function getStatusColor(status) {
+    if (!status) return null;
+    if (status.includes('持有') || status.includes('底仓') || status === '持有中') return STATUS_COLORS['持有'];
+    if (status.includes('观察')) return STATUS_COLORS['观察'];
+    if (status.includes('回调') || status.includes('等')) return STATUS_COLORS['等回调'];
+    if (status.includes('风险') || status.includes('警戒') || status.includes('注意')) return STATUS_COLORS['高风险'];
+    if (status.includes('清仓')) return STATUS_COLORS['已放弃'];
+    if (status.includes('放弃')) return STATUS_COLORS['已放弃'];
+    return STATUS_COLORS['观察'];
+}
+
+// ---- Global: stock tag click → tracking drawer ----
+function findStockIdByTag(tag) {
+    if (typeof trackingData === 'undefined') return null;
+    for (const key of ['a-shares', 'us-stocks']) {
+        const stock = trackingData[key]?.find(s => s.name === tag || s.code === tag);
+        if (stock) return stock.id;
+    }
+    return null;
+}
+
+function openStockTracking(stockId) {
+    if (!stockId) return;
+    for (const key of ['a-shares', 'us-stocks']) {
+        const found = trackingData[key]?.find(s => s.id === stockId);
+        if (found) {
+            const marketCode = key === 'a-shares' ? 'a' : 'us';
+            window.location.hash = '#tracking';
+            setTimeout(() => {
+                const tab = document.querySelector(`.trk-tab[data-mkt="${marketCode}"]`);
+                if (tab) tab.click();
+                setTimeout(() => openDrawer(stockId, marketCode), 400);
+            }, 100);
+            break;
+        }
+    }
 }
