@@ -1024,6 +1024,66 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     handleDeepLink();
 
+    // ---- Render Diagrams ----
+    const diagramsGrid = document.getElementById('diagrams-grid');
+    let currentDiagramCategory = 'all';
+
+    function renderDiagrams(cat) {
+        if (!diagramsGrid || typeof diagrams === 'undefined') return;
+        const filtered = cat === 'all' ? diagrams : diagrams.filter(d => d.category === cat);
+        diagramsGrid.innerHTML = filtered.map(d => {
+            const imgPath = '/images/diagrams/' + d.dir + '/' + d.file;
+            return `<div class="diagram-card" onclick="openDiagram('${d.dir}/${d.file}', '${d.title}')">
+                <img src="${imgPath}" alt="${d.title}" loading="lazy">
+                <div class="diagram-label">${d.title}</div>
+            </div>`;
+        }).join('');
+    }
+
+    if (diagramsGrid && typeof diagrams !== 'undefined') {
+        renderDiagrams('all');
+    }
+
+    // Diagram tabs
+    const diagramTabs = document.getElementById('diagram-tabs');
+    if (diagramTabs) {
+        diagramTabs.querySelectorAll('.diagram-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                diagramTabs.querySelectorAll('.diagram-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentDiagramCategory = tab.dataset.dcat;
+                renderDiagrams(currentDiagramCategory);
+            });
+        });
+    }
+
+    // Create lightbox HTML
+    if (!document.getElementById('diagram-lightbox')) {
+        const lb = document.createElement('div');
+        lb.className = 'diagram-lightbox';
+        lb.id = 'diagram-lightbox';
+        lb.innerHTML = '<span class="lb-close" onclick="closeDiagram()">✕</span><img id="lb-img" src="" alt=""><span class="lb-title" id="lb-title"></span>';
+        document.body.appendChild(lb);
+    }
+
+    window.openDiagram = function(path, title) {
+        const lb = document.getElementById('diagram-lightbox');
+        const img = document.getElementById('lb-img');
+        const titleEl = document.getElementById('lb-title');
+        if (!lb || !img) return;
+        img.src = '/images/diagrams/' + path;
+        if (titleEl) titleEl.textContent = title || '';
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeDiagram = function() {
+        const lb = document.getElementById('diagram-lightbox');
+        if (!lb) return;
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+    };
+
 });
 
 // ---- 逻辑验证日历 ----

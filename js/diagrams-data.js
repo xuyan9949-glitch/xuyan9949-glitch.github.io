@@ -48,5 +48,7 @@ const diagrams = [
   // === 组合 ===
   { file: "portfolio-0617.png", title: "AI主线核心组合（基础参考版）6.17", category: "组合", dir: "组合" },
   { file: "other-markets-portfolio.png", title: "其他市场组合（聚焦全球电子产业链）", category: "组合", dir: "组合" },
+  // === Serenity ===
+  { file: "serenity.png", title: "Serenity", category: "serenity", dir: "serenity" },
 ];
 
