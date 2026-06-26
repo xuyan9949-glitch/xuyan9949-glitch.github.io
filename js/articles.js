@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "apple-price-storage-cycle",
+    title: "苹果涨价是存储周期最后一根稻草？——对\"周期见顶论\"的七层次拆解",
+    date: "2026-06-27",
+    category: "产业思考",
+    subcategory: "存储",
+    tags: ["个股:MU", "个股:AAPL", "产业:存储", "产业:DRAM", "产业:HBM", "产业:NAND", "产业:周期", "策略:产业链分析"],
+    pinned: false,
+    summary: "\"苹果涨价=存储周期见顶\"把三个层面混在了一起：苹果涨价已发生、消费电子承压有可能、存储景气见顶尚未被验证。七层次拆解：苹果压价历史、存储周期本质、AI是否消灭周期、数据中心vs机器人真实需求、上下游利益转移机制、真正顶部信号。结论：当前更接近景气从无争议阶段进入博弈阶段，不是确认下行。",
+    keywords: "苹果 存储 美光 MU 涨价 周期 见顶 HBM DDR5 数据中心 AI 机器人 议价权 战略客户协议 take-or-pay 库存 资本开支 供给侧",
+    file: "/articles/apple-price-storage-cycle/"
+  },
+  {
     id: "pcb-copper-foil-industry-research",
     title: "PCB铜箔行业研究：HVLP升级、低基数利润弹性与机构跟踪框架",
     date: "2026-06-27",
