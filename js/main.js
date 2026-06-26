@@ -1103,6 +1103,7 @@ function renderCalendar(filter = 'all') {
         filtered = sorted.filter(e => {
             if (e.date.includes('Q') || e.date.includes('H')) return false;
             if (e.date.includes('中旬') || e.date.includes('下旬') || e.date.includes('上旬')) return true;
+            if (e.certainty === 'estimated') return true;
             const d = new Date(e.date);
             return d >= today && d <= weekEnd;
         });
@@ -1112,6 +1113,7 @@ function renderCalendar(filter = 'all') {
         filtered = sorted.filter(e => {
             if (e.date.includes('Q') || e.date.includes('H')) return false;
             if (e.date.includes('中旬') || e.date.includes('下旬') || e.date.includes('上旬')) return true;
+            if (e.certainty === 'estimated') return true;
             const d = new Date(e.date);
             return d >= today && d <= monthEnd;
         });
@@ -1135,8 +1137,8 @@ function renderCalendar(filter = 'all') {
         // Countdown
         let countdown = '';
         if (e.date.includes('中旬') || e.date.includes('下旬') || e.date.includes('上旬')) {
-            countdown = e.date.includes('中旬') ? '本月' : e.date.includes('下旬') ? '本月' : '本月';
-        } else if (!e.date.includes('Q') && !e.date.includes('H')) {
+            countdown = '本月';
+        } else if (!e.date.includes('Q') && !e.date.includes('H') && e.certainty !== 'estimated') {
             const eventDate = new Date(e.date);
             const today = new Date(now);
             const diff = Math.ceil((eventDate - today) / (1000*60*60*24));
@@ -1144,15 +1146,20 @@ function renderCalendar(filter = 'all') {
             else if (diff === 0) countdown = '今日';
             else countdown = '已过';
         } else {
-            countdown = e.date.includes('H') ? '6个月' : e.date.includes('Q') ? '季度' : '';
+            countdown = e.certainty === 'estimated' ? '待定' : '';
         }
+
+        // Certainty badge
+        const certaintyBadge = e.certainty === 'estimated' 
+            ? '<span class="cal-uncertain" style="background:#8b5cf615;color:#8b5cf6;font-size:11px;padding:1px 6px;border-radius:3px;margin-left:4px">预计</span>' 
+            : '';
 
         const sc = (statusColors[e.status]||'#6b6b8015,#6b6b80').split(',');
 
         return `
             <div class="cal-card ${e.topPriority && filter === 'all' ? 'cal-card-top' : ''}">
                 <div class="cal-top">
-                    <span class="cal-date">${e.date}</span>
+                    <span class="cal-date">${e.date}${certaintyBadge}</span>
                     <span class="cal-type" style="background:${(typeColors[e.type]||'#6b6b80')}15;color:${typeColors[e.type]||'#6b6b80'}">${e.type}</span>
                     <span class="cal-countdown">${countdown}</span>
                 </div>
