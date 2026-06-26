@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "pcb-copper-foil-industry-research",
+    title: "PCB铜箔行业研究：HVLP升级、低基数利润弹性与机构跟踪框架",
+    date: "2026-06-27",
+    category: "产业思考",
+    subcategory: "AI电子材料",
+    tags: ["产业:铜箔", "产业:HVLP", "产业:AI电子材料", "个股:铜冠铜箔", "个股:德福科技", "个股:三井金属", "产业:CCL", "产业:PCB", "策略:产业链分析", "策略:机构跟踪框架"],
+    pinned: false,
+    summary: "A股铜箔三条逻辑叠加：传统周期修复+AI推动HVLP结构性紧缺+低基数利润弹性。铜冠铜箔产业化确定性更高，德福科技转型弹性更大，但当前估值已透支未来增长。附专业机构十项跟踪指标。",
+    keywords: "铜箔 HVLP 铜冠铜箔 德福科技 三井金属 Circuit Foil 集肤效应 加工费 CCL AI服务器 PCB RTF 载体铜箔 产能利用率 经营杠杆",
+    file: "/articles/pcb-copper-foil-industry-research/"
+  },
+  {
     id: "trump-account-7-4",
     title: "特朗普账户7.4的政治意义：建国250年的财富重塑叙事",
     date: "2026-06-27",
