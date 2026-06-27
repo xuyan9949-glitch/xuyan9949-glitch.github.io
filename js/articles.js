@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "mu-fy2026-q3-institutional-analysis",
+    title: "美光FY2026 Q3财报：机构投资者视角拆解",
+    date: "2026-06-27",
+    category: "美股",
+    subcategory: "财报分析",
+    tags: ["财报:MU", "财报分析", "存储", "HBM", "SCA", "NAND", "企业级SSD", "产业链"],
+    pinned: false,
+    summary: "这不是一份普通存储涨价周期财报，而是一份开始证明商业模式可能变化的财报。SCA协议take-or-pay+1000亿美元RPO+180亿现金存款正在锁死下行风险，但涨价放缓、出货量平淡和14周季度虚增仍需留意。",
+    keywords: "美光 MU 财报 FY2026 Q3 存储 超级周期 HBM HBM4 SCA 战略客户协议 take-or-pay 毛利率 84.9% ASP NAND SSD 数据中心 资本开支 自由现金流",
+    file: "/articles/mu-fy2026-q3-institutional-analysis/"
+  },
+  {
     id: "apple-price-storage-cycle",
     title: "苹果涨价是存储周期最后一根稻草？——对\"周期见顶论\"的七层次拆解",
     date: "2026-06-27",
