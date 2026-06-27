@@ -12,6 +12,18 @@ const articles = [
     file: "/articles/mu-fy2026-q3-institutional-analysis/"
   },
   {
+    id: "citi-ai-optics-dongshan-precision",
+    title: "花旗《AI Optics in Structural Upcycle》：东山精密股东视角拆解",
+    date: "2026-06-27",
+    category: "产业思考",
+    subcategory: "研报分析",
+    tags: ["研报:花旗", "个股:东山精密", "个股:索尔思", "产业:光互联", "产业:光模块", "产业:光芯片", "产业:EML", "产业:硅光", "产业:CPO", "策略:研报分析"],
+    pinned: false,
+    summary: "花旗将东山精密目标价从225元上调至350元，核心重估不是\"索尔思多卖光模块\"，而是重新定义为光模块+EML/CW光芯片平台+AI PCB。但2027E AI光学利润257亿元、2028E 527亿元的预测极其激进，用开源证券交叉验证，当前更接近季度业绩兑现交易。",
+    keywords: "花旗 Citi AI Optics 东山精密 002384 索尔思 Source Photonics 光模块 光芯片 EML CW 激光器 1.6T 3.2T CPO AI PCB 扩产 12亿美元",
+    file: "/articles/citi-ai-optics-dongshan-precision/"
+  },
+  {
     id: "apple-price-storage-cycle",
     title: "苹果涨价是存储周期最后一根稻草？——对\"周期见顶论\"的七层次拆解",
     date: "2026-06-27",
