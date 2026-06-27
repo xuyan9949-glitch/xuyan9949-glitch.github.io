@@ -327,7 +327,7 @@ const articles = [
     category: "产业思考",
     subcategory: "存储",
     tags: ["产业:HBM", "产业:存储", "产业:WF6", "材料", "供应链", "Foosung", "瓶颈分析"],
-    pinned: true,
+    pinned: false,
     summary: "WF6（六氟化钨）是HBM制造必需的前驱体材料，中国钨出口管制引发供应链担忧。但WF6属于HBM产业链第四层瓶颈，远未达到HBM良率、CoWoS、GPU的战略级别。更可能复制霍尔木兹事件——先交易恐慌，然后发现库存充足。",
     keywords: "WF6 六氟化钨 HBM 存储 供应链 出口管制 Foosung 瓶颈",
     file: "/articles/wf6-hbm-bottleneck/"
@@ -339,7 +339,7 @@ const articles = [
     category: "产业思考",
     subcategory: "研报分析",
     tags: ["产业:AI算力", "产业:GPU", "产业:推理", "产业:HBM", "产业:光互联", "研报:SemiAnalysis", "供给瓶颈"],
-    pinned: true,
+    pinned: false,
     summary: "SemiAnalysis报告：GPU租赁价格反弹40%、Blackwell交付周期拉长至6-7个月，AI算力供给过剩逻辑正在被证伪。需求从训练转向推理，HBM存储和光互联是新一轮扩张中最容易形成瓶颈的环节。",
     keywords: "SemiAnalysis GPU AI 算力 HBM 存储 光互联 推理 供给 瓶颈 NVDA MU LITE COHR",
     file: "/articles/semi-analysis-ai-gpu-scarcity/"
@@ -351,7 +351,7 @@ const articles = [
     category: "美股",
     subcategory: "光通信",
     tags: ["个股:AAOI", "减持", "个股分析", "光模块", "筹码"],
-    pinned: true,
+    pinned: false,
     summary: "AAOI 6/12集中披露5份Form 144，合计约184,053股（$3,182万），属高位集中兑现。偏利空但不是基本面爆雷，筹码利空>基本面利空。短线不建议追高，等回踩确认。",
     keywords: "AAOI 减持 Form 144 Form 4 内幕交易 光模块 筹码 高位兑现",
     file: "/articles/aaoi-insider-selling-analysis/"
@@ -363,7 +363,7 @@ const articles = [
     category: "A股",
     subcategory: "光通信",
     tags: ["个股:中际旭创", "个股分析", "1260H", "地缘", "供应链", "出口管制"],
-    pinned: true,
+    pinned: false,
     summary: "中际旭创被美国列入1260H清单，光模块进入产业景气+供应链安全+地缘政治三重定价阶段。不是逻辑崩了，是定价框架变了。美股LITE/COHR/AAOI/GLW反而获得政策溢价。",
     keywords: "中际旭创 1260H 光模块 供应链 出口管制 地缘政治 LITE COHR AAOI",
     file: "/articles/innolight-1260h-analysis/"
@@ -375,7 +375,7 @@ const articles = [
     category: "美股",
     subcategory: "光通信",
     tags: ["个股:AAOI", "策略:弹性仓", "光模块", "800G", "1.6T", "订单驱动"],
-    pinned: true,
+    pinned: false,
     summary: "AAOI不是光模块龙头老大，是AI光互连里弹性最大、波动最大、兑现压力也最大的订单驱动型标的。适合3%-5%弹性仓，不适合核心重仓。核心验证：订单、毛利率、现金流、融资节奏。",
     keywords: "AAOI 光模块 800G 1.6T 弹性 订单 融资 风险 参与策略",
     file: "/articles/aaoi-trading-note/"
@@ -387,7 +387,7 @@ const articles = [
     category: "产业思考",
     subcategory: "光通信",
     tags: ["产业:光通信", "策略:组合重建", "个股:LITE", "个股:COHR", "个股:CRDO", "个股:TSEM", "DSP", "硅光"],
-    pinned: true,
+    pinned: false,
     summary: "光互连组合核心应从光模块升级为激光器+光器件+DSP/SerDes+硅光代工+测试+光纤的全链条配置。新增标的优先级：CRDO > TSEM > VIAV > GFS > AXTI > FORM > SIVEF。",
     keywords: "光通信 光互连 LITE COHR CRDO TSEM 硅光 DSP AEC 组合 配置",
     file: "/articles/optical-portfolio-rebuilding/"
@@ -399,7 +399,7 @@ const articles = [
     category: "A股",
     subcategory: "交易框架",
     tags: ["个股:东山精密", "策略:做T", "A股", "交易体系", "PCB", "光模块"],
-    pinned: true,
+    pinned: false,
     summary: "东山精密日内做T的核心框架：大盘不杀→光/PCB不弱→东山有支撑→价差够→才做T。重点不是最低点最高点，是判断波动是板块回踩还是趋势走弱。",
     keywords: "东山精密 做T 日内交易 T+1 正T 倒T 光模块 PCB AI PCB VWAP 支撑 压力",
     file: "/articles/dongshan-intraday-t-note/"
@@ -411,7 +411,7 @@ const articles = [
     category: "近期热点",
     subcategory: "宏观",
     tags: ["宏观:CPI", "宏观:通胀", "宏观:FOMC", "宏观分析", "AI", "市场分析"],
-    pinned: true,
+    pinned: false,
     summary: "结合上周五QQQ-5%大跌看CPI：核心环比0.2%说明通胀上升主要是能源问题而非经济过热。上周五的暴跌是'预防性去风险'而非趋势反转。FOMC和日本央行是接下来两颗雷。光互联和存储仍是主线。",
     keywords: "CPI 通胀 AI FOMC 日本央行 光通信 存储 DRAM HBM 去杠杆",
     file: "/articles/cpi-round-two-analysis/"
@@ -423,7 +423,7 @@ const articles = [
     category: "美股",
     subcategory: "财报分析",
     tags: ["财报:ORCL", "财报分析", "Oracle", "AI", "云", "OCI", "CapEx"],
-    pinned: true,
+    pinned: false,
     summary: "Oracle Q4营收$191.84亿(+21%)，OCI +93%，RPO达$6380亿(+363%)。但CapEx暴增至$556亿，FCF转负$-237亿，市场重新定价重资产AI基建逻辑。需求端极强，财务质量有压力。",
     keywords: "Oracle ORCL 甲骨文 财报 FY2026 OCI AI 云 CapEx RPO 自由现金流",
     file: "/articles/oracle-fy2026-q4-earnings/"
@@ -435,7 +435,7 @@ const articles = [
     category: "产业思考",
     subcategory: "研报分析",
     tags: ["产业:AI数据中心", "产业:国家分工", "研报整理", "GPU", "HBM", "光模块", "电力冷却"],
-    pinned: true,
+    pinned: false,
     summary: "AI数据中心是一台全套协作的机器：美国定义架构，台湾制造算力，韩国提供HBM，日本和荷兰卡住设备/材料，欧洲提供电力，中国参与光模块和国产替代。利润池正从GPU单点外溢到HBM、先进封装、光互连、电力冷却。",
     keywords: "AI DC 数据中心 产业链 国家分工 TSMC NVIDIA SK Hynix ASML 光模块 电力 冷却 国产替代",
     file: "/articles/global-ai-dc-industry-chain/"
@@ -447,7 +447,7 @@ const articles = [
     category: "产业思考",
     subcategory: "研报分析",
     tags: ["产业:HBM", "产业:存储", "个股:MU", "个股:SK海力士", "NVIDIA", "Rubin", "SOCAMM"],
-    pinned: true,
+    pinned: false,
     summary: "SemiAnalysis砍的是CPU侧SOCAMM高配预期，不是GPU侧HBM4。Bernstein指出Vera Rubin整柜成本不是$780万而是$910万，核心差异来自HBM4价格假设（16.6→53美元/GB）。HBM正从配套成本变成决定整柜利润分配的战略资源。",
     keywords: "HBM HBM4 SOCAMM LPDDR NVIDIA Rubin Bernstein SemiAnalysis SK海力士 MU Micron 存储 DRAM",
     file: "/articles/hbm-pricing-repricing/"
@@ -470,7 +470,7 @@ const articles = [
     category: "美股",
     subcategory: "财报分析",
     tags: ["财报:AVGO", "财报分析", "AI", "ASIC", "产业链"],
-    pinned: true,
+    pinned: false,
     summary: "总收入+48%、AI半导体+143%、FCF margin 46%——基本面继续强化，但2027年目标未上修导致短期交易预期降温。核心确认：AI投资正从GPU单点扩散到定制ASIC、AI网络、光互联、HBM和先进封装。",
     keywords: "AVGO 博通 财报 FY2026 AI ASIC 定制芯片 英伟达 Semiconductors Networking 产业链 光通信",
     file: "/articles/avgo-fy2026-q2-earnings/"
@@ -512,7 +512,7 @@ const articles = [
     title: "投资框架笔记",
     date: "2026-05-28",
     category: "产业思考",
-    pinned: true,
+    pinned: false,
     tags: ["框架", "A股", "美股"],
     summary: "底层信念、Follow the Money、三类钱框架、买卖点、A股轮动规律——投资的完整思维模型。",
     keywords: "投资框架 方法论 底层信念 三类资产 买卖点 轮动 Follow the Money 产业链",
@@ -612,7 +612,7 @@ const articles = [
     date: "2026-05-31",
     category: "近期热点",
     tags: ["美股", "A股", "AI"],
-    pinned: true,
+    pinned: false,
     summary: "世界杯注意力折价、巨型IPO再平衡、FOMC利率定价、AI硬件扩散——六月不是简单看多看空，而是产业约束筛选月。",
     keywords: "六月 行情 展望 世界杯 FOMC SpaceX IPO 长鑫 产业约束 光互联 HBM PCB 瓶颈",
     file: "/articles/june-market-outlook/"

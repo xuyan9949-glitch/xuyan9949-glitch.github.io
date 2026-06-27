@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (subcatBar) subcatBar.style.display = 'none';
             currentSubcat = 'all';
         }
-        // Pinned first, then by date
+        // Sort by date descending, pinned flag only applies if explicitly set
         filtered.sort((a, b) => {
             if (a.pinned && !b.pinned) return -1;
             if (!a.pinned && b.pinned) return 1;
