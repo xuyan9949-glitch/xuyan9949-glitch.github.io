@@ -1,5 +1,16 @@
 const articles = [
   {
+    id: "market-anxiety-analysis-0628",
+    title: "当下资金到底在焦虑什么",
+    date: "2026-06-28",
+    category: "近期热点",
+    tags: ["宏观:利率", "宏观:通胀", "宏观:美联储", "产业:存储", "产业:光通信", "产业:光互联", "个股:MU", "个股:AAPL", "个股:META", "个股:SpaceX", "个股:GLW", "个股:大族激光", "策略:中期选举", "策略:Q2财报", "策略:市场焦虑"],
+    pinned: false,
+    summary: "第一性原理梳理当前市场五大焦虑：利率粘性压制估值、存储涨价开始反噬终端硬件、光通信供给端出现内卷担忧、SpaceX入纳指带来被动资金扰动、Q2财报预期过高面临被修正风险。",
+    keywords: "利率 通胀 美联储 PCE 存储涨价 苹果 Meta 美光 SCA SpaceX QQQ 纳指100 康宁 大族激光 空芯光纤 GlassBridge 中期选举 财报 EPS 市场焦虑",
+    file: "/articles/market-anxiety-analysis-0628/"
+  },
+  {
     id: "mu-fy2026-q3-institutional-analysis",
     title: "美光FY2026 Q3财报：机构投资者视角拆解",
     date: "2026-06-27",
