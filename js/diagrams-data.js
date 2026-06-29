@@ -21,6 +21,7 @@ const diagrams = [
   { file: "industry-map-13.jpg", title: "光模块未来往哪走？", category: "光", dir: "光" },
   // === PCB / 电子材料 ===
   { file: "pcb-market-cap.png", title: "PCB及载板市值空间测算（天风电新0614）", category: "PCB", dir: "pcb" },
+  { file: "pcb-price-increase-letter.png", title: "PCB发函确认涨价", category: "PCB", dir: "pcb" },
   // === 日历 ===
   { file: "june-calendar-part1.webp", title: "6月重点投资日历（上）", category: "日历", dir: "日历" },
   { file: "june-calendar-part2.webp", title: "6月重点投资日历（下）", category: "日历", dir: "日历" },
