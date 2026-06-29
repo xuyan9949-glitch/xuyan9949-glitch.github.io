@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "diamond-thermal-management",
+    title: "金刚石散热研究",
+    date: "2026-06-29",
+    category: "产业思考",
+    subcategory: "AI电子材料",
+    tags: ["产业:AI电子材料", "产业:散热", "产业:金刚石", "产业:液冷", "个股:国机精工", "个股:四方达", "个股:沃尔德", "个股:力量钻石", "个股:惠丰钻石", "个股:Akash Systems", "个股:Coherent", "策略:产业链分析"],
+    pinned: false,
+    summary: "产业方向真实，商业化在加速，但A股交易的是2027—2028年潜在放量而非2026年利润。AI芯片散热增量是金刚石作为热沉/复合冷板/热扩散层而非替代液冷系统。国机精工验证度最高，四方达弹性最大，行业壁垒在界面热阻、翘曲控制和客户认证而非热导率本身。",
+    keywords: "金刚石 散热 CVD MPCVD AI芯片 GPU HBM 液冷 热沉 热扩散 金刚石铜复合材料 国机精工 四方达 沃尔德 力量钻石 惠丰钻石 Akash Coherent 英伟达 Rubin 界面热阻",
+    file: "/articles/diamond-thermal-management/"
+  },
+  {
     id: "market-anxiety-analysis-0628",
     title: "当下资金到底在焦虑什么",
     date: "2026-06-28",

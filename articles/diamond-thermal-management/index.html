@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金刚石散热研究 — Leslie 投资笔记</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232d6cff'/><text x='16' y='22' text-anchor='middle' font-family='-apple-system,BlinkMacSystemFont,sans-serif' font-weight='700' font-size='22' fill='white'>X</text></svg>">
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <span class="logo-mark">L</span>
+                <span class="logo-text">Leslie 研究笔记</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">首页</a>
+                <a href="/#research">研究方向</a>
+                <a href="/#notes">笔记</a>
+                <a href="/#frameworks">框架</a>
+                <a href="/#tracking">标的追踪</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container article-page">
+        <a href="/" class="back">← 返回首页</a>
+
+        <h1>金刚石散热研究</h1>
+        <div class="article-meta">
+            <span>2026-06-29</span>
+            <span>·</span>
+            <span>产业思考 · AI电子材料</span>
+            <button class="meta-share" onclick="shareArticle()" title="分享">
+                <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+                分享
+            </button>
+        </div>
+
+        <div class="article-content">
+
+<h2>核心结论</h2>
+
+<p><strong>产业方向真实，商业化也确实在加速，但A股目前交易的主要是2027—2028年的潜在放量，而不是2026年的现实利润。</strong>海外已有产品发布、服务器交付和订单，但国内大多数企业仍停留在送样、认证、小批量阶段。材料中最需要警惕的是把"海外局部商业验证"直接推导成"英伟达全面采用、国内公司马上大规模放量"。</p>
+
+<hr>
+
+<h2>一、行业概述</h2>
+
+<p>金刚石散热不是用金刚石替代整套液冷系统，而是解决液冷系统上游的"芯片热点扩散"问题。</p>
+
+<p>完整热传导路径是：</p>
+
+<p><strong>GPU/HBM芯片 → 界面材料TIM → 热扩散层/热沉 → 冷板 → 冷却液 → CDU</strong></p>
+
+<p>传统铜冷板即使能把热量带走，也可能因为GPU局部热流密度过高，无法迅速将热点横向摊开。金刚石的价值是作为热沉、复合冷板或芯片附近的热扩散层，降低热点温度和热阻。因此，正确逻辑是：</p>
+
+<blockquote><p>金刚石散热与液冷是互补关系，而不是替代关系。</p></blockquote>
+
+<p>目前主要有四条路线：CVD金刚石热沉片、金刚石—铜/铝复合材料、CVD金刚石涂层、金刚石材料与微通道液冷集成。前两种更接近商业化，直接键合和微通道集成技术难度更高。</p>
+
+<p>英伟达官方对Vera Rubin公开描述的是45℃温水、单相直接液冷，并称单位机架散热能力接近翻倍；公开材料并未明确宣布Rubin全面采用金刚石。<a href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank">(NVIDIA Developer)</a></p>
+
+<hr>
+
+<h2>二、产业链</h2>
+
+<p>产业链不能简单理解为"谁能生产培育钻石，谁就受益"。</p>
+
+<p>上游包括MPCVD设备、微波源、腔体、晶种、甲烷和氢气、电力。中游包括单晶或多晶金刚石生长、金刚石—金属复合材料、切割、减薄、抛光、金属化、界面键合和微通道加工。下游则是芯片封装厂、冷板厂、服务器ODM、GPU厂商和云计算客户。</p>
+
+<p>真正的价值壁垒集中在三个环节：</p>
+
+<ol>
+<li>半导体级、大尺寸、高热导率材料的一致性。</li>
+<li>超低翘曲、超低粗糙度加工与金属化。</li>
+<li>金刚石与芯片或冷板之间的低热阻键合。</li>
+</ol>
+
+<p>这意味着传统金刚石单晶、微粉和珠宝级培育钻石产能，并不能自然转化为AI散热产能。<strong>金刚石粉末是原料能力，半导体热管理产品是系统工程能力。</strong></p>
+
+<hr>
+
+<h2>三、龙头企业</h2>
+
+<p>海外产业进展比国内更扎实。</p>
+
+<p><strong>Akash Systems</strong>已经交付搭载英伟达H200的金刚石冷却服务器，并与AMD、MiTAC推出MI350X金刚石冷却服务器。公司公告称获得3亿美元初始发布订单，并声称可降低GPU温度约10℃、提升最高22%的FLOPs/Watt。不过这些性能数据主要来自Akash自身测试，尚不能直接外推到所有数据中心环境。<a href="https://www.akashsystems.com/post/akash-systems-delivers-worlds-first-diamond-cooled-nvidia-gpu-servers-to-nxtgen-ai-pvt-ltd" target="_blank">(akashsystems.com)</a></p>
+
+<p><strong>Coherent</strong>的路线更偏材料和系统级平台，已经推出可键合CVD金刚石以及含金刚石的Thermadite碳化硅复合冷板，可加工微通道结构。其投资者材料给出的模拟结果显示，相比铜方案可降低约8—15℃温度，但目前也没有公开披露英伟达大规模采购合同。<a href="https://www.coherent.com/news/press-releases/thermadite-liquid-cold-plates" target="_blank">(Coherent Inc)</a></p>
+
+<p>国内公司可以这样排序：</p>
+
+<table>
+<thead>
+<tr><th>公司</th><th>当前真实进展</th><th>投资判断</th></tr>
+</thead>
+<tbody>
+<tr><td>国机精工</td><td>金刚石散热片和光学窗口片2025年收入超过1000万元，主要为国防领域；民用客户已送样，目前MPCVD产能对应产值约1.5亿元</td><td>验证度最高，但AI民用放量尚未确认</td></tr>
+<tr><td>四方达</td><td>海外客户测试通过，进入小批量供货；推进年产2.5万片散热片项目</td><td>主题弹性最大，但财务风险也最高</td></tr>
+<tr><td>沃尔德</td><td>已开发12英寸钻石散热晶圆，激光器散热产品通过客户认证</td><td>产品储备较完整，AI订单尚未披露</td></tr>
+<tr><td>力量钻石</td><td>金刚石散热处于研发、送样和客户对接阶段</td><td>现有业务仍以单晶、微粉和培育钻石为主</td></tr>
+<tr><td>惠丰钻石</td><td>主要优势是金刚石微粉和传统超硬材料</td><td>上游映射逻辑强于实际业绩逻辑</td></tr>
+</tbody>
+</table>
+
+<p>国机精工披露，现有产品覆盖单晶、多晶和金刚石铜复合材料，民用客户若认证顺利，2026年可能出现小批量订单。<a href="https://static.cninfo.com.cn/finalpage/2026-05-27/1225332445.PDF" target="_blank">(中国证券网)</a></p>
+
+<p>四方达的进展更快，但需要注意：负责CVD业务的天璇半导体2025年收入约6289万元，净利润亏损约1.22亿元，说明其当前仍处于高投入、低利用率和工艺爬坡阶段。</p>
+
+<p>我的综合排序是：</p>
+
+<p><strong>业绩验证度：</strong>国机精工＞四方达≈沃尔德＞力量钻石＞惠丰钻石。</p>
+<p><strong>股价主题弹性：</strong>四方达＞国机精工≈沃尔德＞力量钻石＞惠丰钻石。</p>
+
+<hr>
+
+<h2>四、盈利模式</h2>
+
+<p>未来主要有三种盈利模式。</p>
+
+<p>第一是出售标准化CVD金刚石热沉片或晶圆；第二是出售金刚石铜、金刚石铝、金刚石SiC复合冷板；第三是与封装厂、芯片厂联合开发定制化热管理方案，收入中包含材料、加工和认证溢价。</p>
+
+<p>专业机构不会只看"年产多少片"，而会测算：</p>
+
+<blockquote><p>散热业务利润 = 实际出货片数 × 平均售价 × 毛利率 − MPCVD设备折旧 − 电力 − 抛光切割成本 − 研发及认证费用</p></blockquote>
+
+<p>目前上市公司普遍没有完整披露散热片ASP、良率、加工周期、客户结构和毛利率。因此，"2.5万片产能""300台MPCVD设备"不能直接折算成收入和利润。</p>
+
+<p>图片中"电力占生产成本70%以上、绿电可降本35%"也不宜作为行业统一数据。不同产品厚度、沉积速度、设备折旧、良率和后处理工艺差异很大，半导体级产品的加工与报废成本可能比单纯电力成本更关键。</p>
+
+<hr>
+
+<h2>五、竞争壁垒</h2>
+
+<p>金刚石热导率高只是入场券，不是最终壁垒。</p>
+
+<p>最难的是：</p>
+
+<p><strong>第一，界面热阻。</strong>金刚石本体导热率再高，如果与芯片之间存在空隙、导热胶或键合不良，热阻仍可能集中在界面。高导热材料应用越深入，瓶颈反而越容易从材料本体转移到界面。<a href="https://www.nature.com/articles/s41467-021-21531-7" target="_blank">(Nature)</a></p>
+
+<p><strong>第二，翘曲和热应力。</strong>金刚石、硅、SiC和金属的热膨胀系数不同，高温生长和冷却后容易翘曲、开裂。</p>
+
+<p><strong>第三，半导体级加工。</strong>GPU级应用要求极高平整度、纳米级粗糙度、稳定金属化和批次一致性，而金刚石本身极难切割和抛光。</p>
+
+<p><strong>第四，客户认证。</strong>数据中心客户不仅测试瞬时降温，还要验证数千小时热循环、冷却液兼容性、键合寿命、颗粒污染、维修和可制造性。</p>
+
+<p>所以行业最终胜负不会由"谁的热导率最高"决定，而由"谁能低成本、稳定批量生产并进入客户BOM"决定。</p>
+
+<hr>
+
+<h2>六、当前市场交易逻辑</h2>
+
+<p>当前A股交易的是三个连续推导：</p>
+
+<p><strong>AI芯片功耗提升 → 铜材料逐渐接近极限 → 海外金刚石产品商业化 → 国内超硬材料企业获得同类订单。</strong></p>
+
+<p>前两步已经有较强证据。第三步目前只有部分验证。</p>
+
+<p>真实证据包括Akash服务器交付、Coherent产品发布、四方达小批量供货和国机精工已有千万级收入。尚未充分验证的是：英伟达或华为大规模定点、单个AI GPU的金刚石价值量、国内企业量产良率以及收入和毛利率。</p>
+
+<p>尤其要注意材料中"英伟达Rubin全面使用金刚石复合材料"的表述。公开的英伟达官方Rubin资料明确提到液冷，却没有明确金刚石材料方案。因此，这一说法目前更接近产业链传闻或二级市场推断，不能当作已确认订单。<a href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank">(NVIDIA Developer)</a></p>
+
+<p>此外，研报提出2030年54亿美元市场规模，是用2030年全球液冷市场535亿美元乘以"金刚石价值量占10%"得到的情景测算，并不是来自已经签署的订单或明确渗透率预测。</p>
+
+<hr>
+
+<h2>七、最大风险</h2>
+
+<p>最大的风险不是金刚石没有用，而是"有用但不够经济"。</p>
+
+<p>液冷铜冷板、先进TIM、均热板、SiC微通道、直接液冷和封装结构优化都在持续进步。金刚石可能只被用于最极端热点，而不是覆盖整块GPU或整块冷板。</p>
+
+<p>第二个风险是国内企业扩产速度远快于客户认证速度。设备投产后会产生折旧和电力费用，若良率和订单不足，容易出现收入增长但亏损扩大的情况，四方达天璇半导体2025年的亏损已经体现了这种早期产业化特征。</p>
+
+<p>第三个风险是概念股估值提前透支。送样、通过实验室测试、小批量供货、正式定点和规模量产是完全不同的五个阶段，市场经常把前两个阶段按最后一个阶段估值。</p>
+
+<hr>
+
+<h2>八、三年发展趋势</h2>
+
+<p><strong>2026年：商业验证年。</strong>海外出现首批AI服务器应用，国内以国防、激光器、射频器件和少量AI散热样品为主。上市公司收入总体仍小。</p>
+
+<p><strong>2027年：客户定点和工艺分化年。</strong>金刚石铜/铝复合材料和独立热沉片可能比直接在芯片上生长金刚石更快放量。产业竞争从热导率宣传转向良率、价格、键合和可靠性。</p>
+
+<p><strong>2028年：决定是否进入主流AI平台。</strong>若能证明金刚石方案在全生命周期内降低GPU故障率、提高算力利用率，并抵消材料成本，就可能进入高功率GPU和3D封装的标准热管理方案；否则会停留在高端激光、军工、射频和极端功率芯片等小众市场。</p>
+
+<p>我的主观概率判断：</p>
+
+<ul>
+<li>约60%概率：金刚石成为高端AI芯片的重要补充材料，但并非全面替代铜。</li>
+<li>约25%概率：成本和键合技术快速突破，进入部分下一代AI加速器标准BOM。</li>
+<li>约15%概率：认证和经济性长期不达标，主题热度明显早于产业兑现。</li>
+</ul>
+
+<p>现阶段最重要的跟踪指标不是扩产公告，而是五项硬证据：<strong>实名客户、正式定点、实际出货量、散热业务收入、量产毛利率。</strong></p>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Leslie · 基于个人研究，不构成投资建议</p>
+        </div>
+    </footer>
+
+    <script src="/js/share.js"></script>
+</body>
+</html>
