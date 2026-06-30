@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "semi-equipment-four-giants",
+    title: "半导体设备四巨头深度分析：ASML、AMAT、LRCX、KLAC",
+    date: "2026-06-30",
+    category: "美股",
+    subcategory: "半导体设备",
+    tags: ["个股:ASML", "个股:AMAT", "个股:LRCX", "个股:KLAC", "产业:半导体设备", "产业:EUV", "产业:光刻", "产业:刻蚀", "产业:沉积", "产业:量测检测", "产业:GAA", "产业:HBM", "产业:3D NAND", "策略:产业链分析", "策略:机构跟踪框架"],
+    pinned: false,
+    summary: "ASML画图（光刻垄断），AMAT铺材料（产品最全），LRCX挖结构（刻蚀/沉积，存储弹性最大），KLAC找错误（高毛利过程控制龙头）。从芯片制造流程讲起，覆盖四家公司业务逻辑、收入结构、毛利率、周期属性、竞争壁垒和长期跟踪框架。",
+    keywords: "ASML AMAT LRCX KLAC 半导体设备 EUV 光刻 刻蚀 沉积 CMP 量测 检测 WFE GAA 3D NAND HBM 先进封装 TEL 资本开支",
+    file: "/articles/semi-equipment-four-giants/"
+  },
+  {
     id: "glassbridge-cpo-beneficiary-ranking",
     title: "GlassBridge/CPO 受益标的全景排序：美股与A股完整梳理",
     date: "2026-06-30",

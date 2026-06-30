@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>半导体设备四巨头深度分析：ASML、AMAT、LRCX、KLAC — Leslie 投资笔记</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232d6cff'/><text x='16' y='22' text-anchor='middle' font-family='-apple-system,BlinkMacSystemFont,sans-serif' font-weight='700' font-size='22' fill='white'>X</text></svg>">
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <span class="logo-mark">L</span>
+                <span class="logo-text">Leslie 研究笔记</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">首页</a>
+                <a href="/#research">研究方向</a>
+                <a href="/#notes">笔记</a>
+                <a href="/#frameworks">框架</a>
+                <a href="/#tracking">标的追踪</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container article-page">
+        <a href="/" class="back">← 返回首页</a>
+
+        <h1>半导体设备四巨头深度分析：ASML、AMAT、LRCX、KLAC</h1>
+        <div class="article-meta">
+            <span>2026-06-30</span>
+            <span>·</span>
+            <span>美股 · 半导体设备</span>
+            <button class="meta-share" onclick="shareArticle()" title="分享">
+                <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+                分享
+            </button>
+        </div>
+
+        <div class="article-content">
+
+<h2>一句话先建立全局认识</h2>
+
+<p>这四家公司不是在卖"芯片"，而是在卖"制造芯片的生产工具"。</p>
+
+<ul>
+<li><strong>ASML</strong>：负责把电路图形"印"到晶圆上，是光刻核心。</li>
+<li><strong>AMAT</strong>：负责在晶圆上沉积、改变、抛平各种材料，产品线最全面。</li>
+<li><strong>LRCX</strong>：负责刻蚀、沉积和清洗，尤其擅长制造深孔、立体结构。</li>
+<li><strong>KLAC</strong>：负责检查缺陷、测量尺寸、分析良率，是晶圆厂的"眼睛和质量控制系统"。</li>
+</ul>
+
+<p>以英伟达GPU为例，英伟达主要负责芯片设计，代工厂在晶圆厂里使用ASML、AMAT、LRCX和KLAC的设备完成制造。设备公司通常不按照每颗GPU抽成，它们赚的是晶圆厂扩产、升级制程、提高良率和维护设备的钱。</p>
+
+<hr>
+
+<h2>一、先从一片芯片是怎么做出来的讲起</h2>
+
+<p>一块先进GPU、CPU或存储芯片，并不是一次加工成形，而是在晶圆上不断重复以下循环：</p>
+
+<blockquote><p>沉积材料 → 涂光刻胶 → 光刻曝光 → 刻蚀 → 清洗 → 测量检查 → 再沉积下一层</p></blockquote>
+
+<table>
+<thead>
+<tr><th>工序</th><th>通俗理解</th><th>主要公司</th></tr>
+</thead>
+<tbody>
+<tr><td>薄膜沉积</td><td>给晶圆铺上一层极薄材料</td><td>AMAT、LRCX</td></tr>
+<tr><td>光刻</td><td>把电路图形投影到晶圆上</td><td>ASML</td></tr>
+<tr><td>刻蚀</td><td>把不需要的材料挖掉</td><td>LRCX、AMAT</td></tr>
+<tr><td>离子注入、热处理</td><td>改变硅的电学性质</td><td>AMAT</td></tr>
+<tr><td>CMP抛光</td><td>把晶圆表面磨平</td><td>AMAT</td></tr>
+<tr><td>清洗</td><td>去除颗粒、残胶和污染物</td><td>LRCX、AMAT</td></tr>
+<tr><td>缺陷检测、量测</td><td>检查有没有脏点、偏移和尺寸错误</td><td>KLAC</td></tr>
+<tr><td>先进封装</td><td>将GPU、HBM、Chiplet连接起来</td><td>AMAT、LRCX、KLAC等</td></tr>
+</tbody>
+</table>
+
+<p>关键点是：<strong>ASML画图，AMAT铺材料和改材料，LRCX挖结构，KLAC找错误。</strong></p>
+
+<hr>
+
+<h2>二、ASML：先进芯片的"印刷机"，四家公司中垄断性最强</h2>
+
+<h3>1. ASML到底做什么</h3>
+
+<p>光刻的本质，是把芯片设计中的电路图形通过光学系统投影到涂有光刻胶的晶圆上。</p>
+
+<p>可以把它理解成：芯片设计图是底片，光刻机是超高精度投影仪，晶圆是相纸。</p>
+
+<p>ASML目前是全球唯一能够量产EUV极紫外光刻机的公司。EUV主要用于最先进芯片中尺寸最小、最关键的图形层；DUV则仍广泛用于其他大量非关键层和成熟制程。ASML在DUV领域仍面临尼康和佳能竞争，但EUV没有同等级量产竞争者。<a href="https://www.sec.gov/Archives/edgar/data/937966/000162828026011377/asml-2025xannualxreportx.htm" target="_blank">(美国证券交易委员会)</a></p>
+
+<h3>2. ASML和GPU、CPU、存储的关系</h3>
+
+<p><strong>GPU和CPU：</strong>先进GPU、CPU需要非常高的晶体管密度，必须使用EUV。ASML是先进逻辑制程最直接的设备受益者之一。</p>
+
+<p><strong>DRAM和HBM：</strong>HBM的底层仍然是DRAM晶圆。随着DRAM单元继续微缩，先进DRAM也在增加EUV应用。但HBM扩产对ASML的影响通常不像对LRCX、AMAT那样体现出特别强的"立体结构加工弹性"。</p>
+
+<p><strong>NAND：</strong>3D NAND的核心升级方式是不断增加堆叠层数，对刻蚀和沉积的增量通常比对最先进光刻设备更明显。</p>
+
+<h3>3. ASML怎么赚钱</h3>
+
+<p>主要有两类收入：销售新光刻机；对已经装机的设备提供维护、零部件、软件和生产率升级。</p>
+
+<p>2025年ASML收入约327亿欧元，其中约82亿欧元来自服务及现场升级，占比约25%。<a href="https://www.sec.gov/Archives/edgar/data/937966/000162828026011377/asml-2025xannualxreportx.htm" target="_blank">(美国证券交易委员会)</a></p>
+
+<h3>4. 毛利率为什么没有高到70%</h3>
+
+<p>截至2026年第一季度，ASML毛利率为53.0%，2026年全年毛利率预期为51%—53%。<a href="https://www.asml.com/news/press-releases/2026/q1-2026-financial-results" target="_blank">(ASML)</a></p>
+
+<p>虽然EUV是垄断产品，但设备本身的硬件成本极高：超精密光学系统、激光光源、真空系统、晶圆工作台、复杂供应链和大量定制零部件，安装和验收周期很长。新一代High-NA EUV早期出货还可能稀释毛利率。</p>
+
+<h3>5. ASML的投资属性</h3>
+
+<p>更像是先进制程垄断平台＋长期装机服务公司。优点是技术不可替代、订单可见度高、客户转换几乎不可能。</p>
+
+<hr>
+
+<h2>三、AMAT：半导体设备"综合商店"，产品覆盖最广</h2>
+
+<h3>1. AMAT到底做什么</h3>
+
+<p>Applied Materials（应用材料）在产品组合方面覆盖面最广：PVD、CVD、ALD、外延、离子注入、热处理、CMP、部分刻蚀和检测、先进封装设备。</p>
+
+<p>芯片需要几十种不同材料，AMAT负责把这些材料以正确厚度、正确成分和正确位置放到晶圆上，并进行加工。</p>
+
+<h3>2. AMAT和GPU、CPU的关系</h3>
+
+<p>先进GPU和CPU从FinFET转向GAA后，材料结构明显复杂化，带来更多精确沉积、新材料、选择性去除、薄膜控制、CMP和平坦化。AMAT的逻辑并不仅是"晶圆厂多买几台设备"，还包括每片晶圆需要经历更多材料加工步骤，单片晶圆对应的设备价值量上升。</p>
+
+<h3>3. AMAT和存储芯片的关系</h3>
+
+<p><strong>DRAM和HBM：</strong>DRAM需要制造复杂电容结构；HBM增加了TSV、晶圆减薄、铜互连、堆叠和键合。AMAT有较广的产品覆盖。</p>
+
+<p><strong>3D NAND：</strong>NAND层数增加需要大量交替薄膜沉积。AMAT和LRCX都会受益。</p>
+
+<h3>4. AMAT怎么赚钱</h3>
+
+<p>2025财年，半导体系统收入约208亿美元（73%），全球服务收入约64亿美元（23%）。半导体系统收入中，代工/逻辑占67%，DRAM占26%，NAND占7%。<a href="https://www.sec.gov/Archives/edgar/data/6951/000162828025056742/amat-20251026.htm" target="_blank">(美国证券交易委员会)</a></p>
+
+<p>AMAT的业务比LRCX更分散：先进逻辑、成熟制程、DRAM、NAND、先进封装，加上庞大服务收入。</p>
+
+<h3>5. 毛利率</h3>
+
+<p>AMAT 2026财年第二季度整体毛利率为49.9%。半导体系统毛利率54.2%，但服务毛利率约33.4%。<a href="https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-second-quarter-2026-results" target="_blank">(Applied Materials)</a></p>
+
+<p>服务收入不一定天然比设备毛利率高——包含零件、现场工程师、老设备和维修物流，非纯软件式高毛利。</p>
+
+<h3>6. AMAT的投资属性</h3>
+
+<p>更像是半导体资本开支的宽基ETF，兼具GAA、先进封装和新材料的结构性阿尔法。优势是产品覆盖广、客户和芯片类型分散；弱点是缺少像EUV那样的绝对单点垄断。</p>
+
+<hr>
+
+<h2>四、LRCX：刻蚀和沉积龙头，对存储、HBM和3D结构弹性最大</h2>
+
+<h3>1. LRCX到底做什么</h3>
+
+<p>Lam Research的核心强项是等离子刻蚀、薄膜沉积、光刻胶去除、晶圆清洗、部分量测、先进封装加工。</p>
+
+<p>刻蚀需要做到该挖的地方挖掉、不该挖的地方完全不动、孔要深、孔壁要直、全晶圆一致。<a href="https://www.lamresearch.com/products/our-processes/etch/" target="_blank">(Lam Research)</a></p>
+
+<h3>2. 为什么LRCX和3D NAND关系最密切</h3>
+
+<p>3D NAND层数从64层向更高层发展时，需要先沉积大量交替材料，再从顶部向下刻出极深的孔。层数越高，高深宽比刻蚀难度加速增加。NAND资本开支复苏时LRCX通常具有较高业绩弹性。</p>
+
+<h3>3. 为什么HBM也利好LRCX</h3>
+
+<p>HBM涉及TSV深孔刻蚀、孔内薄膜沉积、铜沉积、晶圆清洗、晶圆减薄、键合前处理和边缘处理。Lam的先进封装设备覆盖这些环节。<a href="https://newsroom.lamresearch.com/inside-the-chip-advanced-packaging?blog=true" target="_blank">(Lam Research Newsroom)</a></p>
+
+<h3>4. LRCX和先进逻辑的关系</h3>
+
+<p>先进逻辑转向GAA、背面供电、更复杂金属互连、3D晶体管和Chiplet封装，同样需要更多原子级沉积和刻蚀。Lam认为，NAND、DRAM、逻辑和封装全面转向3D结构正在提高沉积和刻蚀的工艺强度。<a href="https://newsroom.lamresearch.com/how-deposition-and-etch-are-reshaping-chips-for-the-ai-era?blog=true" target="_blank">(Lam Research Newsroom)</a></p>
+
+<h3>5. 怎么赚钱和毛利率</h3>
+
+<p>近几个季度客户支持相关收入约占总收入三分之一。2026年3月季度收入58.4亿美元，毛利率49.8%，营业利润率35.0%。<a href="https://newsroom.lamresearch.com/2026-04-22-Lam-Research-Corporation-Reports-Financial-Results-for-the-Quarter-Ended-March-29%2C-2026" target="_blank">(Lam Research Newsroom)</a></p>
+
+<h3>6. LRCX的投资属性</h3>
+
+<p>存储资本开支高贝塔＋3D器件结构升级受益者。优势是刻蚀和沉积强技术地位、NAND层数增加直接提高设备强度、HBM和TSV带来新增量。风险是存储周期敏感、中国收入占比较高。</p>
+
+<hr>
+
+<h2>五、KLAC：不是制造结构，而是保证结构"做对了"</h2>
+
+<h3>1. KLAC到底做什么</h3>
+
+<p>KLA的核心业务是过程控制：晶圆缺陷检测、光学检测、电子束检测、线宽和膜厚量测、套刻精度测量、光罩检测、数据分析和良率管理。</p>
+
+<p>可以把KLAC理解成晶圆厂的显微镜、CT机、质量管理系统和数据分析平台。</p>
+
+<p>KLA设备覆盖先进逻辑、DRAM、3D NAND、功率芯片、MEMS和成熟制程等几乎所有芯片类型。<a href="https://www.sec.gov/Archives/edgar/data/319201/000031920125000024/klac-20250630.htm" target="_blank">(美国证券交易委员会)</a></p>
+
+<h3>2. 为什么先进制程越难，KLAC价值越高</h3>
+
+<p>越先进的芯片，单片晶圆价值越高，缺陷成本越大，晶圆厂越不敢少做检测。通过更好的检测和工艺控制提高良率，是晶圆厂购买KLAC设备的核心原因。</p>
+
+<h3>3. 为什么KLAC毛利率最高</h3>
+
+<p>KLA 2025财年毛利率为60.9%，2026财年第四季度指引约60.7%。<a href="https://www.sec.gov/Archives/edgar/data/319201/000031920125000024/klac-20250630.htm" target="_blank">(美国证券交易委员会)</a></p>
+
+<p>核心原因：一个检测设备可以避免大量高价值晶圆报废；检测数据和缺陷数据库具有积累效应；客户替换设备会破坏原有工艺数据体系；过程控制市场集中度高；产品中软件和数据分析价值较高。</p>
+
+<h3>4. KLAC的周期属性</h3>
+
+<p>KLAC并非没有周期，但相对特殊。新制程研发时就需要检测设备；量产爬坡时可能继续增加。KLAC同时受益于研发支出、新节点导入、量产爬坡、先进封装和存量设备服务，波动往往比纯产能扩张型设备更可控。</p>
+
+<hr>
+
+<h2>六、四家公司和不同芯片的关系</h2>
+
+<table>
+<thead>
+<tr><th>芯片类别</th><th>ASML</th><th>AMAT</th><th>LRCX</th><th>KLAC</th></tr>
+</thead>
+<tbody>
+<tr><td>先进GPU</td><td>关键层EUV光刻</td><td>GAA、互连、CMP、材料工程</td><td>刻蚀、沉积、背面供电、封装</td><td>缺陷检测和良率控制</td></tr>
+<tr><td>先进CPU</td><td>与GPU类似</td><td>与GPU类似</td><td>与GPU类似</td><td>与GPU类似</td></tr>
+<tr><td>DRAM</td><td>DUV＋部分EUV</td><td>电容、沉积、材料处理</td><td>高深宽比刻蚀、沉积</td><td>DRAM良率检测</td></tr>
+<tr><td>HBM</td><td>DRAM晶圆光刻</td><td>TSV、互连、封装材料</td><td>TSV刻蚀、铜沉积、清洗、键合</td><td>HBM晶圆及封装检测</td></tr>
+<tr><td>3D NAND</td><td>光刻，增量相对有限</td><td>多层薄膜沉积</td><td>深孔刻蚀和沉积最受益</td><td>层数和缺陷检测</td></tr>
+<tr><td>模拟/MCU/功率</td><td>主要DUV</td><td>产品覆盖较广</td><td>刻蚀、清洗、沉积</td><td>缺陷检测</td></tr>
+<tr><td>先进封装</td><td>占比小</td><td>封装、互连、材料加工</td><td>TSV、沉积、刻蚀、键合</td><td>封装及基板检测</td></tr>
+</tbody>
+</table>
+
+<p>简单归纳：<strong>GPU/CPU先进制程最直接看ASML；新材料和晶体管结构变化看AMAT；存储扩产、3D NAND和HBM弹性看LRCX；制程越复杂、良率越难做，越利好KLAC。</strong></p>
+
+<hr>
+
+<h2>七、四家公司赚钱的底层公式</h2>
+
+<p>设备公司的收入大致可以拆成：</p>
+
+<blockquote><p>晶圆产能增长 × 每片晶圆设备价值量 × 市场份额 ＋ 存量设备服务、备件和升级收入</p></blockquote>
+
+<p>真正驱动设备公司盈利的五件事：</p>
+<ol>
+<li><strong>晶圆厂扩产</strong> — 传统资本开支周期</li>
+<li><strong>制程升级</strong> — 技术升级周期，即使产量不增长</li>
+<li><strong>工艺步骤增加</strong> — 3D结构使每片晶圆需要更多工序</li>
+<li><strong>市场份额变化</strong> — 通过竞争提高收入</li>
+<li><strong>存量装机服务</strong> — 满负荷运转时服务收入仍增长</li>
+</ol>
+
+<hr>
+
+<h2>八、毛利率和业务模型对比</h2>
+
+<table>
+<thead>
+<tr><th>公司</th><th>近期毛利率</th><th>核心原因</th></tr>
+</thead>
+<tbody>
+<tr><td>KLAC</td><td>约60%—61%</td><td>检测、量测、算法和良率价值高</td></tr>
+<tr><td>ASML</td><td>约51%—53%</td><td>EUV垄断，但硬件和供应链成本极高</td></tr>
+<tr><td>LRCX</td><td>约49%—50%</td><td>刻蚀、沉积高壁垒，产品制造成本仍高</td></tr>
+<tr><td>AMAT</td><td>约49%—50%</td><td>半导体系统毛利较高，服务业务拉低合并毛利</td></tr>
+</tbody>
+</table>
+
+<p>不能简单认为毛利率越高就一定越好。ASML毛利率低于KLAC但技术垄断性更强；LRCX毛利率低于ASML但存储扩产周期中业绩弹性更大；AMAT产品最全面，抗单一产品风险更强。</p>
+
+<hr>
+
+<h2>九、周期性应该怎么理解</h2>
+
+<p>设备行业不是单一周期，而是三个周期叠加。</p>
+
+<p><strong>产能周期：</strong>芯片供不应求→扩产→过剩→资本开支下降。存储最典型，LRCX具有较明显的存储周期属性。</p>
+
+<p><strong>技术周期：</strong>即使总需求一般，只要行业推进2纳米、GAA、High-NA、背面供电、HBM4、更高层3D NAND，设备公司仍可能增长。对ASML、AMAT、KLAC尤其重要。</p>
+
+<p><strong>地缘和区域建厂周期：</strong>美欧日韩中推动本土制造，可能导致全球同样的芯片需求对应更多区域性晶圆厂。但出口限制也可能直接影响设备公司在中国的收入。</p>
+
+<hr>
+
+<h2>十、技术壁垒远不止专利</h2>
+
+<p>设备公司的真正护城河有六层：</p>
+<ol>
+<li><strong>物理和工程极限</strong> — ASML控制极紫外光和纳米级定位；LRCX控制等离子体和深孔刻蚀</li>
+<li><strong>工艺配方</strong> — 设备＋工艺配方＋软件＋工程师调试，同一设备在不同晶圆厂的工艺完全不同</li>
+<li><strong>客户认证</strong> — 一旦进入正式量产流程，更换供应商可能导致良率下降</li>
+<li><strong>数据积累</strong> — 缺陷数据库、曝光和套刻数据随装机量持续积累</li>
+<li><strong>现场服务</strong> — 设备商必须在客户晶圆厂附近配置工程师和备件网络</li>
+<li><strong>联合研发</strong> — 设备商在客户新制程量产前数年就已经参与工艺开发</li>
+</ol>
+
+<hr>
+
+<h2>十一、几个容易被忽略的重要问题</h2>
+
+<p><strong>1. 全球设备龙头不只有这四家。</strong>必须加上日本的Tokyo Electron（TEL），在涂胶显影、刻蚀、沉积和清洗等环节具有重要地位。</p>
+
+<p><strong>2. 四家公司并不总是同步受益。</strong>EUV可以减少某些多重曝光需要的掩膜和工艺步骤，ASML因此受益，但原本需要多次沉积和刻蚀的多重图形化步骤可能减少。</p>
+
+<p><strong>3. 芯片需求增长不等于设备收入立即增长。</strong>若台积电只是提高现有设备利用率，首先增长的是零部件、维护和消耗品；只有持续需求推动扩产时，新设备订单才会显著增加。</p>
+
+<p><strong>4. 先进封装正在成为第五个设备战场。</strong>AI芯片需要GPU裸片、HBM、硅中介层、Chiplet、TSV、混合键合和大尺寸基板，正成为AMAT、LRCX、KLAC的新增量来源。</p>
+
+<hr>
+
+<h2>十二、从投资角度怎么选择</h2>
+
+<p><strong>ASML：确定性和垄断性。</strong>适合交易先进制程扩张、EUV出货增加、High-NA量产。最大优点是不可替代。</p>
+
+<p><strong>AMAT：最均衡。</strong>适合交易GAA、新材料、先进封装、全球晶圆厂整体资本开支。最大优点是产品覆盖全面。</p>
+
+<p><strong>LRCX：弹性最大。</strong>适合交易DRAM资本开支上行、NAND复苏、HBM扩产、3D结构设备强度提升。最大优点是存储和3D结构上行业绩弹性强。</p>
+
+<p><strong>KLAC：质量最高、毛利率最强。</strong>适合交易新节点研发、先进制程良率爬坡、过程控制资本强度提高、先进封装检测。最大优点是高毛利、数据壁垒、过程控制刚需。</p>
+
+<hr>
+
+<h2>十三、机构式长期跟踪框架</h2>
+
+<h3>核心投资逻辑</h3>
+<ul>
+<li>ASML：先进制程继续微缩，EUV和High-NA不可替代</li>
+<li>AMAT：芯片结构和材料复杂化，提高每片晶圆的材料工程设备价值量</li>
+<li>LRCX：存储与逻辑全面3D化，提高刻蚀和沉积强度</li>
+<li>KLAC：制程越复杂，缺陷控制和良率管理价值越高</li>
+</ul>
+
+<h3>未来催化</h3>
+<p>2纳米量产、High-NA导入、HBM4扩产、DRAM资本开支上行、NAND层数增加、GAA与背面供电、混合键合和先进封装扩张、全球区域性晶圆厂建设。</p>
+
+<h3>最大风险</h3>
+<p>AI资本开支见顶、存储厂过度扩产、晶圆厂推迟新节点、中国出口限制升级、客户资本开支高度集中、新设备量产良率和成本不达预期。</p>
+
+<h3>最重要的5个跟踪指标</h3>
+<ol>
+<li>台积电、三星、Intel、美光、海力士的资本开支</li>
+<li>全球WFE晶圆制造设备支出增速</li>
+<li>DRAM、NAND、Foundry/Logic资本开支结构</li>
+<li>各公司系统收入与服务收入增速</li>
+<li>订单、积压订单、毛利率和客户延迟验收情况</li>
+</ol>
+
+<h3>从组合属性看</h3>
+<ul>
+<li><strong>ASML</strong>是技术垄断核心仓</li>
+<li><strong>KLAC</strong>是高毛利、高质量核心仓</li>
+<li><strong>AMAT</strong>是产业宽基和新材料升级仓</li>
+<li><strong>LRCX</strong>是HBM、DRAM、NAND和3D结构的高弹性仓</li>
+</ul>
+
+<p>如果只能用一句话区分四家公司：</p>
+<blockquote><p>ASML决定芯片能不能做得更小，AMAT决定新材料能不能放得进去，LRCX决定三维结构能不能刻得出来，KLAC决定最终有多少颗芯片能够合格出厂。</p></blockquote>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Leslie · 基于个人研究，不构成投资建议</p>
+        </div>
+    </footer>
+
+    <script src="/js/share.js"></script>
+</body>
+</html>
