@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corning GlassBridge 深度分析 — Leslie 投资笔记</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232d6cff'/><text x='16' y='22' text-anchor='middle' font-family='-apple-system,BlinkMacSystemFont,sans-serif' font-weight='700' font-size='22' fill='white'>X</text></svg>">
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <span class="logo-mark">L</span>
+                <span class="logo-text">Leslie 研究笔记</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">首页</a>
+                <a href="/#research">研究方向</a>
+                <a href="/#notes">笔记</a>
+                <a href="/#frameworks">框架</a>
+                <a href="/#tracking">标的追踪</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container article-page">
+        <a href="/" class="back">← 返回首页</a>
+
+        <h1>Corning GlassBridge 深度分析：玻璃波导连接器如何影响光通信投资格局</h1>
+        <div class="article-meta">
+            <span>2026-06-30</span>
+            <span>·</span>
+            <span>产业思考 · 光通信</span>
+            <button class="meta-share" onclick="shareArticle()" title="分享">
+                <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+                分享
+            </button>
+        </div>
+
+        <div class="article-content">
+
+<h2>核心结论</h2>
+
+<p><strong>Corning GlassBridge，本质上是一种"玻璃波导版的光纤—光子芯片连接器"。</strong></p>
+
+<p>它解决的是 CPO、NPO 等架构中最棘手的封装问题之一：怎样把几十根甚至上百根光纤，以足够低的损耗、足够高的密度、足够低的装配成本，连接到光子集成电路 PIC 上，而且还能拆卸、测试和维修。</p>
+
+<p><strong>它不是：</strong></p>
+<ul>
+<li>用玻璃替代光纤；</li>
+<li>一颗光芯片或光引擎；</li>
+<li>高功率激光器；</li>
+<li>传统意义上的玻璃基板；</li>
+<li>已经在英伟达、博通系统中大规模量产的确定性订单。</li>
+</ul>
+
+<p><strong>对你持仓的影响强弱，我的排序是：</strong></p>
+<blockquote><p><strong>LITE：明确正面 ＞ 东山精密：中性偏正、但伴随产品迁移压力 ＞ 诺基亚：二阶正面，短期业绩影响较小。</strong></p></blockquote>
+
+<hr>
+
+<h2>一、GlassBridge 到底解决什么问题</h2>
+
+<p>传统可插拔光模块的信号路径是：</p>
+<blockquote><p>交换芯片 ASIC → PCB上的高速电信号 → 前面板光模块 → 光纤</p></blockquote>
+
+<p>CPO的路径变成：</p>
+<blockquote><p>ASIC + 光引擎共同封装 → GlassBridge/FAU等耦合结构 → 光纤</p></blockquote>
+
+<p>CPO把光引擎从机箱前面板移到交换芯片旁边，大幅缩短高损耗的高速电连接，但随之产生一个新的制造难题：怎样把芯片边缘极细、极密的光波导，与尺寸和间距都不同的光纤阵列连接起来。</p>
+
+<p>光子芯片上的波导宽度通常是数百纳米级，而光纤芯径是数微米级，两者还存在通道间距、位置公差和模式尺寸不匹配。GlassBridge在中间放入一块带有精密玻璃波导的"光学转接层"，让光从光纤进入玻璃波导，再被引导到PIC。可以把它理解为：</p>
+<blockquote><p>光纤是高速公路，PIC波导是极窄的芯片车道，GlassBridge是中间的匝道和变道系统。</p></blockquote>
+
+<p>康宁使用晶圆级离子交换（IOX）工艺在玻璃内部形成波导，支持被动对准、不同通道间距转换和高密度连接，从而降低逐根光纤主动对准的装配复杂度。<a href="https://www.corning.com/oem-solutions/worldwide/en/home/products-solutions/optical-communication-components/next-generation-optics/glassbridge-connector.html" target="_blank">(康宁)</a></p>
+
+<p>目前康宁披露的GlassBridge主要参数包括：</p>
+<ul>
+<li>单个连接器支持超过24个光通道，并可扩展到2×24等配置；</li>
+<li>玻璃连接器本体宽约6.4毫米；</li>
+<li>支持40、80、127、165微米等不同PIC通道间距；</li>
+<li>采用标准TMT插芯物理接触接口；</li>
+<li>可拆卸、可重插；</li>
+<li>兼容焊接回流工艺；</li>
+<li>O波段 fiber-to-PIC 耦合损耗约1.5 dB。<a href="https://www.corning.com/catalog/coc/documents/brochures/OEM-152-AEN.pdf" target="_blank">(康宁)</a></li>
+</ul>
+
+<p>这里要保持机构视角：<strong>1.5 dB不是"近乎无损"。</strong>折算成光功率，大约只有71%的功率通过该耦合界面，约29%损失。因此GlassBridge解决了密度、装配和可维修性问题，但对高功率、低噪声激光源的需求并没有消失，反而可能增强。</p>
+
+<hr>
+
+<h2>二、GlassBridge 与 FAU、玻璃基板是什么关系</h2>
+
+<h3>1. 与传统FAU的关系：更像升级和补充，而不是立刻替代</h3>
+
+<p>目前CPO中常见的方案是FAU（Fiber Array Unit），通过V形槽等结构把多根光纤精确排列，再固定到光引擎或PIC边缘。</p>
+
+<p>FAU成熟、已被实际使用，但随着通道数不断增加，会遇到：</p>
+<ul>
+<li>装配步骤复杂；</li>
+<li>对准精度要求高；</li>
+<li>胶接后不容易返工；</li>
+<li>单颗PIC周围连接的光纤数量越来越多；</li>
+<li>测试、维修和良率管理困难。</li>
+</ul>
+
+<p>康宁自己也把GlassBridge描述为对FAU方案的补充，而不是宣称完全替代FAU。GlassBridge的关键变化，是把一部分精密对准和通道间距转换放到晶圆级玻璃波导中，再通过可拆卸接口连接光纤。<a href="https://www.corning.com/oem-solutions/worldwide/en/home/products-solutions/optical-communication-components/next-generation-optics/glassbridge-connector.html" target="_blank">(康宁)</a></p>
+
+<h3>2. 与"玻璃核心基板"不是同一个概念</h3>
+
+<p>最近的报道容易把两件事混在一起：</p>
+
+<p>第一件事是<strong>GlassBridge连接器</strong>，即PIC与光纤之间的玻璃波导接口。</p>
+
+<p>第二件事是更远期的<strong>玻璃基板/玻璃中介层架构</strong>，即在玻璃基板中同时制造光波导和TGV玻璃通孔，并在其上封装多个光电芯片。</p>
+
+<p>康宁在近期会议上同时展示了这两条路线，因此新闻标题会写"Glass Bridge与glass-core packaging"，但当前产品化程度较高的是前者。后者更接近下一代光电共封装基板，距离大规模商业化更远。<a href="https://www.thelec.net/news/articleView.html?idxno=11620" target="_blank">(The Elec Inc.)</a></p>
+
+<hr>
+
+<h2>三、它对光产业格局意味着什么</h2>
+
+<h3>1. 光互联的价值量继续向"芯片边缘"迁移</h3>
+
+<p>以前光产业的核心产品是前面板可插拔光模块。</p>
+
+<p>未来CPO架构下，价值链逐渐变成：</p>
+<ul>
+<li>交换ASIC</li>
+<li>硅光/磷化铟PIC</li>
+<li>驱动器和调制器</li>
+<li>外置高功率激光器</li>
+<li>光引擎</li>
+<li>Fiber-to-PIC耦合</li>
+<li>高密度光纤管理</li>
+</ul>
+
+<p>GlassBridge代表的是最后两项价值量开始进入芯片级封装体系。</p>
+
+<p>这会推动价值从"完整光模块外壳和组装"，部分转移到：高功率CW激光器、硅光和InP PIC、光引擎、高密度连接器、精密玻璃波导、光电共封装和测试。</p>
+
+<p>因此，未来光模块企业不能只做"买芯片、组模块、交付整机"，而必须具备至少一项核心能力：激光器、PIC、光引擎、耦合封装或高良率制造。</p>
+
+<h3>2. 康宁从"卖光纤"走向"卖到芯片边缘"</h3>
+
+<p>这是GlassBridge最大的战略意义。</p>
+
+<p>康宁过去在AI数据中心中主要提供：光纤、光缆、连接器、高密度布线、FAU和光纤组件。</p>
+
+<p>GlassBridge让康宁进一步进入PIC边缘和CPO封装接口。康宁已经是博通Bailly 51.2Tbps CPO系统光纤基础设施的合格供应商，供应光纤束、连接器、保偏光纤和FAU；但需要注意，这并不等于博通当前量产系统已经全面采用GlassBridge。GlassBridge目前更明确的公开合作方是GlobalFoundries，双方已在GF Fotonix硅光平台上进行可拆卸Fiber-to-PIC连接方案的联合开发和展示。<a href="https://www.corning.com/optical-communications/emea/en/home/news-and-events/news-releases/2025/09/corning-and-globalfoundries-collaborate.html" target="_blank">(康宁)</a></p>
+
+<p>所以GlassBridge对康宁是：<strong>战略地位显著提升，短期收入贡献仍需订单和量产验证。</strong></p>
+
+<h3>3. 会加快CPO落地，但不能单独解决CPO全部问题</h3>
+
+<p>GlassBridge主要改善：光纤到PIC的装配、通道密度、可拆卸性、测试和返工、晶圆级规模制造。</p>
+
+<p>但CPO仍然面临：ASIC周围的热管理、光引擎良率、高功率激光器寿命、光纤布线复杂度、标准化不足、整机维修和现场更换、CPO系统成本、铜连接在短距离内仍然便宜、低时延。</p>
+
+<p>博通的102.4Tbps Tomahawk 6同时支持长距离无源铜连接和可选CPO，说明现阶段不是"光立即替代铜"，而是针对不同距离、密度和系统架构并存。2026年OFC上，1.6T可插拔模块、液冷XPO、socketed CPO和传统CPO方案也在同步推进。<a href="https://investors.broadcom.com/news-releases/news-release-details/broadcom-ships-tomahawk-6-worlds-first-1024-tbps-switch" target="_blank">(Broadcom Inc.)</a></p>
+
+<p><strong>机构判断：2026—2027年，可插拔光模块仍是收入主战场；GlassBridge对应的是2027年以后CPO规模化的制造基础设施，而不是当期业绩立即爆发。</strong></p>
+
+<hr>
+
+<h2>四、对LITE的影响：三只持仓中最明确的正面</h2>
+
+<h3>正面逻辑</h3>
+
+<p>Lumentum的核心优势之一是InP高功率激光器。它已经推出面向CPO的：UHP超高功率CW激光器、800mW级SHP激光器、多通道DWDM激光源、ELSFP可插拔外置激光源。</p>
+
+<p>CPO常见架构不是把所有激光器都封在高温ASIC旁边，而是使用可维修的外置连续波激光源，为多个硅光光引擎集中供光。Lumentum的ELSFP正是针对这一需求。<a href="https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Demonstrates-Industry-Leading-Technologies-and-Products-for-Scale-Out-Scale-Up-and-Scale-Across-AI-Infrastructure-at-OFC-2026/default.aspx" target="_blank">(Lumentum投资者关系)</a></p>
+
+<p>GlassBridge不会替代激光器。相反，它使高密度光纤到PIC连接更容易制造，从而提高CPO的可行性，对LITE属于需求侧催化。</p>
+
+<p>而且GlassBridge仍存在约1.5 dB耦合损耗。系统端为了满足更多通道、更长距离和足够的链路预算，需要更高功率、更高可靠性、更低噪声、更高温度下稳定输出的激光器。这与Lumentum的UHP、SHP和ELSFP产品方向高度一致。</p>
+
+<h3>潜在风险</h3>
+<ul>
+<li>CPO采用速度低于市场预期；</li>
+<li>超大功率激光器价格快速下降；</li>
+<li>客户采用内部激光器或其他供应商；</li>
+<li>CPO仅集中在少数高端交换机，市场规模低于预期；</li>
+<li>激光器寿命和现场可靠性不达标。</li>
+</ul>
+
+<p><strong>对LITE的结论：GlassBridge是LITE的正面产业验证，但不是单独的短期订单催化。在你的三只持仓中，LITE是受益逻辑最直接的。</strong></p>
+<p>影响评级：<strong>正面，4/5。</strong></p>
+
+<hr>
+
+<h2>五、对诺基亚的影响：二阶受益，不是直接受益标的</h2>
+
+<p>诺基亚当前在光领域的核心价值主要在：长途和城域相干光网络、数据中心互联、光传输系统、相干DSP与光引擎、Infinera体系的InP光子集成、数据中心内部的ICE-D光学平台。</p>
+
+<p>Nokia ICE-D本身采用单片InP PIC，集成DFB激光器、调制器和光电探测器，可用于FRO、HRO、LPO等可插拔架构，速率可扩展到3.2Tbps。<a href="https://www.nokia.com/optical-networks/ice-d-intra-datacenter/" target="_blank">(Nokia Corporation)</a></p>
+
+<p>GlassBridge对诺基亚的正面影响主要是间接的：</p>
+<ol>
+<li>CPO推动AI集群规模扩大，增加数据中心内部和数据中心之间的光传输需求；</li>
+<li>CPO交换机需要连接到更远距离的scale-across和DCI网络；</li>
+<li>更高光纤数量和更高交换容量，会提高相干传输、光线路系统和网络管理的需求。</li>
+</ol>
+
+<p>但截至目前公开资料中，我没有找到诺基亚与GlassBridge已经披露的直接供货或联合开发关系。</p>
+
+<p>此外，GlassBridge的价值主要发生在交换ASIC和光引擎封装附近，而诺基亚目前的核心商业化优势仍在光网络系统、相干传输和数据中心互联，而不是Broadcom、NVIDIA所处的CPO交换芯片平台。</p>
+
+<p><strong>对诺基亚的结论：产业方向正面，但对Nokia当前收入和估值的直接影响很弱。</strong></p>
+<p>影响评级：<strong>中性偏正，2/5。</strong></p>
+
+<hr>
+
+<h2>六、对东山精密的影响：既有机会，也有产品迁移压力</h2>
+
+<p>东山精密通过索尔思光电进入了光芯片和光模块业务。公司2025年年报明确将光模块、光芯片列入主要业务，并布局高速EML芯片和光通信产品。公司投资者交流中也确认存在200G EML、CW激光器等产品，但没有披露具体产能、良率、客户和外销量。</p>
+
+<h3>1. EML：主要受益于可插拔模块，未必直接受益GlassBridge</h3>
+
+<p>EML把激光器和调制器集成在一起，是当前800G、1.6T可插拔光模块的重要路线之一。</p>
+
+<p>如果CPO快速替代部分前面板可插拔模块，那么长期看，部分传统EML模块需求可能被硅光光引擎加外置CW激光器替代。</p>
+
+<p>因此：<strong>GlassBridge本身不是东山200G EML业务的直接利好，甚至代表未来产品架构可能发生迁移。</strong></p>
+
+<p>但这种替代不会在一两年内突然完成。可插拔光模块仍在向1.6T、3.2T升级，且标准、成本和可维修性成熟，东山近期的主要盈利仍将来自光芯片及可插拔光模块放量。</p>
+
+<h3>2. CW激光器和CPO光引擎：是更直接的机会</h3>
+
+<p>如果东山能够做到高功率CW激光器、ELS外置激光源、硅光或InP光引擎、Fiber-to-PIC封装、CPO基板和整机组装、高良率耦合测试，那么GlassBridge反而会降低其进入CPO制造的技术门槛。</p>
+
+<p>公开环评资料被行业媒体引用显示，盐城东山规划了高速光模块项目和CPO研发产业化项目，但这类资料反映的是产能和投资规划，不等同于客户认证、订单或量产收入。<a href="https://www.esmchina.com/marketnews/58323.html" target="_blank">(国际电子商情)</a></p>
+
+<p>所以东山的核心验证点不是"宣布建设CPO项目"，而是：<strong>有没有拿到光引擎、CW激光器、PIC封装或CPO整机客户订单。</strong></p>
+
+<h3>3. 对PCB业务影响有限</h3>
+
+<p>GlassBridge连接器本身不会替代东山的PCB和FPC。</p>
+
+<p>更远期的玻璃核心基板可能减少部分封装级有机基板和超短距电连接，但这属于先进封装层面的变化，不等同于AI服务器主板、交换机PCB和FPC被玻璃替代。康宁目前展示的玻璃基板加TGV架构，仍是前瞻技术。<a href="https://www.thelec.net/news/articleView.html?idxno=11620" target="_blank">(The Elec Inc.)</a></p>
+
+<p>对东山而言，PCB业务短期受到的影响更可能是：CPO缩短部分高速电走线，但电源、控制、管理和系统互连复杂度仍然增加，AI交换机和服务器PCB层数、材料和制造难度仍然较高。因此不能简单理解成"CPO利空PCB"。</p>
+
+<p><strong>对东山精密的结论：整体中性偏正，但要求公司成功从传统光模块制造，升级到光芯片、CW激光器、光引擎和CPO封装。</strong></p>
+<p>影响评级：<strong>中性偏正，3/5。</strong></p>
+
+<hr>
+
+<h2>七、最终投资判断</h2>
+
+<table>
+<thead>
+<tr><th>标的</th><th>GlassBridge影响</th><th>核心原因</th><th>最大验证点</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>LITE</strong></td><td>明确正面</td><td>CPO需要高功率外置CW激光器和ELSFP，GlassBridge提高CPO可制造性</td><td>CPO激光器实际收入、客户导入、出货增长</td></tr>
+<tr><td><strong>东山精密</strong></td><td>中性偏正</td><td>有光芯片、模块、CW及CPO规划，但现有利润主要仍来自传统模块体系</td><td>CW激光器、光引擎和CPO是否获得订单</td></tr>
+<tr><td><strong>诺基亚</strong></td><td>二阶正面</td><td>AI光流量和DCI需求增长，但GlassBridge不在其当前核心变现环节</td><td>ICE-D、AI数据中心光网络和相干系统订单</td></tr>
+<tr><td><strong>康宁</strong></td><td>战略性正面</td><td>从光纤和连接器向PIC边缘封装延伸，单端口价值量提升</td><td>GF之外客户、量产时间、良率、成本和损耗</td></tr>
+</tbody>
+</table>
+
+<p><strong>最重要的一句话：</strong></p>
+<blockquote><p>GlassBridge不是一项"替代激光器或替代光模块"的技术，而是一项让CPO更容易制造、测试和维修的底层连接技术。它最大的影响，是推动光产业价值链从前面板模块继续向ASIC和PIC封装边缘迁移。</p></blockquote>
+
+<p>对你的仓位而言，不需要因为GlassBridge调整诺基亚；对LITE是中长期正面强化；对东山精密则要重点观察其究竟是"传统模块扩产"，还是已经真正进入CW激光器、光引擎和CPO封装供应链。</p>
+
+<p><strong>未来最值得持续跟踪的五项指标：</strong></p>
+<ol>
+<li>GlassBridge是否获得GF之外的量产客户</li>
+<li>耦合损耗能否降到1 dB附近</li>
+<li>LITE的ELSFP/CPO激光器收入</li>
+<li>东山CW激光器与CPO光引擎认证情况</li>
+<li>Broadcom/NVIDIA的CPO系统由可选配置转向规模部署的时间</li>
+</ol>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Leslie · 基于个人研究，不构成投资建议</p>
+        </div>
+    </footer>
+
+    <script src="/js/share.js"></script>
+</body>
+</html>

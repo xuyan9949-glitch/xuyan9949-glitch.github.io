@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "corning-glassbridge-analysis",
+    title: "Corning GlassBridge 深度分析：玻璃波导连接器如何影响光通信投资格局",
+    date: "2026-06-30",
+    category: "产业思考",
+    subcategory: "光通信",
+    tags: ["产业:光通信", "产业:光互联", "产业:CPO", "产业:玻璃波导", "个股:GLW", "个股:LITE", "个股:东山精密", "个股:诺基亚", "产业:硅光", "产业:光纤", "策略:产业链分析", "策略:持仓影响"],
+    pinned: false,
+    summary: "GlassBridge本质是玻璃波导版光纤—光子芯片连接器，解决CPO最关键制造难题。LITE是明确正面受益者，东山精密中性偏正但面临产品迁移压力，诺基亚为二阶正面。CPO加速将推动光价值链从前面板模块向ASIC和PIC封装边缘迁移。",
+    keywords: "Corning GlassBridge CPO NPO 硅光 光子集成 PIC Fiber-to-PIC FAU 康宁 Lumentum LITE 东山精密 诺基亚 CW激光器 ELSFP 光纤 玻璃基板 IOX",
+    file: "/articles/corning-glassbridge-analysis/"
+  },
+  {
     id: "diamond-thermal-management",
     title: "金刚石散热研究",
     date: "2026-06-29",
