@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "glassbridge-cpo-beneficiary-ranking",
+    title: "GlassBridge/CPO 受益标的全景排序：美股与A股完整梳理",
+    date: "2026-06-30",
+    category: "产业思考",
+    subcategory: "光通信",
+    tags: ["产业:光通信", "产业:光互联", "产业:CPO", "产业:GlassBridge", "个股:LITE", "个股:COHR", "个股:GLW", "个股:AVGO", "个股:GFS", "个股:天孚通信", "个股:新易盛", "个股:东山精密", "个股:光库科技", "个股:炬光科技", "策略:标的排序", "策略:A股映射"],
+    pinned: false,
+    summary: "按CPO相关度×订单验证×利润弹性排序：LITE利润弹性第一，COHR产业链覆盖最完整，GLW概念最直接；A股天孚通信位置最接近，新易盛架构中立风险最低。对持仓影响：LITE最明确受益，东山有较大CPO期权但验证度不足，诺基亚为二阶受益。",
+    keywords: "GlassBridge CPO LITE COHR GLW 天孚通信 新易盛 东山精密 光库科技 炬光科技 Fiber-to-PIC ELSFP CW激光器 硅光 光引擎",
+    file: "/articles/glassbridge-cpo-beneficiary-ranking/"
+  },
+  {
     id: "corning-glassbridge-analysis",
     title: "Corning GlassBridge 深度分析：玻璃波导连接器如何影响光通信投资格局",
     date: "2026-06-30",
