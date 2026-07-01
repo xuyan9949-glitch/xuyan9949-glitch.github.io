@@ -1,5 +1,17 @@
 const articles = [
   {
+    id: "storage-ghost-stories-deconstruction",
+    title: "存储鬼故事拆解：高位去拥挤 vs 基本面出货",
+    date: "2026-07-01",
+    category: "美股",
+    subcategory: "存储",
+    tags: ["个股:MU", "产业:存储", "产业:DRAM", "产业:HBM", "产业:NAND", "策略:市场情绪", "策略:仓位管理", "宏观:AI资本开支", "策略:周期分析"],
+    pinned: false,
+    summary: "五大鬼故事拆解：库克抱怨涨价、Google TurboQuant、Meta出售富余算力、韩国扩产、DRAM价格诉讼。核心判断是高位去拥挤和预期清算而非基本面出货。65%概率是财报后拥挤去化+负面叙事放大，建议关注六项硬信号而非跟随标题操作。",
+    keywords: "存储 鬼故事 美光 MU 苹果 涨价 Google TurboQuant Meta 韩国 扩产 DRAM 诉讼 HBM 洗筹 高位 拥挤 去杠杆 周期见顶 仓位管理 硬信号",
+    file: "/articles/storage-ghost-stories-deconstruction/"
+  },
+  {
     id: "semi-equipment-four-giants",
     title: "半导体设备四巨头深度分析：ASML、AMAT、LRCX、KLAC",
     date: "2026-06-30",

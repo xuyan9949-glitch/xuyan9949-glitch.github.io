@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>存储鬼故事拆解：高位去拥挤 vs 基本面出货 — Leslie 投资笔记</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232d6cff'/><text x='16' y='22' text-anchor='middle' font-family='-apple-system,BlinkMacSystemFont,sans-serif' font-weight='700' font-size='22' fill='white'>X</text></svg>">
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <span class="logo-mark">L</span>
+                <span class="logo-text">Leslie 研究笔记</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">首页</a>
+                <a href="/#research">研究方向</a>
+                <a href="/#notes">笔记</a>
+                <a href="/#frameworks">框架</a>
+                <a href="/#tracking">标的追踪</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container article-page">
+        <a href="/" class="back">← 返回首页</a>
+
+        <h1>存储鬼故事拆解：高位去拥挤 vs 基本面出货</h1>
+        <div class="article-meta">
+            <span>2026-07-01</span>
+            <span>·</span>
+            <span>美股 · 存储</span>
+            <button class="meta-share" onclick="shareArticle()" title="分享">
+                <svg width="14" height="14" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+                分享
+            </button>
+        </div>
+
+        <div class="article-content">
+
+<h2>结论先说</h2>
+
+<p>我不认为存在一个可以被证实的"统一主力编剧"，专门制造新闻逼你交出筹码。</p>
+
+<p>但我认为现在确实正在发生一件非常典型的事：</p>
+
+<blockquote><p>美光财报把基本面预期推到极致之后，市场开始集中寻找一切能够证明"业绩见顶"的叙事，完成高位去拥挤和筹码再分配。</p></blockquote>
+
+<p>所以，更准确的表述是：<strong>未必有明确的洗筹意图，但已经产生了非常强的洗筹效果。</strong></p>
+
+<p>最危险的认知错误有两个：</p>
+<ol>
+<li>把所有坏消息都当成阴谋，因此忽略真正的周期顶部信号；</li>
+<li>把所有标题都当成基本面恶化，因此在实际供需仍紧张时被迫清仓。</li>
+</ol>
+<p>现在更接近第二种风险：标题的杀伤力明显大于其基本面含量。</p>
+
+<hr>
+
+<h2>一、这些"鬼故事"其实不是五个独立利空</h2>
+
+<p>很多故事看似来自不同方向，实际上是同一个底层事实的不同反应：</p>
+
+<blockquote><p>存储太紧、价格太高、利润太好。</p></blockquote>
+
+<p>这会自然引发：客户抱怨、消费产品涨价、监管和诉讼、竞争对手扩产、技术公司研究节省内存的方法、投资者担心高利润不可持续。</p>
+
+<p>不能把它们当成五票独立的看空证据。很多只是同一轮短缺的二阶反应。</p>
+
+<h3>1. 库克抱怨存储涨价</h3>
+
+<p>这条新闻对苹果偏空，对存储厂商短期反而偏多。</p>
+
+<p>苹果表示内存和存储成本快速上升，部分产品价格需要上调。它证明的是存储厂商的定价权，而不是存储需求消失。真正的利空要等到苹果因为涨价明显削减采购量，或者终端销量大幅下降，才构成"需求破坏"。<a href="https://www.reuters.com/business/apple-raise-prices-due-memory-chip-shortage-ceo-tells-wsj-2026-06-17/" target="_blank">(Reuters)</a></p>
+
+<p>所以库克的表态应拆成两段：当前是存储供给紧张、厂商涨价成功；未来风险是价格过高可能伤害终端销量。媒体通常只把第二段拿出来交易。</p>
+
+<h3>2. Google的TurboQuant</h3>
+
+<p>TurboQuant确实可以把特定的KV Cache压缩到更低位宽，Google称其在相关测试中可将KV Cache体积降低至少六倍，并提高部分注意力计算速度。<a href="https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/" target="_blank">(Google Research)</a></p>
+
+<p>但这不是"不再需要存储"，因为它只优化AI推理过程中的一个内存对象，并不等于模型权重消失、HBM带宽需求消失、训练内存需求消失、企业SSD和检查点存储消失、长上下文/并发用户/Agent调用次数停止增长。</p>
+
+<p>更现实的结果可能是：单次推理消耗的内存下降，但每块GPU可以同时服务更多用户、更长上下文和更多Agent任务。这是典型的杰文斯效应：单位成本下降后，总使用量可能上升。</p>
+
+<p>因此，TurboQuant是需要跟踪的长期效率风险，但目前把它直接解读为"HBM需求崩塌"，属于明显过度推演。</p>
+
+<h3>3. Meta"出售富余算力"</h3>
+
+<p>这件事与存储的关联更弱。</p>
+
+<p>Meta研究的是未来把阶段性或结构性剩余的算力对外出租，并不等于当前已经出现大规模GPU闲置。即便部分GPU利用率下降，也不能直接推导为HBM、DDR5和企业SSD订单马上减少。</p>
+
+<p>Meta真正构成存储利空，需要看到以下事实：Meta削减AI资本开支、取消GPU和服务器订单、减少HBM配置、取消数据中心、GPU云租赁价格持续崩跌。目前只有"可能出售剩余容量"的报道，还没有完成这条证据链。</p>
+
+<h3>4. 韩国巨额半导体投资</h3>
+
+<p>这是五个故事中最值得重视的中长期风险，但不是近期产能冲击。</p>
+
+<p>韩国公布的项目包括三星和SK海力士建设新晶圆厂及产业集群，但新厂从建设、设备搬入、良率爬坡到有效位元产出，通常需要数年。<a href="https://www.reuters.com/world/asia-pacific/samsung-electronics-sk-hynix-invest-two-new-fabrication-sites-south-korea-2026-06-29/" target="_blank">(Reuters)</a></p>
+
+<p>这条新闻真正表达的是：2027—2029年以后，供应商正在为需求持续增长或市场份额竞争做准备。</p>
+
+<ul>
+<li>对2026年供需：影响有限；</li>
+<li>对2027—2028年估值：需要提高警惕；</li>
+<li>对长期周期：确实增加过度扩产概率。</li>
+</ul>
+
+<p>把十年投资计划理解成"下季度DRAM就过剩"，是不成立的。</p>
+
+<h3>5. 美国存储价格诉讼</h3>
+
+<p>这不是某个州政府已经判定存储厂商违法，而是个人消费者和小企业发起的拟议集体诉讼，指控美光、三星和SK海力士限制传统DRAM供给、推高价格。此前类似案件曾因缺乏明确合谋证据被驳回。<a href="https://www.tomshardware.com/tech-industry/samsung-sk-hynix-and-micron-sued-over-alleged-dram-price-fixing-amid-record-memory-costs" target="_blank">(Tom's Hardware)</a></p>
+
+<p>它的短期影响主要是法律费用、舆论压力、潜在监管关注和极高利润率的政治风险。但它本身不会马上增加一片DRAM晶圆。而且这条诉讼从反面证明了一件事：市场当前的问题是价格太高和供给太紧，不是没人需要存储。</p>
+
+<hr>
+
+<h2>二、为什么偏偏在逆天财报之后集中出现</h2>
+
+<p>因为财报之后，市场交易的对象已经变了。</p>
+
+<p>财报前交易的是：美光业绩是否会大超预期？</p>
+<p>财报后交易的是：这么好的业绩还能持续多久？</p>
+
+<p>美光刚公布的数据确实极端：季度收入415亿美元（+74%/+346%），DRAM收入+67%，NAND收入+99%，非GAAP毛利率84.9%，下一季度指引营收约500亿美元，已签订16份SCA、相关最低履约义务约1000亿美元。</p>
+
+<p>这组数据越强，市场越容易产生"这已经是不可超越的峰值"担忧。</p>
+
+<p>尤其值得注意的是，本季度收入增长主要来自价格，而不是出货量：DRAM位元出货量仅低个位数增长，但ASP上涨低60%；NAND位元出货量仅中个位数增长，但ASP上涨中80%。</p>
+
+<p>这正是空头最容易攻击的地方：如果利润主要由价格暴涨驱动，而价格无法永久上涨，那么利润率也无法永久维持在85%以上。</p>
+
+<hr>
+
+<h2>三、这是洗筹，还是出货</h2>
+
+<p>我的判断是：<strong>目前更像高位去拥挤和预期清算，还不能确认是基本面出货。</strong></p>
+
+<p>美光股价从约1255美元高位回落至1050美元附近，回撤约16%，与此同时6月DRAM和NAND价格仍在上涨。<a href="https://www.barrons.com/articles/micron-stock-price-memory-chips-analyst-27d535f8" target="_blank">(Barron's)</a></p>
+
+<p>当前下跌包含三部分：</p>
+
+<p><strong>第一部分：盈利兑现。</strong>财报前埋伏的资金在财报兑现后卖出。不是财报不好，而是催化结束。</p>
+
+<p><strong>第二部分：拥挤交易去杠杆。</strong>美光、海力士、存储ETF此前涨幅巨大，获利盘集中。只要板块出现一个可信度不高的利空，量化、期权做市和杠杆资金都会同步降低风险。</p>
+
+<p><strong>第三部分：周期顶部预演。</strong>存储是著名的周期行业。投资者一看到极端利润率，就会提前交易未来供给恢复，而不是等待现货价格真正下跌。</p>
+
+<p>因此，价格可以在基本面仍然向上时提前调整。这不等于空头一定正确，只意味着：<strong>市场已经不愿意继续为"当前有多好"加价，而开始为"未来会不会变差"打折。</strong></p>
+
+<hr>
+
+<h2>四、四个角色的判断</h2>
+
+<p><strong>① 多头基金经理</strong>会把当前下跌定义为超强财报后的获利回吐，而不是订单或价格拐点。美光还拥有约1000亿美元战略协议对应的最低履约义务，管理层明确预计紧张环境持续至2027年以后。</p>
+
+<p><strong>② 空头分析师</strong>会攻击2027年的可持续性：85%毛利率不可能长期维持、苹果等客户出现价格抵抗、韩国开始大规模扩产、Google降低单位推理内存需求、诉讼和监管可能削弱供给纪律。空头真正下注的是现在是盈利峰值，这是一个合理风险，不能简单称为小作文。</p>
+
+<p><strong>③ 行业专家</strong>会将时间维度分开：2026年供给仍紧、价格仍强；2027年新增产能逐步释放；2028年以后需要防范多家同时扩产造成周期反转。TrendForce仍预计HBM需求受到AI ASIC、Rubin推动，HBM对DRAM晶圆投入的挤占效应将在2027年进一步增强。<a href="https://www.trendforce.com/presscenter/news/20260602-13074.html" target="_blank">(TrendForce)</a></p>
+
+<p><strong>④ 公司管理层</strong>的应对明显是试图降低传统周期风险：签署长期协议、引入价格上下限、获取客户现金押金、扩产以建设和洁净室为主、强调根据市场环境调整供给计划。</p>
+
+<hr>
+
+<h2>五、历史上最像的是2018—2019年</h2>
+
+<p>2018年美光同样处于高利润周期，但随后客户库存调整和价格下跌迅速出现。美光2019财年第三季度收入从上年同期78亿美元降至47.9亿美元，毛利率从61%降至38%。<a href="https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-third-quarter-fiscal-2019" target="_blank">(Micron Technology)</a></p>
+
+<p>这个历史案例告诉我们：存储股不会等利润表变差才下跌，通常会提前几个季度交易ASP拐点。</p>
+
+<p>但当前与2018年也有明显区别：HBM具有更强的客户认证壁垒、AI数据中心需求更结构化、客户签署多年战略协议、供应扩张受洁净室和EUV和先进封装和电力约束、美光获取了更大规模客户承诺。</p>
+
+<hr>
+
+<h2>六、事实、推断和市场情绪</h2>
+
+<h3>已确认事实</h3>
+<ul>
+<li>美光当前财务数据和下一季度指引极强</li>
+<li>DRAM和NAND价格仍在上涨</li>
+<li>苹果受到存储成本上升影响</li>
+<li>Google推出KV Cache压缩技术</li>
+<li>韩国公布长期晶圆厂投资计划</li>
+<li>美光等公司面临集体诉讼</li>
+<li>美光股价在财报后出现明显回撤</li>
+</ul>
+
+<h3>合理推断</h3>
+<ul>
+<li>市场正在交易盈利峰值</li>
+<li>财报后多头仓位过于拥挤</li>
+<li>负面新闻获得了不成比例的传播权重</li>
+<li>2027年以后供给风险正在上升</li>
+</ul>
+
+<h3>尚未得到事实支持的推断</h3>
+<ul>
+<li>AI已经不需要大量存储</li>
+<li>Meta已经出现全面算力过剩</li>
+<li>韩国新产能马上投产</li>
+<li>美光等公司已经被证明操纵价格</li>
+<li>存储价格已经形成拐点</li>
+</ul>
+
+<h3>市场情绪</h3>
+<p>当前明显属于：任何与"效率提升、扩产、客户抗议、监管"有关的新闻，都会被快速包装成存储见顶。这是一种高位交易情绪，不等于所有风险都是假的。</p>
+
+<hr>
+
+<h2>七、概率判断</h2>
+
+<ul>
+<li><strong>65%：</strong>财报后拥挤交易去化，负面叙事被集中放大</li>
+<li><strong>25%：</strong>市场正在正确预演2027年供给增加和需求破坏</li>
+<li><strong>10%：</strong>存在有组织、有明确意图的操纵或刻意洗筹</li>
+</ul>
+
+<p>所以我不支持"有人统一策划逼你卖"的强阴谋论。但我支持下面这个判断：</p>
+
+<blockquote><p>市场参与者知道存储多头仓位很拥挤，因此每一条可用的负面叙事都会被拿来攻击最脆弱的筹码。</p></blockquote>
+
+<p>这在效果上就是洗筹。</p>
+
+<hr>
+
+<h2>八、对你当前持仓最实际的建议</h2>
+
+<p>你此前提到DRAM ETF仓位接近50%。这种情况下，持股体验差并不完全来自新闻，而是来自集中度。</p>
+
+<p>若还是杠杆ETF，50%的账户仓位可能对应接近100%的方向性敞口。板块回撤10%，账户净值就可能受到非常明显的影响。这不是意志力问题，而是仓位结构问题。</p>
+
+<p>我不建议因为这些标题直接清仓，但也不建议把每一次下跌都定义为"主力洗盘"然后机械加仓。</p>
+
+<p>可以把仓位拆成两部分：核心仓只根据行业供需和合同数据决定；交易仓根据财报后价格结构、波动率和市场风险做减仓或回补。</p>
+
+<p>真正需要你减持核心仓的，不是Meta或某篇Google论文，而是以下硬信号中同时出现两到三个：</p>
+
+<ol>
+<li>DRAM或NAND合同价格连续两个季度环比下降</li>
+<li>美光战略客户协议取消、押金减少或履约义务下降</li>
+<li>大型云厂商集体下调AI资本开支</li>
+<li>美光、三星、海力士库存天数持续上升</li>
+<li>新增晶圆产能提前投产，位元供给增速明显超过需求</li>
+<li>客户出现大规模库存修正，而不是单纯抱怨价格</li>
+</ol>
+
+<p>在这些硬数据出现前，当前更应定义为：<strong>高估值、高拥挤度下的剧烈预期重定价，而不是已经被证实的存储周期反转。</strong></p>
+
+<p>如果最终判断错误，最大的风险是你把真正的盈利顶部误认为洗盘，随后同时遭遇ASP下降、利润预测下调和估值倍数收缩。</p>
+
+<p>反过来，如果现在因为标题全部卖出，最大的风险则是在供需仍紧、长期合同已锁定的情况下，被迫在下一轮价格创新高时重新追入。</p>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Leslie · 基于个人研究，不构成投资建议</p>
+        </div>
+    </footer>
+
+    <script src="/js/share.js"></script>
+</body>
+</html>
