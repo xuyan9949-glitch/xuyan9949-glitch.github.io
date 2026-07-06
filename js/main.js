@@ -151,8 +151,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const catTags = document.querySelectorAll('.cat-tag');
     const subcatTags = document.querySelectorAll('.subcat-tag');
     const subcatBar = document.querySelector('.sub-categories');
+    const seriesGrid = document.getElementById('series-grid');
 
     let currentSubcat = 'all';
+    let currentSeries = null;
+
+    const NOTE_SERIES = [
+        {
+            id: 'ai-infra',
+            title: 'AI基础设施主线',
+            desc: '算力、数据中心、电力、光互联和服务器价值链。',
+            keywords: ['AI', 'GPU', '数据中心', '服务器', 'AI基础设施', 'AI工厂', 'AI服务器']
+        },
+        {
+            id: 'optical',
+            title: '光通信与CPO',
+            desc: '光模块、CPO、InP、硅光和光器件投资框架。',
+            keywords: ['光通信', '光互联', 'CPO', 'InP', '硅光', '光模块', 'EML', 'GlassBridge']
+        },
+        {
+            id: 'storage',
+            title: '存储超级周期',
+            desc: 'MU、HBM、DRAM、NAND 与供需周期跟踪。',
+            keywords: ['存储', 'HBM', 'DRAM', 'NAND', 'MU', '美光', 'SNDK']
+        },
+        {
+            id: 'materials',
+            title: 'AI电子材料',
+            desc: 'PCB、CCL、MLCC、铜箔和散热材料的上游扩散。',
+            keywords: ['PCB', 'CCL', 'MLCC', '铜箔', '电子材料', 'AI电子材料', '散热', '金刚石']
+        },
+        {
+            id: 'a-share-map',
+            title: 'A股映射与交易框架',
+            desc: 'A股产业映射、题材传导、交易规则和估值节奏。',
+            keywords: ['A股', '映射', '交易框架', '传导', '中报', '定价规则']
+        },
+        {
+            id: 'tools-mindset',
+            title: '工具与投资心法',
+            desc: 'AI工具、研究方法、道德经和个人认知框架。',
+            keywords: ['AI工具', '数字工具', '研究方法', '道德经', '投资启示', '见贤思齐']
+        }
+    ];
 
     // Static subcategory overrides (show even without articles)
     const STATIC_SUBCATS = {
@@ -202,44 +243,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const NOTES_PAGE_SIZE = 6;
     let notesPage = 1;
 
-    function renderNotes(category, page) {
-        if (!notesEl || typeof articles === 'undefined') return;
+    function articleMatchesSeries(article, series) {
+        const haystack = [
+            article.title,
+            article.category,
+            article.subcategory || '',
+            article.summary || '',
+            ...(article.tags || []),
+            article.keywords || ''
+        ].join(' ').toLowerCase();
+        return series.keywords.some(k => haystack.includes(k.toLowerCase()));
+    }
 
-        if (page === undefined) page = 1;
-        notesPage = page;
-
-        let filtered = articles;
-        if (category !== 'all') {
-            filtered = articles.filter(a => a.category === category);
-            renderSubcatTags(category);
-            if (currentSubcat !== 'all') {
-                filtered = filtered.filter(a => a.subcategory === currentSubcat);
-            }
-        } else {
-            if (subcatBar) subcatBar.style.display = 'none';
-            currentSubcat = 'all';
-        }
-        // Sort by date descending, pinned flag only applies if explicitly set
-        filtered.sort((a, b) => {
+    function sortArticles(list) {
+        return list.sort((a, b) => {
             if (a.pinned && !b.pinned) return -1;
             if (!a.pinned && b.pinned) return 1;
             return new Date(b.date) - new Date(a.date);
         });
+    }
 
-        if (filtered.length === 0) {
-            notesEl.innerHTML = '<div class="empty-notes">暂无内容,持续更新中。</div>';
-            return;
-        }
-
-        const end = Math.min(page * NOTES_PAGE_SIZE, filtered.length);
-        const shown = filtered.slice(0, end);
+    function renderNoteCards(list, page, onPage) {
+        if (!notesEl) return;
+        const end = Math.min(page * NOTES_PAGE_SIZE, list.length);
+        const shown = list.slice(0, end);
 
         notesEl.innerHTML = shown.map(a => `
             <a href="${a.file}" class="note-card${a.pinned ? ' note-pinned' : ''}">
                 <div class="meta">
                     <span>${a.date}</span>
                     <span class="dot"></span>
-                    <span>${a.category}</span>
+                    <span>${a.category}${a.subcategory ? ' · ' + a.subcategory : ''}</span>
                 </div>
                 <h3>${a.title}</h3>
                 <p>${a.summary.length > 80 ? a.summary.slice(0, 80) + '…' : a.summary}</p>
@@ -254,41 +288,102 @@ document.addEventListener('DOMContentLoaded', () => {
             </a>
         `).join('');
 
-        // Pagination
-        const totalPages = Math.ceil(filtered.length / NOTES_PAGE_SIZE);
+        const totalPages = Math.ceil(list.length / NOTES_PAGE_SIZE);
         if (totalPages > 1) {
             const pagWrap = document.createElement('div');
             pagWrap.className = 'notes-pagination';
             pagWrap.style.cssText = 'display:flex;justify-content:center;align-items:center;gap:6px;margin-top:20px;';
-            
-            // Prev
+
             const prevBtn = document.createElement('button');
             prevBtn.className = 'notes-page-btn';
             prevBtn.textContent = '‹';
             prevBtn.disabled = page <= 1;
-            prevBtn.onclick = () => renderNotes(category, page - 1);
+            prevBtn.onclick = () => onPage(page - 1);
             pagWrap.appendChild(prevBtn);
-            
-            // Page numbers
+
             for (let i = 1; i <= totalPages; i++) {
                 const pBtn = document.createElement('button');
                 pBtn.className = 'notes-page-btn' + (i === page ? ' active' : '');
                 pBtn.textContent = i;
-                pBtn.onclick = () => renderNotes(category, i);
+                pBtn.onclick = () => onPage(i);
                 if (i === page) pBtn.disabled = true;
                 pagWrap.appendChild(pBtn);
             }
-            
-            // Next
+
             const nextBtn = document.createElement('button');
             nextBtn.className = 'notes-page-btn';
             nextBtn.textContent = '›';
             nextBtn.disabled = page >= totalPages;
-            nextBtn.onclick = () => renderNotes(category, page + 1);
+            nextBtn.onclick = () => onPage(page + 1);
             pagWrap.appendChild(nextBtn);
-            
+
             notesEl.appendChild(pagWrap);
         }
+    }
+
+    function renderNotes(category, page) {
+        if (!notesEl || typeof articles === 'undefined') return;
+
+        if (page === undefined) page = 1;
+        notesPage = page;
+        currentSeries = null;
+        document.querySelectorAll('.series-card').forEach(card => card.classList.remove('active'));
+
+        let filtered = articles;
+        if (category !== 'all') {
+            filtered = articles.filter(a => a.category === category);
+            renderSubcatTags(category);
+            if (currentSubcat !== 'all') {
+                filtered = filtered.filter(a => a.subcategory === currentSubcat);
+            }
+        } else {
+            if (subcatBar) subcatBar.style.display = 'none';
+            currentSubcat = 'all';
+        }
+        sortArticles(filtered);
+
+        if (filtered.length === 0) {
+            notesEl.innerHTML = '<div class="empty-notes">暂无内容,持续更新中。</div>';
+            return;
+        }
+
+        renderNoteCards(filtered, page, nextPage => renderNotes(category, nextPage));
+    }
+
+    function renderSeriesNotes(seriesId, page) {
+        if (!notesEl || typeof articles === 'undefined') return;
+        const series = NOTE_SERIES.find(s => s.id === seriesId);
+        if (!series) return;
+        if (page === undefined) page = 1;
+        currentSeries = seriesId;
+        catTags.forEach(t => t.classList.remove('active'));
+        if (subcatBar) subcatBar.style.display = 'none';
+        document.querySelectorAll('.series-card').forEach(card => {
+            card.classList.toggle('active', card.dataset.series === seriesId);
+        });
+        const filtered = sortArticles(articles.filter(a => articleMatchesSeries(a, series)));
+        renderNoteCards(filtered, page, nextPage => renderSeriesNotes(seriesId, nextPage));
+    }
+
+    function renderSeriesGrid() {
+        if (!seriesGrid || typeof articles === 'undefined') return;
+        seriesGrid.innerHTML = NOTE_SERIES.map(series => {
+            const matches = articles.filter(a => articleMatchesSeries(a, series));
+            const latest = sortArticles([...matches])[0];
+            return `
+                <div class="series-card" data-series="${series.id}">
+                    <h3>${series.title}</h3>
+                    <p>${series.desc}</p>
+                    <div class="series-meta">
+                        <span class="series-count">${matches.length} 篇</span>
+                        <span>${latest ? latest.date : '待更新'}</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        seriesGrid.querySelectorAll('.series-card').forEach(card => {
+            card.addEventListener('click', () => renderSeriesNotes(card.dataset.series));
+        });
     }
 
     if (catTags.length > 0) {
@@ -299,6 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderNotes(el.dataset.cat);
             });
         });
+        renderSeriesGrid();
         renderNotes('all');
 
         // Category notification dots
