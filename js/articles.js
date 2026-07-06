@@ -1,5 +1,29 @@
 const articles = [
   {
+    id: "ai-research-assistant-skill-1",
+    title: "AI 实用技能 #1：把 AI 当成研究助理，而不是搜索引擎",
+    date: "2026-07-07",
+    category: "见贤思齐",
+    subcategory: "AI工具",
+    tags: ["AI工具", "研究方法", "投资研究", "学习方法"],
+    pinned: false,
+    summary: "多数人把 AI 当搜索引擎，只得到百科式回答。更高效的方式，是把 AI 设定为研究助理，明确身份、目标、输出框架和追问机制，用它快速建立行业研究框架。",
+    keywords: "AI 实用技能 研究助理 搜索引擎 投资研究 行业研究 HBM MLCC AI工具 提问框架",
+    file: "/articles/ai-research-assistant-skill-1/"
+  },
+  {
+    id: "test-note",
+    title: "从测试笔记到个人知识库：一次网站维护流程记录",
+    date: "2026-07-06",
+    category: "见贤思齐",
+    subcategory: "数字工具",
+    tags: ["数字工具", "个人知识库", "网站维护", "写作流程"],
+    pinned: false,
+    summary: "记录一次把测试笔记发布到个人网站的维护流程：新增文章页面、更新索引、补充摘要标签和关键词。真正的价值不在测试本身，而在于验证从本地笔记到可检索、可复盘的个人知识库路径是通的。",
+    keywords: "测试笔记 个人知识库 网站维护 发布流程 数字工具 写作流程 首页展示 搜索 分类 Leslie 投资笔记",
+    file: "/articles/test-note/"
+  },
+  {
     id: "storage-ghost-stories-deconstruction",
     title: "存储鬼故事拆解：高位去拥挤 vs 基本面出货",
     date: "2026-07-01",
