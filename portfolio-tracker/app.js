@@ -1,6 +1,12 @@
-const STORAGE_KEY = "portfolio-tracker-data-v1";
+const STORAGE_KEY = "portfolio-tracker-us-data-v1";
+const MARKET_KEY = "portfolio-tracker-active-market-v1";
+const LEGACY_STORAGE_KEY = "portfolio-tracker-data-v1";
 const LEGACY_KEYS = [];
 const THEME_KEY = "portfolio-tracker-theme";
+const marketMeta = {
+  US: { label:"美股", unit:"position", storageKey:STORAGE_KEY, defaultCurrency:"USD", defaultCapital:100000 },
+  CN: { label:"A股", unit:"shares", storageKey:"portfolio-tracker-cn-data-v1", defaultCurrency:"CNY", defaultCapital:100000 }
+};
 const currencyMeta = {
   USD: { label:"美元", symbol:"$", locale:"en-US" },
   CNY: { label:"人民币", symbol:"¥", locale:"zh-CN" }
@@ -8,7 +14,8 @@ const currencyMeta = {
 const buyActions = ["买入"];
 const sellActions = ["卖出"];
 
-let state = { trades: [], accountCapital: 100000, currency: "USD", source: "local" };
+let activeMarket = normalizeMarket(localStorage.getItem(MARKET_KEY));
+let state = { trades: [], accountCapital: marketMeta[activeMarket].defaultCapital, currency: marketMeta[activeMarket].defaultCurrency, market: activeMarket, source: "local" };
 let rangeDays = 30;
 let analysisDays = 30;
 let sortKey = "position";
@@ -25,33 +32,58 @@ function normalizeAction(action) {
   if (["减仓", "卖出", "清仓"].includes(action)) return "卖出";
   return action;
 }
+function normalizeMarket(market) { return marketMeta[market] ? market : "US"; }
+function activeMarketConfig() { return marketMeta[activeMarket]; }
+function isShareMode() { return activeMarketConfig().unit === "shares"; }
+function defaultStateForMarket(market=activeMarket) {
+  const meta = marketMeta[normalizeMarket(market)];
+  return { trades: [], accountCapital:meta.defaultCapital, currency:meta.defaultCurrency, market:normalizeMarket(market), isDemo:false, source:"local" };
+}
 function normalizeTrade(t) {
   const symbol = String(t.symbol || t.name || t.code || "").trim().toUpperCase();
+  const market = normalizeMarket(t.market || activeMarket);
+  const quantity = Number(t.quantity || 0);
+  const price = Number(t.price);
+  const capital = Number(state.accountCapital) || marketMeta[market].defaultCapital;
+  const positionChange = marketMeta[market].unit === "shares" && quantity > 0
+    ? (Number(t.positionChange) > 0 ? Number(t.positionChange) : price * quantity / capital * 100)
+    : Number(t.positionChange || 10);
   return {
     id:t.id||crypto.randomUUID(),
     name:symbol,
     code:symbol,
+    market,
     action:normalizeAction(t.action),
     positionType:t.positionType==="底仓"?"底仓":"波段仓",
-    price:Number(t.price),
-    positionChange:Number(t.positionChange || 10),
+    price,
+    quantity: marketMeta[market].unit === "shares" ? quantity : null,
+    positionChange,
     date:new Date(t.date || Date.now()).toISOString(),
     closeLotId:String(t.closeLotId||""),
     note:String(t.note||"")
   };
 }
-function fallbackState() {
+function fallbackState(market=activeMarket) {
+  const normalizedMarket = normalizeMarket(market);
+  const keys = [marketMeta[normalizedMarket].storageKey, ...(normalizedMarket === "US" ? [LEGACY_STORAGE_KEY] : []), ...LEGACY_KEYS];
   try {
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if (saved?.trades) return { trades:saved.trades.map(normalizeTrade), accountCapital:Number(saved.accountCapital)||100000, currency:normalizeCurrency(saved.currency), isDemo:false, source:"local" };
-    for (const key of LEGACY_KEYS) {
+    for (const key of keys) {
+      const saved = JSON.parse(localStorage.getItem(key));
+      if (saved?.trades) {
+        const meta = marketMeta[normalizedMarket];
+        return { trades:saved.trades.map(t=>normalizeTrade({...t, market:normalizedMarket})), accountCapital:Number(saved.accountCapital)||meta.defaultCapital, currency:normalizeCurrency(saved.currency || meta.defaultCurrency), market:normalizedMarket, isDemo:false, source:"local" };
+      }
       const legacy = JSON.parse(localStorage.getItem(key));
-      if (legacy?.trades) return { trades:legacy.trades.map(normalizeTrade), accountCapital:Number(legacy.accountCapital)||100000, currency:normalizeCurrency(legacy.currency), isDemo:false, source:"local" };
+      if (legacy?.trades) return { trades:legacy.trades.map(t=>normalizeTrade({...t, market:normalizedMarket})), accountCapital:Number(legacy.accountCapital)||marketMeta[normalizedMarket].defaultCapital, currency:normalizeCurrency(legacy.currency || marketMeta[normalizedMarket].defaultCurrency), market:normalizedMarket, isDemo:false, source:"local" };
     }
-    return { trades: [], accountCapital:100000, currency:"USD", isDemo:false, source:"local" };
-  } catch { return { trades: [], accountCapital:100000, currency:"USD", isDemo:false, source:"local" }; }
+    return defaultStateForMarket(normalizedMarket);
+  } catch { return defaultStateForMarket(normalizedMarket); }
 }
-function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+function saveState() {
+  state.market = activeMarket;
+  localStorage.setItem(activeMarketConfig().storageKey, JSON.stringify(state));
+  localStorage.setItem(MARKET_KEY, activeMarket);
+}
 function esc(value="") { return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 function fmt(n,digits=1) { return Number(n || 0).toFixed(digits).replace(/\.0$/,""); }
 function normalizeCurrency(currency) { return currencyMeta[currency] ? currency : "USD"; }
@@ -78,28 +110,42 @@ function computeLedger(trades=state.trades) {
   const ordered = [...trades].sort((a,b)=>new Date(a.date)-new Date(b.date));
   const lots = [];
   const pairs = [];
+  const capital = Number(state.accountCapital) || activeMarketConfig().defaultCapital;
 
   for (const t of ordered) {
     const pos = Number(t.positionChange) || 0;
+    const quantity = Number(t.quantity) || 0;
     if (buyActions.includes(t.action)) {
-      lots.push({ ...t, lotId:t.id, openPosition:pos, remainingPosition:pos });
+      lots.push({ ...t, lotId:t.id, openPosition:pos, remainingPosition:pos, openQuantity:quantity, remainingQuantity:quantity });
       continue;
     }
     if (!isSell(t.action)) continue;
 
     let remainingPos = pos;
+    let remainingQty = quantity;
     const candidates = t.closeLotId
       ? lots.filter(l=>l.lotId===t.closeLotId && l.remainingPosition>0)
       : lots.filter(l=>l.code===t.code && l.positionType===t.positionType && l.remainingPosition>0);
 
     for (const lot of candidates) {
-      if (remainingPos <= 0) break;
-      const matchedPosition = Math.min(remainingPos, lot.remainingPosition);
+      if (quantity > 0 ? remainingQty <= 0 : remainingPos <= 0) break;
+      const shareLot = Number(lot.remainingQuantity) > 0;
+      const matchedQuantity = shareLot ? Math.min(remainingQty, lot.remainingQuantity) : 0;
+      const matchedPosition = shareLot
+        ? Math.min(lot.remainingPosition, Number(lot.price) * matchedQuantity / capital * 100)
+        : Math.min(remainingPos, lot.remainingPosition);
       const pnlPct = lot.price ? (Number(t.price)-Number(lot.price))/Number(lot.price)*100 : 0;
-      const contribution = matchedPosition * pnlPct / 100;
+      const contribution = shareLot
+        ? (Number(t.price)-Number(lot.price)) * matchedQuantity / capital * 100
+        : matchedPosition * pnlPct / 100;
+      if (matchedPosition <= 0 && matchedQuantity <= 0) continue;
 
       lot.remainingPosition = Math.max(0, lot.remainingPosition - matchedPosition);
       remainingPos = Math.max(0, remainingPos - matchedPosition);
+      if (shareLot) {
+        lot.remainingQuantity = Math.max(0, lot.remainingQuantity - matchedQuantity);
+        remainingQty = Math.max(0, remainingQty - matchedQuantity);
+      }
 
       pairs.push({
         id:`${t.id}-${lot.lotId}-${matchedPosition}`,
@@ -109,6 +155,7 @@ function computeLedger(trades=state.trades) {
         openTrade:lot,
         closeTrade:t,
         position:matchedPosition,
+        quantity:matchedQuantity || null,
         buyPrice:Number(lot.price),
         sellPrice:Number(t.price),
         pnlPct,
@@ -123,15 +170,18 @@ function getHoldings(trades=state.trades) {
   const { lots } = computeLedger(trades);
   const map = {};
   for (const lot of lots.filter(l=>l.remainingPosition>0.0001)) {
-    if (!map[lot.code]) map[lot.code] = { code:lot.code, name:lot.name, position:0, costValue:0, positionType:lot.positionType, lastTrade:lot };
+    if (!map[lot.code]) map[lot.code] = { code:lot.code, name:lot.name, position:0, quantity:0, costValue:0, positionType:lot.positionType, lastTrade:lot };
     const h = map[lot.code];
     h.name = lot.name;
     h.positionType = lot.positionType;
     h.position += Number(lot.remainingPosition) || 0;
-    h.costValue += (Number(lot.price) || 0) * (Number(lot.remainingPosition) || 0);
+    h.quantity += Number(lot.remainingQuantity) || 0;
+    h.costValue += Number(lot.remainingQuantity) > 0
+      ? (Number(lot.price) || 0) * (Number(lot.remainingQuantity) || 0)
+      : (Number(lot.price) || 0) * (Number(lot.remainingPosition) || 0);
     if (new Date(lot.date) > new Date(h.lastTrade.date)) h.lastTrade = lot;
   }
-  return Object.values(map).map(h=>({ ...h, cost:h.position ? h.costValue / h.position : 0 }));
+  return Object.values(map).map(h=>({ ...h, cost:h.quantity ? h.costValue / h.quantity : h.position ? h.costValue / h.position : 0 }));
 }
 
 function computeSymbolStats(holdings=getHoldings(), ledger=computeLedger()) {
@@ -244,6 +294,8 @@ function render() {
   const realizedDollar = capital * realizedPct / 100;
   const usedCapital = capital * total / 100;
 
+  document.querySelectorAll("#marketSwitch button").forEach(btn=>btn.classList.toggle("active", btn.dataset.market===activeMarket));
+  document.querySelector(".market-status").innerHTML = `<i></i> ${activeMarketConfig().label} · 本机私有数据`;
   setText("totalPosition",`${fmt(total)}%`);
   document.getElementById("currencySelect").value = normalizeCurrency(state.currency);
   setText("accountCapital",usd(capital));
@@ -284,7 +336,7 @@ function renderHoldings(holdings) {
   body.innerHTML=visible.map(h=>`<tr>
     <td data-label="标的"><div class="stock"><span class="stock-avatar">${esc(h.name[0])}</span><span><b>${esc(h.name)}</b></span></div></td>
     <td data-label="状态"><span class="status ${h.positionType==="底仓"?"base":"swing"}">${esc(h.positionType)}</span></td>
-    <td data-label="仓位"><div class="position-cell"><b>${fmt(h.position)}%</b><div class="position-mini"><i style="width:${Math.min(100,h.position*3)}%"></i></div></div></td>
+    <td data-label="仓位"><div class="position-cell"><b>${fmt(h.position)}%</b>${isShareMode()?`<small>${fmt(h.quantity,0)} 股</small>`:""}<div class="position-mini"><i style="width:${Math.min(100,h.position*3)}%"></i></div></div></td>
     <td data-label="占用资金"><b>${usd(capital*h.position/100)}</b></td>
     <td data-label="持仓成本"><div class="price-stack"><b>${money(h.cost)}</b><small>按仓位加权均价</small></div></td>
     <td data-label="最近操作"><span class="latest-action">${esc(h.lastTrade.action)} · ${formatDate(h.lastTrade.date)}</span><button class="mini-btn row-actions" title="编辑最近记录" onclick="editTrade('${h.lastTrade.id}')">✎</button></td>
@@ -368,7 +420,7 @@ function renderPairs(pairs) {
     <td data-label="标的"><div class="stock"><span class="stock-avatar">${esc(p.name[0])}</span><span><b>${esc(p.name)}</b></span></div></td>
     <td data-label="开仓批次"><span class="latest-action">${formatDate(p.openTrade.date,true)}</span><br><small>${esc(p.openTrade.action)} ${money(p.buyPrice)}</small></td>
     <td data-label="平仓记录"><span class="latest-action">${formatDate(p.closeTrade.date,true)}</span><br><small>${esc(p.closeTrade.action)} ${money(p.sellPrice)}</small></td>
-    <td data-label="平仓仓位"><b>${fmt(p.position)}%</b><br><small>仓位</small></td>
+    <td data-label="平仓仓位"><b>${fmt(p.position)}%</b><br><small>${p.quantity?`${fmt(p.quantity,0)} 股`:"仓位"}</small></td>
     <td data-label="买入/卖出"><div class="price-stack"><b>${money(p.buyPrice)} / ${money(p.sellPrice)}</b><small>${p.pnlPct>=0?"+":""}${fmt(p.pnlPct,2)}%</small></div></td>
     <td data-label="已实现收益"><span class="pnl ${p.contribution>=0?"up":"down"}">${usd(capital*p.contribution/100)}</span><br><small>${p.contribution>=0?"+":""}${fmt(p.contribution,2)}% 总账户</small></td>
   </tr>`).join("");
@@ -381,11 +433,12 @@ function renderActivity() {
   const ordered=[...state.trades].sort((a,b)=>new Date(b.date)-new Date(a.date));
   list.innerHTML=ordered.map(t=>{
     const buy=buyActions.includes(t.action);
+    const sizeText = isShareMode() && t.quantity ? `${fmt(t.quantity,0)} 股 · 折算 ${fmt(t.positionChange,2)}%` : `${fmt(t.positionChange)}%`;
     return `<div class="activity-item">
       <div class="action-icon ${buy?"buy":"sell"}">${buy?"↑":"↓"}</div>
       <div class="activity-main">
         <div class="activity-title"><b>${esc(t.action)} · ${esc(t.name)}</b><time>${formatDate(t.date,true)}</time></div>
-        <div class="activity-detail">价格 <strong>${money(t.price)}</strong> · 仓位 <strong>${buy?"+":"−"}${fmt(t.positionChange)}%</strong> · 折算 <strong>${usd(capital*t.positionChange/100)}</strong> · ${esc(t.positionType)}</div>
+        <div class="activity-detail">价格 <strong>${money(t.price)}</strong> · ${isShareMode()?"股数":"仓位"} <strong>${buy?"+":"−"}${sizeText}</strong> · 折算 <strong>${usd(capital*t.positionChange/100)}</strong> · ${esc(t.positionType)}</div>
         ${t.note?`<div class="activity-note">${esc(t.note)}</div>`:""}
       </div>
       <div class="activity-actions"><button class="mini-btn" onclick="editTrade('${t.id}')" title="编辑">✎</button><button class="mini-btn danger" onclick="deleteTrade('${t.id}')" title="删除">×</button></div>
@@ -440,9 +493,34 @@ function refreshCloseLotOptions(trade=null) {
   const lots = getMatchingCloseLots(trade);
   const emptyText = code ? `暂无 ${positionType} 的 ${code} 买入记录` : `先输入标的，只显示 ${positionType} 买入记录`;
   select.innerHTML = lots.length
-    ? [`<option value="">自动匹配最早 ${positionType} 开仓</option>`, ...lots.map(l=>`<option value="${l.lotId}">${formatDate(l.date,true)} · ${esc(l.name)} · ${esc(l.positionType)} · 剩 ${fmt(l.remainingPosition)}% · ${money(l.price)}</option>`)].join("")
+    ? [`<option value="">自动匹配最早 ${positionType} 开仓</option>`, ...lots.map(l=>`<option value="${l.lotId}">${formatDate(l.date,true)} · ${esc(l.name)} · ${esc(l.positionType)} · ${isShareMode()?`剩 ${fmt(l.remainingQuantity,0)} 股`:`剩 ${fmt(l.remainingPosition)}%`} · ${money(l.price)}</option>`)].join("")
     : `<option value="">${esc(emptyText)}</option>`;
   select.value = trade?.closeLotId || "";
+}
+function configureTradeFormMode() {
+  const input = document.getElementById("positionChange");
+  const quick = document.getElementById("quickPosition");
+  if (isShareMode()) {
+    document.getElementById("quickPositionLabel").firstChild.textContent = "快捷股数";
+    document.getElementById("positionInputLabel").textContent = "股数";
+    input.min = "0";
+    input.max = "100000000";
+    input.step = "100";
+    input.placeholder = "例如：100";
+    document.getElementById("positionMinus").textContent = "-100";
+    document.getElementById("positionPlus").textContent = "+100";
+    quick.innerHTML = `<option value="100">1 手 100 股</option><option value="200">2 手 200 股</option><option value="500">500 股</option><option value="1000">1000 股</option><option value="">手动输入</option>`;
+  } else {
+    document.getElementById("quickPositionLabel").firstChild.textContent = "快捷仓位";
+    document.getElementById("positionInputLabel").textContent = "仓位变化（%）";
+    input.min = "0";
+    input.max = "100";
+    input.step = "5";
+    input.placeholder = "例如：5";
+    document.getElementById("positionMinus").textContent = "-5%";
+    document.getElementById("positionPlus").textContent = "+5%";
+    quick.innerHTML = `<option value="10">常用 10%</option><option value="5">一半 5%</option><option value="15">15%</option><option value="20">20%</option><option value="">手动输入</option>`;
+  }
 }
 function syncQuickPosition() {
   const quick = value("quickPosition");
@@ -470,31 +548,43 @@ function updatePositionSignedPreview() {
   if (!el) return;
   const n = Number(value("positionChange")) || 0;
   const sign = isSell(value("action")) ? "−" : "+";
-  el.textContent = `实际记为 ${sign}${fmt(n)}%`;
+  if (isShareMode()) {
+    const price = Number(value("price")) || 0;
+    const capital = Number(state.accountCapital) || activeMarketConfig().defaultCapital;
+    const pct = price && n ? price * n / capital * 100 : 0;
+    el.textContent = `实际记为 ${sign}${fmt(n,0)} 股，折算 ${fmt(pct,2)}% 仓位`;
+  } else {
+    el.textContent = `实际记为 ${sign}${fmt(n)}%`;
+  }
 }
 function adjustPositionByStep(delta) {
   const input = document.getElementById("positionChange");
   const current = Number(input.value) || 0;
-  const next = Math.min(100, Math.max(5, current + delta));
+  const step = isShareMode() ? 100 : 5;
+  const max = isShareMode() ? 100000000 : 100;
+  const next = Math.min(max, Math.max(step, current + (delta > 0 ? step : -step)));
   input.value = fmt(next);
-  document.getElementById("quickPosition").value = ["5","10","15","20"].includes(String(input.value)) ? String(input.value) : "";
+  document.getElementById("quickPosition").value = (isShareMode() ? ["100","200","500","1000"] : ["5","10","15","20"]).includes(String(input.value)) ? String(input.value) : "";
   updatePositionSignedPreview();
 }
 function openTrade(trade=null) {
   document.getElementById("tradeForm").reset();
+  configureTradeFormMode();
   refreshSymbolSuggestions();
   document.getElementById("editId").value=trade?.id||"";
   document.getElementById("dialogTitle").textContent=trade?"编辑操作":"记录操作";
-  const ids=["name","action","positionType","price","positionChange","note"];
+  const ids=["name","action","positionType","price","note"];
   ids.forEach(id=>document.getElementById(id).value=trade?.[id]??"");
+  document.getElementById("positionChange").value = isShareMode() ? (trade?.quantity ?? "") : (trade?.positionChange ?? "");
   document.getElementById("tradeDate").value=toLocalInput(trade?.date||new Date().toISOString());
   if (!trade) {
     document.getElementById("action").value="买入";
     document.getElementById("positionType").value="波段仓";
-    document.getElementById("quickPosition").value="10";
-    document.getElementById("positionChange").value="10";
+    document.getElementById("quickPosition").value=isShareMode()?"100":"10";
+    document.getElementById("positionChange").value=isShareMode()?"100":"10";
   } else {
-    const quick = ["5","10","15","20"].includes(String(trade.positionChange)) ? String(trade.positionChange) : "";
+    const formValue = isShareMode() ? String(trade.quantity || "") : String(trade.positionChange);
+    const quick = (isShareMode() ? ["100","200","500","1000"] : ["5","10","15","20"]).includes(formValue) ? formValue : "";
     document.getElementById("quickPosition").value = quick;
   }
   refreshCloseLotOptions(trade);
@@ -521,13 +611,13 @@ function download(content,type,filename) {
 }
 function csvEscape(v){ const s=String(v??""); return /[",\n]/.test(s)?`"${s.replace(/"/g,'""')}"`:s; }
 function exportCsv() {
-  const fields=["date","name","action","positionType","price","positionChange","closeLotId","note"];
-  const labels=["操作时间","标的","操作类型","持仓类型","操作价格","仓位变化","对应开仓ID","备注"];
-  download("\ufeff"+[labels,...state.trades.map(t=>fields.map(f=>csvEscape(t[f])))].map(r=>r.join(",")).join("\n"),"text/csv;charset=utf-8","个人持仓操作记录.csv");
+  const fields=["date","name","action","positionType","price","positionChange","quantity","closeLotId","note"];
+  const labels=["操作时间","标的","操作类型","持仓类型","操作价格","仓位变化","股数","对应开仓ID","备注"];
+  download("\ufeff"+[labels,...state.trades.map(t=>fields.map(f=>csvEscape(t[f])))].map(r=>r.join(",")).join("\n"),"text/csv;charset=utf-8",`${activeMarketConfig().label}操作记录.csv`);
   close("exportDialog"); toast("CSV 已导出");
 }
 function exportJson() {
-  download(JSON.stringify({version:1,exportedAt:new Date().toISOString(),accountCapital:Number(state.accountCapital)||100000,currency:normalizeCurrency(state.currency),trades:state.trades},null,2),"application/json","个人持仓操作记录.json");
+  download(JSON.stringify({version:2,market:activeMarket,exportedAt:new Date().toISOString(),accountCapital:Number(state.accountCapital)||activeMarketConfig().defaultCapital,currency:normalizeCurrency(state.currency),trades:state.trades},null,2),"application/json",`${activeMarketConfig().label}操作记录.json`);
   close("exportDialog"); toast("JSON 已导出");
 }
 function parseCsv(text) {
@@ -535,7 +625,7 @@ function parseCsv(text) {
   for(let i=0;i<text.length;i++){ const c=text[i],n=text[i+1]; if(c==='"'&&quoted&&n==='"'){cell+='"';i++;}else if(c==='"'){quoted=!quoted;}else if(c===","&&!quoted){row.push(cell);cell="";}else if((c==="\n"||c==="\r")&&!quoted){if(c==="\r"&&n==="\n")i++;row.push(cell);if(row.some(Boolean))rows.push(row);row=[];cell="";}else cell+=c; }
   row.push(cell); if(row.some(Boolean)) rows.push(row);
   if(rows.length<2) throw new Error("CSV 中没有数据");
-  const aliases={操作时间:"date",标的:"name",标的名称:"name",标的代码:"code",操作类型:"action",持仓类型:"positionType",操作价格:"price",仓位变化:"positionChange",对应开仓ID:"closeLotId",备注:"note"};
+  const aliases={操作时间:"date",标的:"name",标的名称:"name",标的代码:"code",操作类型:"action",持仓类型:"positionType",操作价格:"price",仓位变化:"positionChange",股数:"quantity",对应开仓ID:"closeLotId",备注:"note"};
   const headers=rows[0].map(h=>aliases[h.trim()]||h.trim());
   return rows.slice(1).map(r=>Object.fromEntries(headers.map((h,i)=>[h,r[i]??""])));
 }
@@ -544,10 +634,24 @@ function validateTrades(items) {
   return items.map((t,i)=>{
     if(!(t.name||t.code||t.symbol)||!t.action||!t.date) throw new Error(`第 ${i+1} 条记录缺少必要字段`);
     if(![...buyActions,...sellActions].includes(normalizeAction(t.action))) throw new Error(`第 ${i+1} 条操作类型不支持`);
-    const price=Number(t.price), positionChange=Number(t.positionChange);
-    if([price,positionChange].some(Number.isNaN) || positionChange <= 0) throw new Error(`第 ${i+1} 条数字字段不正确`);
-    return normalizeTrade(t);
+    const price=Number(t.price), positionChange=Number(t.positionChange), quantity=Number(t.quantity);
+    if(Number.isNaN(price) || price <= 0) throw new Error(`第 ${i+1} 条价格不正确`);
+    if(isShareMode()) {
+      if(Number.isNaN(quantity) || quantity <= 0) throw new Error(`第 ${i+1} 条股数不正确`);
+    } else if(Number.isNaN(positionChange) || positionChange <= 0) throw new Error(`第 ${i+1} 条仓位变化不正确`);
+    return normalizeTrade({...t, market:activeMarket});
   });
+}
+function switchMarket(market) {
+  const nextMarket = normalizeMarket(market);
+  if (nextMarket === activeMarket) return;
+  saveState();
+  activeMarket = nextMarket;
+  state = fallbackState(activeMarket);
+  document.getElementById("searchInput").value = "";
+  document.getElementById("statusFilter").value = "all";
+  render();
+  toast(`已切换到${activeMarketConfig().label}看板`);
 }
 
 document.getElementById("addBtn").onclick=()=>openTrade();
@@ -558,9 +662,11 @@ document.getElementById("closeExport").onclick=()=>close("exportDialog");
 document.getElementById("exportCsv").onclick=exportCsv;
 document.getElementById("exportJson").onclick=exportJson;
 document.getElementById("importBtn").onclick=()=>document.getElementById("fileInput").click();
+document.getElementById("marketSwitch").onclick=e=>{ if(e.target.dataset.market) switchMarket(e.target.dataset.market); };
 document.getElementById("action").onchange=()=>{ refreshCloseLotOptions(); updatePositionSignedPreview(); };
 document.getElementById("name").onfocus=refreshSymbolSuggestions;
 document.getElementById("name").oninput=()=>refreshCloseLotOptions();
+document.getElementById("price").oninput=updatePositionSignedPreview;
 document.getElementById("positionType").onchange=()=>refreshCloseLotOptions();
 document.getElementById("quickPosition").onchange=syncQuickPosition;
 document.getElementById("positionMinus").onclick=()=>adjustPositionByStep(-5);
@@ -574,7 +680,7 @@ document.getElementById("fileInput").onchange=async e=>{
     const imported=validateTrades(raw);
     if(!confirm(`将导入 ${imported.length} 条记录并替换当前数据，是否继续？`))return;
     const parsed = file.name.toLowerCase().endsWith(".json") ? JSON.parse(text) : null;
-    state={trades:imported,accountCapital:Number(parsed?.accountCapital)||Number(state.accountCapital)||100000,currency:normalizeCurrency(parsed?.currency || state.currency),isDemo:false,source:"local"};saveState();render();toast(`已导入 ${imported.length} 条记录`);
+    state={trades:imported,accountCapital:Number(parsed?.accountCapital)||Number(state.accountCapital)||activeMarketConfig().defaultCapital,currency:normalizeCurrency(parsed?.currency || state.currency),market:activeMarket,isDemo:false,source:"local"};saveState();render();toast(`已导入 ${imported.length} 条${activeMarketConfig().label}记录`);
   } catch(err){ alert(`导入失败：${err.message}`); }
   finally {e.target.value="";}
 };
@@ -582,11 +688,32 @@ document.getElementById("tradeForm").onsubmit=e=>{
   e.preventDefault();
   const id=document.getElementById("editId").value;
   const editingTrade = state.trades.find(t=>t.id===id);
+  const sizeValue = Number(value("positionChange"));
+  if (!Number.isFinite(Number(value("price"))) || Number(value("price")) <= 0) {
+    alert("请输入有效的操作价格。");
+    return;
+  }
+  if (!Number.isFinite(sizeValue) || sizeValue <= 0) {
+    alert(isShareMode() ? "请输入有效的股数。" : "请输入有效的仓位变化。");
+    return;
+  }
   if (isSell(value("action")) && !value("closeLotId") && !getMatchingCloseLots(editingTrade).length) {
     alert("当前标的和持仓类型下没有可卖出的买入批次，请先确认标的或持仓类型。");
     return;
   }
-  const trade=normalizeTrade({id:id||crypto.randomUUID(),name:value("name").trim(),action:value("action"),positionType:value("positionType"),price:Number(value("price")),positionChange:Number(value("positionChange")),date:new Date(value("tradeDate")).toISOString(),closeLotId:value("closeLotId"),note:value("note").trim()});
+  const trade=normalizeTrade({
+    id:id||crypto.randomUUID(),
+    name:value("name").trim(),
+    action:value("action"),
+    positionType:value("positionType"),
+    price:Number(value("price")),
+    quantity:isShareMode()?Number(value("positionChange")):null,
+    positionChange:isShareMode()?undefined:Number(value("positionChange")),
+    date:new Date(value("tradeDate")).toISOString(),
+    closeLotId:value("closeLotId"),
+    note:value("note").trim(),
+    market:activeMarket
+  });
   if(id) state.trades=state.trades.map(t=>t.id===id?trade:t); else state.trades.push(trade);
   state.isDemo=false; state.source="local"; saveState();refreshSymbolSuggestions();close("tradeDialog");render();toast(id?"记录已更新":"操作已记录");
 };
@@ -623,15 +750,16 @@ document.getElementById("analysisRangeTabs").onclick=e=>{
 };
 document.getElementById("clearBtn").onclick=()=>{
   if(!state.trades.length)return;
-  if(confirm("确定清空全部操作记录？建议先导出备份。")){state={trades:[],accountCapital:Number(state.accountCapital)||100000,currency:normalizeCurrency(state.currency),isDemo:false,source:"local"};saveState();render();toast("已清空");}
+  if(confirm("确定清空当前看板全部操作记录？建议先导出备份。")){state={trades:[],accountCapital:Number(state.accountCapital)||activeMarketConfig().defaultCapital,currency:normalizeCurrency(state.currency),market:activeMarket,isDemo:false,source:"local"};saveState();render();toast("已清空");}
 };
 document.getElementById("themeBtn").onclick=()=>{
   document.body.classList.toggle("dark");localStorage.setItem(THEME_KEY,document.body.classList.contains("dark")?"dark":"light");
 };
 if(localStorage.getItem(THEME_KEY)==="dark")document.body.classList.add("dark");
 async function init() {
-  state = fallbackState();
+  activeMarket = normalizeMarket(localStorage.getItem(MARKET_KEY));
+  state = fallbackState(activeMarket);
   render();
-  if (!state.trades.length) toast("已进入个人账本，可开始记录");
+  if (!state.trades.length) toast(`已进入${activeMarketConfig().label}账本，可开始记录`);
 }
 init();
