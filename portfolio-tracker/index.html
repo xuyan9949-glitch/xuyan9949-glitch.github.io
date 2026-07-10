@@ -283,6 +283,15 @@
           </div>
           <span id="positionSignedPreview" class="field-hint">实际记为 +10%</span>
         </label>
+        <label id="quickSharesLabel" style="display:none">快捷股数
+          <div class="quick-shares">
+            <button type="button" class="share-btn" data-shares="100">100 股</button>
+            <button type="button" class="share-btn" data-shares="200">200 股</button>
+            <button type="button" class="share-btn" data-shares="500">500 股</button>
+            <button type="button" class="share-btn" data-shares="1000">1000 股</button>
+          </div>
+          <span class="field-hint">自动换算为仓位百分比</span>
+        </label>
         <label>操作时间<input id="tradeDate" type="datetime-local" required></label>
         <label id="closeLotRow" class="full-width">对应开仓批次
           <select id="closeLotId"></select>

@@ -135,6 +135,13 @@ function formatCurrency(n) {
   const sign = Number(n) < 0 ? "-" : "";
   return `${sign}${meta.symbol}${Math.abs(Number(n)||0).toLocaleString(meta.locale,{maximumFractionDigits:2,minimumFractionDigits:2})}`;
 }
+function toggleCurrency() {
+  state.currency = state.currency === "USD" ? "CNY" : "USD";
+  saveState();
+  render();
+  const btn = document.getElementById("currencyBtn");
+  if (btn) btn.textContent = state.currency;
+}
 function setText(id,text) { document.getElementById(id).textContent=text; }
 function value(id){ return document.getElementById(id).value; }
 function isSell(action) { return sellActions.includes(action); }
@@ -588,6 +595,7 @@ function refreshCloseLotOptions(trade=null) {
 function configureTradeFormMode() {
   const input = document.getElementById("positionChange");
   const quick = document.getElementById("quickPosition");
+  const sharesLabel = document.getElementById("quickSharesLabel");
   if (isShareMode()) {
     document.getElementById("quickPositionLabel").firstChild.textContent = "快捷股数";
     document.getElementById("positionInputLabel").textContent = "股数";
@@ -598,6 +606,7 @@ function configureTradeFormMode() {
     document.getElementById("positionMinus").textContent = "-100";
     document.getElementById("positionPlus").textContent = "+100";
     quick.innerHTML = `<option value="100">1 手 100 股</option><option value="200">2 手 200 股</option><option value="500">500 股</option><option value="1000">1000 股</option><option value="">手动输入</option>`;
+    if (sharesLabel) sharesLabel.style.display = "none";
   } else {
     document.getElementById("quickPositionLabel").firstChild.textContent = "快捷仓位";
     document.getElementById("positionInputLabel").textContent = "仓位变化（%）";
@@ -608,7 +617,20 @@ function configureTradeFormMode() {
     document.getElementById("positionMinus").textContent = "-5%";
     document.getElementById("positionPlus").textContent = "+5%";
     quick.innerHTML = `<option value="10">常用 10%</option><option value="5">一半 5%</option><option value="15">15%</option><option value="20">20%</option><option value="">手动输入</option>`;
+    if (sharesLabel) sharesLabel.style.display = "";
   }
+}
+function applyQuickShares(shares) {
+  const price = Number(document.getElementById("price").value);
+  const capital = Number(state.accountCapital) || activeMarketConfig().defaultCapital;
+  if (!price || !capital) {
+    toast("请先输入价格和本金");
+    return;
+  }
+  const pct = shares * price / capital * 100;
+  document.getElementById("positionChange").value = fmt(pct, 2);
+  document.getElementById("quickPosition").value = "";
+  updatePositionSignedPreview();
 }
 function syncQuickPosition() {
   const quick = value("quickPosition");
@@ -860,5 +882,13 @@ async function init() {
   if (lastClearSnapshot?.state?.trades?.length) {
     toast(`检测到上次清空前备份`, { label:"恢复", onClick:undoLastClear });
   } else if (!state.trades.length) toast(`已进入${activeMarketConfig().label}账本，可开始记录`);
+  const currBtn = document.getElementById("currencyBtn");
+  if (currBtn) {
+    currBtn.onclick = toggleCurrency;
+    currBtn.textContent = state.currency;
+  }
+  document.querySelectorAll(".share-btn").forEach(btn => {
+    btn.onclick = () => applyQuickShares(Number(btn.dataset.shares));
+  });
 }
 init();

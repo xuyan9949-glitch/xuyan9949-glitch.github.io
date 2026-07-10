@@ -258,3 +258,8 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
   .performance-grid { grid-template-columns:1fr; }
   .header-actions .icon-btn { display:none; }
 }
+
+/* 快捷股数按钮 */
+.quick-shares { display:flex; gap:6px; flex-wrap:wrap; margin-top:4px; }
+.share-btn { padding:6px 14px; border:1px solid var(--line); border-radius:8px; background:var(--panel); color:var(--text); font-size:13px; font-weight:600; cursor:pointer; }
+.share-btn:hover { border-color:var(--blue); color:var(--blue); background:var(--blue-soft); }
