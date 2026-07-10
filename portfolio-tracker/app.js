@@ -478,7 +478,12 @@ function renderChart() {
 
 function getOpenLotsForForm(trade=null) {
   const trades = state.trades.filter(t=>t.id!==trade?.id);
-  return computeLedger(trades).lots.filter(l=>l.remainingPosition>0.0001);
+  return computeLedger(trades).lots.filter(l=>isLotOpen(l));
+}
+function isLotOpen(lot) {
+  return isShareMode()
+    ? Number(lot.remainingQuantity) > 0.0001
+    : Number(lot.remainingPosition) > 0.0001;
 }
 function getMatchingCloseLots(trade=null) {
   const code = value("name").trim().toUpperCase();
@@ -498,7 +503,7 @@ function refreshCloseLotOptions(trade=null) {
   select.innerHTML = lots.length
     ? [`<option value="">自动匹配最早 ${positionType} 开仓</option>`, ...lots.map(l=>`<option value="${l.lotId}">${formatDate(l.date,true)} · ${esc(l.name)} · ${esc(l.positionType)} · ${isShareMode()?`剩 ${fmt(l.remainingQuantity,0)} 股`:`剩 ${fmt(l.remainingPosition)}%`} · ${money(l.price)}</option>`)].join("")
     : `<option value="">${esc(emptyText)}</option>`;
-  select.value = trade?.closeLotId || "";
+  select.value = lots.some(l=>l.lotId===trade?.closeLotId) ? trade.closeLotId : "";
 }
 function configureTradeFormMode() {
   const input = document.getElementById("positionChange");
