@@ -696,7 +696,7 @@ function toast(message, action=null) {
   const actionBtn=document.getElementById("toastAction");
   if(actionBtn) actionBtn.onclick=action.onClick;
   clearTimeout(toast.timer);
-  toast.timer=setTimeout(()=>el.classList.remove("show"), action ? 9000 : 2200);
+  if(!action) toast.timer=setTimeout(()=>el.classList.remove("show"),2200);
 }
 function download(content,type,filename) {
   const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([content],{type})); a.download=filename;
