@@ -3,6 +3,7 @@ const MARKET_KEY = "portfolio-tracker-active-market-v1";
 const LEGACY_STORAGE_KEY = "portfolio-tracker-data-v1";
 const LEGACY_KEYS = [];
 const THEME_KEY = "portfolio-tracker-theme";
+const CLEAR_BACKUP_KEY = "portfolio-tracker-last-clear-v1";
 const marketMeta = {
   US: { label:"美股", unit:"position", storageKey:STORAGE_KEY, defaultCurrency:"USD", defaultCapital:100000 },
   CN: { label:"A股", unit:"shares", storageKey:"portfolio-tracker-cn-data-v1", defaultCurrency:"CNY", defaultCapital:100000 }
@@ -20,6 +21,7 @@ let rangeDays = 30;
 let analysisDays = 30;
 let sortKey = "position";
 let sortDirection = -1;
+let lastClearSnapshot = loadClearBackup();
 
 function daysAgo(days, hour) {
   const d = new Date();
@@ -85,6 +87,42 @@ function saveState() {
   state.currency = marketCurrency(activeMarket);
   localStorage.setItem(activeMarketConfig().storageKey, JSON.stringify(state));
   localStorage.setItem(MARKET_KEY, activeMarket);
+}
+function cloneState(value) { return JSON.parse(JSON.stringify(value)); }
+function loadClearBackup() {
+  try {
+    const backup = JSON.parse(localStorage.getItem(CLEAR_BACKUP_KEY));
+    return backup?.state?.trades?.length ? backup : null;
+  } catch { return null; }
+}
+function saveClearBackup(snapshot) {
+  lastClearSnapshot = snapshot;
+  localStorage.setItem(CLEAR_BACKUP_KEY, JSON.stringify(snapshot));
+}
+function clearClearBackup() {
+  lastClearSnapshot = null;
+  localStorage.removeItem(CLEAR_BACKUP_KEY);
+}
+function undoLastClear() {
+  const backup = lastClearSnapshot || loadClearBackup();
+  if (!backup?.state?.trades?.length) {
+    toast("没有可恢复的数据");
+    return;
+  }
+  activeMarket = normalizeMarket(backup.market);
+  state = {
+    ...defaultStateForMarket(activeMarket),
+    ...backup.state,
+    trades: backup.state.trades.map(t=>normalizeTrade({...t, market:activeMarket})),
+    market: activeMarket,
+    currency: marketCurrency(activeMarket),
+    isDemo:false,
+    source:"local"
+  };
+  saveState();
+  clearClearBackup();
+  render();
+  toast("已恢复清空前数据");
 }
 function esc(value="") { return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 function fmt(n,digits=1) { return Number(n || 0).toFixed(digits).replace(/\.0$/,""); }
@@ -651,9 +689,14 @@ window.deleteTrade=id=>{
   state.trades=state.trades.filter(t=>t.id!==id); state.isDemo=false; saveState(); render(); toast("记录已删除");
 };
 function close(id){ document.getElementById(id).close(); }
-function toast(message) {
-  const el=document.getElementById("toast"); el.textContent=message; el.classList.add("show");
-  clearTimeout(toast.timer); toast.timer=setTimeout(()=>el.classList.remove("show"),2200);
+function toast(message, action=null) {
+  const el=document.getElementById("toast");
+  el.innerHTML=`<span>${esc(message)}</span>${action?`<button type="button" id="toastAction">${esc(action.label)}</button>`:""}`;
+  el.classList.add("show");
+  const actionBtn=document.getElementById("toastAction");
+  if(actionBtn) actionBtn.onclick=action.onClick;
+  clearTimeout(toast.timer);
+  toast.timer=setTimeout(()=>el.classList.remove("show"), action ? 9000 : 2200);
 }
 function download(content,type,filename) {
   const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([content],{type})); a.download=filename;
@@ -796,7 +839,14 @@ document.getElementById("analysisRangeTabs").onclick=e=>{
 };
 document.getElementById("clearBtn").onclick=()=>{
   if(!state.trades.length)return;
-  if(confirm("确定清空当前看板全部操作记录？建议先导出备份。")){state={trades:[],accountCapital:Number(state.accountCapital)||activeMarketConfig().defaultCapital,currency:marketCurrency(activeMarket),market:activeMarket,isDemo:false,source:"local"};saveState();render();toast("已清空");}
+  const label = activeMarketConfig().label;
+  if(confirm(`这会清空【${label}】看板的全部操作记录，不只是清空流水展示。清空后可撤销一次。是否继续？`)){
+    saveClearBackup({ market:activeMarket, clearedAt:new Date().toISOString(), state:cloneState(state) });
+    state={trades:[],accountCapital:Number(state.accountCapital)||activeMarketConfig().defaultCapital,currency:marketCurrency(activeMarket),market:activeMarket,isDemo:false,source:"local"};
+    saveState();
+    render();
+    toast(`已清空${label}看板`, { label:"撤销", onClick:undoLastClear });
+  }
 };
 document.getElementById("themeBtn").onclick=()=>{
   document.body.classList.toggle("dark");localStorage.setItem(THEME_KEY,document.body.classList.contains("dark")?"dark":"light");
@@ -806,6 +856,9 @@ async function init() {
   activeMarket = normalizeMarket(localStorage.getItem(MARKET_KEY));
   state = fallbackState(activeMarket);
   render();
-  if (!state.trades.length) toast(`已进入${activeMarketConfig().label}账本，可开始记录`);
+  lastClearSnapshot = loadClearBackup();
+  if (lastClearSnapshot?.state?.trades?.length) {
+    toast(`检测到上次清空前备份`, { label:"恢复", onClick:undoLastClear });
+  } else if (!state.trades.length) toast(`已进入${activeMarketConfig().label}账本，可开始记录`);
 }
 init();
