@@ -87,6 +87,8 @@ tbody tr:hover { background:var(--panel-2); }
 .row-actions { opacity:0; margin-left:5px; }
 tr:hover .row-actions { opacity:1; }
 .mini-btn { border:0; background:none; color:var(--muted); padding:2px 4px; }
+#currencyBtn { font-size:11px; font-weight:700; padding:3px 10px; border:1px solid var(--line); border-radius:12px; background:var(--panel-2); color:var(--muted); letter-spacing:.3px; min-width:44px; text-align:center; }
+#currencyBtn:hover { border-color:var(--blue); color:var(--blue); background:var(--blue-soft); }
 .sortable { cursor:pointer; user-select:none; }
 .segmented { padding:3px; background:var(--panel-2); border-radius:7px; display:flex; }
 .segmented button { border:0; background:none; color:var(--muted); font-size:11px; padding:4px 7px; border-radius:5px; }
