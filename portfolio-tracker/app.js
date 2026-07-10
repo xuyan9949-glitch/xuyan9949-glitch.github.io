@@ -216,6 +216,8 @@ function computeSymbolStats(holdings=getHoldings(), ledger=computeLedger()) {
       pairCount:0,
       wins:0,
       losses:0,
+      winContribution:0,
+      lossContribution:0,
       firstDate:null,
       lastDate:null
     };
@@ -242,7 +244,8 @@ function computeSymbolStats(holdings=getHoldings(), ledger=computeLedger()) {
     s.closedPosition += p.position;
     s.weightedHoldDays += holdDays * p.position;
     s.pairCount += 1;
-    if (p.pnlPct >= 0) s.wins += 1; else s.losses += 1;
+    if (p.pnlPct >= 0) { s.wins += 1; s.winContribution += p.contribution; }
+    else { s.losses += 1; s.lossContribution += p.contribution; }
   }
 
   return Object.values(stats).map(s=>{
@@ -274,6 +277,28 @@ function computeRiskProfile(holdings, stats, ledger) {
     pnlConcentration,
     capitalUsed: capital*totalExposure/100,
     totalPairs: ledger.pairs.length
+  };
+}
+function computeClosedPerformance(stats) {
+  const closed = stats.filter(s=>s.pairCount > 0);
+  const pairCount = closed.reduce((sum,s)=>sum+s.pairCount,0);
+  const wins = closed.reduce((sum,s)=>sum+s.wins,0);
+  const losses = closed.reduce((sum,s)=>sum+s.losses,0);
+  const winContribution = closed.reduce((sum,s)=>sum+Math.max(0,s.winContribution||0),0);
+  const lossContribution = Math.abs(closed.reduce((sum,s)=>sum+Math.min(0,s.lossContribution||0),0));
+  const capital = Number(state.accountCapital) || activeMarketConfig().defaultCapital;
+  const avgWinContribution = wins ? winContribution / wins : 0;
+  const avgLossContribution = losses ? lossContribution / losses : 0;
+  return {
+    pairCount,
+    wins,
+    losses,
+    winRate: pairCount ? wins / pairCount * 100 : null,
+    avgWinContribution,
+    avgLossContribution,
+    avgWinAmount: capital * avgWinContribution / 100,
+    avgLossAmount: capital * avgLossContribution / 100,
+    profitLossRatio: avgLossContribution ? avgWinContribution / avgLossContribution : null
   };
 }
 
@@ -378,6 +403,7 @@ function renderAnalytics(stats, risk) {
   setInsight("bestReturn", bestReturn, bestReturn ? `${bestReturn.realizedReturn>=0?"+":""}${fmt(bestReturn.realizedReturn,2)}% · ${usd(bestReturn.realizedDollar)}` : "暂无已平仓");
   setInsight("fastest", fastest, fastest ? `平均 ${fmt(fastest.avgHoldDays,1)} 天 · ${fastest.pairCount} 笔配对` : "暂无已平仓");
   setInsight("slowest", slowest, slowest ? `平均 ${fmt(slowest.avgHoldDays,1)} 天 · ${slowest.pairCount} 笔配对` : "暂无已平仓");
+  renderClosedPerformance(computeClosedPerformance(stats));
   renderRiskAndRecap({ stats, risk, mostActive, bestReturn, fastest, slowest });
 
   body.innerHTML = stats.map(s=>{
@@ -400,6 +426,16 @@ function renderAnalytics(stats, risk) {
 function setInsight(prefix, stat, meta) {
   setText(`${prefix}Symbol`, stat?.symbol || "—");
   setText(`${prefix}Meta`, meta);
+}
+function renderClosedPerformance(perf) {
+  setText("closedWinRate", perf.winRate===null ? "—" : `${fmt(perf.winRate,0)}%`);
+  setText("closedWinRateMeta", perf.pairCount ? `${perf.wins} 赢 / ${perf.losses} 亏 · ${perf.pairCount} 笔` : "暂无已平仓");
+  setText("profitLossRatio", perf.profitLossRatio===null ? "—" : `${fmt(perf.profitLossRatio,2)} : 1`);
+  setText("profitLossRatioMeta", perf.losses ? `平均盈利是平均亏损的 ${fmt(perf.profitLossRatio,2)} 倍` : "暂无亏损样本");
+  setText("avgWinAmount", perf.wins ? usd(perf.avgWinAmount) : "—");
+  setText("avgWinMeta", perf.wins ? `${perf.wins} 笔盈利平仓 · ${fmt(perf.avgWinContribution,2)}%/笔` : "暂无盈利平仓");
+  setText("avgLossAmount", perf.losses ? usd(perf.avgLossAmount) : "—");
+  setText("avgLossMeta", perf.losses ? `${perf.losses} 笔亏损平仓 · -${fmt(perf.avgLossContribution,2)}%/笔` : "暂无亏损平仓");
 }
 
 function renderRiskAndRecap({ stats, risk, mostActive, bestReturn, fastest, slowest }) {
