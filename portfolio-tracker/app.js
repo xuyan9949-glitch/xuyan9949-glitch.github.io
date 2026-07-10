@@ -4,6 +4,7 @@ const LEGACY_STORAGE_KEY = "portfolio-tracker-data-v1";
 const LEGACY_KEYS = [];
 const THEME_KEY = "portfolio-tracker-theme";
 const CLEAR_BACKUP_KEY = "portfolio-tracker-last-clear-v1";
+const CLOUD_TABLE = "portfolio_snapshots";
 const marketMeta = {
   US: { label:"美股", unit:"position", storageKey:STORAGE_KEY, defaultCurrency:"USD", defaultCapital:100000 },
   CN: { label:"A股", unit:"shares", storageKey:"portfolio-tracker-cn-data-v1", defaultCurrency:"CNY", defaultCapital:100000 }
@@ -22,6 +23,12 @@ let analysisDays = 30;
 let sortKey = "position";
 let sortDirection = -1;
 let lastClearSnapshot = loadClearBackup();
+let supabaseClient = null;
+let currentUser = null;
+let cloudEnabled = false;
+let cloudReady = false;
+let cloudSaveTimer = null;
+let isApplyingCloudState = false;
 
 function daysAgo(days, hour) {
   const d = new Date();
@@ -47,7 +54,7 @@ function normalizeTrade(t) {
   const market = normalizeMarket(t.market || activeMarket);
   const quantity = Number(t.quantity || 0);
   const price = Number(t.price);
-  const capital = Number(state.accountCapital) || marketMeta[market].defaultCapital;
+  const capital = Number(t.accountCapital || t.account_capital || state.accountCapital) || marketMeta[market].defaultCapital;
   const positionChange = marketMeta[market].unit === "shares" && quantity > 0
     ? price * quantity / capital * 100
     : Number(t.positionChange || 10);
@@ -74,10 +81,14 @@ function fallbackState(market=activeMarket) {
       const saved = JSON.parse(localStorage.getItem(key));
       if (saved?.trades) {
         const meta = marketMeta[normalizedMarket];
-        return { trades:saved.trades.map(t=>normalizeTrade({...t, market:normalizedMarket})), accountCapital:Number(saved.accountCapital)||meta.defaultCapital, currency:marketCurrency(normalizedMarket), market:normalizedMarket, isDemo:false, source:"local" };
+        const accountCapital = Number(saved.accountCapital)||meta.defaultCapital;
+        return { trades:saved.trades.map(t=>normalizeTrade({...t, market:normalizedMarket, accountCapital})), accountCapital, currency:marketCurrency(normalizedMarket), market:normalizedMarket, isDemo:false, source:"local" };
       }
       const legacy = JSON.parse(localStorage.getItem(key));
-      if (legacy?.trades) return { trades:legacy.trades.map(t=>normalizeTrade({...t, market:normalizedMarket})), accountCapital:Number(legacy.accountCapital)||marketMeta[normalizedMarket].defaultCapital, currency:marketCurrency(normalizedMarket), market:normalizedMarket, isDemo:false, source:"local" };
+      if (legacy?.trades) {
+        const accountCapital = Number(legacy.accountCapital)||marketMeta[normalizedMarket].defaultCapital;
+        return { trades:legacy.trades.map(t=>normalizeTrade({...t, market:normalizedMarket, accountCapital})), accountCapital, currency:marketCurrency(normalizedMarket), market:normalizedMarket, isDemo:false, source:"local" };
+      }
     }
     return defaultStateForMarket(normalizedMarket);
   } catch { return defaultStateForMarket(normalizedMarket); }
@@ -87,6 +98,143 @@ function saveState() {
   state.currency = marketCurrency(activeMarket);
   localStorage.setItem(activeMarketConfig().storageKey, JSON.stringify(state));
   localStorage.setItem(MARKET_KEY, activeMarket);
+  scheduleCloudSave();
+}
+function supabaseConfig() { return window.PORTFOLIO_SUPABASE_CONFIG || {}; }
+function canUseSupabase() {
+  const cfg = supabaseConfig();
+  return Boolean(cfg.url && cfg.anonKey && window.supabase?.createClient);
+}
+function initSupabaseClient() {
+  if (!canUseSupabase()) return null;
+  if (!supabaseClient) supabaseClient = window.supabase.createClient(supabaseConfig().url, supabaseConfig().anonKey);
+  return supabaseClient;
+}
+function cloudStatusText() {
+  if (!canUseSupabase()) return `${activeMarketConfig().label} · 本机私有数据`;
+  if (!currentUser) return `${activeMarketConfig().label} · 未登录，本机保存`;
+  if (!cloudReady) return `${activeMarketConfig().label} · 云同步准备中`;
+  return `${activeMarketConfig().label} · 云同步`;
+}
+function updateSyncUi() {
+  const status = document.querySelector(".market-status");
+  if (status) {
+    status.classList.toggle("syncing", Boolean(currentUser && !cloudReady));
+    status.innerHTML = `<i></i> ${cloudStatusText()}`;
+  }
+  const btn = document.getElementById("syncBtn");
+  if (btn) {
+    btn.textContent = currentUser ? "退出同步" : "登录同步";
+    btn.title = currentUser?.email || "登录后可跨设备云同步";
+    btn.classList.toggle("auth-user", Boolean(currentUser));
+  }
+}
+function cloudPayload() {
+  return {
+    user_id: currentUser.id,
+    market: activeMarket,
+    account_capital: Number(state.accountCapital) || activeMarketConfig().defaultCapital,
+    currency: marketCurrency(activeMarket),
+    trades: state.trades.map(t=>normalizeTrade({...t, market:activeMarket})),
+    updated_at: new Date().toISOString()
+  };
+}
+function scheduleCloudSave() {
+  if (isApplyingCloudState || !currentUser || !cloudReady || !supabaseClient) return;
+  clearTimeout(cloudSaveTimer);
+  cloudSaveTimer = setTimeout(()=>saveCloudState(), 450);
+}
+async function saveCloudState() {
+  if (!currentUser || !supabaseClient) return;
+  const { error } = await supabaseClient.from(CLOUD_TABLE).upsert(cloudPayload(), { onConflict:"user_id,market" });
+  if (error) {
+    console.warn("cloud save failed", error);
+    toast("云端保存失败，请稍后重试");
+  } else {
+    state.updatedAt = new Date().toISOString();
+    updateSyncUi();
+  }
+}
+async function loadCloudState(market=activeMarket) {
+  if (!currentUser || !supabaseClient) return null;
+  const { data, error } = await supabaseClient
+    .from(CLOUD_TABLE)
+    .select("market,account_capital,currency,trades,updated_at")
+    .eq("user_id", currentUser.id)
+    .eq("market", normalizeMarket(market))
+    .maybeSingle();
+  if (error) throw error;
+  if (!data) return null;
+  return {
+    trades:Array.isArray(data.trades) ? data.trades.map(t=>normalizeTrade({...t, market:normalizeMarket(market), accountCapital:Number(data.account_capital)})) : [],
+    accountCapital:Number(data.account_capital)||marketMeta[normalizeMarket(market)].defaultCapital,
+    currency:marketCurrency(normalizeMarket(market)),
+    market:normalizeMarket(market),
+    updatedAt:data.updated_at,
+    isDemo:false,
+    source:"cloud"
+  };
+}
+async function applyCloudOrLocal(market=activeMarket, { allowMigrate=false }={}) {
+  const normalizedMarket = normalizeMarket(market);
+  activeMarket = normalizedMarket;
+  const localState = fallbackState(normalizedMarket);
+  if (!currentUser || !supabaseClient) {
+    state = localState;
+    cloudReady = false;
+    updateSyncUi();
+    render();
+    return;
+  }
+  cloudReady = false;
+  updateSyncUi();
+  try {
+    const cloudState = await loadCloudState(normalizedMarket);
+    if (cloudState) {
+      isApplyingCloudState = true;
+      state = cloudState;
+      localStorage.setItem(activeMarketConfig().storageKey, JSON.stringify(state));
+      localStorage.setItem(MARKET_KEY, activeMarket);
+      isApplyingCloudState = false;
+    } else {
+      state = localState;
+      if (allowMigrate && state.trades.length && confirm(`检测到本机 ${activeMarketConfig().label} 账本有 ${state.trades.length} 条记录，是否同步到云端？`)) {
+        await saveCloudState();
+        state.source = "cloud";
+      }
+    }
+    cloudReady = true;
+    updateSyncUi();
+    render();
+  } catch (err) {
+    console.warn("cloud load failed", err);
+    cloudReady = false;
+    state = localState;
+    updateSyncUi();
+    render();
+    toast("云端读取失败，已使用本机数据");
+  }
+}
+async function signInWithEmail(email) {
+  const client = initSupabaseClient();
+  if (!client) {
+    alert("还没有配置 Supabase。请先填写 supabase-config.js 里的 url 和 anonKey。");
+    return;
+  }
+  const redirectTo = location.href.split("#")[0];
+  const { error } = await client.auth.signInWithOtp({ email, options:{ emailRedirectTo:redirectTo } });
+  if (error) alert(`发送失败：${error.message}`);
+  else { close("authDialog"); toast("登录链接已发送，请打开邮箱确认"); }
+}
+async function signOutCloud() {
+  if (!supabaseClient) return;
+  await supabaseClient.auth.signOut();
+  currentUser = null;
+  cloudReady = false;
+  state = fallbackState(activeMarket);
+  updateSyncUi();
+  render();
+  toast("已退出云同步，当前使用本机数据");
 }
 function cloneState(value) { return JSON.parse(JSON.stringify(value)); }
 function loadClearBackup() {
@@ -134,13 +282,6 @@ function formatCurrency(n) {
   const meta = activeCurrency();
   const sign = Number(n) < 0 ? "-" : "";
   return `${sign}${meta.symbol}${Math.abs(Number(n)||0).toLocaleString(meta.locale,{maximumFractionDigits:2,minimumFractionDigits:2})}`;
-}
-function toggleCurrency() {
-  state.currency = state.currency === "USD" ? "CNY" : "USD";
-  saveState();
-  render();
-  const btn = document.getElementById("currencyBtn");
-  if (btn) btn.textContent = state.currency;
 }
 function setText(id,text) { document.getElementById(id).textContent=text; }
 function value(id){ return document.getElementById(id).value; }
@@ -374,7 +515,7 @@ function render() {
   const usedCapital = capital * total / 100;
 
   document.querySelectorAll("#marketSwitch button").forEach(btn=>btn.classList.toggle("active", btn.dataset.market===activeMarket));
-  document.querySelector(".market-status").innerHTML = `<i></i> ${activeMarketConfig().label} · 本机私有数据`;
+  updateSyncUi();
   setText("totalPosition",`${fmt(total)}%`);
   state.currency = marketCurrency(activeMarket);
   setText("accountCapital",usd(capital));
@@ -595,7 +736,6 @@ function refreshCloseLotOptions(trade=null) {
 function configureTradeFormMode() {
   const input = document.getElementById("positionChange");
   const quick = document.getElementById("quickPosition");
-  const sharesLabel = document.getElementById("quickSharesLabel");
   if (isShareMode()) {
     document.getElementById("quickPositionLabel").firstChild.textContent = "快捷股数";
     document.getElementById("positionInputLabel").textContent = "股数";
@@ -606,7 +746,6 @@ function configureTradeFormMode() {
     document.getElementById("positionMinus").textContent = "-100";
     document.getElementById("positionPlus").textContent = "+100";
     quick.innerHTML = `<option value="100">1 手 100 股</option><option value="200">2 手 200 股</option><option value="500">500 股</option><option value="1000">1000 股</option><option value="">手动输入</option>`;
-    if (sharesLabel) sharesLabel.style.display = "none";
   } else {
     document.getElementById("quickPositionLabel").firstChild.textContent = "快捷仓位";
     document.getElementById("positionInputLabel").textContent = "仓位变化（%）";
@@ -617,20 +756,7 @@ function configureTradeFormMode() {
     document.getElementById("positionMinus").textContent = "-5%";
     document.getElementById("positionPlus").textContent = "+5%";
     quick.innerHTML = `<option value="10">常用 10%</option><option value="5">一半 5%</option><option value="15">15%</option><option value="20">20%</option><option value="">手动输入</option>`;
-    if (sharesLabel) sharesLabel.style.display = "";
   }
-}
-function applyQuickShares(shares) {
-  const price = Number(document.getElementById("price").value);
-  const capital = Number(state.accountCapital) || activeMarketConfig().defaultCapital;
-  if (!price || !capital) {
-    toast("请先输入价格和本金");
-    return;
-  }
-  const pct = shares * price / capital * 100;
-  document.getElementById("positionChange").value = fmt(pct, 2);
-  document.getElementById("quickPosition").value = "";
-  updatePositionSignedPreview();
 }
 function syncQuickPosition() {
   const quick = value("quickPosition");
@@ -757,15 +883,15 @@ function validateTrades(items) {
     return normalizeTrade({...t, market:activeMarket});
   });
 }
-function switchMarket(market) {
+async function switchMarket(market) {
   const nextMarket = normalizeMarket(market);
   if (nextMarket === activeMarket) return;
   saveState();
   activeMarket = nextMarket;
-  state = fallbackState(activeMarket);
   document.getElementById("searchInput").value = "";
   document.getElementById("statusFilter").value = "all";
-  render();
+  if (currentUser) await applyCloudOrLocal(activeMarket);
+  else { state = fallbackState(activeMarket); render(); }
   toast(`已切换到${activeMarketConfig().label}看板`);
 }
 
@@ -774,6 +900,12 @@ document.getElementById("closeDialog").onclick=()=>close("tradeDialog");
 document.getElementById("cancelDialog").onclick=()=>close("tradeDialog");
 document.getElementById("exportBtn").onclick=()=>document.getElementById("exportDialog").showModal();
 document.getElementById("closeExport").onclick=()=>close("exportDialog");
+document.getElementById("syncBtn").onclick=()=> currentUser ? signOutCloud() : document.getElementById("authDialog").showModal();
+document.getElementById("closeAuth").onclick=()=>close("authDialog");
+document.getElementById("authForm").onsubmit=e=>{
+  e.preventDefault();
+  signInWithEmail(value("authEmail").trim());
+};
 document.getElementById("exportCsv").onclick=exportCsv;
 document.getElementById("exportJson").onclick=exportJson;
 document.getElementById("importBtn").onclick=()=>document.getElementById("fileInput").click();
@@ -878,17 +1010,20 @@ async function init() {
   activeMarket = normalizeMarket(localStorage.getItem(MARKET_KEY));
   state = fallbackState(activeMarket);
   render();
+  const client = initSupabaseClient();
+  if (client) {
+    const { data } = await client.auth.getSession();
+    currentUser = data.session?.user || null;
+    client.auth.onAuthStateChange((_event, session)=>{
+      currentUser = session?.user || null;
+      applyCloudOrLocal(activeMarket, { allowMigrate:true });
+    });
+    if (currentUser) await applyCloudOrLocal(activeMarket, { allowMigrate:true });
+    else updateSyncUi();
+  } else updateSyncUi();
   lastClearSnapshot = loadClearBackup();
   if (lastClearSnapshot?.state?.trades?.length) {
     toast(`检测到上次清空前备份`, { label:"恢复", onClick:undoLastClear });
   } else if (!state.trades.length) toast(`已进入${activeMarketConfig().label}账本，可开始记录`);
-  const currBtn = document.getElementById("currencyBtn");
-  if (currBtn) {
-    currBtn.onclick = toggleCurrency;
-    currBtn.textContent = state.currency;
-  }
-  document.querySelectorAll(".share-btn").forEach(btn => {
-    btn.onclick = () => applyQuickShares(Number(btn.dataset.shares));
-  });
 }
 init();

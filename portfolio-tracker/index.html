@@ -26,6 +26,7 @@
         </div>
         <span class="market-status"><i></i> 本机私有数据</span>
         <a class="btn btn-secondary guide-link" href="./guide.html">使用说明</a>
+        <button id="syncBtn" class="btn btn-secondary">登录同步</button>
         <button id="themeBtn" class="icon-btn" title="切换主题">◐</button>
         <button id="importBtn" class="btn btn-secondary">导入</button>
         <button id="exportBtn" class="btn btn-secondary">导出</button>
@@ -283,15 +284,6 @@
           </div>
           <span id="positionSignedPreview" class="field-hint">实际记为 +10%</span>
         </label>
-        <label id="quickSharesLabel" style="display:none">快捷股数
-          <div class="quick-shares">
-            <button type="button" class="share-btn" data-shares="100">100 股</button>
-            <button type="button" class="share-btn" data-shares="200">200 股</button>
-            <button type="button" class="share-btn" data-shares="500">500 股</button>
-            <button type="button" class="share-btn" data-shares="1000">1000 股</button>
-          </div>
-          <span class="field-hint">自动换算为仓位百分比</span>
-        </label>
         <label>操作时间<input id="tradeDate" type="datetime-local" required></label>
         <label id="closeLotRow" class="full-width">对应开仓批次
           <select id="closeLotId"></select>
@@ -313,7 +305,20 @@
     </div>
   </dialog>
 
+  <dialog id="authDialog" class="small-dialog">
+    <div class="dialog-header"><div><h2>登录云同步</h2><p>邮箱验证码登录，同一账号可跨设备同步</p></div><button class="close-btn" id="closeAuth">×</button></div>
+    <form id="authForm" class="export-options">
+      <label>邮箱地址
+        <input id="authEmail" type="email" required placeholder="you@example.com">
+      </label>
+      <button type="submit" class="btn btn-primary">发送登录链接</button>
+      <p class="auth-hint">配置 Supabase 后可用。未登录时，数据仍保存在当前浏览器本地。</p>
+    </form>
+  </dialog>
+
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20260710-clear-undo-persist"></script>
+  <script src="supabase-config.js?v=20260711"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js?v=20260711-supabase-sync"></script>
 </body>
 </html>
