@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="个人持仓追踪：仓位、收益、平仓配对与复盘分析">
+  <title>个人持仓追踪</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
+  <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div>
+          <h1>个人持仓追踪</h1>
+          <p>个人账本 · 仓位变化 · 交易复盘</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="market-status"><i></i> 本机私有数据</span>
+        <button id="themeBtn" class="icon-btn" title="切换主题">◐</button>
+        <button id="importBtn" class="btn btn-secondary">导入</button>
+        <button id="exportBtn" class="btn btn-secondary">导出</button>
+        <button id="addBtn" class="btn btn-primary">＋ 记录操作</button>
+        <input id="fileInput" type="file" accept=".csv,.json" hidden>
+      </div>
+    </header>
+
+    <main>
+      <section class="summary-grid" aria-label="仓位概览">
+        <article class="summary-card featured">
+          <div class="card-label">当前总仓位 <span class="live-dot"></span></div>
+          <div class="metric-row">
+            <strong id="totalPosition">0%</strong>
+            <span id="totalChange" class="change neutral">—</span>
+          </div>
+          <div class="progress"><span id="totalBar"></span></div>
+          <p>最近更新 <time id="lastUpdated">暂无数据</time></p>
+        </article>
+        <article class="summary-card">
+          <div class="card-label">账户本金</div>
+          <div class="metric-row"><strong id="accountCapital">$0</strong><button id="capitalBtn" class="mini-btn">修改</button></div>
+          <div class="mini-track"><span id="capitalUsedBar"></span></div>
+          <p id="capitalUsed">已占用 $0</p>
+        </article>
+        <article class="summary-card">
+          <div class="card-label">已实现收益</div>
+          <div class="metric-row"><strong id="realizedPnl">$0</strong><span id="realizedPct" class="change neutral">0%</span></div>
+          <div class="holding-meta">
+            <span><b id="profitCount">0</b> 盈利</span>
+            <span><b id="lossCount">0</b> 亏损</span>
+          </div>
+          <p id="closedCount">已平 0 笔配对</p>
+        </article>
+        <article class="summary-card">
+          <div class="card-label">底仓仓位</div>
+          <div class="metric-row"><strong id="basePosition">0%</strong><span class="tag blue">长期配置</span></div>
+          <div class="mini-track"><span id="baseBar"></span></div>
+          <p id="baseCount">0 只底仓标的</p>
+        </article>
+        <article class="summary-card">
+          <div class="card-label">可变仓位</div>
+          <div class="metric-row"><strong id="swingPosition">0%</strong><span class="tag amber">机动仓位</span></div>
+          <div class="mini-track amber-track"><span id="swingBar"></span></div>
+          <p id="cashPosition">可用仓位 100%</p>
+        </article>
+      </section>
+
+      <section class="workspace-grid">
+        <article class="panel holdings-panel">
+          <div class="panel-header">
+            <div><h2>当前持仓</h2><p>按当前仓位实时汇总</p></div>
+            <div class="tools">
+              <label class="search-box">⌕ <input id="searchInput" placeholder="搜索名称或代码"></label>
+              <select id="statusFilter" aria-label="筛选持仓类型">
+                <option value="all">全部持仓</option>
+                <option value="底仓">底仓</option>
+                <option value="波段仓">波段仓</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>标的</th><th>状态</th>
+                  <th class="sortable" data-sort="position">仓位 ↕</th>
+                  <th>占用资金</th>
+                  <th>持仓成本</th>
+                  <th>最近操作</th>
+                </tr>
+              </thead>
+              <tbody id="holdingsBody"></tbody>
+            </table>
+            <div id="holdingsEmpty" class="empty-state" hidden>
+              <div>暂无持仓</div><p>记录第一笔买入操作后，持仓会显示在这里。</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel trend-panel">
+          <div class="panel-header">
+            <div><h2>仓位趋势</h2><p>总仓位与底仓变化</p></div>
+            <div class="segmented" id="rangeTabs">
+              <button data-days="7">7天</button><button data-days="30" class="active">30天</button>
+              <button data-days="90">90天</button><button data-days="all">全部</button>
+            </div>
+          </div>
+          <div class="chart-legend"><span class="total">总仓位</span><span class="base">底仓</span></div>
+          <div id="trendChart" class="chart"></div>
+        </article>
+      </section>
+
+      <section class="panel analytics-panel">
+        <div class="panel-header">
+          <div><h2>标的复盘分析</h2><p>统计资金使用率、操作频率、收益效率与进出速度</p></div>
+          <div class="segmented" id="analysisRangeTabs">
+            <button data-days="7">7天</button><button data-days="30" class="active">30天</button>
+            <button data-days="90">90天</button><button data-days="all">全部</button>
+          </div>
+        </div>
+        <div class="recap-box">
+          <div class="recap-title">复盘结论</div>
+          <div id="recapList" class="recap-list"></div>
+        </div>
+        <div class="risk-grid">
+          <article class="risk-card">
+            <span>当前总风险暴露</span>
+            <strong id="riskTotalExposure">—</strong>
+            <small id="riskTotalMeta">暂无数据</small>
+          </article>
+          <article class="risk-card">
+            <span>最大单标的占用</span>
+            <strong id="riskTopSymbol">—</strong>
+            <small id="riskTopMeta">暂无数据</small>
+          </article>
+          <article class="risk-card">
+            <span>收益集中度</span>
+            <strong id="riskPnlConcentration">—</strong>
+            <small id="riskPnlMeta">暂无数据</small>
+          </article>
+        </div>
+        <div class="insight-grid">
+          <article class="insight-card">
+            <span>操作最频繁</span>
+            <strong id="mostActiveSymbol">—</strong>
+            <small id="mostActiveMeta">暂无数据</small>
+          </article>
+          <article class="insight-card">
+            <span>收益率最高</span>
+            <strong id="bestReturnSymbol">—</strong>
+            <small id="bestReturnMeta">暂无数据</small>
+          </article>
+          <article class="insight-card">
+            <span>进出最快</span>
+            <strong id="fastestSymbol">—</strong>
+            <small id="fastestMeta">暂无数据</small>
+          </article>
+          <article class="insight-card">
+            <span>节奏最慢</span>
+            <strong id="slowestSymbol">—</strong>
+            <small id="slowestMeta">暂无数据</small>
+          </article>
+        </div>
+        <div class="table-wrap analytics-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>标的</th>
+                <th>操作频率</th>
+                <th>累计使用</th>
+                <th>当前占用</th>
+                <th>已平收益</th>
+                <th>平均周期</th>
+                <th>复盘标签</th>
+              </tr>
+            </thead>
+            <tbody id="analyticsBody"></tbody>
+          </table>
+          <div id="analyticsEmpty" class="empty-state"><div>暂无复盘数据</div><p>有交易记录后会自动生成标的统计。</p></div>
+        </div>
+      </section>
+
+      <section class="panel pairs-panel">
+        <div class="panel-header">
+          <div><h2>平仓配对</h2><p>每笔平仓对应原始开仓批次，计算已实现盈亏</p></div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>标的</th><th>开仓批次</th><th>平仓记录</th><th>平仓仓位</th><th>买入价 / 卖出价</th><th>已实现收益</th>
+              </tr>
+            </thead>
+            <tbody id="pairsBody"></tbody>
+          </table>
+          <div id="pairsEmpty" class="empty-state"><div>暂无平仓配对</div><p>录入卖出/减仓后，会显示对应的买入批次与盈亏。</p></div>
+        </div>
+      </section>
+
+      <section class="panel activity-panel">
+        <div class="panel-header">
+          <div><h2>操作流水</h2><p>完整记录每次仓位变化</p></div>
+          <button id="clearBtn" class="text-btn danger">清空全部</button>
+        </div>
+        <div id="activityList" class="activity-list"></div>
+        <div id="activityEmpty" class="empty-state"><div>还没有操作记录</div><p>点击右上角“记录操作”开始追踪。</p></div>
+      </section>
+    </main>
+    <footer>数据默认保存在当前浏览器 · 建议定期导出备份 · 本页面不构成投资建议</footer>
+  </div>
+
+  <dialog id="tradeDialog">
+    <form id="tradeForm" method="dialog">
+      <div class="dialog-header">
+        <div><h2 id="dialogTitle">记录操作</h2><p>录入后将自动更新持仓与仓位</p></div>
+        <button type="button" class="close-btn" id="closeDialog">×</button>
+      </div>
+      <input id="editId" type="hidden">
+      <div class="form-grid">
+        <label>标的<input id="name" required placeholder="例如：AVGO"></label>
+        <label>操作类型
+          <select id="action" required>
+            <option>买入</option><option>加仓</option><option>减仓</option>
+            <option>卖出</option><option>清仓</option>
+          </select>
+        </label>
+        <label>持仓类型
+          <select id="positionType"><option>波段仓</option><option>底仓</option></select>
+        </label>
+        <label>操作价格<input id="price" type="number" min="0" step="0.01" required placeholder="0.00"></label>
+        <label>快捷仓位
+          <select id="quickPosition">
+            <option value="10">默认买入 10%</option>
+            <option value="5">一半 5%</option>
+            <option value="3.3">1/3 仓 3.3%</option>
+            <option value="">手动输入</option>
+          </select>
+        </label>
+        <label>仓位变化（%）
+          <input id="positionChange" type="number" min="0.01" max="100" step="0.01" required placeholder="例如：5">
+        </label>
+        <label>操作时间<input id="tradeDate" type="datetime-local" required></label>
+        <label id="closeLotRow" class="full-width">对应开仓批次
+          <select id="closeLotId"></select>
+        </label>
+        <label class="full-width">操作备注<textarea id="note" rows="3" placeholder="记录判断逻辑或信息来源（选填）"></textarea></label>
+      </div>
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-secondary" id="cancelDialog">取消</button>
+        <button type="submit" class="btn btn-primary">保存记录</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="exportDialog" class="small-dialog">
+    <div class="dialog-header"><div><h2>导出数据</h2><p>选择需要的文件格式</p></div><button class="close-btn" id="closeExport">×</button></div>
+    <div class="export-options">
+      <button id="exportCsv" class="export-option"><b>CSV</b><span>适合 Excel 与表格分析</span></button>
+      <button id="exportJson" class="export-option"><b>JSON</b><span>完整备份，可再次导入</span></button>
+    </div>
+  </dialog>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
