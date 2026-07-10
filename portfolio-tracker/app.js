@@ -4,7 +4,7 @@ const THEME_KEY = "portfolio-tracker-theme";
 const buyActions = ["买入"];
 const sellActions = ["卖出"];
 
-let state = { trades: [], accountCapital: 100000, source: "local" };
+let state = { trades: [], accountCapital: 100000, source: "local", currency: "USD" };
 let rangeDays = 30;
 let analysisDays = 30;
 let sortKey = "position";
@@ -39,21 +39,35 @@ function normalizeTrade(t) {
 function fallbackState() {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if (saved?.trades) return { trades:saved.trades.map(normalizeTrade), accountCapital:Number(saved.accountCapital)||100000, isDemo:false, source:"local" };
+    if (saved?.trades) return { trades:saved.trades.map(normalizeTrade), accountCapital:Number(saved.accountCapital)||100000, isDemo:false, source:"local", currency:saved.currency||"USD" };
     for (const key of LEGACY_KEYS) {
       const legacy = JSON.parse(localStorage.getItem(key));
-      if (legacy?.trades) return { trades:legacy.trades.map(normalizeTrade), accountCapital:Number(legacy.accountCapital)||100000, isDemo:false, source:"local" };
+      if (legacy?.trades) return { trades:legacy.trades.map(normalizeTrade), accountCapital:Number(legacy.accountCapital)||100000, isDemo:false, source:"local", currency:"USD" };
     }
-    return { trades: [], accountCapital:100000, isDemo:false, source:"local" };
+    return { trades: [], accountCapital:100000, isDemo:false, source:"local", currency:"USD" };
   } catch { return { trades: [], accountCapital:100000, isDemo:false, source:"local" }; }
 }
 function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 function esc(value="") { return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 function fmt(n,digits=1) { return Number(n || 0).toFixed(digits).replace(/\.0$/,""); }
-function money(n) { return `$${fmt(n,2)}`; }
+function money(n) {
+  if (state.currency === "CNY") return `¥${fmt(n,2)}`;
+  return `$${fmt(n,2)}`;
+}
 function usd(n) {
   const sign = Number(n) < 0 ? "-" : "";
-  return `${sign}$${Math.abs(Number(n)||0).toLocaleString("en-US",{maximumFractionDigits:2,minimumFractionDigits:2})}`;
+  const abs = Math.abs(Number(n)||0);
+  if (state.currency === "CNY") {
+    return `${sign}¥${abs.toLocaleString("zh-CN",{maximumFractionDigits:2,minimumFractionDigits:2})}`;
+  }
+  return `${sign}$${abs.toLocaleString("en-US",{maximumFractionDigits:2,minimumFractionDigits:2})}`;
+}
+function toggleCurrency() {
+  state.currency = state.currency === "USD" ? "CNY" : "USD";
+  saveState();
+  render();
+  const btn = document.getElementById("currencyBtn");
+  if (btn) btn.textContent = state.currency;
 }
 function setText(id,text) { document.getElementById(id).textContent=text; }
 function value(id){ return document.getElementById(id).value; }
@@ -565,7 +579,7 @@ document.getElementById("fileInput").onchange=async e=>{
     const imported=validateTrades(raw);
     if(!confirm(`将导入 ${imported.length} 条记录并替换当前数据，是否继续？`))return;
     const parsed = file.name.toLowerCase().endsWith(".json") ? JSON.parse(text) : null;
-    state={trades:imported,accountCapital:Number(parsed?.accountCapital)||Number(state.accountCapital)||100000,isDemo:false,source:"local"};saveState();render();toast(`已导入 ${imported.length} 条记录`);
+    state={trades:imported,accountCapital:Number(parsed?.accountCapital)||Number(state.accountCapital)||100000,isDemo:false,source:"local",currency:state.currency};saveState();render();toast(`已导入 ${imported.length} 条记录`);
   } catch(err){ alert(`导入失败：${err.message}`); }
   finally {e.target.value="";}
 };
@@ -579,16 +593,17 @@ document.getElementById("tradeForm").onsubmit=e=>{
   }
   const trade=normalizeTrade({id:id||crypto.randomUUID(),name:value("name").trim(),action:value("action"),positionType:value("positionType"),price:Number(value("price")),positionChange:Number(value("positionChange")),date:new Date(value("tradeDate")).toISOString(),closeLotId:value("closeLotId"),note:value("note").trim()});
   if(id) state.trades=state.trades.map(t=>t.id===id?trade:t); else state.trades.push(trade);
-  state.isDemo=false; state.source="local"; saveState();refreshSymbolSuggestions();close("tradeDialog");render();toast(id?"记录已更新":"操作已记录");
+  state.isDemo=false; state.source="local"; state.updatedAt=new Date().toISOString(); saveState();refreshSymbolSuggestions();close("tradeDialog");render();toast(id?"记录已更新":"操作已记录");
 };
 document.getElementById("capitalBtn").onclick=()=>{
   const current = Number(state.accountCapital) || 100000;
-  const raw = prompt("输入账户本金（美元）", String(current));
+  const symbol = state.currency === "CNY" ? "人民币" : "美元";
+  const raw = prompt(`输入账户本金（${symbol}）`, String(current));
   if (raw === null) return;
-  const next = Number(String(raw).replace(/[$,\s]/g,""));
+  const next = Number(String(raw).replace(/[$¥,\s]/g,""));
   if (!Number.isFinite(next) || next <= 0) { alert("请输入有效的本金金额"); return; }
   state.accountCapital = next;
-  state.isDemo=false; state.source="local"; saveState(); render(); toast("本金已更新");
+  state.updatedAt = new Date().toISOString(); state.isDemo=false; state.source="local"; saveState(); render(); toast("本金已更新");
 };
 document.getElementById("searchInput").oninput=()=>renderHoldings(getHoldings());
 document.getElementById("statusFilter").onchange=()=>renderHoldings(getHoldings());
@@ -610,7 +625,7 @@ document.getElementById("analysisRangeTabs").onclick=e=>{
 };
 document.getElementById("clearBtn").onclick=()=>{
   if(!state.trades.length)return;
-  if(confirm("确定清空全部操作记录？建议先导出备份。")){state={trades:[],accountCapital:Number(state.accountCapital)||100000,isDemo:false,source:"local"};saveState();render();toast("已清空");}
+  if(confirm("确定清空全部操作记录？建议先导出备份。")){state={trades:[],accountCapital:Number(state.accountCapital)||100000,isDemo:false,source:"local",currency:state.currency};saveState();render();toast("已清空");}
 };
 document.getElementById("themeBtn").onclick=()=>{
   document.body.classList.toggle("dark");localStorage.setItem(THEME_KEY,document.body.classList.contains("dark")?"dark":"light");
@@ -620,5 +635,10 @@ async function init() {
   state = fallbackState();
   render();
   if (!state.trades.length) toast("已进入个人账本，可开始记录");
+  const currBtn = document.getElementById("currencyBtn");
+  if (currBtn) {
+    currBtn.onclick = toggleCurrency;
+    currBtn.textContent = state.currency;
+  }
 }
 init();
