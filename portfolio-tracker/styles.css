@@ -20,6 +20,7 @@ html { color-scheme: light; }
 body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; }
 button,input,select,textarea { font: inherit; }
 button { cursor: pointer; }
+a { color:inherit; text-decoration:none; }
 .app-shell { max-width: 1500px; margin: auto; min-height: 100vh; }
 .topbar { height: 76px; display:flex; align-items:center; justify-content:space-between; padding: 0 28px; background:var(--panel); border-bottom:1px solid var(--line); }
 .brand { display:flex; align-items:center; gap:12px; }
@@ -34,6 +35,7 @@ h1 { font-size:17px; letter-spacing:-.2px; }
 .market-status { color:var(--muted); font-size:12px; padding-right:6px; }
 .market-status i,.live-dot { display:inline-block; width:7px; height:7px; background:#2bad7b; border-radius:50%; margin-right:5px; }
 .btn,.icon-btn { border:1px solid var(--line); border-radius:8px; height:36px; padding:0 14px; background:var(--panel); color:var(--text); font-weight:600; }
+.btn { display:inline-flex; align-items:center; justify-content:center; }
 .btn:hover,.icon-btn:hover { border-color:#c8d0dc; background:var(--panel-2); }
 .btn-primary { color:#fff; background:var(--blue); border-color:var(--blue); }
 .btn-primary:hover { background:#1e55c3; border-color:#1e55c3; }
@@ -148,6 +150,26 @@ tr:hover .row-actions { opacity:1; }
 .empty-state div { color:var(--text); font-weight:700; margin-bottom:4px; }
 .empty-state p { font-size:12px; }
 footer { text-align:center; color:var(--muted); font-size:11px; padding:14px 0 22px; }
+.guide-main { max-width:1180px; margin:0 auto; }
+.guide-hero { display:grid; grid-template-columns:1.4fr .8fr; gap:22px; padding:30px; margin-bottom:14px; align-items:center; }
+.guide-kicker,.guide-step { display:inline-flex; width:max-content; align-items:center; justify-content:center; border-radius:999px; padding:4px 9px; background:var(--blue-soft); color:var(--blue); font-size:11px; font-weight:800; margin-bottom:9px; }
+.guide-hero h2,.guide-shot h2,.guide-card h2,.guide-faq h2 { font-size:24px; letter-spacing:-.5px; margin-bottom:8px; }
+.guide-hero p,.guide-shot p,.guide-card p,.guide-faq p { color:var(--muted); }
+.guide-checklist { display:grid; gap:10px; }
+.guide-checklist div { display:flex; align-items:center; gap:10px; padding:13px; border:1px solid var(--line); border-radius:10px; background:var(--panel-2); }
+.guide-checklist b { width:28px; height:28px; display:grid; place-items:center; border-radius:8px; background:var(--blue); color:#fff; }
+.guide-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px; }
+.guide-card { padding:22px; }
+.guide-card ul { margin:14px 0 0; padding-left:18px; color:var(--muted); }
+.guide-card li { margin:6px 0; }
+.guide-shot { display:grid; grid-template-columns:.72fr 1.28fr; gap:18px; align-items:center; padding:18px; margin-bottom:14px; }
+.guide-shot-copy { padding:10px 8px 10px 10px; }
+.guide-shot img { width:100%; border-radius:11px; border:1px solid var(--line); box-shadow:0 10px 28px rgba(16,24,40,.10); background:var(--panel-2); }
+.guide-faq { padding:22px; margin-bottom:20px; }
+.guide-faq details { border-top:1px solid var(--line); padding:14px 0; }
+.guide-faq details:first-of-type { margin-top:8px; }
+.guide-faq summary { cursor:pointer; font-weight:800; }
+.guide-faq p { margin-top:8px; }
 dialog { width:min(680px,calc(100vw - 30px)); padding:0; border:1px solid var(--line); border-radius:12px; background:var(--panel); color:var(--text); box-shadow:0 20px 60px rgba(16,24,40,.18); }
 dialog::backdrop { background:rgba(13,20,32,.45); backdrop-filter:blur(2px); }
 .dialog-header { padding:18px 20px; display:flex; justify-content:space-between; border-bottom:1px solid var(--line); }
@@ -190,6 +212,7 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
   .header-actions { width:100%; flex-wrap:wrap; justify-content:space-between; }
   .market-switch { order:0; }
   .header-actions .btn-primary { flex:1; min-width:150px; }
+  .guide-link { display:none; }
   main { padding:14px; }
   .summary-grid { grid-template-columns:1fr 1fr; gap:9px; }
   .analytics-panel .panel-header { flex-direction:column; }
@@ -224,6 +247,9 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
   .activity-list { grid-template-columns:1fr; }
   .activity-item:nth-child(odd) { border-right:0; }
   .form-grid { grid-template-columns:1fr; }
+  .guide-hero,.guide-shot,.guide-grid { grid-template-columns:1fr; }
+  .guide-hero,.guide-card,.guide-faq { padding:18px; }
+  .guide-hero h2,.guide-shot h2,.guide-card h2,.guide-faq h2 { font-size:20px; }
   .full-width { grid-column:auto; }
 }
 @media (max-width:430px) {

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="个人持仓追踪使用说明：快速记录交易、查看持仓、复盘收益与导入导出备份">
+  <title>使用说明｜个人持仓追踪</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
+  <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="guide-page">
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div>
+          <h1>个人持仓追踪 · 使用说明</h1>
+          <p>3 分钟上手记录、查看和复盘自己的持仓</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="btn btn-secondary" href="./index.html">返回看板</a>
+      </div>
+    </header>
+
+    <main class="guide-main">
+      <section class="guide-hero panel">
+        <div>
+          <span class="guide-kicker">快速上手</span>
+          <h2>这个看板主要解决三件事</h2>
+          <p>记录每次买卖，自动汇总当前持仓；把卖出和平仓批次配对，计算真实收益；长期复盘哪个标的效率更高、资金占用是否合理。</p>
+        </div>
+        <div class="guide-checklist">
+          <div><b>1</b><span>先选账户：美股 / A股</span></div>
+          <div><b>2</b><span>录入操作：买入 / 卖出</span></div>
+          <div><b>3</b><span>看结果：持仓、收益、复盘</span></div>
+        </div>
+      </section>
+
+      <section class="guide-grid">
+        <article class="guide-card panel">
+          <div class="guide-step">01</div>
+          <h2>选择账户市场</h2>
+          <p>顶部可以切换“美股”和“A股”。两个账户的数据互相独立。</p>
+          <ul>
+            <li>美股：按仓位百分比记录，默认买入 10%。</li>
+            <li>A股：按股数记录，自动用价格 × 股数 / 本金折算仓位。</li>
+            <li>美股默认美元，A股默认人民币，不需要手动切换币种。</li>
+          </ul>
+        </article>
+
+        <article class="guide-card panel">
+          <div class="guide-step">02</div>
+          <h2>记录一笔买入</h2>
+          <p>点击右上角“记录操作”，填写标的、操作类型、持仓类型、价格和仓位/股数。</p>
+          <ul>
+            <li>持仓类型只选“底仓”或“波段仓”。</li>
+            <li>标的输入框会记住你常用的标的，后续自动提示。</li>
+            <li>A股快捷股数以 100 股为基础，适合测试和真实记录。</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="guide-shot panel">
+        <div class="guide-shot-copy">
+          <div class="guide-step">实操截图 A</div>
+          <h2>录入后，看板会自动汇总持仓和收益</h2>
+          <p>下面示例使用东山精密、亨通光电、沪电股份三只 A 股测试。录入后会自动显示总仓位、占用资金、已实现收益、底仓仓位和可变仓位。</p>
+        </div>
+        <img src="./assets/guide-dashboard.png" alt="A股测试数据录入后的看板概览截图">
+      </section>
+
+      <section class="guide-grid">
+        <article class="guide-card panel">
+          <div class="guide-step">03</div>
+          <h2>卖出时选择对应开仓批次</h2>
+          <p>当你选择“卖出”时，系统会根据标的和持仓类型，自动显示可平仓的买入记录。</p>
+          <ul>
+            <li>选择“波段仓”，只显示这个标的的波段仓买入批次。</li>
+            <li>选择“底仓”，只显示这个标的的底仓买入批次。</li>
+            <li>已经完全平掉的批次不会再显示，避免重复卖出。</li>
+          </ul>
+        </article>
+
+        <article class="guide-card panel">
+          <div class="guide-step">04</div>
+          <h2>查看复盘结果</h2>
+          <p>有买入和卖出后，系统会自动生成复盘指标。</p>
+          <ul>
+            <li>平仓胜率：已平仓配对中盈利的比例。</li>
+            <li>盈亏比：平均盈利金额 / 平均亏损金额。</li>
+            <li>复盘分析：操作最频繁、收益率最高、进出最快、节奏最慢。</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="guide-shot panel">
+        <div class="guide-shot-copy">
+          <div class="guide-step">实操截图 B</div>
+          <h2>平仓配对和复盘会自动生成</h2>
+          <p>卖出后会显示买入价、卖出价、平仓股数/仓位、单笔收益和总账户贡献。长期记录后，可以用这些数据判断策略质量。</p>
+        </div>
+        <img src="./assets/guide-review.png" alt="平仓配对、胜率、盈亏比和复盘分析截图">
+      </section>
+
+      <section class="guide-grid">
+        <article class="guide-card panel">
+          <div class="guide-step">05</div>
+          <h2>筛选和搜索</h2>
+          <p>当前持仓区可以搜索标的，也可以按“全部持仓 / 底仓 / 波段仓”筛选。</p>
+          <ul>
+            <li>想看单个票的使用率，直接搜索名称。</li>
+            <li>想看长期配置，只筛选底仓。</li>
+            <li>想看短线机动仓位，只筛选波段仓。</li>
+          </ul>
+        </article>
+
+        <article class="guide-card panel">
+          <div class="guide-step">06</div>
+          <h2>备份和误操作恢复</h2>
+          <p>数据默认保存在当前浏览器。建议定期导出 JSON 文件作为备份。</p>
+          <ul>
+            <li>导出：保存当前账本数据，换电脑或备份时使用。</li>
+            <li>导入：用 JSON / CSV 替换当前账户数据。</li>
+            <li>清空当前看板数据：会先保存一次恢复快照，可点“撤销 / 恢复”。</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="guide-faq panel">
+        <h2>常见问题</h2>
+        <details open>
+          <summary>朋友打开这个网址，会看到我的数据吗？</summary>
+          <p>不会。这个版本默认是“本机私有数据”，数据存在各自浏览器里。你朋友打开后是他自己的账本。</p>
+        </details>
+        <details>
+          <summary>为什么 A 股用股数，美股用仓位？</summary>
+          <p>A 股有 100 股起买限制，用股数记录更符合真实操作；美股通常可以按金额或仓位管理，用仓位记录更轻。</p>
+        </details>
+        <details>
+          <summary>平仓胜率和盈亏比怎么看？</summary>
+          <p>胜率看“赚钱次数”，盈亏比看“赚一次能覆盖亏几次”。两者要一起看，单看胜率容易误判策略质量。</p>
+        </details>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
