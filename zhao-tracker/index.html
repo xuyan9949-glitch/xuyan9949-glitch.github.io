@@ -114,6 +114,51 @@
         </article>
       </section>
 
+      <section class="panel analytics-panel">
+        <div class="panel-header">
+          <div><h2>标的复盘分析</h2><p>统计资金使用率、操作频率、收益效率与进出速度</p></div>
+        </div>
+        <div class="insight-grid">
+          <article class="insight-card">
+            <span>操作最频繁</span>
+            <strong id="mostActiveSymbol">—</strong>
+            <small id="mostActiveMeta">暂无数据</small>
+          </article>
+          <article class="insight-card">
+            <span>收益率最高</span>
+            <strong id="bestReturnSymbol">—</strong>
+            <small id="bestReturnMeta">暂无数据</small>
+          </article>
+          <article class="insight-card">
+            <span>进出最快</span>
+            <strong id="fastestSymbol">—</strong>
+            <small id="fastestMeta">暂无数据</small>
+          </article>
+          <article class="insight-card">
+            <span>节奏最慢</span>
+            <strong id="slowestSymbol">—</strong>
+            <small id="slowestMeta">暂无数据</small>
+          </article>
+        </div>
+        <div class="table-wrap analytics-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>标的</th>
+                <th>操作频率</th>
+                <th>累计使用</th>
+                <th>当前占用</th>
+                <th>已平收益</th>
+                <th>平均周期</th>
+                <th>复盘标签</th>
+              </tr>
+            </thead>
+            <tbody id="analyticsBody"></tbody>
+          </table>
+          <div id="analyticsEmpty" class="empty-state"><div>暂无复盘数据</div><p>有交易记录后会自动生成标的统计。</p></div>
+        </div>
+      </section>
+
       <section class="panel pairs-panel">
         <div class="panel-header">
           <div><h2>平仓配对</h2><p>每笔平仓对应原始开仓批次，计算已实现盈亏</p></div>

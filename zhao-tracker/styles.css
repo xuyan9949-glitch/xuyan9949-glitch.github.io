@@ -101,6 +101,15 @@ tr:hover .row-actions { opacity:1; }
 .chart .grid { stroke:var(--line); stroke-width:1; }
 .pairs-panel { margin-bottom:14px; }
 .pairs-panel small { color:var(--muted); }
+.analytics-panel { margin-bottom:14px; }
+.insight-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; padding:14px 17px; border-bottom:1px solid var(--line); background:var(--panel-2); }
+.insight-card { padding:13px 14px; background:var(--panel); border:1px solid var(--line); border-radius:10px; }
+.insight-card span { display:block; color:var(--muted); font-size:11px; font-weight:700; margin-bottom:5px; }
+.insight-card strong { display:block; font-size:20px; letter-spacing:-.4px; }
+.insight-card small { color:var(--muted); font-size:11px; }
+.analytics-wrap { min-height:0; }
+.analysis-tags { display:flex; flex-wrap:wrap; gap:5px; max-width:190px; }
+.analysis-tag { display:inline-flex; padding:2px 7px; border-radius:999px; background:var(--blue-soft); color:var(--blue); font-size:11px; font-weight:700; }
 .activity-panel { min-height:210px; }
 .text-btn { border:0; background:none; font-size:12px; }
 .danger { color:var(--red); }
@@ -158,6 +167,7 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
   .header-actions .btn-primary { flex:1; min-width:150px; }
   main { padding:14px; }
   .summary-grid { grid-template-columns:1fr 1fr; gap:9px; }
+  .insight-grid { grid-template-columns:1fr 1fr; padding:10px; }
   .summary-card { min-height:118px; padding:14px; }
   .metric-row strong { font-size:25px; }
   .panel-header { align-items:flex-start; gap:10px; }
@@ -179,6 +189,7 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
   .price-stack { text-align:right; }
   .position-cell { min-width:88px; }
   .position-mini { margin-left:auto; }
+  .analysis-tags { justify-content:flex-end; max-width:none; }
   .row-actions,.activity-actions { opacity:1; }
   .activity-list { grid-template-columns:1fr; }
   .activity-item:nth-child(odd) { border-right:0; }
@@ -187,5 +198,6 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
 }
 @media (max-width:430px) {
   .summary-grid { grid-template-columns:1fr; }
+  .insight-grid { grid-template-columns:1fr; }
   .header-actions .icon-btn { display:none; }
 }

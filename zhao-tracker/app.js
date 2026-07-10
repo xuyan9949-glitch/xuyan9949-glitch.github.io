@@ -152,6 +152,64 @@ function getHoldings(trades=state.trades) {
   return Object.values(map).map(h=>({ ...h, cost:h.position ? h.costValue / h.position : 0 }));
 }
 
+function computeSymbolStats(holdings=getHoldings(), ledger=computeLedger()) {
+  const capital = Number(state.accountCapital) || 100000;
+  const holdingMap = Object.fromEntries(holdings.map(h=>[h.code,h]));
+  const stats = {};
+  const ensure = symbol => {
+    if (!stats[symbol]) stats[symbol] = {
+      symbol,
+      tradeCount:0,
+      buyCount:0,
+      sellCount:0,
+      grossBuyPosition:0,
+      grossSellPosition:0,
+      currentPosition:holdingMap[symbol]?.position || 0,
+      realizedContribution:0,
+      closedPosition:0,
+      weightedHoldDays:0,
+      pairCount:0,
+      wins:0,
+      losses:0,
+      firstDate:null,
+      lastDate:null
+    };
+    return stats[symbol];
+  };
+
+  for (const t of state.trades) {
+    const s = ensure(t.code);
+    const pos = Number(t.positionChange) || 0;
+    const date = new Date(t.date);
+    s.tradeCount += 1;
+    if (buyActions.includes(t.action)) { s.buyCount += 1; s.grossBuyPosition += pos; }
+    if (sellActions.includes(t.action)) { s.sellCount += 1; s.grossSellPosition += pos; }
+    if (!s.firstDate || date < s.firstDate) s.firstDate = date;
+    if (!s.lastDate || date > s.lastDate) s.lastDate = date;
+  }
+
+  for (const p of ledger.pairs) {
+    const s = ensure(p.code);
+    const holdDays = Math.max(0, (new Date(p.closeTrade.date) - new Date(p.openTrade.date)) / 86400000);
+    s.realizedContribution += p.contribution;
+    s.closedPosition += p.position;
+    s.weightedHoldDays += holdDays * p.position;
+    s.pairCount += 1;
+    if (p.pnlPct >= 0) s.wins += 1; else s.losses += 1;
+  }
+
+  return Object.values(stats).map(s=>{
+    const avgHoldDays = s.closedPosition ? s.weightedHoldDays / s.closedPosition : null;
+    const realizedReturn = s.closedPosition ? s.realizedContribution / s.closedPosition * 100 : 0;
+    const realizedDollar = capital * s.realizedContribution / 100;
+    const useEfficiency = s.grossBuyPosition ? s.realizedContribution / s.grossBuyPosition * 100 : 0;
+    const winRate = s.pairCount ? s.wins / s.pairCount * 100 : null;
+    const spanDays = s.firstDate && s.lastDate ? Math.max(1, (s.lastDate - s.firstDate) / 86400000) : 1;
+    const tradesPerWeek = s.tradeCount / spanDays * 7;
+    return { ...s, avgHoldDays, realizedReturn, realizedDollar, useEfficiency, winRate, tradesPerWeek };
+  }).sort((a,b)=>b.tradeCount-a.tradeCount || b.realizedContribution-a.realizedContribution);
+}
+
 function computeTimeline() {
   const ordered = [...state.trades].sort((a,b)=>new Date(a.date)-new Date(b.date));
   return ordered.map((trade,i)=>{
@@ -200,6 +258,7 @@ function render() {
   realizedEl.className=`change ${realizedPct>0?"up":realizedPct<0?"down":"neutral"}`;
 
   renderHoldings(holdings);
+  renderAnalytics(computeSymbolStats(holdings, ledger));
   renderPairs(ledger.pairs);
   renderActivity();
   renderChart();
@@ -221,6 +280,54 @@ function renderHoldings(holdings) {
     <td data-label="最近操作"><span class="latest-action">${esc(h.lastTrade.action)} · ${formatDate(h.lastTrade.date)}</span><button class="mini-btn row-actions" title="编辑最近记录" onclick="editTrade('${h.lastTrade.id}')">✎</button></td>
   </tr>`).join("");
   document.getElementById("holdingsEmpty").hidden=visible.length>0;
+}
+
+function statTags(s) {
+  const tags = [];
+  if (s.tradeCount >= 3) tags.push("高频操作");
+  if (s.grossBuyPosition >= 20) tags.push("资金占用高");
+  if (s.realizedReturn >= 8) tags.push("收益效率高");
+  if (s.realizedReturn < 0) tags.push("负收益");
+  if (s.avgHoldDays !== null && s.avgHoldDays <= 3) tags.push("快进快出");
+  if (s.avgHoldDays !== null && s.avgHoldDays >= 10) tags.push("慢速持仓");
+  if (!tags.length) tags.push("观察中");
+  return tags;
+}
+
+function renderAnalytics(stats) {
+  const body = document.getElementById("analyticsBody");
+  const capital = Number(state.accountCapital) || 100000;
+  const closed = stats.filter(s=>s.closedPosition > 0);
+  const mostActive = [...stats].sort((a,b)=>b.tradeCount-a.tradeCount)[0];
+  const bestReturn = [...closed].sort((a,b)=>b.realizedReturn-a.realizedReturn)[0];
+  const fastest = [...closed].filter(s=>s.avgHoldDays!==null).sort((a,b)=>a.avgHoldDays-b.avgHoldDays)[0];
+  const slowest = [...closed].filter(s=>s.avgHoldDays!==null).sort((a,b)=>b.avgHoldDays-a.avgHoldDays)[0];
+
+  setInsight("mostActive", mostActive, mostActive ? `${mostActive.tradeCount} 笔 · 累计使用 ${fmt(mostActive.grossBuyPosition)}%` : "暂无数据");
+  setInsight("bestReturn", bestReturn, bestReturn ? `${bestReturn.realizedReturn>=0?"+":""}${fmt(bestReturn.realizedReturn,2)}% · ${usd(bestReturn.realizedDollar)}` : "暂无已平仓");
+  setInsight("fastest", fastest, fastest ? `平均 ${fmt(fastest.avgHoldDays,1)} 天 · ${fastest.pairCount} 笔配对` : "暂无已平仓");
+  setInsight("slowest", slowest, slowest ? `平均 ${fmt(slowest.avgHoldDays,1)} 天 · ${slowest.pairCount} 笔配对` : "暂无已平仓");
+
+  body.innerHTML = stats.map(s=>{
+    const tags = statTags(s).map(t=>`<span class="analysis-tag">${esc(t)}</span>`).join("");
+    const holdText = s.avgHoldDays===null ? "未平仓" : `${fmt(s.avgHoldDays,1)} 天`;
+    const winText = s.winRate===null ? "—" : `${fmt(s.winRate,0)}% 胜率`;
+    return `<tr>
+      <td data-label="标的"><div class="stock"><span class="stock-avatar">${esc(s.symbol[0])}</span><span><b>${esc(s.symbol)}</b></span></div></td>
+      <td data-label="操作频率"><b>${s.tradeCount} 笔</b><br><small>${fmt(s.tradesPerWeek,1)} 笔/周</small></td>
+      <td data-label="累计使用"><b>${fmt(s.grossBuyPosition)}%</b><br><small>${usd(capital*s.grossBuyPosition/100)}</small></td>
+      <td data-label="当前占用"><b>${fmt(s.currentPosition)}%</b><br><small>${usd(capital*s.currentPosition/100)}</small></td>
+      <td data-label="已平收益"><span class="pnl ${s.realizedContribution>=0?"up":"down"}">${s.realizedReturn>=0?"+":""}${fmt(s.realizedReturn,2)}%</span><br><small>${usd(s.realizedDollar)} · ${winText}</small></td>
+      <td data-label="平均周期"><b>${holdText}</b><br><small>${s.pairCount} 笔配对</small></td>
+      <td data-label="复盘标签"><div class="analysis-tags">${tags}</div></td>
+    </tr>`;
+  }).join("");
+  document.getElementById("analyticsEmpty").hidden=stats.length>0;
+}
+
+function setInsight(prefix, stat, meta) {
+  setText(`${prefix}Symbol`, stat?.symbol || "—");
+  setText(`${prefix}Meta`, meta);
 }
 
 function renderPairs(pairs) {
