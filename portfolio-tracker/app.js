@@ -1,8 +1,8 @@
 const STORAGE_KEY = "portfolio-tracker-data-v1";
 const LEGACY_KEYS = [];
 const THEME_KEY = "portfolio-tracker-theme";
-const buyActions = ["买入", "加仓"];
-const sellActions = ["减仓", "卖出", "清仓"];
+const buyActions = ["买入"];
+const sellActions = ["卖出"];
 
 let state = { trades: [], accountCapital: 100000, source: "local" };
 let rangeDays = 30;
@@ -16,13 +16,18 @@ function daysAgo(days, hour) {
   d.setHours(hour, 30, 0, 0);
   return d.toISOString();
 }
+function normalizeAction(action) {
+  if (["加仓", "买入"].includes(action)) return "买入";
+  if (["减仓", "卖出", "清仓"].includes(action)) return "卖出";
+  return action;
+}
 function normalizeTrade(t) {
   const symbol = String(t.symbol || t.name || t.code || "").trim().toUpperCase();
   return {
     id:t.id||crypto.randomUUID(),
     name:symbol,
     code:symbol,
-    action:t.action,
+    action:normalizeAction(t.action),
     positionType:t.positionType==="底仓"?"底仓":"波段仓",
     price:Number(t.price),
     positionChange:Number(t.positionChange || 10),
@@ -74,10 +79,10 @@ function computeLedger(trades=state.trades) {
     }
     if (!isSell(t.action)) continue;
 
-    let remainingPos = t.action === "清仓" && pos <= 0 ? 100 : pos;
+    let remainingPos = pos;
     const candidates = t.closeLotId
       ? lots.filter(l=>l.lotId===t.closeLotId && l.remainingPosition>0)
-      : lots.filter(l=>l.code===t.code && l.remainingPosition>0);
+      : lots.filter(l=>l.code===t.code && l.positionType===t.positionType && l.remainingPosition>0);
 
     for (const lot of candidates) {
       if (remainingPos <= 0) break;
@@ -410,6 +415,11 @@ function getOpenLotsForForm(trade=null) {
   const trades = state.trades.filter(t=>t.id!==trade?.id);
   return computeLedger(trades).lots.filter(l=>l.remainingPosition>0.0001);
 }
+function getMatchingCloseLots(trade=null) {
+  const code = value("name").trim().toUpperCase();
+  const positionType = value("positionType");
+  return getOpenLotsForForm(trade).filter(l=>(!code || l.code===code) && l.positionType===positionType);
+}
 function refreshCloseLotOptions(trade=null) {
   const row = document.getElementById("closeLotRow");
   const select = document.getElementById("closeLotId");
@@ -417,8 +427,12 @@ function refreshCloseLotOptions(trade=null) {
   const code = value("name").trim().toUpperCase();
   row.hidden = !isSell(action);
   if (!isSell(action)) { select.innerHTML=""; return; }
-  const lots = getOpenLotsForForm(trade).filter(l=>!code || l.code===code);
-  select.innerHTML = [`<option value="">自动匹配最早开仓</option>`, ...lots.map(l=>`<option value="${l.lotId}">${formatDate(l.date,true)} · ${esc(l.name)} 剩 ${fmt(l.remainingPosition)}% · ${money(l.price)}</option>`)].join("");
+  const positionType = value("positionType");
+  const lots = getMatchingCloseLots(trade);
+  const emptyText = code ? `暂无 ${positionType} 的 ${code} 买入记录` : `先输入标的，只显示 ${positionType} 买入记录`;
+  select.innerHTML = lots.length
+    ? [`<option value="">自动匹配最早 ${positionType} 开仓</option>`, ...lots.map(l=>`<option value="${l.lotId}">${formatDate(l.date,true)} · ${esc(l.name)} · ${esc(l.positionType)} · 剩 ${fmt(l.remainingPosition)}% · ${money(l.price)}</option>`)].join("")
+    : `<option value="">${esc(emptyText)}</option>`;
   select.value = trade?.closeLotId || "";
 }
 function syncQuickPosition() {
@@ -454,7 +468,7 @@ function adjustPositionByStep(delta) {
   const current = Number(input.value) || 0;
   const next = Math.min(100, Math.max(5, current + delta));
   input.value = fmt(next);
-  document.getElementById("quickPosition").value = ["10","5"].includes(String(input.value)) ? String(input.value) : "";
+  document.getElementById("quickPosition").value = ["5","10","15","20"].includes(String(input.value)) ? String(input.value) : "";
   updatePositionSignedPreview();
 }
 function openTrade(trade=null) {
@@ -471,7 +485,7 @@ function openTrade(trade=null) {
     document.getElementById("quickPosition").value="10";
     document.getElementById("positionChange").value="10";
   } else {
-    const quick = ["10","5","3.3"].includes(String(trade.positionChange)) ? String(trade.positionChange) : "";
+    const quick = ["5","10","15","20"].includes(String(trade.positionChange)) ? String(trade.positionChange) : "";
     document.getElementById("quickPosition").value = quick;
   }
   refreshCloseLotOptions(trade);
@@ -520,7 +534,7 @@ function validateTrades(items) {
   if (!Array.isArray(items)) throw new Error("文件格式不正确");
   return items.map((t,i)=>{
     if(!(t.name||t.code||t.symbol)||!t.action||!t.date) throw new Error(`第 ${i+1} 条记录缺少必要字段`);
-    if(![...buyActions,...sellActions].includes(t.action)) throw new Error(`第 ${i+1} 条操作类型不支持`);
+    if(![...buyActions,...sellActions].includes(normalizeAction(t.action))) throw new Error(`第 ${i+1} 条操作类型不支持`);
     const price=Number(t.price), positionChange=Number(t.positionChange);
     if([price,positionChange].some(Number.isNaN) || positionChange <= 0) throw new Error(`第 ${i+1} 条数字字段不正确`);
     return normalizeTrade(t);
@@ -538,6 +552,7 @@ document.getElementById("importBtn").onclick=()=>document.getElementById("fileIn
 document.getElementById("action").onchange=()=>{ refreshCloseLotOptions(); updatePositionSignedPreview(); };
 document.getElementById("name").onfocus=refreshSymbolSuggestions;
 document.getElementById("name").oninput=()=>refreshCloseLotOptions();
+document.getElementById("positionType").onchange=()=>refreshCloseLotOptions();
 document.getElementById("quickPosition").onchange=syncQuickPosition;
 document.getElementById("positionMinus").onclick=()=>adjustPositionByStep(-5);
 document.getElementById("positionPlus").onclick=()=>adjustPositionByStep(5);
@@ -557,6 +572,11 @@ document.getElementById("fileInput").onchange=async e=>{
 document.getElementById("tradeForm").onsubmit=e=>{
   e.preventDefault();
   const id=document.getElementById("editId").value;
+  const editingTrade = state.trades.find(t=>t.id===id);
+  if (isSell(value("action")) && !value("closeLotId") && !getMatchingCloseLots(editingTrade).length) {
+    alert("当前标的和持仓类型下没有可卖出的买入批次，请先确认标的或持仓类型。");
+    return;
+  }
   const trade=normalizeTrade({id:id||crypto.randomUUID(),name:value("name").trim(),action:value("action"),positionType:value("positionType"),price:Number(value("price")),positionChange:Number(value("positionChange")),date:new Date(value("tradeDate")).toISOString(),closeLotId:value("closeLotId"),note:value("note").trim()});
   if(id) state.trades=state.trades.map(t=>t.id===id?trade:t); else state.trades.push(trade);
   state.isDemo=false; state.source="local"; saveState();refreshSymbolSuggestions();close("tradeDialog");render();toast(id?"记录已更新":"操作已记录");
