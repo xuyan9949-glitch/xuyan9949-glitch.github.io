@@ -102,6 +102,15 @@ tr:hover .row-actions { opacity:1; }
 .pairs-panel { margin-bottom:14px; }
 .pairs-panel small { color:var(--muted); }
 .analytics-panel { margin-bottom:14px; }
+.recap-box { padding:14px 17px; border-bottom:1px solid var(--line); }
+.recap-title { color:var(--muted); font-size:12px; font-weight:800; margin-bottom:8px; }
+.recap-list { display:grid; gap:7px; }
+.recap-item { padding:9px 11px; border-left:3px solid var(--blue); border-radius:7px; background:var(--blue-soft); color:var(--text); font-size:12px; line-height:1.5; }
+.risk-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; padding:14px 17px; border-bottom:1px solid var(--line); background:var(--panel); }
+.risk-card { padding:13px 14px; border:1px solid var(--line); border-radius:10px; background:var(--panel-2); }
+.risk-card span { display:block; color:var(--muted); font-size:11px; font-weight:700; margin-bottom:5px; }
+.risk-card strong { display:block; font-size:22px; letter-spacing:-.5px; }
+.risk-card small { color:var(--muted); font-size:11px; }
 .insight-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; padding:14px 17px; border-bottom:1px solid var(--line); background:var(--panel-2); }
 .insight-card { padding:13px 14px; background:var(--panel); border:1px solid var(--line); border-radius:10px; }
 .insight-card span { display:block; color:var(--muted); font-size:11px; font-weight:700; margin-bottom:5px; }
@@ -167,6 +176,10 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
   .header-actions .btn-primary { flex:1; min-width:150px; }
   main { padding:14px; }
   .summary-grid { grid-template-columns:1fr 1fr; gap:9px; }
+  .analytics-panel .panel-header { flex-direction:column; }
+  #analysisRangeTabs { width:100%; justify-content:space-between; }
+  #analysisRangeTabs button { flex:1; }
+  .risk-grid { grid-template-columns:1fr; padding:10px; }
   .insight-grid { grid-template-columns:1fr 1fr; padding:10px; }
   .summary-card { min-height:118px; padding:14px; }
   .metric-row strong { font-size:25px; }

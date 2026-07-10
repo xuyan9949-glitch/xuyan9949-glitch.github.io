@@ -117,6 +117,31 @@
       <section class="panel analytics-panel">
         <div class="panel-header">
           <div><h2>标的复盘分析</h2><p>统计资金使用率、操作频率、收益效率与进出速度</p></div>
+          <div class="segmented" id="analysisRangeTabs">
+            <button data-days="7">7天</button><button data-days="30" class="active">30天</button>
+            <button data-days="90">90天</button><button data-days="all">全部</button>
+          </div>
+        </div>
+        <div class="recap-box">
+          <div class="recap-title">复盘结论</div>
+          <div id="recapList" class="recap-list"></div>
+        </div>
+        <div class="risk-grid">
+          <article class="risk-card">
+            <span>当前总风险暴露</span>
+            <strong id="riskTotalExposure">—</strong>
+            <small id="riskTotalMeta">暂无数据</small>
+          </article>
+          <article class="risk-card">
+            <span>最大单标的占用</span>
+            <strong id="riskTopSymbol">—</strong>
+            <small id="riskTopMeta">暂无数据</small>
+          </article>
+          <article class="risk-card">
+            <span>收益集中度</span>
+            <strong id="riskPnlConcentration">—</strong>
+            <small id="riskPnlMeta">暂无数据</small>
+          </article>
         </div>
         <div class="insight-grid">
           <article class="insight-card">

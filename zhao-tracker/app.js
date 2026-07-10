@@ -19,6 +19,7 @@ const demoTrades = [
 
 let state = { trades: [], accountCapital: 100000, isDemo: false, source: "loading" };
 let rangeDays = 30;
+let analysisDays = 30;
 let sortKey = "position";
 let sortDirection = -1;
 
@@ -155,6 +156,10 @@ function getHoldings(trades=state.trades) {
 function computeSymbolStats(holdings=getHoldings(), ledger=computeLedger()) {
   const capital = Number(state.accountCapital) || 100000;
   const holdingMap = Object.fromEntries(holdings.map(h=>[h.code,h]));
+  const cutoff = analysisDays === "all" ? null : (()=>{ const d=new Date(); d.setDate(d.getDate()-Number(analysisDays)); return d; })();
+  const inWindow = value => !cutoff || new Date(value) >= cutoff;
+  const periodTrades = state.trades.filter(t=>inWindow(t.date));
+  const periodPairs = ledger.pairs.filter(p=>inWindow(p.closeTrade.date));
   const stats = {};
   const ensure = symbol => {
     if (!stats[symbol]) stats[symbol] = {
@@ -177,7 +182,9 @@ function computeSymbolStats(holdings=getHoldings(), ledger=computeLedger()) {
     return stats[symbol];
   };
 
-  for (const t of state.trades) {
+  for (const h of holdings) ensure(h.code);
+
+  for (const t of periodTrades) {
     const s = ensure(t.code);
     const pos = Number(t.positionChange) || 0;
     const date = new Date(t.date);
@@ -188,7 +195,7 @@ function computeSymbolStats(holdings=getHoldings(), ledger=computeLedger()) {
     if (!s.lastDate || date > s.lastDate) s.lastDate = date;
   }
 
-  for (const p of ledger.pairs) {
+  for (const p of periodPairs) {
     const s = ensure(p.code);
     const holdDays = Math.max(0, (new Date(p.closeTrade.date) - new Date(p.openTrade.date)) / 86400000);
     s.realizedContribution += p.contribution;
@@ -208,6 +215,26 @@ function computeSymbolStats(holdings=getHoldings(), ledger=computeLedger()) {
     const tradesPerWeek = s.tradeCount / spanDays * 7;
     return { ...s, avgHoldDays, realizedReturn, realizedDollar, useEfficiency, winRate, tradesPerWeek };
   }).sort((a,b)=>b.tradeCount-a.tradeCount || b.realizedContribution-a.realizedContribution);
+}
+
+function computeRiskProfile(holdings, stats, ledger) {
+  const totalExposure = holdings.reduce((sum,h)=>sum+h.position,0);
+  const topHolding = [...holdings].sort((a,b)=>b.position-a.position)[0];
+  const pnlStats = stats.filter(s=>Math.abs(s.realizedContribution)>0.0001);
+  const totalAbsContribution = pnlStats.reduce((sum,s)=>sum+Math.abs(s.realizedContribution),0);
+  const topPnl = [...pnlStats].sort((a,b)=>Math.abs(b.realizedContribution)-Math.abs(a.realizedContribution))[0];
+  const pnlConcentration = totalAbsContribution && topPnl ? Math.abs(topPnl.realizedContribution)/totalAbsContribution*100 : 0;
+  const capital = Number(state.accountCapital) || 100000;
+  return {
+    totalExposure,
+    exposureLevel: totalExposure >= 80 ? "偏高" : totalExposure >= 50 ? "中等" : "较低",
+    topHolding,
+    topHoldingShare: totalExposure && topHolding ? topHolding.position/totalExposure*100 : 0,
+    topPnl,
+    pnlConcentration,
+    capitalUsed: capital*totalExposure/100,
+    totalPairs: ledger.pairs.length
+  };
 }
 
 function computeTimeline() {
@@ -258,7 +285,8 @@ function render() {
   realizedEl.className=`change ${realizedPct>0?"up":realizedPct<0?"down":"neutral"}`;
 
   renderHoldings(holdings);
-  renderAnalytics(computeSymbolStats(holdings, ledger));
+  const stats = computeSymbolStats(holdings, ledger);
+  renderAnalytics(stats, computeRiskProfile(holdings, stats, ledger));
   renderPairs(ledger.pairs);
   renderActivity();
   renderChart();
@@ -294,7 +322,7 @@ function statTags(s) {
   return tags;
 }
 
-function renderAnalytics(stats) {
+function renderAnalytics(stats, risk) {
   const body = document.getElementById("analyticsBody");
   const capital = Number(state.accountCapital) || 100000;
   const closed = stats.filter(s=>s.closedPosition > 0);
@@ -307,6 +335,7 @@ function renderAnalytics(stats) {
   setInsight("bestReturn", bestReturn, bestReturn ? `${bestReturn.realizedReturn>=0?"+":""}${fmt(bestReturn.realizedReturn,2)}% · ${usd(bestReturn.realizedDollar)}` : "暂无已平仓");
   setInsight("fastest", fastest, fastest ? `平均 ${fmt(fastest.avgHoldDays,1)} 天 · ${fastest.pairCount} 笔配对` : "暂无已平仓");
   setInsight("slowest", slowest, slowest ? `平均 ${fmt(slowest.avgHoldDays,1)} 天 · ${slowest.pairCount} 笔配对` : "暂无已平仓");
+  renderRiskAndRecap({ stats, risk, mostActive, bestReturn, fastest, slowest });
 
   body.innerHTML = stats.map(s=>{
     const tags = statTags(s).map(t=>`<span class="analysis-tag">${esc(t)}</span>`).join("");
@@ -328,6 +357,25 @@ function renderAnalytics(stats) {
 function setInsight(prefix, stat, meta) {
   setText(`${prefix}Symbol`, stat?.symbol || "—");
   setText(`${prefix}Meta`, meta);
+}
+
+function renderRiskAndRecap({ stats, risk, mostActive, bestReturn, fastest, slowest }) {
+  setText("riskTotalExposure", `${fmt(risk.totalExposure)}%`);
+  setText("riskTotalMeta", `${risk.exposureLevel} · 已占用 ${usd(risk.capitalUsed)}`);
+  setText("riskTopSymbol", risk.topHolding?.code || "—");
+  setText("riskTopMeta", risk.topHolding ? `${fmt(risk.topHolding.position)}% 仓位 · 占当前持仓 ${fmt(risk.topHoldingShare,0)}%` : "暂无持仓");
+  setText("riskPnlConcentration", risk.topPnl ? `${fmt(risk.pnlConcentration,0)}%` : "—");
+  setText("riskPnlMeta", risk.topPnl ? `主要来自 ${risk.topPnl.symbol} · ${usd(risk.topPnl.realizedDollar)}` : "暂无已平收益");
+
+  const lines = [];
+  if (mostActive) lines.push(`${mostActive.symbol} 是当前周期操作最频繁的标的，共 ${mostActive.tradeCount} 笔，累计使用 ${fmt(mostActive.grossBuyPosition)}% 仓位。`);
+  if (bestReturn) lines.push(`${bestReturn.symbol} 的已平收益率最高，为 ${bestReturn.realizedReturn>=0?"+":""}${fmt(bestReturn.realizedReturn,2)}%，折算 ${usd(bestReturn.realizedDollar)}。`);
+  if (fastest) lines.push(`${fastest.symbol} 进出最快，平均持仓 ${fmt(fastest.avgHoldDays,1)} 天，适合重点复盘短线执行。`);
+  if (slowest && slowest !== fastest) lines.push(`${slowest.symbol} 节奏最慢，平均持仓 ${fmt(slowest.avgHoldDays,1)} 天，适合检查资金占用效率。`);
+  if (risk.topHolding) lines.push(`当前最大风险暴露在 ${risk.topHolding.code}，占用 ${fmt(risk.topHolding.position)}% 仓位。`);
+  if (!lines.length) lines.push("当前数据还不足，先积累几笔开仓和平仓记录后再复盘。");
+
+  document.getElementById("recapList").innerHTML = lines.slice(0,5).map(line=>`<div class="recap-item">${esc(line)}</div>`).join("");
 }
 
 function renderPairs(pairs) {
@@ -525,6 +573,15 @@ document.querySelectorAll(".sortable").forEach(th=>th.onclick=()=>{
 document.getElementById("rangeTabs").onclick=e=>{
   if(!e.target.dataset.days)return;
   rangeDays=e.target.dataset.days;document.querySelectorAll("#rangeTabs button").forEach(b=>b.classList.toggle("active",b===e.target));renderChart();
+};
+document.getElementById("analysisRangeTabs").onclick=e=>{
+  if(!e.target.dataset.days)return;
+  analysisDays=e.target.dataset.days;
+  document.querySelectorAll("#analysisRangeTabs button").forEach(b=>b.classList.toggle("active",b===e.target));
+  const holdings = getHoldings();
+  const ledger = computeLedger();
+  const stats = computeSymbolStats(holdings, ledger);
+  renderAnalytics(stats, computeRiskProfile(holdings, stats, ledger));
 };
 document.getElementById("clearBtn").onclick=()=>{
   if(!state.trades.length)return;
