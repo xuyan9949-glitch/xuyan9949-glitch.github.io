@@ -1,6 +1,7 @@
 const STORAGE_KEY = "zhao-tracker-data-v5";
 const LEGACY_KEYS = [];
 const THEME_KEY = "zhao-tracker-theme";
+const SHARED_DATA_URL = "data/tracker-data.json";
 const buyActions = ["买入", "加仓"];
 const sellActions = ["减仓", "卖出", "清仓"];
 
@@ -16,7 +17,7 @@ const demoTrades = [
   { id: crypto.randomUUID(), name:"NVDL", code:"NVDL", action:"减仓", positionType:"波段仓", price:31.58, positionChange:5, date:daysAgo(1,20), note:"31.58 出掉，28.35 成本剩下一半" }
 ];
 
-let state = loadState();
+let state = { trades: [], accountCapital: 100000, isDemo: false, source: "loading" };
 let rangeDays = 30;
 let sortKey = "position";
 let sortDirection = -1;
@@ -42,16 +43,35 @@ function normalizeTrade(t) {
     note:String(t.note||"")
   };
 }
-function loadState() {
+function fallbackState() {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if (saved?.trades) return { trades:saved.trades.map(normalizeTrade), accountCapital:Number(saved.accountCapital)||100000, isDemo:false };
+    if (saved?.trades) return { trades:saved.trades.map(normalizeTrade), accountCapital:Number(saved.accountCapital)||100000, isDemo:false, source:"local" };
     for (const key of LEGACY_KEYS) {
       const legacy = JSON.parse(localStorage.getItem(key));
-      if (legacy?.trades) return { trades:legacy.trades.map(normalizeTrade), isDemo:false };
+      if (legacy?.trades) return { trades:legacy.trades.map(normalizeTrade), accountCapital:Number(legacy.accountCapital)||100000, isDemo:false, source:"local" };
     }
-    return { trades: demoTrades, accountCapital:100000, isDemo: true };
-  } catch { return { trades: demoTrades, accountCapital:100000, isDemo: true }; }
+    return { trades: demoTrades.map(normalizeTrade), accountCapital:100000, isDemo: true, source:"demo" };
+  } catch { return { trades: demoTrades.map(normalizeTrade), accountCapital:100000, isDemo: true, source:"demo" }; }
+}
+async function loadSharedState() {
+  try {
+    const res = await fetch(`${SHARED_DATA_URL}?v=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (!Array.isArray(data.trades)) throw new Error("共享数据缺少 trades");
+    return {
+      trades:data.trades.map(normalizeTrade),
+      accountCapital:Number(data.accountCapital)||100000,
+      updatedAt:data.updatedAt||"",
+      isDemo:false,
+      source:"shared"
+    };
+  } catch (err) {
+    const fallback = fallbackState();
+    fallback.loadError = err.message;
+    return fallback;
+  }
 }
 function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 function esc(value="") { return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
@@ -171,7 +191,7 @@ function render() {
   setText("profitCount",ledger.pairs.filter(p=>p.pnlPct>=0).length);
   setText("lossCount",ledger.pairs.filter(p=>p.pnlPct<0).length);
   const latest = [...state.trades].sort((a,b)=>new Date(b.date)-new Date(a.date))[0];
-  setText("lastUpdated",latest ? formatDate(latest.date,true) : "暂无数据");
+  setText("lastUpdated",state.updatedAt ? formatDate(state.updatedAt,true) : latest ? formatDate(latest.date,true) : "暂无数据");
   ["totalBar","capitalUsedBar","baseBar","swingBar"].forEach((id,i)=>document.getElementById(id).style.width=`${Math.min(100,[total,total,base,swing][i])}%`);
   const changeEl = document.getElementById("totalChange");
   changeEl.className=`change ${change>0?"up":change<0?"down":"neutral"}`;
@@ -370,7 +390,7 @@ document.getElementById("fileInput").onchange=async e=>{
     const imported=validateTrades(raw);
     if(!confirm(`将导入 ${imported.length} 条记录并替换当前数据，是否继续？`))return;
     const parsed = file.name.toLowerCase().endsWith(".json") ? JSON.parse(text) : null;
-    state={trades:imported,accountCapital:Number(parsed?.accountCapital)||Number(state.accountCapital)||100000,isDemo:false};saveState();render();toast(`成功导入 ${imported.length} 条记录`);
+    state={trades:imported,accountCapital:Number(parsed?.accountCapital)||Number(state.accountCapital)||100000,isDemo:false,source:"local"};saveState();render();toast(`已导入 ${imported.length} 条本机预览记录`);
   } catch(err){ alert(`导入失败：${err.message}`); }
   finally {e.target.value="";}
 };
@@ -379,7 +399,7 @@ document.getElementById("tradeForm").onsubmit=e=>{
   const id=document.getElementById("editId").value;
   const trade=normalizeTrade({id:id||crypto.randomUUID(),name:value("name").trim(),action:value("action"),positionType:value("positionType"),price:Number(value("price")),positionChange:Number(value("positionChange")),date:new Date(value("tradeDate")).toISOString(),closeLotId:value("closeLotId"),note:value("note").trim()});
   if(id) state.trades=state.trades.map(t=>t.id===id?trade:t); else state.trades.push(trade);
-  state.isDemo=false;saveState();close("tradeDialog");render();toast(id?"记录已更新":"操作已记录");
+  state.isDemo=false; state.source="local"; saveState();close("tradeDialog");render();toast(id?"本机预览已更新":"本机预览已记录");
 };
 document.getElementById("capitalBtn").onclick=()=>{
   const current = Number(state.accountCapital) || 100000;
@@ -388,7 +408,7 @@ document.getElementById("capitalBtn").onclick=()=>{
   const next = Number(String(raw).replace(/[$,\s]/g,""));
   if (!Number.isFinite(next) || next <= 0) { alert("请输入有效的本金金额"); return; }
   state.accountCapital = next;
-  state.isDemo=false; saveState(); render(); toast("账户本金已更新");
+  state.isDemo=false; state.source="local"; saveState(); render(); toast("本机预览本金已更新");
 };
 document.getElementById("searchInput").oninput=()=>renderHoldings(getHoldings());
 document.getElementById("statusFilter").onchange=()=>renderHoldings(getHoldings());
@@ -401,10 +421,16 @@ document.getElementById("rangeTabs").onclick=e=>{
 };
 document.getElementById("clearBtn").onclick=()=>{
   if(!state.trades.length)return;
-  if(confirm("确定清空全部操作记录？此操作无法撤销，建议先导出备份。")){state={trades:[],accountCapital:Number(state.accountCapital)||100000,isDemo:false};saveState();render();toast("全部记录已清空");}
+  if(confirm("确定清空全部操作记录？此操作只影响本机预览，建议先导出备份。")){state={trades:[],accountCapital:Number(state.accountCapital)||100000,isDemo:false,source:"local"};saveState();render();toast("本机预览已清空");}
 };
 document.getElementById("themeBtn").onclick=()=>{
   document.body.classList.toggle("dark");localStorage.setItem(THEME_KEY,document.body.classList.contains("dark")?"dark":"light");
 };
 if(localStorage.getItem(THEME_KEY)==="dark")document.body.classList.add("dark");
-render();
+async function init() {
+  state = await loadSharedState();
+  render();
+  if (state.source === "shared") toast("已加载 GitHub 共享数据");
+  else if (state.loadError) toast("共享数据加载失败，已使用本机数据");
+}
+init();
