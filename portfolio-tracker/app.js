@@ -39,6 +39,7 @@ function defaultStateForMarket(market=activeMarket) {
   const meta = marketMeta[normalizeMarket(market)];
   return { trades: [], accountCapital:meta.defaultCapital, currency:meta.defaultCurrency, market:normalizeMarket(market), isDemo:false, source:"local" };
 }
+function marketCurrency(market=activeMarket) { return marketMeta[normalizeMarket(market)].defaultCurrency; }
 function normalizeTrade(t) {
   const symbol = String(t.symbol || t.name || t.code || "").trim().toUpperCase();
   const market = normalizeMarket(t.market || activeMarket);
@@ -71,23 +72,24 @@ function fallbackState(market=activeMarket) {
       const saved = JSON.parse(localStorage.getItem(key));
       if (saved?.trades) {
         const meta = marketMeta[normalizedMarket];
-        return { trades:saved.trades.map(t=>normalizeTrade({...t, market:normalizedMarket})), accountCapital:Number(saved.accountCapital)||meta.defaultCapital, currency:normalizeCurrency(saved.currency || meta.defaultCurrency), market:normalizedMarket, isDemo:false, source:"local" };
+        return { trades:saved.trades.map(t=>normalizeTrade({...t, market:normalizedMarket})), accountCapital:Number(saved.accountCapital)||meta.defaultCapital, currency:marketCurrency(normalizedMarket), market:normalizedMarket, isDemo:false, source:"local" };
       }
       const legacy = JSON.parse(localStorage.getItem(key));
-      if (legacy?.trades) return { trades:legacy.trades.map(t=>normalizeTrade({...t, market:normalizedMarket})), accountCapital:Number(legacy.accountCapital)||marketMeta[normalizedMarket].defaultCapital, currency:normalizeCurrency(legacy.currency || marketMeta[normalizedMarket].defaultCurrency), market:normalizedMarket, isDemo:false, source:"local" };
+      if (legacy?.trades) return { trades:legacy.trades.map(t=>normalizeTrade({...t, market:normalizedMarket})), accountCapital:Number(legacy.accountCapital)||marketMeta[normalizedMarket].defaultCapital, currency:marketCurrency(normalizedMarket), market:normalizedMarket, isDemo:false, source:"local" };
     }
     return defaultStateForMarket(normalizedMarket);
   } catch { return defaultStateForMarket(normalizedMarket); }
 }
 function saveState() {
   state.market = activeMarket;
+  state.currency = marketCurrency(activeMarket);
   localStorage.setItem(activeMarketConfig().storageKey, JSON.stringify(state));
   localStorage.setItem(MARKET_KEY, activeMarket);
 }
 function esc(value="") { return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 function fmt(n,digits=1) { return Number(n || 0).toFixed(digits).replace(/\.0$/,""); }
 function normalizeCurrency(currency) { return currencyMeta[currency] ? currency : "USD"; }
-function activeCurrency() { return currencyMeta[normalizeCurrency(state.currency)]; }
+function activeCurrency() { return currencyMeta[marketCurrency(activeMarket)]; }
 function money(n) { return formatCurrency(n); }
 function usd(n) { return formatCurrency(n); }
 function formatCurrency(n) {
@@ -170,8 +172,9 @@ function getHoldings(trades=state.trades) {
   const { lots } = computeLedger(trades);
   const map = {};
   for (const lot of lots.filter(l=>l.remainingPosition>0.0001)) {
-    if (!map[lot.code]) map[lot.code] = { code:lot.code, name:lot.name, position:0, quantity:0, costValue:0, positionType:lot.positionType, lastTrade:lot };
-    const h = map[lot.code];
+    const key = `${lot.code}__${lot.positionType}`;
+    if (!map[key]) map[key] = { key, code:lot.code, name:lot.name, position:0, quantity:0, costValue:0, positionType:lot.positionType, lastTrade:lot };
+    const h = map[key];
     h.name = lot.name;
     h.positionType = lot.positionType;
     h.position += Number(lot.remainingPosition) || 0;
@@ -297,7 +300,7 @@ function render() {
   document.querySelectorAll("#marketSwitch button").forEach(btn=>btn.classList.toggle("active", btn.dataset.market===activeMarket));
   document.querySelector(".market-status").innerHTML = `<i></i> ${activeMarketConfig().label} · 本机私有数据`;
   setText("totalPosition",`${fmt(total)}%`);
-  document.getElementById("currencySelect").value = normalizeCurrency(state.currency);
+  state.currency = marketCurrency(activeMarket);
   setText("accountCapital",usd(capital));
   setText("capitalUsed",`已占用 ${usd(usedCapital)}`);
   setText("realizedPnl",usd(realizedDollar));
@@ -617,7 +620,7 @@ function exportCsv() {
   close("exportDialog"); toast("CSV 已导出");
 }
 function exportJson() {
-  download(JSON.stringify({version:2,market:activeMarket,exportedAt:new Date().toISOString(),accountCapital:Number(state.accountCapital)||activeMarketConfig().defaultCapital,currency:normalizeCurrency(state.currency),trades:state.trades},null,2),"application/json",`${activeMarketConfig().label}操作记录.json`);
+  download(JSON.stringify({version:2,market:activeMarket,exportedAt:new Date().toISOString(),accountCapital:Number(state.accountCapital)||activeMarketConfig().defaultCapital,currency:marketCurrency(activeMarket),trades:state.trades},null,2),"application/json",`${activeMarketConfig().label}操作记录.json`);
   close("exportDialog"); toast("JSON 已导出");
 }
 function parseCsv(text) {
@@ -680,7 +683,7 @@ document.getElementById("fileInput").onchange=async e=>{
     const imported=validateTrades(raw);
     if(!confirm(`将导入 ${imported.length} 条记录并替换当前数据，是否继续？`))return;
     const parsed = file.name.toLowerCase().endsWith(".json") ? JSON.parse(text) : null;
-    state={trades:imported,accountCapital:Number(parsed?.accountCapital)||Number(state.accountCapital)||activeMarketConfig().defaultCapital,currency:normalizeCurrency(parsed?.currency || state.currency),market:activeMarket,isDemo:false,source:"local"};saveState();render();toast(`已导入 ${imported.length} 条${activeMarketConfig().label}记录`);
+    state={trades:imported,accountCapital:Number(parsed?.accountCapital)||Number(state.accountCapital)||activeMarketConfig().defaultCapital,currency:marketCurrency(activeMarket),market:activeMarket,isDemo:false,source:"local"};saveState();render();toast(`已导入 ${imported.length} 条${activeMarketConfig().label}记录`);
   } catch(err){ alert(`导入失败：${err.message}`); }
   finally {e.target.value="";}
 };
@@ -726,10 +729,6 @@ document.getElementById("capitalBtn").onclick=()=>{
   state.accountCapital = next;
   state.isDemo=false; state.source="local"; saveState(); render(); toast("本金已更新");
 };
-document.getElementById("currencySelect").onchange=e=>{
-  state.currency = normalizeCurrency(e.target.value);
-  state.isDemo=false; state.source="local"; saveState(); render(); toast(`记账币种已切换为${activeCurrency().label}`);
-};
 document.getElementById("searchInput").oninput=()=>renderHoldings(getHoldings());
 document.getElementById("statusFilter").onchange=()=>renderHoldings(getHoldings());
 document.querySelectorAll(".sortable").forEach(th=>th.onclick=()=>{
@@ -750,7 +749,7 @@ document.getElementById("analysisRangeTabs").onclick=e=>{
 };
 document.getElementById("clearBtn").onclick=()=>{
   if(!state.trades.length)return;
-  if(confirm("确定清空当前看板全部操作记录？建议先导出备份。")){state={trades:[],accountCapital:Number(state.accountCapital)||activeMarketConfig().defaultCapital,currency:normalizeCurrency(state.currency),market:activeMarket,isDemo:false,source:"local"};saveState();render();toast("已清空");}
+  if(confirm("确定清空当前看板全部操作记录？建议先导出备份。")){state={trades:[],accountCapital:Number(state.accountCapital)||activeMarketConfig().defaultCapital,currency:marketCurrency(activeMarket),market:activeMarket,isDemo:false,source:"local"};saveState();render();toast("已清空");}
 };
 document.getElementById("themeBtn").onclick=()=>{
   document.body.classList.toggle("dark");localStorage.setItem(THEME_KEY,document.body.classList.contains("dark")?"dark":"light");
