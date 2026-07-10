@@ -47,7 +47,7 @@ function normalizeTrade(t) {
   const price = Number(t.price);
   const capital = Number(state.accountCapital) || marketMeta[market].defaultCapital;
   const positionChange = marketMeta[market].unit === "shares" && quantity > 0
-    ? (Number(t.positionChange) > 0 ? Number(t.positionChange) : price * quantity / capital * 100)
+    ? price * quantity / capital * 100
     : Number(t.positionChange || 10);
   return {
     id:t.id||crypto.randomUUID(),
@@ -171,17 +171,23 @@ function computeLedger(trades=state.trades) {
 function getHoldings(trades=state.trades) {
   const { lots } = computeLedger(trades);
   const map = {};
-  for (const lot of lots.filter(l=>l.remainingPosition>0.0001)) {
+  const capital = Number(state.accountCapital) || activeMarketConfig().defaultCapital;
+  for (const lot of lots.filter(l=>isLotOpen(l))) {
     const key = `${lot.code}__${lot.positionType}`;
     if (!map[key]) map[key] = { key, code:lot.code, name:lot.name, position:0, quantity:0, costValue:0, positionType:lot.positionType, lastTrade:lot };
     const h = map[key];
     h.name = lot.name;
     h.positionType = lot.positionType;
-    h.position += Number(lot.remainingPosition) || 0;
-    h.quantity += Number(lot.remainingQuantity) || 0;
-    h.costValue += Number(lot.remainingQuantity) > 0
-      ? (Number(lot.price) || 0) * (Number(lot.remainingQuantity) || 0)
-      : (Number(lot.price) || 0) * (Number(lot.remainingPosition) || 0);
+    if (isShareMode()) {
+      const remainingQuantity = Number(lot.remainingQuantity) || 0;
+      const costAmount = (Number(lot.price) || 0) * remainingQuantity;
+      h.quantity += remainingQuantity;
+      h.costValue += costAmount;
+      h.position += capital ? costAmount / capital * 100 : 0;
+    } else {
+      h.position += Number(lot.remainingPosition) || 0;
+      h.costValue += (Number(lot.price) || 0) * (Number(lot.remainingPosition) || 0);
+    }
     if (new Date(lot.date) > new Date(h.lastTrade.date)) h.lastTrade = lot;
   }
   return Object.values(map).map(h=>({ ...h, cost:h.quantity ? h.costValue / h.quantity : h.position ? h.costValue / h.position : 0 }));
