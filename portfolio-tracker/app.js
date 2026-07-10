@@ -424,9 +424,42 @@ function refreshCloseLotOptions(trade=null) {
 function syncQuickPosition() {
   const quick = value("quickPosition");
   if (quick !== "") document.getElementById("positionChange").value = quick;
+  updatePositionSignedPreview();
+}
+function getSymbolSuggestions() {
+  const map = new Map();
+  for (const t of state.trades) {
+    if (!t.code || !buyActions.includes(t.action)) continue;
+    const item = map.get(t.code) || { code:t.code, count:0, lastDate:"" };
+    item.count += 1;
+    if (!item.lastDate || new Date(t.date) > new Date(item.lastDate)) item.lastDate = t.date;
+    map.set(t.code, item);
+  }
+  return [...map.values()].sort((a,b)=>b.count-a.count || new Date(b.lastDate)-new Date(a.lastDate)).slice(0,12);
+}
+function refreshSymbolSuggestions() {
+  const list = document.getElementById("symbolSuggestions");
+  if (!list) return;
+  list.innerHTML = getSymbolSuggestions().map(s=>`<option value="${esc(s.code)}" label="买入 ${s.count} 次"></option>`).join("");
+}
+function updatePositionSignedPreview() {
+  const el = document.getElementById("positionSignedPreview");
+  if (!el) return;
+  const n = Number(value("positionChange")) || 0;
+  const sign = isSell(value("action")) ? "−" : "+";
+  el.textContent = `实际记为 ${sign}${fmt(n)}%`;
+}
+function adjustPositionByStep(delta) {
+  const input = document.getElementById("positionChange");
+  const current = Number(input.value) || 0;
+  const next = Math.min(100, Math.max(5, current + delta));
+  input.value = fmt(next);
+  document.getElementById("quickPosition").value = ["10","5"].includes(String(input.value)) ? String(input.value) : "";
+  updatePositionSignedPreview();
 }
 function openTrade(trade=null) {
   document.getElementById("tradeForm").reset();
+  refreshSymbolSuggestions();
   document.getElementById("editId").value=trade?.id||"";
   document.getElementById("dialogTitle").textContent=trade?"编辑操作":"记录操作";
   const ids=["name","action","positionType","price","positionChange","note"];
@@ -442,6 +475,7 @@ function openTrade(trade=null) {
     document.getElementById("quickPosition").value = quick;
   }
   refreshCloseLotOptions(trade);
+  updatePositionSignedPreview();
   document.getElementById("tradeDialog").showModal();
 }
 function toLocalInput(iso) {
@@ -501,10 +535,13 @@ document.getElementById("closeExport").onclick=()=>close("exportDialog");
 document.getElementById("exportCsv").onclick=exportCsv;
 document.getElementById("exportJson").onclick=exportJson;
 document.getElementById("importBtn").onclick=()=>document.getElementById("fileInput").click();
-document.getElementById("action").onchange=()=>refreshCloseLotOptions();
+document.getElementById("action").onchange=()=>{ refreshCloseLotOptions(); updatePositionSignedPreview(); };
+document.getElementById("name").onfocus=refreshSymbolSuggestions;
 document.getElementById("name").oninput=()=>refreshCloseLotOptions();
 document.getElementById("quickPosition").onchange=syncQuickPosition;
-document.getElementById("positionChange").oninput=()=>document.getElementById("quickPosition").value="";
+document.getElementById("positionMinus").onclick=()=>adjustPositionByStep(-5);
+document.getElementById("positionPlus").onclick=()=>adjustPositionByStep(5);
+document.getElementById("positionChange").oninput=()=>{ document.getElementById("quickPosition").value=""; updatePositionSignedPreview(); };
 document.getElementById("fileInput").onchange=async e=>{
   const file=e.target.files[0]; if(!file)return;
   try {
@@ -522,7 +559,7 @@ document.getElementById("tradeForm").onsubmit=e=>{
   const id=document.getElementById("editId").value;
   const trade=normalizeTrade({id:id||crypto.randomUUID(),name:value("name").trim(),action:value("action"),positionType:value("positionType"),price:Number(value("price")),positionChange:Number(value("positionChange")),date:new Date(value("tradeDate")).toISOString(),closeLotId:value("closeLotId"),note:value("note").trim()});
   if(id) state.trades=state.trades.map(t=>t.id===id?trade:t); else state.trades.push(trade);
-  state.isDemo=false; state.source="local"; saveState();close("tradeDialog");render();toast(id?"记录已更新":"操作已记录");
+  state.isDemo=false; state.source="local"; saveState();refreshSymbolSuggestions();close("tradeDialog");render();toast(id?"记录已更新":"操作已记录");
 };
 document.getElementById("capitalBtn").onclick=()=>{
   const current = Number(state.accountCapital) || 100000;

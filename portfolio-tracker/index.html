@@ -221,7 +221,10 @@
       </div>
       <input id="editId" type="hidden">
       <div class="form-grid">
-        <label>标的<input id="name" required placeholder="例如：AVGO"></label>
+        <label>标的
+          <input id="name" required list="symbolSuggestions" autocomplete="off" placeholder="例如：AVGO">
+          <datalist id="symbolSuggestions"></datalist>
+        </label>
         <label>操作类型
           <select id="action" required>
             <option>买入</option><option>加仓</option><option>减仓</option>
@@ -241,7 +244,14 @@
           </select>
         </label>
         <label>仓位变化（%）
-          <input id="positionChange" type="number" min="0.01" max="100" step="0.01" required placeholder="例如：5">
+          <div class="position-stepper">
+            <input id="positionChange" type="number" min="0.01" max="100" step="5" required placeholder="例如：5">
+            <div class="stepper-actions" aria-label="按 5% 调整仓位">
+              <button type="button" id="positionMinus" class="stepper-btn">-5%</button>
+              <button type="button" id="positionPlus" class="stepper-btn">+5%</button>
+            </div>
+          </div>
+          <span id="positionSignedPreview" class="field-hint">实际记为 +10%</span>
         </label>
         <label>操作时间<input id="tradeDate" type="datetime-local" required></label>
         <label id="closeLotRow" class="full-width">对应开仓批次

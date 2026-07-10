@@ -149,6 +149,13 @@ dialog::backdrop { background:rgba(13,20,32,.45); backdrop-filter:blur(2px); }
 .form-grid label { color:var(--muted); font-size:12px; font-weight:600; }
 .form-grid input,.form-grid select,.form-grid textarea { display:block; width:100%; margin-top:6px; border:1px solid var(--line); border-radius:7px; padding:9px 10px; background:var(--panel-2); color:var(--text); outline:0; }
 .form-grid input:focus,.form-grid textarea:focus,.form-grid select:focus { border-color:var(--blue); box-shadow:0 0 0 3px var(--blue-soft); }
+.position-stepper { display:flex; margin-top:6px; }
+.position-stepper input { margin-top:0; border-radius:7px 0 0 7px; }
+.stepper-actions { flex:0 0 auto; display:flex; }
+.stepper-btn { min-width:58px; border:1px solid var(--line); border-left:0; background:var(--panel); color:var(--text); font-weight:800; }
+.stepper-btn:last-child { border-radius:0 7px 7px 0; color:var(--blue); }
+.stepper-btn:hover { background:var(--panel-2); }
+.field-hint { display:block; margin-top:5px; color:var(--muted); font-size:11px; font-weight:700; }
 .full-width { grid-column:1/-1; }
 .dialog-actions { display:flex; justify-content:flex-end; gap:8px; padding:14px 20px; border-top:1px solid var(--line); }
 .small-dialog { width:min(430px,calc(100vw - 30px)); }
