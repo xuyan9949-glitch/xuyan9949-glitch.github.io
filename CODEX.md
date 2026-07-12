@@ -7,7 +7,7 @@ When the user says "我的投资网页", "我的个人网页", "维护我的网�
 ## Project Identity
 
 - Local path: `/Users/xuyan/Desktop/leslie-invest-site`
-- Production site: `https://xuyan9949-glitch.github.io/`
+- Production site: `https://www.xxyalpha.cn/`
 - GitHub Pages repository: `git@github.com:xuyan9949-glitch/xuyan9949-glitch.github.io.git`
 - Main branch: `main`
 - Site type: static HTML/CSS/JavaScript, no build step required
@@ -18,8 +18,12 @@ When the user says "我的投资网页", "我的个人网页", "维护我的网�
 - `css/style.css`: visual styles
 - `js/articles.js`: article index used by homepage, search, categories, and series navigation
 - `js/main.js`: homepage rendering, notes filters, series navigation, tracking, calendar, and diagrams logic
+- `notes/index.html`: complete searchable article archive
+- `diagrams/index.html`: complete industry diagram gallery
+- `calendar/index.html`: complete verification calendar
 - `articles/<article-id>/index.html`: individual article pages
 - `tools/import_markdown.py`: Markdown-to-article importer
+- `tools/backfill_site_metadata.py`: article metadata and sitemap maintenance
 - `README-maintenance.md`: detailed maintenance instructions
 
 ## Article Workflow
@@ -52,6 +56,7 @@ keywords: 搜索关键词
 ```bash
 node --check js/articles.js
 node --check js/main.js
+/usr/bin/python3 tools/backfill_site_metadata.py
 ```
 
 5. Preview locally when useful:
@@ -68,7 +73,7 @@ git commit -m "Add <article title>"
 git push origin main
 ```
 
-GitHub Pages may take about 30-120 seconds to refresh.
+GitHub Pages may take about 30-120 seconds to refresh. Verify the custom domain after publishing.
 
 ## Content Taxonomy
 

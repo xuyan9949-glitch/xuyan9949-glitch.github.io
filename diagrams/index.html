@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产业图示 | XXY Alpha</title>
+    <meta name="description" content="XXY Alpha 产业链图示归档，覆盖存储、光通信、CPO、PCB、AI数据中心电源与投资组合。">
+    <link rel="canonical" href="https://www.xxyalpha.cn/diagrams/">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232d6cff'/><text x='16' y='22' text-anchor='middle' font-family='Arial' font-weight='700' font-size='22' fill='white'>X</text></svg>">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <span class="logo-mark">X</span>
+                <span class="logo-text">XXY Alpha</span>
+            </a>
+            <div class="nav-links archive-nav-links">
+                <a href="/">首页</a>
+                <a href="/notes/">笔记</a>
+                <a href="/diagrams/" class="active">图示</a>
+                <a href="/calendar/">日历</a>
+                <a href="/about/">关于</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container-wide archive-page">
+        <header class="archive-header">
+            <div class="label">Industry Maps</div>
+            <h1>产业图示</h1>
+            <p>用图解梳理产业链、技术路线、价值分布和投资映射。</p>
+        </header>
+
+        <div class="diagram-tabs archive-categories" id="diagram-page-tabs" aria-label="图示分类"></div>
+        <div class="archive-summary" id="diagram-summary" aria-live="polite"></div>
+        <div id="diagram-page-grid" class="diagrams-grid"></div>
+    </main>
+
+    <div class="diagram-lightbox" id="diagram-page-lightbox" role="dialog" aria-modal="true" aria-label="图示大图" aria-hidden="true">
+        <button class="lb-close" id="diagram-page-close" type="button" aria-label="关闭">×</button>
+        <img id="diagram-page-image" src="" alt="">
+        <span class="lb-title" id="diagram-page-title"></span>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 XXY Alpha · 基于个人研究，不构成投资建议</p>
+        </div>
+    </footer>
+
+    <script src="/js/diagrams-data.js"></script>
+    <script src="/js/diagrams-page.js"></script>
+</body>
+</html>

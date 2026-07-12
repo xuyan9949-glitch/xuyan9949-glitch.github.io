@@ -12,18 +12,6 @@ const articles = [
     file: "/articles/ai-research-assistant-skill-1/"
   },
   {
-    id: "test-note",
-    title: "从测试笔记到个人知识库：一次网站维护流程记录",
-    date: "2026-07-06",
-    category: "见贤思齐",
-    subcategory: "数字工具",
-    tags: ["工具:数字化", "个人知识库", "网站维护", "写作流程"],
-    pinned: false,
-    summary: "记录一次把测试笔记发布到个人网站的维护流程：新增文章页面、更新索引、补充摘要标签和关键词。真正的价值不在测试本身，而在于验证从本地笔记到可检索、可复盘的个人知识库路径是通的。",
-    keywords: "测试笔记 个人知识库 网站维护 发布流程 数字工具 写作流程 首页展示 搜索 分类 Leslie 投资笔记",
-    file: "/articles/test-note/"
-  },
-  {
     id: "storage-ghost-stories-deconstruction",
     title: "存储鬼故事拆解：高位去拥挤 vs 基本面出货",
     date: "2026-07-01",

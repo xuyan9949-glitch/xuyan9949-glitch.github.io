@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全部笔记 | XXY Alpha</title>
+    <meta name="description" content="XXY Alpha 投资研究笔记归档，覆盖美股、A股、AI基础设施、光通信、存储、电子材料与投资方法。">
+    <link rel="canonical" href="https://www.xxyalpha.cn/notes/">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232d6cff'/><text x='16' y='22' text-anchor='middle' font-family='Arial' font-weight='700' font-size='22' fill='white'>X</text></svg>">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <span class="logo-mark">X</span>
+                <span class="logo-text">XXY Alpha</span>
+            </a>
+            <div class="nav-links archive-nav-links">
+                <a href="/">首页</a>
+                <a href="/notes/" class="active">笔记</a>
+                <a href="/diagrams/">图示</a>
+                <a href="/calendar/">日历</a>
+                <a href="/about/">关于</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container archive-page">
+        <header class="archive-header">
+            <div class="label">Research Archive</div>
+            <h1>全部笔记</h1>
+            <p>按类别或关键词查找公司研究、产业链拆解、市场热点与投资方法。</p>
+        </header>
+
+        <div class="archive-toolbar">
+            <label class="archive-search">
+                <span class="sr-only">搜索笔记</span>
+                <input id="archive-search" type="search" placeholder="搜索标题、标签或关键词" autocomplete="off">
+            </label>
+            <div class="archive-summary" id="archive-summary" aria-live="polite"></div>
+        </div>
+
+        <div class="note-categories archive-categories" id="archive-categories" aria-label="笔记分类"></div>
+        <div class="notes-grid" id="archive-notes-list"></div>
+        <nav class="archive-pagination" id="archive-pagination" aria-label="笔记分页"></nav>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 XXY Alpha · 基于个人研究，不构成投资建议</p>
+        </div>
+    </footer>
+
+    <script src="/js/articles.js"></script>
+    <script src="/js/notes-archive.js"></script>
+</body>
+</html>

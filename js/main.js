@@ -223,9 +223,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         subcatBar.style.display = 'flex';
-        let html = '<span class="subcat-tag active" data-subcat="all">全部</span>';
+        let html = '<button type="button" class="subcat-tag active" data-subcat="all" aria-pressed="true">全部</button>';
         subcats.forEach(s => {
-            html += `<span class="subcat-tag" data-subcat="${s}">${s}</span>`;
+            html += `<button type="button" class="subcat-tag" data-subcat="${s}" aria-pressed="false">${s}</button>`;
         });
         subcatBar.innerHTML = html;
         // Re-bind events
@@ -233,6 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
             el.addEventListener('click', () => {
                 document.querySelectorAll('.subcat-tag').forEach(t => t.classList.remove('active'));
                 el.classList.add('active');
+                document.querySelectorAll('.subcat-tag').forEach(t => t.setAttribute('aria-pressed', String(t === el)));
                 currentSubcat = el.dataset.subcat;
                 const activeCat = document.querySelector('.cat-tag.active');
                 renderNotes(activeCat ? activeCat.dataset.cat : 'all');
@@ -265,8 +266,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderNoteCards(list, page, onPage) {
         if (!notesEl) return;
-        const end = Math.min(page * NOTES_PAGE_SIZE, list.length);
-        const shown = list.slice(0, end);
+        const isPreview = notesEl.dataset.mode === 'preview';
+        const start = isPreview ? 0 : (page - 1) * NOTES_PAGE_SIZE;
+        const end = isPreview
+            ? Math.min(NOTES_PAGE_SIZE, list.length)
+            : Math.min(page * NOTES_PAGE_SIZE, list.length);
+        const shown = list.slice(start, end);
 
         notesEl.innerHTML = shown.map(a => `
             <a href="${a.file}" class="note-card${a.pinned ? ' note-pinned' : ''}">
@@ -289,32 +294,66 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
 
         const totalPages = Math.ceil(list.length / NOTES_PAGE_SIZE);
-        if (totalPages > 1) {
+        if (!isPreview && totalPages > 1) {
             const pagWrap = document.createElement('div');
             pagWrap.className = 'notes-pagination';
-            pagWrap.style.cssText = 'display:flex;justify-content:center;align-items:center;gap:6px;margin-top:20px;';
+            pagWrap.setAttribute('aria-label', '笔记分页');
+
+            const goToPage = targetPage => {
+                onPage(targetPage);
+                requestAnimationFrame(() => {
+                    document.getElementById('notes')?.scrollIntoView({ block: 'start' });
+                });
+            };
 
             const prevBtn = document.createElement('button');
             prevBtn.className = 'notes-page-btn';
             prevBtn.textContent = '‹';
+            prevBtn.setAttribute('aria-label', '上一页');
             prevBtn.disabled = page <= 1;
-            prevBtn.onclick = () => onPage(page - 1);
+            prevBtn.onclick = () => goToPage(page - 1);
             pagWrap.appendChild(prevBtn);
 
-            for (let i = 1; i <= totalPages; i++) {
-                const pBtn = document.createElement('button');
-                pBtn.className = 'notes-page-btn' + (i === page ? ' active' : '');
-                pBtn.textContent = i;
-                pBtn.onclick = () => onPage(i);
-                if (i === page) pBtn.disabled = true;
-                pagWrap.appendChild(pBtn);
+            const visiblePages = [];
+            if (totalPages <= 7) {
+                for (let i = 1; i <= totalPages; i++) visiblePages.push(i);
+            } else {
+                visiblePages.push(1);
+                const windowStart = Math.max(2, page - 1);
+                const windowEnd = Math.min(totalPages - 1, page + 1);
+                if (windowStart > 2) visiblePages.push('ellipsis-start');
+                for (let i = windowStart; i <= windowEnd; i++) visiblePages.push(i);
+                if (windowEnd < totalPages - 1) visiblePages.push('ellipsis-end');
+                visiblePages.push(totalPages);
             }
+
+            visiblePages.forEach(item => {
+                if (typeof item !== 'number') {
+                    const ellipsis = document.createElement('span');
+                    ellipsis.className = 'notes-page-ellipsis';
+                    ellipsis.textContent = '…';
+                    ellipsis.setAttribute('aria-hidden', 'true');
+                    pagWrap.appendChild(ellipsis);
+                    return;
+                }
+                const pBtn = document.createElement('button');
+                pBtn.className = 'notes-page-btn' + (item === page ? ' active' : '');
+                pBtn.textContent = item;
+                pBtn.setAttribute('aria-label', `第 ${item} 页`);
+                pBtn.onclick = () => goToPage(item);
+                if (item === page) {
+                    pBtn.disabled = true;
+                    pBtn.setAttribute('aria-current', 'page');
+                }
+                pagWrap.appendChild(pBtn);
+            });
 
             const nextBtn = document.createElement('button');
             nextBtn.className = 'notes-page-btn';
             nextBtn.textContent = '›';
+            nextBtn.setAttribute('aria-label', '下一页');
             nextBtn.disabled = page >= totalPages;
-            nextBtn.onclick = () => onPage(page + 1);
+            nextBtn.onclick = () => goToPage(page + 1);
             pagWrap.appendChild(nextBtn);
 
             notesEl.appendChild(pagWrap);
@@ -327,7 +366,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (page === undefined) page = 1;
         notesPage = page;
         currentSeries = null;
-        document.querySelectorAll('.series-card').forEach(card => card.classList.remove('active'));
+        document.querySelectorAll('.series-card').forEach(card => {
+            card.classList.remove('active');
+            card.setAttribute('aria-pressed', 'false');
+        });
 
         let filtered = articles;
         if (category !== 'all') {
@@ -359,7 +401,9 @@ document.addEventListener('DOMContentLoaded', () => {
         catTags.forEach(t => t.classList.remove('active'));
         if (subcatBar) subcatBar.style.display = 'none';
         document.querySelectorAll('.series-card').forEach(card => {
-            card.classList.toggle('active', card.dataset.series === seriesId);
+            const active = card.dataset.series === seriesId;
+            card.classList.toggle('active', active);
+            card.setAttribute('aria-pressed', String(active));
         });
         const filtered = sortArticles(articles.filter(a => articleMatchesSeries(a, series)));
         renderNoteCards(filtered, page, nextPage => renderSeriesNotes(seriesId, nextPage));
@@ -371,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const matches = articles.filter(a => articleMatchesSeries(a, series));
             const latest = sortArticles([...matches])[0];
             return `
-                <div class="series-card" data-series="${series.id}">
+                <div class="series-card" data-series="${series.id}" role="button" tabindex="0" aria-pressed="false">
                     <h3>${series.title}</h3>
                     <p>${series.desc}</p>
                     <div class="series-meta">
@@ -382,7 +426,14 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }).join('');
         seriesGrid.querySelectorAll('.series-card').forEach(card => {
-            card.addEventListener('click', () => renderSeriesNotes(card.dataset.series));
+            const activate = () => renderSeriesNotes(card.dataset.series);
+            card.addEventListener('click', activate);
+            card.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    activate();
+                }
+            });
         });
     }
 
@@ -391,6 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
             el.addEventListener('click', () => {
                 catTags.forEach(t => t.classList.remove('active'));
                 el.classList.add('active');
+                catTags.forEach(t => t.setAttribute('aria-pressed', String(t === el)));
                 renderNotes(el.dataset.cat);
             });
         });
@@ -605,7 +657,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             return `
-            <div class="trk-card${isHolding ? ' trk-card-holding' : ''}${isAbandoned ? ' trk-card-abandoned' : ''}" data-id="${s.id}" data-mkt="${market}">
+            <div class="trk-card${isHolding ? ' trk-card-holding' : ''}${isAbandoned ? ' trk-card-abandoned' : ''}" data-id="${s.id}" data-mkt="${market}" role="button" tabindex="0" aria-label="查看 ${s.name} 追踪详情">
                 <div class="trk-card-header">
                     <span class="trk-card-name">${s.name}</span>
                     <span class="trk-card-code">${s.code}</span>
@@ -635,8 +687,13 @@ document.addEventListener('DOMContentLoaded', () => {
         `}).join('');
 
         grid.querySelectorAll('.trk-card').forEach(el => {
-            el.addEventListener('click', () => {
-                openDrawer(el.dataset.id, el.dataset.mkt);
+            const activate = () => openDrawer(el.dataset.id, el.dataset.mkt);
+            el.addEventListener('click', activate);
+            el.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    activate();
+                }
             });
         });
         
@@ -1127,13 +1184,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderDiagrams(cat) {
         if (!diagramsGrid || typeof diagrams === 'undefined') return;
         const filtered = cat === 'all' ? diagrams : diagrams.filter(d => d.category === cat);
-        diagramsGrid.innerHTML = filtered.map(d => {
+        const limit = Number(diagramsGrid.dataset.limit || 0);
+        const visible = limit > 0 ? filtered.slice(0, limit) : filtered;
+        diagramsGrid.innerHTML = visible.map((d, index) => {
             const imgPath = '/images/diagrams/' + d.dir + '/' + d.file;
-            return `<div class="diagram-card" onclick="openDiagram('${d.dir}/${d.file}', '${d.title}')">
-                <img src="${imgPath}" alt="${d.title}" loading="lazy">
-                <div class="diagram-label">${d.title}</div>
-            </div>`;
+            return `<button type="button" class="diagram-card" data-index="${index}" aria-label="查看大图：${d.title}">
+                <img src="${imgPath}" alt="${d.title}" loading="lazy" decoding="async">
+                <span class="diagram-label">${d.title}</span>
+            </button>`;
         }).join('');
+        diagramsGrid.querySelectorAll('.diagram-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const item = visible[Number(card.dataset.index)];
+                window.openDiagram(item.dir + '/' + item.file, item.title);
+            });
+        });
     }
 
     if (diagramsGrid && typeof diagrams !== 'undefined') {
@@ -1147,6 +1212,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tab.addEventListener('click', () => {
                 diagramTabs.querySelectorAll('.diagram-tab').forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
+                diagramTabs.querySelectorAll('.diagram-tab').forEach(t => t.setAttribute('aria-pressed', String(t === tab)));
                 currentDiagramCategory = tab.dataset.dcat;
                 renderDiagrams(currentDiagramCategory);
             });
@@ -1185,18 +1251,34 @@ document.addEventListener('DOMContentLoaded', () => {
 // ---- 逻辑验证日历 ----
 const calGrid = document.getElementById('cal-grid');
 
+function localDateKey(date = new Date()) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
+function isCalendarEventPast(event, todayKey = localDateKey()) {
+    const exactDate = String(event.date).match(/^(\d{4}-\d{2}-\d{2})/);
+    if (exactDate) return exactDate[1] < todayKey;
+
+    const eventMonth = String(event.date).match(/^(\d{4}-\d{2})/);
+    return eventMonth ? eventMonth[1] < todayKey.slice(0, 7) : false;
+}
+
 function renderCalendar(filter = 'all') {
     if (!calGrid || typeof calendarEvents === 'undefined') return;
 
     const sorted = [...calendarEvents].sort((a, b) => a.date.localeCompare(b.date));
-    const now = new Date().toISOString().slice(0,10);
+    const now = localDateKey();
+    const upcoming = sorted.filter(event => !isCalendarEventPast(event, now));
 
     // Determine which events to show
-    let filtered = sorted;
+    let filtered = upcoming;
     if (filter === '本周') {
         const today = new Date(now);
         const weekEnd = new Date(today); weekEnd.setDate(today.getDate() + 7);
-        filtered = sorted.filter(e => {
+        filtered = upcoming.filter(e => {
             if (e.date.includes('Q') || e.date.includes('H')) return false;
             if (e.date.includes('中旬') || e.date.includes('下旬') || e.date.includes('上旬')) return true;
             if (e.certainty === 'estimated') return true;
@@ -1206,7 +1288,7 @@ function renderCalendar(filter = 'all') {
     } else if (filter === '未来30天') {
         const today = new Date(now);
         const monthEnd = new Date(today); monthEnd.setDate(today.getDate() + 30);
-        filtered = sorted.filter(e => {
+        filtered = upcoming.filter(e => {
             if (e.date.includes('Q') || e.date.includes('H')) return false;
             if (e.date.includes('中旬') || e.date.includes('下旬') || e.date.includes('上旬')) return true;
             if (e.certainty === 'estimated') return true;
@@ -1214,7 +1296,7 @@ function renderCalendar(filter = 'all') {
             return d >= today && d <= monthEnd;
         });
     } else if (filter !== 'all') {
-        filtered = sorted.filter(e => e.type === filter);
+        filtered = upcoming.filter(e => e.type === filter);
     }
 
     const typeColors = {
@@ -1229,7 +1311,10 @@ function renderCalendar(filter = 'all') {
         return;
     }
 
-    calGrid.innerHTML = filtered.map(e => {
+    const limit = Number(calGrid.dataset.limit || 0);
+    const visibleEvents = limit > 0 ? filtered.slice(0, limit) : filtered;
+
+    calGrid.innerHTML = visibleEvents.map(e => {
         // Countdown
         let countdown = '';
         if (e.date.includes('中旬') || e.date.includes('下旬') || e.date.includes('上旬')) {
@@ -1281,6 +1366,7 @@ document.querySelectorAll('.cal-filter').forEach(el => {
     el.addEventListener('click', function() {
         document.querySelectorAll('.cal-filter').forEach(f => f.classList.remove('active'));
         this.classList.add('active');
+        document.querySelectorAll('.cal-filter').forEach(f => f.setAttribute('aria-pressed', String(f === this)));
         renderCalendar(this.dataset.filter);
     });
 });
@@ -1308,18 +1394,32 @@ function toggleCalendarHistory() {
     
     const isHidden = grid.style.display === 'none';
     grid.style.display = isHidden ? 'grid' : 'none';
-    link.textContent = isHidden ? '📂 收起历史事件' : '📂 查看历史事件';
+    const pendingHistory = typeof calendarEvents === 'undefined'
+        ? []
+        : calendarEvents.filter(event => isCalendarEventPast(event));
+    const historyCount = calendarHistory.length + pendingHistory.length;
+    link.textContent = isHidden ? '收起历史事件' : `查看历史事件 (${historyCount})`;
+    link.setAttribute('aria-expanded', String(isHidden));
     
     if (isHidden && grid.children.length === 0) {
-        grid.innerHTML = calendarHistory.sort((a, b) => b.date.localeCompare(a.date)).map(e => {
+        const reviewed = calendarHistory.map(event => ({ ...event, reviewState: 'reviewed' }));
+        const pending = pendingHistory.map(event => ({ ...event, reviewState: 'pending' }));
+        const historyItems = [...reviewed, ...pending].sort((a, b) => b.date.localeCompare(a.date));
+
+        grid.innerHTML = historyItems.map(e => {
             const impColor = { '极高':'#ef4444', '高':'#f59e0b', '中':'#6b6b80' }[e.importance] || '#6b6b80';
+            const reviewContent = e.reviewState === 'reviewed'
+                ? `<div class="cal-result"><strong>结果：</strong>${e.result}</div>
+                   <div class="cal-verify"><strong>验证：</strong>${e.verification}</div>`
+                : `<div class="cal-result"><strong>原市场预期：</strong>${e.marketExpect}</div>
+                   <div class="cal-verify"><strong>原核心验证：</strong>${e.verifyPoint}</div>
+                   <div class="cal-review-pending">待复盘</div>`;
             return `<div class="cal-card cal-past">
                 <div class="cal-date">${e.date}</div>
                 <div class="cal-type" style="background:${impColor}15;color:${impColor}">${e.type}</div>
                 <div class="cal-title">${e.title}</div>
                 <div class="cal-stocks">${e.stocks}</div>
-                <div class="cal-result"><strong>结果：</strong>${e.result}</div>
-                <div class="cal-verify"><strong>验证：</strong>${e.verification}</div>
+                ${reviewContent}
             </div>`;
         }).join('');
     }
@@ -1328,14 +1428,17 @@ function toggleCalendarHistory() {
 // ---- 近期最重要三件事 ----
 const topEl = document.getElementById('cal-top-three');
 if (topEl && typeof topThree !== 'undefined') {
-    topEl.innerHTML = topThree.map(t => `
+    const activeTopEvents = topThree
+        .filter(event => !isCalendarEventPast(event))
+        .slice(0, 3);
+    topEl.innerHTML = activeTopEvents.map(t => `
         <div class="t3-item">
             <span class="t3-date">${t.date}</span>
             <span class="t3-title">${t.title}</span>
             <span class="t3-stocks">${t.stocks}</span>
         </div>
     `).join('');
-    topEl.style.display = 'block';
+    topEl.style.display = activeTopEvents.length ? 'block' : 'none';
 }
 
 // ---- 追踪颜色 - STATUS_COLORS + getStatusColor ----

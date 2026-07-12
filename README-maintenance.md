@@ -1,4 +1,6 @@
-# Leslie 研究笔记维护说明
+# XXY Alpha 维护说明
+
+正式网址：`https://www.xxyalpha.cn/`
 
 这个站点现在支持从 Markdown 笔记生成静态文章页面。
 
@@ -38,7 +40,15 @@ keywords: 搜索关键词 空格分隔
 
 - 创建 `articles/<文章id>/index.html`
 - 更新 `js/articles.js`
+- 更新 `sitemap.xml`
 - 让首页列表、分类筛选和站内搜索能找到新文章
+
+## 主要页面
+
+- `/`：精简首页
+- `/notes/`：全部笔记与搜索
+- `/diagrams/`：全部产业图示
+- `/calendar/`：完整验证日历
 
 ## 常用分类
 
@@ -59,3 +69,11 @@ keywords: 搜索关键词 空格分隔
 ```bash
 /usr/bin/python3 tools/import_markdown.py notes-inbox/example-note.md --dry-run
 ```
+
+## 站点元信息检查
+
+```bash
+/usr/bin/python3 tools/backfill_site_metadata.py
+```
+
+命令显示 `Articles needing update: 0` 即表示文章元信息和新域名已同步。

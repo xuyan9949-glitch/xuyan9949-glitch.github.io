@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关键验证日历 | XXY Alpha</title>
+    <meta name="description" content="XXY Alpha 关键验证日历，跟踪可能影响 AI 产业链和市场定价的财报、宏观、产品、订单与产能事件。">
+    <link rel="canonical" href="https://www.xxyalpha.cn/calendar/">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232d6cff'/><text x='16' y='22' text-anchor='middle' font-family='Arial' font-weight='700' font-size='22' fill='white'>X</text></svg>">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <span class="logo-mark">X</span>
+                <span class="logo-text">XXY Alpha</span>
+            </a>
+            <div class="nav-links archive-nav-links">
+                <a href="/">首页</a>
+                <a href="/notes/">笔记</a>
+                <a href="/diagrams/">图示</a>
+                <a href="/calendar/" class="active">日历</a>
+                <a href="/about/">关于</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container archive-page">
+        <header class="archive-header">
+            <div class="label">Verification Calendar</div>
+            <h1>关键验证日历</h1>
+            <p>只保留有明确时间锚点、能验证投资逻辑或影响市场定价的事件。</p>
+        </header>
+
+        <div class="cal-top-three" id="cal-top-three" style="display:none"></div>
+
+        <div class="cal-filters archive-categories" id="cal-filters" aria-label="日历筛选">
+            <button type="button" class="cal-filter active" data-filter="all" aria-pressed="true">全部</button>
+            <button type="button" class="cal-filter" data-filter="本周" aria-pressed="false">本周</button>
+            <button type="button" class="cal-filter" data-filter="未来30天" aria-pressed="false">未来30天</button>
+            <button type="button" class="cal-filter" data-filter="财报" aria-pressed="false">财报</button>
+            <button type="button" class="cal-filter" data-filter="产品" aria-pressed="false">产品</button>
+            <button type="button" class="cal-filter" data-filter="会议" aria-pressed="false">会议</button>
+            <button type="button" class="cal-filter" data-filter="订单" aria-pressed="false">订单</button>
+            <button type="button" class="cal-filter" data-filter="产能" aria-pressed="false">产能</button>
+            <button type="button" class="cal-filter" data-filter="IPO" aria-pressed="false">IPO</button>
+            <button type="button" class="cal-filter" data-filter="宏观" aria-pressed="false">宏观</button>
+            <button type="button" class="cal-filter" data-filter="发射" aria-pressed="false">发射</button>
+            <button type="button" class="cal-filter" data-filter="监管" aria-pressed="false">监管</button>
+        </div>
+
+        <div class="cal-grid" id="cal-grid"></div>
+        <div class="cal-history-toggle" id="cal-history-toggle">
+            <button class="cal-history-link" type="button" onclick="toggleCalendarHistory()" aria-expanded="false">查看历史事件</button>
+        </div>
+        <div class="cal-grid" id="cal-history-grid" style="display:none"></div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 XXY Alpha · 基于个人研究，不构成投资建议</p>
+        </div>
+    </footer>
+
+    <script src="/js/calendar-data.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

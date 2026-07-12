@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leslie 投资笔记 — 科技投资 · 产业研究 · 认知成长</title>
+    <title>XXY Alpha | 科技投资 · 产业研究 · 认知成长</title>
+    <meta name="description" content="XXY Alpha 是 Leslie 的个人投资研究站，长期跟踪 AI 基础设施、半导体、存储、光通信、PCB、电子材料与全球科技资产。">
+    <link rel="canonical" href="https://www.xxyalpha.cn/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="XXY Alpha">
+    <meta property="og:title" content="XXY Alpha | 科技投资与产业研究">
+    <meta property="og:description" content="用第一性原理理解公司、产业与时代变化。">
+    <meta property="og:url" content="https://www.xxyalpha.cn/">
+    <meta property="og:image" content="https://www.xxyalpha.cn/images/diagrams/存储/industry-map-01.jpg">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232d6cff'/><text x='16' y='22' text-anchor='middle' font-family='-apple-system,BlinkMacSystemFont,sans-serif' font-weight='700' font-size='22' fill='white'>X</text></svg>">
     <link rel="stylesheet" href="css/style.css">
         <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "cfat_EXNTwlqYXnvP6KZpLTangEZdMvy0IdqGZRKap3Me3690d699"}'></script>
@@ -14,8 +23,8 @@
     <nav class="nav" id="nav">
         <div class="nav-inner">
             <a href="/" class="logo">
-                <span class="logo-mark">L</span>
-                <span class="logo-text">Leslie 研究笔记</span>
+                <span class="logo-mark">X</span>
+                <span class="logo-text">XXY Alpha</span>
             </a>
             <div class="nav-links">
                 <a href="/" class="active"><span class="nav-label">首页</span><span class="nav-en">Home</span></a>
@@ -87,11 +96,6 @@
                 </div>
             </div>
         </div>
-
-
-
-        </section>
-
         <!-- ====== 方案A：最近更新（静态卡片式） ====== -->
         <!-- ====== Tracking ====== -->
         
@@ -214,30 +218,33 @@
 
         
 
-        <!-- ====== Featured Notes ====== -->
+        <!-- ====== Latest Notes ====== -->
         <section class="section section-alt" id="notes">
             <div class="container">
                 <div class="section-header">
-                    <div class="label">Featured Notes</div>
-                    <h2>精选笔记</h2>
-                    <p>这里放我认为最值得反复回看的文章，包括公司研究、产业链拆解、美股A股当下炒作热点以及一些个人思考。</p>
+                    <div class="label">Latest Notes</div>
+                    <h2>最新笔记</h2>
+                    <p>首页保留最新与最值得回看的内容，完整文章可在笔记归档中按类别和关键词查找。</p>
                 </div>
                 
                 <div class="note-categories">
-                    <span class="cat-tag active" data-cat="all">全部</span>
-                    <span class="cat-tag" data-cat="美股">美股</span>
-                    <span class="cat-tag" data-cat="A股">A股</span>
-                    <span class="cat-tag" data-cat="产业思考">产业思考</span>
-                    <span class="cat-tag" data-cat="见贤思齐">见贤思齐</span>
-                    <span class="cat-tag" data-cat="近期热点">近期热点</span>
+                    <button type="button" class="cat-tag active" data-cat="all" aria-pressed="true">全部</button>
+                    <button type="button" class="cat-tag" data-cat="美股" aria-pressed="false">美股</button>
+                    <button type="button" class="cat-tag" data-cat="A股" aria-pressed="false">A股</button>
+                    <button type="button" class="cat-tag" data-cat="产业思考" aria-pressed="false">产业思考</button>
+                    <button type="button" class="cat-tag" data-cat="见贤思齐" aria-pressed="false">见贤思齐</button>
+                    <button type="button" class="cat-tag" data-cat="近期热点" aria-pressed="false">近期热点</button>
                 </div>
                 <div class="sub-categories" style="display:none;margin-top:4px">
-                    <span class="subcat-tag active" data-subcat="all">全部</span>
+                    <button type="button" class="subcat-tag active" data-subcat="all" aria-pressed="true">全部</button>
                 </div>
 
                 <div class="series-grid" id="series-grid"></div>
 
-                <div class="notes-grid" id="notes-list"></div>
+                <div class="notes-grid" id="notes-list" data-mode="preview"></div>
+                <div class="section-more">
+                    <a class="btn btn-ghost" href="/notes/">查看全部笔记</a>
+                </div>
             </div>
         </section>
 
@@ -263,16 +270,19 @@
                     <p class="section-sub">产业链图谱、技术路线、价值分布 — 大图查看更清晰</p>
                 </div>
                 <div class="diagram-tabs" id="diagram-tabs">
-                    <span class="diagram-tab active" data-dcat="all">全部</span>
-                    <span class="diagram-tab" data-dcat="存储">存储</span>
-                    <span class="diagram-tab" data-dcat="光">光</span>
-                    <span class="diagram-tab" data-dcat="PCB">PCB</span>
-                    <span class="diagram-tab" data-dcat="日历">日历</span>
-                    <span class="diagram-tab" data-dcat="电源">电源</span>
-                    <span class="diagram-tab" data-dcat="组合">组合</span>
-                    <span class="diagram-tab" data-dcat="serenity">Serenity</span>
+                    <button type="button" class="diagram-tab active" data-dcat="all" aria-pressed="true">全部</button>
+                    <button type="button" class="diagram-tab" data-dcat="存储" aria-pressed="false">存储</button>
+                    <button type="button" class="diagram-tab" data-dcat="光" aria-pressed="false">光</button>
+                    <button type="button" class="diagram-tab" data-dcat="PCB" aria-pressed="false">PCB</button>
+                    <button type="button" class="diagram-tab" data-dcat="日历" aria-pressed="false">日历</button>
+                    <button type="button" class="diagram-tab" data-dcat="电源" aria-pressed="false">电源</button>
+                    <button type="button" class="diagram-tab" data-dcat="组合" aria-pressed="false">组合</button>
+                    <button type="button" class="diagram-tab" data-dcat="serenity" aria-pressed="false">Serenity</button>
                 </div>
-                <div id="diagrams-grid" class="diagrams-grid"></div>
+                <div id="diagrams-grid" class="diagrams-grid" data-limit="6"></div>
+                <div class="section-more">
+                    <a class="btn btn-ghost" href="/diagrams/">查看全部图示</a>
+                </div>
             </div>
         </section>
 
@@ -292,25 +302,28 @@
 
                 <!-- 筛选栏 -->
                 <div class="cal-filters" id="cal-filters">
-                    <span class="cal-filter active" data-filter="all">全部</span>
-                    <span class="cal-filter" data-filter="本周">本周</span>
-                    <span class="cal-filter" data-filter="未来30天">未来30天</span>
-                    <span class="cal-filter" data-filter="财报">财报</span>
-                    <span class="cal-filter" data-filter="产品">产品</span>
-                    <span class="cal-filter" data-filter="会议">会议</span>
-                    <span class="cal-filter" data-filter="订单">订单</span>
-                    <span class="cal-filter" data-filter="产能">产能</span>
-                    <span class="cal-filter" data-filter="IPO">IPO</span>
-                    <span class="cal-filter" data-filter="宏观">宏观</span>
-                    <span class="cal-filter" data-filter="发射">发射</span>
-                    <span class="cal-filter" data-filter="监管">监管</span>
+                    <button type="button" class="cal-filter active" data-filter="all" aria-pressed="true">全部</button>
+                    <button type="button" class="cal-filter" data-filter="本周" aria-pressed="false">本周</button>
+                    <button type="button" class="cal-filter" data-filter="未来30天" aria-pressed="false">未来30天</button>
+                    <button type="button" class="cal-filter" data-filter="财报" aria-pressed="false">财报</button>
+                    <button type="button" class="cal-filter" data-filter="产品" aria-pressed="false">产品</button>
+                    <button type="button" class="cal-filter" data-filter="会议" aria-pressed="false">会议</button>
+                    <button type="button" class="cal-filter" data-filter="订单" aria-pressed="false">订单</button>
+                    <button type="button" class="cal-filter" data-filter="产能" aria-pressed="false">产能</button>
+                    <button type="button" class="cal-filter" data-filter="IPO" aria-pressed="false">IPO</button>
+                    <button type="button" class="cal-filter" data-filter="宏观" aria-pressed="false">宏观</button>
+                    <button type="button" class="cal-filter" data-filter="发射" aria-pressed="false">发射</button>
+                    <button type="button" class="cal-filter" data-filter="监管" aria-pressed="false">监管</button>
                 </div>
 
-                <div class="cal-grid" id="cal-grid"></div>
+                <div class="cal-grid" id="cal-grid" data-limit="3"></div>
+                <div class="section-more">
+                    <a class="btn btn-ghost" href="/calendar/">查看完整日历</a>
+                </div>
 
                 <!-- 历史事件切换 -->
                 <div class="cal-history-toggle" id="cal-history-toggle">
-                    <span class="cal-history-link" onclick="toggleCalendarHistory()">📂 查看历史事件</span>
+                    <button class="cal-history-link" type="button" onclick="toggleCalendarHistory()" aria-expanded="false">查看历史事件</button>
                 </div>
                 <div class="cal-grid" id="cal-history-grid" style="display:none"></div>
             </div>
@@ -345,7 +358,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>© 2026 Leslie · 基于个人研究，不构成投资建议 · <a href="/about">关于</a></p>
+            <p>© 2026 XXY Alpha · 基于个人研究，不构成投资建议 · <a href="/about">关于</a></p>
         </div>
     </footer>
 

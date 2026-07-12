@@ -236,24 +236,42 @@ def markdown_to_html(markdown: str) -> str:
     return "\n\n".join(out)
 
 
-def article_template(title: str, date: str, category: str, subcategory: str, content_html: str) -> str:
+def article_template(
+    title: str,
+    date: str,
+    category: str,
+    subcategory: str,
+    summary: str,
+    article_id: str,
+    content_html: str,
+) -> str:
     meta_cat = category if not subcategory else f"{category} · {subcategory}"
     page_title = html.escape(title)
+    meta_description = html.escape(summary, quote=True)
+    canonical_url = f"https://www.xxyalpha.cn/articles/{article_id}/"
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{page_title} — Leslie 投资笔记</title>
+    <title>{page_title} | XXY Alpha</title>
+    <meta name="description" content="{meta_description}">
+    <link rel="canonical" href="{canonical_url}">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="XXY Alpha">
+    <meta property="og:title" content="{page_title}">
+    <meta property="og:description" content="{meta_description}">
+    <meta property="og:url" content="{canonical_url}">
+    <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%232d6cff'/><text x='16' y='22' text-anchor='middle' font-family='-apple-system,BlinkMacSystemFont,sans-serif' font-weight='700' font-size='22' fill='white'>X</text></svg>">
 </head>
 <body>
     <nav class="nav">
         <div class="nav-inner">
-            <a href="/" class="logo"><span class="logo-mark">L</span><span class="logo-text">Leslie 研究笔记</span></a>
-            <div class="nav-links">
-                <a href="/">首页</a><a href="/#notes">笔记</a><a href="/#frameworks">框架</a>
+            <a href="/" class="logo"><span class="logo-mark">X</span><span class="logo-text">XXY Alpha</span></a>
+            <div class="nav-links archive-nav-links">
+                <a href="/">首页</a><a href="/notes/">笔记</a><a href="/diagrams/">图示</a><a href="/calendar/">日历</a>
             </div>
         </div>
     </nav>
@@ -280,6 +298,10 @@ def article_template(title: str, date: str, category: str, subcategory: str, con
 {content_html}
         </div>
     </main>
+
+    <footer class="footer">
+        <div class="container"><p>© 2026 XXY Alpha · 基于个人研究，不构成投资建议</p></div>
+    </footer>
 
     <script src="/js/share.js"></script>
 </body>
@@ -367,10 +389,16 @@ def main() -> int:
     article_dir = ARTICLES_DIR / article_id
     article_dir.mkdir(parents=True, exist_ok=True)
     (article_dir / "index.html").write_text(
-        article_template(title, date, category, subcategory, content_html),
+        article_template(title, date, category, subcategory, summary, article_id, content_html),
         encoding="utf-8",
     )
     update_articles_js(article)
+    from backfill_site_metadata import build_sitemap, load_articles
+
+    (SITE_ROOT / "sitemap.xml").write_text(
+        build_sitemap(load_articles()),
+        encoding="utf-8",
+    )
     print(f"Imported: {title}")
     print(f"Page: {article_dir / 'index.html'}")
     print(f"URL: /articles/{article_id}/")
