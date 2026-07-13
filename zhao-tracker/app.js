@@ -1,7 +1,7 @@
 const STORAGE_KEY = "zhao-tracker-data-v5";
 const LEGACY_KEYS = [];
 const THEME_KEY = "zhao-tracker-theme";
-const SHARED_DATA_URL = "https://raw.githubusercontent.com/xuyan9949-glitch/xuyan9949-glitch.github.io/main/zhao-tracker/data/tracker-data.json";
+const SHARED_DATA_URL = "./data/tracker-data.json";
 const buyActions = ["买入", "加仓"];
 const sellActions = ["减仓", "卖出", "清仓"];
 
