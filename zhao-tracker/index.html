@@ -114,6 +114,15 @@
         </article>
       </section>
 
+      <section class="panel closed-panel">
+        <div class="panel-header">
+          <div><h2>已清仓标的</h2><p>保留历史操盘档案，可随时查看完整复盘</p></div>
+          <label class="search-box">⌕ <input id="closedSearchInput" placeholder="搜索已清仓标的"></label>
+        </div>
+        <div id="closedSymbols" class="closed-symbols"></div>
+        <div id="closedSymbolsEmpty" class="empty-state"><div>暂无已清仓标的</div><p>标的仓位归零后会自动归档到这里。</p></div>
+      </section>
+
       <section class="panel analytics-panel">
         <div class="panel-header">
           <div><h2>标的复盘分析</h2><p>统计资金使用率、操作频率、收益效率与进出速度</p></div>
@@ -264,7 +273,28 @@
     </div>
   </dialog>
 
+  <dialog id="symbolDialog" class="symbol-dialog">
+    <div class="dialog-header">
+      <div><h2 id="symbolDialogTitle">标的综合情况</h2><p id="symbolDialogSubtitle">完整操盘档案</p></div>
+      <button class="close-btn" id="closeSymbolDialog">×</button>
+    </div>
+    <div class="symbol-detail-body">
+      <div id="symbolStatus" class="symbol-status-line"></div>
+      <div id="symbolMetrics" class="symbol-metrics"></div>
+      <div class="symbol-detail-grid">
+        <section class="symbol-detail-section">
+          <div class="detail-section-title"><h3>操作流水</h3><span id="symbolTradeCount"></span></div>
+          <div id="symbolTrades" class="symbol-trades"></div>
+        </section>
+        <section class="symbol-detail-section">
+          <div class="detail-section-title"><h3>平仓配对</h3><span id="symbolPairCount"></span></div>
+          <div id="symbolPairs" class="symbol-pairs"></div>
+        </section>
+      </div>
+    </div>
+  </dialog>
+
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20260713-2"></script>
+  <script src="app.js?v=20260714-symbol-detail"></script>
 </body>
 </html>
