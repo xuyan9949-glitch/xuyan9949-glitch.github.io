@@ -15,6 +15,7 @@ from pathlib import Path
 SITE_ROOT = Path(__file__).resolve().parents[1]
 ARTICLES_JS = SITE_ROOT / "js" / "articles.js"
 ARTICLES_DIR = SITE_ROOT / "articles"
+CONTENT_REGISTRY = SITE_ROOT / "content" / "articles.json"
 
 
 def slugify(text: str) -> str:
@@ -338,6 +339,27 @@ def update_articles_js(article: dict[str, object]) -> None:
     ARTICLES_JS.write_text(text, encoding="utf-8")
 
 
+def update_content_registry(article: dict[str, object]) -> None:
+    if CONTENT_REGISTRY.exists():
+        registry = json.loads(CONTENT_REGISTRY.read_text(encoding="utf-8"))
+    else:
+        registry = {"version": 1, "articles": []}
+    articles = [item for item in registry.get("articles", []) if item.get("id") != article["id"]]
+    for item in articles:
+        item["order"] = int(item.get("order", 0)) + 1
+    articles.insert(0, {
+        **article,
+        "status": "published",
+        "order": 0,
+        "updatedAt": dt.datetime.now(dt.timezone.utc).isoformat(),
+    })
+    CONTENT_REGISTRY.parent.mkdir(parents=True, exist_ok=True)
+    CONTENT_REGISTRY.write_text(
+        json.dumps({"version": 1, "articles": articles}, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Import a Markdown file into Leslie static site.")
     parser.add_argument("markdown_file", help="Path to the Markdown note")
@@ -392,6 +414,7 @@ def main() -> int:
         article_template(title, date, category, subcategory, summary, article_id, content_html),
         encoding="utf-8",
     )
+    update_content_registry(article)
     update_articles_js(article)
     from backfill_site_metadata import build_sitemap, load_articles
 

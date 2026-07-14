@@ -24,6 +24,8 @@ When the user says "我的投资网页", "我的个人网页", "维护我的网�
 - `articles/<article-id>/index.html`: individual article pages
 - `tools/import_markdown.py`: Markdown-to-article importer
 - `tools/backfill_site_metadata.py`: article metadata and sitemap maintenance
+- `content/articles.json`: admin content registry, including draft/archive/trash state
+- `ADMIN_SETUP.md`: private web admin deployment and security setup
 - `README-maintenance.md`: detailed maintenance instructions
 
 ## Article Workflow
@@ -74,6 +76,16 @@ git push origin main
 ```
 
 GitHub Pages may take about 30-120 seconds to refresh. Verify the custom domain after publishing.
+
+## Web Admin
+
+- Planned admin URL: `https://admin.xxyalpha.cn/`
+- Admin frontend and Cloudflare Worker are maintained outside the public Pages artifact.
+- The admin uses a strong password and a signed, HttpOnly session cookie.
+- The Worker stores only the password hash, salt, session key, and GitHub token as Worker Secrets.
+- Web admin writes must keep `content/articles.json`, `js/articles.js`, `sitemap.xml`, the article source, and public page consistent in one Git commit.
+- Agent imports must also update `content/articles.json`; `tools/import_markdown.py` already does this.
+- Never place the GitHub token, plaintext password, or administrator secrets in this repository.
 
 ## Content Taxonomy
 
