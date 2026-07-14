@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-14T00:43:00+08:00",
+  "updatedAt": "2026-07-14T16:49:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {"id":"mu-9155-add-20260713","name":"MU","action":"加仓","positionType":"波段仓","price":915.5,"positionChange":3.3,"date":"2026-07-13T16:10:00+08:00","note":"加了三分之一常规仓"},
@@ -21,6 +21,9 @@
     {"id":"nok-1194-half-close-20260713","name":"NOK","action":"减仓","positionType":"波段仓","price":11.94,"positionChange":1.65,"date":"2026-07-13T22:32:00+08:00","closeLotId":"nok-1165-add-20260713","note":"11.65 的 NOK 出一半"},
     {"id":"iren-389-add-20260714","name":"IREN","action":"加仓","positionType":"波段仓","price":38.9,"positionChange":3.3,"date":"2026-07-14T00:43:00+08:00","note":"加了三分之一常规仓"},
     {"id":"tsll-122-add-20260714","name":"TSLL","action":"加仓","positionType":"波段仓","price":12.2,"positionChange":1.65,"date":"2026-07-14T00:43:00+08:00","note":"加回 12.5 卖出的那部分"},
-    {"id":"conl-476-add-20260714","name":"CONL","action":"加仓","positionType":"波段仓","price":4.76,"positionChange":1.65,"date":"2026-07-14T00:43:00+08:00","note":"加回 5.0 卖出的那部分"}
+    {"id":"conl-476-add-20260714","name":"CONL","action":"加仓","positionType":"波段仓","price":4.76,"positionChange":1.65,"date":"2026-07-14T00:43:00+08:00","note":"加回 5.0 卖出的那部分"},
+    {"id":"mu-965-close-20260714","name":"MU","action":"清仓","positionType":"波段仓","price":965,"positionChange":1.65,"date":"2026-07-14T16:49:00+08:00","closeLotId":"mu-905-add-20260713","note":"出掉 905 剩下的 MU"},
+    {"id":"dram-589-close-20260714","name":"DRAM","action":"清仓","positionType":"波段仓","price":58.9,"positionChange":1.65,"date":"2026-07-14T16:49:00+08:00","closeLotId":"dram-567-add-20260713","note":"出掉 56.7 剩下的 DRAM"},
+    {"id":"glw-1879-close-20260714","name":"GLW","action":"清仓","positionType":"波段仓","price":187.9,"positionChange":3.3,"date":"2026-07-14T16:49:00+08:00","closeLotId":"glw-184-add-20260713","note":"出掉 184 的 GLW"}
   ]
 }
