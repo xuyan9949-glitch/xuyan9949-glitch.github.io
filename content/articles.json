@@ -17,9 +17,9 @@
       "summary": "多数人把 AI 当搜索引擎，只得到百科式回答。更高效的方式，是把 AI 设定为研究助理，明确身份、目标、输出框架和追问机制，用它快速建立行业研究框架。",
       "keywords": "AI 实用技能 研究助理 搜索引擎 投资研究 行业研究 HBM MLCC AI工具 提问框架",
       "file": "/articles/ai-research-assistant-skill-1/",
-      "status": "published",
+      "status": "trash",
       "order": 0,
-      "updatedAt": "2026-07-12T15:54:34.613Z"
+      "updatedAt": "2026-07-14T06:41:01.764Z"
     },
     {
       "id": "storage-ghost-stories-deconstruction",
@@ -1132,6 +1132,7 @@
         "散热",
         "二阶扩散"
       ],
+      "pinned": false,
       "summary": "AI集群扩大→高速接口密度提升→cage需求增加→1.6T功耗提升驱动普通cage向散热/液冷cage升级。连接器与精密结构件公司获得AI互联二阶扩散机会。",
       "keywords": "cage 连接器 鼎通 奕东 光模块 铜缆 散热 液冷 AI互联 二阶扩散 结构件",
       "file": "/articles/ai-cage-connector/",
@@ -1172,6 +1173,7 @@
         "学习路径",
         "方法论"
       ],
+      "pinned": false,
       "summary": "不要从名词表硬背，按信号路径+投资价值链理解。6个核心概念搞懂光通信：EML/PD/DSP/FAU/NPO/CPO，附公司映射和投资优先级排序。",
       "keywords": "光通信 学习 EML PD DSP FAU NPO CPO 800G 1.6T 硅光 OCS 投资 产业链",
       "file": "/articles/optical-communication-learning-path/",
@@ -1190,6 +1192,7 @@
         "地缘政治",
         "能源"
       ],
+      "pinned": false,
       "summary": "短线是缓和信号，中线是伊朗把霍尔木兹海峡制度化为地缘谈判筹码。从硬封锁转向软管制——对原油、黄金、美元、美股科技和板块分化的完整分析。",
       "keywords": "霍尔木兹 伊朗 原油 地缘政治 黄金 避险 能源 LNG 中东 战争溢价 航运",
       "file": "/articles/hormuz-strait-crisis/",
@@ -1210,6 +1213,7 @@
         "先进封装",
         "术语"
       ],
+      "pinned": false,
       "summary": "按'它是什么→产业链位置→投资含义'拆解CPO、NPO、PD、OCS、DSP、EML、CW Laser、FAU、TIA、Driver、SerDes、硅光、轻相干、AEC、CoWoS、TGV、Interposer、Glass Core、ABF等23个核心概念。",
       "keywords": "CPO NPO PD OCS DSP EML CW Laser FAU TIA Driver SerDes 硅光 轻相干 AEC Scale-up Scale-out CoWoS TGV Interposer Glass Core ABF 光互连 先进封装",
       "file": "/articles/industry-glossary-2026/",
@@ -1247,6 +1251,7 @@
         "策略:产业链分析",
         "市场:美股"
       ],
+      "pinned": false,
       "summary": "从GB300到VR200——AI服务器单柜BOM成本+95%，HBM增+435%，PCB增+233%，系统级价值量全面升级。",
       "keywords": "AI服务器 BOM GB300 VR200 HBM PCB 代际升级 价值量 英伟达 NVIDIA 供应链",
       "file": "/articles/server-bom-analysis/",
@@ -1265,6 +1270,7 @@
         "策略:产业链分析",
         "市场:美股"
       ],
+      "pinned": false,
       "summary": "从铀矿到SMR到核电运营商——AI数据中心电力需求驱动核电价值重估。LEU逻辑最硬，CEG最稳，OKLO彩票最高。",
       "keywords": "核电 AI电力 SMR 铀矿 LEU CEG OKLO VST 数据中心 能源",
       "file": "/articles/ai-nuclear-chain/",
@@ -1282,6 +1288,7 @@
         "市场:A股",
         "策略:研究框架"
       ],
+      "pinned": false,
       "summary": "叙事弹性、题材节奏、估值潜规则、产业链轮动——A股21条不成文的市场定价规则。",
       "keywords": "A股 规则 叙事弹性 题材 估值 游资 公募 轮动 龙一 龙二",
       "file": "/articles/a-share-rules/",
@@ -1300,6 +1307,7 @@
         "策略:产业链分析",
         "市场:A股"
       ],
+      "pinned": false,
       "summary": "利润兑现、卡脖子、受益时序、A股弹性——四维度拆解AI基础设施链条的投资顺序。",
       "keywords": "AI产业链 收益排序 卡脖子 GPU HBM CoWoS 光模块 电力 液冷 存储",
       "file": "/articles/ai-industry-profit-chain/",
@@ -1317,6 +1325,7 @@
         "复盘",
         "市场:A股"
       ],
+      "pinned": false,
       "summary": "上证 vs KOSPI vs 日经 vs 台股——85%方向同步率背后的幅度差异与A股独立性。",
       "keywords": "亚盘 联动 上证 KOSPI 日经 台股 韩国 日本 台湾 A股 复盘",
       "file": "/articles/asia-market-correlation/",
@@ -1334,6 +1343,7 @@
         "市场:A股",
         "策略:研究框架"
       ],
+      "pinned": false,
       "summary": "龙一→龙二→细分瓶颈→低位补涨→参股蹭概念→退潮——A股题材炒作从启动到退潮的完整传导路径与判断框架。",
       "keywords": "A股炒作 传导 龙一 龙二 补涨 瓶颈 参股 蹭概念 退潮 情绪 题材 轮动",
       "file": "/articles/a-share-framework/",
@@ -1351,6 +1361,7 @@
         "市场:A股",
         "产业:光通信"
       ],
+      "pinned": false,
       "summary": "A股光通信五层映射模型——从EML/激光器到InP衬底到互联芯片到平台型到模块龙头，三种排序框架（瓶颈/确定性/弹性）。",
       "keywords": "光通信 EML InP 互联芯片 源杰科技 澜起科技 中际旭创 新易盛 光模块 LITE AXTI MRVL",
       "file": "/articles/a-share-optical-mapping/",
@@ -1368,7 +1379,9 @@
         "市场:A股",
         "东山精密"
       ],
+      "pinned": false,
       "summary": "针对网络三条谣言的逐一澄清——收购审批已全部通关、实控人正常履职、港股上市独立推进。光芯片产能22KK→28KK/月，AWS/Oracle/Meta订单落地。",
+      "keywords": "",
       "file": "/articles/dongshan-clarification/",
       "status": "published",
       "order": 59,
@@ -1385,7 +1398,9 @@
         "产业:AI",
         "策略:产业链分析"
       ],
+      "pinned": false,
       "summary": "Vera Rubin量产爬坡、Spectrum-X CPO光互联方案、AI Factory BOM价值量重估——台北GTC确认AI投资从买GPU进入建AI工厂阶段。",
+      "keywords": "",
       "file": "/articles/gtc-taipei-2026/",
       "status": "published",
       "order": 60,
@@ -1420,6 +1435,7 @@
         "市场:A股",
         "策略:产业链分析"
       ],
+      "pinned": false,
       "summary": "AI服务器高速互联推动PCB材料体系整体升级——从HVLP4/5铜箔到电子布、硅微粉、mSAP药水，资金从PCB龙头扩散到上游瓶颈环节。",
       "keywords": "PCB HVLP 铜箔 铜冠铜箔 德福科技 生益科技 CCL 电子布 硅微粉 mSAP 泰金新能 三孚新科",
       "file": "/articles/ai-pcb-hvlp-copper-foil/",
@@ -1436,6 +1452,7 @@
       "tags": [
         "认知:道德经"
       ],
+      "pinned": false,
       "summary": "道冲，而用之或不盈。真正强大的东西，往往并不急于证明自己强大。世界上最深的力量，往往藏在最安静的地方。",
       "keywords": "道德经 第四章 道冲 冲而不盈 和光同尘 挫锐解纷 柔 留白 空间",
       "file": "/articles/daodejing-chapter-4/",
@@ -1452,6 +1469,7 @@
       "tags": [
         "认知:道德经"
       ],
+      "pinned": false,
       "summary": "少一点外界的刺激，心就少一点混乱；多一点真实的根基，人就多一点安定。人不是靠更多刺激变清醒，而是靠减少刺激恢复清醒。",
       "keywords": "道德经 第三章 欲望 刺激 比较 焦虑 投资 心态 降噪",
       "file": "/articles/daodejing-chapter-3/",
@@ -1469,6 +1487,7 @@
         "航天",
         "市场:美股"
       ],
+      "pinned": false,
       "summary": "SpaceX估值锚从2万亿下修到1.8万亿，Blue Origin事故影响发射排期——12个Q&A拆解太空股调整的本质：从主题行情进入兑现行情。",
       "keywords": "SpaceX Blue Origin ASTS RKLB 太空 航天 IPO 估值 发射 New Glenn 卫星 商业航天",
       "file": "/articles/space-sector-analysis/",
@@ -1485,6 +1504,7 @@
       "tags": [
         "认知:道德经"
       ],
+      "pinned": false,
       "summary": "比较可以帮助我们认识差异，但执着于比较，会让人失去自己。知道世界有高下，但心不必随之倾斜。",
       "keywords": "道德经 第二章 比较 无为 功成弗居 投资 心态",
       "file": "/articles/daodejing-chapter-2/",
@@ -1501,6 +1521,7 @@
       "tags": [
         "认知:道德经"
       ],
+      "pinned": false,
       "summary": "不要急着给世界命名，也不要被自己起的名字困住。世界比我们的判断更大，人生比某个阶段更长，市场也比任何一个故事更复杂。",
       "keywords": "道德经 第一章 道 名 命名 投资 认知 标签 判断",
       "file": "/articles/daodejing-chapter-1/",
@@ -1521,6 +1542,7 @@
         "产业:AI",
         "涨价"
       ],
+      "pinned": false,
       "summary": "EML涨价、交期拉长、InP产能紧张——AI光通信瓶颈从光模块上移至光芯片，LITE/COHR最直接受益，国产替代有窗口但需验证。",
       "keywords": "EML InP 光通信 激光器 LITE COHR 源杰科技 长光华芯 光模块 涨价 瓶颈 AXTI 磷化铟",
       "file": "/articles/eml-bottleneck/",
@@ -1540,6 +1562,7 @@
         "产业:AI",
         "材料"
       ],
+      "pinned": false,
       "summary": "从衬底到光模块到AI数据中心——InP是AI光通信最上游的\"卖水人\"。",
       "keywords": "InP 磷化铟 衬底 光通信 EML 激光器 LITE COHR AXTI 6英寸 外延 光模块",
       "file": "/articles/inp-industry-chain/",
