@@ -5,6 +5,7 @@ const LEGACY_KEYS = [];
 const THEME_KEY = "portfolio-tracker-theme";
 const CLEAR_BACKUP_KEY = "portfolio-tracker-last-clear-v1";
 const CLOUD_TABLE = "portfolio_snapshots";
+const CLOUD_SYNC_AVAILABLE = false;
 const marketMeta = {
   US: { label:"美股", unit:"position", storageKey:STORAGE_KEY, defaultCurrency:"USD", defaultCapital:100000 },
   CN: { label:"A股", unit:"shares", storageKey:"portfolio-tracker-cn-data-v1", defaultCurrency:"CNY", defaultCapital:100000 }
@@ -102,6 +103,7 @@ function saveState() {
 }
 function supabaseConfig() { return window.PORTFOLIO_SUPABASE_CONFIG || {}; }
 function canUseSupabase() {
+  if (!CLOUD_SYNC_AVAILABLE) return false;
   const cfg = supabaseConfig();
   return Boolean(cfg.url && cfg.anonKey && window.supabase?.createClient);
 }
@@ -124,6 +126,12 @@ function updateSyncUi() {
   }
   const btn = document.getElementById("syncBtn");
   if (btn) {
+    if (!CLOUD_SYNC_AVAILABLE) {
+      btn.textContent = "云同步暂未上线";
+      btn.title = "当前版本只保存在本机浏览器，请定期导出 JSON 备份";
+      btn.disabled = true;
+      return;
+    }
     btn.textContent = currentUser ? "退出同步" : "登录同步";
     btn.title = currentUser?.email || "登录后可跨设备云同步";
     btn.classList.toggle("auth-user", Boolean(currentUser));

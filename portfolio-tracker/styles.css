@@ -39,6 +39,7 @@ h1 { font-size:17px; letter-spacing:-.2px; }
 .btn:hover,.icon-btn:hover { border-color:#c8d0dc; background:var(--panel-2); }
 .btn-primary { color:#fff; background:var(--blue); border-color:var(--blue); }
 .btn-primary:hover { background:#1e55c3; border-color:#1e55c3; }
+.btn:disabled { cursor:not-allowed; opacity:.62; background:var(--panel-2); color:var(--muted); }
 .icon-btn { width:36px; padding:0; font-size:18px; }
 main { padding:22px 28px 16px; }
 .summary-grid { display:grid; grid-template-columns:1.25fr repeat(4,1fr); gap:14px; margin-bottom:14px; }
