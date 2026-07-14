@@ -3,10 +3,10 @@
   "articles": [
     {
       "id": "optical-pcb-20260714",
-      "title": "可以。既然半导体设备、材料主要通过美国市场配置，A股观察池应当彻底收缩为两条线：",
+      "title": "中报A股最新观察池（不含半导体）",
       "date": "2026-07-14",
       "category": "A股",
-      "subcategory": "光通信",
+      "subcategory": "",
       "tags": [
         "产业:光通信",
         "个股:东山精密",
@@ -27,7 +27,7 @@
       "file": "/articles/optical-pcb-20260714/",
       "status": "draft",
       "order": 0,
-      "updatedAt": "2026-07-14T18:13:22.016Z"
+      "updatedAt": "2026-07-14T18:14:24.175Z"
     },
     {
       "id": "ai-research-assistant-skill-1",
