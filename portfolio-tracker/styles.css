@@ -108,6 +108,32 @@ tr:hover .row-actions { opacity:1; }
 .chart .grid { stroke:var(--line); stroke-width:1; }
 .pairs-panel { margin-bottom:14px; }
 .pairs-panel small { color:var(--muted); }
+.closed-symbols-panel { margin-bottom:14px; }
+.closed-symbols-list { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; padding:14px 17px; }
+.closed-symbol-card { display:flex; align-items:center; gap:10px; width:100%; min-width:0; padding:11px 12px; border:1px solid var(--line); border-radius:10px; background:var(--panel-2); color:var(--text); text-align:left; }
+.closed-symbol-card:hover,.detail-btn:hover { border-color:var(--blue); background:var(--blue-soft); }
+.closed-symbol-card span:nth-child(2) { flex:1; min-width:0; }
+.closed-symbol-card b,.closed-symbol-card small { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.closed-symbol-card small { color:var(--muted); font-size:11px; margin-top:2px; }
+.closed-symbol-card strong { font-size:12px; }
+.detail-btn { border:1px solid var(--line); border-radius:999px; padding:5px 9px; background:var(--panel); color:var(--blue); font-size:11px; font-weight:800; white-space:nowrap; }
+.symbol-dialog { width:min(980px,calc(100vw - 28px)); }
+.symbol-detail-body { padding:16px 18px 18px; display:grid; gap:14px; max-height:min(76vh,760px); overflow:auto; }
+.symbol-summary-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.symbol-summary-card { padding:13px 14px; border:1px solid var(--line); border-radius:10px; background:var(--panel-2); }
+.symbol-summary-card span { display:block; color:var(--muted); font-size:11px; font-weight:800; margin-bottom:5px; }
+.symbol-summary-card strong { display:block; font-size:21px; letter-spacing:-.4px; }
+.symbol-summary-card small { color:var(--muted); font-size:11px; }
+.symbol-summary-card.positive strong,.up { color:var(--red); }
+.symbol-summary-card.negative strong,.down { color:var(--green); }
+.symbol-detail-section { border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+.section-title { padding:10px 12px; border-bottom:1px solid var(--line); background:var(--panel-2); color:var(--muted); font-size:12px; font-weight:800; }
+.symbol-mini-list { display:grid; }
+.symbol-list-item { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:14px; padding:11px 12px; border-bottom:1px solid var(--line); align-items:center; }
+.symbol-list-item:last-child { border-bottom:0; }
+.symbol-list-item small { display:block; color:var(--muted); font-size:11px; margin-top:2px; }
+.symbol-list-item > div:last-child { text-align:right; }
+.empty-state.compact { padding:28px 16px; }
 .analytics-panel { margin-bottom:14px; }
 .recap-box { padding:14px 17px; border-bottom:1px solid var(--line); }
 .recap-title { color:var(--muted); font-size:12px; font-weight:800; margin-bottom:8px; }
@@ -224,6 +250,8 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
   #analysisRangeTabs { width:100%; justify-content:space-between; }
   #analysisRangeTabs button { flex:1; }
   .risk-grid { grid-template-columns:1fr; padding:10px; }
+  .closed-symbols-list { grid-template-columns:1fr; padding:10px; }
+  .symbol-summary-grid { grid-template-columns:1fr 1fr; }
   .performance-grid { grid-template-columns:1fr 1fr; padding:10px; }
   .insight-grid { grid-template-columns:1fr 1fr; padding:10px; }
   .summary-card { min-height:118px; padding:14px; }
@@ -248,6 +276,8 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
   .position-cell { min-width:88px; }
   .position-mini { margin-left:auto; }
   .analysis-tags { justify-content:flex-end; max-width:none; }
+  .symbol-list-item { grid-template-columns:1fr; }
+  .symbol-list-item > div:last-child { text-align:left; }
   .row-actions,.activity-actions { opacity:1; }
   .activity-list { grid-template-columns:1fr; }
   .activity-item:nth-child(odd) { border-right:0; }
@@ -260,6 +290,7 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
 @media (max-width:430px) {
   .summary-grid { grid-template-columns:1fr; }
   .insight-grid { grid-template-columns:1fr; }
+  .symbol-summary-grid { grid-template-columns:1fr; }
   .performance-grid { grid-template-columns:1fr; }
   .header-actions .icon-btn { display:none; }
 }

@@ -7,7 +7,7 @@
   <title>个人持仓追踪</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260714-symbol-detail">
 </head>
 <body>
   <div class="app-shell">
@@ -100,6 +100,7 @@
                   <th>占用资金</th>
                   <th>持仓成本</th>
                   <th>最近操作</th>
+                  <th>综合情况</th>
                 </tr>
               </thead>
               <tbody id="holdingsBody"></tbody>
@@ -121,6 +122,17 @@
           <div class="chart-legend"><span class="total">总仓位</span><span class="base">底仓</span></div>
           <div id="trendChart" class="chart"></div>
         </article>
+      </section>
+
+      <section class="panel closed-symbols-panel">
+        <div class="panel-header">
+          <div><h2>已清仓标的</h2><p>历史做过但当前无持仓的标的，可搜索复盘</p></div>
+          <div class="tools">
+            <label class="search-box">⌕ <input id="closedSearchInput" placeholder="搜索历史标的"></label>
+          </div>
+        </div>
+        <div id="closedSymbolsList" class="closed-symbols-list"></div>
+        <div id="closedSymbolsEmpty" class="empty-state"><div>暂无已清仓标的</div><p>标的完全平仓后，会自动进入这里。</p></div>
       </section>
 
       <section class="panel analytics-panel">
@@ -297,6 +309,24 @@
     </form>
   </dialog>
 
+  <dialog id="symbolDialog" class="symbol-dialog">
+    <div class="dialog-header">
+      <div><h2 id="symbolDialogTitle">标的综合情况</h2><p id="symbolDialogMeta">当前标的完整复盘</p></div>
+      <button type="button" class="close-btn" id="closeSymbolDialog">×</button>
+    </div>
+    <div class="symbol-detail-body">
+      <div id="symbolSummaryGrid" class="symbol-summary-grid"></div>
+      <section class="symbol-detail-section">
+        <div class="section-title">完整操作流水</div>
+        <div id="symbolTradesList" class="symbol-mini-list"></div>
+      </section>
+      <section class="symbol-detail-section">
+        <div class="section-title">平仓配对</div>
+        <div id="symbolPairsList" class="symbol-mini-list"></div>
+      </section>
+    </div>
+  </dialog>
+
   <dialog id="exportDialog" class="small-dialog">
     <div class="dialog-header"><div><h2>导出数据</h2><p>选择需要的文件格式</p></div><button class="close-btn" id="closeExport">×</button></div>
     <div class="export-options">
@@ -319,6 +349,6 @@
   <div id="toast" role="status" aria-live="polite"></div>
   <script src="supabase-config.js?v=20260711"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="app.js?v=20260711-supabase-sync"></script>
+  <script src="app.js?v=20260714-symbol-detail"></script>
 </body>
 </html>
