@@ -6,6 +6,7 @@ const THEME_KEY = "portfolio-tracker-theme";
 const CLEAR_BACKUP_KEY = "portfolio-tracker-last-clear-v1";
 const CLOUD_TABLE = "portfolio_snapshots";
 const CLOUD_SYNC_AVAILABLE = false;
+const DATA_VERSION = 3;
 const marketMeta = {
   US: { label:"美股", unit:"position", storageKey:STORAGE_KEY, defaultCurrency:"USD", defaultCapital:100000 },
   CN: { label:"A股", unit:"shares", storageKey:"portfolio-tracker-cn-data-v1", defaultCurrency:"CNY", defaultCapital:100000 }
@@ -30,6 +31,7 @@ let cloudEnabled = false;
 let cloudReady = false;
 let cloudSaveTimer = null;
 let isApplyingCloudState = false;
+let migrationNotice = "";
 
 function daysAgo(days, hour) {
   const d = new Date();
@@ -47,7 +49,7 @@ function activeMarketConfig() { return marketMeta[activeMarket]; }
 function isShareMode() { return activeMarketConfig().unit === "shares"; }
 function defaultStateForMarket(market=activeMarket) {
   const meta = marketMeta[normalizeMarket(market)];
-  return { trades: [], accountCapital:meta.defaultCapital, currency:meta.defaultCurrency, market:normalizeMarket(market), isDemo:false, source:"local" };
+  return { version:DATA_VERSION, trades: [], accountCapital:meta.defaultCapital, currency:meta.defaultCurrency, market:normalizeMarket(market), isDemo:false, source:"local" };
 }
 function marketCurrency(market=activeMarket) { return marketMeta[normalizeMarket(market)].defaultCurrency; }
 function normalizeTrade(t) {
@@ -74,30 +76,75 @@ function normalizeTrade(t) {
     note:String(t.note||"")
   };
 }
+function serializeState(value=state, market=activeMarket) {
+  const normalizedMarket = normalizeMarket(market);
+  const meta = marketMeta[normalizedMarket];
+  return {
+    version:DATA_VERSION,
+    trades:Array.isArray(value.trades) ? value.trades.map(t=>normalizeTrade({...t, market:normalizedMarket, accountCapital:Number(value.accountCapital)||meta.defaultCapital})) : [],
+    accountCapital:Number(value.accountCapital)||meta.defaultCapital,
+    currency:marketCurrency(normalizedMarket),
+    market:normalizedMarket,
+    isDemo:false,
+    source:value.source||"local",
+    updatedAt:value.updatedAt||new Date().toISOString()
+  };
+}
+function backupStoredState(key, raw, reason="migration") {
+  if (!raw) return "";
+  const backupKey = `${key}-backup-${reason}-${Date.now()}`;
+  localStorage.setItem(backupKey, raw);
+  return backupKey;
+}
+function migrateStoredState(saved, market=activeMarket) {
+  const normalizedMarket = normalizeMarket(market);
+  const meta = marketMeta[normalizedMarket];
+  const rawTrades = Array.isArray(saved?.trades) ? saved.trades : [];
+  const accountCapital = Number(saved?.accountCapital || saved?.account_capital) || meta.defaultCapital;
+  return serializeState({
+    ...saved,
+    trades:rawTrades.map(t=>normalizeTrade({...t, market:normalizedMarket, accountCapital})),
+    accountCapital,
+    source:"local"
+  }, normalizedMarket);
+}
+function readStoredState(key, market=activeMarket) {
+  const raw = localStorage.getItem(key);
+  if (!raw) return null;
+  let saved;
+  try { saved = JSON.parse(raw); }
+  catch (err) { throw new Error(`本机数据解析失败：${key}`); }
+  if (!saved?.trades) return null;
+  const migrated = migrateStoredState(saved, market);
+  if (Number(saved.version || 0) !== DATA_VERSION) {
+    const backupKey = backupStoredState(key, raw, `v${saved.version || "legacy"}-to-v${DATA_VERSION}`);
+    localStorage.setItem(key, JSON.stringify(migrated));
+    migrationNotice = `已自动升级本机数据格式，并保留旧数据备份。`;
+    console.info("portfolio data migrated", { key, backupKey, from:saved.version || "legacy", to:DATA_VERSION });
+  }
+  return migrated;
+}
 function fallbackState(market=activeMarket) {
   const normalizedMarket = normalizeMarket(market);
   const keys = [marketMeta[normalizedMarket].storageKey, ...(normalizedMarket === "US" ? [LEGACY_STORAGE_KEY] : []), ...LEGACY_KEYS];
   try {
     for (const key of keys) {
-      const saved = JSON.parse(localStorage.getItem(key));
-      if (saved?.trades) {
-        const meta = marketMeta[normalizedMarket];
-        const accountCapital = Number(saved.accountCapital)||meta.defaultCapital;
-        return { trades:saved.trades.map(t=>normalizeTrade({...t, market:normalizedMarket, accountCapital})), accountCapital, currency:marketCurrency(normalizedMarket), market:normalizedMarket, isDemo:false, source:"local" };
-      }
-      const legacy = JSON.parse(localStorage.getItem(key));
-      if (legacy?.trades) {
-        const accountCapital = Number(legacy.accountCapital)||marketMeta[normalizedMarket].defaultCapital;
-        return { trades:legacy.trades.map(t=>normalizeTrade({...t, market:normalizedMarket, accountCapital})), accountCapital, currency:marketCurrency(normalizedMarket), market:normalizedMarket, isDemo:false, source:"local" };
-      }
+      const stored = readStoredState(key, normalizedMarket);
+      if (stored) return stored;
     }
     return defaultStateForMarket(normalizedMarket);
-  } catch { return defaultStateForMarket(normalizedMarket); }
+  } catch (err) {
+    console.error("local data migration failed", err);
+    migrationNotice = "本机旧数据升级失败。请先导出备份或联系维护者，不要清理浏览器数据。";
+    return defaultStateForMarket(normalizedMarket);
+  }
 }
 function saveState() {
   state.market = activeMarket;
   state.currency = marketCurrency(activeMarket);
-  localStorage.setItem(activeMarketConfig().storageKey, JSON.stringify(state));
+  state.version = DATA_VERSION;
+  state.updatedAt = new Date().toISOString();
+  localStorage.setItem(activeMarketConfig().storageKey, JSON.stringify(serializeState(state, activeMarket)));
   localStorage.setItem(MARKET_KEY, activeMarket);
   scheduleCloudSave();
 }
@@ -143,6 +190,7 @@ function cloudPayload() {
     market: activeMarket,
     account_capital: Number(state.accountCapital) || activeMarketConfig().defaultCapital,
     currency: marketCurrency(activeMarket),
+    version:DATA_VERSION,
     trades: state.trades.map(t=>normalizeTrade({...t, market:activeMarket})),
     updated_at: new Date().toISOString()
   };
@@ -201,7 +249,7 @@ async function applyCloudOrLocal(market=activeMarket, { allowMigrate=false }={})
     if (cloudState) {
       isApplyingCloudState = true;
       state = cloudState;
-      localStorage.setItem(activeMarketConfig().storageKey, JSON.stringify(state));
+      localStorage.setItem(activeMarketConfig().storageKey, JSON.stringify(serializeState(state, activeMarket)));
       localStorage.setItem(MARKET_KEY, activeMarket);
       isApplyingCloudState = false;
     } else {
@@ -866,7 +914,7 @@ function exportCsv() {
   close("exportDialog"); toast("CSV 已导出");
 }
 function exportJson() {
-  download(JSON.stringify({version:2,market:activeMarket,exportedAt:new Date().toISOString(),accountCapital:Number(state.accountCapital)||activeMarketConfig().defaultCapital,currency:marketCurrency(activeMarket),trades:state.trades},null,2),"application/json",`${activeMarketConfig().label}操作记录.json`);
+  download(JSON.stringify({version:DATA_VERSION,market:activeMarket,exportedAt:new Date().toISOString(),accountCapital:Number(state.accountCapital)||activeMarketConfig().defaultCapital,currency:marketCurrency(activeMarket),trades:state.trades},null,2),"application/json",`${activeMarketConfig().label}操作记录.json`);
   close("exportDialog"); toast("JSON 已导出");
 }
 function parseCsv(text) {
@@ -935,7 +983,7 @@ document.getElementById("fileInput").onchange=async e=>{
     const imported=validateTrades(raw);
     if(!confirm(`将导入 ${imported.length} 条记录并替换当前数据，是否继续？`))return;
     const parsed = file.name.toLowerCase().endsWith(".json") ? JSON.parse(text) : null;
-    state={trades:imported,accountCapital:Number(parsed?.accountCapital)||Number(state.accountCapital)||activeMarketConfig().defaultCapital,currency:marketCurrency(activeMarket),market:activeMarket,isDemo:false,source:"local"};saveState();render();toast(`已导入 ${imported.length} 条${activeMarketConfig().label}记录`);
+    state={version:DATA_VERSION,trades:imported,accountCapital:Number(parsed?.accountCapital)||Number(state.accountCapital)||activeMarketConfig().defaultCapital,currency:marketCurrency(activeMarket),market:activeMarket,isDemo:false,source:"local"};saveState();render();toast(`已导入 ${imported.length} 条${activeMarketConfig().label}记录`);
   } catch(err){ alert(`导入失败：${err.message}`); }
   finally {e.target.value="";}
 };
@@ -1032,6 +1080,8 @@ async function init() {
   lastClearSnapshot = loadClearBackup();
   if (lastClearSnapshot?.state?.trades?.length) {
     toast(`检测到上次清空前备份`, { label:"恢复", onClick:undoLastClear });
+  } else if (migrationNotice) {
+    toast(migrationNotice);
   } else if (!state.trades.length) toast(`已进入${activeMarketConfig().label}账本，可开始记录`);
 }
 init();

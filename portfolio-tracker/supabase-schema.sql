@@ -5,12 +5,16 @@ create table if not exists public.portfolio_snapshots (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
   market text not null check (market in ('US', 'CN')),
+  version integer not null default 3,
   account_capital numeric not null default 100000,
   currency text not null default 'USD',
   trades jsonb not null default '[]'::jsonb,
   updated_at timestamptz not null default now(),
   unique (user_id, market)
 );
+
+alter table public.portfolio_snapshots
+add column if not exists version integer not null default 3;
 
 alter table public.portfolio_snapshots enable row level security;
 
