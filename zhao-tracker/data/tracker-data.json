@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-15T21:36:00+08:00",
+  "updatedAt": "2026-07-15T22:08:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {"id":"mu-9155-add-20260713","name":"MU","action":"加仓","positionType":"波段仓","price":915.5,"positionChange":3.3,"date":"2026-07-13T16:10:00+08:00","note":"加了三分之一常规仓"},
@@ -34,6 +34,7 @@
     {"id":"nok-1202-close-20260715","name":"NOK","action":"减仓","positionType":"波段仓","price":12.02,"positionChange":1.65,"date":"2026-07-15T21:20:00+08:00","closeLotId":"nok-1165-rebuy-20260714","note":"再次止盈 11.65 的 NOK"},
     {"id":"nok-1154-add-20260715","name":"NOK","action":"加仓","positionType":"波段仓","price":11.54,"positionChange":3.3,"date":"2026-07-15T21:36:00+08:00","note":"加了三分之一常规仓"},
     {"id":"tsll-129-close-20260715","name":"TSLL","action":"减仓","positionType":"波段仓","price":12.9,"positionChange":1.65,"date":"2026-07-15T21:36:00+08:00","closeLotId":"tsll-122-add-20260714","note":"出掉 12.2 的 TSLL 批次"},
-    {"id":"glw-1805-add-20260715","name":"GLW","action":"加仓","positionType":"波段仓","price":180.5,"positionChange":3.3,"date":"2026-07-15T21:36:00+08:00","note":"康宁（GLW）加了三分之一常规仓"}
+    {"id":"glw-1805-add-20260715","name":"GLW","action":"加仓","positionType":"波段仓","price":180.5,"positionChange":3.3,"date":"2026-07-15T21:36:00+08:00","note":"康宁（GLW）加了三分之一常规仓"},
+    {"id":"iren-399-close-20260715","name":"IREN","action":"清仓","positionType":"波段仓","price":39.9,"positionChange":1.65,"date":"2026-07-15T22:08:00+08:00","closeLotId":"iren-389-add-20260714","note":"出掉之前 38.9 剩下的一半 IREN"}
   ]
 }
