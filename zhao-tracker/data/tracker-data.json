@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-14T23:20:00+08:00",
+  "updatedAt": "2026-07-15T21:20:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {"id":"mu-9155-add-20260713","name":"MU","action":"加仓","positionType":"波段仓","price":915.5,"positionChange":3.3,"date":"2026-07-13T16:10:00+08:00","note":"加了三分之一常规仓"},
@@ -30,6 +30,7 @@
     {"id":"iren-389-rebuy-20260714","name":"IREN","action":"加仓","positionType":"波段仓","price":38.9,"positionChange":3.3,"date":"2026-07-14T21:37:00+08:00","note":"加回截图所述 40.2 卖出的那部分；历史卖出价按已确认的 40.1 保留"},
     {"id":"nok-1165-rebuy-20260714","name":"NOK","action":"加仓","positionType":"波段仓","price":11.65,"positionChange":1.65,"date":"2026-07-14T22:21:00+08:00","note":"加回 12.02 卖出的 NOK 那部分"},
     {"id":"crwv-817-add-20260714","name":"CRWV","action":"加仓","positionType":"波段仓","price":81.7,"positionChange":3.3,"date":"2026-07-14T23:00:00+08:00","note":"加了三分之一常规仓"},
-    {"id":"iren-389-close-20260714","name":"IREN","action":"减仓","positionType":"波段仓","price":38.95,"positionChange":3.3,"date":"2026-07-14T23:20:00+08:00","closeLotId":"iren-389-rebuy-20260714","note":"平出盘中 38.9 的 IREN 批次。政策因素：纽约将成为首个实施全州数据中心暂停令的州；州长 Kathy Hochul 暂停批准使用 50MW 以上电力的新超大规模数据中心一年，以研究能源、水资源和环境影响。命令立即生效，但不影响已获许可项目；医院、大学和后台金融服务预计不受影响。该政策可能影响近期波动。"}
+    {"id":"iren-389-close-20260714","name":"IREN","action":"减仓","positionType":"波段仓","price":38.95,"positionChange":3.3,"date":"2026-07-14T23:20:00+08:00","closeLotId":"iren-389-rebuy-20260714","note":"平出盘中 38.9 的 IREN 批次。政策因素：纽约将成为首个实施全州数据中心暂停令的州；州长 Kathy Hochul 暂停批准使用 50MW 以上电力的新超大规模数据中心一年，以研究能源、水资源和环境影响。命令立即生效，但不影响已获许可项目；医院、大学和后台金融服务预计不受影响。该政策可能影响近期波动。"},
+    {"id":"nok-1202-close-20260715","name":"NOK","action":"减仓","positionType":"波段仓","price":12.02,"positionChange":1.65,"date":"2026-07-15T21:20:00+08:00","closeLotId":"nok-1165-rebuy-20260714","note":"再次止盈 11.65 的 NOK"}
   ]
 }
