@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-16T00:47:00+08:00",
+  "updatedAt": "2026-07-16T02:27:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {"id":"mu-9155-add-20260713","name":"MU","action":"加仓","positionType":"波段仓","price":915.5,"positionChange":3.3,"date":"2026-07-13T16:10:00+08:00","note":"加了三分之一常规仓"},
@@ -44,6 +44,11 @@
     {"id":"crwv-75-add-20260716","name":"CRWV","action":"加仓","positionType":"波段仓","price":75,"positionChange":3.3,"date":"2026-07-16T00:47:00+08:00","note":"加了三分之一常规仓"},
     {"id":"tsm-4135-buy-20260716","name":"TSM","action":"买入","positionType":"波段仓","price":413.5,"positionChange":3.3,"date":"2026-07-16T00:47:00+08:00","note":"开了三分之一常规仓"},
     {"id":"glw-1684-add-20260716","name":"GLW","action":"加仓","positionType":"波段仓","price":168.4,"positionChange":3.3,"date":"2026-07-16T00:47:00+08:00","note":"加了三分之一常规仓"},
-    {"id":"nok-1088-add-20260716","name":"NOK","action":"加仓","positionType":"波段仓","price":10.88,"positionChange":3.3,"date":"2026-07-16T00:47:00+08:00","note":"加了三分之一常规仓"}
+    {"id":"nok-1088-add-20260716","name":"NOK","action":"加仓","positionType":"波段仓","price":10.88,"positionChange":3.3,"date":"2026-07-16T00:47:00+08:00","note":"加了三分之一常规仓"},
+    {"id":"crwv-781-close-20260716","name":"CRWV","action":"减仓","positionType":"波段仓","price":78.1,"positionChange":3.3,"date":"2026-07-16T01:12:00+08:00","closeLotId":"crwv-75-add-20260716","note":"出掉 75 的 CRWV，日内做个正 T"},
+    {"id":"mu-902-half-close-20260716","name":"MU","action":"减仓","positionType":"波段仓","price":902,"positionChange":1.65,"date":"2026-07-16T01:22:00+08:00","closeLotId":"mu-884-add-20260716","note":"884 的 MU 出一半"},
+    {"id":"mu-909-close-20260716","name":"MU","action":"减仓","positionType":"波段仓","price":909,"positionChange":1.65,"date":"2026-07-16T01:34:00+08:00","closeLotId":"mu-884-add-20260716","note":"出掉 884 剩下的一半 MU"},
+    {"id":"dram-5735-half-close-20260716","name":"DRAM","action":"减仓","positionType":"波段仓","price":57.35,"positionChange":1.65,"date":"2026-07-16T01:55:00+08:00","closeLotId":"dram-565-add-20260715","note":"56.5 的 DRAM 出一半"},
+    {"id":"glw-1745-half-close-20260716","name":"GLW","action":"减仓","positionType":"波段仓","price":174.5,"positionChange":1.65,"date":"2026-07-16T02:27:00+08:00","closeLotId":"glw-1684-add-20260716","note":"168.4 的 GLW 出一半"}
   ]
 }
