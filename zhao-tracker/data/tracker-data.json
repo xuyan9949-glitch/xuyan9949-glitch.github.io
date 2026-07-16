@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-16T16:19:00+08:00",
+  "updatedAt": "2026-07-16T23:14:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {"id":"mu-9155-add-20260713","name":"MU","action":"加仓","positionType":"波段仓","price":915.5,"positionChange":3.3,"date":"2026-07-13T16:10:00+08:00","note":"加了三分之一常规仓"},
@@ -53,6 +53,13 @@
     {"id":"mu-873-add-20260716","name":"MU","action":"加仓","positionType":"波段仓","price":873,"positionChange":3.3,"date":"2026-07-16T16:19:00+08:00","note":"加了三分之一常规仓"},
     {"id":"dram-544-add-20260716","name":"DRAM","action":"加仓","positionType":"波段仓","price":54.4,"positionChange":3.3,"date":"2026-07-16T16:19:00+08:00","note":"加了三分之一常规仓"},
     {"id":"iren-376-add-20260716","name":"IREN","action":"加仓","positionType":"波段仓","price":37.6,"positionChange":3.3,"date":"2026-07-16T16:19:00+08:00","note":"加了三分之一常规仓"},
-    {"id":"crwv-758-add-20260716","name":"CRWV","action":"加仓","positionType":"波段仓","price":75.8,"positionChange":3.3,"date":"2026-07-16T16:19:00+08:00","note":"加了三分之一常规仓"}
+    {"id":"crwv-758-add-20260716","name":"CRWV","action":"加仓","positionType":"波段仓","price":75.8,"positionChange":3.3,"date":"2026-07-16T16:19:00+08:00","note":"加了三分之一常规仓"},
+    {"id":"mu-881-premarket-close-20260716","name":"MU","action":"减仓","positionType":"波段仓","price":881,"positionChange":3.3,"date":"2026-07-16T21:31:00+08:00","closeLotId":"mu-premarket-prior-lot","note":"先出掉盘前的 MU，计划在低位买回；原开仓批次未在当前面板数据中。"},
+    {"id":"mu-859-add-20260716","name":"MU","action":"加仓","positionType":"波段仓","price":859,"positionChange":3.3,"date":"2026-07-16T21:48:00+08:00","note":"加回三分之一常规仓"},
+    {"id":"tsll-1173-add-20260716","name":"TSLL","action":"加仓","positionType":"波段仓","price":11.73,"positionChange":3.3,"date":"2026-07-16T22:00:00+08:00","note":"加了三分之一常规仓"},
+    {"id":"mu-878-close-20260716","name":"MU","action":"减仓","positionType":"波段仓","price":878,"positionChange":3.3,"date":"2026-07-16T22:08:00+08:00","closeLotId":"mu-859-add-20260716","note":"出掉 859 的 MU"},
+    {"id":"tsll-1205-half-close-20260716","name":"TSLL","action":"减仓","positionType":"波段仓","price":12.05,"positionChange":1.65,"date":"2026-07-16T22:12:00+08:00","closeLotId":"tsll-1173-add-20260716","note":"11.73 的 TSLL 出一半"},
+    {"id":"tsll-1221-close-20260716","name":"TSLL","action":"减仓","positionType":"波段仓","price":12.21,"positionChange":1.65,"date":"2026-07-16T22:21:00+08:00","closeLotId":"tsll-1173-add-20260716","note":"出掉 11.73 剩下的一半 TSLL"},
+    {"id":"mu-853-add-20260716","name":"MU","action":"加仓","positionType":"波段仓","price":853,"positionChange":3.3,"date":"2026-07-16T23:14:00+08:00","note":"加了三分之一常规仓"}
   ]
 }
