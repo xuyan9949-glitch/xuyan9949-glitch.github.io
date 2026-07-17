@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-17T22:04:00+08:00",
+  "updatedAt": "2026-07-18T00:06:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {"id":"conl-555-open-20260622","name":"CONL","action":"买入","positionType":"波段仓","price":5.55,"positionChange":1.6,"date":"2026-06-22T10:30:00+08:00","note":"补充历史记录：半笔仓位"},
@@ -83,6 +83,10 @@
     {"id":"avgo-362-add-20260717","name":"AVGO","action":"加仓","positionType":"长线仓","price":362,"positionChange":1.65,"date":"2026-07-17T21:51:30+08:00","note":"加了六分之一常规仓，作为死拿的 AVGO 仓位"},
     {"id":"dram-509-half-close-20260717","name":"DRAM","action":"减仓","positionType":"波段仓","price":50.9,"positionChange":1.65,"date":"2026-07-17T21:59:00+08:00","closeLotId":"dram-49-add-20260717","note":"49 的 DRAM 出一半"},
     {"id":"mu-855-close-20260717","name":"MU","action":"减仓","positionType":"波段仓","price":855,"positionChange":1.65,"date":"2026-07-17T22:04:00+08:00","closeLotId":"mu-844-add-20260717","note":"出掉 844 的 MU"},
-    {"id":"dram-52-close-20260717","name":"DRAM","action":"减仓","positionType":"波段仓","price":52,"positionChange":1.65,"date":"2026-07-17T22:04:30+08:00","closeLotId":"dram-49-add-20260717","note":"出掉 49 剩下的一半 DRAM"}
+    {"id":"dram-52-close-20260717","name":"DRAM","action":"减仓","positionType":"波段仓","price":52,"positionChange":1.65,"date":"2026-07-17T22:04:30+08:00","closeLotId":"dram-49-add-20260717","note":"出掉 49 剩下的一半 DRAM"},
+    {"id":"cbrs-1655-add-20260717","name":"CBRS","action":"加仓","positionType":"波段仓","price":165.5,"positionChange":3.3,"date":"2026-07-17T23:34:00+08:00","note":"加了三分之一常规仓"},
+    {"id":"dram-548-close-20260718","name":"DRAM","action":"减仓","positionType":"波段仓","price":54.8,"positionChange":3.3,"date":"2026-07-18T00:01:00+08:00","closeLotId":"dram-544-add-20260716","note":"出掉 54.4 的 DRAM"},
+    {"id":"pl-23-half-close-20260718","name":"PL","action":"减仓","positionType":"波段仓","price":23,"positionChange":1.65,"date":"2026-07-18T00:01:30+08:00","closeLotId":"pl-217-buy-20260717","note":"PL 直线拉升，21.7 的仓位出一半"},
+    {"id":"mu-884-half-close-20260718","name":"MU","action":"减仓","positionType":"波段仓","price":884,"positionChange":1.65,"date":"2026-07-18T00:06:00+08:00","closeLotId":"mu-9175-add-20260715","note":"出掉 917.5 的 MU 一半做倒 T；如有急跌再加回。"}
   ]
 }
