@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-17T02:18:00+08:00",
+  "updatedAt": "2026-07-17T18:36:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {"id":"mu-9155-add-20260713","name":"MU","action":"加仓","positionType":"波段仓","price":915.5,"positionChange":3.3,"date":"2026-07-13T16:10:00+08:00","note":"加了三分之一常规仓"},
@@ -62,6 +62,7 @@
     {"id":"tsll-1221-close-20260716","name":"TSLL","action":"减仓","positionType":"波段仓","price":12.21,"positionChange":1.65,"date":"2026-07-16T22:21:00+08:00","closeLotId":"tsll-1173-add-20260716","note":"出掉 11.73 剩下的一半 TSLL"},
     {"id":"mu-853-add-20260716","name":"MU","action":"加仓","positionType":"波段仓","price":853,"positionChange":3.3,"date":"2026-07-16T23:14:00+08:00","note":"加了三分之一常规仓"},
     {"id":"ibm-21935-half-close-20260717","name":"IBM","action":"减仓","positionType":"波段仓","price":219.35,"positionChange":1.65,"date":"2026-07-17T02:14:00+08:00","closeLotId":"ibm-2178-buy-20260714","note":"217.8 的 IBM 出一半"},
-    {"id":"avgo-376-t-add-20260717","name":"AVGO","action":"加仓","positionType":"波段仓","price":376,"positionChange":3.3,"date":"2026-07-17T02:18:00+08:00","note":"加了三分之一常规仓的做 T 仓位"}
+    {"id":"avgo-376-t-add-20260717","name":"AVGO","action":"加仓","positionType":"波段仓","price":376,"positionChange":3.3,"date":"2026-07-17T02:18:00+08:00","note":"加了三分之一常规仓的做 T 仓位"},
+    {"id":"conl-50-t-add-20260717","name":"CONL","action":"加仓","positionType":"波段仓","price":5,"positionChange":3.3,"date":"2026-07-17T18:36:00+08:00","note":"加了三分之一常规仓的做 T 仓位；最低有 4.75 的半笔暂时当死拿处理。"}
   ]
 }
