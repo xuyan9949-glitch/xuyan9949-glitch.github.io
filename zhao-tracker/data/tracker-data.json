@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-17T18:44:00+08:00",
+  "updatedAt": "2026-07-17T22:04:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {"id":"conl-555-open-20260622","name":"CONL","action":"买入","positionType":"波段仓","price":5.55,"positionChange":1.6,"date":"2026-06-22T10:30:00+08:00","note":"补充历史记录：半笔仓位"},
@@ -73,6 +73,16 @@
     {"id":"dram-5125-close-20260717","name":"DRAM","action":"减仓","positionType":"波段仓","price":51.25,"positionChange":1.65,"date":"2026-07-17T18:10:30+08:00","closeLotId":"dram-4945-add-20260717","note":"出掉 49.45 剩下的一半 DRAM"},
     {"id":"mu-861-close-20260717","name":"MU","action":"减仓","positionType":"波段仓","price":861,"positionChange":1.65,"date":"2026-07-17T18:17:00+08:00","closeLotId":"mu-8525-prior-lot","note":"出掉 852.5 剩下的一半 MU。资金回流仍在硬件：特朗普故意压低两天的急跌给回流进场；异动卖出后寻找低买机会，或急跌做正 T。"},
     {"id":"mu-844-add-20260717","name":"MU","action":"加仓","positionType":"波段仓","price":844,"positionChange":1.65,"date":"2026-07-17T18:24:00+08:00","note":"先接六分之一常规仓，接回刚才卖出的一半；剩下看 820 再接另外一半。"},
-    {"id":"pl-217-buy-20260717","name":"PL","action":"买入","positionType":"波段仓","price":21.7,"positionChange":3.3,"date":"2026-07-17T18:44:00+08:00","note":"开了三分之一常规仓。太空板块 120 亿跌一半，支撑在 21；止损放 20.5 再看。"}
+    {"id":"pl-217-buy-20260717","name":"PL","action":"买入","positionType":"波段仓","price":21.7,"positionChange":3.3,"date":"2026-07-17T18:44:00+08:00","note":"开了三分之一常规仓。太空板块 120 亿跌一半，支撑在 21；止损放 20.5 再看。"},
+    {"id":"mu-827-add-20260717","name":"MU","action":"加仓","positionType":"波段仓","price":827,"positionChange":1.65,"date":"2026-07-17T20:11:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"mu-807-add-20260717","name":"MU","action":"加仓","positionType":"波段仓","price":807,"positionChange":1.65,"date":"2026-07-17T21:46:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"dram-49-add-20260717","name":"DRAM","action":"加仓","positionType":"波段仓","price":49,"positionChange":3.3,"date":"2026-07-17T21:46:00+08:00","note":"加了三分之一常规仓"},
+    {"id":"mu-829-close-807-20260717","name":"MU","action":"减仓","positionType":"波段仓","price":829,"positionChange":1.65,"date":"2026-07-17T21:51:00+08:00","closeLotId":"mu-807-add-20260717","note":"出掉 807 的 MU（与 827 批次一并卖出）"},
+    {"id":"mu-829-close-827-20260717","name":"MU","action":"减仓","positionType":"波段仓","price":829,"positionChange":1.65,"date":"2026-07-17T21:51:00+08:00","closeLotId":"mu-827-add-20260717","note":"出掉 827 的 MU（与 807 批次一并卖出）"},
+    {"id":"googl-3434-add-20260717","name":"GOOGL","action":"加仓","positionType":"波段仓","price":343.4,"positionChange":1.65,"date":"2026-07-17T21:51:30+08:00","note":"加了六分之一，少量摊薄成本"},
+    {"id":"avgo-362-add-20260717","name":"AVGO","action":"加仓","positionType":"长线仓","price":362,"positionChange":1.65,"date":"2026-07-17T21:51:30+08:00","note":"加了六分之一常规仓，作为死拿的 AVGO 仓位"},
+    {"id":"dram-509-half-close-20260717","name":"DRAM","action":"减仓","positionType":"波段仓","price":50.9,"positionChange":1.65,"date":"2026-07-17T21:59:00+08:00","closeLotId":"dram-49-add-20260717","note":"49 的 DRAM 出一半"},
+    {"id":"mu-855-close-20260717","name":"MU","action":"减仓","positionType":"波段仓","price":855,"positionChange":1.65,"date":"2026-07-17T22:04:00+08:00","closeLotId":"mu-844-add-20260717","note":"出掉 844 的 MU"},
+    {"id":"dram-52-close-20260717","name":"DRAM","action":"减仓","positionType":"波段仓","price":52,"positionChange":1.65,"date":"2026-07-17T22:04:30+08:00","closeLotId":"dram-49-add-20260717","note":"出掉 49 剩下的一半 DRAM"}
   ]
 }
