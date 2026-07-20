@@ -57,6 +57,7 @@ main { padding:22px 28px 16px; }
 .holding-meta { display:flex; gap:16px; color:var(--muted); font-size:12px; }
 .holding-meta b:first-child { color:var(--red); }
 .workspace-grid { display:grid; grid-template-columns:minmax(0,1.75fr) minmax(330px,1fr); gap:14px; margin-bottom:14px; }
+.trend-stack { display:grid; gap:14px; align-content:start; }
 .panel { overflow:hidden; }
 .panel-header { min-height:65px; padding:14px 17px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line); }
 .panel-header h2,.dialog-header h2 { font-size:15px; }
@@ -99,7 +100,7 @@ tr:hover .row-actions { opacity:1; }
 .chart-legend span::before { content:""; display:inline-block; width:8px; height:3px; margin-right:5px; vertical-align:middle; border-radius:2px; }
 .chart-legend .total::before { background:var(--blue); }
 .chart-legend .base::before { background:#83a9f6; }
-.return-panel { margin-bottom:14px; }
+.return-panel { margin:0; }
 .return-legend .realized::before { background:var(--red); }
 .return-legend .zero::before { background:var(--muted); }
 .return-chart .zero-line { stroke:var(--muted); stroke-width:1; stroke-dasharray:4 4; opacity:.72; }

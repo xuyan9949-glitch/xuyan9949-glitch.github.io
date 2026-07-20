@@ -101,29 +101,31 @@
           </div>
         </article>
 
-        <article class="panel trend-panel">
-          <div class="panel-header">
-            <div><h2>仓位趋势</h2><p>总仓位与底仓变化</p></div>
-            <div class="segmented" id="rangeTabs">
-              <button data-days="7">7天</button><button data-days="30" class="active">30天</button>
-              <button data-days="90">90天</button><button data-days="all">全部</button>
+        <div class="trend-stack">
+          <article class="panel trend-panel">
+            <div class="panel-header">
+              <div><h2>仓位趋势</h2><p>总仓位与底仓变化</p></div>
+              <div class="segmented" id="rangeTabs">
+                <button data-days="7">7天</button><button data-days="30" class="active">30天</button>
+                <button data-days="90">90天</button><button data-days="all">全部</button>
+              </div>
             </div>
-          </div>
-          <div class="chart-legend"><span class="total">总仓位</span><span class="base">底仓</span></div>
-          <div id="trendChart" class="chart"></div>
-        </article>
-      </section>
+            <div class="chart-legend"><span class="total">总仓位</span><span class="base">底仓</span></div>
+            <div id="trendChart" class="chart"></div>
+          </article>
 
-      <section class="panel return-panel">
-        <div class="panel-header">
-          <div><h2>收益率走势</h2><p>按已平仓交易累计计算，不含未实现浮盈亏</p></div>
-          <div class="segmented" id="returnRangeTabs">
-            <button data-days="7">7天</button><button data-days="30" class="active">30天</button>
-            <button data-days="90">90天</button><button data-days="all">全部</button>
-          </div>
+          <article class="panel return-panel">
+            <div class="panel-header">
+              <div><h2>收益率走势</h2><p>按已平仓交易累计计算，不含未实现浮盈亏</p></div>
+              <div class="segmented" id="returnRangeTabs">
+                <button data-days="7">7天</button><button data-days="30" class="active">30天</button>
+                <button data-days="90">90天</button><button data-days="all">全部</button>
+              </div>
+            </div>
+            <div class="chart-legend return-legend"><span class="realized">累计已实现收益率</span><span class="zero">盈亏平衡线</span></div>
+            <div id="returnChart" class="chart return-chart"></div>
+          </article>
         </div>
-        <div class="chart-legend return-legend"><span class="realized">累计已实现收益率</span><span class="zero">盈亏平衡线</span></div>
-        <div id="returnChart" class="chart return-chart"></div>
       </section>
 
       <section class="panel closed-panel">
