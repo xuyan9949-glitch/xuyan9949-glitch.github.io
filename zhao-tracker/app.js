@@ -19,6 +19,7 @@ const demoTrades = [
 
 let state = { trades: [], accountCapital: 100000, isDemo: false, source: "loading" };
 let rangeDays = 30;
+let returnRangeDays = 30;
 let analysisDays = 30;
 let sortKey = "position";
 let sortDirection = -1;
@@ -249,6 +250,16 @@ function computeTimeline() {
   });
 }
 
+function computeReturnTimeline() {
+  const { pairs } = computeLedger();
+  const ordered = [...pairs].sort((a,b)=>new Date(a.closeTrade.date)-new Date(b.closeTrade.date));
+  let cumulative = 0;
+  return ordered.map(pair=>{
+    cumulative += Number(pair.contribution) || 0;
+    return { date:new Date(pair.closeTrade.date), value:cumulative, pair };
+  });
+}
+
 function render() {
   const holdings = getHoldings();
   const ledger = computeLedger();
@@ -291,6 +302,7 @@ function render() {
   renderPairs(ledger.pairs);
   renderActivity();
   renderChart();
+  renderReturnChart();
 }
 
 function renderHoldings(holdings) {
@@ -510,6 +522,37 @@ function renderChart() {
   </svg>`;
 }
 
+function renderReturnChart() {
+  let points=computeReturnTimeline();
+  if (returnRangeDays!=="all") {
+    const cutoff=new Date(); cutoff.setDate(cutoff.getDate()-Number(returnRangeDays));
+    points=points.filter(p=>p.date>=cutoff);
+  }
+  const el=document.getElementById("returnChart");
+  if (!points.length) { el.innerHTML='<div class="empty-state"><p>暂无已平仓收益数据</p></div>'; return; }
+  const W=500,H=210,pad={l:42,r:12,t:12,b:26};
+  const values=points.map(p=>p.value);
+  const extent=Math.max(1,...values.map(v=>Math.abs(v)));
+  const min=Math.min(0,...values,-extent*.12), max=Math.max(0,...values,extent*.12);
+  const x=i=>pad.l+(points.length===1?(W-pad.l-pad.r)/2:i/(points.length-1)*(W-pad.l-pad.r));
+  const y=v=>pad.t+(max-v)/(max-min)*(H-pad.t-pad.b);
+  const line=points.map((p,i)=>`${i?"L":"M"}${x(i).toFixed(1)},${y(p.value).toFixed(1)}`).join(" ");
+  const zeroY=y(0);
+  const area=`${line} L${x(points.length-1)},${zeroY} L${x(0)},${zeroY} Z`;
+  const ticks=[min,(min+max)/2,max].map(v=>Number(v.toFixed(2))).filter((v,i,a)=>a.indexOf(v)===i);
+  const labels=[0,Math.floor((points.length-1)/2),points.length-1].filter((v,i,a)=>a.indexOf(v)===i);
+  const positive=points.at(-1).value>=0;
+  const color=positive?"#df4b59":"#15946b";
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="累计已实现收益率走势">
+    <defs><linearGradient id="returnAreaFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${color}" stop-opacity=".18"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></linearGradient></defs>
+    ${ticks.map(v=>`<line class="grid" x1="${pad.l}" y1="${y(v)}" x2="${W-pad.r}" y2="${y(v)}"/><text x="2" y="${y(v)+3}">${v>=0?"+":""}${fmt(v,2)}%</text>`).join("")}
+    <line class="zero-line" x1="${pad.l}" y1="${zeroY}" x2="${W-pad.r}" y2="${zeroY}"/>
+    <path d="${area}" fill="url(#returnAreaFill)"/><path d="${line}" fill="none" stroke="${color}" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+    ${points.map((p,i)=>`<circle cx="${x(i)}" cy="${y(p.value)}" r="${points.length<15?3:1.5}" fill="${color}"><title>${formatDate(p.date,true)} 累计已实现 ${p.value>=0?"+":""}${fmt(p.value,2)}%</title></circle>`).join("")}
+    ${labels.map(i=>`<text text-anchor="${i===0?"start":i===points.length-1?"end":"middle"}" x="${x(i)}" y="${H-5}">${formatDate(points[i].date)}</text>`).join("")}
+  </svg>`;
+}
+
 function getOpenLotsForForm(trade=null) {
   const trades = state.trades.filter(t=>t.id!==trade?.id);
   return computeLedger(trades).lots.filter(l=>l.remainingPosition>0.0001);
@@ -647,6 +690,10 @@ document.querySelectorAll(".sortable").forEach(th=>th.onclick=()=>{
 document.getElementById("rangeTabs").onclick=e=>{
   if(!e.target.dataset.days)return;
   rangeDays=e.target.dataset.days;document.querySelectorAll("#rangeTabs button").forEach(b=>b.classList.toggle("active",b===e.target));renderChart();
+};
+document.getElementById("returnRangeTabs").onclick=e=>{
+  if(!e.target.dataset.days)return;
+  returnRangeDays=e.target.dataset.days;document.querySelectorAll("#returnRangeTabs button").forEach(b=>b.classList.toggle("active",b===e.target));renderReturnChart();
 };
 document.getElementById("analysisRangeTabs").onclick=e=>{
   if(!e.target.dataset.days)return;

@@ -99,6 +99,10 @@ tr:hover .row-actions { opacity:1; }
 .chart-legend span::before { content:""; display:inline-block; width:8px; height:3px; margin-right:5px; vertical-align:middle; border-radius:2px; }
 .chart-legend .total::before { background:var(--blue); }
 .chart-legend .base::before { background:#83a9f6; }
+.return-panel { margin-bottom:14px; }
+.return-legend .realized::before { background:var(--red); }
+.return-legend .zero::before { background:var(--muted); }
+.return-chart .zero-line { stroke:var(--muted); stroke-width:1; stroke-dasharray:4 4; opacity:.72; }
 .chart { height:240px; padding:10px 12px 12px; }
 .chart svg { width:100%; height:100%; overflow:visible; }
 .chart text { fill:var(--muted); font-size:10px; }
