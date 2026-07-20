@@ -2,6 +2,33 @@
   "version": 1,
   "articles": [
     {
+      "id": "ai-materials-pcb-hvlp-20260720",
+      "title": "铜冠铜箔业绩预告分析",
+      "date": "2026-07-20",
+      "category": "A股",
+      "subcategory": "AI电子材料",
+      "tags": [
+        "产业:AI电子材料",
+        "个股:东山精密",
+        "产业:存储",
+        "产业:光通信",
+        "产业:AI基础设施",
+        "策略:财报分析",
+        "策略:产业链分析",
+        "策略:对比分析",
+        "策略:估值",
+        "策略:仓位管理",
+        "策略:风险分析"
+      ],
+      "pinned": false,
+      "summary": "*铜冠铜箔这份业绩预告不算“差”，甚至同比看相当漂亮；真正的问题是，二季度利润没有继续加速，而此前股价已经按照“高频高速铜箔量价齐升、利润连续环比爆发”进行定价。今天铜冠铜箔是引爆器，但绝不是它一家公司的基本面足以让整个PCB产业链价值下降10%。",
+      "keywords": "AI电子材料 东山精密 存储 光通信 AI基础设施 财报分析 产业链分析 对比分析 估值 仓位管理 风险分析 PCB CITE HVLP RTF CCL",
+      "file": "/articles/ai-materials-pcb-hvlp-20260720/",
+      "status": "published",
+      "order": 0,
+      "updatedAt": "2026-07-20T15:57:50.891Z"
+    },
+    {
       "id": "optical-pcb-20260714",
       "title": "中报A股最新观察池（不含半导体）",
       "date": "2026-07-14",
@@ -26,7 +53,7 @@
       "keywords": "光通信 东山精密 中际旭创 新易盛 生益科技 胜宏科技 半导体设备 AI电子材料 AI基础设施 财报分析 产业链分析 估值 PCB AI CAPEX MPO",
       "file": "/articles/optical-pcb-20260714/",
       "status": "published",
-      "order": 0,
+      "order": 1,
       "updatedAt": "2026-07-14T18:20:11.772Z"
     },
     {
@@ -46,7 +73,7 @@
       "keywords": "AI 实用技能 研究助理 搜索引擎 投资研究 行业研究 HBM MLCC AI工具 提问框架",
       "file": "/articles/ai-research-assistant-skill-1/",
       "status": "trash",
-      "order": 1,
+      "order": 2,
       "updatedAt": "2026-07-14T06:41:01.764Z"
     },
     {
@@ -71,7 +98,7 @@
       "keywords": "存储 鬼故事 美光 MU 苹果 涨价 Google TurboQuant Meta 韩国 扩产 DRAM 诉讼 HBM 洗筹 高位 拥挤 去杠杆 周期见顶 仓位管理 硬信号",
       "file": "/articles/storage-ghost-stories-deconstruction/",
       "status": "published",
-      "order": 2,
+      "order": 3,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -102,7 +129,7 @@
       "keywords": "ASML AMAT LRCX KLAC 半导体设备 EUV 光刻 刻蚀 沉积 CMP 量测 检测 WFE GAA 3D NAND HBM 先进封装 TEL 资本开支",
       "file": "/articles/semi-equipment-four-giants/",
       "status": "published",
-      "order": 3,
+      "order": 4,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -134,7 +161,7 @@
       "keywords": "GlassBridge CPO LITE COHR GLW 天孚通信 新易盛 东山精密 光库科技 炬光科技 Fiber-to-PIC ELSFP CW激光器 硅光 光引擎",
       "file": "/articles/glassbridge-cpo-beneficiary-ranking/",
       "status": "published",
-      "order": 4,
+      "order": 5,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -162,7 +189,7 @@
       "keywords": "Corning GlassBridge CPO NPO 硅光 光子集成 PIC Fiber-to-PIC FAU 康宁 Lumentum LITE 东山精密 诺基亚 CW激光器 ELSFP 光纤 玻璃基板 IOX",
       "file": "/articles/corning-glassbridge-analysis/",
       "status": "published",
-      "order": 5,
+      "order": 6,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -190,7 +217,7 @@
       "keywords": "金刚石 散热 CVD MPCVD AI芯片 GPU HBM 液冷 热沉 热扩散 金刚石铜复合材料 国机精工 四方达 沃尔德 力量钻石 惠丰钻石 Akash Coherent 英伟达 Rubin 界面热阻",
       "file": "/articles/diamond-thermal-management/",
       "status": "published",
-      "order": 6,
+      "order": 7,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -221,7 +248,7 @@
       "keywords": "利率 通胀 美联储 PCE 存储涨价 苹果 Meta 美光 SCA SpaceX QQQ 纳指100 康宁 大族激光 空芯光纤 GlassBridge 中期选举 财报 EPS 市场焦虑",
       "file": "/articles/market-anxiety-analysis-0628/",
       "status": "published",
-      "order": 7,
+      "order": 8,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -245,7 +272,7 @@
       "keywords": "美光 MU 财报 FY2026 Q3 存储 超级周期 HBM HBM4 SCA 战略客户协议 take-or-pay 毛利率 84.9% ASP NAND SSD 数据中心 资本开支 自由现金流",
       "file": "/articles/mu-fy2026-q3-institutional-analysis/",
       "status": "published",
-      "order": 8,
+      "order": 9,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -271,7 +298,7 @@
       "keywords": "花旗 Citi AI Optics 东山精密 002384 索尔思 Source Photonics 光模块 光芯片 EML CW 激光器 1.6T 3.2T CPO AI PCB 扩产 12亿美元",
       "file": "/articles/citi-ai-optics-dongshan-precision/",
       "status": "published",
-      "order": 9,
+      "order": 10,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -295,7 +322,7 @@
       "keywords": "苹果 存储 美光 MU 涨价 周期 见顶 HBM DDR5 数据中心 AI 机器人 议价权 战略客户协议 take-or-pay 库存 资本开支 供给侧",
       "file": "/articles/apple-price-storage-cycle/",
       "status": "published",
-      "order": 10,
+      "order": 11,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -321,7 +348,7 @@
       "keywords": "铜箔 HVLP 铜冠铜箔 德福科技 三井金属 Circuit Foil 集肤效应 加工费 CCL AI服务器 PCB RTF 载体铜箔 产能利用率 经营杠杆",
       "file": "/articles/pcb-copper-foil-industry-research/",
       "status": "published",
-      "order": 11,
+      "order": 12,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -342,7 +369,7 @@
       "keywords": "特朗普账户 Trump Accounts 7月4日 独立日 250周年 儿童账户 全民股东 所有权社会 401(k) 政治遗产 长期资金",
       "file": "/articles/trump-account-7-4/",
       "status": "published",
-      "order": 12,
+      "order": 13,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -365,7 +392,7 @@
       "keywords": "美光 MU 财报 HBM DRAM NAND 存储 超级周期 战略客户协议 五年期 take-or-pay 毛利率 84.9% ASP 供需紧缺 资本开支 估值 仓位管理 两倍三星",
       "file": "/articles/mu-fy2026-q3-earnings/",
       "status": "published",
-      "order": 13,
+      "order": 14,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -392,7 +419,7 @@
       "keywords": "美光 MU DRAM 存储 超级周期 三星 SK海力士 闪迪 SNDK 铠侠 希捷 STX 西部数据 WDC HBM NAND 财报 仓位管理 两倍杠杆 预期差",
       "file": "/articles/storage-supercycle/",
       "status": "published",
-      "order": 14,
+      "order": 15,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -416,7 +443,7 @@
       "keywords": "LITE Lumentum COHR Coherent 光通信 光互联 InP 磷化铟 Sherman 英伟达 CHIPS 可转债 估值 OCS CPO LITX",
       "file": "/articles/lite-vs-cohr-optical-showdown/",
       "status": "published",
-      "order": 15,
+      "order": 16,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -440,7 +467,7 @@
       "keywords": "AVGO Broadcom MRVL Marvell AI ASIC 定制芯片 光通信 光DSP 以太网 交换芯片 VMware 护城河 对比分析",
       "file": "/articles/avgo-vs-mrvl-platform-vs-chip/",
       "status": "published",
-      "order": 16,
+      "order": 17,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -466,7 +493,7 @@
       "keywords": "MLCC 三环集团 风华高科 国瓷材料 博迁新材 村田 太阳诱电 涨价 AI服务器 国产替代 HBM 电容器 钛酸钡 镍粉",
       "file": "/articles/mlcc-analysis-2026/",
       "status": "published",
-      "order": 17,
+      "order": 18,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -494,7 +521,7 @@
       "keywords": "CCL 覆铜板 AI服务器 台光电 台燿 联茂 生益科技 松下 Megtron 斗山 M8 M9 高速材料 PCB T-glass HVLP 电子布",
       "file": "/articles/ccl-ai-material-2026/",
       "status": "published",
-      "order": 18,
+      "order": 19,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -524,7 +551,7 @@
       "keywords": "中国 AI产业 光模块 PCB AI芯片 全球竞争力 中际旭创 新易盛 胜宏科技 寒武纪 沪电股份 英维克 浪潮信息",
       "file": "/articles/china-ai-advantage-ranking/",
       "status": "published",
-      "order": 19,
+      "order": 20,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -547,7 +574,7 @@
       "keywords": "斯塔格 Stagg 诺曼底 气象 决策 专业主义 投资心法 压力管理 认知 数据信仰",
       "file": "/articles/stagg-professionalism/",
       "status": "published",
-      "order": 20,
+      "order": 21,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -565,7 +592,7 @@
       "keywords": "道德经 第五章 天地不仁 刍狗 橐龠 虚而不屈 守中 规律 投资心态",
       "file": "/articles/daodejing-chapter-5/",
       "status": "published",
-      "order": 21,
+      "order": 22,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -588,7 +615,7 @@
       "keywords": "东山精密 索尔思 光芯片 光模块 86亿 扩产 AI光互连 002384",
       "file": "/articles/dongshan-86b-optical-expansion/",
       "status": "published",
-      "order": 22,
+      "order": 23,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -613,7 +640,7 @@
       "keywords": "SpaceX IPO 星链 Starlink 马斯克 商业航天 供应链 EchoStar STMicro Filtronic Linde",
       "file": "/articles/spacex-ipo-supply-chain/",
       "status": "published",
-      "order": 23,
+      "order": 24,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -634,7 +661,7 @@
       "keywords": "生益科技 高盛 Goldman Sachs CCL AI覆铜板 600183 目标价217.6",
       "file": "/articles/shengyi-tech-gs-report/",
       "status": "published",
-      "order": 24,
+      "order": 25,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -659,7 +686,7 @@
       "keywords": "机器人 人形机器人 灵巧手 减速器 执行器 双环传动 拓普集团 兆威机电 三花 科达利",
       "file": "/articles/robot-supply-chain-2026/",
       "status": "published",
-      "order": 25,
+      "order": 26,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -685,7 +712,7 @@
       "keywords": "PCB CCL 电子布 钻针 MLCC 三环集团 风华高科 国瓷材料 AI服务器",
       "file": "/articles/pcb-mlcc-supply-chain-2026/",
       "status": "published",
-      "order": 26,
+      "order": 27,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -709,7 +736,7 @@
       "keywords": "PCB T-glass 电子布 HVLP4 铜箔 CCL 覆铜板 钻针 供需失衡 六便士",
       "file": "/articles/pcb-upstream-four-materials-scorecard/",
       "status": "published",
-      "order": 27,
+      "order": 28,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -731,7 +758,7 @@
       "keywords": "光互联 LightCounting 800G ZR DWDM DCI 光模块 AI集群 CPO",
       "file": "/articles/guoci-materials-optical-connect-2026/",
       "status": "published",
-      "order": 28,
+      "order": 29,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -753,7 +780,7 @@
       "keywords": "英伟达 NVDA 发债 250亿 债券 AI资本开支 融资 认购",
       "file": "/articles/nvidia-25b-bond-issuance/",
       "status": "published",
-      "order": 29,
+      "order": 30,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -777,7 +804,7 @@
       "keywords": "东山精密 索尔思 光模块 EML 200G PCB AI光互联 1.6T Blackwell",
       "file": "/articles/dongshan-precision-revaluation/",
       "status": "published",
-      "order": 30,
+      "order": 31,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -800,7 +827,7 @@
       "keywords": "TSEM Tower Semiconductor SiPho 硅光 特色代工 AI光互联 光通信 foundry",
       "file": "/articles/tsem-tower-semiconductor/",
       "status": "published",
-      "order": 31,
+      "order": 32,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -824,7 +851,7 @@
       "keywords": "BTC 比特币 减半周期 微策略 Strategy ETF 中期选举 流动性 数字黄金",
       "file": "/articles/btc-cycle-analysis-2026/",
       "status": "published",
-      "order": 32,
+      "order": 33,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -848,7 +875,7 @@
       "keywords": "存储 MLCC 供需失衡 摩根士丹利 LTA 村田 海力士 三星 HBM DRAM NAND",
       "file": "/articles/supply-demand-storage-vs-mlcc-v3/",
       "status": "published",
-      "order": 33,
+      "order": 34,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -873,7 +900,7 @@
       "keywords": "纳指100 Nasdaq-100 CRWV NBIS ALAB RKLB TER AI基础设施 商业航天 指数调整",
       "file": "/articles/nasdaq100-june-2026-rebalance/",
       "status": "published",
-      "order": 34,
+      "order": 35,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -896,7 +923,7 @@
       "keywords": "160644 港美互联网 LOF AI硬件 存储 美光 闪迪 台积电 英伟达",
       "file": "/articles/hk-us-internet-lof-160644/",
       "status": "published",
-      "order": 35,
+      "order": 36,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -919,7 +946,7 @@
       "keywords": "WF6 六氟化钨 HBM 存储 供应链 出口管制 Foosung 瓶颈",
       "file": "/articles/wf6-hbm-bottleneck/",
       "status": "published",
-      "order": 36,
+      "order": 37,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -942,7 +969,7 @@
       "keywords": "SemiAnalysis GPU AI 算力 HBM 存储 光互联 推理 供给 瓶颈 NVDA MU LITE COHR",
       "file": "/articles/semi-analysis-ai-gpu-scarcity/",
       "status": "published",
-      "order": 37,
+      "order": 38,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -963,7 +990,7 @@
       "keywords": "AAOI 减持 Form 144 Form 4 内幕交易 光模块 筹码 高位兑现",
       "file": "/articles/aaoi-insider-selling-analysis/",
       "status": "published",
-      "order": 38,
+      "order": 39,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -985,7 +1012,7 @@
       "keywords": "中际旭创 1260H 光模块 供应链 出口管制 地缘政治 LITE COHR AAOI",
       "file": "/articles/innolight-1260h-analysis/",
       "status": "published",
-      "order": 39,
+      "order": 40,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1007,7 +1034,7 @@
       "keywords": "AAOI 光模块 800G 1.6T 弹性 订单 融资 风险 参与策略",
       "file": "/articles/aaoi-trading-note/",
       "status": "published",
-      "order": 40,
+      "order": 41,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1031,7 +1058,7 @@
       "keywords": "光通信 光互连 LITE COHR CRDO TSEM 硅光 DSP AEC 组合 配置",
       "file": "/articles/optical-portfolio-rebuilding/",
       "status": "published",
-      "order": 41,
+      "order": 42,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1053,7 +1080,7 @@
       "keywords": "东山精密 做T 日内交易 T+1 正T 倒T 光模块 PCB AI PCB VWAP 支撑 压力",
       "file": "/articles/dongshan-intraday-t-note/",
       "status": "published",
-      "order": 42,
+      "order": 43,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1075,7 +1102,7 @@
       "keywords": "CPI 通胀 AI FOMC 日本央行 光通信 存储 DRAM HBM 去杠杆",
       "file": "/articles/cpi-round-two-analysis/",
       "status": "published",
-      "order": 43,
+      "order": 44,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1098,7 +1125,7 @@
       "keywords": "Oracle ORCL 甲骨文 财报 FY2026 OCI AI 云 CapEx RPO 自由现金流",
       "file": "/articles/oracle-fy2026-q4-earnings/",
       "status": "published",
-      "order": 44,
+      "order": 45,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1121,7 +1148,7 @@
       "keywords": "AI DC 数据中心 产业链 国家分工 TSMC NVIDIA SK Hynix ASML 光模块 电力 冷却 国产替代",
       "file": "/articles/global-ai-dc-industry-chain/",
       "status": "published",
-      "order": 45,
+      "order": 46,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1144,7 +1171,7 @@
       "keywords": "HBM HBM4 SOCAMM LPDDR NVIDIA Rubin Bernstein SemiAnalysis SK海力士 MU Micron 存储 DRAM",
       "file": "/articles/hbm-pricing-repricing/",
       "status": "published",
-      "order": 46,
+      "order": 47,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1165,7 +1192,7 @@
       "keywords": "cage 连接器 鼎通 奕东 光模块 铜缆 散热 液冷 AI互联 二阶扩散 结构件",
       "file": "/articles/ai-cage-connector/",
       "status": "published",
-      "order": 47,
+      "order": 48,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1186,7 +1213,7 @@
       "keywords": "AVGO 博通 财报 FY2026 AI ASIC 定制芯片 英伟达 Semiconductors Networking 产业链 光通信",
       "file": "/articles/avgo-fy2026-q2-earnings/",
       "status": "published",
-      "order": 48,
+      "order": 49,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1206,7 +1233,7 @@
       "keywords": "光通信 学习 EML PD DSP FAU NPO CPO 800G 1.6T 硅光 OCS 投资 产业链",
       "file": "/articles/optical-communication-learning-path/",
       "status": "published",
-      "order": 49,
+      "order": 50,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1225,7 +1252,7 @@
       "keywords": "霍尔木兹 伊朗 原油 地缘政治 黄金 避险 能源 LNG 中东 战争溢价 航运",
       "file": "/articles/hormuz-strait-crisis/",
       "status": "published",
-      "order": 50,
+      "order": 51,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1246,7 +1273,7 @@
       "keywords": "CPO NPO PD OCS DSP EML CW Laser FAU TIA Driver SerDes 硅光 轻相干 AEC Scale-up Scale-out CoWoS TGV Interposer Glass Core ABF 光互连 先进封装",
       "file": "/articles/industry-glossary-2026/",
       "status": "published",
-      "order": 51,
+      "order": 52,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1265,7 +1292,7 @@
       "keywords": "投资框架 方法论 底层信念 三类资产 买卖点 轮动 Follow the Money 产业链",
       "file": "/articles/investment-framework/",
       "status": "published",
-      "order": 52,
+      "order": 53,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1284,7 +1311,7 @@
       "keywords": "AI服务器 BOM GB300 VR200 HBM PCB 代际升级 价值量 英伟达 NVIDIA 供应链",
       "file": "/articles/server-bom-analysis/",
       "status": "published",
-      "order": 53,
+      "order": 54,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1303,7 +1330,7 @@
       "keywords": "核电 AI电力 SMR 铀矿 LEU CEG OKLO VST 数据中心 能源",
       "file": "/articles/ai-nuclear-chain/",
       "status": "published",
-      "order": 54,
+      "order": 55,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1321,7 +1348,7 @@
       "keywords": "A股 规则 叙事弹性 题材 估值 游资 公募 轮动 龙一 龙二",
       "file": "/articles/a-share-rules/",
       "status": "published",
-      "order": 55,
+      "order": 56,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1340,7 +1367,7 @@
       "keywords": "AI产业链 收益排序 卡脖子 GPU HBM CoWoS 光模块 电力 液冷 存储",
       "file": "/articles/ai-industry-profit-chain/",
       "status": "published",
-      "order": 56,
+      "order": 57,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1358,7 +1385,7 @@
       "keywords": "亚盘 联动 上证 KOSPI 日经 台股 韩国 日本 台湾 A股 复盘",
       "file": "/articles/asia-market-correlation/",
       "status": "published",
-      "order": 57,
+      "order": 58,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1376,7 +1403,7 @@
       "keywords": "A股炒作 传导 龙一 龙二 补涨 瓶颈 参股 蹭概念 退潮 情绪 题材 轮动",
       "file": "/articles/a-share-framework/",
       "status": "published",
-      "order": 58,
+      "order": 59,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1394,7 +1421,7 @@
       "keywords": "光通信 EML InP 互联芯片 源杰科技 澜起科技 中际旭创 新易盛 光模块 LITE AXTI MRVL",
       "file": "/articles/a-share-optical-mapping/",
       "status": "published",
-      "order": 59,
+      "order": 60,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1412,7 +1439,7 @@
       "keywords": "",
       "file": "/articles/dongshan-clarification/",
       "status": "published",
-      "order": 60,
+      "order": 61,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1431,7 +1458,7 @@
       "keywords": "",
       "file": "/articles/gtc-taipei-2026/",
       "status": "published",
-      "order": 61,
+      "order": 62,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1450,7 +1477,7 @@
       "keywords": "六月 行情 展望 世界杯 FOMC SpaceX IPO 长鑫 产业约束 光互联 HBM PCB 瓶颈",
       "file": "/articles/june-market-outlook/",
       "status": "published",
-      "order": 62,
+      "order": 63,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1468,7 +1495,7 @@
       "keywords": "PCB HVLP 铜箔 铜冠铜箔 德福科技 生益科技 CCL 电子布 硅微粉 mSAP 泰金新能 三孚新科",
       "file": "/articles/ai-pcb-hvlp-copper-foil/",
       "status": "published",
-      "order": 63,
+      "order": 64,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1485,7 +1512,7 @@
       "keywords": "道德经 第四章 道冲 冲而不盈 和光同尘 挫锐解纷 柔 留白 空间",
       "file": "/articles/daodejing-chapter-4/",
       "status": "published",
-      "order": 64,
+      "order": 65,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1502,7 +1529,7 @@
       "keywords": "道德经 第三章 欲望 刺激 比较 焦虑 投资 心态 降噪",
       "file": "/articles/daodejing-chapter-3/",
       "status": "published",
-      "order": 65,
+      "order": 66,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1520,7 +1547,7 @@
       "keywords": "SpaceX Blue Origin ASTS RKLB 太空 航天 IPO 估值 发射 New Glenn 卫星 商业航天",
       "file": "/articles/space-sector-analysis/",
       "status": "published",
-      "order": 66,
+      "order": 67,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1537,7 +1564,7 @@
       "keywords": "道德经 第二章 比较 无为 功成弗居 投资 心态",
       "file": "/articles/daodejing-chapter-2/",
       "status": "published",
-      "order": 67,
+      "order": 68,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1554,7 +1581,7 @@
       "keywords": "道德经 第一章 道 名 命名 投资 认知 标签 判断",
       "file": "/articles/daodejing-chapter-1/",
       "status": "published",
-      "order": 68,
+      "order": 69,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1575,7 +1602,7 @@
       "keywords": "EML InP 光通信 激光器 LITE COHR 源杰科技 长光华芯 光模块 涨价 瓶颈 AXTI 磷化铟",
       "file": "/articles/eml-bottleneck/",
       "status": "published",
-      "order": 69,
+      "order": 70,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1595,7 +1622,7 @@
       "keywords": "InP 磷化铟 衬底 光通信 EML 激光器 LITE COHR AXTI 6英寸 外延 光模块",
       "file": "/articles/inp-industry-chain/",
       "status": "published",
-      "order": 70,
+      "order": 71,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1622,7 +1649,7 @@
       "keywords": "A股 中报 业绩 估值 兆易创新 建滔积层板 广合科技 沪电股份 北京君正 存储周期 CCL PCB",
       "file": "/articles/a-share-stock-screening-2026/",
       "status": "published",
-      "order": 71,
+      "order": 72,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     },
     {
@@ -1643,7 +1670,7 @@
       "keywords": "美光 MU Micron 财报 FY2026 Q3 存储 DRAM HBM",
       "file": "/articles/mu-earnings-preview/",
       "status": "published",
-      "order": 72,
+      "order": 73,
       "updatedAt": "2026-07-12T15:54:34.613Z"
     }
   ]
