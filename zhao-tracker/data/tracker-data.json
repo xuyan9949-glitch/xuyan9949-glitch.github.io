@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-20T23:58:00+08:00",
+  "updatedAt": "2026-07-21T00:17:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {"id":"conl-555-open-20260622","name":"CONL","action":"买入","positionType":"波段仓","price":5.55,"positionChange":1.6,"date":"2026-06-22T10:30:00+08:00","note":"补充历史记录：半笔仓位"},
@@ -26,7 +26,7 @@
     {"id":"mu-965-close-20260714","name":"MU","action":"清仓","positionType":"波段仓","price":965,"positionChange":1.65,"date":"2026-07-14T16:49:00+08:00","closeLotId":"mu-905-add-20260713","note":"出掉 905 剩下的 MU"},
     {"id":"dram-589-close-20260714","name":"DRAM","action":"清仓","positionType":"波段仓","price":58.9,"positionChange":1.65,"date":"2026-07-14T16:49:00+08:00","closeLotId":"dram-567-add-20260713","note":"出掉 56.7 剩下的 DRAM"},
     {"id":"glw-1879-close-20260714","name":"GLW","action":"清仓","positionType":"波段仓","price":187.9,"positionChange":3.3,"date":"2026-07-14T16:49:00+08:00","closeLotId":"glw-184-add-20260713","note":"出掉 184 的 GLW"},
-    {"id":"iren-401-reduce-20260714","name":"IREN","action":"减仓","positionType":"波段仓","price":40.1,"positionChange":3.3,"date":"2026-07-14T18:08:00+08:00","note":"异动直线：出掉 40.1 剩余的 1.65%，并卖出 38.9 批次的一半 1.65%"},
+    {"id":"iren-401-reduce-20260714","name":"IREN","action":"减仓","positionType":"波段仓","price":40.1,"positionChange":1.65,"date":"2026-07-14T18:08:00+08:00","closeLotId":"iren-389-add-20260714","note":"异动直线：出掉 38.9 批次的一半。后续确认 40.1 剩余仓位当时未卖出，已在 7 月 21 日补记。"},
     {"id":"ibm-2178-buy-20260714","name":"IBM","action":"买入","positionType":"波段仓","price":217.8,"positionChange":3.3,"date":"2026-07-14T21:33:00+08:00","note":"买了三分之一常规仓"},
     {"id":"iren-389-rebuy-20260714","name":"IREN","action":"加仓","positionType":"波段仓","price":38.9,"positionChange":3.3,"date":"2026-07-14T21:37:00+08:00","note":"加回截图所述 40.2 卖出的那部分；历史卖出价按已确认的 40.1 保留"},
     {"id":"nok-1165-rebuy-20260714","name":"NOK","action":"加仓","positionType":"波段仓","price":11.65,"positionChange":1.65,"date":"2026-07-14T22:21:00+08:00","note":"加回 12.02 卖出的 NOK 那部分"},
@@ -103,6 +103,7 @@
     {"id":"crwv-791-close-prior-20260720","name":"CRWV","action":"减仓","positionType":"波段仓","price":79.1,"positionChange":1.65,"date":"2026-07-20T21:44:30+08:00","closeLotId":"crwv-79-prior-lot","note":"出掉 79 附近开仓的一半；该原始开仓记录未在当前面板数据中。"},
     {"id":"conl-472-readd-20260720","name":"CONL","action":"加仓","positionType":"波段仓","price":4.72,"positionChange":1.65,"date":"2026-07-20T22:25:00+08:00","note":"加回 4.97 卖出的那部分"},
     {"id":"conl-496-close-20260720","name":"CONL","action":"减仓","positionType":"波段仓","price":4.96,"positionChange":1.65,"date":"2026-07-20T23:14:00+08:00","closeLotId":"conl-472-readd-20260720","note":"再次卖出 4.72 的 CONL，做 T 套利。"},
-    {"id":"conl-511-close-20260720","name":"CONL","action":"清仓","positionType":"波段仓","price":5.11,"positionChange":1.65,"date":"2026-07-20T23:58:00+08:00","closeLotId":"conl-479-add-20260713","note":"出掉剩下的一半 4.79 的 CONL"}
+    {"id":"conl-511-close-20260720","name":"CONL","action":"清仓","positionType":"波段仓","price":5.11,"positionChange":1.65,"date":"2026-07-20T23:58:00+08:00","closeLotId":"conl-479-add-20260713","note":"出掉剩下的一半 4.79 的 CONL"},
+    {"id":"iren-401-final-close-20260721","name":"IREN","action":"清仓","positionType":"波段仓","price":40.1,"positionChange":1.65,"date":"2026-07-21T00:17:00+08:00","closeLotId":"iren-401-add-20260713","note":"上周盘前 40.1 未卖出的剩余仓位，今日再次达到 40.1 时卖出。"}
   ]
 }
