@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-18T03:29:00+08:00",
+  "updatedAt": "2026-07-20T08:10:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {"id":"conl-555-open-20260622","name":"CONL","action":"买入","positionType":"波段仓","price":5.55,"positionChange":1.6,"date":"2026-06-22T10:30:00+08:00","note":"补充历史记录：半笔仓位"},
@@ -91,6 +91,7 @@
     {"id":"conl-50-t-close-20260718","name":"CONL","action":"减仓","positionType":"波段仓","price":5,"positionChange":3.3,"date":"2026-07-18T01:28:00+08:00","closeLotId":"conl-50-t-add-20260717","note":"先平出 5.0 的做 T 部分，等待更低机会。"},
     {"id":"cbrs-1744-half-close-20260718","name":"CBRS","action":"减仓","positionType":"波段仓","price":174.4,"positionChange":1.65,"date":"2026-07-18T01:36:00+08:00","closeLotId":"cbrs-1655-add-20260717","note":"165.5 的 CBRS 出一半"},
     {"id":"mu-864-readd-20260718","name":"MU","action":"加仓","positionType":"波段仓","price":864,"positionChange":1.65,"date":"2026-07-18T03:29:00+08:00","note":"加回 884 倒 T 卖出的那部分"},
-    {"id":"conl-479-t-readd-20260718","name":"CONL","action":"加仓","positionType":"波段仓","price":4.79,"positionChange":3.3,"date":"2026-07-18T03:29:00+08:00","note":"加回 5.0 做 T 卖出的那部分"}
+    {"id":"conl-479-t-readd-20260718","name":"CONL","action":"加仓","positionType":"波段仓","price":4.79,"positionChange":3.3,"date":"2026-07-18T03:29:00+08:00","note":"加回 5.0 做 T 卖出的那部分"},
+    {"id":"mu-879-close-20260720","name":"MU","action":"减仓","positionType":"波段仓","price":879,"positionChange":1.65,"date":"2026-07-20T08:10:00+08:00","closeLotId":"mu-864-readd-20260718","note":"出掉 864 加回的那部分 MU"}
   ]
 }
