@@ -712,7 +712,15 @@ document.getElementById("themeBtn").onclick=()=>{
   document.body.classList.toggle("dark");localStorage.setItem(THEME_KEY,document.body.classList.contains("dark")?"dark":"light");
 };
 if(localStorage.getItem(THEME_KEY)==="dark")document.body.classList.add("dark");
+function ensureTrendStackLayout() {
+  if (document.getElementById("trendStackLayoutFix")) return;
+  const style=document.createElement("style");
+  style.id="trendStackLayoutFix";
+  style.textContent=".trend-stack{display:grid!important;gap:14px;align-content:start}.trend-stack .return-panel{margin:0!important}";
+  document.head.appendChild(style);
+}
 async function init() {
+  ensureTrendStackLayout();
   state = await loadSharedState();
   render();
   if (state.source === "shared") toast("已加载 GitHub 共享数据");
