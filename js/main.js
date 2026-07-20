@@ -92,7 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         // 标的追踪:最近更新是否在最后访问之后
         if (typeof trackingData !== 'undefined') {
-            const allStocks = [...(trackingData['a-shares'] || []), ...(trackingData['us-stocks'] || [])];
+            const allStocks = [
+                ...(trackingData['a-shares'] || []),
+                ...(trackingData['us-stocks'] || []),
+                ...(trackingData['hk-stocks'] || []),
+            ];
             const dates = allStocks.map(s => new Date(s.lastUpdated).getTime()).filter(d => !isNaN(d));
             if (dates.length > 0) {
                 const latest = Math.max(...dates);
@@ -577,12 +581,22 @@ document.addEventListener('DOMContentLoaded', () => {
         return `<span style="font-size:11px;font-weight:500;color:${color}">${importance}</span>`;
     }
 
+    const trackingMarkets = {
+        a: 'a-shares',
+        us: 'us-stocks',
+        hk: 'hk-stocks',
+    };
+
+    function getTrackingMarketKey(market) {
+        return trackingMarkets[market] || trackingMarkets.a;
+    }
+
     function renderCards(market, showAbandoned) {
         const grid = document.getElementById('trk-grid');
         const summary = document.getElementById('trk-summary');
         if (!grid || typeof trackingData === 'undefined') return;
 
-        const marketKey = market === 'a' ? 'a-shares' : 'us-stocks';
+        const marketKey = getTrackingMarketKey(market);
         let stocks = trackingData[marketKey];
         if (!stocks || stocks.length === 0) {
             grid.innerHTML = '<div class="trk-empty">暂无可展示的标的</div>';
@@ -1035,7 +1049,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const content = document.getElementById('trk-drawer-content');
         if (!overlay || !drawer || !content) return;
 
-        const marketKey = market === 'a' ? 'a-shares' : 'us-stocks';
+        const marketKey = getTrackingMarketKey(market);
         const stocks = trackingData[marketKey];
         const s = stocks.find(x => x.id === id);
         if (!s) return;
@@ -1150,7 +1164,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let market = 'a';
             const usStocks = trackingData['us-stocks'] || [];
             const aStocks = trackingData['a-shares'] || [];
-            const matchingStock = usStocks.find(s => s.id === stockId) || aStocks.find(s => s.id === stockId);
+            const hkStocks = trackingData['hk-stocks'] || [];
+            const matchingStock = usStocks.find(s => s.id === stockId)
+                || aStocks.find(s => s.id === stockId)
+                || hkStocks.find(s => s.id === stockId);
             const pendingSector = matchingStock && matchingStock.usSector ? matchingStock.usSector : null;
             
             // Switch to tracking section
@@ -1161,6 +1178,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (matchingStock) {
                 if (matchingStock.mkt === 'us' || usStocks.includes(matchingStock)) {
                     market = 'us';
+                } else if (matchingStock.mkt === 'hk' || hkStocks.includes(matchingStock)) {
+                    market = 'hk';
                 } else {
                     market = 'a';
                 }
@@ -1464,7 +1483,7 @@ function getStatusColor(status) {
 // ---- Global: stock tag click → tracking drawer ----
 function findStockIdByTag(tag) {
     if (typeof trackingData === 'undefined') return null;
-    for (const key of ['a-shares', 'us-stocks']) {
+    for (const key of ['a-shares', 'us-stocks', 'hk-stocks']) {
         const stock = trackingData[key]?.find(s => s.name === tag || s.code === tag);
         if (stock) return stock.id;
     }
@@ -1473,10 +1492,10 @@ function findStockIdByTag(tag) {
 
 function openStockTracking(stockId) {
     if (!stockId) return;
-    for (const key of ['a-shares', 'us-stocks']) {
+    for (const key of ['a-shares', 'us-stocks', 'hk-stocks']) {
         const found = trackingData[key]?.find(s => s.id === stockId);
         if (found) {
-            const marketCode = key === 'a-shares' ? 'a' : 'us';
+            const marketCode = key === 'a-shares' ? 'a' : key === 'hk-stocks' ? 'hk' : 'us';
             window.location.hash = '#tracking';
             setTimeout(() => {
                 const tab = document.querySelector(`.trk-tab[data-mkt="${marketCode}"]`);
