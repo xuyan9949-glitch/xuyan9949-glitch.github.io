@@ -111,6 +111,19 @@ tr:hover .row-actions { opacity:1; }
 .pairs-panel { margin-bottom:14px; }
 .pairs-panel small { color:var(--muted); }
 .analytics-panel { margin-bottom:14px; }
+.score-panel { margin-bottom:14px; }
+.score-rule { color:var(--muted); font-size:11px; font-weight:700; }
+.score-highlights { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; padding:14px 17px; border-bottom:1px solid var(--line); background:var(--panel-2); }
+.score-highlight { padding:13px 14px; border:1px solid var(--line); border-radius:10px; background:var(--panel); }
+.score-highlight.top { border-color:var(--blue); box-shadow:0 0 0 2px var(--blue-soft); }
+.score-highlight span,.score-highlight small { display:block; color:var(--muted); font-size:11px; }
+.score-highlight strong { display:block; margin:5px 0 4px; font-size:20px; }
+.score-highlight em { color:var(--blue); font-size:25px; font-style:normal; }
+.score-value { color:var(--blue); font-size:18px; }
+.score-status { display:inline-flex; padding:3px 8px; border-radius:999px; font-size:11px; font-weight:800; }
+.score-status.follow { color:var(--red); background:var(--red-soft); }
+.score-status.wait { color:var(--amber); background:var(--amber-soft); }
+.score-status.watch { color:var(--muted); background:var(--panel-2); }
 .closed-panel { margin-bottom:14px; }
 .closed-symbols { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; padding:14px 17px; }
 .closed-card { display:flex; align-items:center; gap:11px; padding:13px; border:1px solid var(--line); border-radius:10px; background:var(--panel-2); }
@@ -217,6 +230,7 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
   main { padding:14px; }
   .summary-grid { grid-template-columns:1fr 1fr; gap:9px; }
   .analytics-panel .panel-header { flex-direction:column; }
+  .score-highlights { grid-template-columns:1fr; padding:10px; }
   #analysisRangeTabs { width:100%; justify-content:space-between; }
   #analysisRangeTabs button { flex:1; }
   .risk-grid { grid-template-columns:1fr; padding:10px; }

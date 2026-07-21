@@ -238,6 +238,115 @@ function computeRiskProfile(holdings, stats, ledger) {
   };
 }
 
+function median(values=[]) {
+  const ordered=[...values].filter(Number.isFinite).sort((a,b)=>a-b);
+  if (!ordered.length) return 0;
+  const middle=Math.floor(ordered.length/2);
+  return ordered.length%2 ? ordered[middle] : (ordered[middle-1]+ordered[middle])/2;
+}
+
+function scoreMedianReturn(value) {
+  if (value>=5) return 20;
+  if (value>=3) return 16;
+  if (value>=2) return 12;
+  if (value>=1) return 8;
+  if (value>0) return 3;
+  return 0;
+}
+
+function scoreMedianHoldHours(hours) {
+  if (hours<=1) return 15;
+  if (hours<=4) return 13;
+  if (hours<=12) return 10;
+  if (hours<=24) return 8;
+  if (hours<=48) return 5;
+  if (hours<=96) return 2;
+  return 0;
+}
+
+function scoreDecayedNetBuy(value) {
+  if (value>=2.5) return 15;
+  if (value>=1) return 12;
+  if (value>=0.25) return 9;
+  if (value>=-0.25) return 7;
+  if (value>=-1) return 4;
+  if (value>=-2.5) return 2;
+  return 0;
+}
+
+function confidenceBase(samples) {
+  if (samples<=0) return 0;
+  if (samples===1) return 25;
+  if (samples===2) return 40;
+  if (samples===3) return 55;
+  if (samples===4) return 65;
+  if (samples===5) return 75;
+  if (samples<=7) return 82;
+  if (samples<=9) return 86;
+  return 90;
+}
+
+function dateKey(value) {
+  const d=new Date(value);
+  return Number.isNaN(d.getTime()) ? "" : d.toISOString().slice(0,10);
+}
+
+function computeTScoreboard(holdings=getHoldings(), ledger=computeLedger()) {
+  const holdingMap=Object.fromEntries(holdings.map(h=>[h.code,h]));
+  const allBuys=state.trades.filter(t=>buyActions.includes(t.action));
+  const codes=[...new Set(allBuys.map(t=>t.code))];
+  const referenceDate=new Date();
+  const allTradeDays=[...new Set(state.trades.map(t=>dateKey(t.date)).filter(Boolean))].sort().reverse().slice(0,20);
+  const scoringDays=new Set(allTradeDays);
+
+  return codes.map(code=>{
+    const buys=allBuys.filter(t=>t.code===code);
+    const pairs=ledger.pairs.filter(p=>p.code===code);
+    const batchMap=new Map();
+    for (const pair of pairs) {
+      const id=pair.openTrade.id;
+      if (!batchMap.has(id)) batchMap.set(id,{ openTrade:pair.openTrade, pairs:[] });
+      batchMap.get(id).pairs.push(pair);
+    }
+    const batches=[...batchMap.values()].map(batch=>{
+      const closedPosition=batch.pairs.reduce((sum,p)=>sum+p.position,0);
+      const weightedReturn=closedPosition ? batch.pairs.reduce((sum,p)=>sum+p.position*p.pnlPct,0)/closedPosition : 0;
+      const weightedHours=closedPosition ? batch.pairs.reduce((sum,p)=>sum+p.position*Math.max(0,(new Date(p.closeTrade.date)-new Date(p.openTrade.date))/3600000),0)/closedPosition : 0;
+      return { ...batch, closedPosition, weightedReturn, weightedHours, contribution:batch.pairs.reduce((sum,p)=>sum+p.contribution,0) };
+    });
+    const samples=batches.length;
+    const totalBuyPosition=buys.reduce((sum,t)=>sum+Number(t.positionChange||0),0);
+    const realizedPosition=pairs.reduce((sum,p)=>sum+p.position,0);
+    const realizationRate=totalBuyPosition ? Math.min(1,realizedPosition/totalBuyPosition) : 0;
+    const medianReturn=median(batches.map(b=>b.weightedReturn));
+    const medianHoldHours=median(batches.map(b=>b.weightedHours));
+    const positiveRate=samples ? batches.filter(b=>b.weightedReturn>0).length/samples : 0;
+    const contribution=pairs.reduce((sum,p)=>sum+p.contribution,0);
+    const codeTrades=state.trades.filter(t=>t.code===code);
+    const netBuy=codeTrades.reduce((sum,t)=>{
+      const age=Math.max(0,(referenceDate-new Date(t.date))/86400000);
+      const direction=buyActions.includes(t.action)?1:isSell(t.action)?-1:0;
+      return sum+direction*Number(t.positionChange||0)*Math.pow(.5,age/3);
+    },0);
+    const latestBuy=[...buys].sort((a,b)=>new Date(b.date)-new Date(a.date))[0];
+    const latestBuyDays=latestBuy ? Math.max(0,(referenceDate-new Date(latestBuy.date))/86400000) : Infinity;
+    const recencyScore=latestBuyDays<=1?5:latestBuyDays<=3?4:latestBuyDays<=5?3:latestBuyDays<=7?2:0;
+    const buyDayCount=new Set(buys.map(t=>dateKey(t.date)).filter(day=>scoringDays.has(day))).size;
+    const efficiency=scoreMedianReturn(medianReturn)+scoreMedianHoldHours(medianHoldHours)+realizationRate*10+positiveRate*10;
+    const preference=scoreDecayedNetBuy(netBuy)+recencyScore+Math.min(5,buyDayCount);
+    const contributionScore=contribution>=.4?20:contribution>=.3?17:contribution>=.2?14:contribution>=.1?10:contribution>=.05?6:contribution>0?3:0;
+    const rawScore=efficiency+preference+contributionScore;
+    const completeness=buys.length ? samples/buys.length : 0;
+    const confidence=Math.min(90,confidenceBase(samples)*(.8+.2*completeness));
+    const score=50+(rawScore-50)*confidence/100;
+    const position=holdingMap[code]?.position||0;
+    const status=score>=65&&confidence>=50&&samples>=3&&position>0 ? "重点跟随"
+      : score>=55&&(netBuy<-.25||position<=0) ? "等待再次买入"
+      : "样本观察";
+    return { code, score, rawScore, confidence, samples, medianReturn, medianHoldHours, realizationRate, positiveRate, contribution, netBuy, position, efficiency, preference, contributionScore, status };
+  }).sort((a,b)=>b.score-a.score || b.confidence-a.confidence);
+}
+
 function computeTimeline() {
   const ordered = [...state.trades].sort((a,b)=>new Date(a.date)-new Date(b.date));
   return ordered.map((trade,i)=>{
@@ -298,6 +407,7 @@ function render() {
   renderHoldings(holdings);
   renderClosedSymbols(holdings, ledger);
   const stats = computeSymbolStats(holdings, ledger);
+  renderScoreboard(computeTScoreboard(holdings, ledger));
   renderAnalytics(stats, computeRiskProfile(holdings, stats, ledger));
   renderPairs(ledger.pairs);
   renderActivity();
@@ -436,6 +546,26 @@ function renderAnalytics(stats, risk) {
     </tr>`;
   }).join("");
   document.getElementById("analyticsEmpty").hidden=stats.length>0;
+}
+
+function renderScoreboard(scores) {
+  const highlights=document.getElementById("scoreHighlights");
+  highlights.innerHTML=scores.slice(0,3).map((item,index)=>`<article class="score-highlight ${index===0?"top":""}">
+    <span>TOP ${index+1} · ${esc(item.status)}</span><strong>${esc(item.code)} <em>${fmt(item.score,1)}</em></strong>
+    <small>置信度 ${fmt(item.confidence,0)}% · ${item.samples} 个有效批次 · 中位收益 ${item.medianReturn>=0?"+":""}${fmt(item.medianReturn,2)}%</small>
+  </article>`).join("");
+  const body=document.getElementById("scoreBody");
+  body.innerHTML=scores.map(item=>`<tr>
+    <td data-label="标的"><div class="stock"><span class="stock-avatar">${esc(item.code[0])}</span><span><b>${esc(item.code)}</b><small>效率 ${fmt(item.efficiency,1)}/55 · 偏好 ${fmt(item.preference,1)}/25 · 贡献 ${fmt(item.contributionScore)}/20</small></span></div></td>
+    <td data-label="做T评分"><b class="score-value">${fmt(item.score,1)}</b><br><small>原始 ${fmt(item.rawScore,1)}</small></td>
+    <td data-label="置信度"><b>${fmt(item.confidence,0)}%</b><br><small>样本完整度</small></td>
+    <td data-label="有效批次"><b>${item.samples}</b><br><small>独立开仓</small></td>
+    <td data-label="中位收益"><span class="pnl ${item.medianReturn>=0?"up":"down"}">${item.medianReturn>=0?"+":""}${fmt(item.medianReturn,2)}%</span></td>
+    <td data-label="中位持时"><b>${fmt(item.medianHoldHours,1)} 小时</b></td>
+    <td data-label="兑现率"><b>${fmt(item.realizationRate*100,0)}%</b><br><small>已匹配卖出</small></td>
+    <td data-label="当前判断"><span class="score-status ${item.status==="重点跟随"?"follow":item.status==="等待再次买入"?"wait":"watch"}">${esc(item.status)}</span></td>
+  </tr>`).join("");
+  document.getElementById("scoreEmpty").hidden=scores.length>0;
 }
 
 function setInsight(prefix, stat, meta) {

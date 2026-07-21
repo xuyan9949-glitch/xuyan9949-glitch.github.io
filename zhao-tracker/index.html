@@ -137,6 +137,25 @@
         <div id="closedSymbolsEmpty" class="empty-state"><div>暂无已清仓标的</div><p>标的仓位归零后会自动归档到这里。</p></div>
       </section>
 
+      <section class="panel score-panel">
+        <div class="panel-header">
+          <div><h2>批次级做 T 评分</h2><p>按独立开仓批次、兑现速度、当前意愿与组合贡献实时计算</p></div>
+          <span class="score-rule">效率 55 · 偏好 25 · 贡献 20</span>
+        </div>
+        <div id="scoreHighlights" class="score-highlights"></div>
+        <div class="table-wrap score-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>标的</th><th>做 T 评分</th><th>置信度</th><th>有效批次</th><th>中位收益</th><th>中位持时</th><th>兑现率</th><th>当前判断</th>
+              </tr>
+            </thead>
+            <tbody id="scoreBody"></tbody>
+          </table>
+          <div id="scoreEmpty" class="empty-state"><div>暂无可评分批次</div><p>录入开仓与对应卖出后，会自动形成批次级做 T 评分。</p></div>
+        </div>
+      </section>
+
       <section class="panel analytics-panel">
         <div class="panel-header">
           <div><h2>标的复盘分析</h2><p>统计资金使用率、操作频率、收益效率与进出速度</p></div>
