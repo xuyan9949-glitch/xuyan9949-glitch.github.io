@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-21T16:11:00+08:00",
+  "updatedAt": "2026-07-21T21:55:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {"id":"conl-555-open-20260622","name":"CONL","action":"买入","positionType":"波段仓","price":5.55,"positionChange":1.6,"date":"2026-06-22T10:30:00+08:00","note":"补充历史记录：半笔仓位"},
@@ -105,6 +105,10 @@
     {"id":"conl-496-close-20260720","name":"CONL","action":"减仓","positionType":"波段仓","price":4.96,"positionChange":1.65,"date":"2026-07-20T23:14:00+08:00","closeLotId":"conl-472-readd-20260720","note":"再次卖出 4.72 的 CONL，做 T 套利。"},
     {"id":"conl-511-close-20260720","name":"CONL","action":"清仓","positionType":"波段仓","price":5.11,"positionChange":1.65,"date":"2026-07-20T23:58:00+08:00","closeLotId":"conl-479-add-20260713","note":"出掉剩下的一半 4.79 的 CONL"},
     {"id":"iren-401-final-close-20260721","name":"IREN","action":"清仓","positionType":"波段仓","price":40.1,"positionChange":1.65,"date":"2026-07-21T00:17:00+08:00","closeLotId":"iren-401-add-20260713","note":"上周盘前 40.1 未卖出的剩余仓位，今日再次达到 40.1 时卖出。"},
-    {"id":"mu-9195-close-20260721","name":"MU","action":"清仓","positionType":"波段仓","price":919.5,"positionChange":1.65,"date":"2026-07-21T16:11:00+08:00","closeLotId":"mu-9175-add-20260715","note":"出掉 917.5 剩下的一半 MU"}
+    {"id":"mu-9195-close-20260721","name":"MU","action":"清仓","positionType":"波段仓","price":919.5,"positionChange":1.65,"date":"2026-07-21T16:11:00+08:00","closeLotId":"mu-9175-add-20260715","note":"出掉 917.5 剩下的一半 MU"},
+    {"id":"conl-57-close-555-20260721","name":"CONL","action":"清仓","positionType":"波段仓","price":5.7,"positionChange":1.6,"date":"2026-07-21T21:33:00+08:00","closeLotId":"conl-555-open-20260622","note":"日内上涨约 13%，出掉 5.55 剩下的一半；保留 4.85 死拿仓设置，跌破 5.45 再出一半。"},
+    {"id":"dram-5685-close-20260721","name":"DRAM","action":"清仓","positionType":"波段仓","price":56.85,"positionChange":1.65,"date":"2026-07-21T21:33:00+08:00","closeLotId":"dram-565-add-20260715","note":"出掉 56.5 剩下的一半 DRAM"},
+    {"id":"conl-585-close-prior-20260721","name":"CONL","action":"减仓","positionType":"波段仓","price":5.85,"positionChange":1.65,"date":"2026-07-21T21:40:00+08:00","closeLotId":"conl-485-prior-lot-deleted","note":"出掉 4.85 死拿仓的一半；原始开仓记录已按要求删除。"},
+    {"id":"cbrs-1902-close-20260721","name":"CBRS","action":"清仓","positionType":"波段仓","price":190.2,"positionChange":1.65,"date":"2026-07-21T21:55:00+08:00","closeLotId":"cbrs-1655-add-20260717","note":"出掉 165.5 剩下的一半 CBRS"}
   ]
 }
