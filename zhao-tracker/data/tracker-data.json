@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-23T04:36:00+08:00",
+  "updatedAt": "2026-07-23T23:15:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {"id":"conl-555-open-20260622","name":"CONL","action":"买入","positionType":"波段仓","price":5.55,"positionChange":1.6,"date":"2026-06-22T10:30:00+08:00","note":"补充历史记录：半笔仓位"},
@@ -118,6 +118,9 @@
     {"id":"tsll-1035-add-20260723","name":"TSLL","action":"加仓","positionType":"波段仓","price":10.35,"positionChange":3.3,"date":"2026-07-23T04:08:30+08:00","note":"加了三分之一常规仓"},
     {"id":"conl-529-readd-20260723","name":"CONL","action":"加仓","positionType":"波段仓","price":5.29,"positionChange":1.65,"date":"2026-07-23T04:12:00+08:00","note":"买回 5.85 卖出的那部分"},
     {"id":"googl-347-close-3485-20260723","name":"GOOGL","action":"清仓","positionType":"波段仓","price":347,"positionChange":3.3,"date":"2026-07-23T04:12:30+08:00","closeLotId":"googl-3485-readd-20260721","note":"出掉昨天 348.5 加回的谷歌 A 批次（原消息写作 348）"},
-    {"id":"nok-1071-final-close-20260723","name":"NOK","action":"清仓","positionType":"波段仓","price":10.71,"positionChange":1.65,"date":"2026-07-23T04:36:00+08:00","closeLotId":"nok-1088-add-20260716","note":"出掉 10.88 剩下的一半"}
+    {"id":"nok-1071-final-close-20260723","name":"NOK","action":"清仓","positionType":"波段仓","price":10.71,"positionChange":1.65,"date":"2026-07-23T04:36:00+08:00","closeLotId":"nok-1088-add-20260716","note":"出掉 10.88 剩下的一半"},
+    {"id":"tsll-878-add-20260723","name":"TSLL","action":"加仓","positionType":"波段仓","price":8.78,"positionChange":3.3,"date":"2026-07-23T21:33:00+08:00","note":"加了三分之一常规仓"},
+    {"id":"nok-101-add-20260723","name":"NOK","action":"加仓","positionType":"波段仓","price":10.1,"positionChange":3.3,"date":"2026-07-23T21:33:30+08:00","note":"加了三分之一常规仓"},
+    {"id":"conl-485-add-20260723","name":"CONL","action":"加仓","positionType":"波段仓","price":4.85,"positionChange":1.65,"date":"2026-07-23T23:15:00+08:00","note":"加了六分之一常规仓"}
   ]
 }
