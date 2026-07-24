@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-24T21:45:00+08:00",
+  "updatedAt": "2026-07-24T21:58:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -1286,6 +1286,36 @@
       "price": 4.66,
       "positionChange": 3.3,
       "date": "2026-07-24T21:45:00+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "crwv-743-add-20260724",
+      "name": "CRWV",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 74.3,
+      "positionChange": 3.3,
+      "date": "2026-07-24T21:58:00+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "iren-379-add-20260724",
+      "name": "IREN",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 37.9,
+      "positionChange": 3.3,
+      "date": "2026-07-24T21:58:10+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "pl-2093-add-20260724",
+      "name": "PL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 20.93,
+      "positionChange": 3.3,
+      "date": "2026-07-24T21:58:20+08:00",
       "note": "加了三分之一常规仓"
     }
   ]
