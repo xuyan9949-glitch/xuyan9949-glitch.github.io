@@ -7,7 +7,7 @@
   <title>赵哥操作追踪</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260724-live-quotes">
+  <link rel="stylesheet" href="styles.css?v=20260724-summary">
 </head>
 <body>
   <div class="app-shell">
@@ -56,16 +56,16 @@
           <p id="closedCount">已平 0 笔配对</p>
         </article>
         <article class="summary-card">
-          <div class="card-label">底仓仓位</div>
-          <div class="metric-row"><strong id="basePosition">0%</strong><span class="tag blue">长期配置</span></div>
-          <div class="mini-track"><span id="baseBar"></span></div>
-          <p id="baseCount">0 只底仓标的</p>
+          <div class="card-label">未实现收益 <span class="live-dot"></span></div>
+          <div class="metric-row"><strong id="unrealizedPnl">—</strong><span id="unrealizedPct" class="change neutral">—</span></div>
+          <div class="holding-meta"><span><b id="quoteCount">0</b> 只已报价</span></div>
+          <p id="unrealizedMeta">等待长桥行情</p>
         </article>
         <article class="summary-card">
-          <div class="card-label">可变仓位</div>
-          <div class="metric-row"><strong id="swingPosition">0%</strong><span class="tag amber">机动仓位</span></div>
-          <div class="mini-track amber-track"><span id="swingBar"></span></div>
-          <p id="cashPosition">可用仓位 100%</p>
+          <div class="card-label">可用现金</div>
+          <div class="metric-row"><strong id="availableCash">$0</strong><span class="tag amber">含 30% 融资</span></div>
+          <div class="mini-track amber-track"><span id="buyingPowerBar"></span></div>
+          <p id="buyingPowerMeta">总购买力 $0</p>
         </article>
       </section>
 
@@ -328,6 +328,6 @@
   </dialog>
 
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20260724-live-quotes"></script>
+  <script src="app.js?v=20260724-summary"></script>
 </body>
 </html>
