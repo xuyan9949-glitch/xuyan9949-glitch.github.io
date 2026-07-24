@@ -7,7 +7,7 @@
   <title>赵哥操作追踪</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260724-manual-sync">
+  <link rel="stylesheet" href="styles.css?v=20260724-holding-pnl">
 </head>
 <body>
   <div class="app-shell">
@@ -72,7 +72,7 @@
       <section class="workspace-grid">
         <article class="panel holdings-panel">
           <div class="panel-header">
-            <div><h2>当前持仓</h2><p>按当前仓位实时汇总</p></div>
+            <div><h2>当前持仓</h2><p>现价来自长桥；盈亏金额按看板仓位与账户本金估算</p></div>
             <div class="tools">
               <label class="search-box">⌕ <input id="searchInput" placeholder="搜索名称或代码"></label>
               <select id="statusFilter" aria-label="筛选持仓类型">
@@ -88,8 +88,8 @@
                 <tr>
                   <th>标的</th><th>状态</th>
                   <th class="sortable" data-sort="position">仓位 ↕</th>
-                  <th>占用资金</th>
-                  <th>持仓成本</th><th>实时行情</th>
+                  <th>现价 / 成本</th>
+                  <th>当日盈亏</th><th>持仓盈亏</th>
                   <th>最近操作</th>
                 </tr>
               </thead>

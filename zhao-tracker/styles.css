@@ -79,10 +79,11 @@ tbody tr:hover { background:var(--panel-2); }
 .stock-avatar { width:31px; height:31px; display:grid; place-items:center; border-radius:8px; color:var(--blue); background:var(--blue-soft); font-weight:800; }
 .stock b { display:block; font-size:13px; }
 .stock small,.price-stack small { color:var(--muted); }
-.quote-stack { display:grid; gap:2px; }
-.quote-stack small { font-size:11px; font-weight:700; }
-.quote-stack .up { color:var(--red); }
-.quote-stack .down { color:var(--green); }
+.quote-stack,.pnl-stack { display:grid; gap:2px; min-width:88px; }
+.quote-stack small,.pnl-stack small { font-size:11px; font-weight:700; }
+.quote-stack small { color:var(--muted); font-weight:600; }
+.pnl-stack.up { color:var(--red); }
+.pnl-stack.down { color:var(--green); }
 .quote-pending b { color:var(--muted); }
 .status { display:inline-flex; align-items:center; gap:5px; padding:3px 7px; border-radius:5px; font-size:11px; font-weight:700; }
 .status::before { content:""; width:5px; height:5px; border-radius:50%; background:currentColor; }

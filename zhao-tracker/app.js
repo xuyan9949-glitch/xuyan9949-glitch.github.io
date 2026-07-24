@@ -2,8 +2,8 @@ const STORAGE_KEY = "zhao-tracker-data-v5";
 const LEGACY_KEYS = [];
 const THEME_KEY = "zhao-tracker-theme";
 const SHARED_DATA_URL = "./data/tracker-data.json";
-const QUOTE_API_URL = "http://127.0.0.1:8765/quotes";
-const TRADE_API_URL = "http://127.0.0.1:8765/trades";
+const QUOTE_API_URL = "http://127.0.0.1:18765/quotes";
+const TRADE_API_URL = "http://127.0.0.1:18765/trades";
 const QUOTE_REFRESH_MS = 30000;
 const buyActions = ["买入", "加仓"];
 const sellActions = ["减仓", "卖出", "清仓"];
@@ -98,12 +98,28 @@ function usd(n) {
 }
 function setText(id,text) { document.getElementById(id).textContent=text; }
 function quoteFor(code) { return state.quotes?.[code] || null; }
-function quoteMarkup(holding) {
+function currentCostMarkup(holding) {
   const quote = quoteFor(holding.code);
   if (!quote) return `<div class="quote-stack quote-pending"><b>—</b><small>${state.quoteError ? "行情未连接" : "读取中"}</small></div>`;
-  const pnlPct = holding.cost ? (quote.last - holding.cost) / holding.cost * 100 : 0;
-  const cls = pnlPct >= 0 ? "up" : "down";
-  return `<div class="quote-stack"><b>${money(quote.last)}</b><small class="${cls}">${pnlPct>=0?"+":""}${fmt(pnlPct,2)}% · ${quote.updatedAt || "刚刚"}</small></div>`;
+  return `<div class="quote-stack"><b>${money(quote.last)}</b><small>成本 ${money(holding.cost)}</small></div>`;
+}
+function pnlMarkup(amount, pct, pending=false) {
+  if (pending || !Number.isFinite(pct)) return `<div class="pnl-stack quote-pending"><b>—</b><small>等待昨收价</small></div>`;
+  const cls = pct >= 0 ? "up" : "down";
+  return `<div class="pnl-stack ${cls}"><b>${usd(amount)}</b><small>${pct>=0?"+":""}${fmt(pct,2)}%</small></div>`;
+}
+function dayPnlMarkup(holding, capital) {
+  const quote = quoteFor(holding.code);
+  const prevClose = Number(quote?.prevClose);
+  if (!quote || !(prevClose > 0)) return pnlMarkup(0, NaN, true);
+  const pct = (quote.last - prevClose) / prevClose * 100;
+  return pnlMarkup(capital * holding.position / 100 * pct / 100, pct);
+}
+function holdingPnlMarkup(holding, capital) {
+  const quote = quoteFor(holding.code);
+  if (!quote || !(holding.cost > 0)) return pnlMarkup(0, NaN, true);
+  const pct = (quote.last - holding.cost) / holding.cost * 100;
+  return pnlMarkup(capital * holding.position / 100 * pct / 100, pct);
 }
 async function refreshQuotes() {
   const holdings = getHoldings();
@@ -480,9 +496,9 @@ function renderHoldings(holdings) {
     <td data-label="标的"><div class="stock"><span class="stock-avatar">${esc(h.name[0])}</span><span class="stock-info"><b>${esc(h.name)}</b><span class="stock-actions"><button class="detail-btn" onclick="openSymbolDetail('${h.code}')">综合情况 →</button></span></span></div></td>
     <td data-label="状态"><span class="status ${h.positionType==="底仓"?"base":"swing"}">${esc(h.positionType)}</span></td>
     <td data-label="仓位"><div class="position-cell"><b>${fmt(h.position)}%</b><div class="position-mini"><i style="width:${Math.min(100,h.position*3)}%"></i></div></div></td>
-    <td data-label="占用资金"><b>${usd(capital*h.position/100)}</b></td>
-    <td data-label="持仓成本"><div class="price-stack"><b>${money(h.cost)}</b><small>按仓位加权均价</small></div></td>
-    <td data-label="实时行情">${quoteMarkup(h)}</td>
+    <td data-label="现价 / 成本">${currentCostMarkup(h)}</td>
+    <td data-label="当日盈亏">${dayPnlMarkup(h,capital)}</td>
+    <td data-label="持仓盈亏">${holdingPnlMarkup(h,capital)}</td>
     <td data-label="最近操作"><span class="latest-action">${esc(h.lastTrade.action)} · ${formatDate(h.lastTrade.date)}</span><button class="mini-btn row-actions" title="编辑最近记录" onclick="editTrade('${h.lastTrade.id}')">✎</button></td>
   </tr>`).join("");
   document.getElementById("holdingsEmpty").hidden=visible.length>0;
