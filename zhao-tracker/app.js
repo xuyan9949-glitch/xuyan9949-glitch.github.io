@@ -3,6 +3,7 @@ const LEGACY_KEYS = [];
 const THEME_KEY = "zhao-tracker-theme";
 const SHARED_DATA_URL = "./data/tracker-data.json";
 const QUOTE_API_URL = "http://127.0.0.1:8765/quotes";
+const TRADE_API_URL = "http://127.0.0.1:8765/trades";
 const QUOTE_REFRESH_MS = 30000;
 const buyActions = ["买入", "加仓"];
 const sellActions = ["减仓", "卖出", "清仓"];
@@ -78,6 +79,16 @@ async function loadSharedState() {
   }
 }
 function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+async function syncSharedTrade(operation, trade) {
+  const response = await fetch(TRADE_API_URL, {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({operation,trade})
+  });
+  const result = await response.json().catch(()=>({}));
+  if (!response.ok || !result.ok) throw new Error(result.error || "同步服务暂时不可用");
+  return result;
+}
 function esc(value="") { return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 function fmt(n,digits=1) { return Number(n || 0).toFixed(digits).replace(/\.0$/,""); }
 function money(n) { return `$${fmt(n,2)}`; }
@@ -770,9 +781,16 @@ function toLocalInput(iso) {
   return local.toISOString().slice(0,16);
 }
 window.editTrade=id=>openTrade(state.trades.find(t=>t.id===id));
-window.deleteTrade=id=>{
+window.deleteTrade=async id=>{
   if (!confirm("确定删除这条操作记录？删除后持仓和平仓配对将重新计算。")) return;
-  state.trades=state.trades.filter(t=>t.id!==id); state.isDemo=false; saveState(); render(); toast("记录已删除");
+  const trade = state.trades.find(t=>t.id===id);
+  if (!trade) return;
+  try {
+    await syncSharedTrade("delete", trade);
+    state.trades=state.trades.filter(t=>t.id!==id);
+    state.isDemo=false; state.source="shared"; saveState(); render();
+    toast("已同步删除，线上面板正在刷新");
+  } catch (error) { alert(`删除未同步：${error.message}`); }
 };
 function close(id){ document.getElementById(id).close(); }
 function toast(message) {
@@ -839,12 +857,23 @@ document.getElementById("fileInput").onchange=async e=>{
   } catch(err){ alert(`导入失败：${err.message}`); }
   finally {e.target.value="";}
 };
-document.getElementById("tradeForm").onsubmit=e=>{
+document.getElementById("tradeForm").onsubmit=async e=>{
   e.preventDefault();
   const id=document.getElementById("editId").value;
   const trade=normalizeTrade({id:id||crypto.randomUUID(),name:value("name").trim(),action:value("action"),positionType:value("positionType"),price:Number(value("price")),positionChange:Number(value("positionChange")),date:new Date(value("tradeDate")).toISOString(),closeLotId:value("closeLotId"),note:value("note").trim()});
-  if(id) state.trades=state.trades.map(t=>t.id===id?trade:t); else state.trades.push(trade);
-  state.isDemo=false; state.source="local"; saveState();close("tradeDialog");render();toast(id?"本机预览已更新":"本机预览已记录");
+  const submit = e.currentTarget.querySelector('button[type="submit"]');
+  submit.disabled=true; submit.textContent="正在同步…";
+  try {
+    const result = await syncSharedTrade(id?"update":"create", trade);
+    if(id) state.trades=state.trades.map(t=>t.id===id?trade:t); else state.trades.push(trade);
+    state.updatedAt=result.updatedAt; state.isDemo=false; state.source="shared"; saveState();
+    close("tradeDialog"); render();
+    toast(id?"已同步更新，线上面板正在刷新":"已同步记录，线上面板正在刷新");
+  } catch (error) {
+    alert(`未能同步保存：${error.message}`);
+  } finally {
+    submit.disabled=false; submit.textContent=id?"保存修改":"保存记录";
+  }
 };
 document.getElementById("capitalBtn").onclick=()=>{
   const current = Number(state.accountCapital) || 100000;
