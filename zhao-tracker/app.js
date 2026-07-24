@@ -2,6 +2,8 @@ const STORAGE_KEY = "zhao-tracker-data-v5";
 const LEGACY_KEYS = [];
 const THEME_KEY = "zhao-tracker-theme";
 const SHARED_DATA_URL = "./data/tracker-data.json";
+const QUOTE_API_URL = "http://127.0.0.1:8765/quotes";
+const QUOTE_REFRESH_MS = 30000;
 const buyActions = ["买入", "加仓"];
 const sellActions = ["减仓", "卖出", "清仓"];
 
@@ -17,7 +19,7 @@ const demoTrades = [
   { id: crypto.randomUUID(), name:"NVDL", code:"NVDL", action:"减仓", positionType:"波段仓", price:31.58, positionChange:5, date:daysAgo(1,20), note:"31.58 出掉，28.35 成本剩下一半" }
 ];
 
-let state = { trades: [], accountCapital: 100000, isDemo: false, source: "loading" };
+let state = { trades: [], accountCapital: 100000, isDemo: false, source: "loading", quotes: {}, quoteUpdatedAt: "", quoteError: "" };
 let rangeDays = 30;
 let returnRangeDays = 30;
 let analysisDays = 30;
@@ -84,6 +86,35 @@ function usd(n) {
   return `${sign}$${Math.abs(Number(n)||0).toLocaleString("en-US",{maximumFractionDigits:2,minimumFractionDigits:2})}`;
 }
 function setText(id,text) { document.getElementById(id).textContent=text; }
+function quoteFor(code) { return state.quotes?.[code] || null; }
+function quoteMarkup(holding) {
+  const quote = quoteFor(holding.code);
+  if (!quote) return `<div class="quote-stack quote-pending"><b>—</b><small>${state.quoteError ? "行情未连接" : "读取中"}</small></div>`;
+  const pnlPct = holding.cost ? (quote.last - holding.cost) / holding.cost * 100 : 0;
+  const cls = pnlPct >= 0 ? "up" : "down";
+  return `<div class="quote-stack"><b>${money(quote.last)}</b><small class="${cls}">${pnlPct>=0?"+":""}${fmt(pnlPct,2)}% · ${quote.updatedAt || "刚刚"}</small></div>`;
+}
+async function refreshQuotes() {
+  const holdings = getHoldings();
+  if (!holdings.length) return;
+  const status = document.getElementById("quoteStatus");
+  try {
+    const symbols = holdings.map(h=>h.code).join(",");
+    const response = await fetch(`${QUOTE_API_URL}?symbols=${encodeURIComponent(symbols)}`, { cache:"no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    state.quotes = data.quotes || {};
+    state.quoteUpdatedAt = data.updatedAt || new Date().toISOString();
+    state.quoteError = "";
+    status.className = "market-status quote-status connected";
+    status.textContent = `实时行情 · ${new Intl.DateTimeFormat("zh-CN",{hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date(state.quoteUpdatedAt))}`;
+  } catch (error) {
+    state.quoteError = error.message;
+    status.className = "market-status quote-status disconnected";
+    status.textContent = "本机行情未连接";
+  }
+  renderHoldings(getHoldings());
+}
 function value(id){ return document.getElementById(id).value; }
 function isSell(action) { return sellActions.includes(action); }
 function formatDate(value, includeTime=false) {
@@ -428,6 +459,7 @@ function renderHoldings(holdings) {
     <td data-label="仓位"><div class="position-cell"><b>${fmt(h.position)}%</b><div class="position-mini"><i style="width:${Math.min(100,h.position*3)}%"></i></div></div></td>
     <td data-label="占用资金"><b>${usd(capital*h.position/100)}</b></td>
     <td data-label="持仓成本"><div class="price-stack"><b>${money(h.cost)}</b><small>按仓位加权均价</small></div></td>
+    <td data-label="实时行情">${quoteMarkup(h)}</td>
     <td data-label="最近操作"><span class="latest-action">${esc(h.lastTrade.action)} · ${formatDate(h.lastTrade.date)}</span><button class="mini-btn row-actions" title="编辑最近记录" onclick="editTrade('${h.lastTrade.id}')">✎</button></td>
   </tr>`).join("");
   document.getElementById("holdingsEmpty").hidden=visible.length>0;
@@ -853,6 +885,8 @@ async function init() {
   ensureTrendStackLayout();
   state = await loadSharedState();
   render();
+  refreshQuotes();
+  window.setInterval(refreshQuotes, QUOTE_REFRESH_MS);
   if (state.source === "shared") toast("已加载 GitHub 共享数据");
   else if (state.loadError) toast("共享数据加载失败，已使用本机数据");
 }

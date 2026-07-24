@@ -7,7 +7,7 @@
   <title>赵哥操作追踪</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260721-scoreboard">
+  <link rel="stylesheet" href="styles.css?v=20260724-live-quotes">
 </head>
 <body>
   <div class="app-shell">
@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="header-actions">
-        <span class="market-status"><i></i> 共享数据</span>
+        <button id="quoteStatus" class="market-status quote-status" title="连接本机长桥只读行情服务">行情连接中</button>
         <button id="themeBtn" class="icon-btn" title="切换主题">◐</button>
         <button id="importBtn" class="btn btn-secondary">导入</button>
         <button id="exportBtn" class="btn btn-secondary">导出</button>
@@ -89,7 +89,7 @@
                   <th>标的</th><th>状态</th>
                   <th class="sortable" data-sort="position">仓位 ↕</th>
                   <th>占用资金</th>
-                  <th>持仓成本</th>
+                  <th>持仓成本</th><th>实时行情</th>
                   <th>最近操作</th>
                 </tr>
               </thead>
@@ -328,6 +328,6 @@
   </dialog>
 
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20260721-scoreboard"></script>
+  <script src="app.js?v=20260724-live-quotes"></script>
 </body>
 </html>
