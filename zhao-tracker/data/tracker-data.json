@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-24T16:12:08+08:00",
+  "updatedAt": "2026-07-24T21:45:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -1277,6 +1277,16 @@
       "date": "2026-07-24T08:11:00+00:00",
       "closeLotId": "mu-853-add-20260716",
       "note": ""
+    },
+    {
+      "id": "conl-466-add-20260724",
+      "name": "CONL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 4.66,
+      "positionChange": 3.3,
+      "date": "2026-07-24T21:45:00+08:00",
+      "note": "加了三分之一常规仓"
     }
   ]
 }
