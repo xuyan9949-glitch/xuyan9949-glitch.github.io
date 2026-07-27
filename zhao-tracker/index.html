@@ -7,7 +7,7 @@
   <title>赵哥操作追踪</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260728-trend-tooltip">
+  <link rel="stylesheet" href="styles.css?v=20260728-portfolio-chart">
 </head>
 <body>
   <div class="app-shell">
@@ -124,6 +124,18 @@
             </div>
             <div class="chart-legend return-legend"><span class="realized">累计已实现收益率</span><span class="zero">盈亏平衡线</span></div>
             <div id="returnChart" class="chart return-chart"></div>
+          </article>
+
+          <article class="panel portfolio-panel">
+            <div class="panel-header">
+              <div><h2>账户浮盈亏与仓位</h2><p>每日收盘快照为主，最后一点为实时估算</p></div>
+              <div class="segmented" id="portfolioRangeTabs">
+                <button data-days="7">7天</button><button data-days="30" class="active">30天</button>
+                <button data-days="90">90天</button>
+              </div>
+            </div>
+            <div class="chart-legend portfolio-legend"><span class="unrealized">账户浮盈亏</span><span class="exposure">总仓位</span><span class="live">实时点</span></div>
+            <div id="portfolioChart" class="chart portfolio-chart"></div>
           </article>
         </div>
       </section>
@@ -328,6 +340,6 @@
   </dialog>
 
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20260728-trend-tooltip"></script>
+  <script src="app.js?v=20260728-portfolio-chart"></script>
 </body>
 </html>
