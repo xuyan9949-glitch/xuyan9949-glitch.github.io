@@ -7,7 +7,7 @@
   <title>赵哥操作追踪</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260728-return-exposure">
+  <link rel="stylesheet" href="styles.css?v=20260728-account-return-trend">
 </head>
 <body>
   <div class="app-shell">
@@ -116,13 +116,13 @@
 
           <article class="panel return-panel">
             <div class="panel-header">
-              <div><h2>仓位与账户收益率</h2><p>观察总仓位变化与账户整体收益率的对应关系</p></div>
+              <div><h2>账户整体收益率走势</h2><p>已实现收益 + 每日收盘未实现收益，按账户本金计算</p></div>
               <div class="segmented" id="returnRangeTabs">
                 <button data-days="7">7天</button><button data-days="30" class="active">30天</button>
                 <button data-days="90">90天</button>
               </div>
             </div>
-            <div class="chart-legend return-legend"><span class="realized">账户整体收益率</span><span class="exposure">总仓位</span><span class="zero">盈亏平衡线</span></div>
+            <div class="chart-legend return-legend"><span class="realized">账户整体收益率</span><span class="zero">盈亏平衡线</span></div>
             <div id="returnChart" class="chart return-chart"></div>
           </article>
         </div>
@@ -328,6 +328,6 @@
   </dialog>
 
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20260728-return-exposure"></script>
+  <script src="app.js?v=20260728-account-return-trend"></script>
 </body>
 </html>
