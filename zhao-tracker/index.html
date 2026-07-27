@@ -7,7 +7,7 @@
   <title>赵哥操作追踪</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260728-account-return-trend">
+  <link rel="stylesheet" href="styles.css?v=20260728-unified-performance">
 </head>
 <body>
   <div class="app-shell">
@@ -104,26 +104,14 @@
         <div class="trend-stack">
           <article class="panel trend-panel">
             <div class="panel-header">
-              <div><h2>仓位趋势</h2><p>总仓位与底仓变化</p></div>
+              <div><h2>仓位与收益表现</h2><p>观察账户整体收益率与总仓位的同步变化</p></div>
               <div class="segmented" id="rangeTabs">
-                <button data-days="7">7天</button><button data-days="30" class="active">30天</button>
-                <button data-days="90">90天</button><button data-days="all">全部</button>
-              </div>
-            </div>
-            <div class="chart-legend"><span class="total">总仓位</span><span class="base">底仓</span></div>
-            <div id="trendChart" class="chart"></div>
-          </article>
-
-          <article class="panel return-panel">
-            <div class="panel-header">
-              <div><h2>账户整体收益率走势</h2><p>已实现收益 + 每日收盘未实现收益，按账户本金计算</p></div>
-              <div class="segmented" id="returnRangeTabs">
                 <button data-days="7">7天</button><button data-days="30" class="active">30天</button>
                 <button data-days="90">90天</button>
               </div>
             </div>
-            <div class="chart-legend return-legend"><span class="realized">账户整体收益率</span><span class="zero">盈亏平衡线</span></div>
-            <div id="returnChart" class="chart return-chart"></div>
+            <div class="chart-legend"><span class="total">总仓位</span><span class="account">账户整体收益率</span><span class="zero">盈亏平衡线</span></div>
+            <div id="trendChart" class="chart"></div>
           </article>
         </div>
       </section>
@@ -328,6 +316,6 @@
   </dialog>
 
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20260728-account-return-trend"></script>
+  <script src="app.js?v=20260728-unified-performance"></script>
 </body>
 </html>

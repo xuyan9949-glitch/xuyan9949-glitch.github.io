@@ -23,7 +23,6 @@ const demoTrades = [
 
 let state = { trades: [], accountCapital: 100000, isDemo: false, source: "loading", quotes: {}, quoteUpdatedAt: "", quoteError: "", candles: {}, candleError: "" };
 let rangeDays = 30;
-let returnRangeDays = 30;
 let analysisDays = 30;
 let sortKey = "position";
 let sortDirection = -1;
@@ -159,7 +158,7 @@ async function refreshAccountReturnHistory() {
   } catch (error) {
     state.candleError = error.message;
   }
-  renderReturnChart();
+  renderChart();
 }
 function value(id){ return document.getElementById(id).value; }
 function isSell(action) { return sellActions.includes(action); }
@@ -537,7 +536,6 @@ function render() {
   renderPairs(ledger.pairs);
   renderActivity();
   renderChart();
-  renderReturnChart();
 }
 
 function renderHoldings(holdings) {
@@ -753,29 +751,39 @@ function renderActivity() {
 }
 
 function renderChart() {
-  let points=computeTimeline();
+  let points=computeReturnTimeline();
   if (rangeDays!=="all") {
     const cutoff=new Date(); cutoff.setDate(cutoff.getDate()-Number(rangeDays));
     points=points.filter(p=>p.date>=cutoff);
   }
   const el=document.getElementById("trendChart");
-  if (!points.length) { el.innerHTML='<div class="empty-state"><p>暂无趋势数据</p></div>'; return; }
-  const W=500,H=210,pad={l:36,r:12,t:12,b:26};
-  const max=Math.max(100,...points.map(p=>p.total));
+  if (points.length<2) { el.innerHTML=`<div class="empty-state"><div>${state.candleError ? "收盘快照暂不可用" : "正在读取仓位与收益快照"}</div><p>${state.candleError ? "请确认本机长桥行情已启动，再刷新页面。" : "将按每日收盘价还原账户收益，并与仓位同步展示。"}</p></div>`; return; }
+  const W=500,H=300,pad={l:44,r:44,t:14,b:28};
+  const returnValues=points.map(point=>point.value);
+  const extent=Math.max(1,...returnValues.map(value=>Math.abs(value)));
+  const minReturn=Math.min(0,...returnValues,-extent*.12), maxReturn=Math.max(0,...returnValues,extent*.12);
+  const maxPosition=Math.max(100,...points.map(point=>point.total));
   const x=i=>pad.l+(points.length===1?(W-pad.l-pad.r)/2:i/(points.length-1)*(W-pad.l-pad.r));
-  const y=v=>pad.t+(1-v/max)*(H-pad.t-pad.b);
-  const line=key=>points.map((p,i)=>`${i?"L":"M"}${x(i).toFixed(1)},${y(p[key]).toFixed(1)}`).join(" ");
-  const area=`${line("total")} L${x(points.length-1)},${y(0)} L${x(0)},${y(0)} Z`;
-  const ticks=[0,25,50,75,100].filter(v=>v<=max);
+  const yReturn=value=>pad.t+(maxReturn-value)/(maxReturn-minReturn)*(H-pad.t-pad.b);
+  const yPosition=value=>pad.t+(1-value/maxPosition)*(H-pad.t-pad.b);
+  const returnLine=points.map((point,index)=>`${index?"L":"M"}${x(index).toFixed(1)},${yReturn(point.value).toFixed(1)}`).join(" ");
+  const positionLine=points.map((point,index)=>`${index?"L":"M"}${x(index).toFixed(1)},${yPosition(point.total).toFixed(1)}`).join(" ");
+  const positionArea=`${positionLine} L${x(points.length-1)},${yPosition(0)} L${x(0)},${yPosition(0)} Z`;
+  const returnTicks=[minReturn,0,maxReturn].map(value=>Number(value.toFixed(2))).filter((value,index,array)=>array.indexOf(value)===index);
+  const positionTicks=[0,25,50,75,100].filter(value=>value<=maxPosition);
   const labels=[0,Math.floor((points.length-1)/2),points.length-1].filter((v,i,a)=>a.indexOf(v)===i);
-  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="仓位趋势图，可悬浮查看日期和仓位数值">
-    <defs><linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2864dc" stop-opacity=".18"/><stop offset="1" stop-color="#2864dc" stop-opacity="0"/></linearGradient></defs>
-    ${ticks.map(v=>`<line class="grid" x1="${pad.l}" y1="${y(v)}" x2="${W-pad.r}" y2="${y(v)}"/><text x="2" y="${y(v)+3}">${v}%</text>`).join("")}
-    <path d="${area}" fill="url(#areaFill)"/><path d="${line("total")}" fill="none" stroke="var(--blue)" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
-    <path d="${line("base")}" fill="none" stroke="#83a9f6" stroke-width="1.5" stroke-dasharray="5 4" vector-effect="non-scaling-stroke"/>
-    ${points.map((p,i)=>`<circle cx="${x(i)}" cy="${y(p.total)}" r="${points.length<15?3:1.5}" fill="var(--blue)"><title>${formatDate(p.date)} 总仓位 ${fmt(p.total)}%</title></circle>`).join("")}
+  const returnColor=points.at(-1).value>=0?"#df4b59":"#15946b";
+  const zeroY=yReturn(0);
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="仓位与账户整体收益率关系图，可悬浮查看每日数值">
+    <defs><linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2864dc" stop-opacity=".24"/><stop offset="1" stop-color="#2864dc" stop-opacity=".03"/></linearGradient></defs>
+    ${returnTicks.map(value=>`<line class="grid" x1="${pad.l}" y1="${yReturn(value)}" x2="${W-pad.r}" y2="${yReturn(value)}"/><text x="1" y="${yReturn(value)+3}">${value>=0?"+":""}${fmt(value,2)}%</text>`).join("")}
+    <line class="zero-line" x1="${pad.l}" y1="${zeroY}" x2="${W-pad.r}" y2="${zeroY}"/>
+    <path d="${positionArea}" fill="url(#areaFill)"/><path d="${positionLine}" fill="none" stroke="var(--blue)" stroke-width="2.2" vector-effect="non-scaling-stroke"/>
+    <path d="${returnLine}" fill="none" stroke="${returnColor}" stroke-width="2.8" vector-effect="non-scaling-stroke"/>
+    ${points.map((point,index)=>`<circle cx="${x(index)}" cy="${yReturn(point.value)}" r="${point.live?4:points.length<15?3:1.5}" fill="${point.live?"#c57b16":returnColor}"/>`).join("")}
+    ${positionTicks.map(value=>`<text text-anchor="end" x="${W-1}" y="${yPosition(value)+3}">${value}%</text>`).join("")}
     ${labels.map(i=>`<text text-anchor="${i===0?"start":i===points.length-1?"end":"middle"}" x="${x(i)}" y="${H-5}">${formatDate(points[i].date)}</text>`).join("")}
-    <g class="trend-hover-guide" hidden aria-hidden="true"><line x1="0" y1="${pad.t}" x2="0" y2="${H-pad.b}"/><circle class="trend-hover-total" cx="0" cy="0" r="4"/><circle class="trend-hover-base" cx="0" cy="0" r="3"/></g>
+    <g class="trend-hover-guide" hidden aria-hidden="true"><line x1="0" y1="${pad.t}" x2="0" y2="${H-pad.b}"/><circle class="trend-hover-return" cx="0" cy="0" r="4"/><circle class="trend-hover-total" cx="0" cy="0" r="3"/></g>
   </svg><div class="trend-tooltip" hidden></div>`;
   const svg=el.querySelector("svg");
   const guide=svg.querySelector(".trend-hover-guide");
@@ -788,66 +796,18 @@ function renderChart() {
     const point=points[index], pointX=x(index);
     guide.hidden=false;
     guide.querySelector("line").setAttribute("x1",pointX); guide.querySelector("line").setAttribute("x2",pointX);
-    const totalDot=guide.querySelector(".trend-hover-total"), baseDot=guide.querySelector(".trend-hover-base");
-    totalDot.setAttribute("cx",pointX); totalDot.setAttribute("cy",y(point.total));
-    baseDot.setAttribute("cx",pointX); baseDot.setAttribute("cy",y(point.base));
-    tooltip.innerHTML=`<b>${formatDate(point.date,true)}</b><span>总仓位 ${fmt(point.total)}%</span><span>底仓 ${fmt(point.base)}%</span>`;
+    const returnDot=guide.querySelector(".trend-hover-return"), totalDot=guide.querySelector(".trend-hover-total");
+    returnDot.setAttribute("cx",pointX); returnDot.setAttribute("cy",yReturn(point.value)); returnDot.setAttribute("stroke",point.value>=0?"#df4b59":"#15946b");
+    totalDot.setAttribute("cx",pointX); totalDot.setAttribute("cy",yPosition(point.total));
+    tooltip.innerHTML=`<b>${point.live?"实时估算 · ":"收盘快照 · "}${formatDate(point.date,true)}</b><span>账户整体 ${point.value>=0?"+":""}${fmt(point.value,2)}% · 总仓位 ${fmt(point.total)}%</span><span>已实现 ${point.realized>=0?"+":""}${fmt(point.realized,2)}% · 未实现 ${point.unrealized>=0?"+":""}${fmt(point.unrealized,2)}%</span>`;
     tooltip.hidden=false;
     const relativeX=(rect.left-el.getBoundingClientRect().left)+(pointX/W)*rect.width;
     tooltip.style.left=`${Math.max(8,Math.min(el.clientWidth-tooltip.offsetWidth-8,relativeX))}px`;
-    tooltip.style.top=`${Math.max(4,(y(point.total)/H)*rect.height-tooltip.offsetHeight-8)}px`;
+    tooltip.style.top=`${Math.max(4,(Math.min(yReturn(point.value),yPosition(point.total))/H)*rect.height-tooltip.offsetHeight-8)}px`;
   };
   svg.addEventListener("pointermove",showHover);
   svg.addEventListener("pointerdown",showHover);
   svg.addEventListener("pointerleave",clearHover);
-}
-
-function renderReturnChart() {
-  let points=computeReturnTimeline();
-  if (returnRangeDays!=="all") {
-    const cutoff=new Date(); cutoff.setDate(cutoff.getDate()-Number(returnRangeDays));
-    points=points.filter(p=>p.date>=cutoff);
-  }
-  const el=document.getElementById("returnChart");
-  if (points.length<2) { el.innerHTML=`<div class="empty-state"><div>${state.candleError ? "收盘快照暂不可用" : "正在读取账户收盘快照"}</div><p>${state.candleError ? "请确认本机长桥行情已启动，再刷新页面。" : "将按每日收盘价还原账户整体收益率。"}</p></div>`; return; }
-  const W=500,H=210,pad={l:42,r:12,t:12,b:26};
-  const values=points.map(p=>p.value);
-  const extent=Math.max(1,...values.map(v=>Math.abs(v)));
-  const min=Math.min(0,...values,-extent*.12), max=Math.max(0,...values,extent*.12);
-  const x=i=>pad.l+(points.length===1?(W-pad.l-pad.r)/2:i/(points.length-1)*(W-pad.l-pad.r));
-  const y=v=>pad.t+(max-v)/(max-min)*(H-pad.t-pad.b);
-  const line=points.map((p,i)=>`${i?"L":"M"}${x(i).toFixed(1)},${y(p.value).toFixed(1)}`).join(" ");
-  const zeroY=y(0);
-  const area=`${line} L${x(points.length-1)},${zeroY} L${x(0)},${zeroY} Z`;
-  const ticks=[min,(min+max)/2,max].map(v=>Number(v.toFixed(2))).filter((v,i,a)=>a.indexOf(v)===i);
-  const labels=[0,Math.floor((points.length-1)/2),points.length-1].filter((v,i,a)=>a.indexOf(v)===i);
-  const positive=points.at(-1).value>=0;
-  const color=positive?"#df4b59":"#15946b";
-  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="账户整体收益率走势，可悬浮查看每日数值">
-    <defs><linearGradient id="returnAreaFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${color}" stop-opacity=".18"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></linearGradient></defs>
-    ${ticks.map(v=>`<line class="grid" x1="${pad.l}" y1="${y(v)}" x2="${W-pad.r}" y2="${y(v)}"/><text x="2" y="${y(v)+3}">${v>=0?"+":""}${fmt(v,2)}%</text>`).join("")}
-    <line class="zero-line" x1="${pad.l}" y1="${zeroY}" x2="${W-pad.r}" y2="${zeroY}"/>
-    <path d="${area}" fill="url(#returnAreaFill)"/><path d="${line}" fill="none" stroke="${color}" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
-    ${points.map((p,i)=>`<circle cx="${x(i)}" cy="${y(p.value)}" r="${p.live?4:points.length<15?3:1.5}" fill="${p.live?"#c57b16":color}"/>`).join("")}
-    ${labels.map(i=>`<text text-anchor="${i===0?"start":i===points.length-1?"end":"middle"}" x="${x(i)}" y="${H-5}">${formatDate(points[i].date)}</text>`).join("")}
-    <g class="return-hover-guide" hidden aria-hidden="true"><line x1="0" y1="${pad.t}" x2="0" y2="${H-pad.b}"/><circle cx="0" cy="0" r="4"/></g>
-  </svg><div class="trend-tooltip return-tooltip" hidden></div>`;
-  const svg=el.querySelector("svg"), guide=svg.querySelector(".return-hover-guide"), tooltip=el.querySelector(".return-tooltip");
-  const clearHover=()=>{ guide.hidden=true; tooltip.hidden=true; };
-  const showHover=event=>{
-    const rect=svg.getBoundingClientRect();
-    const svgX=(event.clientX-rect.left)/rect.width*W;
-    const index=Math.max(0,Math.min(points.length-1,Math.round((svgX-pad.l)/(W-pad.l-pad.r)*(points.length-1))));
-    const point=points[index], pointX=x(index);
-    guide.hidden=false; guide.querySelector("line").setAttribute("x1",pointX); guide.querySelector("line").setAttribute("x2",pointX);
-    const dot=guide.querySelector("circle"); dot.setAttribute("cx",pointX); dot.setAttribute("cy",y(point.value)); dot.setAttribute("stroke",point.value>=0?"#df4b59":"#15946b");
-    tooltip.innerHTML=`<b>${point.live?"实时估算 · ":"收盘快照 · "}${formatDate(point.date,true)}</b><span>账户整体 ${point.value>=0?"+":""}${fmt(point.value,2)}%</span><span>已实现 ${point.realized>=0?"+":""}${fmt(point.realized,2)}% · 未实现 ${point.unrealized>=0?"+":""}${fmt(point.unrealized,2)}%</span>`;
-    tooltip.hidden=false;
-    const relativeX=(rect.left-el.getBoundingClientRect().left)+(pointX/W)*rect.width;
-    tooltip.style.left=`${Math.max(8,Math.min(el.clientWidth-tooltip.offsetWidth-8,relativeX))}px`;
-    tooltip.style.top=`${Math.max(4,(y(point.value)/H)*rect.height-tooltip.offsetHeight-8)}px`;
-  };
-  svg.addEventListener("pointermove",showHover); svg.addEventListener("pointerdown",showHover); svg.addEventListener("pointerleave",clearHover);
 }
 
 function getOpenLotsForForm(trade=null) {
@@ -1005,10 +965,6 @@ document.querySelectorAll(".sortable").forEach(th=>th.onclick=()=>{
 document.getElementById("rangeTabs").onclick=e=>{
   if(!e.target.dataset.days)return;
   rangeDays=e.target.dataset.days;document.querySelectorAll("#rangeTabs button").forEach(b=>b.classList.toggle("active",b===e.target));renderChart();
-};
-document.getElementById("returnRangeTabs").onclick=e=>{
-  if(!e.target.dataset.days)return;
-  returnRangeDays=e.target.dataset.days;document.querySelectorAll("#returnRangeTabs button").forEach(b=>b.classList.toggle("active",b===e.target));renderReturnChart();
 };
 document.getElementById("analysisRangeTabs").onclick=e=>{
   if(!e.target.dataset.days)return;

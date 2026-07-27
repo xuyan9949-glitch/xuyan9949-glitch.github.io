@@ -121,21 +121,19 @@ tr:hover .row-actions { opacity:1; }
 .chart-legend span::before { content:""; display:inline-block; width:8px; height:3px; margin-right:5px; vertical-align:middle; border-radius:2px; }
 .chart-legend .total::before { background:var(--blue); }
 .chart-legend .base::before { background:#83a9f6; }
-.return-panel { margin:0; }
-.return-panel .chart svg { cursor:crosshair; touch-action:none; }
-.return-legend .realized::before { background:var(--red); }
-.return-legend .zero::before { background:var(--muted); }
-.return-chart .zero-line { stroke:var(--muted); stroke-width:1; stroke-dasharray:4 4; opacity:.72; }
-.return-hover-guide line { stroke:#94a3b8; stroke-width:1; stroke-dasharray:3 3; }
-.return-hover-guide circle { fill:var(--panel); stroke-width:2; }
+.chart-legend .account::before { background:var(--red); }
+.chart-legend .zero::before { background:var(--muted); }
 .chart { position:relative; height:240px; padding:10px 12px 12px; }
 .chart svg { width:100%; height:100%; overflow:visible; }
+.trend-panel .chart { height:380px; }
 .trend-panel .chart svg { cursor:crosshair; touch-action:none; }
+.trend-panel .zero-line { stroke:var(--muted); stroke-width:1; stroke-dasharray:4 4; opacity:.72; }
 .chart text { fill:var(--muted); font-size:10px; }
 .chart .grid { stroke:var(--line); stroke-width:1; }
 .trend-hover-guide line { stroke:#94a3b8; stroke-width:1; stroke-dasharray:3 3; }
 .trend-hover-total { fill:var(--panel); stroke:var(--blue); stroke-width:2; }
 .trend-hover-base { fill:var(--panel); stroke:#83a9f6; stroke-width:2; }
+.trend-hover-return { fill:var(--panel); stroke-width:2; }
 .trend-tooltip { position:absolute; z-index:3; display:grid; gap:2px; min-width:118px; padding:8px 9px; border:1px solid var(--line); border-radius:8px; background:var(--panel); color:var(--text); font-size:11px; line-height:1.35; box-shadow:0 6px 18px rgba(16,24,40,.12); pointer-events:none; }
 .trend-tooltip b { font-size:11px; }
 .trend-tooltip span { color:var(--muted); }
@@ -275,6 +273,7 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
   .capacity-metric strong { font-size:24px; }
   .metric-row strong { font-size:25px; }
   .panel-header { align-items:flex-start; gap:10px; }
+  .trend-panel .chart { height:290px; }
   .holdings-panel .panel-header { flex-direction:column; }
   .tools { width:100%; }
   .search-box { flex:1; }
