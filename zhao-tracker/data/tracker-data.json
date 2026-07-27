@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-27T22:21:00+08:00",
+  "updatedAt": "2026-07-27T23:08:10+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -1465,6 +1465,89 @@
       "positionChange": 3.3,
       "date": "2026-07-27T22:21:00+08:00",
       "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "mu-859-add-20260727",
+      "name": "MU",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 859,
+      "positionChange": 1.65,
+      "date": "2026-07-27T22:39:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "avgo-374-add-20260727",
+      "name": "AVGO",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 374,
+      "positionChange": 3.3,
+      "date": "2026-07-27T22:45:00+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "conl-495-readd-535-20260727",
+      "name": "CONL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 4.95,
+      "positionChange": 1.65,
+      "date": "2026-07-27T22:45:10+08:00",
+      "note": "加回 5.35 卖出的做 T 批次"
+    },
+    {
+      "id": "pl-204-readd-2145-20260727",
+      "name": "PL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 20.4,
+      "positionChange": 3.3,
+      "date": "2026-07-27T22:45:20+08:00",
+      "note": "加回 21.45 卖出的批次"
+    },
+    {
+      "id": "tsll-705-add-20260727",
+      "name": "TSLL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 7.05,
+      "positionChange": 3.3,
+      "date": "2026-07-27T22:45:30+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "mu-880-close-859-20260727",
+      "name": "MU",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 880,
+      "positionChange": 1.65,
+      "date": "2026-07-27T22:53:00+08:00",
+      "closeLotId": "mu-859-add-20260727",
+      "note": "出掉 859 的日内批次"
+    },
+    {
+      "id": "avgo-3832-half-close-374-20260727",
+      "name": "AVGO",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 383.2,
+      "positionChange": 1.65,
+      "date": "2026-07-27T23:08:00+08:00",
+      "closeLotId": "avgo-374-add-20260727",
+      "note": "出一半 374 的批次"
+    },
+    {
+      "id": "tsll-727-half-close-705-20260727",
+      "name": "TSLL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 7.27,
+      "positionChange": 1.65,
+      "date": "2026-07-27T23:08:10+08:00",
+      "closeLotId": "tsll-705-add-20260727",
+      "note": "出一半 7.05 的批次"
     }
   ]
 }
