@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-24T21:58:00+08:00",
+  "updatedAt": "2026-07-25T03:55:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -1317,6 +1317,92 @@
       "positionChange": 3.3,
       "date": "2026-07-24T21:58:20+08:00",
       "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "tsll-725-add-20260724",
+      "name": "TSLL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 7.25,
+      "positionChange": 3.3,
+      "date": "2026-07-24T22:46:00+08:00",
+      "note": "加了三分之一常规仓，预留仓位防止下周波动"
+    },
+    {
+      "id": "dram-535-add-20260724",
+      "name": "DRAM",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 53.5,
+      "positionChange": 3.3,
+      "date": "2026-07-24T22:50:00+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "iren-39-close-379-20260724",
+      "name": "IREN",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 39,
+      "positionChange": 3.3,
+      "date": "2026-07-24T23:19:00+08:00",
+      "closeLotId": "iren-379-add-20260724",
+      "note": "出掉日内 37.9 的批次"
+    },
+    {
+      "id": "dram-5475-close-535-20260724",
+      "name": "DRAM",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 54.75,
+      "positionChange": 3.3,
+      "date": "2026-07-24T23:21:00+08:00",
+      "closeLotId": "dram-535-add-20260724",
+      "note": "出掉 53.5 的批次"
+    },
+    {
+      "id": "conl-478-close-466-20260724",
+      "name": "CONL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 4.78,
+      "positionChange": 3.3,
+      "date": "2026-07-24T23:29:00+08:00",
+      "closeLotId": "conl-466-add-20260724",
+      "note": "出掉 4.66 的批次"
+    },
+    {
+      "id": "crwv-7619-close-743-20260725",
+      "name": "CRWV",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 76.19,
+      "positionChange": 3.3,
+      "date": "2026-07-25T00:08:00+08:00",
+      "closeLotId": "crwv-743-add-20260724",
+      "note": "出掉 74.3 的批次"
+    },
+    {
+      "id": "avgo-387-half-close-362-20260725",
+      "name": "AVGO",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 387,
+      "positionChange": 0.825,
+      "date": "2026-07-25T00:13:00+08:00",
+      "closeLotId": "avgo-362-add-20260717",
+      "note": "出一半 362 死拿仓"
+    },
+    {
+      "id": "tsll-74-close-725-20260725",
+      "name": "TSLL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 7.4,
+      "positionChange": 3.3,
+      "date": "2026-07-25T03:55:00+08:00",
+      "closeLotId": "tsll-725-add-20260724",
+      "note": "最后 5 分钟偷袭，出掉 7.25 的批次"
     }
   ]
 }
