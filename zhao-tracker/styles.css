@@ -122,9 +122,12 @@ tr:hover .row-actions { opacity:1; }
 .chart-legend .total::before { background:var(--blue); }
 .chart-legend .base::before { background:#83a9f6; }
 .return-panel { margin:0; }
+.return-panel .chart svg { cursor:crosshair; touch-action:none; }
 .return-legend .realized::before { background:var(--red); }
 .return-legend .zero::before { background:var(--muted); }
 .return-chart .zero-line { stroke:var(--muted); stroke-width:1; stroke-dasharray:4 4; opacity:.72; }
+.return-hover-guide line { stroke:#94a3b8; stroke-width:1; stroke-dasharray:3 3; }
+.return-hover-guide circle { fill:var(--panel); stroke-width:2; }
 .chart { position:relative; height:240px; padding:10px 12px 12px; }
 .chart svg { width:100%; height:100%; overflow:visible; }
 .trend-panel .chart svg { cursor:crosshair; touch-action:none; }

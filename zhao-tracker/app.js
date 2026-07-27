@@ -3,6 +3,7 @@ const LEGACY_KEYS = [];
 const THEME_KEY = "zhao-tracker-theme";
 const SHARED_DATA_URL = "./data/tracker-data.json";
 const QUOTE_API_URL = "http://127.0.0.1:18765/quotes";
+const CANDLE_API_URL = "http://127.0.0.1:18765/candles";
 const TRADE_API_URL = "http://127.0.0.1:18765/trades";
 const QUOTE_REFRESH_MS = 30000;
 const buyActions = ["买入", "加仓"];
@@ -20,7 +21,7 @@ const demoTrades = [
   { id: crypto.randomUUID(), name:"NVDL", code:"NVDL", action:"减仓", positionType:"波段仓", price:31.58, positionChange:5, date:daysAgo(1,20), note:"31.58 出掉，28.35 成本剩下一半" }
 ];
 
-let state = { trades: [], accountCapital: 100000, isDemo: false, source: "loading", quotes: {}, quoteUpdatedAt: "", quoteError: "" };
+let state = { trades: [], accountCapital: 100000, isDemo: false, source: "loading", quotes: {}, quoteUpdatedAt: "", quoteError: "", candles: {}, candleError: "" };
 let rangeDays = 30;
 let returnRangeDays = 30;
 let analysisDays = 30;
@@ -146,6 +147,20 @@ async function refreshQuotes() {
   }
   render();
 }
+async function refreshAccountReturnHistory() {
+  const symbols = [...new Set(state.trades.map(trade=>trade.code).filter(Boolean))];
+  if (!symbols.length) return;
+  try {
+    const response = await fetch(`${CANDLE_API_URL}?symbols=${encodeURIComponent(symbols.join(","))}&days=90`, { cache:"no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    state.candles = data.candles || {};
+    state.candleError = "";
+  } catch (error) {
+    state.candleError = error.message;
+  }
+  renderReturnChart();
+}
 function value(id){ return document.getElementById(id).value; }
 function isSell(action) { return sellActions.includes(action); }
 function formatDate(value, includeTime=false) {
@@ -154,6 +169,11 @@ function formatDate(value, includeTime=false) {
   const opts = { month:"2-digit", day:"2-digit" };
   if (includeTime) Object.assign(opts,{hour:"2-digit",minute:"2-digit",hour12:false});
   return new Intl.DateTimeFormat("zh-CN",opts).format(d).replace(/\//g,".");
+}
+function marketDateKey(value) {
+  const parts = new Intl.DateTimeFormat("en-CA", { timeZone:"Asia/Shanghai", year:"numeric", month:"2-digit", day:"2-digit" }).formatToParts(new Date(value));
+  const pick = type => parts.find(part=>part.type===type)?.value;
+  return `${pick("year")}-${pick("month")}-${pick("day")}`;
 }
 
 function computeLedger(trades=state.trades) {
@@ -422,13 +442,41 @@ function computeTimeline() {
 }
 
 function computeReturnTimeline() {
-  const { pairs } = computeLedger();
-  const ordered = [...pairs].sort((a,b)=>new Date(a.closeTrade.date)-new Date(b.closeTrade.date));
-  let cumulative = 0;
-  return ordered.map(pair=>{
-    cumulative += Number(pair.contribution) || 0;
-    return { date:new Date(pair.closeTrade.date), value:cumulative, pair };
+  const closeMaps = new Map(Object.entries(state.candles || {}).map(([code, rows])=>[
+    code, new Map((rows || []).map(row=>[marketDateKey(row.date), Number(row.close)]).filter(([,close])=>close>0))
+  ]));
+  const days = [...new Set([...closeMaps.values()].flatMap(map=>[...map.keys()]))].sort();
+  const ordered = [...state.trades].sort((a,b)=>new Date(a.date)-new Date(b.date));
+  const capital = Number(state.accountCapital) || 100000;
+  const snapshots = days.map(day=>{
+    const cutoff = new Date(`${day}T23:59:59+08:00`);
+    const dayTrades = ordered.filter(trade=>new Date(trade.date)<=cutoff);
+    const ledger = computeLedger(dayTrades);
+    const realized = ledger.pairs.reduce((sum,pair)=>sum + capital*(Number(pair.contribution)||0)/100,0);
+    const holdings = getHoldings(dayTrades);
+    const total = holdings.reduce((sum,holding)=>sum+holding.position,0);
+    let covered = 0, unrealized = 0;
+    holdings.forEach(holding=>{
+      const close = closeMaps.get(holding.code)?.get(day);
+      if (!(close>0) || !(holding.cost>0)) return;
+      covered += holding.position;
+      unrealized += capital*holding.position/100*(close-holding.cost)/holding.cost;
+    });
+    return { date:new Date(`${day}T12:00:00+08:00`), value:(realized+unrealized)/capital*100, realized:realized/capital*100, unrealized:unrealized/capital*100, total, covered, hasTrades:dayTrades.length>0, live:false };
+  }).filter(point=>point.hasTrades && (point.total===0 || point.covered/point.total>=.75));
+  const currentLedger = computeLedger();
+  const currentRealized = currentLedger.pairs.reduce((sum,pair)=>sum + capital*(Number(pair.contribution)||0)/100,0);
+  const holdings = getHoldings();
+  const total = holdings.reduce((sum,holding)=>sum+holding.position,0);
+  let covered = 0, unrealized = 0;
+  holdings.forEach(holding=>{
+    const quote = quoteFor(holding.code);
+    if (!(Number(quote?.last)>0) || !(holding.cost>0)) return;
+    covered += holding.position;
+    unrealized += capital*holding.position/100*(Number(quote.last)-holding.cost)/holding.cost;
   });
+  if (total===0 || covered/total>=.75) snapshots.push({ date:new Date(), value:(currentRealized+unrealized)/capital*100, realized:currentRealized/capital*100, unrealized:unrealized/capital*100, total, covered, live:true });
+  return snapshots;
 }
 
 function render() {
@@ -761,7 +809,7 @@ function renderReturnChart() {
     points=points.filter(p=>p.date>=cutoff);
   }
   const el=document.getElementById("returnChart");
-  if (!points.length) { el.innerHTML='<div class="empty-state"><p>暂无已平仓收益数据</p></div>'; return; }
+  if (points.length<2) { el.innerHTML=`<div class="empty-state"><div>${state.candleError ? "收盘快照暂不可用" : "正在读取账户收盘快照"}</div><p>${state.candleError ? "请确认本机长桥行情已启动，再刷新页面。" : "将按每日收盘价还原账户整体收益率。"}</p></div>`; return; }
   const W=500,H=210,pad={l:42,r:12,t:12,b:26};
   const values=points.map(p=>p.value);
   const extent=Math.max(1,...values.map(v=>Math.abs(v)));
@@ -775,14 +823,31 @@ function renderReturnChart() {
   const labels=[0,Math.floor((points.length-1)/2),points.length-1].filter((v,i,a)=>a.indexOf(v)===i);
   const positive=points.at(-1).value>=0;
   const color=positive?"#df4b59":"#15946b";
-  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="累计已实现收益率走势">
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="账户整体收益率走势，可悬浮查看每日数值">
     <defs><linearGradient id="returnAreaFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${color}" stop-opacity=".18"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></linearGradient></defs>
     ${ticks.map(v=>`<line class="grid" x1="${pad.l}" y1="${y(v)}" x2="${W-pad.r}" y2="${y(v)}"/><text x="2" y="${y(v)+3}">${v>=0?"+":""}${fmt(v,2)}%</text>`).join("")}
     <line class="zero-line" x1="${pad.l}" y1="${zeroY}" x2="${W-pad.r}" y2="${zeroY}"/>
     <path d="${area}" fill="url(#returnAreaFill)"/><path d="${line}" fill="none" stroke="${color}" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
-    ${points.map((p,i)=>`<circle cx="${x(i)}" cy="${y(p.value)}" r="${points.length<15?3:1.5}" fill="${color}"><title>${formatDate(p.date,true)} 累计已实现 ${p.value>=0?"+":""}${fmt(p.value,2)}%</title></circle>`).join("")}
+    ${points.map((p,i)=>`<circle cx="${x(i)}" cy="${y(p.value)}" r="${p.live?4:points.length<15?3:1.5}" fill="${p.live?"#c57b16":color}"/>`).join("")}
     ${labels.map(i=>`<text text-anchor="${i===0?"start":i===points.length-1?"end":"middle"}" x="${x(i)}" y="${H-5}">${formatDate(points[i].date)}</text>`).join("")}
-  </svg>`;
+    <g class="return-hover-guide" hidden aria-hidden="true"><line x1="0" y1="${pad.t}" x2="0" y2="${H-pad.b}"/><circle cx="0" cy="0" r="4"/></g>
+  </svg><div class="trend-tooltip return-tooltip" hidden></div>`;
+  const svg=el.querySelector("svg"), guide=svg.querySelector(".return-hover-guide"), tooltip=el.querySelector(".return-tooltip");
+  const clearHover=()=>{ guide.hidden=true; tooltip.hidden=true; };
+  const showHover=event=>{
+    const rect=svg.getBoundingClientRect();
+    const svgX=(event.clientX-rect.left)/rect.width*W;
+    const index=Math.max(0,Math.min(points.length-1,Math.round((svgX-pad.l)/(W-pad.l-pad.r)*(points.length-1))));
+    const point=points[index], pointX=x(index);
+    guide.hidden=false; guide.querySelector("line").setAttribute("x1",pointX); guide.querySelector("line").setAttribute("x2",pointX);
+    const dot=guide.querySelector("circle"); dot.setAttribute("cx",pointX); dot.setAttribute("cy",y(point.value)); dot.setAttribute("stroke",point.value>=0?"#df4b59":"#15946b");
+    tooltip.innerHTML=`<b>${point.live?"实时估算 · ":"收盘快照 · "}${formatDate(point.date,true)}</b><span>账户整体 ${point.value>=0?"+":""}${fmt(point.value,2)}%</span><span>已实现 ${point.realized>=0?"+":""}${fmt(point.realized,2)}% · 未实现 ${point.unrealized>=0?"+":""}${fmt(point.unrealized,2)}%</span>`;
+    tooltip.hidden=false;
+    const relativeX=(rect.left-el.getBoundingClientRect().left)+(pointX/W)*rect.width;
+    tooltip.style.left=`${Math.max(8,Math.min(el.clientWidth-tooltip.offsetWidth-8,relativeX))}px`;
+    tooltip.style.top=`${Math.max(4,(y(point.value)/H)*rect.height-tooltip.offsetHeight-8)}px`;
+  };
+  svg.addEventListener("pointermove",showHover); svg.addEventListener("pointerdown",showHover); svg.addEventListener("pointerleave",clearHover);
 }
 
 function getOpenLotsForForm(trade=null) {
@@ -974,6 +1039,7 @@ async function init() {
   state = await loadSharedState();
   render();
   refreshQuotes();
+  refreshAccountReturnHistory();
   window.setInterval(refreshQuotes, QUOTE_REFRESH_MS);
   if (state.source === "shared") toast("已加载 GitHub 共享数据");
   else if (state.loadError) toast("共享数据加载失败，已使用本机数据");
