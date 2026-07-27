@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-25T03:55:00+08:00",
+  "updatedAt": "2026-07-27T21:40:10+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -1403,6 +1403,38 @@
       "date": "2026-07-25T03:55:00+08:00",
       "closeLotId": "tsll-725-add-20260724",
       "note": "最后 5 分钟偷袭，出掉 7.25 的批次"
+    },
+    {
+      "id": "crwv-727-add-20260727",
+      "name": "CRWV",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 72.7,
+      "positionChange": 3.3,
+      "date": "2026-07-27T21:35:00+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "pl-2145-close-2093-20260727",
+      "name": "PL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 21.45,
+      "positionChange": 3.3,
+      "date": "2026-07-27T21:40:00+08:00",
+      "closeLotId": "pl-2093-add-20260724",
+      "note": "出掉 20.93 的批次"
+    },
+    {
+      "id": "conl-535-close-529-20260727",
+      "name": "CONL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 5.35,
+      "positionChange": 1.65,
+      "date": "2026-07-27T21:40:10+08:00",
+      "closeLotId": "conl-529-readd-20260723",
+      "note": "出掉 5.29 的做 T 批次；保留 4.85 死拿底仓"
     }
   ]
 }
