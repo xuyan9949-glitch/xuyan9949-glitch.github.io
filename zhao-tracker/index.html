@@ -7,7 +7,7 @@
   <title>赵哥操作追踪</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260724-holding-pnl">
+  <link rel="stylesheet" href="styles.css?v=20260728-capacity-overview">
 </head>
 <body>
   <div class="app-shell">
@@ -31,14 +31,20 @@
 
     <main>
       <section class="summary-grid" aria-label="仓位概览">
-        <article class="summary-card featured">
-          <div class="card-label">当前总仓位 <span class="live-dot"></span></div>
-          <div class="metric-row">
-            <strong id="totalPosition">0%</strong>
-            <span id="totalChange" class="change neutral">—</span>
+        <article class="summary-card featured capacity-overview">
+          <div class="card-label">仓位与可用资金 <span class="live-dot"></span></div>
+          <div class="capacity-metrics">
+            <div class="capacity-metric">
+              <span>当前总仓位</span>
+              <div><strong id="totalPosition">0%</strong><em id="totalChange" class="change neutral">—</em></div>
+            </div>
+            <div class="capacity-metric available">
+              <span>可用仓位</span>
+              <div><strong id="availablePosition">0%</strong></div>
+            </div>
           </div>
           <div class="progress"><span id="totalBar"></span></div>
-          <p>最近更新 <time id="lastUpdated">暂无数据</time></p>
+          <p class="capacity-meta"><b id="availableCash">$0</b> 可用现金 · <span id="buyingPowerMeta">含 30% 融资</span> · 更新 <time id="lastUpdated">暂无数据</time></p>
         </article>
         <article class="summary-card">
           <div class="card-label">账户本金</div>
@@ -60,12 +66,6 @@
           <div class="metric-row"><strong id="unrealizedPnl">—</strong><span id="unrealizedPct" class="change neutral">—</span></div>
           <div class="holding-meta"><span><b id="quoteCount">0</b> 只已报价</span></div>
           <p id="unrealizedMeta">等待长桥行情</p>
-        </article>
-        <article class="summary-card">
-          <div class="card-label">可用现金</div>
-          <div class="metric-row"><strong id="availableCash">$0</strong><span class="tag amber">含 30% 融资</span></div>
-          <div class="mini-track amber-track"><span id="buyingPowerBar"></span></div>
-          <p id="buyingPowerMeta">总购买力 $0</p>
         </article>
       </section>
 
@@ -328,6 +328,6 @@
   </dialog>
 
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20260724-holding-pnl"></script>
+  <script src="app.js?v=20260728-capacity-overview"></script>
 </body>
 </html>

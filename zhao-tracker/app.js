@@ -444,12 +444,14 @@ function render() {
   const usedCapital = capital * total / 100;
   const buyingPower = capital * 1.3;
   const availableCash = buyingPower - usedCapital;
+  const availablePosition = Math.max(0, 100 - total);
   const quotedHoldings = holdings.filter(h=>quoteFor(h.code)?.last > 0 && h.cost > 0);
   const quotedCost = quotedHoldings.reduce((sum,h)=>sum + capital*h.position/100,0);
   const unrealizedDollar = quotedHoldings.reduce((sum,h)=>sum + capital*h.position/100*(quoteFor(h.code).last-h.cost)/h.cost,0);
   const unrealizedPct = quotedCost ? unrealizedDollar / quotedCost * 100 : 0;
 
   setText("totalPosition",`${fmt(total)}%`);
+  setText("availablePosition",`${fmt(availablePosition)}%`);
   setText("accountCapital",usd(capital));
   setText("capitalUsed",`已占用 ${usd(usedCapital)}`);
   setText("realizedPnl",usd(realizedDollar));
@@ -460,12 +462,12 @@ function render() {
   setText("quoteCount",quotedHoldings.length);
   setText("unrealizedMeta",quotedHoldings.length ? `按 ${quotedHoldings.length}/${holdings.length} 只当前报价计算` : "等待长桥行情");
   setText("availableCash",usd(availableCash));
-  setText("buyingPowerMeta",`总购买力 ${usd(buyingPower)} · 已占用 ${usd(usedCapital)}`);
+  setText("buyingPowerMeta",`总购买力 ${usd(buyingPower)} · 已占用 ${usd(usedCapital)} · 含 30% 融资`);
   setText("profitCount",ledger.pairs.filter(p=>p.pnlPct>=0).length);
   setText("lossCount",ledger.pairs.filter(p=>p.pnlPct<0).length);
   const latest = [...state.trades].sort((a,b)=>new Date(b.date)-new Date(a.date))[0];
   setText("lastUpdated",state.updatedAt ? formatDate(state.updatedAt,true) : latest ? formatDate(latest.date,true) : "暂无数据");
-  ["totalBar","capitalUsedBar","buyingPowerBar"].forEach((id,i)=>document.getElementById(id).style.width=`${Math.min(100,[total,total,usedCapital/buyingPower*100][i])}%`);
+  ["totalBar","capitalUsedBar"].forEach((id,i)=>document.getElementById(id).style.width=`${Math.min(100,[total,total][i])}%`);
   const changeEl = document.getElementById("totalChange");
   changeEl.className=`change ${change>0?"up":change<0?"down":"neutral"}`;
   changeEl.textContent=change===0?"无变化":`${change>0?"+":""}${fmt(change)}%`;

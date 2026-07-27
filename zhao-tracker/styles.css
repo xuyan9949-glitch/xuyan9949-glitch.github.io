@@ -40,10 +40,21 @@ h1 { font-size:17px; letter-spacing:-.2px; }
 .btn-primary:hover { background:#1e55c3; border-color:#1e55c3; }
 .icon-btn { width:36px; padding:0; font-size:18px; }
 main { padding:22px 28px 16px; }
-.summary-grid { display:grid; grid-template-columns:1.25fr repeat(4,1fr); gap:14px; margin-bottom:14px; }
+.summary-grid { display:grid; grid-template-columns:1.55fr repeat(3,1fr); gap:14px; margin-bottom:14px; }
 .summary-card,.panel { background:var(--panel); border:1px solid var(--line); border-radius:11px; box-shadow:var(--shadow); }
 .summary-card { padding:17px 18px 14px; min-height:132px; }
 .summary-card.featured { border-top:3px solid var(--blue); padding-top:15px; }
+.capacity-overview { min-width:0; }
+.capacity-metrics { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:8px 0 11px; }
+.capacity-metric { min-width:0; }
+.capacity-metric > span { display:block; color:var(--muted); font-size:11px; font-weight:700; }
+.capacity-metric > div { display:flex; align-items:baseline; gap:7px; margin-top:2px; }
+.capacity-metric strong { font-size:28px; letter-spacing:-1px; line-height:1.1; }
+.capacity-metric .change { font-style:normal; }
+.capacity-metric.available { padding-left:14px; border-left:1px solid var(--line); }
+.capacity-metric.available strong { color:var(--blue); }
+.capacity-meta { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.capacity-meta b { color:var(--amber); }
 .card-label { color:var(--muted); font-weight:600; font-size:12px; }
 .metric-row { display:flex; align-items:baseline; gap:10px; margin:8px 0 10px; }
 .metric-row strong { font-size:30px; letter-spacing:-1px; line-height:1.1; }
@@ -249,6 +260,9 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
   .symbol-metrics { grid-template-columns:1fr 1fr; }
   .symbol-detail-grid { grid-template-columns:1fr; }
   .summary-card { min-height:118px; padding:14px; }
+  .capacity-metrics { gap:10px; }
+  .capacity-metric.available { padding-left:10px; }
+  .capacity-metric strong { font-size:24px; }
   .metric-row strong { font-size:25px; }
   .panel-header { align-items:flex-start; gap:10px; }
   .holdings-panel .panel-header { flex-direction:column; }
