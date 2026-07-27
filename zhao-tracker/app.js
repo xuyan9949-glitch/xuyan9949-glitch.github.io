@@ -449,11 +449,14 @@ function render() {
   const quotedCost = quotedHoldings.reduce((sum,h)=>sum + capital*h.position/100,0);
   const unrealizedDollar = quotedHoldings.reduce((sum,h)=>sum + capital*h.position/100*(quoteFor(h.code).last-h.cost)/h.cost,0);
   const unrealizedPct = quotedCost ? unrealizedDollar / quotedCost * 100 : 0;
+  const accountTotalDollar = realizedDollar + unrealizedDollar;
+  const accountTotalPct = capital ? accountTotalDollar / capital * 100 : 0;
 
   setText("totalPosition",`${fmt(total)}%`);
   setText("availablePosition",`${fmt(availablePosition)}%`);
-  setText("accountCapital",usd(capital));
-  setText("capitalUsed",`已占用 ${usd(usedCapital)}`);
+  setText("accountTotalReturn",quotedHoldings.length || !holdings.length ? `${accountTotalPct>=0?"+":""}${fmt(accountTotalPct,2)}%` : "—");
+  setText("accountTotalPnl",quotedHoldings.length || !holdings.length ? usd(accountTotalDollar) : "—");
+  setText("accountTotalMeta",quotedHoldings.length || !holdings.length ? `本金 ${usd(capital)} · 已实现 ${usd(realizedDollar)} · 按 ${quotedHoldings.length}/${holdings.length} 只当前报价估算` : `本金 ${usd(capital)} · 等待长桥行情`);
   setText("realizedPnl",usd(realizedDollar));
   setText("realizedPct",`${realizedPct>=0?"+":""}${fmt(realizedPct,2)}%`);
   setText("closedCount",`已平 ${ledger.pairs.length} 笔配对`);
@@ -467,7 +470,7 @@ function render() {
   setText("lossCount",ledger.pairs.filter(p=>p.pnlPct<0).length);
   const latest = [...state.trades].sort((a,b)=>new Date(b.date)-new Date(a.date))[0];
   setText("lastUpdated",state.updatedAt ? formatDate(state.updatedAt,true) : latest ? formatDate(latest.date,true) : "暂无数据");
-  ["totalBar","capitalUsedBar"].forEach((id,i)=>document.getElementById(id).style.width=`${Math.min(100,[total,total][i])}%`);
+  document.getElementById("totalBar").style.width=`${Math.min(100,total)}%`;
   const changeEl = document.getElementById("totalChange");
   changeEl.className=`change ${change>0?"up":change<0?"down":"neutral"}`;
   changeEl.textContent=change===0?"无变化":`${change>0?"+":""}${fmt(change)}%`;
@@ -475,6 +478,8 @@ function render() {
   realizedEl.className=`change ${realizedPct>0?"up":realizedPct<0?"down":"neutral"}`;
   const unrealizedEl = document.getElementById("unrealizedPct");
   unrealizedEl.className=`change ${!quotedHoldings.length?"neutral":unrealizedPct>0?"up":unrealizedPct<0?"down":"neutral"}`;
+  const accountTotalEl = document.getElementById("accountTotalPnl");
+  accountTotalEl.className=`change ${!(quotedHoldings.length || !holdings.length)?"neutral":accountTotalPct>0?"up":accountTotalPct<0?"down":"neutral"}`;
 
   renderHoldings(holdings);
   renderClosedSymbols(holdings, ledger);

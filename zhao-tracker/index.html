@@ -7,7 +7,7 @@
   <title>赵哥操作追踪</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260728-trend-tooltip">
+  <link rel="stylesheet" href="styles.css?v=20260728-account-return">
 </head>
 <body>
   <div class="app-shell">
@@ -47,10 +47,10 @@
           <p class="capacity-meta"><b id="availableCash">$0</b> 可用现金 · <span id="buyingPowerMeta">含 30% 融资</span> · 更新 <time id="lastUpdated">暂无数据</time></p>
         </article>
         <article class="summary-card">
-          <div class="card-label">账户本金</div>
-          <div class="metric-row"><strong id="accountCapital">$0</strong><button id="capitalBtn" class="mini-btn">修改</button></div>
-          <div class="mini-track"><span id="capitalUsedBar"></span></div>
-          <p id="capitalUsed">已占用 $0</p>
+          <div class="card-label">账户整体收益率 <span class="live-dot"></span></div>
+          <div class="metric-row"><strong id="accountTotalReturn">—</strong><span id="accountTotalPnl" class="change neutral">—</span></div>
+          <div class="holding-meta"><span>已实现 + 未实现</span></div>
+          <p id="accountTotalMeta">按账户本金计算</p><button id="capitalBtn" class="mini-btn">修改本金</button>
         </article>
         <article class="summary-card">
           <div class="card-label">已实现收益</div>
@@ -328,6 +328,6 @@
   </dialog>
 
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20260728-trend-tooltip"></script>
+  <script src="app.js?v=20260728-account-return"></script>
 </body>
 </html>
