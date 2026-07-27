@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-27T21:40:10+08:00",
+  "updatedAt": "2026-07-27T22:21:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -1435,6 +1435,36 @@
       "date": "2026-07-27T21:40:10+08:00",
       "closeLotId": "conl-529-readd-20260723",
       "note": "出掉 5.29 的做 T 批次；保留 4.85 死拿底仓"
+    },
+    {
+      "id": "dram-526-add-20260727",
+      "name": "DRAM",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 52.6,
+      "positionChange": 3.3,
+      "date": "2026-07-27T22:09:00+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "mu-880-base-add-20260727",
+      "name": "MU",
+      "action": "加仓",
+      "positionType": "底仓",
+      "price": 880,
+      "positionChange": 1.65,
+      "date": "2026-07-27T22:16:00+08:00",
+      "note": "加了六分之一常规仓，先开个底仓"
+    },
+    {
+      "id": "iren-361-add-20260727",
+      "name": "IREN",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 36.1,
+      "positionChange": 3.3,
+      "date": "2026-07-27T22:21:00+08:00",
+      "note": "加了三分之一常规仓"
     }
   ]
 }
