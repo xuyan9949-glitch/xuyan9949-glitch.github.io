@@ -715,14 +715,38 @@ function renderChart() {
   const area=`${line("total")} L${x(points.length-1)},${y(0)} L${x(0)},${y(0)} Z`;
   const ticks=[0,25,50,75,100].filter(v=>v<=max);
   const labels=[0,Math.floor((points.length-1)/2),points.length-1].filter((v,i,a)=>a.indexOf(v)===i);
-  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="仓位趋势图">
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="仓位趋势图，可悬浮查看日期和仓位数值">
     <defs><linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2864dc" stop-opacity=".18"/><stop offset="1" stop-color="#2864dc" stop-opacity="0"/></linearGradient></defs>
     ${ticks.map(v=>`<line class="grid" x1="${pad.l}" y1="${y(v)}" x2="${W-pad.r}" y2="${y(v)}"/><text x="2" y="${y(v)+3}">${v}%</text>`).join("")}
     <path d="${area}" fill="url(#areaFill)"/><path d="${line("total")}" fill="none" stroke="var(--blue)" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
     <path d="${line("base")}" fill="none" stroke="#83a9f6" stroke-width="1.5" stroke-dasharray="5 4" vector-effect="non-scaling-stroke"/>
     ${points.map((p,i)=>`<circle cx="${x(i)}" cy="${y(p.total)}" r="${points.length<15?3:1.5}" fill="var(--blue)"><title>${formatDate(p.date)} 总仓位 ${fmt(p.total)}%</title></circle>`).join("")}
     ${labels.map(i=>`<text text-anchor="${i===0?"start":i===points.length-1?"end":"middle"}" x="${x(i)}" y="${H-5}">${formatDate(points[i].date)}</text>`).join("")}
-  </svg>`;
+    <g class="trend-hover-guide" hidden aria-hidden="true"><line x1="0" y1="${pad.t}" x2="0" y2="${H-pad.b}"/><circle class="trend-hover-total" cx="0" cy="0" r="4"/><circle class="trend-hover-base" cx="0" cy="0" r="3"/></g>
+  </svg><div class="trend-tooltip" hidden></div>`;
+  const svg=el.querySelector("svg");
+  const guide=svg.querySelector(".trend-hover-guide");
+  const tooltip=el.querySelector(".trend-tooltip");
+  const clearHover=()=>{ guide.hidden=true; tooltip.hidden=true; };
+  const showHover=event=>{
+    const rect=svg.getBoundingClientRect();
+    const svgX=(event.clientX-rect.left)/rect.width*W;
+    const index=points.length===1 ? 0 : Math.max(0,Math.min(points.length-1,Math.round((svgX-pad.l)/(W-pad.l-pad.r)*(points.length-1))));
+    const point=points[index], pointX=x(index);
+    guide.hidden=false;
+    guide.querySelector("line").setAttribute("x1",pointX); guide.querySelector("line").setAttribute("x2",pointX);
+    const totalDot=guide.querySelector(".trend-hover-total"), baseDot=guide.querySelector(".trend-hover-base");
+    totalDot.setAttribute("cx",pointX); totalDot.setAttribute("cy",y(point.total));
+    baseDot.setAttribute("cx",pointX); baseDot.setAttribute("cy",y(point.base));
+    tooltip.innerHTML=`<b>${formatDate(point.date,true)}</b><span>总仓位 ${fmt(point.total)}%</span><span>底仓 ${fmt(point.base)}%</span>`;
+    tooltip.hidden=false;
+    const relativeX=(rect.left-el.getBoundingClientRect().left)+(pointX/W)*rect.width;
+    tooltip.style.left=`${Math.max(8,Math.min(el.clientWidth-tooltip.offsetWidth-8,relativeX))}px`;
+    tooltip.style.top=`${Math.max(4,(y(point.total)/H)*rect.height-tooltip.offsetHeight-8)}px`;
+  };
+  svg.addEventListener("pointermove",showHover);
+  svg.addEventListener("pointerdown",showHover);
+  svg.addEventListener("pointerleave",clearHover);
 }
 
 function renderReturnChart() {
