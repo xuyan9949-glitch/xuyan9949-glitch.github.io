@@ -3,7 +3,6 @@ const LEGACY_KEYS = [];
 const THEME_KEY = "zhao-tracker-theme";
 const SHARED_DATA_URL = "./data/tracker-data.json";
 const QUOTE_API_URL = "http://127.0.0.1:18765/quotes";
-const CANDLE_API_URL = "http://127.0.0.1:18765/candles";
 const TRADE_API_URL = "http://127.0.0.1:18765/trades";
 const QUOTE_REFRESH_MS = 30000;
 const buyActions = ["买入", "加仓"];
@@ -21,10 +20,9 @@ const demoTrades = [
   { id: crypto.randomUUID(), name:"NVDL", code:"NVDL", action:"减仓", positionType:"波段仓", price:31.58, positionChange:5, date:daysAgo(1,20), note:"31.58 出掉，28.35 成本剩下一半" }
 ];
 
-let state = { trades: [], accountCapital: 100000, isDemo: false, source: "loading", quotes: {}, quoteUpdatedAt: "", quoteError: "", candles: {}, candlesUpdatedAt: "", candleError: "" };
+let state = { trades: [], accountCapital: 100000, isDemo: false, source: "loading", quotes: {}, quoteUpdatedAt: "", quoteError: "" };
 let rangeDays = 30;
 let returnRangeDays = 30;
-let portfolioRangeDays = 30;
 let analysisDays = 30;
 let sortKey = "position";
 let sortDirection = -1;
@@ -148,22 +146,6 @@ async function refreshQuotes() {
   }
   render();
 }
-async function refreshPortfolioHistory() {
-  const holdings = getHoldings();
-  if (!holdings.length) return;
-  try {
-    const symbols = holdings.map(h=>h.code).join(",");
-    const response = await fetch(`${CANDLE_API_URL}?symbols=${encodeURIComponent(symbols)}&days=90`, { cache:"no-store" });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
-    state.candles = data.candles || {};
-    state.candlesUpdatedAt = data.updatedAt || new Date().toISOString();
-    state.candleError = "";
-  } catch (error) {
-    state.candleError = error.message;
-  }
-  renderPortfolioChart();
-}
 function value(id){ return document.getElementById(id).value; }
 function isSell(action) { return sellActions.includes(action); }
 function formatDate(value, includeTime=false) {
@@ -172,11 +154,6 @@ function formatDate(value, includeTime=false) {
   const opts = { month:"2-digit", day:"2-digit" };
   if (includeTime) Object.assign(opts,{hour:"2-digit",minute:"2-digit",hour12:false});
   return new Intl.DateTimeFormat("zh-CN",opts).format(d).replace(/\//g,".");
-}
-function marketDateKey(value) {
-  const parts = new Intl.DateTimeFormat("en-CA", { timeZone:"Asia/Shanghai", year:"numeric", month:"2-digit", day:"2-digit" }).formatToParts(new Date(value));
-  const pick = type => parts.find(part=>part.type===type)?.value;
-  return `${pick("year")}-${pick("month")}-${pick("day")}`;
 }
 
 function computeLedger(trades=state.trades) {
@@ -508,7 +485,6 @@ function render() {
   renderActivity();
   renderChart();
   renderReturnChart();
-  renderPortfolioChart();
 }
 
 function renderHoldings(holdings) {
@@ -804,95 +780,6 @@ function renderReturnChart() {
   </svg>`;
 }
 
-function computePortfolioSnapshots() {
-  const closeMaps = new Map(Object.entries(state.candles || {}).map(([code, rows])=>[
-    code, new Map((rows || []).map(row=>[marketDateKey(row.date), Number(row.close)]).filter(([,close])=>close>0))
-  ]));
-  const days = [...new Set([...closeMaps.values()].flatMap(map=>[...map.keys()]))].sort();
-  const ordered = [...state.trades].sort((a,b)=>new Date(a.date)-new Date(b.date));
-  const snapshots = days.map(day=>{
-    const cutoff = new Date(`${day}T23:59:59+08:00`);
-    const holdings = getHoldings(ordered.filter(trade=>new Date(trade.date)<=cutoff));
-    const total = holdings.reduce((sum,holding)=>sum+holding.position,0);
-    let covered = 0, weightedReturn = 0;
-    holdings.forEach(holding=>{
-      const close = closeMaps.get(holding.code)?.get(day);
-      if (!(close>0) || !(holding.cost>0)) return;
-      covered += holding.position;
-      weightedReturn += holding.position * (close-holding.cost) / holding.cost * 100;
-    });
-    return { date:new Date(`${day}T12:00:00+08:00`), total, covered, returnPct:covered ? weightedReturn/covered : 0, live:false };
-  }).filter(point=>point.total>0 && point.covered/point.total>=.75);
-  const liveHoldings = getHoldings();
-  const liveTotal = liveHoldings.reduce((sum,holding)=>sum+holding.position,0);
-  let liveCovered = 0, liveWeightedReturn = 0;
-  liveHoldings.forEach(holding=>{
-    const quote = quoteFor(holding.code);
-    if (!(Number(quote?.last)>0) || !(holding.cost>0)) return;
-    liveCovered += holding.position;
-    liveWeightedReturn += holding.position * (Number(quote.last)-holding.cost) / holding.cost * 100;
-  });
-  if (liveTotal>0 && liveCovered/liveTotal>=.75) snapshots.push({ date:new Date(), total:liveTotal, covered:liveCovered, returnPct:liveWeightedReturn/liveCovered, live:true });
-  return snapshots;
-}
-
-function renderPortfolioChart() {
-  const el = document.getElementById("portfolioChart");
-  if (!el) return;
-  let points = computePortfolioSnapshots();
-  if (portfolioRangeDays !== "all") {
-    const cutoff = new Date(); cutoff.setDate(cutoff.getDate()-Number(portfolioRangeDays));
-    points = points.filter(point=>point.date>=cutoff || point.live);
-  }
-  if (points.length<2) {
-    el.innerHTML=`<div class="empty-state"><div>${state.candleError ? "收盘快照暂不可用" : "正在读取收盘快照"}</div><p>${state.candleError ? "请确认本机长桥行情已启动，再刷新页面。" : "会按每天收盘价还原未实现收益率，今日再叠加实时报价。"}</p></div>`;
-    return;
-  }
-  const W=500,H=210,pad={l:54,r:48,t:12,b:27};
-  const returnValues=points.map(point=>point.returnPct);
-  const returnExtent=Math.max(1,...returnValues.map(value=>Math.abs(value)));
-  const minReturn=Math.min(0,...returnValues,-returnExtent*.12), maxReturn=Math.max(0,...returnValues,returnExtent*.12);
-  const maxPosition=Math.max(10,...points.map(point=>point.total))*1.12;
-  const x=index=>pad.l+(points.length===1?(W-pad.l-pad.r)/2:index/(points.length-1)*(W-pad.l-pad.r));
-  const yReturn=value=>pad.t+(maxReturn-value)/(maxReturn-minReturn)*(H-pad.t-pad.b);
-  const yPosition=value=>pad.t+(1-value/maxPosition)*(H-pad.t-pad.b);
-  const line=(key,scale)=>points.map((point,index)=>`${index?"L":"M"}${x(index).toFixed(1)},${scale(point[key]).toFixed(1)}`).join(" ");
-  const returnLine=line("returnPct",yReturn), positionLine=line("total",yPosition), zeroY=yReturn(0);
-  const returnColor=points.at(-1).returnPct>=0 ? "#df3c4f" : "#168668";
-  const labels=[0,Math.floor((points.length-1)/2),points.length-1].filter((value,index,array)=>array.indexOf(value)===index);
-  const ticks=[minReturn,0,maxReturn].map(value=>Number(value.toFixed(2))).filter((value,index,array)=>array.indexOf(value)===index);
-  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="未实现收益率与总仓位对比图，可悬浮查看每日数值">
-    <defs><linearGradient id="portfolioAreaFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${returnColor}" stop-opacity=".16"/><stop offset="1" stop-color="${returnColor}" stop-opacity="0"/></linearGradient></defs>
-    ${ticks.map(value=>`<line class="grid" x1="${pad.l}" y1="${yReturn(value)}" x2="${W-pad.r}" y2="${yReturn(value)}"/><text x="1" y="${yReturn(value)+3}">${value>=0?"+":""}${fmt(value,2)}%</text>`).join("")}
-    <line class="zero-line" x1="${pad.l}" y1="${zeroY}" x2="${W-pad.r}" y2="${zeroY}"/>
-    <path d="${returnLine} L${x(points.length-1)},${zeroY} L${x(0)},${zeroY} Z" fill="url(#portfolioAreaFill)"/>
-    <path d="${returnLine}" fill="none" stroke="${returnColor}" stroke-width="2.4" vector-effect="non-scaling-stroke"/>
-    <path d="${positionLine}" class="portfolio-position-line" fill="none" stroke="var(--blue)" stroke-width="2" vector-effect="non-scaling-stroke"/>
-    ${points.map((point,index)=>`<circle cx="${x(index)}" cy="${yReturn(point.returnPct)}" r="${point.live?4:points.length<15?2.5:1.4}" fill="${point.live?"#c57b16":returnColor}"/>`).join("")}
-    ${[0,maxPosition/2,maxPosition].map(value=>`<text text-anchor="end" x="${W-1}" y="${yPosition(value)+3}">${fmt(value)}%</text>`).join("")}
-    ${labels.map(index=>`<text text-anchor="${index===0?"start":index===points.length-1?"end":"middle"}" x="${x(index)}" y="${H-5}">${formatDate(points[index].date)}</text>`).join("")}
-    <g class="portfolio-hover-guide" hidden aria-hidden="true"><line x1="0" y1="${pad.t}" x2="0" y2="${H-pad.b}"/><circle class="portfolio-hover-pnl" cx="0" cy="0" r="4"/><circle class="portfolio-hover-position" cx="0" cy="0" r="3"/></g>
-  </svg><div class="trend-tooltip portfolio-tooltip" hidden></div>`;
-  const svg=el.querySelector("svg"), guide=svg.querySelector(".portfolio-hover-guide"), tooltip=el.querySelector(".portfolio-tooltip");
-  const clear=()=>{guide.hidden=true;tooltip.hidden=true;};
-  const show=event=>{
-    const rect=svg.getBoundingClientRect();
-    const svgX=(event.clientX-rect.left)/rect.width*W;
-    const index=Math.max(0,Math.min(points.length-1,Math.round((svgX-pad.l)/(W-pad.l-pad.r)*(points.length-1))));
-    const point=points[index], pointX=x(index);
-    guide.hidden=false; guide.querySelector("line").setAttribute("x1",pointX); guide.querySelector("line").setAttribute("x2",pointX);
-    const pnlDot=guide.querySelector(".portfolio-hover-pnl"), positionDot=guide.querySelector(".portfolio-hover-position");
-    pnlDot.setAttribute("cx",pointX); pnlDot.setAttribute("cy",yReturn(point.returnPct));
-    positionDot.setAttribute("cx",pointX); positionDot.setAttribute("cy",yPosition(point.total));
-    tooltip.innerHTML=`<b>${point.live?"实时估算 · ":"收盘快照 · "}${formatDate(point.date,true)}</b><span>未实现收益率 ${point.returnPct>=0?"+":""}${fmt(point.returnPct,2)}%</span><span>总仓位 ${fmt(point.total)}%</span>`;
-    tooltip.hidden=false;
-    const relativeX=(rect.left-el.getBoundingClientRect().left)+(pointX/W)*rect.width;
-    tooltip.style.left=`${Math.max(8,Math.min(el.clientWidth-tooltip.offsetWidth-8,relativeX))}px`;
-    tooltip.style.top=`${Math.max(4,(Math.min(yReturn(point.returnPct),yPosition(point.total))/H)*rect.height-tooltip.offsetHeight-8)}px`;
-  };
-  svg.addEventListener("pointermove",show); svg.addEventListener("pointerdown",show); svg.addEventListener("pointerleave",clear);
-}
-
 function getOpenLotsForForm(trade=null) {
   const trades = state.trades.filter(t=>t.id!==trade?.id);
   return computeLedger(trades).lots.filter(l=>l.remainingPosition>0.0001);
@@ -1053,10 +940,6 @@ document.getElementById("returnRangeTabs").onclick=e=>{
   if(!e.target.dataset.days)return;
   returnRangeDays=e.target.dataset.days;document.querySelectorAll("#returnRangeTabs button").forEach(b=>b.classList.toggle("active",b===e.target));renderReturnChart();
 };
-document.getElementById("portfolioRangeTabs").onclick=e=>{
-  if(!e.target.dataset.days)return;
-  portfolioRangeDays=e.target.dataset.days;document.querySelectorAll("#portfolioRangeTabs button").forEach(b=>b.classList.toggle("active",b===e.target));renderPortfolioChart();
-};
 document.getElementById("analysisRangeTabs").onclick=e=>{
   if(!e.target.dataset.days)return;
   analysisDays=e.target.dataset.days;
@@ -1086,7 +969,6 @@ async function init() {
   state = await loadSharedState();
   render();
   refreshQuotes();
-  refreshPortfolioHistory();
   window.setInterval(refreshQuotes, QUOTE_REFRESH_MS);
   if (state.source === "shared") toast("已加载 GitHub 共享数据");
   else if (state.loadError) toast("共享数据加载失败，已使用本机数据");

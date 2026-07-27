@@ -124,14 +124,10 @@ tr:hover .row-actions { opacity:1; }
 .return-panel { margin:0; }
 .return-legend .realized::before { background:var(--red); }
 .return-legend .zero::before { background:var(--muted); }
-.portfolio-legend .unrealized::before { background:#8b5cf6; }
-.portfolio-legend .exposure::before { background:var(--blue); }
-.portfolio-legend .live::before { width:8px; height:8px; border-radius:50%; background:var(--amber); }
 .return-chart .zero-line { stroke:var(--muted); stroke-width:1; stroke-dasharray:4 4; opacity:.72; }
 .chart { position:relative; height:240px; padding:10px 12px 12px; }
 .chart svg { width:100%; height:100%; overflow:visible; }
 .trend-panel .chart svg { cursor:crosshair; touch-action:none; }
-.portfolio-panel .chart svg { cursor:crosshair; touch-action:none; }
 .chart text { fill:var(--muted); font-size:10px; }
 .chart .grid { stroke:var(--line); stroke-width:1; }
 .trend-hover-guide line { stroke:#94a3b8; stroke-width:1; stroke-dasharray:3 3; }
@@ -140,10 +136,6 @@ tr:hover .row-actions { opacity:1; }
 .trend-tooltip { position:absolute; z-index:3; display:grid; gap:2px; min-width:118px; padding:8px 9px; border:1px solid var(--line); border-radius:8px; background:var(--panel); color:var(--text); font-size:11px; line-height:1.35; box-shadow:0 6px 18px rgba(16,24,40,.12); pointer-events:none; }
 .trend-tooltip b { font-size:11px; }
 .trend-tooltip span { color:var(--muted); }
-.portfolio-position-line { stroke-dasharray:5 3; }
-.portfolio-hover-guide line { stroke:#94a3b8; stroke-width:1; stroke-dasharray:3 3; }
-.portfolio-hover-pnl { fill:var(--panel); stroke:#8b5cf6; stroke-width:2; }
-.portfolio-hover-position { fill:var(--panel); stroke:var(--blue); stroke-width:2; }
 .pairs-panel { margin-bottom:14px; }
 .pairs-panel small { color:var(--muted); }
 .analytics-panel { margin-bottom:14px; }
