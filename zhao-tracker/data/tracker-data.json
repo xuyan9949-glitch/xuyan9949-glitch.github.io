@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-27T23:08:10+08:00",
+  "updatedAt": "2026-07-28T22:51:10+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -1548,6 +1548,109 @@
       "date": "2026-07-27T23:08:10+08:00",
       "closeLotId": "tsll-705-add-20260727",
       "note": "出一半 7.05 的批次"
+    },
+    {
+      "id": "conl-525-half-close-495-20260728",
+      "name": "CONL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 5.25,
+      "positionChange": 0.825,
+      "date": "2026-07-28T00:43:00+08:00",
+      "closeLotId": "conl-495-readd-535-20260727",
+      "note": "出一半 4.95 的批次"
+    },
+    {
+      "id": "mu-854-add-20260728",
+      "name": "MU",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 854,
+      "positionChange": 1.65,
+      "date": "2026-07-28T13:47:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "dram-49-add-20260728",
+      "name": "DRAM",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 49,
+      "positionChange": 3.3,
+      "date": "2026-07-28T13:47:10+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "mu-818-add-20260728",
+      "name": "MU",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 818,
+      "positionChange": 1.65,
+      "date": "2026-07-28T21:41:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "lite-623-add-20260728",
+      "name": "LITE",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 623,
+      "positionChange": 3.3,
+      "date": "2026-07-28T21:49:00+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "crwv-655-add-20260728",
+      "name": "CRWV",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 65.5,
+      "positionChange": 3.3,
+      "date": "2026-07-28T21:49:10+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "soxl-1058-add-20260728",
+      "name": "SOXL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 105.8,
+      "positionChange": 3.3,
+      "date": "2026-07-28T22:01:00+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "iren-327-add-20260728",
+      "name": "IREN",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 32.7,
+      "positionChange": 3.3,
+      "date": "2026-07-28T22:01:10+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "iren-3416-close-327-20260728",
+      "name": "IREN",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 34.16,
+      "positionChange": 3.3,
+      "date": "2026-07-28T22:51:00+08:00",
+      "closeLotId": "iren-327-add-20260728",
+      "note": "出掉 32.7 的批次"
+    },
+    {
+      "id": "soxl-110-half-close-1058-20260728",
+      "name": "SOXL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 110,
+      "positionChange": 1.65,
+      "date": "2026-07-28T22:51:10+08:00",
+      "closeLotId": "soxl-1058-add-20260728",
+      "note": "出一半 105.8 的批次"
     }
   ]
 }
