@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-28T22:51:10+08:00",
+  "updatedAt": "2026-07-29T08:05:20+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -1651,6 +1651,60 @@
       "date": "2026-07-28T22:51:10+08:00",
       "closeLotId": "soxl-1058-add-20260728",
       "note": "出一半 105.8 的批次"
+    },
+    {
+      "id": "mu-774-add-20260729",
+      "name": "MU",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 774,
+      "positionChange": 3.3,
+      "date": "2026-07-29T07:00:00+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "mu-831-half-close-774-20260729",
+      "name": "MU",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 831,
+      "positionChange": 1.65,
+      "date": "2026-07-29T07:50:31+08:00",
+      "closeLotId": "mu-774-add-20260729",
+      "note": "出一半 774 的批次"
+    },
+    {
+      "id": "mu-854-close-854-20260729",
+      "name": "MU",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 854,
+      "positionChange": 1.65,
+      "date": "2026-07-29T08:05:00+08:00",
+      "closeLotId": "mu-854-add-20260728",
+      "note": "出掉 854 的批次"
+    },
+    {
+      "id": "mu-854-close-774-rest-20260729",
+      "name": "MU",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 854,
+      "positionChange": 1.65,
+      "date": "2026-07-29T08:05:10+08:00",
+      "closeLotId": "mu-774-add-20260729",
+      "note": "出掉 774 剩下一半的批次"
+    },
+    {
+      "id": "dram-499-close-49-20260729",
+      "name": "DRAM",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 49.9,
+      "positionChange": 3.3,
+      "date": "2026-07-29T08:05:20+08:00",
+      "closeLotId": "dram-49-add-20260728",
+      "note": "出掉 49 的批次"
     }
   ]
 }
