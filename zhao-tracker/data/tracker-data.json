@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-30T20:24:00+08:00",
+  "updatedAt": "2026-07-30T22:05:10+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -2159,6 +2159,72 @@
       "date": "2026-07-30T20:24:00+08:00",
       "closeLotId": "lite-623-add-20260728",
       "note": "出掉 623 的批次；597 的剩余半仓保留为死拿"
+    },
+    {
+      "id": "iren-335-close-32-rest-20260730",
+      "name": "IREN",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 33.5,
+      "positionChange": 1.65,
+      "date": "2026-07-30T21:30:00+08:00",
+      "closeLotId": "iren-32-add-20260729",
+      "note": "出掉昨天 32 批次剩下的一半"
+    },
+    {
+      "id": "dram-4836-close-457-rest-20260730",
+      "name": "DRAM",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 48.36,
+      "positionChange": 1.65,
+      "date": "2026-07-30T21:30:10+08:00",
+      "closeLotId": "dram-457-add-20260729",
+      "note": "出掉 45.7 批次剩下的一半"
+    },
+    {
+      "id": "mu-819-close-794-20260730",
+      "name": "MU",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 819,
+      "positionChange": 1.65,
+      "date": "2026-07-30T21:46:00+08:00",
+      "closeLotId": "mu-794-add-20260729",
+      "note": "出掉 794 的批次，保留此前 757 批次"
+    },
+    {
+      "id": "pl-206-close-1955-20260730",
+      "name": "PL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 20.6,
+      "positionChange": 3.3,
+      "date": "2026-07-30T21:51:00+08:00",
+      "closeLotId": "pl-1955-add-20260730",
+      "note": "出掉 19.55 的批次"
+    },
+    {
+      "id": "lite-689-close-597-rest-20260730",
+      "name": "LITE",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 689,
+      "positionChange": 1.65,
+      "date": "2026-07-30T21:58:00+08:00",
+      "closeLotId": "lite-597-add-20260730",
+      "note": "出掉 597 批次剩下的一半"
+    },
+    {
+      "id": "iren-37-close-361-20260730",
+      "name": "IREN",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 37,
+      "positionChange": 3.3,
+      "date": "2026-07-30T22:05:10+08:00",
+      "closeLotId": "iren-361-add-20260727",
+      "note": "出掉 37 以下买入的 36.1 批次"
     }
   ]
 }
