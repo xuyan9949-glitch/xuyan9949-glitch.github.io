@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-30T02:02:40+08:00",
+  "updatedAt": "2026-07-30T09:30:10+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -1946,6 +1946,131 @@
       "date": "2026-07-30T02:02:40+08:00",
       "closeLotId": "intc-83-open-20260730",
       "note": "出掉 83 的批次"
+    },
+    {
+      "id": "sofi-156-half-close-1518-20260730",
+      "name": "SOFI",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 15.6,
+      "positionChange": 1.65,
+      "date": "2026-07-30T02:45:00+08:00",
+      "closeLotId": "sofi-1518-add-20260729",
+      "note": "出一半 15.18 的批次"
+    },
+    {
+      "id": "iren-3185-half-close-32-20260730",
+      "name": "IREN",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 31.85,
+      "positionChange": 1.65,
+      "date": "2026-07-30T02:45:10+08:00",
+      "closeLotId": "iren-32-add-20260729",
+      "note": "出一半 32 的批次"
+    },
+    {
+      "id": "avgo-385-close-374-rest-20260730",
+      "name": "AVGO",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 385,
+      "positionChange": 1.65,
+      "date": "2026-07-30T03:03:00+08:00",
+      "closeLotId": "avgo-374-add-20260727",
+      "note": "出掉 374 做 T 批次的剩余一半"
+    },
+    {
+      "id": "googl-3416-half-close-334-20260730",
+      "name": "GOOGL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 341.6,
+      "positionChange": 1.65,
+      "date": "2026-07-30T03:03:10+08:00",
+      "closeLotId": "googl-334-add-20260723",
+      "note": "出一半 334 的批次"
+    },
+    {
+      "id": "mu-756-add-20260730",
+      "name": "MU",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 756,
+      "positionChange": 1.65,
+      "date": "2026-07-30T03:36:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "msfl-17-close-175-prior-20260730",
+      "name": "MSFL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 17,
+      "positionChange": 3.3,
+      "date": "2026-07-30T04:02:00+08:00",
+      "closeLotId": "msfl-175-prior-lot",
+      "note": "出掉此前 17.5 的微软双倍批次（原开仓记录不在当前面板数据中）"
+    },
+    {
+      "id": "googl-334-readd-3416-20260730",
+      "name": "GOOGL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 334,
+      "positionChange": 1.65,
+      "date": "2026-07-30T04:14:00+08:00",
+      "note": "加回 341.6 卖出的那部分"
+    },
+    {
+      "id": "avgo-367-readd-385-20260730",
+      "name": "AVGO",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 367,
+      "positionChange": 1.65,
+      "date": "2026-07-30T04:14:10+08:00",
+      "note": "加回 385 卖出的那部分"
+    },
+    {
+      "id": "nbis-1492-add-20260730",
+      "name": "NBIS",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 149.2,
+      "positionChange": 3.3,
+      "date": "2026-07-30T04:20:00+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "pl-1955-add-20260730",
+      "name": "PL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 19.55,
+      "positionChange": 3.3,
+      "date": "2026-07-30T08:27:00+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "crwv-623-add-20260730",
+      "name": "CRWV",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 62.3,
+      "positionChange": 1.65,
+      "date": "2026-07-30T09:30:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "cifr-1825-add-20260730",
+      "name": "CIFR",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 18.25,
+      "positionChange": 1.65,
+      "date": "2026-07-30T09:30:10+08:00",
+      "note": "加了六分之一常规仓"
     }
   ]
 }
