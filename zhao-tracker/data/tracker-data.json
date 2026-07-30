@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-30T22:05:10+08:00",
+  "updatedAt": "2026-07-30T22:31:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -2225,6 +2225,17 @@
       "date": "2026-07-30T22:05:10+08:00",
       "closeLotId": "iren-361-add-20260727",
       "note": "出掉 37 以下买入的 36.1 批次"
+    },
+    {
+      "id": "sofi-159-close-1518-rest-20260730",
+      "name": "SOFI",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 15.9,
+      "positionChange": 1.65,
+      "date": "2026-07-30T22:31:00+08:00",
+      "closeLotId": "sofi-1518-add-20260729",
+      "note": "出掉 15.18 批次剩下的一半"
     }
   ]
 }
