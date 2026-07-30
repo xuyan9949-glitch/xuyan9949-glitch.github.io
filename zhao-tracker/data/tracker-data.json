@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-30T09:30:10+08:00",
+  "updatedAt": "2026-07-30T20:24:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -2071,6 +2071,94 @@
       "positionChange": 1.65,
       "date": "2026-07-30T09:30:10+08:00",
       "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "mu-7635-close-756-20260730",
+      "name": "MU",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 763.5,
+      "positionChange": 1.65,
+      "date": "2026-07-30T09:37:00+08:00",
+      "closeLotId": "mu-756-add-20260730",
+      "note": "出掉 756 的批次"
+    },
+    {
+      "id": "nbis-1547-half-close-1492-20260730",
+      "name": "NBIS",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 154.7,
+      "positionChange": 1.65,
+      "date": "2026-07-30T17:28:00+08:00",
+      "closeLotId": "nbis-1492-add-20260730",
+      "note": "出一半 149.2 的批次"
+    },
+    {
+      "id": "nbis-1543-close-1492-rest-20260730",
+      "name": "NBIS",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 154.3,
+      "positionChange": 1.65,
+      "date": "2026-07-30T17:45:00+08:00",
+      "closeLotId": "nbis-1492-add-20260730",
+      "note": "出掉 149.2 批次剩下的一半"
+    },
+    {
+      "id": "crwv-6325-half-close-623-20260730",
+      "name": "CRWV",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 63.25,
+      "positionChange": 0.825,
+      "date": "2026-07-30T19:00:00+08:00",
+      "closeLotId": "crwv-623-add-20260730",
+      "note": "出一半 62.3 的批次"
+    },
+    {
+      "id": "avgo-3756-close-367-20260730",
+      "name": "AVGO",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 375.6,
+      "positionChange": 1.65,
+      "date": "2026-07-30T19:02:00+08:00",
+      "closeLotId": "avgo-367-readd-385-20260730",
+      "note": "出掉 367 的批次"
+    },
+    {
+      "id": "crwv-65-close-623-rest-20260730",
+      "name": "CRWV",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 65,
+      "positionChange": 0.825,
+      "date": "2026-07-30T20:02:00+08:00",
+      "closeLotId": "crwv-623-add-20260730",
+      "note": "出掉 62.3 批次剩下的一半"
+    },
+    {
+      "id": "cifr-189-half-close-1825-20260730",
+      "name": "CIFR",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 18.9,
+      "positionChange": 0.825,
+      "date": "2026-07-30T20:21:00+08:00",
+      "closeLotId": "cifr-1825-add-20260730",
+      "note": "出一半 18.25 的批次"
+    },
+    {
+      "id": "lite-637-close-623-20260730",
+      "name": "LITE",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 637,
+      "positionChange": 3.3,
+      "date": "2026-07-30T20:24:00+08:00",
+      "closeLotId": "lite-623-add-20260728",
+      "note": "出掉 623 的批次；597 的剩余半仓保留为死拿"
     }
   ]
 }
