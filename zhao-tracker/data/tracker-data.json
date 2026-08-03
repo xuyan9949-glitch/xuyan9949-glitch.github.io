@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-31T09:00:10+08:00",
+  "updatedAt": "2026-08-01T02:58:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -2278,6 +2278,175 @@
       "positionChange": 3.3,
       "date": "2026-07-31T09:00:15+08:00",
       "note": "加了三分之一常规仓；检测到大单买入后直线走强"
+    },
+    {
+      "id": "tsm-4175-close-4135-20260731",
+      "name": "TSM",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 417.5,
+      "positionChange": 3.3,
+      "date": "2026-07-31T21:14:00+08:00",
+      "closeLotId": "tsm-4135-buy-20260716",
+      "note": "出掉 413.5 的 TSM 批次"
+    },
+    {
+      "id": "tsll-746-half-close-73-20260731",
+      "name": "TSLL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 7.46,
+      "positionChange": 1.65,
+      "date": "2026-07-31T21:32:00+08:00",
+      "closeLotId": "tsll-73-add-20260731",
+      "note": "出一半 7.3 的 TSLL"
+    },
+    {
+      "id": "googl-3435-close-334-original-rest-20260731",
+      "name": "GOOGL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 343.5,
+      "positionChange": 1.65,
+      "date": "2026-07-31T21:32:10+08:00",
+      "closeLotId": "googl-334-add-20260723",
+      "note": "出掉 334 原始批次剩余的一半；保留后来加回的 334 批次"
+    },
+    {
+      "id": "googl-345-close-3434-20260731",
+      "name": "GOOGL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 345,
+      "positionChange": 1.65,
+      "date": "2026-07-31T21:39:00+08:00",
+      "closeLotId": "googl-3434-add-20260717",
+      "note": "出掉 343.4（原消息简称 344）的谷歌 A 批次"
+    },
+    {
+      "id": "conl-395-add-20260731",
+      "name": "CONL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 3.95,
+      "positionChange": 1.65,
+      "date": "2026-07-31T21:43:00+08:00",
+      "note": "财报后按价差加六分之一常规仓"
+    },
+    {
+      "id": "mu-844-base-add-20260731",
+      "name": "MU",
+      "action": "加仓",
+      "positionType": "底仓",
+      "price": 844,
+      "positionChange": 1.65,
+      "date": "2026-07-31T22:06:00+08:00",
+      "note": "844 附近加六分之一底仓"
+    },
+    {
+      "id": "dram-505-base-add-20260731",
+      "name": "DRAM",
+      "action": "加仓",
+      "positionType": "底仓",
+      "price": 50.5,
+      "positionChange": 1.65,
+      "date": "2026-07-31T22:12:00+08:00",
+      "note": "加六分之一 DRAM 底仓"
+    },
+    {
+      "id": "tsll-692-add-20260731",
+      "name": "TSLL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 6.92,
+      "positionChange": 1.65,
+      "date": "2026-07-31T22:16:00+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "tsm-403-add-20260731",
+      "name": "TSM",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 403,
+      "positionChange": 3.3,
+      "date": "2026-07-31T22:19:00+08:00",
+      "note": "加回 417.5 卖出的 TSM 三分之一常规仓"
+    },
+    {
+      "id": "soxl-118-add-20260731",
+      "name": "SOXL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 118,
+      "positionChange": 1.65,
+      "date": "2026-07-31T22:19:10+08:00",
+      "note": "加六分之一仓，止损设在 110"
+    },
+    {
+      "id": "spcx-1087-add-20260731",
+      "name": "SPCX",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 108.7,
+      "positionChange": 1.65,
+      "date": "2026-07-31T22:28:00+08:00",
+      "note": "加六分之一常规仓"
+    },
+    {
+      "id": "soxl-121-half-close-118-20260731",
+      "name": "SOXL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 121,
+      "positionChange": 0.825,
+      "date": "2026-07-31T22:38:00+08:00",
+      "closeLotId": "soxl-118-add-20260731",
+      "note": "出一半 118 的 SOXL"
+    },
+    {
+      "id": "tsll-721-close-692-20260731",
+      "name": "TSLL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 7.21,
+      "positionChange": 1.65,
+      "date": "2026-07-31T22:49:00+08:00",
+      "closeLotId": "tsll-692-add-20260731",
+      "note": "出掉 6.92 的 TSLL 日内批次"
+    },
+    {
+      "id": "soxl-118-close-rest-20260731",
+      "name": "SOXL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 118,
+      "positionChange": 0.825,
+      "date": "2026-07-31T23:39:00+08:00",
+      "closeLotId": "soxl-118-add-20260731",
+      "note": "出掉 118 的 SOXL 剩余一半"
+    },
+    {
+      "id": "dram-52-close-505-base-20260801",
+      "name": "DRAM",
+      "action": "清仓",
+      "positionType": "底仓",
+      "price": 52,
+      "positionChange": 1.65,
+      "date": "2026-08-01T01:42:00+08:00",
+      "closeLotId": "dram-505-base-add-20260731",
+      "note": "出掉 50.5 的 DRAM 底仓"
+    },
+    {
+      "id": "conl-424-half-close-395-20260801",
+      "name": "CONL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 4.24,
+      "positionChange": 0.825,
+      "date": "2026-08-01T02:58:00+08:00",
+      "closeLotId": "conl-395-add-20260731",
+      "note": "出一半 3.95 的 CONL"
     }
   ]
 }
