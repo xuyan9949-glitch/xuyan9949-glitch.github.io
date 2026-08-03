@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-01T02:58:00+08:00",
+  "updatedAt": "2026-08-03T22:01:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -2447,6 +2447,79 @@
       "date": "2026-08-01T02:58:00+08:00",
       "closeLotId": "conl-395-add-20260731",
       "note": "出一半 3.95 的 CONL"
+    },
+    {
+      "id": "mu-790-add-20260803",
+      "name": "MU",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 790,
+      "positionChange": 1.65,
+      "date": "2026-08-03T21:19:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "dram-489-add-20260803",
+      "name": "DRAM",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 48.9,
+      "positionChange": 3.3,
+      "date": "2026-08-03T21:19:10+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "soxl-1058-add-20260803",
+      "name": "SOXL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 105.8,
+      "positionChange": 1.65,
+      "date": "2026-08-03T21:37:00+08:00",
+      "note": "加六分之一仓，止损设置 98"
+    },
+    {
+      "id": "tsll-76-close-73-rest-20260803",
+      "name": "TSLL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 7.6,
+      "positionChange": 1.65,
+      "date": "2026-08-03T21:37:10+08:00",
+      "closeLotId": "tsll-73-add-20260731",
+      "note": "出掉 7.3 的剩余一半；保留 7.05 的剩余仓位"
+    },
+    {
+      "id": "avgo-375-t-add-20260803",
+      "name": "AVGO",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 375,
+      "positionChange": 1.65,
+      "date": "2026-08-03T21:44:00+08:00",
+      "note": "加六分之一做 T 仓位"
+    },
+    {
+      "id": "soxl-1067-close-1058-20260803",
+      "name": "SOXL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 106.7,
+      "positionChange": 1.65,
+      "date": "2026-08-03T21:59:00+08:00",
+      "closeLotId": "soxl-1058-add-20260803",
+      "note": "出掉 105.8 的 SOXL 批次"
+    },
+    {
+      "id": "googl-3722-close-334-readd-20260803",
+      "name": "GOOGL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 372.2,
+      "positionChange": 1.65,
+      "date": "2026-08-03T22:01:00+08:00",
+      "closeLotId": "googl-334-readd-3416-20260730",
+      "note": "出掉 334 的剩余一半谷歌 A 批次"
     }
   ]
 }
