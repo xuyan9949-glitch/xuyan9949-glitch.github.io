@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-03T22:01:00+08:00",
+  "updatedAt": "2026-08-03T22:59:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -2520,6 +2520,50 @@
       "date": "2026-08-03T22:01:00+08:00",
       "closeLotId": "googl-334-readd-3416-20260730",
       "note": "出掉 334 的剩余一半谷歌 A 批次"
+    },
+    {
+      "id": "mu-814-close-790-20260803",
+      "name": "MU",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 814,
+      "positionChange": 1.65,
+      "date": "2026-08-03T22:31:00+08:00",
+      "closeLotId": "mu-790-add-20260803",
+      "note": "出掉 790 的 MU 批次"
+    },
+    {
+      "id": "spcx-111-close-1087-20260803",
+      "name": "SPCX",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 111,
+      "positionChange": 1.65,
+      "date": "2026-08-03T22:35:00+08:00",
+      "closeLotId": "spcx-1087-add-20260731",
+      "note": "出掉 108.7 的 SPCX 批次"
+    },
+    {
+      "id": "dram-501-half-close-489-20260803",
+      "name": "DRAM",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 50.1,
+      "positionChange": 1.65,
+      "date": "2026-08-03T22:35:10+08:00",
+      "closeLotId": "dram-489-add-20260803",
+      "note": "出一半 48.9 的 DRAM"
+    },
+    {
+      "id": "avgo-388-close-375-t-20260803",
+      "name": "AVGO",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 388,
+      "positionChange": 1.65,
+      "date": "2026-08-03T22:59:00+08:00",
+      "closeLotId": "avgo-375-t-add-20260803",
+      "note": "出掉 375 的日内做 T 批次"
     }
   ]
 }
