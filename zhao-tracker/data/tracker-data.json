@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-03T22:59:00+08:00",
+  "updatedAt": "2026-08-04T22:04:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -12,6 +12,26 @@
       "positionChange": 1.6,
       "date": "2026-06-22T10:30:00+08:00",
       "note": "补充历史记录：半笔仓位"
+    },
+    {
+      "id": "avgo-366-prior-add-20260707",
+      "name": "AVGO",
+      "action": "买入",
+      "positionType": "波段仓",
+      "price": 366,
+      "positionChange": 1.65,
+      "date": "2026-07-07T12:00:00+08:00",
+      "note": "补充历史记录：半笔仓位"
+    },
+    {
+      "id": "avgo-3618-base-add-20260708",
+      "name": "AVGO",
+      "action": "买入",
+      "positionType": "底仓",
+      "price": 361.8,
+      "positionChange": 1.65,
+      "date": "2026-07-08T12:00:00+08:00",
+      "note": "补充历史记录：最低成本半笔底仓"
     },
     {
       "id": "mu-9155-add-20260713",
@@ -2564,6 +2584,93 @@
       "date": "2026-08-03T22:59:00+08:00",
       "closeLotId": "avgo-375-t-add-20260803",
       "note": "出掉 375 的日内做 T 批次"
+    },
+    {
+      "id": "conl-43-close-395-rest-20260804",
+      "name": "CONL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 4.3,
+      "positionChange": 0.825,
+      "date": "2026-08-04T01:30:00+08:00",
+      "closeLotId": "conl-395-add-20260731",
+      "note": "出掉 3.95 的剩余一半"
+    },
+    {
+      "id": "mu-866-close-844-base-20260804",
+      "name": "MU",
+      "action": "清仓",
+      "positionType": "底仓",
+      "price": 866,
+      "positionChange": 1.65,
+      "date": "2026-08-04T19:10:00+08:00",
+      "closeLotId": "mu-844-base-add-20260731",
+      "note": "出掉 844 的 MU 底仓"
+    },
+    {
+      "id": "pl-2325-close-217-rest-20260804",
+      "name": "PL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 23.25,
+      "positionChange": 1.65,
+      "date": "2026-08-04T21:36:00+08:00",
+      "closeLotId": "pl-217-buy-20260717",
+      "note": "转弯后出掉 21.7（原消息简称 21.9）的剩余一半"
+    },
+    {
+      "id": "nok-101-half-close-101-20260804",
+      "name": "NOK",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 10.1,
+      "positionChange": 1.65,
+      "date": "2026-08-04T21:36:10+08:00",
+      "closeLotId": "nok-101-add-20260723",
+      "note": "反弹转弯时出一半 10.1 的 NOK"
+    },
+    {
+      "id": "tsll-79-close-705-rest-20260804",
+      "name": "TSLL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 7.9,
+      "positionChange": 1.65,
+      "date": "2026-08-04T21:36:20+08:00",
+      "closeLotId": "tsll-705-add-20260727",
+      "note": "出掉 7.05（原消息写作 7.06）的剩余批次"
+    },
+    {
+      "id": "avgo-411-close-366-20260804",
+      "name": "AVGO",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 411,
+      "positionChange": 1.65,
+      "date": "2026-08-04T21:44:00+08:00",
+      "closeLotId": "avgo-366-prior-add-20260707",
+      "note": "出掉 366 的 AVGO 半笔，保留 361.8 最低成本半笔"
+    },
+    {
+      "id": "avgo-411-close-362-rest-20260804",
+      "name": "AVGO",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 411,
+      "positionChange": 0.825,
+      "date": "2026-08-04T21:44:10+08:00",
+      "closeLotId": "avgo-362-add-20260717",
+      "note": "出掉 362 的 AVGO 剩余一半，保留 361.8 最低成本半笔"
+    },
+    {
+      "id": "conl-398-add-20260804",
+      "name": "CONL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 3.98,
+      "positionChange": 1.65,
+      "date": "2026-08-04T22:04:00+08:00",
+      "note": "加六分之一常规仓"
     }
   ]
 }
