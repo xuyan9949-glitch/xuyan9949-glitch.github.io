@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-04T22:04:00+08:00",
+  "updatedAt": "2026-08-04T23:57:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -2671,6 +2671,17 @@
       "positionChange": 1.65,
       "date": "2026-08-04T22:04:00+08:00",
       "note": "加六分之一常规仓"
+    },
+    {
+      "id": "conl-429-half-close-398-20260804",
+      "name": "CONL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 4.29,
+      "positionChange": 0.825,
+      "date": "2026-08-04T23:57:00+08:00",
+      "closeLotId": "conl-398-add-20260804",
+      "note": "出一半 3.98 的 CONL，做日内 T"
     }
   ]
 }
