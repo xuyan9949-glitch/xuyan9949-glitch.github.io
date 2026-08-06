@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-06T22:01:00+08:00",
+  "updatedAt": "2026-08-06T22:14:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -2900,6 +2900,17 @@
       "date": "2026-08-06T22:01:00+08:00",
       "closeLotId": "nbis-2065-add-20260806",
       "note": "出掉 206.5 的 NBIS 六分之一仓"
+    },
+    {
+      "id": "iren-3985-close-3815-20260806",
+      "name": "IREN",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 39.85,
+      "positionChange": 1.65,
+      "date": "2026-08-06T22:14:00+08:00",
+      "closeLotId": "iren-3815-add-20260805",
+      "note": "出掉 38.15 的 IREN 六分之一仓"
     }
   ]
 }
