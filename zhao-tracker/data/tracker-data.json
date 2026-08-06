@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-06T21:24:00+08:00",
+  "updatedAt": "2026-08-06T21:33:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -2772,6 +2772,16 @@
       "positionChange": 3.3,
       "date": "2026-08-06T21:24:00+08:00",
       "note": "买入三分之一常规仓（西部数据）"
+    },
+    {
+      "id": "wdc-419-add-20260806",
+      "name": "WDC",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 419,
+      "positionChange": 3.3,
+      "date": "2026-08-06T21:33:00+08:00",
+      "note": "加了三分之一常规仓"
     }
   ]
 }
