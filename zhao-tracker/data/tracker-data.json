@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-06T21:37:10+08:00",
+  "updatedAt": "2026-08-06T21:47:30+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -2813,6 +2813,82 @@
       "positionChange": 1.65,
       "date": "2026-08-06T21:37:10+08:00",
       "note": "加六分之一仓"
+    },
+    {
+      "id": "wdc-4355-close-4355-20260806",
+      "name": "WDC",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 435.5,
+      "positionChange": 3.3,
+      "date": "2026-08-06T21:40:00+08:00",
+      "closeLotId": "wdc-4355-buy-20260806",
+      "note": "出掉 435.5 的西部数据批次，保留 419 批次"
+    },
+    {
+      "id": "nbis-2065-add-20260806",
+      "name": "NBIS",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 206.5,
+      "positionChange": 1.65,
+      "date": "2026-08-06T21:40:10+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "soxl-1325-close-131-20260806",
+      "name": "SOXL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 132.5,
+      "positionChange": 1.65,
+      "date": "2026-08-06T21:47:00+08:00",
+      "closeLotId": "soxl-131-add-20260805",
+      "note": "转弯后出掉 SOXL 两笔之一（131 批次）"
+    },
+    {
+      "id": "soxl-1325-close-1257-20260806",
+      "name": "SOXL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 132.5,
+      "positionChange": 1.65,
+      "date": "2026-08-06T21:47:05+08:00",
+      "closeLotId": "soxl-1257-add-20260806",
+      "note": "转弯后出掉 SOXL 两笔之一（125.7 批次）"
+    },
+    {
+      "id": "wdc-4503-half-close-419-20260806",
+      "name": "WDC",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 450.3,
+      "positionChange": 1.65,
+      "date": "2026-08-06T21:47:10+08:00",
+      "closeLotId": "wdc-419-add-20260806",
+      "note": "出一半 419 的西部数据批次"
+    },
+    {
+      "id": "mu-876-close-854-base-20260806",
+      "name": "MU",
+      "action": "清仓",
+      "positionType": "底仓",
+      "price": 876,
+      "positionChange": 1.65,
+      "date": "2026-08-06T21:47:20+08:00",
+      "closeLotId": "mu-854-base-add-20260806",
+      "note": "出掉 854 的 MU 底仓"
+    },
+    {
+      "id": "dram-5115-close-5035-20260806",
+      "name": "DRAM",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 51.15,
+      "positionChange": 1.65,
+      "date": "2026-08-06T21:47:30+08:00",
+      "closeLotId": "dram-5035-add-20260806",
+      "note": "出掉 50.35 的 DRAM 批次"
     }
   ]
 }
