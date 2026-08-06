@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-04T23:57:00+08:00",
+  "updatedAt": "2026-08-06T21:24:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -2682,6 +2682,96 @@
       "date": "2026-08-04T23:57:00+08:00",
       "closeLotId": "conl-398-add-20260804",
       "note": "出一半 3.98 的 CONL，做日内 T"
+    },
+    {
+      "id": "dram-528-add-20260805",
+      "name": "DRAM",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 52.8,
+      "positionChange": 1.65,
+      "date": "2026-08-05T04:12:00+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "spcx-1075-add-20260805",
+      "name": "SPCX",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 107.5,
+      "positionChange": 1.65,
+      "date": "2026-08-05T04:12:10+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "iren-3815-add-20260805",
+      "name": "IREN",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 38.15,
+      "positionChange": 1.65,
+      "date": "2026-08-05T04:12:20+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "cifr-1871-add-20260805",
+      "name": "CIFR",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 18.71,
+      "positionChange": 1.65,
+      "date": "2026-08-05T04:12:30+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "soxl-131-add-20260805",
+      "name": "SOXL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 131,
+      "positionChange": 1.65,
+      "date": "2026-08-05T04:19:00+08:00",
+      "note": "加六分之一仓，止损设在 116"
+    },
+    {
+      "id": "ionq-4025-add-20260805",
+      "name": "IONQ",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 40.25,
+      "positionChange": 1.65,
+      "date": "2026-08-05T04:44:00+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "mu-854-base-add-20260806",
+      "name": "MU",
+      "action": "加仓",
+      "positionType": "底仓",
+      "price": 854,
+      "positionChange": 1.65,
+      "date": "2026-08-06T19:43:00+08:00",
+      "note": "854 附近加六分之一 MU 底仓"
+    },
+    {
+      "id": "dram-5035-add-20260806",
+      "name": "DRAM",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 50.35,
+      "positionChange": 1.65,
+      "date": "2026-08-06T19:46:00+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "wdc-4355-buy-20260806",
+      "name": "WDC",
+      "action": "买入",
+      "positionType": "波段仓",
+      "price": 435.5,
+      "positionChange": 3.3,
+      "date": "2026-08-06T21:24:00+08:00",
+      "note": "买入三分之一常规仓（西部数据）"
     }
   ]
 }
