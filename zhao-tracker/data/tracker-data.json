@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-06T21:33:10+08:00",
+  "updatedAt": "2026-08-06T21:37:10+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -2791,6 +2791,27 @@
       "price": 828,
       "positionChange": 1.65,
       "date": "2026-08-06T21:33:10+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "mu-852-close-828-20260806",
+      "name": "MU",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 852,
+      "positionChange": 1.65,
+      "date": "2026-08-06T21:37:00+08:00",
+      "closeLotId": "mu-828-add-20260806",
+      "note": "出掉 828 的 MU 批次"
+    },
+    {
+      "id": "soxl-1257-add-20260806",
+      "name": "SOXL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 125.7,
+      "positionChange": 1.65,
+      "date": "2026-08-06T21:37:10+08:00",
       "note": "加六分之一仓"
     }
   ]
