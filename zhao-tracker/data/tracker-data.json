@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-06T22:14:00+08:00",
+  "updatedAt": "2026-08-07T22:29:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -2911,6 +2911,79 @@
       "date": "2026-08-06T22:14:00+08:00",
       "closeLotId": "iren-3815-add-20260805",
       "note": "出掉 38.15 的 IREN 六分之一仓"
+    },
+    {
+      "id": "ionq-417-half-close-4025-20260806",
+      "name": "IONQ",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 41.7,
+      "positionChange": 0.825,
+      "date": "2026-08-06T23:02:00+08:00",
+      "closeLotId": "ionq-4025-add-20260805",
+      "note": "出一半 40.25 的 IONQ"
+    },
+    {
+      "id": "cifr-1945-half-close-1871-20260806",
+      "name": "CIFR",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 19.45,
+      "positionChange": 0.825,
+      "date": "2026-08-06T23:34:00+08:00",
+      "closeLotId": "cifr-1871-add-20260805",
+      "note": "出一半 18.71 的 CIFR"
+    },
+    {
+      "id": "wdc-440-add-20260807",
+      "name": "WDC",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 440,
+      "positionChange": 1.65,
+      "date": "2026-08-07T21:52:00+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "dram-4975-add-20260807",
+      "name": "DRAM",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 49.75,
+      "positionChange": 1.65,
+      "date": "2026-08-07T22:00:00+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "mu-855-base-add-20260807",
+      "name": "MU",
+      "action": "加仓",
+      "positionType": "底仓",
+      "price": 855,
+      "positionChange": 1.65,
+      "date": "2026-08-07T22:20:00+08:00",
+      "note": "加六分之一底仓"
+    },
+    {
+      "id": "iren-377-add-20260807",
+      "name": "IREN",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 37.7,
+      "positionChange": 1.65,
+      "date": "2026-08-07T22:25:00+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "iren-3915-close-377-20260807",
+      "name": "IREN",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 39.15,
+      "positionChange": 1.65,
+      "date": "2026-08-07T22:29:00+08:00",
+      "closeLotId": "iren-377-add-20260807",
+      "note": "出掉 37.7 的 IREN"
     }
   ]
 }
