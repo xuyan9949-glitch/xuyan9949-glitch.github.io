@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-07T22:29:00+08:00",
+  "updatedAt": "2026-08-07T23:50:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -2984,6 +2984,28 @@
       "date": "2026-08-07T22:29:00+08:00",
       "closeLotId": "iren-377-add-20260807",
       "note": "出掉 37.7 的 IREN"
+    },
+    {
+      "id": "mu-876-half-close-855-20260807",
+      "name": "MU",
+      "action": "减仓",
+      "positionType": "底仓",
+      "price": 876,
+      "positionChange": 0.825,
+      "date": "2026-08-07T23:36:00+08:00",
+      "closeLotId": "mu-855-base-add-20260807",
+      "note": "出一半 855 的 MU 底仓"
+    },
+    {
+      "id": "ionq-4345-close-4025-rest-20260807",
+      "name": "IONQ",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 43.45,
+      "positionChange": 0.825,
+      "date": "2026-08-07T23:50:00+08:00",
+      "closeLotId": "ionq-4025-add-20260805",
+      "note": "出掉 40.25 的 IONQ 剩余一半"
     }
   ]
 }
