@@ -917,11 +917,11 @@ function csvEscape(v){ const s=String(v??""); return /[",\n]/.test(s)?`"${s.repl
 function exportCsv() {
   const fields=["date","name","action","positionType","price","positionChange","closeLotId","note"];
   const labels=["操作时间","标的","操作类型","持仓类型","操作价格","仓位变化","对应开仓ID","备注"];
-  download("\ufeff"+[labels,...state.trades.map(t=>fields.map(f=>csvEscape(t[f])))].map(r=>r.join(",")).join("\n"),"text/csv;charset=utf-8","赵哥操作记录.csv");
+  download("\ufeff"+[labels,...state.trades.map(t=>fields.map(f=>csvEscape(t[f])))].map(r=>r.join(",")).join("\n"),"text/csv;charset=utf-8","Lucky Follow 操作记录.csv");
   close("exportDialog"); toast("CSV 已导出");
 }
 function exportJson() {
-  download(JSON.stringify({version:5,exportedAt:new Date().toISOString(),accountCapital:Number(state.accountCapital)||100000,trades:state.trades},null,2),"application/json","赵哥操作记录.json");
+  download(JSON.stringify({version:5,exportedAt:new Date().toISOString(),accountCapital:Number(state.accountCapital)||100000,trades:state.trades},null,2),"application/json","Lucky Follow 操作记录.json");
   close("exportDialog"); toast("JSON 已导出");
 }
 function parseCsv(text) {
