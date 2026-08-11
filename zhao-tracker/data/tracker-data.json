@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-07T23:50:00+08:00",
+  "updatedAt": "2026-08-11T22:16:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -3006,6 +3006,48 @@
       "date": "2026-08-07T23:50:00+08:00",
       "closeLotId": "ionq-4025-add-20260805",
       "note": "出掉 40.25 的 IONQ 剩余一半"
+    },
+    {
+      "id": "dram-512-close-4975-20260811",
+      "name": "DRAM",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 51.2,
+      "positionChange": 1.65,
+      "date": "2026-08-11T21:34:00+08:00",
+      "closeLotId": "dram-4975-add-20260807",
+      "note": "出掉 49.75 的 DRAM 批次"
+    },
+    {
+      "id": "spcx-1355-half-close-1075-20260811",
+      "name": "SPCX",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 135.5,
+      "positionChange": 0.825,
+      "date": "2026-08-11T21:38:00+08:00",
+      "closeLotId": "spcx-1075-add-20260805",
+      "note": "出一半 107.5 的 SPCX"
+    },
+    {
+      "id": "googl-3497-add-20260811",
+      "name": "谷歌A",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 349.7,
+      "positionChange": 1.65,
+      "date": "2026-08-11T21:52:00+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "mu-852-add-20260811",
+      "name": "MU",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 852,
+      "positionChange": 1.65,
+      "date": "2026-08-11T22:16:00+08:00",
+      "note": "加六分之一仓"
     }
   ]
 }
