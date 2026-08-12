@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-11T22:16:00+08:00",
+  "updatedAt": "2026-08-12T21:58:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -3048,6 +3048,191 @@
       "positionChange": 1.65,
       "date": "2026-08-11T22:16:00+08:00",
       "note": "加六分之一仓"
+    },
+    {
+      "id": "googl-34385-add-20260812",
+      "name": "谷歌A",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 343.85,
+      "positionChange": 1.65,
+      "date": "2026-08-12T04:12:00+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "conl-407-add-20260812",
+      "name": "CONL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 4.07,
+      "positionChange": 1.65,
+      "date": "2026-08-12T04:12:10+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "mu-898-close-855-rest-20260812",
+      "name": "MU",
+      "action": "清仓",
+      "positionType": "底仓",
+      "price": 898,
+      "positionChange": 0.825,
+      "date": "2026-08-12T17:14:00+08:00",
+      "closeLotId": "mu-855-base-add-20260807",
+      "note": "出掉 855 剩下的一半 MU"
+    },
+    {
+      "id": "nok-1021-close-101-rest-20260812",
+      "name": "NOK",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 10.21,
+      "positionChange": 1.65,
+      "date": "2026-08-12T17:15:00+08:00",
+      "closeLotId": "nok-101-add-20260723",
+      "note": "出掉 10.1 剩下的一半 NOK"
+    },
+    {
+      "id": "dram-534-half-close-528-20260812",
+      "name": "DRAM",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 53.4,
+      "positionChange": 0.825,
+      "date": "2026-08-12T17:18:00+08:00",
+      "closeLotId": "dram-528-add-20260805",
+      "note": "出一半 52.8 的 DRAM 批次"
+    },
+    {
+      "id": "wdc-4505-close-440-20260812",
+      "name": "WDC",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 450.5,
+      "positionChange": 1.65,
+      "date": "2026-08-12T17:18:10+08:00",
+      "closeLotId": "wdc-440-add-20260807",
+      "note": "出掉 440 的 WDC 批次"
+    },
+    {
+      "id": "cifr-183-close-1871-rest-20260812",
+      "name": "CIFR",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 18.3,
+      "positionChange": 0.825,
+      "date": "2026-08-12T20:31:00+08:00",
+      "closeLotId": "cifr-1871-add-20260805",
+      "note": "出掉 18.71 剩下的一半 CIFR"
+    },
+    {
+      "id": "tsm-4303-close-403-20260812",
+      "name": "TSM",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 430.3,
+      "positionChange": 3.3,
+      "date": "2026-08-12T20:31:10+08:00",
+      "closeLotId": "tsm-403-add-20260731",
+      "note": "出掉 403 的 TSM 批次"
+    },
+    {
+      "id": "conl-421-close-407-20260812",
+      "name": "CONL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 4.21,
+      "positionChange": 1.65,
+      "date": "2026-08-12T20:35:00+08:00",
+      "closeLotId": "conl-407-add-20260812",
+      "note": "出掉 4.07 的 CONL 批次"
+    },
+    {
+      "id": "mu-9026-close-852-20260812",
+      "name": "MU",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 902.6,
+      "positionChange": 1.65,
+      "date": "2026-08-12T20:35:10+08:00",
+      "closeLotId": "mu-852-add-20260811",
+      "note": "出掉 852 的 MU 批次"
+    },
+    {
+      "id": "dram-539-close-528-rest-20260812",
+      "name": "DRAM",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 53.9,
+      "positionChange": 0.825,
+      "date": "2026-08-12T20:35:20+08:00",
+      "closeLotId": "dram-528-add-20260805",
+      "note": "出掉 52.8 剩下的一半 DRAM"
+    },
+    {
+      "id": "spcx-136-close-1075-rest-20260812",
+      "name": "SPCX",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 136,
+      "positionChange": 0.825,
+      "date": "2026-08-12T20:39:00+08:00",
+      "closeLotId": "spcx-1075-add-20260805",
+      "note": "出掉 107.5 剩下的一半 SPCX"
+    },
+    {
+      "id": "glw-1673-half-close-1805-20260812",
+      "name": "GLW",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 167.3,
+      "positionChange": 1.65,
+      "date": "2026-08-12T20:41:00+08:00",
+      "closeLotId": "glw-1805-add-20260715",
+      "note": "出一半 180.5 的 GLW"
+    },
+    {
+      "id": "ibm-2364-close-2178-rest-20260812",
+      "name": "IBM",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 236.4,
+      "positionChange": 1.65,
+      "date": "2026-08-12T20:41:10+08:00",
+      "closeLotId": "ibm-2178-buy-20260714",
+      "note": "出掉 217.8 的 IBM 剩余仓位"
+    },
+    {
+      "id": "avgo-4245-close-3618-20260812",
+      "name": "AVGO",
+      "action": "清仓",
+      "positionType": "底仓",
+      "price": 424.5,
+      "positionChange": 1.65,
+      "date": "2026-08-12T20:41:20+08:00",
+      "closeLotId": "avgo-3618-base-add-20260708",
+      "note": "出掉 361.8 的 AVGO"
+    },
+    {
+      "id": "wdc-467-close-419-rest-20260812",
+      "name": "WDC",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 467,
+      "positionChange": 1.65,
+      "date": "2026-08-12T21:51:00+08:00",
+      "closeLotId": "wdc-419-add-20260806",
+      "note": "出掉 419 剩下的一半 WDC"
+    },
+    {
+      "id": "googl-3436-close-34385-20260812",
+      "name": "谷歌A",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 343.6,
+      "positionChange": 1.65,
+      "date": "2026-08-12T21:58:00+08:00",
+      "closeLotId": "googl-34385-add-20260812",
+      "note": "出掉 343.85 的谷歌 A 批次"
     }
   ]
 }
