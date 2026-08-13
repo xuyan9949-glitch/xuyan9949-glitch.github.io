@@ -3031,7 +3031,7 @@
     },
     {
       "id": "googl-3497-add-20260811",
-      "name": "谷歌A",
+      "name": "GOOGL",
       "action": "加仓",
       "positionType": "波段仓",
       "price": 349.7,
@@ -3051,7 +3051,7 @@
     },
     {
       "id": "googl-34385-add-20260812",
-      "name": "谷歌A",
+      "name": "GOOGL",
       "action": "加仓",
       "positionType": "波段仓",
       "price": 343.85,
@@ -3225,7 +3225,7 @@
     },
     {
       "id": "googl-3436-close-34385-20260812",
-      "name": "谷歌A",
+      "name": "GOOGL",
       "action": "清仓",
       "positionType": "波段仓",
       "price": 343.6,

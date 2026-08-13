@@ -6,6 +6,8 @@ const QUOTE_API_URL = "https://quotes.xxyalpha.cn/quotes";
 const CANDLE_API_URL = "https://quotes.xxyalpha.cn/candles";
 const TRADE_API_URL = "http://127.0.0.1:18765/trades";
 const QUOTE_REFRESH_MS = 30000;
+// Kept only for earlier browser-local records created before the shared ledger
+// standardized the instrument name to its actual market code.
 const QUOTE_SYMBOL_ALIASES = { "谷歌A":"GOOGL" };
 const buyActions = ["买入", "加仓"];
 const sellActions = ["减仓", "卖出", "清仓"];
