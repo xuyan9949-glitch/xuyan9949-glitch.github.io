@@ -6,6 +6,7 @@ const QUOTE_API_URL = "https://quotes.xxyalpha.cn/quotes";
 const CANDLE_API_URL = "https://quotes.xxyalpha.cn/candles";
 const TRADE_API_URL = "http://127.0.0.1:18765/trades";
 const QUOTE_REFRESH_MS = 30000;
+const QUOTE_SYMBOL_ALIASES = { "谷歌A":"GOOGL" };
 const buyActions = ["买入", "加仓"];
 const sellActions = ["减仓", "卖出", "清仓"];
 
@@ -98,7 +99,8 @@ function usd(n) {
   return `${sign}$${Math.abs(Number(n)||0).toLocaleString("en-US",{maximumFractionDigits:2,minimumFractionDigits:2})}`;
 }
 function setText(id,text) { document.getElementById(id).textContent=text; }
-function quoteFor(code) { return state.quotes?.[code] || null; }
+function quoteSymbol(code) { return QUOTE_SYMBOL_ALIASES[code] || code; }
+function quoteFor(code) { return state.quotes?.[quoteSymbol(code)] || null; }
 function currentCostMarkup(holding) {
   const quote = quoteFor(holding.code);
   if (!quote) return `<div class="quote-stack quote-pending"><b>—</b><small>${state.quoteError ? "行情未连接" : "读取中"}</small></div>`;
@@ -127,7 +129,8 @@ async function refreshQuotes() {
   if (!holdings.length) return;
   const status = document.getElementById("quoteStatus");
   try {
-    const symbols = holdings.map(h=>h.code).join(",");
+    const symbols = [...new Set(holdings.map(h=>quoteSymbol(h.code)).filter(code=>/^[A-Z0-9.-]{1,20}$/.test(code)))].join(",");
+    if (!symbols) throw new Error("没有可查询的股票代码");
     const response = await fetch(`${QUOTE_API_URL}?symbols=${encodeURIComponent(symbols)}`, { cache:"no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
@@ -148,7 +151,7 @@ async function refreshQuotes() {
   render();
 }
 async function refreshAccountReturnHistory() {
-  const symbols = [...new Set(state.trades.map(trade=>trade.code).filter(Boolean))];
+  const symbols = [...new Set(state.trades.map(trade=>quoteSymbol(trade.code)).filter(code=>/^[A-Z0-9.-]{1,20}$/.test(code)))];
   if (!symbols.length) return;
   try {
     const response = await fetch(`${CANDLE_API_URL}?symbols=${encodeURIComponent(symbols.join(","))}&days=90`, { cache:"no-store" });
