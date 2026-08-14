@@ -3233,6 +3233,48 @@
       "date": "2026-08-12T21:58:00+08:00",
       "closeLotId": "googl-34385-add-20260812",
       "note": "出掉 343.85 的谷歌 A 批次"
+    },
+    {
+      "id": "googl-3458-add-20260813",
+      "name": "GOOGL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 345.8,
+      "positionChange": 1.65,
+      "date": "2026-08-13T22:05:00+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "tsll-831-close-878-20260813",
+      "name": "TSLL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 8.31,
+      "positionChange": 3.3,
+      "date": "2026-08-13T22:13:00+08:00",
+      "closeLotId": "tsll-878-add-20260723",
+      "note": "出掉三分之一 8.78 的 TSLL"
+    },
+    {
+      "id": "aapu-3785-add-20260813",
+      "name": "AAPU",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 37.85,
+      "positionChange": 1.65,
+      "date": "2026-08-13T22:19:00+08:00",
+      "note": "加六分之一仓"
+    },
+    {
+      "id": "tsll-86-close-878-20260814",
+      "name": "TSLL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 8.6,
+      "positionChange": 3.3,
+      "date": "2026-08-14T02:33:00+08:00",
+      "closeLotId": "tsll-878-add-20260723",
+      "note": "出掉三分之一 8.78 的 TSLL"
     }
   ]
 }
