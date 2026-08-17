@@ -29,8 +29,17 @@
       </div>
     </header>
 
+    <nav class="section-nav" aria-label="看板导航">
+      <a class="section-nav-link active" href="#overview">概览</a>
+      <a class="section-nav-link" href="#holdings">当前持仓</a>
+      <a class="section-nav-link" href="#trends">趋势图</a>
+      <a class="section-nav-link" href="#review">复盘分析</a>
+      <a class="section-nav-link" href="#closed">已清仓</a>
+      <a class="section-nav-link" href="#history">操作流水</a>
+    </nav>
+
     <main>
-      <section class="summary-grid" aria-label="仓位概览">
+      <section id="overview" class="summary-grid section-anchor" aria-label="仓位概览">
         <article class="summary-card featured capacity-overview">
           <div class="card-label">仓位与可用资金 <span class="live-dot"></span><button id="capitalBtn" class="mini-btn">修改本金</button></div>
           <div class="capacity-metrics">
@@ -69,7 +78,7 @@
         </article>
       </section>
 
-      <section class="workspace-grid">
+      <section id="holdings" class="workspace-grid section-anchor">
         <article class="panel holdings-panel">
           <div class="panel-header">
             <div><h2>当前持仓</h2><p>现价来自长桥；盈亏金额按看板仓位与账户本金估算</p></div>
@@ -101,7 +110,7 @@
           </div>
         </article>
 
-        <div class="trend-stack">
+        <div id="trends" class="trend-stack section-anchor">
           <article class="panel trend-panel">
             <div class="panel-header">
               <div><h2>仓位趋势</h2><p>总仓位与底仓变化</p></div>
@@ -128,7 +137,7 @@
         </div>
       </section>
 
-      <section class="panel closed-panel">
+      <section id="closed" class="panel closed-panel section-anchor">
         <div class="panel-header">
           <div><h2>已清仓标的</h2><p>保留历史操盘档案，可随时查看完整复盘</p></div>
           <label class="search-box">⌕ <input id="closedSearchInput" placeholder="搜索已清仓标的"></label>
@@ -137,7 +146,7 @@
         <div id="closedSymbolsEmpty" class="empty-state"><div>暂无已清仓标的</div><p>标的仓位归零后会自动归档到这里。</p></div>
       </section>
 
-      <section class="panel score-panel">
+      <section id="review" class="panel score-panel section-anchor">
         <div class="panel-header">
           <div><h2>批次级做 T 评分</h2><p>按独立开仓批次、兑现速度、当前意愿与组合贡献实时计算</p></div>
           <span class="score-rule">效率 55 · 偏好 25 · 贡献 20</span>
@@ -243,7 +252,7 @@
         </div>
       </section>
 
-      <section class="panel activity-panel">
+      <section id="history" class="panel activity-panel section-anchor">
         <div class="panel-header">
           <div><h2>操作流水</h2><p>完整记录每次仓位变化</p></div>
           <button id="clearBtn" class="text-btn danger">清空全部</button>

@@ -1039,8 +1039,21 @@ function ensureTrendStackLayout() {
   style.textContent=".trend-stack{display:grid!important;gap:14px;align-content:start}.trend-stack .return-panel{margin:0!important}";
   document.head.appendChild(style);
 }
+function setupSectionNavigation() {
+  const links=[...document.querySelectorAll(".section-nav-link")];
+  const sections=links.map(link=>document.querySelector(link.getAttribute("href"))).filter(Boolean);
+  const setActive=id=>links.forEach(link=>link.classList.toggle("active",link.getAttribute("href")==="#"+id));
+  links.forEach(link=>link.addEventListener("click",()=>setActive(link.getAttribute("href").slice(1))));
+  if (!window.IntersectionObserver) return;
+  const observer=new IntersectionObserver(entries=>{
+    const visible=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+    if(visible) setActive(visible.target.id);
+  },{rootMargin:"-135px 0px -58% 0px",threshold:[0,.12,.3]});
+  sections.forEach(section=>observer.observe(section));
+}
 async function init() {
   ensureTrendStackLayout();
+  setupSectionNavigation();
   state = await loadSharedState();
   render();
   refreshQuotes();

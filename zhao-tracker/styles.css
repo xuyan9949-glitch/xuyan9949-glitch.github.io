@@ -17,6 +17,7 @@
 }
 * { box-sizing: border-box; }
 html { color-scheme: light; }
+html { scroll-behavior:smooth; scroll-padding-top:128px; }
 body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; }
 button,input,select,textarea { font: inherit; }
 button { cursor: pointer; }
@@ -28,6 +29,11 @@ h1,h2,p { margin:0; }
 h1 { font-size:17px; letter-spacing:-.2px; }
 .brand p,.panel-header p,.dialog-header p { color:var(--muted); font-size:12px; margin-top:1px; }
 .header-actions { display:flex; align-items:center; gap:9px; }
+.section-nav { position:sticky; z-index:20; top:0; display:flex; align-items:center; gap:6px; min-height:46px; padding:7px 28px; overflow-x:auto; background:color-mix(in srgb,var(--panel) 94%,transparent); border-bottom:1px solid var(--line); backdrop-filter:blur(10px); }
+.section-nav-link { flex:0 0 auto; padding:6px 10px; border-radius:7px; color:var(--muted); font-size:12px; font-weight:700; text-decoration:none; transition:color .18s,background .18s; }
+.section-nav-link:hover { color:var(--text); background:var(--panel-2); }
+.section-nav-link.active { color:var(--blue); background:var(--blue-soft); }
+.section-anchor { scroll-margin-top:128px; }
 .market-status { color:var(--muted); font-size:12px; padding-right:6px; }
 .quote-status { border:0; background:transparent; cursor:pointer; font:inherit; }
 .quote-status::before { content:""; display:inline-block; width:7px; height:7px; margin-right:5px; border-radius:50%; background:#94a3b8; }
@@ -255,6 +261,8 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
 }
 @media (max-width:720px) {
   .topbar { height:auto; padding:14px 16px; align-items:flex-start; gap:12px; flex-direction:column; }
+  .section-nav { min-height:42px; padding:5px 14px; gap:3px; }
+  .section-nav-link { padding:6px 8px; font-size:11px; }
   .brand p,.market-status,#importBtn,#exportBtn { display:none; }
   .header-actions { width:100%; flex-wrap:wrap; justify-content:space-between; }
   .header-actions .btn-primary { flex:1; min-width:150px; }
