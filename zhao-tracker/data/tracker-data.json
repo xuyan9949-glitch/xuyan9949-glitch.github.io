@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-17T22:06:00+08:00",
+  "updatedAt": "2026-08-18T22:00:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -3297,6 +3297,27 @@
       "date": "2026-08-17T22:06:00+08:00",
       "closeLotId": "nok-1154-add-20260715",
       "note": "出一半 11.54（截图记为 11.5）的 NOK"
+    },
+    {
+      "id": "iren-457-base-open-20260626",
+      "name": "IREN",
+      "action": "买入",
+      "positionType": "底仓",
+      "price": 45.7,
+      "positionChange": 0.825,
+      "date": "2026-06-26T12:00:00+08:00",
+      "note": "补充历史记录：6 月 26 日四分之一笔底仓（依据 7 月 22 日持仓清单）"
+    },
+    {
+      "id": "iren-479-close-457-base-20260813",
+      "name": "IREN",
+      "action": "清仓",
+      "positionType": "底仓",
+      "price": 47.9,
+      "positionChange": 0.825,
+      "date": "2026-08-13T21:41:00+08:00",
+      "closeLotId": "iren-457-base-open-20260626",
+      "note": "出掉 45.7 的 IREN 底仓"
     }
   ]
 }
