@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-12T21:58:00+08:00",
+  "updatedAt": "2026-08-17T22:06:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -3275,6 +3275,28 @@
       "date": "2026-08-14T02:33:00+08:00",
       "closeLotId": "tsll-878-add-20260723",
       "note": "出掉三分之一 8.78 的 TSLL"
+    },
+    {
+      "id": "glw-1754-close-1805-rest-20260816",
+      "name": "GLW",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 175.4,
+      "positionChange": 1.65,
+      "date": "2026-08-16T23:10:00+08:00",
+      "closeLotId": "glw-1805-add-20260715",
+      "note": "出掉 180.5 剩下的一半 GLW"
+    },
+    {
+      "id": "nok-11-close-1154-half-20260817",
+      "name": "NOK",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 11,
+      "positionChange": 1.65,
+      "date": "2026-08-17T22:06:00+08:00",
+      "closeLotId": "nok-1154-add-20260715",
+      "note": "出一半 11.54（截图记为 11.5）的 NOK"
     }
   ]
 }
