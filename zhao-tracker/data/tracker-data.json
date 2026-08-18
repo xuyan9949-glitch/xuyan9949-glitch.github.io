@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T22:00:00+08:00",
+  "updatedAt": "2026-08-18T22:04:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -3318,6 +3318,36 @@
       "date": "2026-08-13T21:41:00+08:00",
       "closeLotId": "iren-457-base-open-20260626",
       "note": "出掉 45.7 的 IREN 底仓"
+    },
+    {
+      "id": "googl-3413-add-20260818",
+      "name": "GOOGL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 341.3,
+      "positionChange": 1.65,
+      "date": "2026-08-18T21:35:00+08:00",
+      "note": "加了六分之一常规仓（谷歌 A）"
+    },
+    {
+      "id": "iren-436-add-20260818",
+      "name": "IREN",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 43.6,
+      "positionChange": 1.65,
+      "date": "2026-08-18T21:47:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "conl-399-add-20260818",
+      "name": "CONL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 3.99,
+      "positionChange": 1.65,
+      "date": "2026-08-18T22:04:00+08:00",
+      "note": "加了六分之一常规仓"
     }
   ]
 }
