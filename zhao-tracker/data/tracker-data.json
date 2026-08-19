@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-19T22:05:00+08:00",
+  "updatedAt": "2026-08-20T00:03:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -3491,6 +3491,135 @@
       "positionChange": 1.65,
       "date": "2026-08-19T22:05:00+08:00",
       "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "cohr-292-add-20260819",
+      "name": "COHR",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 292,
+      "positionChange": 1.65,
+      "date": "2026-08-19T22:21:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "aapu-408-close-3785-20260819",
+      "name": "AAPU",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 40.8,
+      "positionChange": 0.825,
+      "date": "2026-08-19T22:21:00+08:00",
+      "closeLotId": "aapu-3785-add-20260813",
+      "note": "出掉 37.85 剩下的一半 AAPU"
+    },
+    {
+      "id": "cbrs-205-add-20260819",
+      "name": "CBRS",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 205,
+      "positionChange": 1.65,
+      "date": "2026-08-19T22:31:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "wdc-470-add-20260819",
+      "name": "WDC",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 470,
+      "positionChange": 1.65,
+      "date": "2026-08-19T22:33:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "soxl-1227-half-close-1204-20260819",
+      "name": "SOXL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 122.7,
+      "positionChange": 0.825,
+      "date": "2026-08-19T22:38:00+08:00",
+      "closeLotId": "soxl-1204-add-20260819",
+      "note": "出一半 120.4 的 SOXL"
+    },
+    {
+      "id": "conl-455-half-close-20260819",
+      "name": "CONL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 4.55,
+      "positionChange": 0.825,
+      "date": "2026-08-19T22:49:00+08:00",
+      "closeLotId": "conl-455-add-20260731",
+      "note": "出一半之前 4.55 的 CONL"
+    },
+    {
+      "id": "conl-470-close-455-20260819",
+      "name": "CONL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 4.7,
+      "positionChange": 0.825,
+      "date": "2026-08-19T23:04:00+08:00",
+      "closeLotId": "conl-455-add-20260731",
+      "note": "出掉 4.55 剩下的一半 CONL"
+    },
+    {
+      "id": "cifr-1565-half-close-151-20260819",
+      "name": "CIFR",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 15.65,
+      "positionChange": 0.825,
+      "date": "2026-08-19T23:11:00+08:00",
+      "closeLotId": "cifr-151-add-20260819",
+      "note": "出一半 15.1 的 CIFR"
+    },
+    {
+      "id": "iren-422-half-close-418-20260819",
+      "name": "IREN",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 42.2,
+      "positionChange": 0.825,
+      "date": "2026-08-19T23:28:00+08:00",
+      "closeLotId": "iren-418-add-20260819",
+      "note": "出一半 41.8 的 IREN"
+    },
+    {
+      "id": "crwv-9422-half-close-937-20260820",
+      "name": "CRWV",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 94.22,
+      "positionChange": 0.825,
+      "date": "2026-08-20T00:03:00+08:00",
+      "closeLotId": "crwv-937-add-20260819",
+      "note": "出一半 93.7 的 CRWV"
+    },
+    {
+      "id": "cifr-161-half-close-1583-20260820",
+      "name": "CIFR",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 16.1,
+      "positionChange": 0.825,
+      "date": "2026-08-20T00:03:00+08:00",
+      "closeLotId": "cifr-1583-add-20260819",
+      "note": "出一半 15.83 的 CIFR"
+    },
+    {
+      "id": "iren-431-close-418-rest-20260820",
+      "name": "IREN",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 43.1,
+      "positionChange": 0.825,
+      "date": "2026-08-20T00:03:00+08:00",
+      "closeLotId": "iren-418-add-20260819",
+      "note": "出掉 41.8 剩下的一半 IREN"
     }
   ]
 }
