@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T22:04:00+08:00",
+  "updatedAt": "2026-08-19T22:05:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -3347,6 +3347,149 @@
       "price": 3.99,
       "positionChange": 1.65,
       "date": "2026-08-18T22:04:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "conl-415-half-close-399-20260818",
+      "name": "CONL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 4.15,
+      "positionChange": 0.825,
+      "date": "2026-08-18T22:29:00+08:00",
+      "closeLotId": "conl-399-add-20260818",
+      "note": "出一半 3.99 的 CONL"
+    },
+    {
+      "id": "aapu-3945-half-close-3785-20260818",
+      "name": "AAPU",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 39.45,
+      "positionChange": 0.825,
+      "date": "2026-08-18T22:43:00+08:00",
+      "closeLotId": "aapu-3785-add-20260813",
+      "note": "出一半 37.85 的 AAPU"
+    },
+    {
+      "id": "crwv-962-add-20260819",
+      "name": "CRWV",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 96.2,
+      "positionChange": 1.65,
+      "date": "2026-08-19T00:52:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "cifr-1583-add-20260819",
+      "name": "CIFR",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 15.83,
+      "positionChange": 1.65,
+      "date": "2026-08-19T03:20:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "fbl-186-add-20260819",
+      "name": "FBL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 18.6,
+      "positionChange": 1.65,
+      "date": "2026-08-19T03:30:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "iren-418-add-20260819",
+      "name": "IREN",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 41.8,
+      "positionChange": 1.65,
+      "date": "2026-08-19T03:46:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "crwv-937-add-20260819",
+      "name": "CRWV",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 93.7,
+      "positionChange": 1.65,
+      "date": "2026-08-19T03:51:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "vst-1398-add-20260819",
+      "name": "VST",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 139.8,
+      "positionChange": 1.65,
+      "date": "2026-08-19T03:57:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "cbrs-2182-add-20260819",
+      "name": "CBRS",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 218.2,
+      "positionChange": 1.65,
+      "date": "2026-08-19T03:28:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "lite-846-add-20260819",
+      "name": "LITE",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 846,
+      "positionChange": 1.65,
+      "date": "2026-08-19T21:43:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "conl-420-close-399-20260819",
+      "name": "CONL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 4.2,
+      "positionChange": 0.825,
+      "date": "2026-08-19T21:48:00+08:00",
+      "closeLotId": "conl-399-add-20260818",
+      "note": "出昨天剩下的一半 3.99 的 CONL"
+    },
+    {
+      "id": "dram-55-add-20260819",
+      "name": "DRAM",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 55,
+      "positionChange": 1.65,
+      "date": "2026-08-19T21:54:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "soxl-1204-add-20260819",
+      "name": "SOXL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 120.4,
+      "positionChange": 1.65,
+      "date": "2026-08-19T21:56:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "cifr-151-add-20260819",
+      "name": "CIFR",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 15.1,
+      "positionChange": 1.65,
+      "date": "2026-08-19T22:05:00+08:00",
       "note": "加了六分之一常规仓"
     }
   ]
