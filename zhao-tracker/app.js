@@ -240,6 +240,13 @@ function getHoldings(trades=state.trades) {
     h.costValue += (Number(lot.price) || 0) * (Number(lot.remainingPosition) || 0);
     if (new Date(lot.date) > new Date(h.lastTrade.date)) h.lastTrade = lot;
   }
+  // A remaining lot is not necessarily the most recent operation. For example,
+  // a partial exit may close another LITE lot while an earlier LITE lot remains.
+  // Use the complete symbol history for the UI's “最近操作” field.
+  for (const trade of trades) {
+    const holding = map[trade.code];
+    if (holding && new Date(trade.date) > new Date(holding.lastTrade.date)) holding.lastTrade = trade;
+  }
   return Object.values(map).map(h=>({ ...h, cost:h.position ? h.costValue / h.position : 0 }));
 }
 
