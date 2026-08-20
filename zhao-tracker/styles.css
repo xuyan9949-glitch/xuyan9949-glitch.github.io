@@ -189,6 +189,12 @@ tr:hover .row-actions { opacity:1; }
 .insight-card strong { display:block; font-size:20px; letter-spacing:-.4px; }
 .insight-card small { color:var(--muted); font-size:11px; }
 .analytics-wrap { min-height:0; }
+.analytics-sortable { padding:0; user-select:none; }
+.analytics-sort-button { display:flex; align-items:center; gap:4px; width:100%; min-height:38px; padding:10px 13px; border:0; background:transparent; color:inherit; font:inherit; font-weight:inherit; text-align:left; white-space:nowrap; cursor:pointer; }
+.analytics-sort-button:hover { color:var(--blue); background:var(--blue-soft); }
+.analytics-sort-button:focus-visible { outline:2px solid var(--blue); outline-offset:-2px; }
+.sort-indicator { color:var(--muted); font-size:10px; line-height:1; }
+.analytics-sortable[aria-sort]:not([aria-sort="none"]) .sort-indicator { color:var(--blue); }
 .analysis-tags { display:flex; flex-wrap:wrap; gap:5px; max-width:190px; }
 .analysis-tag { display:inline-flex; padding:2px 7px; border-radius:999px; background:var(--blue-soft); color:var(--blue); font-size:11px; font-weight:700; }
 .activity-panel { min-height:210px; }

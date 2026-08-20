@@ -30,6 +30,8 @@ let returnRangeDays = 30;
 let analysisDays = 30;
 let sortKey = "position";
 let sortDirection = -1;
+let analyticsSortKey = "tradeCount";
+let analyticsSortDirection = -1;
 
 function daysAgo(days, hour) {
   const d = new Date();
@@ -647,6 +649,47 @@ function statTags(s) {
   return tags;
 }
 
+function analyticsSortValue(stat, key) {
+  if (key === "symbol") return stat.symbol;
+  if (key === "tradeCount") return stat.tradeCount;
+  if (key === "grossBuyPosition") return stat.grossBuyPosition;
+  if (key === "currentPosition") return stat.currentPosition;
+  if (key === "realizedReturn") return stat.realizedReturn;
+  if (key === "avgHoldDays") return stat.avgHoldDays;
+  if (key === "tags") return statTags(stat).join("、");
+  return 0;
+}
+
+function analyticsDefaultSortDirection(key) {
+  return ["symbol", "avgHoldDays", "tags"].includes(key) ? 1 : -1;
+}
+
+function sortAnalyticsStats(stats) {
+  return [...stats].sort((a, b) => {
+    const aValue = analyticsSortValue(a, analyticsSortKey);
+    const bValue = analyticsSortValue(b, analyticsSortKey);
+    if (aValue === null && bValue === null) return a.symbol.localeCompare(b.symbol, "en");
+    if (aValue === null) return 1;
+    if (bValue === null) return -1;
+    const result = typeof aValue === "string"
+      ? aValue.localeCompare(bValue, "zh-CN")
+      : aValue - bValue;
+    return result * analyticsSortDirection || a.symbol.localeCompare(b.symbol, "en");
+  });
+}
+
+function updateAnalyticsSortHeaders() {
+  document.querySelectorAll(".analytics-sortable").forEach(th => {
+    const active = th.dataset.analysisSort === analyticsSortKey;
+    const ascending = analyticsSortDirection === 1;
+    th.setAttribute("aria-sort", active ? (ascending ? "ascending" : "descending") : "none");
+    const indicator = th.querySelector(".sort-indicator");
+    if (indicator) indicator.textContent = active ? (ascending ? "↑" : "↓") : "↕";
+    const button = th.querySelector("button");
+    if (button) button.setAttribute("aria-label", `${th.dataset.sortLabel}，${active ? (ascending ? "升序" : "降序") : "点击排序"}`);
+  });
+}
+
 function renderAnalytics(stats, risk) {
   const body = document.getElementById("analyticsBody");
   const capital = Number(state.accountCapital) || 100000;
@@ -661,8 +704,10 @@ function renderAnalytics(stats, risk) {
   setInsight("fastest", fastest, fastest ? `平均 ${fmt(fastest.avgHoldDays,1)} 天 · ${fastest.pairCount} 笔配对` : "暂无已平仓");
   setInsight("slowest", slowest, slowest ? `平均 ${fmt(slowest.avgHoldDays,1)} 天 · ${slowest.pairCount} 笔配对` : "暂无已平仓");
   renderRiskAndRecap({ stats, risk, mostActive, bestReturn, fastest, slowest });
+  const displayStats = sortAnalyticsStats(stats);
+  updateAnalyticsSortHeaders();
 
-  body.innerHTML = stats.map(s=>{
+  body.innerHTML = displayStats.map(s=>{
     const tags = statTags(s).map(t=>`<span class="analysis-tag">${esc(t)}</span>`).join("");
     const holdText = s.avgHoldDays===null ? "未平仓" : `${fmt(s.avgHoldDays,1)} 天`;
     const winText = s.winRate===null ? "—" : `${fmt(s.winRate,0)}% 胜率`;
@@ -1006,6 +1051,15 @@ document.getElementById("statusFilter").onchange=()=>renderHoldings(getHoldings(
 document.getElementById("closedSearchInput").oninput=()=>renderClosedSymbols(getHoldings(),computeLedger());
 document.querySelectorAll(".sortable").forEach(th=>th.onclick=()=>{
   const key=th.dataset.sort; if(sortKey===key)sortDirection*=-1;else{sortKey=key;sortDirection=-1;}renderHoldings(getHoldings());
+});
+document.querySelectorAll(".analytics-sortable").forEach(th=>th.querySelector("button").onclick=()=>{
+  const key = th.dataset.analysisSort;
+  if (analyticsSortKey === key) analyticsSortDirection *= -1;
+  else { analyticsSortKey = key; analyticsSortDirection = analyticsDefaultSortDirection(key); }
+  const holdings = getHoldings();
+  const ledger = computeLedger();
+  const stats = computeSymbolStats(holdings, ledger);
+  renderAnalytics(stats, computeRiskProfile(holdings, stats, ledger));
 });
 document.getElementById("rangeTabs").onclick=e=>{
   if(!e.target.dataset.days)return;

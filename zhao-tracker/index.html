@@ -223,13 +223,13 @@
           <table>
             <thead>
               <tr>
-                <th>标的</th>
-                <th>操作频率</th>
-                <th>累计使用</th>
-                <th>当前占用</th>
-                <th>已平收益</th>
-                <th>平均周期</th>
-                <th>复盘标签</th>
+                <th class="analytics-sortable" data-analysis-sort="symbol" data-sort-label="标的" aria-sort="none"><button type="button" class="analytics-sort-button">标的 <span class="sort-indicator" aria-hidden="true">↕</span></button></th>
+                <th class="analytics-sortable" data-analysis-sort="tradeCount" data-sort-label="操作频率" aria-sort="descending"><button type="button" class="analytics-sort-button">操作频率 <span class="sort-indicator" aria-hidden="true">↓</span></button></th>
+                <th class="analytics-sortable" data-analysis-sort="grossBuyPosition" data-sort-label="累计使用" aria-sort="none"><button type="button" class="analytics-sort-button">累计使用 <span class="sort-indicator" aria-hidden="true">↕</span></button></th>
+                <th class="analytics-sortable" data-analysis-sort="currentPosition" data-sort-label="当前占用" aria-sort="none"><button type="button" class="analytics-sort-button">当前占用 <span class="sort-indicator" aria-hidden="true">↕</span></button></th>
+                <th class="analytics-sortable" data-analysis-sort="realizedReturn" data-sort-label="已平收益" aria-sort="none"><button type="button" class="analytics-sort-button">已平收益 <span class="sort-indicator" aria-hidden="true">↕</span></button></th>
+                <th class="analytics-sortable" data-analysis-sort="avgHoldDays" data-sort-label="平均周期" aria-sort="none"><button type="button" class="analytics-sort-button">平均周期 <span class="sort-indicator" aria-hidden="true">↕</span></button></th>
+                <th class="analytics-sortable" data-analysis-sort="tags" data-sort-label="复盘标签" aria-sort="none"><button type="button" class="analytics-sort-button">复盘标签 <span class="sort-indicator" aria-hidden="true">↕</span></button></th>
               </tr>
             </thead>
             <tbody id="analyticsBody"></tbody>
