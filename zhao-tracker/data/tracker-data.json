@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-20T20:49:00+08:00",
+  "updatedAt": "2026-08-20T21:40:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -3670,6 +3670,50 @@
       "positionChange": 1.65,
       "date": "2026-08-20T20:49:00+08:00",
       "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "soxl-11945-half-close-117-20260820",
+      "name": "SOXL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 119.45,
+      "positionChange": 0.825,
+      "date": "2026-08-20T21:06:00+08:00",
+      "closeLotId": "soxl-117-add-20260820",
+      "note": "出一半 117 的 SOXL"
+    },
+    {
+      "id": "soxl-1229-close-1204-rest-20260820",
+      "name": "SOXL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 122.9,
+      "positionChange": 0.825,
+      "date": "2026-08-20T21:31:00+08:00",
+      "closeLotId": "soxl-1204-add-20260819",
+      "note": "出掉 120.4 剩下的一半 SOXL"
+    },
+    {
+      "id": "dram-571-half-close-55-20260820",
+      "name": "DRAM",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 57.1,
+      "positionChange": 0.825,
+      "date": "2026-08-20T21:37:00+08:00",
+      "closeLotId": "dram-55-add-20260819",
+      "note": "出一半 55 的 DRAM"
+    },
+    {
+      "id": "crwv-93-close-896-20260820",
+      "name": "CRWV",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 93,
+      "positionChange": 0.825,
+      "date": "2026-08-20T21:40:00+08:00",
+      "closeLotId": "crwv-896-rebuy-9422-20260820",
+      "note": "出掉 89.6 回补的 CRWV"
     }
   ]
 }
