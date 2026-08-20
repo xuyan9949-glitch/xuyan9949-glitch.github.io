@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-20T00:03:00+08:00",
+  "updatedAt": "2026-08-20T20:49:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -3620,6 +3620,56 @@
       "date": "2026-08-20T00:03:00+08:00",
       "closeLotId": "iren-418-add-20260819",
       "note": "出掉 41.8 剩下的一半 IREN"
+    },
+    {
+      "id": "soxl-117-add-20260820",
+      "name": "SOXL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 117,
+      "positionChange": 1.65,
+      "date": "2026-08-20T20:24:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "crwv-896-rebuy-9422-20260820",
+      "name": "CRWV",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 89.6,
+      "positionChange": 0.825,
+      "date": "2026-08-20T20:49:00+08:00",
+      "note": "加回 94.22 卖出的那部分"
+    },
+    {
+      "id": "wdc-459-add-20260820",
+      "name": "WDC",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 459,
+      "positionChange": 1.65,
+      "date": "2026-08-20T20:49:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "spcx-136-add-20260820",
+      "name": "SPCX",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 136,
+      "positionChange": 1.65,
+      "date": "2026-08-20T20:49:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "riot-1965-add-20260820",
+      "name": "RIOT",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 19.65,
+      "positionChange": 1.65,
+      "date": "2026-08-20T20:49:00+08:00",
+      "note": "加了六分之一常规仓"
     }
   ]
 }
