@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-20T21:40:00+08:00",
+  "updatedAt": "2026-08-20T21:56:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -3714,6 +3714,27 @@
       "date": "2026-08-20T21:40:00+08:00",
       "closeLotId": "crwv-896-rebuy-9422-20260820",
       "note": "出掉 89.6 回补的 CRWV"
+    },
+    {
+      "id": "riot-204-half-close-1965-20260820",
+      "name": "RIOT",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 20.4,
+      "positionChange": 0.825,
+      "date": "2026-08-20T21:44:00+08:00",
+      "closeLotId": "riot-1965-add-20260820",
+      "note": "出一半 19.65 的 RIOT；暂时取代 CONL 做转型炒币股，直线转弯注意出一半"
+    },
+    {
+      "id": "cifr-157-add-20260820",
+      "name": "CIFR",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 15.7,
+      "positionChange": 1.65,
+      "date": "2026-08-20T21:56:00+08:00",
+      "note": "加了六分之一常规仓"
     }
   ]
 }
