@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-20T21:56:00+08:00",
+  "updatedAt": "2026-08-20T22:27:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -3735,6 +3735,70 @@
       "positionChange": 1.65,
       "date": "2026-08-20T21:56:00+08:00",
       "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "lite-829-add-20260820",
+      "name": "LITE",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 829,
+      "positionChange": 1.65,
+      "date": "2026-08-20T04:01:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "lite-844-half-close-829-20260820",
+      "name": "LITE",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 844,
+      "positionChange": 0.825,
+      "date": "2026-08-20T22:11:00+08:00",
+      "closeLotId": "lite-829-add-20260820",
+      "note": "出一半 829 的 LITE"
+    },
+    {
+      "id": "cbrs-2175-close-2182-reconstructed-20260820",
+      "name": "CBRS",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 217.5,
+      "positionChange": 1.65,
+      "date": "2026-08-20T22:13:00+08:00",
+      "closeLotId": "cbrs-2182-add-20260819",
+      "note": "出掉 218.2 的 CBRS 批次；根据 205.5 加回操作补齐，原始时刻未提供"
+    },
+    {
+      "id": "cbrs-2055-rebuy-2175-20260820",
+      "name": "CBRS",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 205.5,
+      "positionChange": 1.65,
+      "date": "2026-08-20T22:14:00+08:00",
+      "note": "加回 217.5 卖出的那部分"
+    },
+    {
+      "id": "lite-860-close-846-20260820",
+      "name": "LITE",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 860,
+      "positionChange": 1.65,
+      "date": "2026-08-20T22:27:00+08:00",
+      "closeLotId": "lite-846-add-20260819",
+      "note": "出掉 846 的 LITE"
+    },
+    {
+      "id": "wdc-473-close-470-20260820",
+      "name": "WDC",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 473,
+      "positionChange": 1.65,
+      "date": "2026-08-20T22:27:00+08:00",
+      "closeLotId": "wdc-470-add-20260819",
+      "note": "出掉 470 的 WDC，保留 459 批次"
     }
   ]
 }
