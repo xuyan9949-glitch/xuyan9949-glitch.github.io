@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-21T01:04:00+08:00",
+  "updatedAt": "2026-08-21T23:17:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -3810,6 +3810,214 @@
       "date": "2026-08-21T01:04:00+08:00",
       "closeLotId": "cifr-157-add-20260820",
       "note": "出一半 15.7 的 CIFR"
+    },
+    {
+      "id": "cifr-1805-close-1583-20260821",
+      "name": "CIFR",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 18.05,
+      "positionChange": 0.825,
+      "date": "2026-08-21T21:33:00+08:00",
+      "closeLotId": "cifr-1583-add-20260819",
+      "note": "出掉 15.83 的 CIFR，保留 15.1 批次"
+    },
+    {
+      "id": "cifr-1805-close-157-rest-20260821",
+      "name": "CIFR",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 18.05,
+      "positionChange": 0.825,
+      "date": "2026-08-21T21:33:00+08:00",
+      "closeLotId": "cifr-157-add-20260820",
+      "note": "出掉 15.7 剩下的一半 CIFR，保留 15.1 批次"
+    },
+    {
+      "id": "iren-457-half-close-436-20260821",
+      "name": "IREN",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 45.7,
+      "positionChange": 0.825,
+      "date": "2026-08-21T21:33:00+08:00",
+      "closeLotId": "iren-436-add-20260818",
+      "note": "出一半 43.6 的 IREN"
+    },
+    {
+      "id": "cohr-301-half-close-292-20260821",
+      "name": "COHR",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 301,
+      "positionChange": 0.825,
+      "date": "2026-08-21T21:33:00+08:00",
+      "closeLotId": "cohr-292-add-20260819",
+      "note": "出一半 292 的 COHR"
+    },
+    {
+      "id": "aapu-385-add-20260821",
+      "name": "AAPU",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 38.5,
+      "positionChange": 3.3,
+      "date": "2026-08-21T21:37:00+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "spyu-3475-add-20260821",
+      "name": "SPYU",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 34.75,
+      "positionChange": 3.3,
+      "date": "2026-08-21T21:42:00+08:00",
+      "note": "加了三分之一常规仓"
+    },
+    {
+      "id": "soun-708-add-20260821",
+      "name": "SOUN",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 7.08,
+      "positionChange": 1.65,
+      "date": "2026-08-21T21:42:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "riot-22-close-1965-rest-20260821",
+      "name": "RIOT",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 22,
+      "positionChange": 0.825,
+      "date": "2026-08-21T21:42:00+08:00",
+      "closeLotId": "riot-1965-add-20260820",
+      "note": "出掉 19.65 剩下的一半 RIOT"
+    },
+    {
+      "id": "spcx-1315-add-20260821",
+      "name": "SPCX",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 131.5,
+      "positionChange": 1.65,
+      "date": "2026-08-21T21:42:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "lite-916-close-829-rest-20260821",
+      "name": "LITE",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 916,
+      "positionChange": 0.825,
+      "date": "2026-08-21T21:42:00+08:00",
+      "closeLotId": "lite-829-add-20260820",
+      "note": "出掉 829 剩下的一半 LITE"
+    },
+    {
+      "id": "iren-438-rebuy-457-20260821",
+      "name": "IREN",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 43.8,
+      "positionChange": 0.825,
+      "date": "2026-08-21T22:00:00+08:00",
+      "note": "加回 45.7 卖出的那部分"
+    },
+    {
+      "id": "tsll-958-half-close-1035-20260821",
+      "name": "TSLL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 9.58,
+      "positionChange": 1.65,
+      "date": "2026-08-21T22:17:00+08:00",
+      "closeLotId": "tsll-1035-add-20260723",
+      "note": "出一半 10.35 的 TSLL"
+    },
+    {
+      "id": "crwv-876-add-20260821",
+      "name": "CRWV",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 87.6,
+      "positionChange": 1.65,
+      "date": "2026-08-21T22:25:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "ttmi-110-add-20260821",
+      "name": "TTMI",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 110,
+      "positionChange": 1.65,
+      "date": "2026-08-21T22:33:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "cifr-156-add-20260821",
+      "name": "CIFR",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 15.6,
+      "positionChange": 1.65,
+      "date": "2026-08-21T22:47:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "iren-412-add-20260821",
+      "name": "IREN",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 41.2,
+      "positionChange": 1.65,
+      "date": "2026-08-21T22:47:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "riot-20-add-20260821",
+      "name": "RIOT",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 20,
+      "positionChange": 1.65,
+      "date": "2026-08-21T22:50:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "lite-868-add-20260821",
+      "name": "LITE",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 868,
+      "positionChange": 1.65,
+      "date": "2026-08-21T22:53:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "cohr-2845-add-20260821",
+      "name": "COHR",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 284.5,
+      "positionChange": 1.65,
+      "date": "2026-08-21T23:02:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "spcx-1361-close-136-20260821",
+      "name": "SPCX",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 136.1,
+      "positionChange": 1.65,
+      "date": "2026-08-21T23:17:00+08:00",
+      "closeLotId": "spcx-136-add-20260820",
+      "note": "出掉 136 的 SPCX，只保留 131.5 批次"
     }
   ]
 }
