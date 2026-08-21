@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-20T22:27:00+08:00",
+  "updatedAt": "2026-08-21T01:04:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -3799,6 +3799,17 @@
       "date": "2026-08-20T22:27:00+08:00",
       "closeLotId": "wdc-470-add-20260819",
       "note": "出掉 470 的 WDC，保留 459 批次"
+    },
+    {
+      "id": "cifr-1635-half-close-157-20260821",
+      "name": "CIFR",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 16.35,
+      "positionChange": 0.825,
+      "date": "2026-08-21T01:04:00+08:00",
+      "closeLotId": "cifr-157-add-20260820",
+      "note": "出一半 15.7 的 CIFR"
     }
   ]
 }
