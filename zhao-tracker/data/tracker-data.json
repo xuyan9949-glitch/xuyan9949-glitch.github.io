@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-21T23:17:00+08:00",
+  "updatedAt": "2026-08-24T21:54:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4018,6 +4018,78 @@
       "date": "2026-08-21T23:17:00+08:00",
       "closeLotId": "spcx-136-add-20260820",
       "note": "出掉 136 的 SPCX，只保留 131.5 批次"
+    },
+    {
+      "id": "cohr-268-add-20260824",
+      "name": "COHR",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 268,
+      "positionChange": 1.65,
+      "date": "2026-08-24T21:32:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "wdc-4395-add-20260824",
+      "name": "WDC",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 439.5,
+      "positionChange": 1.65,
+      "date": "2026-08-24T21:32:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "lite-8145-add-20260824",
+      "name": "LITE",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 814.5,
+      "positionChange": 1.65,
+      "date": "2026-08-24T21:32:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "aapu-395-half-close-385-20260824",
+      "name": "AAPU",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 39.5,
+      "positionChange": 1.65,
+      "date": "2026-08-24T21:42:00+08:00",
+      "closeLotId": "aapu-385-add-20260821",
+      "note": "出一半 38.5 的 AAPU"
+    },
+    {
+      "id": "googl-3473-close-3458-20260824",
+      "name": "GOOGL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 347.3,
+      "positionChange": 1.65,
+      "date": "2026-08-24T21:44:00+08:00",
+      "closeLotId": "googl-3458-add-20260813",
+      "note": "出掉 345.8 的谷歌 A"
+    },
+    {
+      "id": "dram-535-add-20260824",
+      "name": "DRAM",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 53.5,
+      "positionChange": 1.65,
+      "date": "2026-08-24T21:47:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "nbis-203-add-20260824",
+      "name": "NBIS",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 203,
+      "positionChange": 1.65,
+      "date": "2026-08-24T21:54:00+08:00",
+      "note": "加了六分之一常规仓"
     }
   ]
 }
