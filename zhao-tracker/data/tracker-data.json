@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-24T21:54:00+08:00",
+  "updatedAt": "2026-08-24T23:57:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4090,6 +4090,50 @@
       "positionChange": 1.65,
       "date": "2026-08-24T21:54:00+08:00",
       "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "cohr-2761-half-close-268-20260824",
+      "name": "COHR",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 276.1,
+      "positionChange": 0.825,
+      "date": "2026-08-24T23:51:00+08:00",
+      "closeLotId": "cohr-268-add-20260824",
+      "note": "出一半 268 的 COHR"
+    },
+    {
+      "id": "lite-829-half-close-8145-20260824",
+      "name": "LITE",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 829,
+      "positionChange": 0.825,
+      "date": "2026-08-24T23:51:00+08:00",
+      "closeLotId": "lite-8145-add-20260824",
+      "note": "出一半 814.5 的 LITE"
+    },
+    {
+      "id": "nbis-209-half-close-203-20260824",
+      "name": "NBIS",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 209,
+      "positionChange": 0.825,
+      "date": "2026-08-24T23:57:00+08:00",
+      "closeLotId": "nbis-203-add-20260824",
+      "note": "出一半 203 的 NBIS"
+    },
+    {
+      "id": "fbl-1931-half-close-186-20260824",
+      "name": "FBL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 19.31,
+      "positionChange": 0.825,
+      "date": "2026-08-24T23:57:00+08:00",
+      "closeLotId": "fbl-186-add-20260819",
+      "note": "出一半 18.6 的 FBL"
     }
   ]
 }
