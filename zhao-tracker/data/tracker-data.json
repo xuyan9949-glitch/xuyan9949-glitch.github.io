@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-24T23:57:00+08:00",
+  "updatedAt": "2026-08-25T13:59:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4134,6 +4134,61 @@
       "date": "2026-08-24T23:57:00+08:00",
       "closeLotId": "fbl-186-add-20260819",
       "note": "出一半 18.6 的 FBL"
+    },
+    {
+      "id": "dram-5473-half-close-535-20260825",
+      "name": "DRAM",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 54.73,
+      "positionChange": 0.825,
+      "date": "2026-08-25T00:24:00+08:00",
+      "closeLotId": "dram-535-add-20260824",
+      "note": "出一半 53.5 的 DRAM"
+    },
+    {
+      "id": "wdc-4441-half-close-4395-20260825",
+      "name": "WDC",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 444.1,
+      "positionChange": 0.825,
+      "date": "2026-08-25T13:51:00+08:00",
+      "closeLotId": "wdc-4395-add-20260824",
+      "note": "出一半 439.5 的 WDC"
+    },
+    {
+      "id": "cohr-2817-close-268-rest-20260825",
+      "name": "COHR",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 281.7,
+      "positionChange": 0.825,
+      "date": "2026-08-25T13:51:05+08:00",
+      "closeLotId": "cohr-268-add-20260824",
+      "note": "出掉 268 剩下的一半 COHR"
+    },
+    {
+      "id": "dram-557-close-535-rest-20260825",
+      "name": "DRAM",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 55.7,
+      "positionChange": 0.825,
+      "date": "2026-08-25T13:51:10+08:00",
+      "closeLotId": "dram-535-add-20260824",
+      "note": "出掉 53.5 剩下的一半 DRAM"
+    },
+    {
+      "id": "lite-849-close-8145-rest-20260825",
+      "name": "LITE",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 849,
+      "positionChange": 0.825,
+      "date": "2026-08-25T13:59:00+08:00",
+      "closeLotId": "lite-8145-add-20260824",
+      "note": "出掉 814.5 剩下的一半 LITE"
     }
   ]
 }
