@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-25T13:59:00+08:00",
+  "updatedAt": "2026-08-25T23:38:10+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4189,6 +4189,94 @@
       "date": "2026-08-25T13:59:00+08:00",
       "closeLotId": "lite-8145-add-20260824",
       "note": "出掉 814.5 剩下的一半 LITE"
+    },
+    {
+      "id": "crwv-891-half-close-876-20260825",
+      "name": "CRWV",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 89.1,
+      "positionChange": 0.825,
+      "date": "2026-08-25T21:43:00+08:00",
+      "closeLotId": "crwv-876-add-20260821",
+      "note": "出一半 87.6 的 CRWV"
+    },
+    {
+      "id": "cohr-2915-half-close-2845-20260825",
+      "name": "COHR",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 291.5,
+      "positionChange": 0.825,
+      "date": "2026-08-25T21:49:00+08:00",
+      "closeLotId": "cohr-2845-add-20260821",
+      "note": "出一半 284.5 的 COHR"
+    },
+    {
+      "id": "iren-414-half-close-412-20260825",
+      "name": "IREN",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 41.4,
+      "positionChange": 0.825,
+      "date": "2026-08-25T21:53:00+08:00",
+      "closeLotId": "iren-412-add-20260821",
+      "note": "出一半 41.2 的 IREN"
+    },
+    {
+      "id": "cifr-159-half-close-156-20260825",
+      "name": "CIFR",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 15.9,
+      "positionChange": 0.825,
+      "date": "2026-08-25T22:00:00+08:00",
+      "closeLotId": "cifr-156-add-20260821",
+      "note": "出一半 15.6 的 CIFR"
+    },
+    {
+      "id": "lite-868-half-close-868-20260825",
+      "name": "LITE",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 868,
+      "positionChange": 0.825,
+      "date": "2026-08-25T22:08:00+08:00",
+      "closeLotId": "lite-868-add-20260821",
+      "note": "出一半 868 的 LITE"
+    },
+    {
+      "id": "riot-213-half-close-20-20260825",
+      "name": "RIOT",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 21.3,
+      "positionChange": 0.825,
+      "date": "2026-08-25T23:38:00+08:00",
+      "closeLotId": "riot-20-add-20260821",
+      "note": "出掉 20 剩下的一半 RIOT"
+    },
+    {
+      "id": "iren-4206-close-412-rest-20260825",
+      "name": "IREN",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 42.06,
+      "positionChange": 0.825,
+      "date": "2026-08-25T23:38:05+08:00",
+      "closeLotId": "iren-412-add-20260821",
+      "note": "出掉 41.2 剩下的一半 IREN"
+    },
+    {
+      "id": "cifr-162-close-156-rest-20260825",
+      "name": "CIFR",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 16.2,
+      "positionChange": 0.825,
+      "date": "2026-08-25T23:38:10+08:00",
+      "closeLotId": "cifr-156-add-20260821",
+      "note": "出掉 15.6 剩下的一半 CIFR"
     }
   ]
 }
