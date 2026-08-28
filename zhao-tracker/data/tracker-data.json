@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-25T23:38:10+08:00",
+  "updatedAt": "2026-08-26T22:09:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4277,6 +4277,81 @@
       "date": "2026-08-25T23:38:10+08:00",
       "closeLotId": "cifr-156-add-20260821",
       "note": "出掉 15.6 剩下的一半 CIFR"
+    },
+    {
+      "id": "wdc-465-half-close-459-20260826",
+      "name": "WDC",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 465,
+      "positionChange": 0.825,
+      "date": "2026-08-26T21:32:05+08:00",
+      "closeLotId": "wdc-459-add-20260820",
+      "note": "出一半 459 的 WDC"
+    },
+    {
+      "id": "ttmi-120-half-close-110-20260826",
+      "name": "TTMI",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 120,
+      "positionChange": 0.825,
+      "date": "2026-08-26T21:32:10+08:00",
+      "closeLotId": "ttmi-110-add-20260821",
+      "note": "出一半 110 的 TTMI"
+    },
+    {
+      "id": "lite-902-close-868-rest-20260826",
+      "name": "LITE",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 902,
+      "positionChange": 0.825,
+      "date": "2026-08-26T21:32:15+08:00",
+      "closeLotId": "lite-868-add-20260821",
+      "note": "出掉 868 剩下的一半 LITE"
+    },
+    {
+      "id": "googl-3445-add-20260826",
+      "name": "GOOGL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 344.5,
+      "positionChange": 1.65,
+      "date": "2026-08-26T21:38:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "intc-8675-add-20260826",
+      "name": "INTC",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 86.75,
+      "positionChange": 1.65,
+      "date": "2026-08-26T21:42:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "soun-728-half-close-708-20260826",
+      "name": "SOUN",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 7.28,
+      "positionChange": 0.825,
+      "date": "2026-08-26T21:46:00+08:00",
+      "closeLotId": "soun-708-add-20260821",
+      "note": "出一半 7.08 的 SOUN"
+    },
+    {
+      "id": "ttmi-1234-close-110-rest-20260826",
+      "name": "TTMI",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 123.4,
+      "positionChange": 0.825,
+      "date": "2026-08-26T22:09:00+08:00",
+      "closeLotId": "ttmi-110-add-20260821",
+      "note": "出掉 110 剩下的一半 TTMI"
     }
   ]
 }
