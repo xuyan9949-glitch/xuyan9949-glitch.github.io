@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-26T22:09:00+08:00",
+  "updatedAt": "2026-08-28T21:43:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4352,6 +4352,25 @@
       "date": "2026-08-26T22:09:00+08:00",
       "closeLotId": "ttmi-110-add-20260821",
       "note": "出掉 110 剩下的一半 TTMI"
-    }
+    },
+    {"id":"cohr-2985-close-2845-rest-20260827","name":"COHR","action":"清仓","positionType":"波段仓","price":298.5,"positionChange":0.825,"date":"2026-08-27T05:03:00+08:00","closeLotId":"cohr-2845-add-20260821","note":"出掉 284.5 剩下的一半 COHR"},
+    {"id":"crwv-912-close-876-rest-20260827","name":"CRWV","action":"清仓","positionType":"波段仓","price":91.2,"positionChange":0.825,"date":"2026-08-27T05:17:00+08:00","closeLotId":"crwv-876-add-20260821","note":"出掉 87.6 剩下的一半 CRWV"},
+    {"id":"wdc-478-close-459-rest-20260827","name":"WDC","action":"清仓","positionType":"波段仓","price":478,"positionChange":0.825,"date":"2026-08-27T05:17:05+08:00","closeLotId":"wdc-459-add-20260820","note":"出掉 459 剩下的一半 WDC"},
+    {"id":"soxl-121-close-117-rest-20260827","name":"SOXL","action":"清仓","positionType":"波段仓","price":121,"positionChange":0.825,"date":"2026-08-27T05:17:10+08:00","closeLotId":"soxl-117-add-20260820","note":"出掉 117 剩下的一半 SOXL"},
+    {"id":"spyu-357-half-close-3475-20260827","name":"SPYU","action":"减仓","positionType":"波段仓","price":35.7,"positionChange":1.65,"date":"2026-08-27T05:28:00+08:00","closeLotId":"spyu-3475-add-20260821","note":"出一半 34.75 的 SPYU"},
+    {"id":"nbis-2265-close-203-rest-20260827","name":"NBIS","action":"清仓","positionType":"波段仓","price":226.5,"positionChange":0.825,"date":"2026-08-27T05:28:05+08:00","closeLotId":"nbis-203-add-20260824","note":"出掉 203 剩下的一半 NBIS；英伟达带动盘后上涨约 6%"},
+    {"id":"dram-586-close-55-rest-20260827","name":"DRAM","action":"清仓","positionType":"波段仓","price":58.6,"positionChange":0.825,"date":"2026-08-27T05:38:00+08:00","closeLotId":"dram-55-add-20260819","note":"出掉 55 剩下的一半 DRAM"},
+    {"id":"intc-913-half-close-8675-20260827","name":"INTC","action":"减仓","positionType":"波段仓","price":91.3,"positionChange":0.825,"date":"2026-08-27T21:32:00+08:00","closeLotId":"intc-8675-add-20260826","note":"出一半 86.75 的 INTC"},
+    {"id":"wdc-460-add-20260827","name":"WDC","action":"加仓","positionType":"波段仓","price":460,"positionChange":1.65,"date":"2026-08-27T21:38:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"crwv-887-add-20260827","name":"CRWV","action":"加仓","positionType":"波段仓","price":88.7,"positionChange":1.65,"date":"2026-08-27T21:40:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"soun-723-close-708-rest-20260827","name":"SOUN","action":"清仓","positionType":"波段仓","price":7.23,"positionChange":0.825,"date":"2026-08-27T21:46:00+08:00","closeLotId":"soun-708-add-20260821","note":"出掉 7.08 剩下的一半 SOUN"},
+    {"id":"dram-565-add-586-rebuy-20260827","name":"DRAM","action":"加仓","positionType":"波段仓","price":56.5,"positionChange":0.825,"date":"2026-08-27T21:50:00+08:00","note":"买回 58.6 卖出的那部分"},
+    {"id":"nbis-2175-add-2265-rebuy-20260827","name":"NBIS","action":"加仓","positionType":"波段仓","price":217.5,"positionChange":0.825,"date":"2026-08-27T21:57:00+08:00","note":"加回 226.5 卖出的那批"},
+    {"id":"nbis-2254-half-close-2175-20260827","name":"NBIS","action":"减仓","positionType":"波段仓","price":225.4,"positionChange":0.4125,"date":"2026-08-27T22:05:00+08:00","closeLotId":"nbis-2175-add-2265-rebuy-20260827","note":"出一半 217.5 的 NBIS"},
+    {"id":"intc-928-close-8675-rest-20260827","name":"INTC","action":"清仓","positionType":"波段仓","price":92.8,"positionChange":0.825,"date":"2026-08-27T22:35:00+08:00","closeLotId":"intc-8675-add-20260826","note":"出掉 86.75 剩下的一半 INTC"},
+    {"id":"nbis-218-add-2254-rebuy-20260827","name":"NBIS","action":"加仓","positionType":"波段仓","price":218,"positionChange":0.4125,"date":"2026-08-27T23:23:00+08:00","note":"再次加回 225.4 卖出的那部分"},
+    {"id":"cohr-2822-add-20260828","name":"COHR","action":"加仓","positionType":"波段仓","price":282.2,"positionChange":1.65,"date":"2026-08-28T21:37:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"iren-375-add-20260828","name":"IREN","action":"加仓","positionType":"波段仓","price":37.5,"positionChange":1.65,"date":"2026-08-28T21:40:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"wdc-4715-half-close-460-20260828","name":"WDC","action":"减仓","positionType":"波段仓","price":471.5,"positionChange":0.825,"date":"2026-08-28T21:43:00+08:00","closeLotId":"wdc-460-add-20260827","note":"出一半 460 的 WDC"}
   ]
 }
