@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-29T21:48:00+08:00",
+  "updatedAt": "2026-08-31T22:31:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4386,6 +4386,7 @@
     {"id":"soxl-1117-add-20260829","name":"SOXL","action":"加仓","positionType":"波段仓","price":111.7,"positionChange":1.65,"date":"2026-08-29T00:47:00+08:00","note":"加了六分之一常规仓"},
     {"id":"intc-916-half-close-897-20260829","name":"INTC","action":"减仓","positionType":"波段仓","price":91.6,"positionChange":0.825,"date":"2026-08-29T21:32:00+08:00","closeLotId":"intc-897-add-20260829","note":"出一半 89.7 的 INTC"},
     {"id":"soxl-1148-half-close-1117-20260829","name":"SOXL","action":"减仓","positionType":"波段仓","price":114.8,"positionChange":0.825,"date":"2026-08-29T21:32:05+08:00","closeLotId":"soxl-1117-add-20260829","note":"出一半 111.7 的 SOXL"},
-    {"id":"googl-3404-add-20260829","name":"GOOGL","action":"加仓","positionType":"波段仓","price":340.4,"positionChange":1.65,"date":"2026-08-29T21:48:00+08:00","note":"加了六分之一常规仓"}
+    {"id":"googl-3404-add-20260829","name":"GOOGL","action":"加仓","positionType":"波段仓","price":340.4,"positionChange":1.65,"date":"2026-08-29T21:48:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"spyu-3458-add-20260831","name":"SPYU","action":"加仓","positionType":"波段仓","price":34.58,"positionChange":1.65,"date":"2026-08-31T22:31:00+08:00","note":"加了六分之一常规仓"}
   ]
 }
