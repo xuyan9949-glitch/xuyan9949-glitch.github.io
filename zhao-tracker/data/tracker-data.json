@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-28T21:43:00+08:00",
+  "updatedAt": "2026-08-28T22:20:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4371,6 +4371,9 @@
     {"id":"nbis-218-add-2254-rebuy-20260827","name":"NBIS","action":"加仓","positionType":"波段仓","price":218,"positionChange":0.4125,"date":"2026-08-27T23:23:00+08:00","note":"再次加回 225.4 卖出的那部分"},
     {"id":"cohr-2822-add-20260828","name":"COHR","action":"加仓","positionType":"波段仓","price":282.2,"positionChange":1.65,"date":"2026-08-28T21:37:00+08:00","note":"加了六分之一常规仓"},
     {"id":"iren-375-add-20260828","name":"IREN","action":"加仓","positionType":"波段仓","price":37.5,"positionChange":1.65,"date":"2026-08-28T21:40:00+08:00","note":"加了六分之一常规仓"},
-    {"id":"wdc-4715-half-close-460-20260828","name":"WDC","action":"减仓","positionType":"波段仓","price":471.5,"positionChange":0.825,"date":"2026-08-28T21:43:00+08:00","closeLotId":"wdc-460-add-20260827","note":"出一半 460 的 WDC"}
+    {"id":"wdc-4715-half-close-460-20260828","name":"WDC","action":"减仓","positionType":"波段仓","price":471.5,"positionChange":0.825,"date":"2026-08-28T21:43:00+08:00","closeLotId":"wdc-460-add-20260827","note":"出一半 460 的 WDC"},
+    {"id":"cifr-1598-add-20260828","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.98,"positionChange":1.65,"date":"2026-08-28T22:05:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"riot-195-add-20260828","name":"RIOT","action":"加仓","positionType":"波段仓","price":19.5,"positionChange":1.65,"date":"2026-08-28T22:09:00+08:00","note":"买回六分之一常规仓"},
+    {"id":"nbis-2087-add-20260828","name":"NBIS","action":"加仓","positionType":"波段仓","price":208.7,"positionChange":1.65,"date":"2026-08-28T22:20:00+08:00","note":"加了六分之一常规仓"}
   ]
 }
