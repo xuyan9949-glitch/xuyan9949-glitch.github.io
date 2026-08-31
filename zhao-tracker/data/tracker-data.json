@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-28T22:20:00+08:00",
+  "updatedAt": "2026-08-29T00:47:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4374,6 +4374,15 @@
     {"id":"wdc-4715-half-close-460-20260828","name":"WDC","action":"减仓","positionType":"波段仓","price":471.5,"positionChange":0.825,"date":"2026-08-28T21:43:00+08:00","closeLotId":"wdc-460-add-20260827","note":"出一半 460 的 WDC"},
     {"id":"cifr-1598-add-20260828","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.98,"positionChange":1.65,"date":"2026-08-28T22:05:00+08:00","note":"加了六分之一常规仓"},
     {"id":"riot-195-add-20260828","name":"RIOT","action":"加仓","positionType":"波段仓","price":19.5,"positionChange":1.65,"date":"2026-08-28T22:09:00+08:00","note":"买回六分之一常规仓"},
-    {"id":"nbis-2087-add-20260828","name":"NBIS","action":"加仓","positionType":"波段仓","price":208.7,"positionChange":1.65,"date":"2026-08-28T22:20:00+08:00","note":"加了六分之一常规仓"}
+    {"id":"nbis-2087-add-20260828","name":"NBIS","action":"加仓","positionType":"波段仓","price":208.7,"positionChange":1.65,"date":"2026-08-28T22:20:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"spyu-365-close-3475-rest-20260828","name":"SPYU","action":"清仓","positionType":"波段仓","price":36.5,"positionChange":1.65,"date":"2026-08-28T23:06:00+08:00","closeLotId":"spyu-3475-add-20260821","note":"出掉 34.75 剩下的一半 SPYU；指数低位可分批配置指数仓"},
+    {"id":"aapu-4173-close-385-rest-20260828","name":"AAPU","action":"清仓","positionType":"波段仓","price":41.73,"positionChange":1.65,"date":"2026-08-28T23:06:05+08:00","closeLotId":"aapu-385-add-20260821","note":"出掉 38.5 剩下一半 AAPU"},
+    {"id":"googl-349-close-3445-20260828","name":"GOOGL","action":"清仓","positionType":"波段仓","price":349,"positionChange":1.65,"date":"2026-08-28T23:06:10+08:00","closeLotId":"googl-3445-add-20260826","note":"出掉 344.5 的 GOOGL"},
+    {"id":"intc-897-add-20260829","name":"INTC","action":"加仓","positionType":"波段仓","price":89.7,"positionChange":1.65,"date":"2026-08-29T00:07:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"cifr-1535-add-20260829","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.35,"positionChange":1.65,"date":"2026-08-29T00:07:05+08:00","note":"加了六分之一常规仓"},
+    {"id":"crwv-837-add-20260829","name":"CRWV","action":"加仓","positionType":"波段仓","price":83.7,"positionChange":1.65,"date":"2026-08-29T00:07:10+08:00","note":"加了六分之一常规仓"},
+    {"id":"wdc-460-readd-4715-20260829","name":"WDC","action":"加仓","positionType":"波段仓","price":460,"positionChange":0.825,"date":"2026-08-29T00:07:15+08:00","note":"加回 471.5 卖出的那部分"},
+    {"id":"riot-1915-add-20260829","name":"RIOT","action":"加仓","positionType":"波段仓","price":19.15,"positionChange":1.65,"date":"2026-08-29T00:07:20+08:00","note":"加了六分之一常规仓"},
+    {"id":"soxl-1117-add-20260829","name":"SOXL","action":"加仓","positionType":"波段仓","price":111.7,"positionChange":1.65,"date":"2026-08-29T00:47:00+08:00","note":"加了六分之一常规仓"}
   ]
 }
