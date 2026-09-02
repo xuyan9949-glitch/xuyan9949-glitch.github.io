@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-02T02:51:00+08:00",
+  "updatedAt": "2026-09-02T22:29:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4405,6 +4405,17 @@
     {"id":"nbis-2027-half-close-199-20260902","name":"NBIS","action":"减仓","positionType":"波段仓","price":202.7,"positionChange":0.825,"date":"2026-09-02T00:00:00+08:00","closeLotId":"nbis-199-add-20260901","note":"出一半 199 的 NBIS"},
     {"id":"dram-5523-add-20260902","name":"DRAM","action":"加仓","positionType":"波段仓","price":55.23,"positionChange":1.65,"date":"2026-09-02T01:52:00+08:00","note":"加了六分之一常规仓"},
     {"id":"soxl-1029-add-20260902","name":"SOXL","action":"加仓","positionType":"波段仓","price":102.9,"positionChange":1.65,"date":"2026-09-02T02:50:00+08:00","note":"加了六分之一常规仓"},
-    {"id":"cifr-1458-readd-1495-20260902","name":"CIFR","action":"加仓","positionType":"波段仓","price":14.58,"positionChange":0.825,"date":"2026-09-02T02:51:00+08:00","note":"加回 14.95 卖出的那部分"}
+    {"id":"cifr-1458-readd-1495-20260902","name":"CIFR","action":"加仓","positionType":"波段仓","price":14.58,"positionChange":0.825,"date":"2026-09-02T02:51:00+08:00","note":"加回 14.95 卖出的那部分"},
+    {"id":"dram-5633-half-close-5523-20260902","name":"DRAM","action":"减仓","positionType":"波段仓","price":56.33,"positionChange":0.825,"date":"2026-09-02T21:43:00+08:00","closeLotId":"dram-5523-add-20260902","note":"出一半 55.23 的 DRAM"},
+    {"id":"lite-882-half-close-863-20260902","name":"LITE","action":"减仓","positionType":"波段仓","price":882,"positionChange":0.825,"date":"2026-09-02T21:43:05+08:00","closeLotId":"lite-863-add-20260901","note":"出一半 863 的 LITE"},
+    {"id":"tsla-351-add-20260902","name":"TSLA","action":"加仓","positionType":"波段仓","price":351,"positionChange":1.65,"date":"2026-09-02T21:47:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"lite-858-readd-882-20260902","name":"LITE","action":"加仓","positionType":"波段仓","price":858,"positionChange":0.825,"date":"2026-09-02T21:55:00+08:00","note":"加回 882 卖出的那部分"},
+    {"id":"dram-5515-readd-5633-20260902","name":"DRAM","action":"加仓","positionType":"波段仓","price":55.15,"positionChange":0.825,"date":"2026-09-02T21:55:05+08:00","note":"加回 56.33 卖出的那部分"},
+    {"id":"wdc-439-add-20260902","name":"WDC","action":"加仓","positionType":"波段仓","price":439,"positionChange":1.65,"date":"2026-09-02T21:55:10+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-198-readd-2027-20260902","name":"NBIS","action":"加仓","positionType":"波段仓","price":198,"positionChange":0.825,"date":"2026-09-02T22:07:00+08:00","note":"加回 202.7 卖出的那部分"},
+    {"id":"riot-177-add-20260902","name":"RIOT","action":"加仓","positionType":"波段仓","price":17.7,"positionChange":1.65,"date":"2026-09-02T22:07:05+08:00","note":"加了六分之一常规仓"},
+    {"id":"soxl-1061-half-close-1029-20260902","name":"SOXL","action":"减仓","positionType":"波段仓","price":106.1,"positionChange":0.825,"date":"2026-09-02T22:18:00+08:00","closeLotId":"soxl-1029-add-20260902","note":"出一半 102.9 的 SOXL"},
+    {"id":"spyu-346-half-close-3403-20260902","name":"SPYU","action":"减仓","positionType":"波段仓","price":34.6,"positionChange":0.825,"date":"2026-09-02T22:29:00+08:00","closeLotId":"spyu-3403-add-20260901","note":"出一半 34.03 的 SPYU"},
+    {"id":"spyu-346-close-3458-20260902","name":"SPYU","action":"清仓","positionType":"波段仓","price":34.6,"positionChange":1.65,"date":"2026-09-02T22:29:05+08:00","closeLotId":"spyu-3458-add-20260831","note":"出掉 34.58 全部的 SPYU"}
   ]
 }
