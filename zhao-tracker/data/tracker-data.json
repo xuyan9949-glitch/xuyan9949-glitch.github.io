@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-01T22:23:00+08:00",
+  "updatedAt": "2026-09-02T02:51:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4396,6 +4396,15 @@
     {"id":"cifr-1455-add-20260901","name":"CIFR","action":"加仓","positionType":"波段仓","price":14.55,"positionChange":1.65,"date":"2026-09-01T21:45:00+08:00","note":"加了六分之一常规仓"},
     {"id":"cohr-2655-add-20260901","name":"COHR","action":"加仓","positionType":"波段仓","price":265.5,"positionChange":1.65,"date":"2026-09-01T21:49:00+08:00","note":"加了六分之一常规仓"},
     {"id":"lite-863-add-20260901","name":"LITE","action":"加仓","positionType":"波段仓","price":863,"positionChange":1.65,"date":"2026-09-01T21:49:05+08:00","note":"加了六分之一常规仓"},
-    {"id":"soxl-1026-add-20260901","name":"SOXL","action":"加仓","positionType":"波段仓","price":102.6,"positionChange":1.65,"date":"2026-09-01T22:23:00+08:00","note":"加了六分之一常规仓"}
+    {"id":"soxl-1026-add-20260901","name":"SOXL","action":"加仓","positionType":"波段仓","price":102.6,"positionChange":1.65,"date":"2026-09-01T22:23:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"intc-89-half-close-865-20260901","name":"INTC","action":"减仓","positionType":"波段仓","price":89,"positionChange":0.825,"date":"2026-09-01T23:35:00+08:00","closeLotId":"intc-865-add-20260901","note":"出一半 86.5 的 INTC"},
+    {"id":"soxl-10535-half-close-1026-20260901","name":"SOXL","action":"减仓","positionType":"波段仓","price":105.35,"positionChange":0.825,"date":"2026-09-01T23:35:05+08:00","closeLotId":"soxl-1026-add-20260901","note":"出一半 102.6 的 SOXL"},
+    {"id":"cohr-271-half-close-2655-20260901","name":"COHR","action":"减仓","positionType":"波段仓","price":271,"positionChange":0.825,"date":"2026-09-01T23:35:10+08:00","closeLotId":"cohr-2655-add-20260901","note":"出一半 265.5 的 COHR"},
+    {"id":"cifr-1495-half-close-1455-20260901","name":"CIFR","action":"减仓","positionType":"波段仓","price":14.95,"positionChange":0.825,"date":"2026-09-01T23:35:15+08:00","closeLotId":"cifr-1455-add-20260901","note":"出一半 14.55 的 CIFR"},
+    {"id":"soxl-1085-close-1026-rest-20260901","name":"SOXL","action":"清仓","positionType":"波段仓","price":108.5,"positionChange":0.825,"date":"2026-09-01T23:48:00+08:00","closeLotId":"soxl-1026-add-20260901","note":"出掉 102.6 剩下的一半 SOXL"},
+    {"id":"nbis-2027-half-close-199-20260902","name":"NBIS","action":"减仓","positionType":"波段仓","price":202.7,"positionChange":0.825,"date":"2026-09-02T00:00:00+08:00","closeLotId":"nbis-199-add-20260901","note":"出一半 199 的 NBIS"},
+    {"id":"dram-5523-add-20260902","name":"DRAM","action":"加仓","positionType":"波段仓","price":55.23,"positionChange":1.65,"date":"2026-09-02T01:52:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"soxl-1029-add-20260902","name":"SOXL","action":"加仓","positionType":"波段仓","price":102.9,"positionChange":1.65,"date":"2026-09-02T02:50:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"cifr-1458-readd-1495-20260902","name":"CIFR","action":"加仓","positionType":"波段仓","price":14.58,"positionChange":0.825,"date":"2026-09-02T02:51:00+08:00","note":"加回 14.95 卖出的那部分"}
   ]
 }
