@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-03T02:26:00+08:00",
+  "updatedAt": "2026-09-03T23:44:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4423,6 +4423,26 @@
     {"id":"riot-1838-close-177-rest-20260903","name":"RIOT","action":"清仓","positionType":"波段仓","price":18.38,"positionChange":0.825,"date":"2026-09-03T01:51:00+08:00","closeLotId":"riot-177-add-20260902","note":"出掉 17.7 剩下的一半 RIOT"},
     {"id":"cifr-1486-close-1458-20260903","name":"CIFR","action":"清仓","positionType":"波段仓","price":14.86,"positionChange":0.825,"date":"2026-09-03T01:51:05+08:00","closeLotId":"cifr-1458-readd-1495-20260902","note":"出掉 14.58 的半笔 CIFR"},
     {"id":"nbis-2035-close-199-rest-20260903","name":"NBIS","action":"清仓","positionType":"波段仓","price":203.5,"positionChange":0.825,"date":"2026-09-03T02:22:00+08:00","closeLotId":"nbis-199-add-20260901","note":"出掉昨天 199 的剩余部分，保留今天 198 的 NBIS"},
-    {"id":"cifr-1515-close-1455-rest-20260903","name":"CIFR","action":"清仓","positionType":"波段仓","price":15.15,"positionChange":0.825,"date":"2026-09-03T02:26:00+08:00","closeLotId":"cifr-1455-add-20260901","note":"出掉 14.58 剩下的一半 CIFR"}
+    {"id":"cifr-1515-close-1455-rest-20260903","name":"CIFR","action":"清仓","positionType":"波段仓","price":15.15,"positionChange":0.825,"date":"2026-09-03T02:26:00+08:00","closeLotId":"cifr-1455-add-20260901","note":"出掉 14.58 剩下的一半 CIFR"},
+    {"id":"tsla-3673-close-351-20260903","name":"TSLA","action":"清仓","positionType":"波段仓","price":367.3,"positionChange":1.65,"date":"2026-09-03T21:31:00+08:00","closeLotId":"tsla-351-add-20260902","note":"出掉昨天 351 的 TSLA"},
+    {"id":"tsll-102-close-1035-rest-20260903","name":"TSLL","action":"清仓","positionType":"波段仓","price":10.2,"positionChange":1.65,"date":"2026-09-03T21:33:00+08:00","closeLotId":"tsll-1035-add-20260723","note":"出掉 10.35 剩下的一半 TSLL"},
+    {"id":"lite-840-add-20260903","name":"LITE","action":"加仓","positionType":"波段仓","price":840,"positionChange":1.65,"date":"2026-09-03T21:33:05+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-198-readd-2035-20260903","name":"NBIS","action":"加仓","positionType":"波段仓","price":198,"positionChange":0.825,"date":"2026-09-03T21:38:00+08:00","note":"加回 203.5 卖出的那部分；与昨天 198 的批次分开"},
+    {"id":"soxl-100-add-20260903","name":"SOXL","action":"加仓","positionType":"波段仓","price":100,"positionChange":1.65,"date":"2026-09-03T21:44:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"cifr-1562-half-close-1535-20260903","name":"CIFR","action":"减仓","positionType":"波段仓","price":15.62,"positionChange":0.825,"date":"2026-09-03T21:44:05+08:00","closeLotId":"cifr-1535-add-20260829","note":"出一半 15.35 的 CIFR"},
+    {"id":"spcx-1482-half-close-1315-20260903","name":"SPCX","action":"减仓","positionType":"波段仓","price":148.2,"positionChange":0.825,"date":"2026-09-03T21:51:00+08:00","closeLotId":"spcx-1315-add-20260821","note":"出一半 131.5 的 SPCX"},
+    {"id":"nbis-2025-close-198-intraday-20260903","name":"NBIS","action":"清仓","positionType":"波段仓","price":202.5,"positionChange":0.825,"date":"2026-09-03T21:51:05+08:00","closeLotId":"nbis-198-readd-2035-20260903","note":"出掉今天日内 198 的批次；保留昨天 198 的 NBIS"},
+    {"id":"riot-191-half-close-1915-20260903","name":"RIOT","action":"减仓","positionType":"波段仓","price":19.1,"positionChange":0.825,"date":"2026-09-03T21:51:10+08:00","closeLotId":"riot-1915-add-20260829","note":"出一半 19.15 的 RIOT"},
+    {"id":"vst-1475-half-close-1398-20260903","name":"VST","action":"减仓","positionType":"波段仓","price":147.5,"positionChange":0.825,"date":"2026-09-03T21:56:00+08:00","closeLotId":"vst-1398-add-20260819","note":"出一半 139.8 的 VST"},
+    {"id":"cifr-1573-close-1535-rest-20260903","name":"CIFR","action":"清仓","positionType":"波段仓","price":15.73,"positionChange":0.825,"date":"2026-09-03T21:56:05+08:00","closeLotId":"cifr-1535-add-20260829","note":"出掉 15.35 剩下的一半 CIFR"},
+    {"id":"iren-396-close-375-rest-20260903","name":"IREN","action":"清仓","positionType":"波段仓","price":39.6,"positionChange":0.825,"date":"2026-09-03T21:56:10+08:00","closeLotId":"iren-375-add-20260828","note":"出掉 37.5 剩下的一半 IREN"},
+    {"id":"spyu-353-close-3403-rest-20260903","name":"SPYU","action":"清仓","positionType":"波段仓","price":35.3,"positionChange":0.825,"date":"2026-09-03T22:01:00+08:00","closeLotId":"spyu-3403-add-20260901","note":"出掉 34.03 剩下的一半 SPYU"},
+    {"id":"cifr-1604-half-close-1598-20260903","name":"CIFR","action":"减仓","positionType":"波段仓","price":16.04,"positionChange":0.825,"date":"2026-09-03T22:16:00+08:00","closeLotId":"cifr-1598-add-20260828","note":"出一半 15.98 的 CIFR"},
+    {"id":"riot-1958-close-1915-rest-20260903","name":"RIOT","action":"清仓","positionType":"波段仓","price":19.58,"positionChange":0.825,"date":"2026-09-03T22:18:00+08:00","closeLotId":"riot-1915-add-20260829","note":"出掉 19.1 剩下的一半 RIOT"},
+    {"id":"riot-1975-half-close-195-20260903","name":"RIOT","action":"减仓","positionType":"波段仓","price":19.75,"positionChange":0.825,"date":"2026-09-03T22:18:05+08:00","closeLotId":"riot-195-add-20260828","note":"出掉 19.5 的一半 RIOT"},
+    {"id":"cifr-1639-close-1598-rest-20260903","name":"CIFR","action":"清仓","positionType":"波段仓","price":16.39,"positionChange":0.825,"date":"2026-09-03T22:31:00+08:00","closeLotId":"cifr-1598-add-20260828","note":"出掉 15.98 剩下的一半 CIFR"},
+    {"id":"riot-1995-close-195-rest-20260903","name":"RIOT","action":"清仓","positionType":"波段仓","price":19.95,"positionChange":0.825,"date":"2026-09-03T22:31:05+08:00","closeLotId":"riot-195-add-20260828","note":"出掉 19.5 剩下的一半 RIOT"},
+    {"id":"nbis-2095-half-close-2087-20260903","name":"NBIS","action":"减仓","positionType":"波段仓","price":209.5,"positionChange":0.825,"date":"2026-09-03T23:28:00+08:00","closeLotId":"nbis-2087-add-20260828","note":"出一半 208.7 的 NBIS"},
+    {"id":"mrvl-2122-half-close-21145-20260903","name":"MRVL","action":"减仓","positionType":"波段仓","price":212.2,"positionChange":0.825,"date":"2026-09-03T23:44:00+08:00","closeLotId":"mrvl-21145-add-20260901","note":"出一半 211.45 的 MRVL"}
   ]
 }
