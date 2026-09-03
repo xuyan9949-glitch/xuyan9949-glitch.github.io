@@ -833,7 +833,7 @@ function renderChart() {
     ${points.map((p,i)=>`<circle cx="${x(i)}" cy="${y(p.total)}" r="${points.length<15?3:1.5}" fill="var(--blue)"><title>${formatDate(p.date)} 总仓位 ${fmt(p.total)}%</title></circle>`).join("")}
     ${labels.map(i=>`<text text-anchor="${i===0?"start":i===points.length-1?"end":"middle"}" x="${x(i)}" y="${H-5}">${formatDate(points[i].date)}</text>`).join("")}
     <g class="trend-hover-guide" hidden aria-hidden="true"><line x1="0" y1="${pad.t}" x2="0" y2="${H-pad.b}"/><circle class="trend-hover-total" cx="0" cy="0" r="4"/><circle class="trend-hover-base" cx="0" cy="0" r="3"/></g>
-  </svg><div class="trend-tooltip" hidden></div>`;
+  </svg><div class="chart-tooltip-slot" aria-live="polite"><div class="trend-tooltip" hidden></div></div>`;
   const svg=el.querySelector("svg");
   const guide=svg.querySelector(".trend-hover-guide");
   const tooltip=el.querySelector(".trend-tooltip");
@@ -850,9 +850,6 @@ function renderChart() {
     baseDot.setAttribute("cx",pointX); baseDot.setAttribute("cy",y(point.base));
     tooltip.innerHTML=`<b>${formatDate(point.date,true)}</b><span>总仓位 ${fmt(point.total)}%</span><span>底仓 ${fmt(point.base)}%</span>`;
     tooltip.hidden=false;
-    const relativeX=(rect.left-el.getBoundingClientRect().left)+(pointX/W)*rect.width;
-    tooltip.style.left=`${Math.max(8,Math.min(el.clientWidth-tooltip.offsetWidth-8,relativeX))}px`;
-    tooltip.style.top=`${Math.max(4,(y(point.total)/H)*rect.height-tooltip.offsetHeight-8)}px`;
   };
   svg.addEventListener("pointermove",showHover);
   svg.addEventListener("pointerdown",showHover);
@@ -888,7 +885,7 @@ function renderReturnChart() {
     ${points.map((p,i)=>`<circle cx="${x(i)}" cy="${y(p.value)}" r="${p.live?4:points.length<15?3:1.5}" fill="${p.live?"#c57b16":color}"/>`).join("")}
     ${labels.map(i=>`<text text-anchor="${i===0?"start":i===points.length-1?"end":"middle"}" x="${x(i)}" y="${H-5}">${formatDate(points[i].date)}</text>`).join("")}
     <g class="return-hover-guide" hidden aria-hidden="true"><line x1="0" y1="${pad.t}" x2="0" y2="${H-pad.b}"/><circle cx="0" cy="0" r="4"/></g>
-  </svg><div class="trend-tooltip return-tooltip" hidden></div>`;
+  </svg><div class="chart-tooltip-slot" aria-live="polite"><div class="trend-tooltip return-tooltip" hidden></div></div>`;
   const svg=el.querySelector("svg"), guide=svg.querySelector(".return-hover-guide"), tooltip=el.querySelector(".return-tooltip");
   const clearHover=()=>{ guide.hidden=true; tooltip.hidden=true; };
   const showHover=event=>{
@@ -900,9 +897,6 @@ function renderReturnChart() {
     const dot=guide.querySelector("circle"); dot.setAttribute("cx",pointX); dot.setAttribute("cy",y(point.value)); dot.setAttribute("stroke",point.value>=0?"#df4b59":"#15946b");
     tooltip.innerHTML=`<b>${point.live?"实时估算 · ":"收盘快照 · "}${formatDate(point.date,true)}</b><span>账户整体 ${point.value>=0?"+":""}${fmt(point.value,2)}%</span><span>已实现 ${point.realized>=0?"+":""}${fmt(point.realized,2)}% · 未实现 ${point.unrealized>=0?"+":""}${fmt(point.unrealized,2)}%</span>`;
     tooltip.hidden=false;
-    const relativeX=(rect.left-el.getBoundingClientRect().left)+(pointX/W)*rect.width;
-    tooltip.style.left=`${Math.max(8,Math.min(el.clientWidth-tooltip.offsetWidth-8,relativeX))}px`;
-    tooltip.style.top=`${Math.max(4,(y(point.value)/H)*rect.height-tooltip.offsetHeight-8)}px`;
   };
   svg.addEventListener("pointermove",showHover); svg.addEventListener("pointerdown",showHover); svg.addEventListener("pointerleave",clearHover);
 }

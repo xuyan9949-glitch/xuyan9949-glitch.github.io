@@ -138,15 +138,16 @@ tr:hover .row-actions { opacity:1; }
 .return-chart .zero-line { stroke:var(--muted); stroke-width:1; stroke-dasharray:4 4; opacity:.72; }
 .return-hover-guide line { stroke:#94a3b8; stroke-width:1; stroke-dasharray:3 3; }
 .return-hover-guide circle { fill:var(--panel); stroke-width:2; }
-.chart { position:relative; height:240px; padding:10px 12px 12px; }
-.chart svg { width:100%; height:100%; overflow:visible; }
+.chart { position:relative; min-height:270px; padding:10px 12px 12px; }
+.chart svg { display:block; width:100%; height:200px; overflow:visible; }
+.chart-tooltip-slot { display:flex; min-height:52px; padding:8px 6px 0; justify-content:flex-end; align-items:flex-start; }
 .trend-panel .chart svg { cursor:crosshair; touch-action:none; }
 .chart text { fill:var(--muted); font-size:10px; }
 .chart .grid { stroke:var(--line); stroke-width:1; }
 .trend-hover-guide line { stroke:#94a3b8; stroke-width:1; stroke-dasharray:3 3; }
 .trend-hover-total { fill:var(--panel); stroke:var(--blue); stroke-width:2; }
 .trend-hover-base { fill:var(--panel); stroke:#83a9f6; stroke-width:2; }
-.trend-tooltip { position:absolute; z-index:3; display:grid; gap:2px; min-width:118px; padding:8px 9px; border:1px solid var(--line); border-radius:8px; background:var(--panel); color:var(--text); font-size:11px; line-height:1.35; box-shadow:0 6px 18px rgba(16,24,40,.12); pointer-events:none; }
+.trend-tooltip { position:static; display:grid; gap:2px; min-width:118px; padding:8px 9px; border:1px solid var(--line); border-radius:8px; background:var(--panel); color:var(--text); font-size:11px; line-height:1.35; box-shadow:0 6px 18px rgba(16,24,40,.12); pointer-events:none; }
 .trend-tooltip b { font-size:11px; }
 .trend-tooltip span { color:var(--muted); }
 .pairs-panel { margin-bottom:14px; }
