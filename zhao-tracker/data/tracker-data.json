@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-03T00:31:00+08:00",
+  "updatedAt": "2026-09-03T01:51:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4419,6 +4419,8 @@
     {"id":"spyu-346-close-3458-20260902","name":"SPYU","action":"清仓","positionType":"波段仓","price":34.6,"positionChange":1.65,"date":"2026-09-02T22:29:05+08:00","closeLotId":"spyu-3458-add-20260831","note":"出掉 34.58 全部的 SPYU"},
     {"id":"soxl-1079-close-1029-rest-20260902","name":"SOXL","action":"清仓","positionType":"波段仓","price":107.9,"positionChange":0.825,"date":"2026-09-02T22:36:00+08:00","closeLotId":"soxl-1029-add-20260902","note":"出掉 102.9 剩下的一半 SOXL"},
     {"id":"iren-378-half-close-375-20260903","name":"IREN","action":"减仓","positionType":"波段仓","price":37.8,"positionChange":0.825,"date":"2026-09-03T00:29:00+08:00","closeLotId":"iren-375-add-20260828","note":"出一半 37.5 的 IREN"},
-    {"id":"riot-1806-half-close-177-20260903","name":"RIOT","action":"减仓","positionType":"波段仓","price":18.06,"positionChange":0.825,"date":"2026-09-03T00:31:00+08:00","closeLotId":"riot-177-add-20260902","note":"出一半 17.7 的 RIOT"}
+    {"id":"riot-1806-half-close-177-20260903","name":"RIOT","action":"减仓","positionType":"波段仓","price":18.06,"positionChange":0.825,"date":"2026-09-03T00:31:00+08:00","closeLotId":"riot-177-add-20260902","note":"出一半 17.7 的 RIOT"},
+    {"id":"riot-1838-close-177-rest-20260903","name":"RIOT","action":"清仓","positionType":"波段仓","price":18.38,"positionChange":0.825,"date":"2026-09-03T01:51:00+08:00","closeLotId":"riot-177-add-20260902","note":"出掉 17.7 剩下的一半 RIOT"},
+    {"id":"cifr-1486-close-1458-20260903","name":"CIFR","action":"清仓","positionType":"波段仓","price":14.86,"positionChange":0.825,"date":"2026-09-03T01:51:05+08:00","closeLotId":"cifr-1458-readd-1495-20260902","note":"出掉 14.58 的半笔 CIFR"}
   ]
 }
