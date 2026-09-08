@@ -4469,6 +4469,16 @@
     {"id":"cbrs-2042-close-205-rest-20260904","name":"CBRS","action":"清仓","positionType":"波段仓","price":204.2,"positionChange":0.825,"date":"2026-09-04T21:59:00+08:00","closeLotId":"cbrs-205-add-20260819","note":"出掉 205 剩下一半 CBRS"},
     {"id":"cifr-179-close-151-base-rest-20260904","name":"CIFR","action":"清仓","positionType":"底仓","price":17.9,"positionChange":0.825,"date":"2026-09-04T21:59:05+08:00","closeLotId":"cifr-151-add-20260819","note":"出掉 15.1 CIFR 底仓剩余部分"},
     {"id":"riot-214-close-196-prior-base-20260904","name":"RIOT","action":"清仓","positionType":"底仓","price":21.4,"positionChange":0.825,"date":"2026-09-04T21:59:10+08:00","closeLotId":"riot-196-prior-base","note":"出掉 19.6 RIOT 底仓；对应历史开仓批次未包含在现有账本"},
-    {"id":"iren-428-close-436-rest-20260904","name":"IREN","action":"清仓","positionType":"波段仓","price":42.8,"positionChange":0.825,"date":"2026-09-04T22:03:00+08:00","closeLotId":"iren-436-add-20260818","note":"出掉 43.6 的 IREN 剩余部分"}
+    {"id":"iren-428-close-436-rest-20260904","name":"IREN","action":"清仓","positionType":"波段仓","price":42.8,"positionChange":0.825,"date":"2026-09-04T22:03:00+08:00","closeLotId":"iren-436-add-20260818","note":"出掉 43.6 的 IREN 剩余部分"},
+    {"id":"crwv-915-close-887-rest-20260908","name":"CRWV","action":"清仓","positionType":"波段仓","price":91.5,"positionChange":0.825,"date":"2026-09-08T20:42:00+08:00","closeLotId":"crwv-887-add-20260827","note":"出掉 88.7 剩下一半 CRWV"},
+    {"id":"crwv-946-close-937-rest-20260908","name":"CRWV","action":"清仓","positionType":"波段仓","price":94.6,"positionChange":0.825,"date":"2026-09-08T21:33:00+08:00","closeLotId":"crwv-937-add-20260819","note":"出掉 93.7 的 CRWV"},
+    {"id":"nbis-241-close-198-20260908","name":"NBIS","action":"清仓","positionType":"波段仓","price":241,"positionChange":0.825,"date":"2026-09-08T21:33:05+08:00","closeLotId":"nbis-198-readd-2027-20260902","note":"出掉 198 的 NBIS；明确指出云中最稳"},
+    {"id":"iren-47-close-438-20260908","name":"IREN","action":"清仓","positionType":"波段仓","price":47,"positionChange":0.825,"date":"2026-09-08T21:33:10+08:00","closeLotId":"iren-438-rebuy-457-20260821","note":"出掉 43.8 的 IREN"},
+    {"id":"cohr-290-close-2822-20260908","name":"COHR","action":"清仓","positionType":"波段仓","price":290,"positionChange":1.65,"date":"2026-09-08T21:33:15+08:00","closeLotId":"cohr-2822-add-20260828","note":"出掉 282.2 的 COHR"},
+    {"id":"spyu-3478-add-20260908","name":"SPYU","action":"加仓","positionType":"波段仓","price":34.78,"positionChange":1.65,"date":"2026-09-08T21:45:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"lite-932-close-840-rest-20260908","name":"LITE","action":"清仓","positionType":"波段仓","price":932,"positionChange":0.825,"date":"2026-09-08T21:52:00+08:00","closeLotId":"lite-840-add-20260903","note":"出掉 840 的 LITE；光板块今天也站出来了"},
+    {"id":"cohr-3003-close-292-rest-20260908","name":"COHR","action":"清仓","positionType":"波段仓","price":300.3,"positionChange":0.825,"date":"2026-09-08T21:52:05+08:00","closeLotId":"cohr-292-add-20260819","note":"出掉 292 的 COHR"},
+    {"id":"crwv-962-close-962-20260908","name":"CRWV","action":"清仓","positionType":"波段仓","price":96.2,"positionChange":1.65,"date":"2026-09-08T21:52:10+08:00","closeLotId":"crwv-962-add-20260819","note":"出掉 96.2 的 CRWV"},
+    {"id":"aapu-403-add-20260908","name":"AAPU","action":"加仓","positionType":"波段仓","price":40.3,"positionChange":1.65,"date":"2026-09-08T23:12:00+08:00","note":"加了六分之一常规仓"}
   ]
 }
