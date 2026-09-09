@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-09T23:17:00+08:00",
+  "updatedAt": "2026-09-10T02:51:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4484,6 +4484,10 @@
     {"id":"googl-329-add-20260909","name":"GOOGL","action":"加仓","positionType":"波段仓","price":329,"positionChange":1.65,"date":"2026-09-09T21:34:00+08:00","note":"谷歌A加了六分之一常规仓"},
     {"id":"spyu-3371-add-20260909","name":"SPYU","action":"加仓","positionType":"波段仓","price":33.71,"positionChange":1.65,"date":"2026-09-09T23:12:00+08:00","note":"加了六分之一常规仓；时间由用户补充确认"},
     {"id":"cbrs-1964-add-20260909","name":"CBRS","action":"加仓","positionType":"波段仓","price":196.4,"positionChange":1.65,"date":"2026-09-09T23:12:00+08:00","note":"加了六分之一常规仓；时间由用户补充确认"},
-    {"id":"ionq-384-add-20260909","name":"IONQ","action":"加仓","positionType":"波段仓","price":38.4,"positionChange":1.65,"date":"2026-09-09T23:17:00+08:00","note":"加了六分之一常规仓"}
+    {"id":"ionq-384-add-20260909","name":"IONQ","action":"加仓","positionType":"波段仓","price":38.4,"positionChange":1.65,"date":"2026-09-09T23:17:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"iren-453-readd-47-20260909","name":"IREN","action":"加仓","positionType":"底仓","price":45.3,"positionChange":0.825,"date":"2026-09-09T23:29:00+08:00","note":"加回 47 卖出的那部分 IREN（底仓）"},
+    {"id":"aapu-3915-add-20260910","name":"AAPU","action":"加仓","positionType":"波段仓","price":39.15,"positionChange":1.65,"date":"2026-09-10T01:23:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"aapu-407-close-403-20260910","name":"AAPU","action":"清仓","positionType":"波段仓","price":40.7,"positionChange":1.65,"date":"2026-09-10T02:51:00+08:00","closeLotId":"aapu-403-add-20260908","note":"出掉 40.3 的 AAPU"},
+    {"id":"aapu-4092-half-close-3915-20260910","name":"AAPU","action":"减仓","positionType":"波段仓","price":40.92,"positionChange":0.825,"date":"2026-09-10T02:51:00+08:00","closeLotId":"aapu-3915-add-20260910","note":"出一半 39.15 的 AAPU"}
   ]
 }
