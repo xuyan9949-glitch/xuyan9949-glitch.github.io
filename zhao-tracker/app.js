@@ -619,6 +619,10 @@ window.openSymbolDetail=code=>{
   const summary = getSymbolSummary(code);
   const capital = Number(state.accountCapital) || 100000;
   const currentPosition = summary.holding?.position || 0;
+  const lastPrice = Number(quoteFor(code)?.last);
+  const hasUnrealized = currentPosition<=0 || (lastPrice>0 && summary.holding?.cost>0);
+  const unrealizedPct = currentPosition>0 && hasUnrealized ? (lastPrice-summary.holding.cost)/summary.holding.cost*100 : 0;
+  const unrealizedDollar = capital*currentPosition/100*unrealizedPct/100;
   const status = currentPosition>0 ? "当前持仓" : "已清仓";
   const openLotText = summary.openLots.map(l=>`${money(l.price)} · ${fmt(l.remainingPosition)}%`).join("<br>") || "—";
   const openLotMeta = summary.openLots.length ? `${summary.openLots.length} 笔未平仓批次 · 按开仓时间排序` : "仓位已归零";
@@ -630,6 +634,7 @@ window.openSymbolDetail=code=>{
     ["当前成本",summary.holding?money(summary.holding.cost):"—",summary.holding?"按剩余批次加权":"已清仓"],
     ["未平仓开仓价",openLotText,openLotMeta],
     ["已实现收益",usd(summary.realizedDollar),`${summary.realizedReturn>=0?"+":""}${fmt(summary.realizedReturn,2)}% 已平仓收益率`],
+    ["未实现收益",hasUnrealized?`<span class="pnl ${unrealizedDollar>=0?'up':'down'}">${usd(unrealizedDollar)}</span>`:"—",currentPosition<=0?"已清仓":hasUnrealized?`${unrealizedPct>=0?'+':''}${fmt(unrealizedPct,2)}% · 现价 ${money(lastPrice)}`:"等待行情连接"],
     ["操作次数",`${summary.trades.length} 笔`,`${summary.pairs.length} 笔平仓配对`],
     ["累计使用",`${fmt(summary.buyPosition)}%`,usd(capital*summary.buyPosition/100)],
     ["已配对仓位",`${fmt(summary.closedPosition)}%`,"按开平批次计算"],
