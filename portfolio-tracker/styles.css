@@ -117,7 +117,16 @@ tr:hover .row-actions { opacity:1; }
 .closed-symbol-card small { color:var(--muted); font-size:11px; margin-top:2px; }
 .closed-symbol-card strong { font-size:12px; }
 .detail-btn { border:1px solid var(--line); border-radius:999px; padding:5px 9px; background:var(--panel); color:var(--blue); font-size:11px; font-weight:800; white-space:nowrap; }
-.symbol-dialog { width:min(980px,calc(100vw - 28px)); }
+.symbol-dialog { width:min(1200px,calc(100vw - 24px)); max-height:94vh; overflow:hidden; }
+.lot-card { margin:12px; padding:14px; border:1px solid var(--line); border-radius:10px; }
+.lot-card header,.lot-card footer { display:flex; justify-content:space-between; gap:12px; }
+.lot-card header b { font-size:18px; }
+.lot-card header span,.lot-card p,.lot-card time { color:var(--muted); font-size:12px; }
+.lot-card p { margin:8px 0; }
+.lot-steps { border-left:2px solid var(--line); margin:12px 0; padding-left:14px; }
+.lot-steps>div { display:grid; grid-template-columns:1fr 1fr; gap:7px; padding:10px 0; border-bottom:1px solid var(--line); }
+.lot-steps b,.lot-steps strong { text-align:right; }
+.lot-card footer { background:var(--panel-2); padding:10px; font-size:12px; }
 .symbol-detail-body { padding:16px 18px 18px; display:grid; gap:14px; max-height:min(76vh,760px); overflow:auto; }
 .symbol-summary-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
 .symbol-summary-card { padding:13px 14px; border:1px solid var(--line); border-radius:10px; background:var(--panel-2); }
