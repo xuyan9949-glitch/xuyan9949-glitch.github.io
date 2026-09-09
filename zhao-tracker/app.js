@@ -648,7 +648,7 @@ window.openSymbolDetail=code=>{
     const buy=buyActions.includes(t.action);
     return `<div class="symbol-trade"><div class="symbol-trade-head"><b class="pnl ${buy?"up":"down"}">${esc(t.action)} · ${money(t.price)}</b><time>${formatDate(t.date,true)}</time></div><div class="symbol-trade-meta">仓位 ${buy?"+":"−"}${fmt(t.positionChange)}% · ${esc(t.positionType)}</div>${t.note?`<div class="symbol-trade-note">${esc(t.note)}</div>`:""}</div>`;
   }).join(""):'<div class="symbol-empty">暂无操作流水</div>';
-  const lots=computeLedger().lots.filter(l=>l.code===code).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const lots=computeLedger().lots.filter(l=>l.code===code).sort((a,b)=>Number(b.remainingPosition>0.0001)-Number(a.remainingPosition>0.0001)||new Date(b.date)-new Date(a.date));
   setText("symbolPairCount",`${lots.length} 个开仓批次 · ${summary.pairs.length} 笔平仓`);
   document.getElementById("symbolPairs").innerHTML=renderLotHistory(lots,summary.pairs,capital);
   document.getElementById("symbolDialog").showModal();

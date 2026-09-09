@@ -7,7 +7,7 @@
   <title>Lucky Follow</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260909-single-scroll">
+  <link rel="stylesheet" href="styles.css?v=20260909-detail-redesign">
 </head>
 <body>
   <div class="app-shell">
@@ -327,10 +327,10 @@
       <div id="symbolStatus" class="symbol-status-line"></div>
       <div id="symbolMetrics" class="symbol-metrics"></div>
       <div class="symbol-detail-grid">
-        <section class="symbol-detail-section">
-          <div class="detail-section-title"><h3>操作流水</h3><span id="symbolTradeCount"></span></div>
+        <details class="symbol-detail-section symbol-raw-history">
+          <summary class="detail-section-title">原始操作流水 · 点击展开<span id="symbolTradeCount"></span></summary>
           <div id="symbolTrades" class="symbol-trades"></div>
-        </section>
+        </details>
         <section class="symbol-detail-section">
           <div class="detail-section-title"><h3>开仓 → 分批平仓</h3><span id="symbolPairCount"></span></div>
           <div id="symbolPairs" class="symbol-pairs"></div>
@@ -340,6 +340,6 @@
   </dialog>
 
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20260909-unrealized"></script>
+  <script src="app.js?v=20260909-detail-redesign"></script>
 </body>
 </html>
