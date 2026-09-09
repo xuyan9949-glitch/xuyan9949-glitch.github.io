@@ -238,6 +238,7 @@ dialog::backdrop { background:rgba(13,20,32,.45); backdrop-filter:blur(2px); }
 .symbol-metric { padding:12px; border:1px solid var(--line); border-radius:9px; background:var(--panel-2); }
 .symbol-metric span { display:block; color:var(--muted); font-size:10px; font-weight:700; }
 .symbol-metric strong { display:block; margin-top:4px; font-size:18px; }
+.symbol-metric strong .pnl { font-size:inherit; }
 .symbol-metric strong:has(br) { font-size:15px; line-height:1.55; letter-spacing:0; }
 .symbol-metric small { color:var(--muted); font-size:10px; }
 .symbol-detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
