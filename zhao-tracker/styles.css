@@ -231,10 +231,10 @@ dialog::backdrop { background:rgba(13,20,32,.45); backdrop-filter:blur(2px); }
 .full-width { grid-column:1/-1; }
 .dialog-actions { display:flex; justify-content:flex-end; gap:8px; padding:14px 20px; border-top:1px solid var(--line); }
 .small-dialog { width:min(430px,calc(100vw - 30px)); }
-.symbol-dialog { width:min(1060px,calc(100vw - 30px)); max-height:88vh; }
-.symbol-detail-body { padding:17px 20px 20px; max-height:calc(88vh - 76px); overflow:auto; }
+.symbol-dialog { width:min(1280px,calc(100vw - 24px)); max-height:94vh; overflow:hidden; }
+.symbol-detail-body { padding:14px 20px 20px; max-height:calc(94vh - 90px); overflow-y:auto; }
 .symbol-status-line { display:flex; align-items:center; gap:8px; margin-bottom:13px; color:var(--muted); font-size:12px; }
-.symbol-metrics { display:grid; grid-template-columns:repeat(4,1fr); gap:9px; margin-bottom:15px; }
+.symbol-metrics { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; margin-bottom:15px; }
 .symbol-metric { padding:12px; border:1px solid var(--line); border-radius:9px; background:var(--panel-2); }
 .symbol-metric span { display:block; color:var(--muted); font-size:10px; font-weight:700; }
 .symbol-metric strong { display:block; margin-top:4px; font-size:18px; }
@@ -245,7 +245,9 @@ dialog::backdrop { background:rgba(13,20,32,.45); backdrop-filter:blur(2px); }
 .detail-section-title { display:flex; justify-content:space-between; align-items:center; padding:11px 13px; background:var(--panel-2); border-bottom:1px solid var(--line); }
 .detail-section-title h3 { margin:0; font-size:13px; }
 .detail-section-title span { color:var(--muted); font-size:10px; }
-.symbol-trades,.symbol-pairs { max-height:390px; overflow:auto; }
+.symbol-trades,.symbol-pairs { max-height:none; overflow:visible; }
+.symbol-detail-grid { align-items:start; }
+@media (min-width:901px) { .symbol-detail-grid { grid-template-columns:minmax(0,1fr) minmax(0,1.35fr); } }
 .symbol-trade,.symbol-pair { padding:11px 13px; border-bottom:1px solid var(--line); }
 .symbol-trade:last-child,.symbol-pair:last-child { border-bottom:0; }
 .symbol-trade-head,.symbol-pair-head { display:flex; justify-content:space-between; gap:8px; font-size:12px; }
