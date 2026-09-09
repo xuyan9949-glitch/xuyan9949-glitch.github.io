@@ -578,6 +578,8 @@ function getSymbolSummary(code, holdings=getHoldings(), ledger=computeLedger()) 
   const trades = state.trades.filter(t=>t.code===code).sort((a,b)=>new Date(a.date)-new Date(b.date));
   const pairs = ledger.pairs.filter(p=>p.code===code).sort((a,b)=>new Date(a.closeTrade.date)-new Date(b.closeTrade.date));
   const holding = holdings.find(h=>h.code===code);
+  const openLots = ledger.lots.filter(l=>l.code===code && l.remainingPosition>0.0001)
+    .sort((a,b)=>new Date(a.date)-new Date(b.date));
   const buyPosition = trades.filter(t=>buyActions.includes(t.action)).reduce((s,t)=>s+Number(t.positionChange||0),0);
   const sellPosition = trades.filter(t=>sellActions.includes(t.action)).reduce((s,t)=>s+Number(t.positionChange||0),0);
   const closedPosition = pairs.reduce((s,p)=>s+p.position,0);
@@ -586,7 +588,7 @@ function getSymbolSummary(code, holdings=getHoldings(), ledger=computeLedger()) 
   const wins = pairs.filter(p=>p.pnlPct>=0).length;
   const avgHoldDays = closedPosition ? pairs.reduce((s,p)=>s+Math.max(0,(new Date(p.closeTrade.date)-new Date(p.openTrade.date))/86400000)*p.position,0)/closedPosition : null;
   return {
-    code, trades, pairs, holding, buyPosition, sellPosition, closedPosition,
+    code, trades, pairs, holding, openLots, buyPosition, sellPosition, closedPosition,
     realizedContribution, realizedReturn, realizedDollar:capital*realizedContribution/100,
     winRate:pairs.length?wins/pairs.length*100:null, avgHoldDays,
     firstDate:trades[0]?.date, lastDate:trades[trades.length-1]?.date
@@ -618,12 +620,15 @@ window.openSymbolDetail=code=>{
   const capital = Number(state.accountCapital) || 100000;
   const currentPosition = summary.holding?.position || 0;
   const status = currentPosition>0 ? "当前持仓" : "已清仓";
+  const openLotText = summary.openLots.map(l=>`${money(l.price)} · ${fmt(l.remainingPosition)}%`).join("<br>") || "—";
+  const openLotMeta = summary.openLots.length ? `${summary.openLots.length} 笔未平仓批次 · 按开仓时间排序` : "仓位已归零";
   setText("symbolDialogTitle",`${code} 综合情况`);
   setText("symbolDialogSubtitle",summary.firstDate?`${formatDate(summary.firstDate,true)} 至 ${formatDate(summary.lastDate,true)}`:"暂无记录");
   document.getElementById("symbolStatus").innerHTML=`<span class="status ${currentPosition>0?"swing":"base"}">${status}</span><span>累计买入 ${fmt(summary.buyPosition)}% · 累计卖出 ${fmt(summary.sellPosition)}%</span>`;
   const metrics = [
     ["当前仓位",`${fmt(currentPosition)}%`,summary.holding?`占用 ${usd(capital*currentPosition/100)}`:"仓位已归零"],
     ["当前成本",summary.holding?money(summary.holding.cost):"—",summary.holding?"按剩余批次加权":"已清仓"],
+    ["未平仓开仓价",openLotText,openLotMeta],
     ["已实现收益",usd(summary.realizedDollar),`${summary.realizedReturn>=0?"+":""}${fmt(summary.realizedReturn,2)}% 已平仓收益率`],
     ["操作次数",`${summary.trades.length} 笔`,`${summary.pairs.length} 笔平仓配对`],
     ["累计使用",`${fmt(summary.buyPosition)}%`,usd(capital*summary.buyPosition/100)],
