@@ -253,6 +253,18 @@ dialog::backdrop { background:rgba(13,20,32,.45); backdrop-filter:blur(2px); }
 .symbol-trade-meta,.symbol-pair-meta { margin-top:3px; color:var(--muted); font-size:11px; }
 .symbol-trade-note { margin-top:4px; color:var(--muted); font-size:10px; }
 .symbol-empty { padding:35px 15px; text-align:center; color:var(--muted); font-size:11px; }
+.lot-history { margin:12px; border:1px solid var(--line); border-radius:9px; overflow:hidden; background:var(--panel); }
+.lot-history header { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:12px 13px 5px; }
+.lot-history header>b { font-size:16px; }
+.lot-badge { padding:3px 7px; border-radius:5px; font-size:10px; color:var(--muted); background:var(--panel-2); }
+.lot-badge.active { color:var(--blue); background:var(--blue-soft); }
+.lot-open { padding:0 13px 12px; color:var(--muted); font-size:11px; display:flex; justify-content:space-between; gap:10px; }
+.lot-exits { margin:0 13px; padding-left:12px; border-left:2px solid var(--line); }
+.lot-exit { display:grid; grid-template-columns:1fr 1fr; gap:5px 10px; padding:10px 0; border-top:1px solid var(--line); font-size:12px; }
+.lot-exit time { color:var(--muted); font-size:11px; }
+.lot-exit>div:nth-child(2),.lot-exit>span { text-align:right; }
+.lot-wait { padding:10px 0; color:var(--muted); font-size:12px; }
+.lot-history footer { display:flex; justify-content:space-between; gap:8px; padding:10px 13px; margin-top:10px; background:var(--panel-2); color:var(--muted); font-size:11px; }
 .export-options { display:grid; gap:9px; padding:17px; }
 .export-option { text-align:left; padding:13px; border:1px solid var(--line); border-radius:8px; background:var(--panel-2); color:var(--text); }
 .export-option:hover { border-color:var(--blue); }

@@ -643,11 +643,20 @@ window.openSymbolDetail=code=>{
     const buy=buyActions.includes(t.action);
     return `<div class="symbol-trade"><div class="symbol-trade-head"><b class="pnl ${buy?"up":"down"}">${esc(t.action)} · ${money(t.price)}</b><time>${formatDate(t.date,true)}</time></div><div class="symbol-trade-meta">仓位 ${buy?"+":"−"}${fmt(t.positionChange)}% · ${esc(t.positionType)}</div>${t.note?`<div class="symbol-trade-note">${esc(t.note)}</div>`:""}</div>`;
   }).join(""):'<div class="symbol-empty">暂无操作流水</div>';
-  const orderedPairs=[...summary.pairs].sort((a,b)=>new Date(b.closeTrade.date)-new Date(a.closeTrade.date));
-  setText("symbolPairCount",`${orderedPairs.length} 笔`);
-  document.getElementById("symbolPairs").innerHTML=orderedPairs.length?orderedPairs.map(p=>`<div class="symbol-pair"><div class="symbol-pair-head"><b class="pnl ${p.pnlPct>=0?"up":"down"}">${p.pnlPct>=0?"+":""}${fmt(p.pnlPct,2)}% · ${usd(capital*p.contribution/100)}</b><span>${formatDate(p.closeTrade.date,true)}</span></div><div class="symbol-pair-meta">${money(p.buyPrice)} 买入 → ${money(p.sellPrice)} 卖出 · ${fmt(p.position)}% 仓位</div></div>`).join(""):'<div class="symbol-empty">暂无可配对的平仓记录</div>';
+  const lots=computeLedger().lots.filter(l=>l.code===code).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  setText("symbolPairCount",`${lots.length} 个开仓批次 · ${summary.pairs.length} 笔平仓`);
+  document.getElementById("symbolPairs").innerHTML=renderLotHistory(lots,summary.pairs,capital);
   document.getElementById("symbolDialog").showModal();
 };
+
+function renderLotHistory(lots,pairs,capital) {
+  const position=value=>`${Number(Number(value).toFixed(4))}%`;
+  return lots.length?lots.map(lot=>{
+    const exits=pairs.filter(p=>p.openTrade.lotId===lot.lotId).sort((a,b)=>new Date(a.closeTrade.date)-new Date(b.closeTrade.date));
+    const profit=exits.reduce((sum,p)=>sum+capital*p.contribution/100,0);
+    return `<article class="lot-history"><header><b>开仓 ${money(lot.price)}</b><span class="lot-badge ${lot.remainingPosition>0.0001?'active':''}">${lot.remainingPosition>0.0001?'仍有持仓':'已全部平仓'}</span></header><div class="lot-open">${formatDate(lot.date,true)} <span>开仓仓位 <b>${position(lot.openPosition)}</b></span></div><div class="lot-exits">${exits.map(p=>`<div class="lot-exit"><time>${formatDate(p.closeTrade.date,true)}</time><div>平仓 <b>${money(p.sellPrice)}</b></div><div>平仓仓位 <b>${position(p.position)}</b></div><span class="pnl ${p.pnlPct>=0?'up':'down'}">${p.pnlPct>=0?'+':''}${fmt(p.pnlPct,2)}%</span></div>`).join('')||'<div class="lot-wait">尚未平仓</div>'}</div><footer><span>剩余仓位 <b>${position(lot.remainingPosition)}</b></span><span>已实现 <b class="pnl ${profit>=0?'up':'down'}">${usd(profit)}</b></span></footer></article>`;
+  }).join(''):'<div class="symbol-empty">暂无开仓记录</div>';
+}
 
 function statTags(s) {
   const tags = [];
