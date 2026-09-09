@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-03T23:44:00+08:00",
+  "updatedAt": "2026-09-09T21:34:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4479,6 +4479,8 @@
     {"id":"lite-932-close-840-rest-20260908","name":"LITE","action":"清仓","positionType":"波段仓","price":932,"positionChange":0.825,"date":"2026-09-08T21:52:00+08:00","closeLotId":"lite-840-add-20260903","note":"出掉 840 的 LITE；光板块今天也站出来了"},
     {"id":"cohr-3003-close-292-rest-20260908","name":"COHR","action":"清仓","positionType":"波段仓","price":300.3,"positionChange":0.825,"date":"2026-09-08T21:52:05+08:00","closeLotId":"cohr-292-add-20260819","note":"出掉 292 的 COHR"},
     {"id":"crwv-962-close-962-20260908","name":"CRWV","action":"清仓","positionType":"波段仓","price":96.2,"positionChange":1.65,"date":"2026-09-08T21:52:10+08:00","closeLotId":"crwv-962-add-20260819","note":"出掉 96.2 的 CRWV"},
-    {"id":"aapu-403-add-20260908","name":"AAPU","action":"加仓","positionType":"波段仓","price":40.3,"positionChange":1.65,"date":"2026-09-08T23:12:00+08:00","note":"加了六分之一常规仓"}
+    {"id":"aapu-403-add-20260908","name":"AAPU","action":"加仓","positionType":"波段仓","price":40.3,"positionChange":1.65,"date":"2026-09-08T23:12:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"spyu-3405-add-20260909","name":"SPYU","action":"加仓","positionType":"波段仓","price":34.05,"positionChange":1.65,"date":"2026-09-09T21:34:00+08:00","note":"加了六分之一常规仓；原文漏写加字，用户已确认按加仓录入"},
+    {"id":"googl-329-add-20260909","name":"GOOGL","action":"加仓","positionType":"波段仓","price":329,"positionChange":1.65,"date":"2026-09-09T21:34:00+08:00","note":"谷歌A加了六分之一常规仓"}
   ]
 }
