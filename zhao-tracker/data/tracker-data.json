@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-10T02:51:00+08:00",
+  "updatedAt": "2026-09-10T22:00:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4488,6 +4488,26 @@
     {"id":"iren-453-readd-47-20260909","name":"IREN","action":"加仓","positionType":"底仓","price":45.3,"positionChange":0.825,"date":"2026-09-09T23:29:00+08:00","note":"加回 47 卖出的那部分 IREN（底仓）"},
     {"id":"aapu-3915-add-20260910","name":"AAPU","action":"加仓","positionType":"波段仓","price":39.15,"positionChange":1.65,"date":"2026-09-10T01:23:00+08:00","note":"加了六分之一常规仓"},
     {"id":"aapu-407-close-403-20260910","name":"AAPU","action":"清仓","positionType":"波段仓","price":40.7,"positionChange":1.65,"date":"2026-09-10T02:51:00+08:00","closeLotId":"aapu-403-add-20260908","note":"出掉 40.3 的 AAPU"},
-    {"id":"aapu-4092-half-close-3915-20260910","name":"AAPU","action":"减仓","positionType":"波段仓","price":40.92,"positionChange":0.825,"date":"2026-09-10T02:51:00+08:00","closeLotId":"aapu-3915-add-20260910","note":"出一半 39.15 的 AAPU"}
+    {"id":"aapu-4092-half-close-3915-20260910","name":"AAPU","action":"减仓","positionType":"波段仓","price":40.92,"positionChange":0.825,"date":"2026-09-10T02:51:00+08:00","closeLotId":"aapu-3915-add-20260910","note":"出一半 39.15 的 AAPU"},
+    {"id":"crwv-948-readd-20260910","name":"CRWV","action":"加仓","positionType":"底仓","price":94.8,"positionChange":1.65,"date":"2026-09-10T04:00:00+08:00","note":"加回 96.2 卖出的部分"},
+    {"id":"cifr-1691-readd-20260910","name":"CIFR","action":"加仓","positionType":"底仓","price":16.91,"positionChange":0.825,"date":"2026-09-10T04:00:00+08:00","note":"加回 17.9 卖出的部分"},
+    {"id":"nbis-235-readd-20260910","name":"NBIS","action":"加仓","positionType":"底仓","price":235,"positionChange":0.825,"date":"2026-09-10T10:43:00+08:00","note":"加回 241 卖出的部分"},
+    {"id":"wdc-477-add-20260910","name":"WDC","action":"加仓","positionType":"波段仓","price":477,"positionChange":1.65,"date":"2026-09-10T10:43:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"hood-1137-add-20260910","name":"HOOD","action":"加仓","positionType":"波段仓","price":113.7,"positionChange":1.65,"date":"2026-09-10T10:51:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"crwv-908-add-20260910","name":"CRWV","action":"加仓","positionType":"波段仓","price":90.8,"positionChange":1.65,"date":"2026-09-10T20:36:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"wdc-4655-add-20260910","name":"WDC","action":"加仓","positionType":"波段仓","price":465.5,"positionChange":1.65,"date":"2026-09-10T20:45:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"cohr-292-add-20260910","name":"COHR","action":"加仓","positionType":"波段仓","price":292,"positionChange":1.65,"date":"2026-09-10T20:49:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"sco-206-add-20260910","name":"SCO","action":"加仓","positionType":"波段仓","price":20.6,"positionChange":1.65,"date":"2026-09-10T20:49:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-2285-add-20260910","name":"NBIS","action":"加仓","positionType":"波段仓","price":228.5,"positionChange":1.65,"date":"2026-09-10T20:49:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-238-close-20260910","name":"NBIS","action":"清仓","positionType":"波段仓","price":238,"positionChange":1.65,"date":"2026-09-10T21:31:00+08:00","closeLotId":"nbis-2285-add-20260910","note":"出掉 228.5 的 NBIS"},
+    {"id":"cifr-157-add-20260910","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.7,"positionChange":1.65,"date":"2026-09-10T21:34:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"spyu-3303-add-20260910","name":"SPYU","action":"加仓","positionType":"波段仓","price":33.03,"positionChange":1.65,"date":"2026-09-10T21:36:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"aapu-42-close-20260910","name":"AAPU","action":"清仓","positionType":"波段仓","price":42,"positionChange":0.825,"date":"2026-09-10T21:39:00+08:00","closeLotId":"aapu-3915-add-20260910","note":"出掉 39.15 剩下一半"},
+    {"id":"cohr-3095-close-20260910","name":"COHR","action":"清仓","positionType":"波段仓","price":309.5,"positionChange":1.65,"date":"2026-09-10T21:39:00+08:00","closeLotId":"cohr-292-add-20260910","note":"出掉本次 292 的 COHR"},
+    {"id":"coin-1712-add-20260910","name":"COIN","action":"加仓","positionType":"波段仓","price":171.2,"positionChange":1.65,"date":"2026-09-10T21:39:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"dram-595-add-20260910","name":"DRAM","action":"加仓","positionType":"波段仓","price":59.5,"positionChange":1.65,"date":"2026-09-10T21:39:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-230-readd-20260910","name":"NBIS","action":"加仓","positionType":"波段仓","price":230,"positionChange":1.65,"date":"2026-09-10T21:39:00+08:00","note":"加回 238 卖出的 NBIS"},
+    {"id":"iren-436-add-20260910","name":"IREN","action":"加仓","positionType":"波段仓","price":43.6,"positionChange":1.65,"date":"2026-09-10T22:00:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"ionq-3725-add-20260910","name":"IONQ","action":"加仓","positionType":"波段仓","price":37.25,"positionChange":1.65,"date":"2026-09-10T22:00:00+08:00","note":"加了六分之一常规仓"}
   ]
 }
