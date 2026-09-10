@@ -272,7 +272,7 @@ def article_template(
         <div class="nav-inner">
             <a href="/" class="logo"><span class="logo-mark">X</span><span class="logo-text">XXY Alpha</span></a>
             <div class="nav-links archive-nav-links">
-                <a href="/">首页</a><a href="/notes/">笔记</a><a href="/diagrams/">图示</a><a href="/calendar/">日历</a>
+                <a href="/">首页</a><a href="/notes/">笔记</a><a href="/calendar/">日历</a>
             </div>
         </div>
     </nav>
@@ -383,6 +383,8 @@ def main() -> int:
     date = args.date or str(meta.get("date") or dt.date.today().isoformat())
     category = args.category or str(meta.get("category") or "见贤思齐")
     subcategory = args.subcategory if args.subcategory is not None else str(meta.get("subcategory") or "")
+    if category in {"A股", "港股", "H股"}:
+        parser.error("本站已聚焦美股，不再发布 A 股或港股分类文章")
     tags = meta.get("tags") if isinstance(meta.get("tags"), list) else []
     if not tags:
         tags = [category] + ([subcategory] if subcategory else [])

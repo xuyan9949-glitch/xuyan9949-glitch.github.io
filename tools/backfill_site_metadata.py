@@ -15,9 +15,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ARTICLES_JS = ROOT / "js" / "articles.js"
 SITE_URL = "https://www.xxyalpha.cn"
-DEFAULT_SHARE_IMAGE = f"{SITE_URL}/images/diagrams/存储/industry-map-01.jpg"
-
-
 class HeadAudit(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
@@ -77,8 +74,7 @@ def metadata_block(article: dict[str, object]) -> str:
     <meta property="og:title" content="{title}">
     <meta property="og:description" content="{description}">
     <meta property="og:url" content="{canonical}">
-    <meta property="og:image" content="{DEFAULT_SHARE_IMAGE}">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
 """
 
 
@@ -116,7 +112,7 @@ def update_article_page(article: dict[str, object]) -> tuple[Path, str, bool]:
 
 def build_sitemap(articles: list[dict[str, object]]) -> str:
     today = date.today().isoformat()
-    static_paths = ["/", "/notes/", "/diagrams/", "/calendar/", "/about/"]
+    static_paths = ["/", "/notes/", "/calendar/", "/about/"]
     rows = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',

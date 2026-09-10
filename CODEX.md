@@ -17,9 +17,8 @@ When the user says "我的投资网页", "我的个人网页", "维护我的网�
 - `index.html`: homepage and section layout
 - `css/style.css`: visual styles
 - `js/articles.js`: article index used by homepage, search, categories, and series navigation
-- `js/main.js`: homepage rendering, notes filters, series navigation, tracking, calendar, and diagrams logic
+- `js/main.js`: homepage rendering, notes filters, series navigation, US stock tracking, and calendar logic
 - `notes/index.html`: complete searchable article archive
-- `diagrams/index.html`: complete industry diagram gallery
 - `calendar/index.html`: complete verification calendar
 - `articles/<article-id>/index.html`: individual article pages
 - `tools/import_markdown.py`: Markdown-to-article importer
@@ -92,7 +91,6 @@ GitHub Pages may take about 30-120 seconds to refresh. Verify the custom domain 
 Main categories:
 
 - `美股`
-- `A股`
 - `产业思考`
 - `近期热点`
 - `见贤思齐`
@@ -114,7 +112,6 @@ Current homepage series navigation groups articles into:
 - 光通信与CPO
 - 存储超级周期
 - AI电子材料
-- A股映射与交易框架
 - 工具与投资心法
 
 ## Safety Notes

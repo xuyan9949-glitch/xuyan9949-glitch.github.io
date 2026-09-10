@@ -1,53 +1,5 @@
 const articles = [
   {
-    "id": "ai-materials-pcb-hvlp-20260720",
-    "title": "铜冠铜箔业绩预告分析",
-    "date": "2026-07-20",
-    "category": "A股",
-    "subcategory": "AI电子材料",
-    "tags": [
-      "产业:AI电子材料",
-      "个股:东山精密",
-      "产业:存储",
-      "产业:光通信",
-      "产业:AI基础设施",
-      "策略:财报分析",
-      "策略:产业链分析",
-      "策略:对比分析",
-      "策略:估值",
-      "策略:仓位管理",
-      "策略:风险分析"
-    ],
-    "pinned": false,
-    "summary": "*铜冠铜箔这份业绩预告不算“差”，甚至同比看相当漂亮；真正的问题是，二季度利润没有继续加速，而此前股价已经按照“高频高速铜箔量价齐升、利润连续环比爆发”进行定价。今天铜冠铜箔是引爆器，但绝不是它一家公司的基本面足以让整个PCB产业链价值下降10%。",
-    "keywords": "AI电子材料 东山精密 存储 光通信 AI基础设施 财报分析 产业链分析 对比分析 估值 仓位管理 风险分析 PCB CITE HVLP RTF CCL",
-    "file": "/articles/ai-materials-pcb-hvlp-20260720/"
-  },
-  {
-    "id": "optical-pcb-20260714",
-    "title": "中报A股最新观察池（不含半导体）",
-    "date": "2026-07-14",
-    "category": "A股",
-    "tags": [
-      "产业:光通信",
-      "个股:东山精密",
-      "个股:中际旭创",
-      "个股:新易盛",
-      "个股:生益科技",
-      "个股:胜宏科技",
-      "产业:半导体设备",
-      "产业:AI电子材料",
-      "产业:AI基础设施",
-      "策略:财报分析",
-      "策略:产业链分析",
-      "策略:估值"
-    ],
-    "pinned": true,
-    "summary": "光通信：业绩兑现、速率升级、光纤涨价PCB产业链：高端板放量、材料升级、上游涨价这样比同时买A股半导体设备更清晰，但要注意：光通信和PCB仍然共同暴露于北美云厂商AI CapEx，二者并不是真正的行业分散。下面是截至 2026年7月14日晚间中报预告 的重新排序。",
-    "keywords": "光通信 东山精密 中际旭创 新易盛 生益科技 胜宏科技 半导体设备 AI电子材料 AI基础设施 财报分析 产业链分析 估值 PCB AI CAPEX MPO",
-    "file": "/articles/optical-pcb-20260714/"
-  },
-  {
     "id": "storage-ghost-stories-deconstruction",
     "title": "存储鬼故事拆解：高位去拥挤 vs 基本面出货",
     "date": "2026-07-01",
@@ -96,85 +48,6 @@ const articles = [
     "summary": "ASML画图（光刻垄断），AMAT铺材料（产品最全），LRCX挖结构（刻蚀/沉积，存储弹性最大），KLAC找错误（高毛利过程控制龙头）。从芯片制造流程讲起，覆盖四家公司业务逻辑、收入结构、毛利率、周期属性、竞争壁垒和长期跟踪框架。",
     "keywords": "ASML AMAT LRCX KLAC 半导体设备 EUV 光刻 刻蚀 沉积 CMP 量测 检测 WFE GAA 3D NAND HBM 先进封装 TEL 资本开支",
     "file": "/articles/semi-equipment-four-giants/"
-  },
-  {
-    "id": "glassbridge-cpo-beneficiary-ranking",
-    "title": "GlassBridge/CPO 受益标的全景排序：美股与A股完整梳理",
-    "date": "2026-06-30",
-    "category": "产业思考",
-    "subcategory": "光通信",
-    "tags": [
-      "产业:光通信",
-      "产业:光互联",
-      "产业:CPO",
-      "产业:GlassBridge",
-      "个股:LITE",
-      "个股:COHR",
-      "个股:GLW",
-      "个股:AVGO",
-      "个股:GFS",
-      "个股:天孚通信",
-      "个股:新易盛",
-      "个股:东山精密",
-      "个股:光库科技",
-      "个股:炬光科技",
-      "策略:标的排序",
-      "策略:A股映射"
-    ],
-    "pinned": false,
-    "summary": "按CPO相关度×订单验证×利润弹性排序：LITE利润弹性第一，COHR产业链覆盖最完整，GLW概念最直接；A股天孚通信位置最接近，新易盛架构中立风险最低。对持仓影响：LITE最明确受益，东山有较大CPO期权但验证度不足，诺基亚为二阶受益。",
-    "keywords": "GlassBridge CPO LITE COHR GLW 天孚通信 新易盛 东山精密 光库科技 炬光科技 Fiber-to-PIC ELSFP CW激光器 硅光 光引擎",
-    "file": "/articles/glassbridge-cpo-beneficiary-ranking/"
-  },
-  {
-    "id": "corning-glassbridge-analysis",
-    "title": "Corning GlassBridge 深度分析：玻璃波导连接器如何影响光通信投资格局",
-    "date": "2026-06-30",
-    "category": "产业思考",
-    "subcategory": "光通信",
-    "tags": [
-      "产业:光通信",
-      "产业:光互联",
-      "产业:CPO",
-      "产业:玻璃波导",
-      "个股:GLW",
-      "个股:LITE",
-      "个股:东山精密",
-      "个股:诺基亚",
-      "产业:硅光",
-      "产业:光纤",
-      "策略:产业链分析",
-      "策略:持仓影响"
-    ],
-    "pinned": false,
-    "summary": "GlassBridge本质是玻璃波导版光纤—光子芯片连接器，解决CPO最关键制造难题。LITE是明确正面受益者，东山精密中性偏正但面临产品迁移压力，诺基亚为二阶正面。CPO加速将推动光价值链从前面板模块向ASIC和PIC封装边缘迁移。",
-    "keywords": "Corning GlassBridge CPO NPO 硅光 光子集成 PIC Fiber-to-PIC FAU 康宁 Lumentum LITE 东山精密 诺基亚 CW激光器 ELSFP 光纤 玻璃基板 IOX",
-    "file": "/articles/corning-glassbridge-analysis/"
-  },
-  {
-    "id": "diamond-thermal-management",
-    "title": "金刚石散热研究",
-    "date": "2026-06-29",
-    "category": "产业思考",
-    "subcategory": "AI电子材料",
-    "tags": [
-      "产业:AI电子材料",
-      "产业:散热",
-      "产业:金刚石",
-      "产业:液冷",
-      "个股:国机精工",
-      "个股:四方达",
-      "个股:沃尔德",
-      "个股:力量钻石",
-      "个股:惠丰钻石",
-      "个股:Akash Systems",
-      "个股:Coherent",
-      "策略:产业链分析"
-    ],
-    "pinned": false,
-    "summary": "产业方向真实，商业化在加速，但A股交易的是2027—2028年潜在放量而非2026年利润。AI芯片散热增量是金刚石作为热沉/复合冷板/热扩散层而非替代液冷系统。国机精工验证度最高，四方达弹性最大，行业壁垒在界面热阻、翘曲控制和客户认证而非热导率本身。",
-    "keywords": "金刚石 散热 CVD MPCVD AI芯片 GPU HBM 液冷 热沉 热扩散 金刚石铜复合材料 国机精工 四方达 沃尔德 力量钻石 惠丰钻石 Akash Coherent 英伟达 Rubin 界面热阻",
-    "file": "/articles/diamond-thermal-management/"
   },
   {
     "id": "market-anxiety-analysis-0628",
@@ -226,29 +99,6 @@ const articles = [
     "file": "/articles/mu-fy2026-q3-institutional-analysis/"
   },
   {
-    "id": "citi-ai-optics-dongshan-precision",
-    "title": "花旗《AI Optics in Structural Upcycle》：东山精密股东视角拆解",
-    "date": "2026-06-27",
-    "category": "产业思考",
-    "subcategory": "研报分析",
-    "tags": [
-      "研报:花旗",
-      "个股:东山精密",
-      "个股:索尔思",
-      "产业:光互联",
-      "产业:光模块",
-      "产业:光芯片",
-      "产业:EML",
-      "产业:硅光",
-      "产业:CPO",
-      "策略:研报分析"
-    ],
-    "pinned": false,
-    "summary": "花旗将东山精密目标价从225元上调至350元，核心重估不是\"索尔思多卖光模块\"，而是重新定义为光模块+EML/CW光芯片平台+AI PCB。但2027E AI光学利润257亿元、2028E 527亿元的预测极其激进，用开源证券交叉验证，当前更接近季度业绩兑现交易。",
-    "keywords": "花旗 Citi AI Optics 东山精密 002384 索尔思 Source Photonics 光模块 光芯片 EML CW 激光器 1.6T 3.2T CPO AI PCB 扩产 12亿美元",
-    "file": "/articles/citi-ai-optics-dongshan-precision/"
-  },
-  {
     "id": "apple-price-storage-cycle",
     "title": "苹果涨价是存储周期最后一根稻草？——对\"周期见顶论\"的七层次拆解",
     "date": "2026-06-27",
@@ -268,29 +118,6 @@ const articles = [
     "summary": "\"苹果涨价=存储周期见顶\"把三个层面混在了一起：苹果涨价已发生、消费电子承压有可能、存储景气见顶尚未被验证。七层次拆解：苹果压价历史、存储周期本质、AI是否消灭周期、数据中心vs机器人真实需求、上下游利益转移机制、真正顶部信号。结论：当前更接近景气从无争议阶段进入博弈阶段，不是确认下行。",
     "keywords": "苹果 存储 美光 MU 涨价 周期 见顶 HBM DDR5 数据中心 AI 机器人 议价权 战略客户协议 take-or-pay 库存 资本开支 供给侧",
     "file": "/articles/apple-price-storage-cycle/"
-  },
-  {
-    "id": "pcb-copper-foil-industry-research",
-    "title": "PCB铜箔行业研究：HVLP升级、低基数利润弹性与机构跟踪框架",
-    "date": "2026-06-27",
-    "category": "产业思考",
-    "subcategory": "AI电子材料",
-    "tags": [
-      "产业:铜箔",
-      "产业:HVLP",
-      "产业:AI电子材料",
-      "个股:铜冠铜箔",
-      "个股:德福科技",
-      "个股:三井金属",
-      "产业:CCL",
-      "产业:PCB",
-      "策略:产业链分析",
-      "策略:机构跟踪框架"
-    ],
-    "pinned": false,
-    "summary": "A股铜箔三条逻辑叠加：传统周期修复+AI推动HVLP结构性紧缺+低基数利润弹性。铜冠铜箔产业化确定性更高，德福科技转型弹性更大，但当前估值已透支未来增长。附专业机构十项跟踪指标。",
-    "keywords": "铜箔 HVLP 铜冠铜箔 德福科技 三井金属 Circuit Foil 集肤效应 加工费 CCL AI服务器 PCB RTF 载体铜箔 产能利用率 经营杠杆",
-    "file": "/articles/pcb-copper-foil-industry-research/"
   },
   {
     "id": "trump-account-7-4",
@@ -397,29 +224,6 @@ const articles = [
     "file": "/articles/avgo-vs-mrvl-platform-vs-chip/"
   },
   {
-    "id": "mlcc-analysis-2026",
-    "title": "MLCC行业投资分析：大陆厂商能否进入高端，以及是否会复制HBM涨价",
-    "date": "2026-06-19",
-    "category": "产业思考",
-    "subcategory": "AI电子材料",
-    "tags": [
-      "产业:MLCC",
-      "产业:AI电子材料",
-      "产业:涨价",
-      "个股:三环集团",
-      "个股:风华高科",
-      "个股:国瓷材料",
-      "个股:博迁新材",
-      "个股:村田",
-      "策略:产业链分析",
-      "策略:估值"
-    ],
-    "pinned": false,
-    "summary": "MLCC行业全景分析：大陆厂商能进入高端市场但差距仍在；2026年MLCC进入结构性上行拐点，但非HBM式超级涨价。三环集团综合竞争力最强，但A股标的估值已普遍透支国产替代预期。",
-    "keywords": "MLCC 三环集团 风华高科 国瓷材料 博迁新材 村田 太阳诱电 涨价 AI服务器 国产替代 HBM 电容器 钛酸钡 镍粉",
-    "file": "/articles/mlcc-analysis-2026/"
-  },
-  {
     "id": "ccl-ai-material-2026",
     "title": "AI服务器CCL全球竞争格局：谁在真正供应高速材料",
     "date": "2026-06-19",
@@ -443,33 +247,6 @@ const articles = [
     "summary": "全球AI服务器CCL真实格局：台光电商业化龙头，松下技术标杆，台燿份额追赶弹性最大，生益科技大陆最核心。CCL不会复制HBM式涨价，但高端结构性紧缺已出现。",
     "keywords": "CCL 覆铜板 AI服务器 台光电 台燿 联茂 生益科技 松下 Megtron 斗山 M8 M9 高速材料 PCB T-glass HVLP 电子布",
     "file": "/articles/ccl-ai-material-2026/"
-  },
-  {
-    "id": "china-ai-advantage-ranking",
-    "title": "中国在本轮AI浪潮中最擅长的产业排名",
-    "date": "2026-06-19",
-    "category": "A股",
-    "subcategory": "宏观",
-    "tags": [
-      "产业:AI",
-      "产业:光模块",
-      "产业:PCB",
-      "产业:国产芯片",
-      "产业:云计算",
-      "产业:液冷",
-      "产业:服务器",
-      "策略:产业分析",
-      "宏观:全球竞争力",
-      "个股:中际旭创",
-      "个股:新易盛",
-      "个股:胜宏科技",
-      "个股:沪电股份",
-      "个股:寒武纪"
-    ],
-    "pinned": false,
-    "summary": "中国AI产业全球竞争力排名：1)高速光模块（全球领先，利润已兑现）；2)AI PCB/电子材料（规模优势向高端升级）；3)国产AI芯片（战略重要但商业质量待验证）。核心结论：中国赚全球AI资本开支的钱，光模块是当前最清晰的阿尔法。",
-    "keywords": "中国 AI产业 光模块 PCB AI芯片 全球竞争力 中际旭创 新易盛 胜宏科技 寒武纪 沪电股份 英维克 浪潮信息",
-    "file": "/articles/china-ai-advantage-ranking/"
   },
   {
     "id": "stagg-professionalism",
@@ -507,26 +284,6 @@ const articles = [
     "file": "/articles/daodejing-chapter-5/"
   },
   {
-    "id": "dongshan-86b-optical-expansion",
-    "title": "东山精密86亿扩产光芯片：一家PCB龙头正在变成AI光互连公司？",
-    "date": "2026-06-16",
-    "category": "A股",
-    "subcategory": "光通信",
-    "tags": [
-      "个股:东山精密",
-      "产业:光芯片",
-      "产业:光模块",
-      "产业:索尔思",
-      "产业:EML",
-      "产业:InP",
-      "个股:002384"
-    ],
-    "pinned": false,
-    "summary": "东山精密公告12亿美元（86亿元）扩产光芯片及光模块。索尔思Q1仅贡献16%收入却贡献53%利润。订单驱动扩产，不是预期扩产。估值体系可能从PCB公司向AI光互连公司迁移。",
-    "keywords": "东山精密 索尔思 光芯片 光模块 86亿 扩产 AI光互连 002384",
-    "file": "/articles/dongshan-86b-optical-expansion/"
-  },
-  {
     "id": "spacex-ipo-supply-chain",
     "title": "SpaceX IPO之后：仰望火箭，谁在卖铲子",
     "date": "2026-06-16",
@@ -547,90 +304,6 @@ const articles = [
     "summary": "SpaceX IPO定价1.77万亿（PS~95x），上市首日市值破2万亿。非同寻常的不是价格，而是三个飞轮（星链+火箭复用+轨道AI算力）叠在一起的资产结构。供应链拆解：频谱（EchoStar）、RF芯片（STMicro/Filtronic）、工业气体（Linde）。",
     "keywords": "SpaceX IPO 星链 Starlink 马斯克 商业航天 供应链 EchoStar STMicro Filtronic Linde",
     "file": "/articles/spacex-ipo-supply-chain/"
-  },
-  {
-    "id": "shengyi-tech-gs-report",
-    "title": "高盛：生益科技——AI CCL产能扩张+产品升级，目标价上调至217.6元",
-    "date": "2026-06-16",
-    "category": "产业思考",
-    "subcategory": "研报分析",
-    "tags": [
-      "研报:高盛",
-      "个股:生益科技",
-      "产业:CCL",
-      "产业:AI材料",
-      "目标价217.6"
-    ],
-    "pinned": false,
-    "summary": "高盛将生益科技目标价从146.3上调至217.6元（+49%），维持买入。三重驱动：AI CCL产能扩张（52亿capex）+产品结构向高端升级+M9+放量。2027E EPS上调28%，估值基准切换至2027E P/E 45x。",
-    "keywords": "生益科技 高盛 Goldman Sachs CCL AI覆铜板 600183 目标价217.6",
-    "file": "/articles/shengyi-tech-gs-report/"
-  },
-  {
-    "id": "robot-supply-chain-2026",
-    "title": "机器人供应链拆解：从样机到量产的瓶颈在哪？",
-    "date": "2026-06-16",
-    "category": "产业思考",
-    "subcategory": "机器人",
-    "tags": [
-      "产业:机器人",
-      "产业:灵巧手",
-      "产业:减速器",
-      "产业:执行器",
-      "个股:双环传动",
-      "个股:拓普集团",
-      "个股:兆威机电",
-      "个股:三花智控",
-      "个股:科达利"
-    ],
-    "pinned": false,
-    "summary": "机器人进入小批量交付阶段，零部件端先于整机看到弹性。关注灵巧手（兆威机电）、减速器（双环传动）、执行器（三花/拓普）、结构件（科达利）。",
-    "keywords": "机器人 人形机器人 灵巧手 减速器 执行器 双环传动 拓普集团 兆威机电 三花 科达利",
-    "file": "/articles/robot-supply-chain-2026/"
-  },
-  {
-    "id": "pcb-mlcc-supply-chain-2026",
-    "title": "PCB长链条及衍生 & 重视MLCC高端化继续扩散",
-    "date": "2026-06-16",
-    "category": "产业思考",
-    "subcategory": "AI电子材料",
-    "tags": [
-      "产业:PCB",
-      "产业:CCL",
-      "产业:电子布",
-      "产业:钻针",
-      "产业:MLCC",
-      "产业:MLCC介质粉",
-      "个股:生益科技",
-      "个股:三环集团",
-      "个股:风华高科",
-      "个股:国瓷材料"
-    ],
-    "pinned": false,
-    "summary": "PCB长链：CCL（生益/华正/建滔）→电子布（中国巨石/宏和）→钻孔设备（大族数控）→钻针（鼎泰高科）→板厂后手确认。MLCC：三环逻辑最硬，风华看修复，国瓷代表上游粉体确定性。",
-    "keywords": "PCB CCL 电子布 钻针 MLCC 三环集团 风华高科 国瓷材料 AI服务器",
-    "file": "/articles/pcb-mlcc-supply-chain-2026/"
-  },
-  {
-    "id": "pcb-upstream-four-materials-scorecard",
-    "title": "PCB上游四大材料失衡环节评分卡",
-    "date": "2026-06-16",
-    "category": "产业思考",
-    "subcategory": "AI电子材料",
-    "tags": [
-      "研报:六便士",
-      "产业:PCB",
-      "产业:T-glass",
-      "产业:铜箔",
-      "产业:CCL",
-      "产业:钻针",
-      "供需失衡",
-      "CICC"
-    ],
-    "pinned": false,
-    "summary": "PCB上游四大材料失衡评分：T-glass电子布93分/S级（日东纺垄断+丰田织布机排至2028），HVLP4铜箔90分/S级（供给缺口28-39%），M9 CCL 84分/A级（卖方定价周期），高阶钻针83分/A-级。含A股标的打分排序。",
-    "keywords": "PCB T-glass 电子布 HVLP4 铜箔 CCL 覆铜板 钻针 供需失衡 六便士",
-    "file": "/articles/pcb-upstream-four-materials-scorecard/"
   },
   {
     "id": "guoci-materials-optical-connect-2026",
@@ -669,27 +342,6 @@ const articles = [
     "summary": "英伟达250亿美元发债，850亿美元认购（超额3.4倍）。不是缺钱，不是见顶，而是利用顶级信用锁定低成本长期弹药。核心看点：850亿认购验证全球资本仍在押注AI，强化AI资本开支周期信心。",
     "keywords": "英伟达 NVDA 发债 250亿 债券 AI资本开支 融资 认购",
     "file": "/articles/nvidia-25b-bond-issuance/"
-  },
-  {
-    "id": "dongshan-precision-revaluation",
-    "title": "重看东山精密：它的变化不止在光模块",
-    "date": "2026-06-16",
-    "category": "A股",
-    "subcategory": "光通信",
-    "tags": [
-      "个股:东山精密",
-      "产业:光模块",
-      "产业:EML",
-      "产业:光芯片",
-      "产业:PCB",
-      "索尔思",
-      "AI光互联",
-      "1.6T"
-    ],
-    "pinned": false,
-    "summary": "东山精密完成索尔思光电收购后，从PCB制造公司变为PCB+光芯片+光模块垂直一体化标的。200G EML紧缺+1.6T Blackwell验证是下一步核心看点。",
-    "keywords": "东山精密 索尔思 光模块 EML 200G PCB AI光互联 1.6T Blackwell",
-    "file": "/articles/dongshan-precision-revaluation/"
   },
   {
     "id": "tsem-tower-semiconductor",
@@ -776,26 +428,6 @@ const articles = [
     "file": "/articles/nasdaq100-june-2026-rebalance/"
   },
   {
-    "id": "hk-us-internet-lof-160644",
-    "title": "160644港美互联网LOF：AI持仓投资笔记",
-    "date": "2026-06-15",
-    "category": "A股",
-    "subcategory": "海外ETF配置",
-    "tags": [
-      "个股:160644",
-      "产业:AI",
-      "策略:ETF",
-      "策略:LOF",
-      "港美互联网",
-      "产业:存储",
-      "产业:光通信"
-    ],
-    "pinned": false,
-    "summary": "160644已经从传统港美互联网基金变为AI硬件主线+存储周期+港美应用修复的主动型组合。前十大持仓中闪迪+美光合计16%，算力+存储合计超50%。核心看点：基金经理重押存储，不买溢价。",
-    "keywords": "160644 港美互联网 LOF AI硬件 存储 美光 闪迪 台积电 英伟达",
-    "file": "/articles/hk-us-internet-lof-160644/"
-  },
-  {
     "id": "wf6-hbm-bottleneck",
     "title": "WF6会成为HBM新的瓶颈吗？",
     "date": "2026-06-14",
@@ -854,25 +486,6 @@ const articles = [
     "file": "/articles/aaoi-insider-selling-analysis/"
   },
   {
-    "id": "innolight-1260h-analysis",
-    "title": "中际旭创被列入美国1260H清单：供应链安全被重新定价",
-    "date": "2026-06-12",
-    "category": "A股",
-    "subcategory": "光通信",
-    "tags": [
-      "个股:中际旭创",
-      "个股分析",
-      "1260H",
-      "地缘",
-      "供应链",
-      "出口管制"
-    ],
-    "pinned": false,
-    "summary": "中际旭创被美国列入1260H清单，光模块进入产业景气+供应链安全+地缘政治三重定价阶段。不是逻辑崩了，是定价框架变了。美股LITE/COHR/AAOI/GLW反而获得政策溢价。",
-    "keywords": "中际旭创 1260H 光模块 供应链 出口管制 地缘政治 LITE COHR AAOI",
-    "file": "/articles/innolight-1260h-analysis/"
-  },
-  {
     "id": "aaoi-trading-note",
     "title": "AAOI参与笔记：可以做，但不能当核心重仓",
     "date": "2026-06-12",
@@ -911,25 +524,6 @@ const articles = [
     "summary": "光互连组合核心应从光模块升级为激光器+光器件+DSP/SerDes+硅光代工+测试+光纤的全链条配置。新增标的优先级：CRDO > TSEM > VIAV > GFS > AXTI > FORM > SIVEF。",
     "keywords": "光通信 光互连 LITE COHR CRDO TSEM 硅光 DSP AEC 组合 配置",
     "file": "/articles/optical-portfolio-rebuilding/"
-  },
-  {
-    "id": "dongshan-intraday-t-note",
-    "title": "东山精密日内做T思路笔记",
-    "date": "2026-06-12",
-    "category": "A股",
-    "subcategory": "交易框架",
-    "tags": [
-      "个股:东山精密",
-      "策略:做T",
-      "市场:A股",
-      "交易体系",
-      "产业:PCB",
-      "产业:光模块"
-    ],
-    "pinned": false,
-    "summary": "东山精密日内做T的核心框架：大盘不杀→光/PCB不弱→东山有支撑→价差够→才做T。重点不是最低点最高点，是判断波动是板块回踩还是趋势走弱。",
-    "keywords": "东山精密 做T 日内交易 T+1 正T 倒T 光模块 PCB AI PCB VWAP 支撑 压力",
-    "file": "/articles/dongshan-intraday-t-note/"
   },
   {
     "id": "cpi-round-two-analysis",
@@ -1098,22 +692,6 @@ const articles = [
     "file": "/articles/industry-glossary-2026/"
   },
   {
-    "id": "investment-framework",
-    "title": "投资框架笔记",
-    "date": "2026-05-28",
-    "category": "产业思考",
-    "subcategory": "投资框架",
-    "tags": [
-      "策略:研究框架",
-      "市场:A股",
-      "市场:美股"
-    ],
-    "pinned": false,
-    "summary": "底层信念、Follow the Money、三类钱框架、买卖点、A股轮动规律——投资的完整思维模型。",
-    "keywords": "投资框架 方法论 底层信念 三类资产 买卖点 轮动 Follow the Money 产业链",
-    "file": "/articles/investment-framework/"
-  },
-  {
     "id": "server-bom-analysis",
     "title": "AI服务器代际升级BOM分析",
     "date": "2026-05-21",
@@ -1146,97 +724,6 @@ const articles = [
     "file": "/articles/ai-nuclear-chain/"
   },
   {
-    "id": "a-share-rules",
-    "title": "A股市场定价规则",
-    "date": "2026-05-25",
-    "category": "A股",
-    "subcategory": "交易框架",
-    "tags": [
-      "市场:A股",
-      "策略:研究框架"
-    ],
-    "pinned": false,
-    "summary": "叙事弹性、题材节奏、估值潜规则、产业链轮动——A股21条不成文的市场定价规则。",
-    "keywords": "A股 规则 叙事弹性 题材 估值 游资 公募 轮动 龙一 龙二",
-    "file": "/articles/a-share-rules/"
-  },
-  {
-    "id": "ai-industry-profit-chain",
-    "title": "AI产业链收益排序分析",
-    "date": "2026-05-25",
-    "category": "产业思考",
-    "subcategory": "AI基础设施",
-    "tags": [
-      "产业:AI",
-      "策略:产业链分析",
-      "市场:A股"
-    ],
-    "pinned": false,
-    "summary": "利润兑现、卡脖子、受益时序、A股弹性——四维度拆解AI基础设施链条的投资顺序。",
-    "keywords": "AI产业链 收益排序 卡脖子 GPU HBM CoWoS 光模块 电力 液冷 存储",
-    "file": "/articles/ai-industry-profit-chain/"
-  },
-  {
-    "id": "asia-market-correlation",
-    "title": "亚盘四国联动分析",
-    "date": "2026-05-28",
-    "category": "A股",
-    "subcategory": "交易框架",
-    "tags": [
-      "复盘",
-      "市场:A股"
-    ],
-    "pinned": false,
-    "summary": "上证 vs KOSPI vs 日经 vs 台股——85%方向同步率背后的幅度差异与A股独立性。",
-    "keywords": "亚盘 联动 上证 KOSPI 日经 台股 韩国 日本 台湾 A股 复盘",
-    "file": "/articles/asia-market-correlation/"
-  },
-  {
-    "id": "a-share-framework",
-    "title": "A股炒作传导逻辑框架",
-    "date": "2026-05-29",
-    "category": "A股",
-    "subcategory": "交易框架",
-    "tags": [
-      "市场:A股",
-      "策略:研究框架"
-    ],
-    "pinned": false,
-    "summary": "龙一→龙二→细分瓶颈→低位补涨→参股蹭概念→退潮——A股题材炒作从启动到退潮的完整传导路径与判断框架。",
-    "keywords": "A股炒作 传导 龙一 龙二 补涨 瓶颈 参股 蹭概念 退潮 情绪 题材 轮动",
-    "file": "/articles/a-share-framework/"
-  },
-  {
-    "id": "a-share-optical-mapping",
-    "title": "AI光通信下一层瓶颈：从光模块到EML、InP与互联芯片",
-    "date": "2026-05-28",
-    "category": "A股",
-    "subcategory": "光通信",
-    "tags": [
-      "市场:A股",
-      "产业:光通信"
-    ],
-    "pinned": false,
-    "summary": "A股光通信五层映射模型——从EML/激光器到InP衬底到互联芯片到平台型到模块龙头，三种排序框架（瓶颈/确定性/弹性）。",
-    "keywords": "光通信 EML InP 互联芯片 源杰科技 澜起科技 中际旭创 新易盛 光模块 LITE AXTI MRVL",
-    "file": "/articles/a-share-optical-mapping/"
-  },
-  {
-    "id": "dongshan-clarification",
-    "title": "东山精密：市场传言澄清与核心基本面梳理",
-    "date": "2026-06-01",
-    "category": "A股",
-    "subcategory": "光通信",
-    "tags": [
-      "市场:A股",
-      "东山精密"
-    ],
-    "pinned": false,
-    "summary": "针对网络三条谣言的逐一澄清——收购审批已全部通关、实控人正常履职、港股上市独立推进。光芯片产能22KK→28KK/月，AWS/Oracle/Meta订单落地。",
-    "keywords": "",
-    "file": "/articles/dongshan-clarification/"
-  },
-  {
     "id": "gtc-taipei-2026",
     "title": "英伟达台北 GTC 2026：AI 投资从'买 GPU'进入'建 AI 工厂'",
     "date": "2026-06-01",
@@ -1251,37 +738,6 @@ const articles = [
     "summary": "Vera Rubin量产爬坡、Spectrum-X CPO光互联方案、AI Factory BOM价值量重估——台北GTC确认AI投资从买GPU进入建AI工厂阶段。",
     "keywords": "",
     "file": "/articles/gtc-taipei-2026/"
-  },
-  {
-    "id": "june-market-outlook",
-    "title": "六月行情展望：不是简单看多看空，而是进入'产业约束筛选月'",
-    "date": "2026-05-31",
-    "category": "近期热点",
-    "subcategory": "市场策略",
-    "tags": [
-      "市场:美股",
-      "市场:A股",
-      "产业:AI"
-    ],
-    "pinned": false,
-    "summary": "世界杯注意力折价、巨型IPO再平衡、FOMC利率定价、AI硬件扩散——六月不是简单看多看空，而是产业约束筛选月。",
-    "keywords": "六月 行情 展望 世界杯 FOMC SpaceX IPO 长鑫 产业约束 光互联 HBM PCB 瓶颈",
-    "file": "/articles/june-market-outlook/"
-  },
-  {
-    "id": "ai-pcb-hvlp-copper-foil",
-    "title": "AI PCB 上游材料扩散：HVLP 铜箔正在成为新一轮瓶颈",
-    "date": "2026-05-31",
-    "category": "A股",
-    "subcategory": "AI电子材料",
-    "tags": [
-      "市场:A股",
-      "策略:产业链分析"
-    ],
-    "pinned": false,
-    "summary": "AI服务器高速互联推动PCB材料体系整体升级——从HVLP4/5铜箔到电子布、硅微粉、mSAP药水，资金从PCB龙头扩散到上游瓶颈环节。",
-    "keywords": "PCB HVLP 铜箔 铜冠铜箔 德福科技 生益科技 CCL 电子布 硅微粉 mSAP 泰金新能 三孚新科",
-    "file": "/articles/ai-pcb-hvlp-copper-foil/"
   },
   {
     "id": "daodejing-chapter-4",
@@ -1388,30 +844,6 @@ const articles = [
     "summary": "从衬底到光模块到AI数据中心——InP是AI光通信最上游的\"卖水人\"。",
     "keywords": "InP 磷化铟 衬底 光通信 EML 激光器 LITE COHR AXTI 6英寸 外延 光模块",
     "file": "/articles/inp-industry-chain/"
-  },
-  {
-    "id": "a-share-stock-screening-2026",
-    "title": "A股中报前瞻：业绩+估值筛出强性价比标的",
-    "date": "2026-06-24",
-    "category": "A股",
-    "subcategory": "中报前瞻",
-    "tags": [
-      "个股:兆易创新",
-      "个股:建滔积层板",
-      "个股:广合科技",
-      "个股:沪电股份",
-      "个股:北京君正",
-      "个股:星宸科技",
-      "个股:睿创微纳",
-      "产业:存储",
-      "产业:PCB",
-      "产业:CCL",
-      "策略:估值"
-    ],
-    "pinned": false,
-    "summary": "从四维筛选A股中报标的：兆易创新单标最强（25-31倍年化PE），建滔积层板CCL涨价纯正（25-32倍），广合科技AI PCB中小市值阿尔法（41-45倍）。结合现有DRAM重仓，新增顺序：广合/建滔→沪电→兆易→北京君正。",
-    "keywords": "A股 中报 业绩 估值 兆易创新 建滔积层板 广合科技 沪电股份 北京君正 存储周期 CCL PCB",
-    "file": "/articles/a-share-stock-screening-2026/"
   },
   {
     "id": "mu-earnings-preview",

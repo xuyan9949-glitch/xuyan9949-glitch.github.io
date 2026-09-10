@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const paginationEl = document.getElementById('archive-pagination');
     const searchEl = document.getElementById('archive-search');
     const summaryEl = document.getElementById('archive-summary');
-    const categoryOrder = ['美股', 'A股', '产业思考', '近期热点', '见贤思齐'];
+    const categoryOrder = ['美股', '产业思考', '近期热点', '见贤思齐'];
     const params = new URLSearchParams(window.location.search);
     const state = {
         category: params.get('category') || 'all',

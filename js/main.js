@@ -83,20 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 标的追踪:更新快速卡片数量
         if (typeof trackingData !== 'undefined') {
-            const aList = trackingData['a-shares'] || [];
             const usList = trackingData['us-stocks'] || [];
-            const aCard = document.querySelector('.track-quick-card[data-mkt="a"] .tqc-sub');
             const usCard = document.querySelector('.track-quick-card[data-mkt="us"] .tqc-sub');
-            if (aCard) aCard.textContent = aList.length + '只标的';
             if (usCard) usCard.textContent = usSectors.length + '个板块,' + usList.length + '只标的';
         }
         // 标的追踪:最近更新是否在最后访问之后
         if (typeof trackingData !== 'undefined') {
-            const allStocks = [
-                ...(trackingData['a-shares'] || []),
-                ...(trackingData['us-stocks'] || []),
-                ...(trackingData['hk-stocks'] || []),
-            ];
+            const allStocks = trackingData['us-stocks'] || [];
             const dates = allStocks.map(s => new Date(s.lastUpdated).getTime()).filter(d => !isNaN(d));
             if (dates.length > 0) {
                 const latest = Math.max(...dates);
@@ -184,12 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'AI电子材料',
             desc: 'PCB、CCL、MLCC、铜箔和散热材料的上游扩散。',
             keywords: ['PCB', 'CCL', 'MLCC', '铜箔', '电子材料', 'AI电子材料', '散热', '金刚石']
-        },
-        {
-            id: 'a-share-map',
-            title: 'A股映射与交易框架',
-            desc: 'A股产业映射、题材传导、交易规则和估值节奏。',
-            keywords: ['A股', '映射', '交易框架', '传导', '中报', '定价规则']
         },
         {
             id: 'tools-mindset',
@@ -513,20 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 desc: 'Follow the Money:巨头CapEx → 供应链订单 → 产能扩张 → 上游涨价 → 设备交期拉长 → 财报指引上修 → 客户认证加速。'
             },
             {
-                num: '04', title: 'A 股题材框架',
-                link: '/articles/a-share-framework/',
-                items: [
-                    '龙一兑现',
-                    '龙二补涨',
-                    '上游材料扩散',
-                    '设备耗材扩散',
-                    '低位小市值补涨',
-                    '参股蹭概念',
-                    '退潮',
-                ]
-            },
-            {
-                num: '05', title: '交易纪律框架',
+                num: '04', title: '交易纪律框架',
                 items: [
                     '不熟不重仓',
                     '短期期权必须止损',
@@ -581,14 +555,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return `<span style="font-size:11px;font-weight:500;color:${color}">${importance}</span>`;
     }
 
-    const trackingMarkets = {
-        a: 'a-shares',
-        us: 'us-stocks',
-        hk: 'hk-stocks',
-    };
+    const trackingMarkets = { us: 'us-stocks' };
 
     function getTrackingMarketKey(market) {
-        return trackingMarkets[market] || trackingMarkets.a;
+        return trackingMarkets[market] || trackingMarkets.us;
     }
 
     function renderCards(market, showAbandoned) {
@@ -729,7 +699,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderSectorTabs() {
         const container = document.getElementById('trk-sector-tabs');
         if (!container) return;
-        container.innerHTML = usSectors.map(s => `
+        container.innerHTML = `<span class="trk-sector-tab ${currentSector === null ? 'active' : ''}" data-sector="">全部</span>` + usSectors.map(s => `
             <span class="trk-sector-tab ${currentSector === s ? 'active' : ''}" data-sector="${s}" style="--sector-color:${US_SECTOR_COLORS[s] || '#6b6b80'}">${s}</span>
         `).join('');
         container.style.display = 'flex';
@@ -738,7 +708,7 @@ document.addEventListener('DOMContentLoaded', () => {
             el.addEventListener('click', () => {
                 container.querySelectorAll('.trk-sector-tab').forEach(t => t.classList.remove('active'));
                 el.classList.add('active');
-                currentSector = el.dataset.sector;
+                currentSector = el.dataset.sector || null;
                 renderCards('us');
             });
         });
@@ -750,7 +720,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let showAbandoned = false;
     const historyLink = document.getElementById('trk-history-link');
     if (tabs.length > 0) {
-        let currentMarket = 'a';
+        let currentMarket = 'us';
+        renderSectorTabs();
         renderCards(currentMarket, showAbandoned);
 
         if (historyLink) {
@@ -1075,7 +1046,6 @@ document.addEventListener('DOMContentLoaded', () => {
             badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500;background:${c}15;color:${c}">${s.logicStatus}</span>`);
         }
         if (s.accountPosition) badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500;background:#8b5cf615;color:#8b5cf6">${s.accountPosition}</span>`);
-        if (s.ahShare) badges.push(`<span style="display:inline-block;padding:1px 8px;border-radius:8px;font-size:10px;font-weight:600;background:#8b5cf615;color:#8b5cf6;border:1px solid #8b5cf640">A+H 港股:${s.ahShare}</span>`);
         if (s.themeTags) badges.push(`<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:400;background:var(--bg-alt);color:var(--text-muted)">${s.themeTags}</span>`);
 
         content.innerHTML = `
@@ -1161,13 +1131,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             window._pendingDeepLink = stockId;
             
-            let market = 'a';
+            const market = 'us';
             const usStocks = trackingData['us-stocks'] || [];
-            const aStocks = trackingData['a-shares'] || [];
-            const hkStocks = trackingData['hk-stocks'] || [];
-            const matchingStock = usStocks.find(s => s.id === stockId)
-                || aStocks.find(s => s.id === stockId)
-                || hkStocks.find(s => s.id === stockId);
+            const matchingStock = usStocks.find(s => s.id === stockId);
             const pendingSector = matchingStock && matchingStock.usSector ? matchingStock.usSector : null;
             
             // Switch to tracking section
@@ -1175,15 +1141,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (section) section.scrollIntoView({ behavior: 'smooth' });
             
             // Click the correct market tab
-            if (matchingStock) {
-                if (matchingStock.mkt === 'us' || usStocks.includes(matchingStock)) {
-                    market = 'us';
-                } else if (matchingStock.mkt === 'hk' || hkStocks.includes(matchingStock)) {
-                    market = 'hk';
-                } else {
-                    market = 'a';
-                }
-            }
             const tab = document.querySelector(`.trk-tab[data-mkt="${market}"]`);
             if (tab) {
                 // For US stocks, we need to set currentSector before clicking
@@ -1195,75 +1152,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     }
     handleDeepLink();
-
-    // ---- Render Diagrams ----
-    const diagramsGrid = document.getElementById('diagrams-grid');
-    let currentDiagramCategory = 'all';
-
-    function renderDiagrams(cat) {
-        if (!diagramsGrid || typeof diagrams === 'undefined') return;
-        const filtered = cat === 'all' ? diagrams : diagrams.filter(d => d.category === cat);
-        const limit = Number(diagramsGrid.dataset.limit || 0);
-        const visible = limit > 0 ? filtered.slice(0, limit) : filtered;
-        diagramsGrid.innerHTML = visible.map((d, index) => {
-            const imgPath = '/images/diagrams/' + d.dir + '/' + d.file;
-            return `<button type="button" class="diagram-card" data-index="${index}" aria-label="查看大图：${d.title}">
-                <img src="${imgPath}" alt="${d.title}" loading="lazy" decoding="async">
-                <span class="diagram-label">${d.title}</span>
-            </button>`;
-        }).join('');
-        diagramsGrid.querySelectorAll('.diagram-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const item = visible[Number(card.dataset.index)];
-                window.openDiagram(item.dir + '/' + item.file, item.title);
-            });
-        });
-    }
-
-    if (diagramsGrid && typeof diagrams !== 'undefined') {
-        renderDiagrams('all');
-    }
-
-    // Diagram tabs
-    const diagramTabs = document.getElementById('diagram-tabs');
-    if (diagramTabs) {
-        diagramTabs.querySelectorAll('.diagram-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                diagramTabs.querySelectorAll('.diagram-tab').forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                diagramTabs.querySelectorAll('.diagram-tab').forEach(t => t.setAttribute('aria-pressed', String(t === tab)));
-                currentDiagramCategory = tab.dataset.dcat;
-                renderDiagrams(currentDiagramCategory);
-            });
-        });
-    }
-
-    // Create lightbox HTML
-    if (!document.getElementById('diagram-lightbox')) {
-        const lb = document.createElement('div');
-        lb.className = 'diagram-lightbox';
-        lb.id = 'diagram-lightbox';
-        lb.innerHTML = '<span class="lb-close" onclick="closeDiagram()">✕</span><img id="lb-img" src="" alt=""><span class="lb-title" id="lb-title"></span>';
-        document.body.appendChild(lb);
-    }
-
-    window.openDiagram = function(path, title) {
-        const lb = document.getElementById('diagram-lightbox');
-        const img = document.getElementById('lb-img');
-        const titleEl = document.getElementById('lb-title');
-        if (!lb || !img) return;
-        img.src = '/images/diagrams/' + path;
-        if (titleEl) titleEl.textContent = title || '';
-        lb.classList.add('open');
-        document.body.style.overflow = 'hidden';
-    };
-
-    window.closeDiagram = function() {
-        const lb = document.getElementById('diagram-lightbox');
-        if (!lb) return;
-        lb.classList.remove('open');
-        document.body.style.overflow = '';
-    };
 
 });
 
@@ -1483,7 +1371,7 @@ function getStatusColor(status) {
 // ---- Global: stock tag click → tracking drawer ----
 function findStockIdByTag(tag) {
     if (typeof trackingData === 'undefined') return null;
-    for (const key of ['a-shares', 'us-stocks', 'hk-stocks']) {
+    for (const key of ['us-stocks']) {
         const stock = trackingData[key]?.find(s => s.name === tag || s.code === tag);
         if (stock) return stock.id;
     }
@@ -1492,10 +1380,10 @@ function findStockIdByTag(tag) {
 
 function openStockTracking(stockId) {
     if (!stockId) return;
-    for (const key of ['a-shares', 'us-stocks', 'hk-stocks']) {
+    for (const key of ['us-stocks']) {
         const found = trackingData[key]?.find(s => s.id === stockId);
         if (found) {
-            const marketCode = key === 'a-shares' ? 'a' : key === 'hk-stocks' ? 'hk' : 'us';
+            const marketCode = 'us';
             window.location.hash = '#tracking';
             setTimeout(() => {
                 const tab = document.querySelector(`.trk-tab[data-mkt="${marketCode}"]`);
