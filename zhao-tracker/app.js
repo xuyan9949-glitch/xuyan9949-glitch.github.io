@@ -763,7 +763,56 @@ function updateAnalyticsSortHeaders() {
   });
 }
 
+function periodData(start,end) {
+  const inside=t=>new Date(t.date)>=start&&new Date(t.date)<end;
+  const trades=state.trades.filter(inside);
+  const ledger=computeLedger(state.trades.filter(t=>new Date(t.date)<end));
+  const pairs=ledger.pairs.filter(p=>inside(p.closeTrade));
+  const rows=[...new Set([...trades.map(t=>t.code),...pairs.map(p=>p.code)])].map(code=>{
+    const ts=trades.filter(t=>t.code===code),ps=pairs.filter(p=>p.code===code);
+    const touched=[...new Set(ps.map(p=>p.openTrade.id))];
+    const complete=touched.filter(id=>ledger.lots.find(l=>l.id===id).remainingPosition<=.0001).length;
+    return {code,trades:ts,buy:ts.filter(t=>buyActions.includes(t.action)).reduce((s,t)=>s+t.positionChange,0),sell:ts.filter(t=>isSell(t.action)).reduce((s,t)=>s+t.positionChange,0),pnl:ps.reduce((s,p)=>s+p.contribution,0)*Number(state.accountCapital||100000)/100,complete,partial:touched.length-complete};
+  });
+  return {rows,trades,pnl:rows.reduce((s,r)=>s+r.pnl,0),buy:rows.reduce((s,r)=>s+r.buy,0),sell:rows.reduce((s,r)=>s+r.sell,0),complete:rows.reduce((s,r)=>s+r.complete,0),partial:rows.reduce((s,r)=>s+r.partial,0)};
+}
+function renderPeriodReview() {
+  const end=new Date(),span=Number(analysisDays)*86400000;
+  const all=analysisDays==='all',start=all?new Date(0):new Date(end-span);
+  const current=periodData(start,end),previous=all?null:periodData(new Date(start-span),start);
+  const compare=(value,old,unit)=>previous?`较前${analysisDays}天 ${value-old>=0?'+':''}${fmt(value-old,2)}${unit}`:'全部历史 · 不作环比';
+  setText('periodCaption',`${all?'全部历史':formatDate(start,true)+' 至 '+formatDate(end,true)} · 按卖出时间归属收益，包含更早开仓；底仓也计入`);
+  document.getElementById('periodSummary').innerHTML=[
+    ['本期已实现盈亏',reviewMoneyBadge(current.pnl),previous?`较上期 ${current.pnl-previous.pnl>=0?'+':''}${money(current.pnl-previous.pnl)}`:'全部历史累计'],
+    ['买入 / 卖出仓位',`${fmt(current.buy,2)}% / ${fmt(current.sell,2)}%`,compare(current.buy,previous?.buy||0,'个百分点买入')],
+    ['本期操作',`${current.trades.length} 笔`,`${current.trades.filter(t=>buyActions.includes(t.action)).length} 买入 · ${current.trades.filter(t=>isSell(t.action)).length} 卖出 · ${compare(current.trades.length,previous?.trades.length||0,'笔')}`],
+    ['本期完成批次',`${current.complete} 个`,`${current.partial} 个部分兑现批次 · ${compare(current.complete,previous?.complete||0,'个')}`]
+  ].map(([label,value,meta])=>`<article><span>${label}</span><strong>${value}</strong><small>${meta}</small></article>`).join('');
+  const direction=document.getElementById('periodSort').value==='loss'?1:-1;
+  document.getElementById('periodRows').innerHTML=current.rows.sort((a,b)=>direction*(a.pnl-b.pnl)).map(r=>`<tr><td><b>${esc(r.code)}</b></td><td>${fmt(r.buy,2)}%</td><td>${fmt(r.sell,2)}%</td><td>${reviewMoneyBadge(r.pnl)}</td><td>${r.complete} / ${r.partial}</td><td><button class="detail-btn" onclick="openPeriodTrades('${esc(r.code)}')">查看 ${r.trades.length} 笔 →</button></td></tr>`).join('');
+  document.getElementById('periodEmpty').hidden=current.rows.length>0;
+}
+window.openPeriodTrades=code=>{
+  const end=new Date(),start=analysisDays==='all'?new Date(0):new Date(end-Number(analysisDays)*86400000);
+  const row=periodData(start,end).rows.find(r=>r.code===code);
+  if(!row) return;
+  setText('periodDialogTitle',`${code} · 本期操作`);
+  setText('periodDialogMeta',`${analysisDays==='all'?'全部历史':formatDate(start,true)+' 至 '+formatDate(end,true)} · ${row.trades.length} 笔 · 北京时间 · 最新在前`);
+  const groups=new Map();
+  row.trades.slice().sort((a,b)=>new Date(b.date)-new Date(a.date)).forEach(t=>{
+    const date=new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(t.date));
+    if(!groups.has(date))groups.set(date,[]);groups.get(date).push(t);
+  });
+  document.getElementById('periodDialogBody').innerHTML=`<div class="period-dialog-summary">买入 <b>${fmt(row.buy,3)}%</b> · 卖出 <b>${fmt(row.sell,3)}%</b> · 本期已实现 ${reviewMoneyBadge(row.pnl)}</div>`+[...groups].map(([date,trades])=>`<section class="period-day"><h3>${date} <small>${trades.length} 笔</small></h3><div class="period-trade-head"><span>时间 / 操作</span><span>成交价</span><span>仓位变化</span><span>类型</span></div>${trades.map(t=>{
+    const buy=buyActions.includes(t.action),time=new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(t.date));
+    return `<article class="period-trade-row"><div><time>${time}</time> <span class="review-badge ${buy?'profit':'loss'}">${esc(t.action)}</span></div><b>${money(t.price)}</b><b class="pnl ${buy?'up':'down'}">${buy?'+':'−'}${Number(Number(t.positionChange).toFixed(3))}%</b><span>${esc(t.positionType)}</span>${t.note?`<small class="period-trade-note">${esc(t.note)}</small>`:''}</article>`;
+  }).join('')}</section>`).join('');
+  document.getElementById('periodTradesDialog').showModal();
+  document.getElementById('periodDialogBody').scrollTop=0;
+};
 function renderAnalytics(stats, risk) {
+  renderPeriodReview();
+  return;
   const body = document.getElementById("analyticsBody");
   const capital = Number(state.accountCapital) || 100000;
   const closed = stats.filter(s=>s.closedPosition > 0);
@@ -1123,6 +1172,7 @@ document.getElementById("capitalBtn").onclick=()=>{
 document.getElementById("searchInput").oninput=()=>renderHoldings(getHoldings());
 document.getElementById("statusFilter").onchange=()=>renderHoldings(getHoldings());
 document.getElementById("closedSearchInput").oninput=()=>renderClosedSymbols(getHoldings(),computeLedger());
+document.getElementById('periodSort').onchange=()=>renderPeriodReview();
 document.getElementById('closedFilter').onchange=()=>renderClosedSymbols(getHoldings(),computeLedger());
 document.getElementById('closedSort').onchange=()=>renderClosedSymbols(getHoldings(),computeLedger());
 document.querySelectorAll(".sortable").forEach(th=>th.onclick=()=>{

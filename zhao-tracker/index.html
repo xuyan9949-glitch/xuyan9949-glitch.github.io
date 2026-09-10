@@ -7,7 +7,7 @@
   <title>Lucky Follow</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260911-closed-archive">
+  <link rel="stylesheet" href="styles.css?v=20260911-period-review">
 </head>
 <body>
   <div class="app-shell">
@@ -178,12 +178,17 @@
 
       <section class="panel analytics-panel">
         <div class="panel-header">
-          <div><h2>标的复盘分析</h2><p>统计资金使用率、操作频率、收益效率与进出速度</p></div>
+          <div><h2>阶段复盘</h2><p id="periodCaption">看本期操作、兑现结果与上一阶段的变化</p></div>
           <div class="segmented" id="analysisRangeTabs">
             <button data-days="7">7天</button><button data-days="30" class="active">30天</button>
             <button data-days="90">90天</button><button data-days="all">全部</button>
           </div>
         </div>
+        <div id="periodSummary" class="period-summary"></div>
+        <div class="period-toolbar"><span>本期贡献明细 · 金额按账户本金折算</span><select id="periodSort" aria-label="贡献排序"><option value="profit">盈利优先</option><option value="loss">亏损优先</option></select></div>
+        <div class="table-wrap"><table><thead><tr><th>标的</th><th>本期买入仓位</th><th>本期卖出仓位</th><th>本期已实现盈亏</th><th>完整 / 部分平仓批次</th><th>本期操作</th></tr></thead><tbody id="periodRows"></tbody></table></div>
+        <div id="periodEmpty" class="empty-state" hidden>本期暂无操作</div>
+        <div class="legacy-period" hidden>
         <div class="recap-box">
           <div class="recap-title">复盘结论</div>
           <div id="recapList" class="recap-list"></div>
@@ -244,12 +249,14 @@
           </table>
           <div id="analyticsEmpty" class="empty-state"><div>暂无复盘数据</div><p>有交易记录后会自动生成标的统计。</p></div>
         </div>
+        </div>
       </section>
 
-      <section class="panel pairs-panel">
-        <div class="panel-header">
+      <details class="panel pairs-panel">
+        <summary class="panel-header">
           <div><h2>平仓配对</h2><p>每笔平仓对应原始开仓批次，计算已实现盈亏</p></div>
-        </div>
+          <span class="pairs-toggle">点击展开 / 收起</span>
+        </summary>
         <div class="table-wrap">
           <table>
             <thead>
@@ -261,7 +268,7 @@
           </table>
           <div id="pairsEmpty" class="empty-state"><div>暂无平仓配对</div><p>录入卖出/减仓后，会显示对应的买入批次与盈亏。</p></div>
         </div>
-      </section>
+      </details>
 
       <section id="history" class="panel activity-panel section-anchor">
         <div class="panel-header">
@@ -348,6 +355,10 @@
   </dialog>
 
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20260911-closed-archive"></script>
+  <script src="app.js?v=20260911-period-review"></script>
+  <dialog id="periodTradesDialog" class="period-trades-dialog">
+    <div class="dialog-header"><div><h2 id="periodDialogTitle">本期操作</h2><p id="periodDialogMeta"></p></div><button class="icon-btn" aria-label="关闭本期操作" onclick="document.getElementById('periodTradesDialog').close()">×</button></div>
+    <div id="periodDialogBody" class="period-dialog-body"></div>
+  </dialog>
 </body>
 </html>

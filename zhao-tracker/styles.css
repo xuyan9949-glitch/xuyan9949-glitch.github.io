@@ -178,6 +178,31 @@ tr:hover .row-actions { opacity:1; }
 .closed-panel { margin-bottom:14px; }
 .closed-symbols { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; padding:14px 17px; }
 .closed-controls { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+.legacy-period[hidden] { display:none; }
+.pairs-panel>summary { cursor:pointer; }
+.pairs-toggle { color:var(--blue); font-size:13px; white-space:nowrap; }
+.pairs-panel:not([open])>summary { border-bottom:0; }
+.period-summary { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; padding:18px; }
+.period-summary article { padding:18px; border:1px solid var(--line); border-radius:12px; background:var(--panel-2); display:flex; flex-direction:column; gap:12px; }
+.period-summary strong { font-size:25px; }
+.period-summary strong .review-badge { font-size:25px; }
+.period-summary span,.period-summary small { color:var(--muted); }
+.period-toolbar { display:flex; justify-content:space-between; gap:10px; padding:12px 18px; color:var(--muted); }
+.period-toolbar select { padding:8px; background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:6px; }
+.period-trade { padding:8px 0; border-bottom:1px solid var(--line); font-size:13px; }
+.period-trades-dialog { width:min(800px,calc(100vw - 24px)); max-height:90vh; padding:0; overflow:hidden; }
+.period-dialog-body { padding:16px 22px; max-height:calc(90vh - 110px); overflow-y:auto; }
+.period-dialog-summary { padding:12px; background:var(--panel-2); border-radius:8px; font-size:14px; }
+.period-day { margin-top:22px; }
+.period-day h3 { font-size:16px; padding-bottom:10px; }
+.period-day h3 small { color:var(--muted); font-weight:400; margin-left:10px; }
+.period-trade-head,.period-trade-row { display:grid; grid-template-columns:1.5fr 1fr 1fr .8fr; gap:10px; align-items:center; }
+.period-trade-head { color:var(--muted); font-size:13px; padding:10px 0; background:var(--panel-2); }
+.period-trade-row { padding:12px 0; border-bottom:1px solid var(--line); font-size:14px; font-variant-numeric:tabular-nums; }
+.period-trade-note { grid-column:1/-1; color:var(--muted); line-height:1.6; }
+@media(max-width:500px) { .period-dialog-body { padding:12px; } .period-trade-head,.period-trade-row { gap:5px; grid-template-columns:1.3fr 1fr 1fr .7fr; font-size:12px; } .period-trade-row .review-badge { padding:2px 4px; font-size:12px; } }
+@media(max-width:800px) { .period-summary { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:450px) { .period-summary { grid-template-columns:1fr; } }
 .closed-controls select { padding:9px; border:1px solid var(--line); border-radius:7px; background:var(--panel); color:var(--text); }
 .closed-panel .panel-header { flex-wrap:wrap; gap:12px; }
 #closedCount { color:var(--muted); font-size:13px; font-weight:400; }
