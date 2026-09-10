@@ -629,24 +629,31 @@ function getSymbolSummary(code, holdings=getHoldings(), ledger=computeLedger()) 
 function renderClosedSymbols(holdings, ledger) {
   const q = document.getElementById("closedSearchInput").value.trim().toLowerCase();
   const openCodes = new Set(holdings.map(h=>h.code));
+  const filter=document.getElementById('closedFilter').value;
+  const sort=document.getElementById('closedSort').value;
+  const allClosed=[...new Set(state.trades.filter(t=>buyActions.includes(t.action)).map(t=>t.code))].filter(code=>!openCodes.has(code));
   const codes = [...new Set(state.trades.filter(t=>buyActions.includes(t.action)).map(t=>t.code))]
     .filter(code=>!openCodes.has(code) && (!q||code.toLowerCase().includes(q)))
     .map(code=>getSymbolSummary(code,holdings,ledger))
-    .sort((a,b)=>new Date(b.lastDate)-new Date(a.lastDate));
+    .filter(s=>filter==='all'||(filter==='profit'&&s.realizedDollar>=.005)||(filter==='loss'&&s.realizedDollar<=-.005)||(filter==='flat'&&Math.abs(s.realizedDollar)<.005))
+    .sort((a,b)=>sort==='amount'?b.realizedDollar-a.realizedDollar:sort==='return'?b.realizedReturn-a.realizedReturn:new Date(b.lastDate)-new Date(a.lastDate));
+  setText('closedCount',`${codes.length} / ${allClosed.length} 个标的`);
   const list = document.getElementById("closedSymbols");
   list.innerHTML = codes.map(s=>`<article class="closed-card">
-    <span class="stock-avatar">${esc(s.code[0])}</span>
     <div class="closed-card-main">
       <div class="closed-card-title"><b>${esc(s.code)}</b><span class="closed-badge">已清仓</span></div>
-      <div class="closed-card-meta">${s.trades.length} 笔操作 · 最后 ${formatDate(s.lastDate,true)}</div>
-      <div class="closed-card-pnl pnl ${s.realizedContribution>=0?"up":"down"}">已实现 ${s.realizedReturn>=0?"+":""}${fmt(s.realizedReturn,2)}% · ${usd(s.realizedDollar)}</div>
-      <button class="detail-btn" onclick="openSymbolDetail('${s.code}')">查看完整操盘档案 →</button>
+      <div class="closed-result"><small>累计已实现 · 全部历史</small><div>${reviewMoneyBadge(s.realizedDollar)}</div></div>
+      <div class="closed-card-meta" title="已实现收益除以已配对仓位对应的投入本金，不是账户收益率">已平仓收益率 <b>${s.realizedReturn>=0?'+':''}${fmt(s.realizedReturn,2)}%</b></div>
+      <div class="closed-journey">首次开仓 ${formatDate(s.firstDate,true)}<br><span>↓</span> 最近清仓 ${formatDate(s.lastDate,true)}</div>
+      <div class="closed-card-meta">${s.trades.filter(t=>buyActions.includes(t.action)).length} 个开仓批次 · ${s.trades.filter(t=>isSell(t.action)).length} 次卖出 · ${s.trades.length} 笔操作</div>
+      <button class="detail-btn" onclick="openSymbolDetail('${s.code}',true)">展开开仓与平仓过程 →</button>
     </div>
   </article>`).join("");
   document.getElementById("closedSymbolsEmpty").hidden=codes.length>0;
+  if(!codes.length) document.getElementById('closedSymbolsEmpty').innerHTML='<div>暂无符合条件的清仓档案</div><p>可调整搜索或盈亏筛选条件。</p>';
 }
 
-window.openSymbolDetail=code=>{
+window.openSymbolDetail=(code,archive=false)=>{
   const summary = getSymbolSummary(code);
   const capital = Number(state.accountCapital) || 100000;
   const currentPosition = summary.holding?.position || 0;
@@ -672,7 +679,16 @@ window.openSymbolDetail=code=>{
     ["平仓胜率",summary.winRate===null?"—":`${fmt(summary.winRate,0)}%`,summary.pairs.length?`${summary.pairs.filter(p=>p.pnlPct>=0).length} 盈利 / ${summary.pairs.filter(p=>p.pnlPct<0).length} 亏损`:"暂无平仓"],
     ["平均持仓",summary.avgHoldDays===null?"—":`${fmt(summary.avgHoldDays,1)} 天`,"按已平仓仓位加权"]
   ];
-  document.getElementById("symbolMetrics").innerHTML=metrics.map(([label,value,meta])=>`<article class="symbol-metric"><span>${label}</span><strong>${value}</strong><small>${meta}</small></article>`).join("");
+  const shownMetrics=archive?[
+    ['累计已实现',reviewMoneyBadge(summary.realizedDollar),'全部历史累计'],
+    ['首次开仓',formatDate(summary.firstDate,true),'北京时间'],
+    ['最近清仓',formatDate(summary.lastDate,true),'北京时间'],
+    ['开仓批次',`${summary.trades.filter(t=>buyActions.includes(t.action)).length} 个`,`${summary.trades.length} 笔操作`]
+  ]:metrics;
+  if(archive) setText('symbolDialogTitle',`${code} · 清仓复盘档案`);
+  document.getElementById("symbolMetrics").innerHTML=shownMetrics.map(([label,value,meta])=>`<article class="symbol-metric"><span>${label}</span><strong>${value}</strong><small>${meta}</small></article>`).join("");
+  document.querySelector('.symbol-raw-history').open=false;
+  document.querySelector('.symbol-detail-body').scrollTop=0;
   const orderedTrades=[...summary.trades].sort((a,b)=>new Date(b.date)-new Date(a.date));
   setText("symbolTradeCount",`${orderedTrades.length} 笔`);
   document.getElementById("symbolTrades").innerHTML=orderedTrades.length?orderedTrades.map(t=>{
@@ -1107,6 +1123,8 @@ document.getElementById("capitalBtn").onclick=()=>{
 document.getElementById("searchInput").oninput=()=>renderHoldings(getHoldings());
 document.getElementById("statusFilter").onchange=()=>renderHoldings(getHoldings());
 document.getElementById("closedSearchInput").oninput=()=>renderClosedSymbols(getHoldings(),computeLedger());
+document.getElementById('closedFilter').onchange=()=>renderClosedSymbols(getHoldings(),computeLedger());
+document.getElementById('closedSort').onchange=()=>renderClosedSymbols(getHoldings(),computeLedger());
 document.querySelectorAll(".sortable").forEach(th=>th.onclick=()=>{
   const key=th.dataset.sort; if(sortKey===key)sortDirection*=-1;else{sortKey=key;sortDirection=-1;}renderHoldings(getHoldings());
 });

@@ -7,7 +7,7 @@
   <title>Lucky Follow</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260910-origin-badges">
+  <link rel="stylesheet" href="styles.css?v=20260911-closed-archive">
 </head>
 <body>
   <div class="app-shell">
@@ -146,8 +146,12 @@
 
       <section id="closed" class="panel closed-panel section-anchor">
         <div class="panel-header">
-          <div><h2>已清仓标的</h2><p>保留历史操盘档案，可随时查看完整复盘</p></div>
-          <label class="search-box">⌕ <input id="closedSearchInput" placeholder="搜索已清仓标的"></label>
+          <div><h2>清仓复盘档案 <span id="closedCount"></span></h2><p>当前已清仓标的 · 全部历史累计 · 回看每次开仓与分批卖出</p></div>
+          <div class="closed-controls">
+            <label class="search-box">⌕ <input id="closedSearchInput" placeholder="搜索标的" aria-label="搜索清仓标的"></label>
+            <select id="closedFilter" aria-label="盈亏筛选"><option value="all">全部结果</option><option value="profit">盈利</option><option value="loss">亏损</option><option value="flat">保本</option></select>
+            <select id="closedSort" aria-label="排序"><option value="recent">最近清仓</option><option value="amount">收益金额从高到低</option><option value="return">收益率从高到低</option></select>
+          </div>
         </div>
         <div id="closedSymbols" class="closed-symbols"></div>
         <div id="closedSymbolsEmpty" class="empty-state"><div>暂无已清仓标的</div><p>标的仓位归零后会自动归档到这里。</p></div>
@@ -344,6 +348,6 @@
   </dialog>
 
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20260910-origin-badges"></script>
+  <script src="app.js?v=20260911-closed-archive"></script>
 </body>
 </html>

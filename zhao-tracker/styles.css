@@ -177,6 +177,15 @@ tr:hover .row-actions { opacity:1; }
 .score-status.watch { color:var(--muted); background:var(--panel-2); }
 .closed-panel { margin-bottom:14px; }
 .closed-symbols { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; padding:14px 17px; }
+.closed-controls { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+.closed-controls select { padding:9px; border:1px solid var(--line); border-radius:7px; background:var(--panel); color:var(--text); }
+.closed-panel .panel-header { flex-wrap:wrap; gap:12px; }
+#closedCount { color:var(--muted); font-size:13px; font-weight:400; }
+.closed-result { margin:14px 0 4px; }
+.closed-result small { color:var(--muted); }
+.closed-result .review-badge { font-size:23px; border:0; padding:5px 10px; }
+.closed-journey { margin:12px 0; padding:10px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); font-size:14px; line-height:1.8; }
+.closed-journey span { color:var(--blue); }
 .closed-card { display:flex; align-items:center; gap:11px; padding:13px; border:1px solid var(--line); border-radius:10px; background:var(--panel-2); }
 .closed-card-main { flex:1; min-width:0; }
 .closed-card-title { display:flex; align-items:center; justify-content:space-between; gap:8px; }
