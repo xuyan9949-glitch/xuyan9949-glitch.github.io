@@ -509,7 +509,22 @@ function computeReturnTimeline() {
   return snapshots;
 }
 
+function renderRecordOrigin(now=new Date()) {
+  const first=state.trades.filter(t=>Number.isFinite(new Date(t.date).getTime())).sort((a,b)=>new Date(a.date)-new Date(b.date))[0];
+  const element=document.getElementById('recordOrigin');
+  if (!element) return;
+  element.hidden=!first;
+  if (!first) return;
+  const date=new Date(first.date);
+  const dayKey=value=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(value);
+  const days=Math.max(1,Math.round((Date.parse(dayKey(now))-Date.parse(dayKey(date)))/86400000)+1);
+  const dayText=new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',year:'numeric',month:'long',day:'numeric'}).format(date);
+  const timeText=new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',hour:'2-digit',minute:'2-digit',hour12:false}).format(date);
+  document.getElementById('recordOriginLabel').textContent=`记录始于 ${dayText} · 第 ${days} 天`;
+  document.getElementById('recordOriginDetail').textContent=`首笔交易：${dayText} ${timeText}（北京时间） · ${first.code||first.name} · ${first.action}。按账本最早交易计算，含首日。`;
+}
 function render() {
+  renderRecordOrigin();
   const holdings = getHoldings();
   const ledger = computeLedger();
   const capital = Number(state.accountCapital) || 100000;
@@ -766,22 +781,29 @@ function renderAnalytics(stats, risk) {
   document.getElementById("analyticsEmpty").hidden=stats.length>0;
 }
 
+function reviewMoneyBadge(value) {
+  if (value===null || !Number.isFinite(value)) return '<span class="review-badge neutral">行情不可用</span>';
+  const rounded=Math.round(value*100)/100;
+  const tone=rounded>0?'profit':rounded<0?'loss':'neutral';
+  const sign=rounded>0?'+':rounded<0?'−':'';
+  return `<span class="review-badge ${tone}">${sign}${money(Math.abs(rounded))}</span>`;
+}
 function renderScoreboard(scores) {
   const highlights=document.getElementById("scoreHighlights");
   highlights.innerHTML=scores.filter(item=>item.confidence>=.4).slice(0,3).map((item,index)=>`<article class="score-highlight ${index===0?"top":""}">
     <span>历史表现排序 ${index+1} · ${esc(item.reliability)}</span><strong>${esc(item.code)} <em>${item.score===null?'暂无评分':fmt(item.score,1)}</em></strong>
-    <small>${item.samples} 个完整平仓批次 · ${item.coveredDays} 个开仓日<br>${esc(item.status)} · 剩余浮盈亏 ${item.floating===null?'行情不可用':money(item.floating)}</small>
+    <small>${item.samples} 个完整平仓批次 · ${item.coveredDays} 个开仓日<br>${esc(item.status)} · 剩余浮盈亏 ${reviewMoneyBadge(item.floating)}</small>
   </article>`).join("");
   const body=document.getElementById("scoreBody");
   body.innerHTML=scores.map(item=>`<tr>
-    <td data-label="标的"><b>${esc(item.code)}</b><br><small>累计已实现 ${money(item.contribution*Number(state.accountCapital||100000)/100)}</small></td>
+    <td data-label="标的"><b>${esc(item.code)}</b><br><small>累计已实现 ${reviewMoneyBadge(item.contribution*Number(state.accountCapital||100000)/100)}</small></td>
     <td data-label="历史表现"><b class="score-value">${item.score===null?'暂无评分':fmt(item.score,1)}</b><details><summary>评分明细</summary><small>${item.samples?`收益质量 ${fmt(item.returnPoints,1)}/50<br>中位 ${fmt(item.medianReturn,2)}% · 资金加权 ${fmt(item.weightedMean,2)}%<br>两项分别按收益÷5%×25计分，各限0–25<br>资金效率 ${fmt(item.speedPoints,1)}/30<br>批次收益÷√(持时小时÷24)，持时最低1小时；仓位加权后÷5×30，限0–30<br>盈利稳定性 ${fmt(item.stabilityPoints,1)}/20<br>(盈利批次+1)÷(批次+2)×20<br>只统计完整平仓波段批次；不含费用。`:'暂无完整平仓波段样本，不计算分项。'}<br>规则评分，不代表获利概率。</small></details></td>
     <td data-label="样本可靠性"><b>${esc(item.reliability)}</b><br><small>${item.coveredDays} 个开仓日<br>卖出匹配 ${fmt(item.matchRate*100,1)}%</small></td>
     <td data-label="批次构成"><b>${item.samples} 波段完整平仓</b><br><small>全部持仓：${item.partial} 部分平仓 · ${item.openCount-item.partial} 未兑现<br>${item.baseCount} 个底仓批次不参与评分</small></td>
     <td data-label="中位收益"><span class="pnl ${item.medianReturn>=0?"up":"down"}">${item.medianReturn>=0?"+":""}${fmt(item.medianReturn,2)}%</span></td>
     <td data-label="中位持时"><b>${fmt(item.medianHoldHours,1)} 小时</b></td>
-    <td data-label="亏损与持仓提醒"><b>最差波段批次 ${item.samples?fmt(item.worstReturn,2)+'%':'—'}</b><br><small>全部已兑现亏损 ${money(item.realizedLoss)}<br>剩余浮盈亏 ${item.floating===null?'行情不可用':money(item.floating)}<br>按可用报价估算；并非最大回撤</small></td>
-    <td data-label="近期操作"><span class="score-status watch">${esc(item.status)}</span><br><small>当前仓位 ${fmt(item.position,2)}%</small></td>
+    <td data-label="亏损与持仓提醒"><b>最差波段批次 ${item.samples?fmt(item.worstReturn,2)+'%':'—'}</b><br><small>全部已兑现亏损 ${reviewMoneyBadge(-item.realizedLoss)}<br>剩余浮盈亏 ${reviewMoneyBadge(item.floating)}<br>按可用报价估算；并非最大回撤</small></td>
+    <td data-label="近期操作"><span class="score-status watch">${esc(item.status)}</span><br><small>当前仓位 <span class="review-badge ${item.position>0.0001?'position':'neutral'}">${fmt(item.position,2)}%</span></small></td>
   </tr>`).join("");
   document.getElementById("scoreEmpty").hidden=scores.length>0;
 }

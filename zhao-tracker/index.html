@@ -7,7 +7,7 @@
   <title>Lucky Follow</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260909-detail-redesign">
+  <link rel="stylesheet" href="styles.css?v=20260910-origin-badges">
 </head>
 <body>
   <div class="app-shell">
@@ -17,6 +17,10 @@
         <div>
           <h1>Lucky Follow</h1>
           <p>量化操作 · 仓位变化 · 交易复盘</p>
+          <details id="recordOrigin" class="record-origin" hidden>
+            <summary id="recordOriginLabel"></summary>
+            <div id="recordOriginDetail"></div>
+          </details>
         </div>
       </div>
       <div class="header-actions">
@@ -340,6 +344,6 @@
   </dialog>
 
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20260910-review-score-v2"></script>
+  <script src="app.js?v=20260910-origin-badges"></script>
 </body>
 </html>
