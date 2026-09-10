@@ -2,8 +2,9 @@ const STORAGE_KEY = "zhao-tracker-data-v5";
 const LEGACY_KEYS = [];
 const THEME_KEY = "zhao-tracker-theme";
 const SHARED_DATA_URL = "./data/tracker-data.json";
-const QUOTE_API_URL = "https://quotes.xxyalpha.cn/quotes";
-const CANDLE_API_URL = "https://quotes.xxyalpha.cn/candles";
+const MARKET_API_BASE = location.hostname === "127.0.0.1" && location.port === "8876" ? "/preview-market" : "https://quotes.xxyalpha.cn";
+const QUOTE_API_URL = `${MARKET_API_BASE}/quotes`;
+const CANDLE_API_URL = `${MARKET_API_BASE}/candles`;
 const TRADE_API_URL = "http://127.0.0.1:18765/trades";
 const QUOTE_REFRESH_MS = 30000;
 // Kept only for earlier browser-local records created before the shared ledger
@@ -404,7 +405,7 @@ function computeTScoreboard(holdings=getHoldings(), ledger=computeLedger()) {
       if (!batchMap.has(id)) batchMap.set(id,{ openTrade:pair.openTrade, pairs:[] });
       batchMap.get(id).pairs.push(pair);
     }
-    const batches=[...batchMap.values()].map(batch=>{
+    const batches=[...batchMap.values()].filter(batch=>batch.openTrade.remainingPosition<=0.0001 && batch.openTrade.positionType!=="底仓").map(batch=>{
       const closedPosition=batch.pairs.reduce((sum,p)=>sum+p.position,0);
       const weightedReturn=closedPosition ? batch.pairs.reduce((sum,p)=>sum+p.position*p.pnlPct,0)/closedPosition : 0;
       const weightedHours=closedPosition ? batch.pairs.reduce((sum,p)=>sum+p.position*Math.max(0,(new Date(p.closeTrade.date)-new Date(p.openTrade.date))/3600000),0)/closedPosition : 0;
@@ -428,19 +429,34 @@ function computeTScoreboard(holdings=getHoldings(), ledger=computeLedger()) {
     const latestBuyDays=latestBuy ? Math.max(0,(referenceDate-new Date(latestBuy.date))/86400000) : Infinity;
     const recencyScore=latestBuyDays<=1?5:latestBuyDays<=3?4:latestBuyDays<=5?3:latestBuyDays<=7?2:0;
     const buyDayCount=new Set(buys.map(t=>dateKey(t.date)).filter(day=>scoringDays.has(day))).size;
-    const efficiency=scoreMedianReturn(medianReturn)+scoreMedianHoldHours(medianHoldHours)+realizationRate*10+positiveRate*10;
-    const preference=scoreDecayedNetBuy(netBuy)+recencyScore+Math.min(5,buyDayCount);
-    const contributionScore=contribution>=.4?20:contribution>=.3?17:contribution>=.2?14:contribution>=.1?10:contribution>=.05?6:contribution>0?3:0;
-    const rawScore=efficiency+preference+contributionScore;
-    const completeness=buys.length ? samples/buys.length : 0;
-    const confidence=Math.min(90,confidenceBase(samples)*(.8+.2*completeness));
-    const score=50+(rawScore-50)*confidence/100;
+    const clamp=(v,max)=>Math.max(0,Math.min(max,v));
+    const worstReturn=samples?Math.min(...batches.map(b=>b.weightedReturn)):0;
+    const capitalWeight=batches.reduce((s,b)=>s+b.closedPosition,0);
+    const weightedMean=capitalWeight?batches.reduce((s,b)=>s+b.closedPosition*b.weightedReturn,0)/capitalWeight:0;
+    const returnPoints=clamp(medianReturn/5*25,25)+clamp(weightedMean/5*25,25);
+    // One-hour floor and square-root time scaling prevent minute-long trades dominating.
+    // Signed returns include losing batches before the aggregate is clamped.
+    const efficiencyRate=capitalWeight?batches.reduce((s,b)=>s+b.closedPosition*b.weightedReturn/Math.sqrt(Math.max(1,b.weightedHours)/24),0)/capitalWeight:0;
+    const speedPoints=clamp(efficiencyRate/5*30,30);
+    const adjustedWinRate=samples?(batches.filter(b=>b.weightedReturn>0).length+1)/(samples+2):0;
+    const stabilityPoints=adjustedWinRate*20;
+    const rawScore=returnPoints+stabilityPoints+speedPoints;
+    const realizedLoss=pairs.reduce((s,p)=>s+Math.max(0,-p.contribution),0)*Number(state.accountCapital||100000)/100;
+    const baseCount=ledger.lots.filter(l=>l.code===code&&l.positionType==='底仓').length;
+    const coveredDays=new Set(batches.map(b=>new Date(b.openTrade.date).toLocaleDateString('en-CA',{timeZone:'America/New_York'}))).size;
+    const closedRequested=codeTrades.filter(t=>isSell(t.action)).reduce((s,t)=>s+Number(t.positionChange||0),0);
+    const matchRate=closedRequested?Math.min(1,realizedPosition/closedRequested):1;
+    const confidence=Math.min(1,samples/10,coveredDays/5)*matchRate;
+    const score=samples?rawScore:null;
+    const reliability=confidence>=.8?'样本较充分':confidence>=.4?'样本有限':'样本不足';
+    const openLots=ledger.lots.filter(l=>l.code===code&&l.remainingPosition>0.0001);
+    const partial=openLots.filter(l=>l.remainingPosition<l.openPosition-0.0001).length;
+    const last=Number(quoteFor(code)?.last);
+    const floating=openLots.length===0?0:last>0?openLots.reduce((s,l)=>s+l.remainingPosition*(last/l.price-1)*Number(state.accountCapital||100000)/100,0):null;
     const position=holdingMap[code]?.position||0;
-    const status=score>=65&&confidence>=50&&samples>=3&&position>0 ? "重点跟随"
-      : score>=55&&(netBuy<-.25||position<=0) ? "等待再次买入"
-      : "样本观察";
-    return { code, score, rawScore, confidence, samples, medianReturn, medianHoldHours, realizationRate, positiveRate, contribution, netBuy, position, efficiency, preference, contributionScore, status };
-  }).sort((a,b)=>b.score-a.score || b.confidence-a.confidence);
+    const status=position<=0?'当前无持仓':netBuy>.25?'近期净加仓':netBuy<-.25?'近期净减仓':'近期变化较小';
+    return { code, score, rawScore, confidence, samples, medianReturn, medianHoldHours, realizationRate, positiveRate, contribution, netBuy, position, status, worstReturn,returnPoints,weightedMean,efficiencyRate,adjustedWinRate,realizedLoss,baseCount,stabilityPoints,speedPoints,coveredDays,matchRate,reliability,partial,openCount:openLots.length,floating };
+  }).sort((a,b)=>Number(b.confidence>=.4)-Number(a.confidence>=.4)||(b.score??-1)-(a.score??-1)||b.samples-a.samples);
 }
 
 function computeTimeline() {
@@ -752,20 +768,20 @@ function renderAnalytics(stats, risk) {
 
 function renderScoreboard(scores) {
   const highlights=document.getElementById("scoreHighlights");
-  highlights.innerHTML=scores.slice(0,3).map((item,index)=>`<article class="score-highlight ${index===0?"top":""}">
-    <span>TOP ${index+1} · ${esc(item.status)}</span><strong>${esc(item.code)} <em>${fmt(item.score,1)}</em></strong>
-    <small>置信度 ${fmt(item.confidence,0)}% · ${item.samples} 个有效批次 · 中位收益 ${item.medianReturn>=0?"+":""}${fmt(item.medianReturn,2)}%</small>
+  highlights.innerHTML=scores.filter(item=>item.confidence>=.4).slice(0,3).map((item,index)=>`<article class="score-highlight ${index===0?"top":""}">
+    <span>历史表现排序 ${index+1} · ${esc(item.reliability)}</span><strong>${esc(item.code)} <em>${item.score===null?'暂无评分':fmt(item.score,1)}</em></strong>
+    <small>${item.samples} 个完整平仓批次 · ${item.coveredDays} 个开仓日<br>${esc(item.status)} · 剩余浮盈亏 ${item.floating===null?'行情不可用':money(item.floating)}</small>
   </article>`).join("");
   const body=document.getElementById("scoreBody");
   body.innerHTML=scores.map(item=>`<tr>
-    <td data-label="标的"><div class="stock"><span class="stock-avatar">${esc(item.code[0])}</span><span><b>${esc(item.code)}</b><small>效率 ${fmt(item.efficiency,1)}/55 · 偏好 ${fmt(item.preference,1)}/25 · 贡献 ${fmt(item.contributionScore)}/20</small></span></div></td>
-    <td data-label="做T评分"><b class="score-value">${fmt(item.score,1)}</b><br><small>原始 ${fmt(item.rawScore,1)}</small></td>
-    <td data-label="置信度"><b>${fmt(item.confidence,0)}%</b><br><small>样本完整度</small></td>
-    <td data-label="有效批次"><b>${item.samples}</b><br><small>独立开仓</small></td>
+    <td data-label="标的"><b>${esc(item.code)}</b><br><small>累计已实现 ${money(item.contribution*Number(state.accountCapital||100000)/100)}</small></td>
+    <td data-label="历史表现"><b class="score-value">${item.score===null?'暂无评分':fmt(item.score,1)}</b><details><summary>评分明细</summary><small>${item.samples?`收益质量 ${fmt(item.returnPoints,1)}/50<br>中位 ${fmt(item.medianReturn,2)}% · 资金加权 ${fmt(item.weightedMean,2)}%<br>两项分别按收益÷5%×25计分，各限0–25<br>资金效率 ${fmt(item.speedPoints,1)}/30<br>批次收益÷√(持时小时÷24)，持时最低1小时；仓位加权后÷5×30，限0–30<br>盈利稳定性 ${fmt(item.stabilityPoints,1)}/20<br>(盈利批次+1)÷(批次+2)×20<br>只统计完整平仓波段批次；不含费用。`:'暂无完整平仓波段样本，不计算分项。'}<br>规则评分，不代表获利概率。</small></details></td>
+    <td data-label="样本可靠性"><b>${esc(item.reliability)}</b><br><small>${item.coveredDays} 个开仓日<br>卖出匹配 ${fmt(item.matchRate*100,1)}%</small></td>
+    <td data-label="批次构成"><b>${item.samples} 波段完整平仓</b><br><small>全部持仓：${item.partial} 部分平仓 · ${item.openCount-item.partial} 未兑现<br>${item.baseCount} 个底仓批次不参与评分</small></td>
     <td data-label="中位收益"><span class="pnl ${item.medianReturn>=0?"up":"down"}">${item.medianReturn>=0?"+":""}${fmt(item.medianReturn,2)}%</span></td>
     <td data-label="中位持时"><b>${fmt(item.medianHoldHours,1)} 小时</b></td>
-    <td data-label="兑现率"><b>${fmt(item.realizationRate*100,0)}%</b><br><small>已匹配卖出</small></td>
-    <td data-label="当前判断"><span class="score-status ${item.status==="重点跟随"?"follow":item.status==="等待再次买入"?"wait":"watch"}">${esc(item.status)}</span></td>
+    <td data-label="亏损与持仓提醒"><b>最差波段批次 ${item.samples?fmt(item.worstReturn,2)+'%':'—'}</b><br><small>全部已兑现亏损 ${money(item.realizedLoss)}<br>剩余浮盈亏 ${item.floating===null?'行情不可用':money(item.floating)}<br>按可用报价估算；并非最大回撤</small></td>
+    <td data-label="近期操作"><span class="score-status watch">${esc(item.status)}</span><br><small>当前仓位 ${fmt(item.position,2)}%</small></td>
   </tr>`).join("");
   document.getElementById("scoreEmpty").hidden=scores.length>0;
 }
