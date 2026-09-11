@@ -7,7 +7,7 @@
   <title>Lucky Follow</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260911-period-review">
+  <link rel="stylesheet" href="styles.css?v=20260912-daily-pnl">
 </head>
 <body>
   <div class="app-shell">
@@ -98,6 +98,7 @@
               </select>
             </div>
           </div>
+          <div id="dailyPnlSummary" class="daily-summary" aria-live="polite"></div>
           <div class="table-wrap">
             <table>
               <thead>
@@ -105,7 +106,7 @@
                   <th>标的</th><th>状态</th>
                   <th class="sortable" data-sort="position">仓位 ↕</th>
                   <th>现价 / 成本</th>
-                  <th>当日盈亏</th><th>持仓盈亏</th>
+                  <th>持仓当日贡献</th><th>持仓盈亏</th>
                   <th>最近操作</th>
                 </tr>
               </thead>
@@ -355,7 +356,8 @@
   </dialog>
 
   <div id="toast" role="status" aria-live="polite"></div>
-  <script src="app.js?v=20260911-period-review"></script>
+  <script src="daily-pnl.js?v=20260912-daily-pnl"></script>
+  <script src="app.js?v=20260912-daily-pnl"></script>
   <dialog id="periodTradesDialog" class="period-trades-dialog">
     <div class="dialog-header"><div><h2 id="periodDialogTitle">本期操作</h2><p id="periodDialogMeta"></p></div><button class="icon-btn" aria-label="关闭本期操作" onclick="document.getElementById('periodTradesDialog').close()">×</button></div>
     <div id="periodDialogBody" class="period-dialog-body"></div>

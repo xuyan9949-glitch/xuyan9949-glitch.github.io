@@ -131,10 +131,11 @@ function holdingPnlMarkup(holding, capital) {
 }
 async function refreshQuotes() {
   const holdings = getHoldings();
-  if (!holdings.length) return;
+  const todayTrades=state.trades.filter(t=>marketDate(t.date)===marketDate(new Date()));
+  if (!holdings.length && !todayTrades.length) { render(); return; }
   const status = document.getElementById("quoteStatus");
   try {
-    const symbols = [...new Set(holdings.map(h=>quoteSymbol(h.code)).filter(code=>/^[A-Z0-9.-]{1,20}$/.test(code)))].join(",");
+    const symbols = [...new Set([...holdings,...todayTrades].map(h=>quoteSymbol(h.code)).filter(code=>/^[A-Z0-9.-]{1,20}$/.test(code)))].join(",");
     if (!symbols) throw new Error("没有可查询的股票代码");
     const response = await fetch(`${QUOTE_API_URL}?symbols=${encodeURIComponent(symbols)}`, { cache:"no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -587,6 +588,9 @@ function render() {
 
 function renderHoldings(holdings) {
   const capital = Number(state.accountCapital) || 100000;
+  const now=new Date(), dailyTrades=state.trades.filter(t=>new Date(t.date)<=now);
+  const daily=calculateDailyPnl({trades:dailyTrades,ledger:computeLedger(dailyTrades),capital,quotes:state.quotes,quoteUpdatedAt:state.quoteUpdatedAt,quoteError:state.quoteError,now,symbolFor:quoteSymbol});
+  document.getElementById('dailyPnlSummary').innerHTML=`<div class="daily-main"><span>当日总盈亏 <small>估算</small></span><strong>${daily.complete?reviewMoneyBadge(daily.total):'<span class="daily-unavailable">暂不可完整计算</span>'}</strong><span class="muted">美东 ${esc(daily.date)} · 不随下方筛选变化</span></div><div class="daily-component"><span>持仓当日贡献</span>${daily.heldMissing?'<b>待补行情</b>':reviewMoneyBadge(daily.held)}<span class="muted">当前剩余仓位的今日变化</span></div><div class="daily-component"><span>今日卖出贡献</span>${daily.soldMissing?'<b>数据不完整</b>':reviewMoneyBadge(daily.sold)}<span class="muted">含今日已清仓标的，仅计今日变化</span></div><details class="daily-explanation"><summary>计算口径${daily.complete?'':' · 数据待补齐'}</summary><p>隔夜仓位以昨收为起点，今日买入以成交价为起点；按各开仓批次折算股数，合计剩余持仓和今日卖出部分。不等于今日卖出的累计已实现收益。按美东自然日切换，金额基于看板本金估算，未扣费用。</p><p>报价未提供交易时段标记，盘前及节假日可能仍是上一交易日价格；此时本估算不能作为可靠的当日收益。跨日、周末、断线或超过 2 分钟的报价不计入完整总额。</p>${daily.issues.length?`<p>待核对：${esc(daily.issues.join('、'))}。已可计算部分 ${reviewMoneyBadge(daily.total)}，不是完整总额。</p>`:''}</details>`;
   const q=document.getElementById("searchInput").value.trim().toLowerCase();
   const filter=document.getElementById("statusFilter").value;
   const visible=holdings.filter(h=>(!q||h.name.toLowerCase().includes(q))&&(filter==="all"||h.positionType===filter))
@@ -597,7 +601,7 @@ function renderHoldings(holdings) {
     <td data-label="状态"><span class="status ${h.positionType==="底仓"?"base":"swing"}">${esc(h.positionType)}</span></td>
     <td data-label="仓位"><div class="position-cell"><b>${fmt(h.position)}%</b><div class="position-mini"><i style="width:${Math.min(100,h.position*3)}%"></i></div></div></td>
     <td data-label="现价 / 成本">${currentCostMarkup(h)}</td>
-    <td data-label="当日盈亏">${dayPnlMarkup(h,capital)}</td>
+    <td data-label="持仓当日贡献">${daily.byCode[h.code]?.heldMissing || !daily.byCode[h.code]?'<span class="muted">待补行情</span>':reviewMoneyBadge(daily.byCode[h.code].held)}</td>
     <td data-label="持仓盈亏">${holdingPnlMarkup(h,capital)}</td>
     <td data-label="最近操作"><span class="latest-action">${esc(h.lastTrade.action)} · ${formatDate(h.lastTrade.date)}</span><button class="mini-btn row-actions" title="编辑最近记录" onclick="editTrade('${h.lastTrade.id}')">✎</button></td>
   </tr>`).join("");
