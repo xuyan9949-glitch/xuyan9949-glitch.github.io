@@ -753,264 +753,128 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =====================================================
-    // Drawer - 投资逻辑 · 催化剂看板 · 操作计划
+    // Drawer - 一句话 + 近期市场 + 估值
     // =====================================================
 
-    function renderInvestmentLogic(logic) {
-        if (!logic) return `
-            <div class="trk-detail-section">
-                <h3><span class="sec-icon">📋</span> 投资逻辑</h3>
-                <div class="trk-empty-data">暂未填写</div>
-            </div>`;
-
-        const coreReasons = Array.isArray(logic.coreReason)
-            ? logic.coreReason.map((r, i) => `<strong>${i+1}.</strong> ${r}`).join('<br>')
-            : logic.coreReason;
-
-        const questions = Array.isArray(logic.questionsToVerify)
-            ? logic.questionsToVerify.map(q => `<li>${q}</li>`).join('')
-            : logic.questionsToVerify;
+    function renderOneLiner(logic, reason, strategy) {
+        const sentence = logic?.oneLiner || reason || '暂无一句话介绍';
+        const extra = strategy ? `<br><span style="color:var(--text-muted)">策略：${strategy}</span>` : '';
 
         return `
             <div class="trk-detail-section">
-                <h3><span class="sec-icon">📋</span> 投资逻辑</h3>
+                <h3><span class="sec-icon">🧠</span> 一句话介绍</h3>
                 <div class="trk-logic-grid">
                     <div class="trk-logic-item full">
-                        <div class="label">一句话逻辑</div>
-                        <div class="value">${logic.oneLiner}</div>
-                    </div>
-                    <div class="trk-logic-item full">
-                        <div class="label">当前假设</div>
-                        <div class="value">${logic.currentHypothesis}</div>
-                    </div>
-                    <div class="trk-logic-item full">
-                        <div class="label">核心跟踪理由</div>
-                        <div class="value" style="line-height:1.7">${coreReasons}</div>
-                    </div>
-                    <div class="trk-logic-item" style="grid-column:1/-1">
-                        <div class="label">逻辑状态</div>
-                        <div class="value">${getStatusBadge(logic.status)}${logic.statusNote ? `<br><span style="font-size:12px;color:var(--text-muted);margin-top:4px;display:inline-block">${logic.statusNote}</span>` : ''}</div>
-                    </div>
-                    <div class="trk-logic-item" style="grid-column:1/-1">
-                        <div class="label">逻辑有效期</div>
-                        <div class="value">${logic.validUntil || '-'}${logic.validNote ? `<br><span style="font-size:12px;color:var(--text-muted);margin-top:4px;display:inline-block">${logic.validNote}</span>` : ''}</div>
-                    </div>
-                    <div class="trk-logic-item full">
-                        <div class="label">需要验证的问题</div>
-                        <ul style="margin:4px 0 0;padding-left:16px;font-size:13px;color:var(--text-secondary);line-height:1.6">${questions}</ul>
+                        <p style="margin:0;line-height:1.7;color:var(--text-secondary)">${sentence}${extra}</p>
                     </div>
                 </div>
             </div>`;
     }
 
-    function renderCatalysts(catalysts) {
-        if (!catalysts || catalysts.length === 0) return `
-            <div class="trk-detail-section">
-                <h3><span class="sec-icon">⚡</span> 催化剂看板</h3>
-                <div class="trk-empty-data">暂未填写</div>
-            </div>`;
+    function parseNumericTargets(raw) {
+        if (raw == null) return [];
+        const v = String(raw);
+        const nums = v.replace(/,/g, '').match(/\d+(?:\.\d+)?/g);
+        if (!nums) return [];
+        return nums.map(n => Number(n)).filter(n => Number.isFinite(n));
+    }
+
+    function gatherTargetRows(valuation) {
+        if (!valuation) return [];
+
+        const candidate = Array.isArray(valuation.targetPriceList)
+            ? valuation.targetPriceList
+            : Array.isArray(valuation.targetPrices)
+                ? valuation.targetPrices
+                : [];
+
+        return candidate
+            .map(item => {
+                const parsed = parseNumericTargets(item.targetPrice || item.price || item.value);
+                if (parsed.length === 0) return null;
+                return {
+                    firm: item.firm || item.name || '机构',
+                    price: parsed.map(n => n.toFixed(2)).join(' / '),
+                    period: item.date || item.period || item.time || '-',
+                    note: item.note || item.comment || '-'
+                };
+            })
+            .filter(Boolean);
+    }
+
+    function renderMarketPulse(mt, catalysts) {
+        const catalystSection = (!Array.isArray(catalysts) || catalysts.length === 0)
+            ? ''
+            : `
+                <div class="trk-news-list">${catalysts.map(c => `
+                    <div class="trk-news-item">
+                        <div class="date">${c.timeWindow || '-'}</div>
+                        <div class="title">${c.catalyst}<br><span style="color:var(--text-muted);font-size:12px">${c.evidence || '-'}</span></div>
+                        <div class="source">${getStatusBadge(c.status) || ''}</div>
+                    </div>
+                `).join('')}</div>`;
+
         return `
             <div class="trk-detail-section">
-                <h3><span class="sec-icon">⚡</span> 催化剂看板</h3>
-                ${catalysts.map(c => `
-                    <div class="trk-catalyst-card">
-                        <div class="trk-catalyst-header">
-                            <span class="trk-catalyst-name">${c.catalyst}</span>
-                            ${getStatusBadge(c.status)}
-                        </div>
-                        <div class="trk-catalyst-grid">
-                            <div class="trk-catalyst-item">
-                                <div class="label">时间窗口</div>
-                                <div class="value">${c.timeWindow}</div>
-                            </div>
-                            <div class="trk-catalyst-item">
-                                <div class="label">重要性</div>
-                                <div class="value">${getImportanceBadge(c.importance)}</div>
-                            </div>
-                            <div class="trk-catalyst-item full">
-                                <div class="label">需要看到的证据</div>
-                                <div class="value">${c.evidence}</div>
-                            </div>
-                            <div class="trk-catalyst-item">
-                                <div class="label">影响方向</div>
-                                <div class="value">${c.direction === '利好' ? '📈 ' : '📉 '}${c.direction}</div>
-                            </div>
-                        </div>
-                    </div>
-                `).join('')}
+                <h3><span class="sec-icon">📈</span> 近期市场在交易什么</h3>
+                ${mt ? `<p style="margin:0 0 10px;color:var(--text-secondary);line-height:1.6;background:var(--bg-alt);padding:12px 14px;border-radius:8px;border-left:3px solid var(--accent)"><strong style="color:var(--text)">市场正在交易:</strong><br>${mt}</p>` : ''}
+                ${catalystSection || '<div class="trk-empty-data">暂无近期催化剂信息</div>'}
             </div>`;
+    }
+
+    function computeAverageTarget(rows) {
+        const nums = [];
+        rows.forEach(r => {
+            String(r.price).match(/\d+(?:\.\d+)?/g)?.forEach(n => nums.push(Number(n)));
+        });
+        if (nums.length === 0) return null;
+        return (nums.reduce((acc, n) => acc + n, 0) / nums.length).toFixed(2);
     }
 
     function renderValuation(val) {
         if (!val) return `
             <div class="trk-detail-section">
-                <h3><span class="sec-icon">💰</span> 估值分析</h3>
-                <div class="trk-empty-data">暂未填写</div>
+                <h3><span class="sec-icon">💰</span> 估值</h3>
+                <div class="trk-empty-data">暂无估值数据</div>
             </div>`;
 
-        const rows = val.tiers ? val.tiers.map(t => `
-            <tr>
-                <td class="trk-val-tier">${t.label}</td>
-                <td class="trk-val-num">${t.marketCap}</td>
-                <td class="trk-val-num">${t.price}</td>
-                <td class="trk-val-desc">${t.logic}</td>
-            </tr>
-        `).join('') : '';
+        const rows = gatherTargetRows(val);
+        const avg = rows.length ? computeAverageTarget(rows) : null;
+
+        const rowsHtml = rows.length ? `
+            <div class="trk-val-table-wrap">
+                <table class="trk-val-table">
+                    <thead>
+                        <tr><th>机构</th><th>目标价</th><th>周期</th><th>说明</th></tr>
+                    </thead>
+                    <tbody>
+                        ${rows.map(r => `
+                            <tr>
+                                <td>${r.firm}</td>
+                                <td class="trk-val-num">${r.price}</td>
+                                <td>${r.period}</td>
+                                <td class="trk-val-desc">${r.note}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+        ` : '';
+
+        const baseline = avg
+            ? `<div style="margin-bottom:10px"><span style="font-size:12px;color:var(--text-muted)">机构目标价均值：${avg}</span></div>`
+            : '';
 
         return `
             <div class="trk-detail-section">
-                <h3><span class="sec-icon">💰</span> 估值分析</h3>
+                <h3><span class="sec-icon">💰</span> 估值</h3>
                 <div style="margin-bottom:12px">
                     <span style="font-size:12px;color:var(--text-muted)">PE(TTM) ${val.peTTM || '-'} · PE(Fwd) ${val.peForward || '-'} · PB ${val.pb || '-'} · 总市值 ${val.marketCap || '-'}</span>
                 </div>
-                ${rows ? `
-                <div class="trk-val-table-wrap">
-                    <table class="trk-val-table">
-                        <thead>
-                            <tr>
-                                <th>版本</th>
-                                <th>合理市值</th>
-                                <th>对应股价</th>
-                                <th>对应逻辑</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${rows}
-                        </tbody>
-                    </table>
-                </div>
-                ` : ''}
-                <div style="margin-top:12px;font-size:13px;color:var(--text-secondary);line-height:1.7">
-                    ${val.assessment || ''}
-                    ${val.hkNote ? `<br><br><span style="color:var(--text-muted)">${val.hkNote}</span>` : ''}
-                </div>
-                ${val.riskNote ? `
-                <div style="margin-top:10px;padding:10px 12px;background:var(--bg-alt);border-radius:8px;font-size:12px;color:var(--text-muted);line-height:1.6">
-                    ⚠️ ${val.riskNote}
-                </div>
-                ` : ''}
-            </div>`;
-    }
-
-    function renderOperationPlan(plan, optStrategy) {
-        if (!plan) return `
-            <div class="trk-detail-section">
-                <h3><span class="sec-icon">🎯</span> 操作计划</h3>
-                <div class="trk-empty-data">暂未填写</div>
-            </div>`;
-
-        const buyHtml = Array.isArray(plan.buyPlan)
-            ? `<ul style="margin:4px 0 0;padding-left:16px;font-size:13px;color:var(--text-secondary);line-height:1.6">${plan.buyPlan.map(b => `<li>${b}</li>`).join('')}</ul>`
-            : plan.buyPlan || '-';
-
-        return `
-            <div class="trk-detail-section">
-                <h3><span class="sec-icon">🎯</span> 操作计划</h3>
-                <div class="trk-plan-grid">
-                    <div class="trk-plan-item" style="grid-column:1/-1">
-                        <div class="label">当前状态</div>
-                        <div class="value">${plan.currentStatus}</div>
-                    </div>
-                    <div class="trk-plan-item" style="grid-column:1/-1">
-                        <div class="label">买入计划</div>
-                        <div class="value">${buyHtml}</div>
-                    </div>
-                    <div class="trk-plan-item">
-                        <div class="label">加仓条件</div>
-                        <div class="value">${plan.addConditions || '-'}</div>
-                    </div>
-                    <div class="trk-plan-item">
-                        <div class="label">减仓条件</div>
-                        <div class="value">${plan.reduceConditions || '-'}</div>
-                    </div>
-                    <div class="trk-plan-item" style="grid-column:1/-1">
-                        <div class="label">逻辑破坏条件</div>
-                        <div class="value">${plan.invalidateConditions || '-'}</div>
-                    </div>
-                    ${optStrategy ? `
-                    <div class="trk-plan-item" style="grid-column:1/-1">
-                        <div class="label">期权策略</div>
-                        <div class="value" style="font-size:12px">${optStrategy}</div>
-                    </div>` : ''}
-                </div>
-            </div>`;
-    }
-
-    // =====================================================
-    // US Stock Drawer - 基本面验证系统
-    // =====================================================
-
-    function renderExpectedDiff(ed) {
-        if (!ed) return '';
-        return `
-            <div class="trk-detail-section">
-                <h3><span class="sec-icon">🔮</span> 预期差</h3>
-                <div class="trk-logic-grid">
-                    <div class="trk-logic-item full">
-                        <div class="label">市场共识</div>
-                        <div class="value" style="color:var(--text-muted)">${ed.consensus}</div>
-                    </div>
-                    <div class="trk-logic-item full">
-                        <div class="label">我的判断</div>
-                        <div class="value">${ed.myView}</div>
-                    </div>
-                    <div class="trk-logic-item full">
-                        <div class="label">需要验证的证据</div>
-                        <div class="value" style="color:var(--text-muted)">${ed.evidence}</div>
-                    </div>
-                    <div class="trk-logic-item" style="grid-column:1/-1">
-                        <div class="label">如果对了</div>
-                        <div class="value" style="color:#22c55e">${ed.rightCase}</div>
-                    </div>
-                    <div class="trk-logic-item" style="grid-column:1/-1">
-                        <div class="label">如果错了</div>
-                        <div class="value" style="color:#ef4444">${ed.wrongCase}</div>
-                    </div>
-                </div>
-            </div>`;
-    }
-
-    function renderKeyMetrics(metrics) {
-        if (!metrics || metrics.length === 0) return '';
-        return `
-            <div class="trk-detail-section">
-                <h3><span class="sec-icon">📊</span> 核心验证指标</h3>
-                <div class="trk-val-table-wrap">
-                    <table class="trk-val-table">
-                        <thead>
-                            <tr><th>指标</th><th>当前状态</th><th>重要性</th><th>观察方向</th><th>说明</th></tr>
-                        </thead>
-                        <tbody>
-                            ${metrics.map(m => `
-                            <tr>
-                                <td style="font-weight:500">${m.metric}</td>
-                                <td>${m.status}</td>
-                                <td style="color:${m.importance === '高' ? '#ef4444' : '#f59e0b'}">${m.importance}</td>
-                                <td>${m.trend}</td>
-                                <td style="color:var(--text-muted);font-size:12px">${m.note}</td>
-                            </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            </div>`;
-    }
-
-    function renderMarketTrading(mt) {
-        if (!mt) return '';
-        return `
-            <div class="trk-detail-section">
-                <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;background:var(--bg-alt);padding:12px 14px;border-radius:8px;border-left:3px solid var(--accent)">
-                    <strong style="color:var(--text)">市场正在交易:</strong><br>${mt}</p>
-            </div>`;
-    }
-
-    function renderOptionStrategy(os) {
-        if (!os) return '';
-        return `
-            <div class="trk-plan-item" style="grid-column:1/-1">
-                <div class="label">期权策略</div>
-                <div class="value" style="font-size:12px">${os}</div>
+                ${baseline}
+                ${rowsHtml || '<div class="trk-empty-data">暂未维护机构目标价，未来可补充投行目标价</div>'}
+                ${val.assessment ? `<div style="margin-top:12px;font-size:13px;color:var(--text-secondary);line-height:1.7">${val.assessment}</div>` : ''}
+                ${val.riskNote ? `<div style="margin-top:10px;padding:10px 12px;background:var(--bg-alt);border-radius:8px;font-size:12px;color:var(--text-muted);line-height:1.6">⚠️ ${val.riskNote}</div>` : ''}
             </div>`;
     }
 
@@ -1067,21 +931,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="margin-top:6px;font-size:12px;color:var(--text-muted)">${s.sector} · 最后更新 ${s.lastUpdated}</div>
             </div>
 
-            <!-- 概览 - 一句话快照 -->
-            <div class="trk-detail-section">
-                <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;background:var(--bg-alt);padding:12px 14px;border-radius:8px;">
-                    ${s.reason}<br>
-                    <span style="color:var(--text-muted)">策略:${s.strategy}</span>
-                </p>
-            </div>
-
-            ${renderMarketTrading(s.marketTrading)}
-            ${renderInvestmentLogic(s.investmentLogic)}
-            ${renderExpectedDiff(s.expectedDiff)}
-            ${renderKeyMetrics(s.keyMetrics)}
-            ${renderCatalysts(s.catalysts)}
+            ${renderOneLiner(s.investmentLogic, s.reason, s.strategy)}
+            ${renderMarketPulse(s.marketTrading, s.catalysts)}
             ${renderValuation(s.valuation)}
-            ${renderOperationPlan(s.operationPlan, s.operationPlan ? s.operationPlan.optionStrategy : null)}
         `;
 
         overlay.classList.add('open');
