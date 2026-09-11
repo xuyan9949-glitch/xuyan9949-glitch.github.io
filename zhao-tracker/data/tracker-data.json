@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-11T21:08:00+08:00",
+  "updatedAt": "2026-09-11T21:38:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4520,6 +4520,10 @@
     {"id":"spyu-3425-half-close-3371-20260911","name":"SPYU","action":"减仓","positionType":"波段仓","price":34.25,"positionChange":0.825,"date":"2026-09-11T20:58:00+08:00","closeLotId":"spyu-3371-add-20260909","note":"出一半 33.71 的 SPYU"},
     {"id":"oklo-389-add-20260911","name":"OKLO","action":"加仓","positionType":"波段仓","price":38.9,"positionChange":1.65,"date":"2026-09-11T21:01:00+08:00","note":"加了六分之一常规仓"},
     {"id":"iren-455-half-close-44-20260911","name":"IREN","action":"减仓","positionType":"波段仓","price":45.5,"positionChange":0.825,"date":"2026-09-11T21:08:00+08:00","closeLotId":"iren-44-add-20260911","note":"出一半 44 的 IREN"},
-    {"id":"spyu-343-close-3405-20260911","name":"SPYU","action":"清仓","positionType":"波段仓","price":34.3,"positionChange":1.65,"date":"2026-09-11T21:08:00+08:00","closeLotId":"spyu-3405-add-20260909","note":"出掉 34.05 的 SPYU"}
+    {"id":"spyu-343-close-3405-20260911","name":"SPYU","action":"清仓","positionType":"波段仓","price":34.3,"positionChange":1.65,"date":"2026-09-11T21:08:00+08:00","closeLotId":"spyu-3405-add-20260909","note":"出掉 34.05 的 SPYU"},
+    {"id":"crwv-902-add-20260911","name":"CRWV","action":"加仓","positionType":"波段仓","price":90.2,"positionChange":1.65,"date":"2026-09-11T21:30:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"cohr-310-close-294-20260911","name":"COHR","action":"清仓","positionType":"波段仓","price":310,"positionChange":1.65,"date":"2026-09-11T21:32:00+08:00","closeLotId":"cohr-294-add-20260911","note":"出掉 294 的 COHR；再来一轮"},
+    {"id":"iren-437-add-20260911","name":"IREN","action":"加仓","positionType":"波段仓","price":43.7,"positionChange":1.65,"date":"2026-09-11T21:35:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"cifr-159-add-20260911","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.9,"positionChange":1.65,"date":"2026-09-11T21:38:00+08:00","note":"加了六分之一常规仓"}
   ]
 }
