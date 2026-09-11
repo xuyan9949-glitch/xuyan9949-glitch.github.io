@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-11T21:38:00+08:00",
+  "updatedAt": "2026-09-11T22:10:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4524,6 +4524,12 @@
     {"id":"crwv-902-add-20260911","name":"CRWV","action":"加仓","positionType":"波段仓","price":90.2,"positionChange":1.65,"date":"2026-09-11T21:30:00+08:00","note":"加了六分之一常规仓"},
     {"id":"cohr-310-close-294-20260911","name":"COHR","action":"清仓","positionType":"波段仓","price":310,"positionChange":1.65,"date":"2026-09-11T21:32:00+08:00","closeLotId":"cohr-294-add-20260911","note":"出掉 294 的 COHR；再来一轮"},
     {"id":"iren-437-add-20260911","name":"IREN","action":"加仓","positionType":"波段仓","price":43.7,"positionChange":1.65,"date":"2026-09-11T21:35:00+08:00","note":"加了六分之一常规仓"},
-    {"id":"cifr-159-add-20260911","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.9,"positionChange":1.65,"date":"2026-09-11T21:38:00+08:00","note":"加了六分之一常规仓"}
+    {"id":"cifr-159-add-20260911","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.9,"positionChange":1.65,"date":"2026-09-11T21:38:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"cifr-165-half-close-159-20260911","name":"CIFR","action":"减仓","positionType":"波段仓","price":16.5,"positionChange":0.825,"date":"2026-09-11T21:44:00+08:00","closeLotId":"cifr-159-add-20260911","note":"出一半 15.9 的 CIFR"},
+    {"id":"uber-718-add-20260911","name":"UBER","action":"加仓","positionType":"波段仓","price":71.8,"positionChange":1.65,"date":"2026-09-11T21:58:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"cohr-2983-add-20260911","name":"COHR","action":"加仓","positionType":"波段仓","price":298.3,"positionChange":1.65,"date":"2026-09-11T21:58:00+08:00","note":"加了六分之一常规仓；按同组时间记录"},
+    {"id":"wdc-453-add-20260911","name":"WDC","action":"加仓","positionType":"波段仓","price":453,"positionChange":1.65,"date":"2026-09-11T21:58:00+08:00","note":"加了六分之一常规仓；按同组时间记录"},
+    {"id":"coin-1815-half-close-1712-20260911","name":"COIN","action":"减仓","positionType":"波段仓","price":181.5,"positionChange":0.825,"date":"2026-09-11T21:58:00+08:00","closeLotId":"coin-1712-add-20260910","note":"出一半 171.2 的 COIN；按同组时间记录"},
+    {"id":"cifr-1673-close-159-rest-20260911","name":"CIFR","action":"清仓","positionType":"波段仓","price":16.73,"positionChange":0.825,"date":"2026-09-11T22:10:00+08:00","closeLotId":"cifr-159-add-20260911","note":"出掉 15.9 剩下一半 CIFR"}
   ]
 }
