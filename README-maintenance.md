@@ -75,3 +75,17 @@ keywords: 搜索关键词 空格分隔
 ```
 
 命令显示 `Articles needing update: 0` 即表示文章元信息和新域名已同步。
+
+## 2026-09 投资研究博客改版
+
+新入口与维护流程见 `REDESIGN.md`。导入文章会自动调用 `tools/sync_journal.py`，保持研究档案、导航与站点地图一致。档案数据维护 `content/archives.json`；浏览器工作台的草稿须导出后经确认再导入公开内容。
+
+## 长文阅读与下载
+
+文章页提供章节目录、字号、专注模式、同浏览器阅读位置恢复，以及真实 PDF / DOCX 下载。文件由原始文章离线生成，不依赖第三方转换网站。
+
+文章更新后，运行 `tools/build_exports.py --id <文章ID> --render`（使用已配置 python-docx、lxml、Pillow、LibreOffice 的 Python 环境）。不带 `--id` 可重建全部公开文章。macOS 中文字体配置由工具在临时 QA 目录中自动准备。渲染器路径可用 `--renderer` 指定。
+
+`content/downloads.json` 与 `js/downloads.js` 是导出索引，包含原文指纹。原文改变后，旧下载链接会停止展示，直到重新生成；不能在文章更新后继续提供旧文件而不提示。
+
+发布前运行 `python3 tools/check_exports.py`，确认所有公开文章均有匹配的 PDF / DOCX。生成的 PDF / DOCX 纳入 `downloads/<文章ID>/`；QA 页图留在临时目录，不发布。下载日期是文件生成日期，不是假装用户点击时重新生成。

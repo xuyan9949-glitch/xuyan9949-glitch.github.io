@@ -424,6 +424,8 @@ def main() -> int:
         build_sitemap(load_articles()),
         encoding="utf-8",
     )
+    from sync_journal import sync_journal
+    sync_journal()
     print(f"Imported: {title}")
     print(f"Page: {article_dir / 'index.html'}")
     print(f"URL: /articles/{article_id}/")
