@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-14T09:38:00+08:00",
+  "updatedAt": "2026-09-15T00:19:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4545,6 +4545,30 @@
     {"id":"cifr-1613-add-20260914","name":"CIFR","action":"加仓","positionType":"波段仓","price":16.13,"positionChange":1.65,"date":"2026-09-14T09:38:00+08:00","note":"加了六分之一常规仓；按同组时间记录"},
     {"id":"cohr-291-add-20260914","name":"COHR","action":"加仓","positionType":"波段仓","price":291,"positionChange":1.65,"date":"2026-09-14T09:38:00+08:00","note":"加了六分之一常规仓；按同组时间记录"},
     {"id":"coin-1723-add-20260914","name":"COIN","action":"加仓","positionType":"波段仓","price":172.3,"positionChange":1.65,"date":"2026-09-14T09:38:00+08:00","note":"加了六分之一常规仓；按同组时间记录"},
-    {"id":"intc-983-add-20260914","name":"INTC","action":"加仓","positionType":"波段仓","price":98.3,"positionChange":1.65,"date":"2026-09-14T09:38:00+08:00","note":"加了六分之一常规仓；按同组时间记录"}
+    {"id":"intc-983-add-20260914","name":"INTC","action":"加仓","positionType":"波段仓","price":98.3,"positionChange":1.65,"date":"2026-09-14T09:38:00+08:00","note":"加了六分之一常规仓；按同组时间记录"},
+    {"id":"googl-346-close-3413-20260914","name":"GOOGL","action":"清仓","positionType":"波段仓","price":346,"positionChange":1.65,"date":"2026-09-14T19:23:00+08:00","closeLotId":"googl-3413-add-20260818","note":"出掉 341.3 的谷歌A"},
+    {"id":"coin-1775-half-close-1723-20260914","name":"COIN","action":"减仓","positionType":"波段仓","price":177.5,"positionChange":0.825,"date":"2026-09-14T19:26:00+08:00","closeLotId":"coin-1723-add-20260914","note":"出一半 172.3 的 COIN"},
+    {"id":"soxl-104-add-20260914","name":"SOXL","action":"加仓","positionType":"波段仓","price":104,"positionChange":1.65,"date":"2026-09-14T19:26:00+08:00","note":"加了六分之一常规仓；截图未单独显示时间，按 19:26 同组记录"},
+    {"id":"lite-863-add-20260914","name":"LITE","action":"加仓","positionType":"波段仓","price":863,"positionChange":1.65,"date":"2026-09-14T19:31:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"coin-1804-close-1723-rest-20260914","name":"COIN","action":"清仓","positionType":"波段仓","price":180.4,"positionChange":0.825,"date":"2026-09-14T19:53:00+08:00","closeLotId":"coin-1723-add-20260914","note":"出掉 172.3 剩下一半 COIN"},
+    {"id":"iren-438-close-436-rest-20260914","name":"IREN","action":"清仓","positionType":"波段仓","price":43.8,"positionChange":0.825,"date":"2026-09-14T21:34:00+08:00","closeLotId":"iren-436-add-20260910","note":"截图写 43.63，按账本现有 43.60 批次关联；出掉该批次剩余部分"},
+    {"id":"iren-438-half-close-4155-20260914","name":"IREN","action":"减仓","positionType":"波段仓","price":43.8,"positionChange":0.825,"date":"2026-09-14T21:34:05+08:00","closeLotId":"iren-4155-add-20260914","note":"出掉 41.55 的 IREN 一半"},
+    {"id":"coin-187-close-1712-20260914","name":"COIN","action":"清仓","positionType":"波段仓","price":187,"positionChange":1.65,"date":"2026-09-14T21:34:10+08:00","closeLotId":"coin-1712-add-20260910","note":"出掉 171.2 的 COIN"},
+    {"id":"hood-1145-close-1137-20260914","name":"HOOD","action":"清仓","positionType":"波段仓","price":114.5,"positionChange":1.65,"date":"2026-09-14T21:40:00+08:00","closeLotId":"hood-1137-add-20260910","note":"出掉 113.7 的 HOOD"},
+    {"id":"iren-422-add-20260914","name":"IREN","action":"加仓","positionType":"波段仓","price":42.2,"positionChange":1.65,"date":"2026-09-14T21:43:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"dram-543-add-20260914","name":"DRAM","action":"加仓","positionType":"波段仓","price":54.3,"positionChange":1.65,"date":"2026-09-14T21:43:05+08:00","note":"加了六分之一常规仓；按同组时间记录"},
+    {"id":"cbrs-1778-add-20260914","name":"CBRS","action":"加仓","positionType":"波段仓","price":177.8,"positionChange":1.65,"date":"2026-09-14T21:43:10+08:00","note":"加了六分之一常规仓；按同组时间记录"},
+    {"id":"cohr-276-add-20260914","name":"COHR","action":"加仓","positionType":"波段仓","price":276,"positionChange":1.65,"date":"2026-09-14T21:43:15+08:00","note":"加了六分之一常规仓；按同组时间记录"},
+    {"id":"oklo-36-half-close-3525-20260914","name":"OKLO","action":"减仓","positionType":"波段仓","price":36,"positionChange":0.825,"date":"2026-09-14T21:49:00+08:00","closeLotId":"oklo-3525-add-20260914","note":"出一半 35.25 的 OKLO"},
+    {"id":"ionq-377-close-3725-20260914","name":"IONQ","action":"清仓","positionType":"波段仓","price":37.7,"positionChange":1.65,"date":"2026-09-14T21:52:00+08:00","closeLotId":"ionq-3725-add-20260910","note":"出掉 37.25 的 IONQ"},
+    {"id":"iren-434-half-close-422-20260914","name":"IREN","action":"减仓","positionType":"波段仓","price":43.4,"positionChange":0.825,"date":"2026-09-14T22:03:00+08:00","closeLotId":"iren-422-add-20260914","note":"出一半 42.2 的 IREN"},
+    {"id":"nbis-2187-half-close-215-20260914","name":"NBIS","action":"减仓","positionType":"波段仓","price":218.7,"positionChange":0.825,"date":"2026-09-14T22:15:00+08:00","closeLotId":"nbis-215-add-20260914","note":"出一半 215 的 NBIS"},
+    {"id":"cbrs-1842-half-close-1778-20260914","name":"CBRS","action":"减仓","positionType":"波段仓","price":184.2,"positionChange":0.825,"date":"2026-09-14T22:15:05+08:00","closeLotId":"cbrs-1778-add-20260914","note":"出一半 177.8 的 CBRS"},
+    {"id":"ionq-38-half-close-356-20260914","name":"IONQ","action":"减仓","positionType":"波段仓","price":38,"positionChange":0.825,"date":"2026-09-14T22:20:00+08:00","closeLotId":"ionq-356-add-20260914","note":"出一半 35.6 的 IONQ"},
+    {"id":"spyu-33-add-20260914","name":"SPYU","action":"加仓","positionType":"波段仓","price":33,"positionChange":1.65,"date":"2026-09-14T22:29:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"spyu-3359-close-3355-20260914","name":"SPYU","action":"清仓","positionType":"波段仓","price":33.59,"positionChange":1.65,"date":"2026-09-14T23:43:00+08:00","closeLotId":"spyu-3355-add-20260914","note":"出掉 33.55 的 SPYU"},
+    {"id":"spyu-3359-half-close-33-20260914","name":"SPYU","action":"减仓","positionType":"波段仓","price":33.59,"positionChange":0.825,"date":"2026-09-14T23:43:05+08:00","closeLotId":"spyu-33-add-20260914","note":"出一半 33 的 SPYU"},
+    {"id":"lite-839-add-20260915","name":"LITE","action":"加仓","positionType":"波段仓","price":839,"positionChange":1.65,"date":"2026-09-15T00:11:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-2135-readd-2187-20260915","name":"NBIS","action":"加仓","positionType":"波段仓","price":213.5,"positionChange":0.825,"date":"2026-09-15T00:19:00+08:00","note":"加回 218.7 卖出的那部分 NBIS"}
   ]
 }
