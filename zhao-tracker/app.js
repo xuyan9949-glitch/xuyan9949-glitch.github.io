@@ -108,7 +108,7 @@ function quoteSymbol(code) { return QUOTE_SYMBOL_ALIASES[code] || code; }
 function quoteFor(code) { return state.quotes?.[quoteSymbol(code)] || null; }
 function currentCostMarkup(holding) {
   const quote = quoteFor(holding.code);
-  if (!quote) return `<div class="quote-stack quote-pending"><b>—</b><small>${state.quoteError ? "行情未连接" : "读取中"}</small></div>`;
+  if (!quote) return `<div class="quote-stack quote-pending"><b>—</b><small>${state.quoteError ? "行情暂不可用" : "读取中"}</small></div>`;
   return `<div class="quote-stack"><b>${money(quote.last)}</b><small>成本 ${money(holding.cost)}</small></div>`;
 }
 function pnlMarkup(amount, pct, pending=false) {
@@ -151,7 +151,8 @@ async function refreshQuotes() {
     state.quoteError = error.message;
     if (status) {
       status.className = "market-status quote-status disconnected";
-      status.textContent = "本机行情未连接";
+      status.textContent = "行情暂不可用 · 点击重试";
+      status.title = "行情服务未连接。请确认长桥美股 Open API 行情权限与本机网络，然后点击重试。";
     }
   }
   render();
@@ -1215,6 +1216,7 @@ document.getElementById("clearBtn").onclick=()=>{
 document.getElementById("themeBtn").onclick=()=>{
   document.body.classList.toggle("dark");localStorage.setItem(THEME_KEY,document.body.classList.contains("dark")?"dark":"light");
 };
+document.getElementById("quoteStatus").onclick=()=>refreshQuotes();
 if(localStorage.getItem(THEME_KEY)==="dark")document.body.classList.add("dark");
 function ensureTrendStackLayout() {
   if (document.getElementById("trendStackLayoutFix")) return;
