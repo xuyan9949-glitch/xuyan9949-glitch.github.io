@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-11T22:21:00+08:00",
+  "updatedAt": "2026-09-14T09:38:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4532,6 +4532,19 @@
     {"id":"coin-1815-half-close-1712-20260911","name":"COIN","action":"减仓","positionType":"波段仓","price":181.5,"positionChange":0.825,"date":"2026-09-11T21:58:00+08:00","closeLotId":"coin-1712-add-20260910","note":"出一半 171.2 的 COIN；按同组时间记录"},
     {"id":"cifr-1673-close-159-rest-20260911","name":"CIFR","action":"清仓","positionType":"波段仓","price":16.73,"positionChange":0.825,"date":"2026-09-11T22:10:00+08:00","closeLotId":"cifr-159-add-20260911","note":"出掉 15.9 剩下一半 CIFR"},
     {"id":"cifr-1715-close-1691-20260911","name":"CIFR","action":"清仓","positionType":"底仓","price":17.15,"positionChange":0.825,"date":"2026-09-11T22:21:00+08:00","closeLotId":"cifr-1691-readd-20260910","note":"出掉 16.91 的 CIFR 底仓；时间按用户指定 22:21"},
-    {"id":"iren-45-half-close-437-20260911","name":"IREN","action":"减仓","positionType":"波段仓","price":45,"positionChange":0.825,"date":"2026-09-11T22:21:00+08:00","closeLotId":"iren-437-add-20260911","note":"出掉 43.7 的一半 IREN"}
+    {"id":"iren-45-half-close-437-20260911","name":"IREN","action":"减仓","positionType":"波段仓","price":45,"positionChange":0.825,"date":"2026-09-11T22:21:00+08:00","closeLotId":"iren-437-add-20260911","note":"出掉 43.7 的一半 IREN"},
+    {"id":"nbis-215-add-20260914","name":"NBIS","action":"加仓","positionType":"波段仓","price":215,"positionChange":1.65,"date":"2026-09-14T08:08:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"dram-562-add-20260914","name":"DRAM","action":"加仓","positionType":"波段仓","price":56.2,"positionChange":1.65,"date":"2026-09-14T08:08:00+08:00","note":"加了六分之一常规仓；按同组时间记录"},
+    {"id":"spyu-3355-add-20260914","name":"SPYU","action":"加仓","positionType":"波段仓","price":33.55,"positionChange":1.65,"date":"2026-09-14T08:15:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"soxl-1112-add-20260914","name":"SOXL","action":"加仓","positionType":"波段仓","price":111.2,"positionChange":1.65,"date":"2026-09-14T09:36:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"oklo-3525-add-20260914","name":"OKLO","action":"加仓","positionType":"波段仓","price":35.25,"positionChange":1.65,"date":"2026-09-14T09:38:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"crwv-852-add-20260914","name":"CRWV","action":"加仓","positionType":"波段仓","price":85.2,"positionChange":1.65,"date":"2026-09-14T09:38:00+08:00","note":"加了六分之一常规仓；按同组时间记录"},
+    {"id":"wdc-431-add-20260914","name":"WDC","action":"加仓","positionType":"波段仓","price":431,"positionChange":1.65,"date":"2026-09-14T09:38:00+08:00","note":"加了六分之一常规仓；按同组时间记录"},
+    {"id":"ionq-356-add-20260914","name":"IONQ","action":"加仓","positionType":"波段仓","price":35.6,"positionChange":1.65,"date":"2026-09-14T09:38:00+08:00","note":"加了六分之一常规仓；按同组时间记录"},
+    {"id":"iren-4155-add-20260914","name":"IREN","action":"加仓","positionType":"波段仓","price":41.55,"positionChange":1.65,"date":"2026-09-14T09:38:00+08:00","note":"加了六分之一常规仓；按同组时间记录"},
+    {"id":"cifr-1613-add-20260914","name":"CIFR","action":"加仓","positionType":"波段仓","price":16.13,"positionChange":1.65,"date":"2026-09-14T09:38:00+08:00","note":"加了六分之一常规仓；按同组时间记录"},
+    {"id":"cohr-291-add-20260914","name":"COHR","action":"加仓","positionType":"波段仓","price":291,"positionChange":1.65,"date":"2026-09-14T09:38:00+08:00","note":"加了六分之一常规仓；按同组时间记录"},
+    {"id":"coin-1723-add-20260914","name":"COIN","action":"加仓","positionType":"波段仓","price":172.3,"positionChange":1.65,"date":"2026-09-14T09:38:00+08:00","note":"加了六分之一常规仓；按同组时间记录"},
+    {"id":"intc-983-add-20260914","name":"INTC","action":"加仓","positionType":"波段仓","price":98.3,"positionChange":1.65,"date":"2026-09-14T09:38:00+08:00","note":"加了六分之一常规仓；按同组时间记录"}
   ]
 }
