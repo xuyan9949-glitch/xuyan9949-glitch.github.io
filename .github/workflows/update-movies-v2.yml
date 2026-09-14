@@ -1,0 +1,90 @@
+name: Update Movies v2
+
+on:
+  push:
+    paths:
+      - '.github/workflows/update-movies-v2.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Patch movie selector to v2
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('movies/index.html')
+          s=p.read_text('utf-8')
+
+          def rep(old,new,name):
+              global s
+              c=s.count(old)
+              if c!=1:
+                  raise SystemExit(f'{name}: expected 1 match, got {c}')
+              s=s.replace(old,new,1)
+
+          rep("function hfDefaults(){return {version:1,draft:{query:'',kind:'电影',max:120,count:3,rewatch:false,includeHistory:true,explore:false,avoid:[]}",
+              "function hfDefaults(){return {version:2,draft:{query:'',kind:'电影',max:120,count:3,rewatch:false,includeHistory:false,explore:false,avoid:[]}",'defaults')
+          rep(".slice(0,5);\n const low=ranked.filter(x=>x.r.rating!=null&&x.r.rating/(x.r.ratingScale||5)<=.6).slice(0,3);\n const selected=[...high,...low];for(const x of ranked){if(selected.length>=10)break;",
+              ".slice(0,10);\n const low=ranked.filter(x=>x.r.rating!=null&&x.r.rating/(x.r.ratingScale||5)<=.6).slice(0,6);\n const selected=[...high,...low];for(const x of ranked){if(selected.length>=20)break;",'evidence')
+          rep("includeHistory:d.includeHistory","includeHistory:false",'request options')
+          rep("const o=request.options,ev=hfEvidence(request.query);const h=hfStore();",
+              "const o=request.options,ev=hfEvidence(request.query);const h=hfStore();const askCount=Math.max(6,Math.min(10,(o.count||3)*3));",'ask count')
+          rep("作品形式：${o.kind}。数量：${o.count} 部；符合条件的不足时宁缺毋滥。",
+              "作品形式：${o.kind}。最终需要 ${o.count} 部；请先给出 ${askCount} 个有排序的候选，让我的本地片库做精确查重后再保留最终结果。",'prompt count')
+          rep("4. 对照附后的已看清单，再推荐清单以外的片。不同译名、同名翻拍、同系列不同季不能混为一部；无法核对就坦白。",
+              "4. 这次不会把完整已看/弃片清单发送给你。不要声称已经核对完整历史，也不要依赖聊天记忆做精确查重；请优先给出 ${askCount} 个质量较高、彼此有差异的候选。返回后由‘幕间’用本地完整片库精确排除已看/弃片。不同译名、同名翻拍、同系列不同季请尽量写清年份和版本。",'prompt dedupe')
+          rep("请在JSON中给出保留项加替换项的完整最终列表，共不超过${o.count}部。",
+              "请在JSON中给出保留项加替换项的候选列表；为了给本地查重留余量，总数尽量达到${askCount}部。",'followup')
+          hist_start=" if(o.includeHistory)parts.push(`【完整的本地已看/弃片排除清单：${hfExcluded().length} 条】"
+          hist_end=" return {text:parts.join('\\n\\n'),evidence:ev.map(x=>x.m.id),request};"
+          a=s.find(hist_start); b=s.find(hist_end,a)
+          if a<0 or b<0: raise SystemExit('history block markers not found')
+          b+=len(hist_end)
+          new_hist=""" parts.push(`【本地查重说明】\\n完整的 ${hfExcluded().length} 条已看/弃片记录只保留在“幕间”本机，不随这次提问发送。你只需要根据上面的口味与相关历史样本先给 ${askCount} 个候选；不要声称已经排除完整历史。答案回到幕间后，网页会按片名、原名、年份、外部ID和版本线索做本地核对，自动剔除明确已看/弃片与硬条件不符的作品。若最终不足 ${o.count} 部，我会只把本轮被排除的片名发回来，请你补选。\\n请开始推荐，并在结尾输出可导入JSON。`);
+           return {text:parts.join('\\n\\n'),evidence:ev.map(x=>x.m.id),request,askCount};"""
+          s=s[:a]+new_hist+s[b:]
+          rep("${p.request.options.includeHistory?num+' 条已看/弃片清单':'轻量模式 · 不含完整排除清单'}","完整 ${num} 条片库留在本机",'dialog metric')
+          rep("默认包含完整排除清单。文字太长时可下载提问文件，作为附件发给 ChatGPT。","完整片库不发送给 ChatGPT；这次只带相关反馈样本。",'dialog note')
+          rep("const opts=clone(req?.options||hfRequestOptions());if(list.length>opts.count)warnings.push(`回答给了 ${list.length} 项，多于本次要求的 ${opts.count} 部；请在下方明确选择要保留的候选。`);let candidates=[],errors=[];",
+              "const opts=clone(req?.options||hfRequestOptions());if(list.length<Math.max(6,opts.count))warnings.push(`回答只给了 ${list.length} 项。为了让本地查重后还能留下 ${opts.count} 部，建议让 ChatGPT 一次给 6–10 个候选。`);let candidates=[],errors=[];",'plan warning')
+          rep("return {key,candidate:c,check,index:i,selected:check.status==='eligible'};});\n if(!Array.isArray(v)&&v.format!==HF_FORMAT)",
+              "return {key,candidate:c,check,index:i,selected:false};});\n let picked=0;for(const row of rows){if(row.check.status==='eligible'&&picked<opts.count){row.selected=true;picked++;}}\n if(picked<opts.count)warnings.push(`本地查重后只有 ${picked} 部明确通过，少于目标 ${opts.count} 部。可先保留这些，再点“复制补选要求”。`);\n if(!Array.isArray(v)&&v.format!==HF_FORMAT)",'auto pick')
+          rep("<div class=\"hf-preview-summary\"><b>${p.rows.length} 部候选</b>",
+              "<div class=\"hf-preview-summary\"><b>目标最终 ${p.options.count} 部</b><span>ChatGPT 初选 ${p.rows.length} 部</span>",'preview summary')
+          rep("已看/超时长条目不会偷偷混入这次候选。确认只保存推荐卡，不自动标记“看过”或“想看”。",
+              "网页已用完整本地片库排除明确已看/弃片和硬条件不符项，并按 ChatGPT 原排序自动勾选前面的合格候选。确认只保存推荐卡，不自动标记“看过”或“想看”。",'preview note')
+          rep("需求＋口味＋已看清单","需求＋口味＋相关历史",'flow label')
+          old_opt='''<label class="hf-history-option"><input id="hf-history" type="checkbox" ${d.includeHistory?'checked':''}>带上完整 ${ex} 条已看 / 弃片清单（推荐）</label><p>默认可直接用于新对话。关闭后只带口味和相关反馈，不能声称已查完整历史。网页仍会对返回结果做本地核对。</p>'''
+          new_opt='''<div class="hf-history-option"><b>完整片库不发送</b><p>只发送口味说明与最多 20 条相关历史反馈样本。完整 ${ex} 条已看 / 弃片记录只留在本机，等 ChatGPT 候选回来后精确查重。</p></div>'''
+          rep(old_opt,new_opt,'tonight history UI')
+          rep("<b>没有后台模型调用。</b>你的记录不会自动上传；只有你粘贴/上传给 ChatGPT 后，它才会收到。",
+              "<b>没有后台模型调用。</b>完整片库不会发送给 ChatGPT；只会发送本次口味摘要与少量相关反馈样本。候选回来后在本机查重。",'connection note')
+          s=re.sub(r"function hfRepairText\(\)\{.*?\}\nfunction hfHelp\(\)","""function hfRepairText(){const p=hfUI.plan;const target=p?.options?.count||hfStore().draft.count||3;const good=p?p.rows.filter(x=>x.check.status==='eligible').slice(0,target):[];const bad=p?p.rows.filter(x=>x.check.status!=='eligible'):[];const need=Math.max(1,target-good.length);return `继续刚才这次选片，不要重置我的需求。幕间已经在本机用完整观影数据库查重。\\n\\n已经通过本地核对、请不要重复推荐：${good.length?good.map(x=>`${x.candidate.title}（${x.candidate.year||'?'}）`).join('、'):'暂无'}。\\n本轮被排除 / 待核对：${bad.length?bad.map(x=>`${x.candidate.title}（${x.candidate.year||'?'}）：${[...x.check.blocks,...x.check.review].join('；')||'本地未确认身份'}`).join('\\n'):'无'}。\\n\\n请补充至少 ${Math.max(need+3,5)} 个新的有排序候选，让本地再次查重；不要再给上面列出的作品。仍遵守上一轮的片长、作品形式、口味和避开条件。不要假装你掌握我的完整已看清单。最后仍按 ${HF_FORMAT} 输出完整 JSON 代码块，request_id 使用 ${p?.requestId||hfStore().requests.at(-1)?.id||'unknown'}。`;}
+          function hfHelp()""",s,count=1,flags=re.S)
+          s=s.replace('默认带上当前口味、10条相关反馈，以及完整已看/弃片排除清单；你可先查看再决定复制。','带上当前口味和与今晚需求最相关的历史反馈样本，但不再发送完整已看/弃片清单。ChatGPT先给6–10个候选。')
+          s=s.replace('幕间自动整理资料、解析返回结构、核对已看/年份/时长、生成卡片和保存记录。','幕间自动整理少量相关历史样本、解析返回结构，并用完整本地片库核对已看/弃片、年份和时长；不足时生成简短补选要求。')
+          s=s.replace("if(t.id==='hf-history'){d.includeHistory=t.checked;changed=true;}","if(t.id==='hf-history'){d.includeHistory=false;changed=true;}")
+          for needle in ["version:2","完整片库不会发送给 ChatGPT","const askCount=Math.max(6","本地查重后只有 ${picked}"]:
+              if needle not in s: raise SystemExit('VERIFY missing '+needle)
+          p.write_text(s,'utf-8')
+          print('patched movies/index.html',len(s))
+          PY
+      - name: Commit v2
+        run: |
+          if git diff --quiet -- movies/index.html; then
+            echo "No changes needed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add movies/index.html
+          git commit -m "Deploy Mujian movie selector v2"
+          git push
