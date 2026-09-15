@@ -1,0 +1,1 @@
+(() => {const params=new URLSearchParams(location.search);document.querySelectorAll('[data-publisher]').forEach(a=>{const u=new URL(a.href);for(const key of ['company','event'])if(params.get(key))u.searchParams.set(key,params.get(key));a.href=u.href;});if(location.hash==='#private-notebook')document.getElementById('private-notebook').open=true;})();

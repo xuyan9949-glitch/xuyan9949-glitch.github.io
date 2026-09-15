@@ -89,3 +89,9 @@ keywords: 搜索关键词 空格分隔
 `content/downloads.json` 与 `js/downloads.js` 是导出索引，包含原文指纹。原文改变后，旧下载链接会停止展示，直到重新生成；不能在文章更新后继续提供旧文件而不提示。
 
 发布前运行 `python3 tools/check_exports.py`，确认所有公开文章均有匹配的 PDF / DOCX。生成的 PDF / DOCX 纳入 `downloads/<文章ID>/`；QA 页图留在临时目录，不发布。下载日期是文件生成日期，不是假装用户点击时重新生成。
+
+## 2026-09 发布工作台
+
+`/workbench/` 提供粘贴与上传入口，跳转现有 `https://admin.xxyalpha.cn/compose.html`，并传递事件/公司归属。原观察草稿保留在同页折叠区，存储键未变。管理台的新导入功能和档案写入逻辑维护于当前工作区的独立 `publishing-admin` 目录，不放入公开站点。
+
+导入内容在浏览器解析、预览与暂存；确认发布后，正文及档案关联一起提交。DOCX 优先保留格式，DOC/PDF 是文字导入，扫描件需要先识别文字。
