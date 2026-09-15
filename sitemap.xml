@@ -2,19 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.xxyalpha.cn/</loc>
-    <lastmod>2026-09-10</lastmod>
   </url>
   <url>
     <loc>https://www.xxyalpha.cn/notes/</loc>
-    <lastmod>2026-09-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xxyalpha.cn/events/</loc>
+  </url>
+  <url>
+    <loc>https://www.xxyalpha.cn/research/</loc>
+  </url>
+  <url>
+    <loc>https://www.xxyalpha.cn/learning/</loc>
   </url>
   <url>
     <loc>https://www.xxyalpha.cn/calendar/</loc>
-    <lastmod>2026-09-10</lastmod>
   </url>
   <url>
     <loc>https://www.xxyalpha.cn/about/</loc>
-    <lastmod>2026-09-10</lastmod>
+  </url>
+  <url>
+    <loc>https://www.xxyalpha.cn/articles/note-db5d5d6d-2581-4a75-b8e0-1714d7695330/</loc>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://www.xxyalpha.cn/articles/storage-ghost-stories-deconstruction/</loc>
@@ -196,20 +205,18 @@
     <loc>https://www.xxyalpha.cn/articles/mu-earnings-preview/</loc>
     <lastmod>2026-06-24</lastmod>
   </url>
-  <url><loc>https://www.xxyalpha.cn/events/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://www.xxyalpha.cn/research/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://www.xxyalpha.cn/learning/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://www.xxyalpha.cn/events/memory-earnings-2026/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://www.xxyalpha.cn/events/inflation-and-ai/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://www.xxyalpha.cn/events/hormuz-2026/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://www.xxyalpha.cn/research/mu/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://www.xxyalpha.cn/research/nvda/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://www.xxyalpha.cn/research/avgo/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://www.xxyalpha.cn/research/lite/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://www.xxyalpha.cn/research/cohr/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://www.xxyalpha.cn/research/orcl/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://www.xxyalpha.cn/research/tsla/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://www.xxyalpha.cn/learning/rotation/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://www.xxyalpha.cn/learning/holiday/</loc><lastmod>2026-09-12</lastmod></url>
-  <url><loc>https://www.xxyalpha.cn/learning/earnings-spillover/</loc><lastmod>2026-09-12</lastmod></url>
+  <url><loc>https://www.xxyalpha.cn/events/memory-earnings-2026/</loc></url>
+  <url><loc>https://www.xxyalpha.cn/events/inflation-and-ai/</loc></url>
+  <url><loc>https://www.xxyalpha.cn/events/hormuz-2026/</loc></url>
+  <url><loc>https://www.xxyalpha.cn/research/mu/</loc></url>
+  <url><loc>https://www.xxyalpha.cn/research/nvda/</loc></url>
+  <url><loc>https://www.xxyalpha.cn/research/avgo/</loc></url>
+  <url><loc>https://www.xxyalpha.cn/research/lite/</loc></url>
+  <url><loc>https://www.xxyalpha.cn/research/cohr/</loc></url>
+  <url><loc>https://www.xxyalpha.cn/research/orcl/</loc></url>
+  <url><loc>https://www.xxyalpha.cn/research/tsla/</loc></url>
+  <url><loc>https://www.xxyalpha.cn/learning/rotation/</loc></url>
+  <url><loc>https://www.xxyalpha.cn/learning/holiday/</loc></url>
+  <url><loc>https://www.xxyalpha.cn/learning/earnings-spillover/</loc></url>
+  <url><loc>https://www.xxyalpha.cn/events/event-note-db5d5d6d-2581-4a75-b8e0-1714d7695330/</loc></url>
 </urlset>

@@ -66,6 +66,21 @@
         "完整事件路径与原始来源待整理",
         "个人行动尚未记录"
       ]
+    },
+    {
+      "id": "event-note-db5d5d6d-2581-4a75-b8e0-1714d7695330",
+      "title": "AI降缓速度",
+      "topic": "研究记录",
+      "period": "2026-09-15",
+      "status": "持续记录",
+      "description": "",
+      "companies": [],
+      "articleIds": [
+        "note-db5d5d6d-2581-4a75-b8e0-1714d7695330"
+      ],
+      "question": "待补充研究问题。",
+      "gaps": [],
+      "createdAt": "2026-09-15T08:23:01.671Z"
     }
   ],
   "companies": [

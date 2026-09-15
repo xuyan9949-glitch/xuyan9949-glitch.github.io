@@ -1,5 +1,28 @@
 const articles = [
   {
+    "id": "note-db5d5d6d-2581-4a75-b8e0-1714d7695330",
+    "title": "导言｜这不是一场“安全派 vs 乐观派”的口水战",
+    "date": "2026-09-15",
+    "category": "近期热点",
+    "subcategory": "AI基础设施",
+    "tags": [
+      "产业:AI基础设施",
+      "个股:META",
+      "个股:GOOGL",
+      "产业:存储",
+      "产业:光通信",
+      "工具:AI",
+      "宏观:政策",
+      "策略:对比分析",
+      "策略:估值",
+      "策略:风险分析"
+    ],
+    "pinned": false,
+    "summary": "AI该不该踩刹车？从前沿模型失控、美国国家竞争，到美股 AI 投资逻辑的重新定价AI 更可能进入“受控加速”，而不是整体停止。真正应该限速的是高危能力与高权限自主系统，而不是笼统冻结算力、数据中心和所有模型研发。对美股而言，这意味着 AI 主线并未失效，但估值逻辑将从“无条件扩张”转向“增长 + 安全 + 监管 + 资本回报”的四变量定价。",
+    "keywords": "AI基础设施 MU NVDA META GOOGL 存储 光通信 AI 政策 对比分析 估值 风险分析 VS CEO DARIO PACE",
+    "file": "/articles/note-db5d5d6d-2581-4a75-b8e0-1714d7695330/"
+  },
+  {
     "id": "storage-ghost-stories-deconstruction",
     "title": "存储鬼故事拆解：高位去拥挤 vs 基本面出货",
     "date": "2026-07-01",
