@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-15T00:19:00+08:00",
+  "updatedAt": "2026-09-15T21:40:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4569,6 +4569,8 @@
     {"id":"spyu-3359-close-3355-20260914","name":"SPYU","action":"清仓","positionType":"波段仓","price":33.59,"positionChange":1.65,"date":"2026-09-14T23:43:00+08:00","closeLotId":"spyu-3355-add-20260914","note":"出掉 33.55 的 SPYU"},
     {"id":"spyu-3359-half-close-33-20260914","name":"SPYU","action":"减仓","positionType":"波段仓","price":33.59,"positionChange":0.825,"date":"2026-09-14T23:43:05+08:00","closeLotId":"spyu-33-add-20260914","note":"出一半 33 的 SPYU"},
     {"id":"lite-839-add-20260915","name":"LITE","action":"加仓","positionType":"波段仓","price":839,"positionChange":1.65,"date":"2026-09-15T00:11:00+08:00","note":"加了六分之一常规仓"},
-    {"id":"nbis-2135-readd-2187-20260915","name":"NBIS","action":"加仓","positionType":"波段仓","price":213.5,"positionChange":0.825,"date":"2026-09-15T00:19:00+08:00","note":"加回 218.7 卖出的那部分 NBIS"}
+    {"id":"nbis-2135-readd-2187-20260915","name":"NBIS","action":"加仓","positionType":"波段仓","price":213.5,"positionChange":0.825,"date":"2026-09-15T00:19:00+08:00","note":"加回 218.7 卖出的那部分 NBIS"},
+    {"id":"spyu-3312-add-20260915","name":"SPYU","action":"加仓","positionType":"波段仓","price":33.12,"positionChange":1.65,"date":"2026-09-15T21:37:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"cifr-1543-add-20260915","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.43,"positionChange":1.65,"date":"2026-09-15T21:40:00+08:00","note":"加了六分之一常规仓"}
   ]
 }
