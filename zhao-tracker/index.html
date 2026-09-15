@@ -8,6 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="stylesheet" href="styles.css?v=20260912-daily-pnl">
+  <link rel="stylesheet" href="workspace.css?v=20260915-design">
 </head>
 <body>
   <div class="app-shell">
@@ -34,7 +35,7 @@
     </header>
 
     <nav class="section-nav" aria-label="看板导航">
-      <span class="section-nav-label">快速导航</span>
+      <span class="section-nav-label">WORKSPACE / 工作台</span>
       <div class="section-nav-links">
         <a class="section-nav-link active" href="#overview">概览</a>
         <a class="section-nav-link" href="#holdings">当前持仓</a>
@@ -46,6 +47,10 @@
     </nav>
 
     <main>
+      <section class="overview-heading">
+        <div><p class="eyebrow">PORTFOLIO OVERVIEW</p><h2>每一笔操作，都有迹可循<span>.</span></h2><p>纵览持仓与收益，回看你的投资节奏。</p></div>
+        <div class="workspace-indicator"><i></i>投资工作台</div>
+      </section>
       <section id="overview" class="summary-grid section-anchor" aria-label="仓位概览">
         <article class="summary-card featured capacity-overview">
           <div class="card-label">仓位与可用资金 <span class="live-dot"></span><button id="capitalBtn" class="mini-btn">修改本金</button></div>
@@ -357,7 +362,8 @@
 
   <div id="toast" role="status" aria-live="polite"></div>
   <script src="daily-pnl.js?v=20260912-daily-pnl"></script>
-  <script src="app.js?v=20260912-daily-pnl"></script>
+  <script src="app.js?v=20260915-design"></script>
+  <script src="workspace.js?v=20260915-design"></script>
   <dialog id="periodTradesDialog" class="period-trades-dialog">
     <div class="dialog-header"><div><h2 id="periodDialogTitle">本期操作</h2><p id="periodDialogMeta"></p></div><button class="icon-btn" aria-label="关闭本期操作" onclick="document.getElementById('periodTradesDialog').close()">×</button></div>
     <div id="periodDialogBody" class="period-dialog-body"></div>

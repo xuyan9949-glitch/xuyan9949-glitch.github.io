@@ -1230,12 +1230,16 @@ function setupSectionNavigation() {
   const sections=links.map(link=>document.querySelector(link.getAttribute("href"))).filter(Boolean);
   const setActive=id=>links.forEach(link=>link.classList.toggle("active",link.getAttribute("href")==="#"+id));
   links.forEach(link=>link.addEventListener("click",()=>setActive(link.getAttribute("href").slice(1))));
-  if (!window.IntersectionObserver) return;
-  const observer=new IntersectionObserver(entries=>{
-    const visible=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
-    if(visible) setActive(visible.target.id);
-  },{rootMargin:"-135px 0px -58% 0px",threshold:[0,.12,.3]});
-  sections.forEach(section=>observer.observe(section));
+  let pending=false;
+  const update=()=>{
+    pending=false;
+    const ordered=sections.map(section=>({section,top:section.getBoundingClientRect().top})).sort((a,b)=>a.top-b.top);
+    const current=ordered.filter(item=>item.top<=100).pop() || ordered[0];
+    if(current) setActive(current.section.id);
+  };
+  window.addEventListener("scroll",()=>{if(!pending){pending=true;requestAnimationFrame(update);}},{passive:true});
+  window.addEventListener("resize",update);
+  requestAnimationFrame(update);
 }
 async function init() {
   ensureTrendStackLayout();
