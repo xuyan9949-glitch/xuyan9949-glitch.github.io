@@ -52,6 +52,8 @@ h1 { font-size:17px; letter-spacing:-.2px; }
 .btn:hover,.icon-btn:hover { border-color:#c8d0dc; background:var(--panel-2); }
 .btn-primary { color:#fff; background:var(--blue); border-color:var(--blue); }
 .btn-primary:hover { background:#1e55c3; border-color:#1e55c3; }
+.whop-inbox-btn { display:inline-flex; align-items:center; gap:7px; }
+.whop-inbox-btn span { display:grid; min-width:20px; height:20px; padding:0 5px; place-items:center; border-radius:999px; background:var(--red); color:#fff; font-size:10px; }
 .icon-btn { width:36px; padding:0; font-size:18px; }
 main { padding:22px 28px 16px; }
 .summary-grid { display:grid; grid-template-columns:1.55fr repeat(3,1fr); gap:14px; margin-bottom:14px; }
@@ -191,6 +193,27 @@ tr:hover .row-actions { opacity:1; }
 .period-toolbar select { padding:8px; background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:6px; }
 .period-trade { padding:8px 0; border-bottom:1px solid var(--line); font-size:13px; }
 .period-trades-dialog { width:min(800px,calc(100vw - 24px)); max-height:90vh; padding:0; overflow:hidden; }
+.whop-inbox-dialog { width:min(760px,calc(100vw - 24px)); max-height:90vh; padding:0; overflow:hidden; }
+.whop-inbox-toolbar { display:flex; justify-content:space-between; gap:12px; padding:10px 18px; border-bottom:1px solid var(--line); color:var(--muted); font-size:12px; }
+.whop-inbox-toolbar { align-items:center; }
+.whop-inbox-bulk-actions { display:flex; align-items:center; gap:8px; }
+.whop-inbox-bulk-actions .btn { min-height:34px; padding:7px 12px; font-size:12px; }
+.whop-inbox-list { max-height:calc(90vh - 130px); overflow:auto; padding:14px 18px 18px; }
+.whop-message { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:12px; padding:14px 0; border-bottom:1px solid var(--line); }
+.whop-message:last-child { border-bottom:0; }
+.whop-message-main { min-width:0; }
+.whop-message-meta { display:flex; align-items:center; gap:8px; margin-bottom:6px; color:var(--muted); font-size:11px; }
+.whop-message-meta b { color:var(--blue); }
+.whop-message-content { font-size:14px; line-height:1.65; word-break:break-word; }
+.whop-message-preview { margin-top:7px; color:var(--green); font-size:12px; font-weight:700; }
+.whop-message-preview.uncertain { color:var(--amber); }
+.whop-message-actions { display:flex; align-items:center; gap:7px; }
+.whop-message-actions button { white-space:nowrap; }
+@media(max-width:600px) {
+  .whop-inbox-toolbar { align-items:flex-start; flex-direction:column; }
+  .whop-inbox-bulk-actions { width:100%; }
+  .whop-inbox-bulk-actions .btn { flex:1; }
+}
 .period-dialog-body { padding:16px 22px; max-height:calc(90vh - 110px); overflow-y:auto; }
 .period-dialog-summary { padding:12px; background:var(--panel-2); border-radius:8px; font-size:14px; }
 .period-day { margin-top:22px; }

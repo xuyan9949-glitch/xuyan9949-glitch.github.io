@@ -6,6 +6,8 @@ const MARKET_API_BASE = location.hostname === "127.0.0.1" && location.port === "
 const QUOTE_API_URL = `${MARKET_API_BASE}/quotes`;
 const CANDLE_API_URL = `${MARKET_API_BASE}/candles`;
 const TRADE_API_URL = "http://127.0.0.1:18765/trades";
+const TRADE_BATCH_API_URL = "http://127.0.0.1:18765/trades/batch";
+const WHOP_PENDING_API_URL = "http://127.0.0.1:18765/whop-pending";
 const QUOTE_REFRESH_MS = 30000;
 // Kept only for earlier browser-local records created before the shared ledger
 // standardized the instrument name to its actual market code.
@@ -33,6 +35,7 @@ let sortKey = "position";
 let sortDirection = -1;
 let analyticsSortKey = "tradeCount";
 let analyticsSortDirection = -1;
+let whopPendingItems = [];
 
 function daysAgo(days, hour) {
   const d = new Date();
@@ -94,6 +97,34 @@ async function syncSharedTrade(operation, trade) {
   });
   const result = await response.json().catch(()=>({}));
   if (!response.ok || !result.ok) throw new Error(result.error || "同步服务暂时不可用");
+  return result;
+}
+async function updateWhopPending(id, status) {
+  const response = await fetch(WHOP_PENDING_API_URL, {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({id,status})
+  });
+  const result=await response.json().catch(()=>({}));
+  if(!response.ok||!result.ok)throw new Error(result.error||"待确认状态更新失败");
+  return result;
+}
+async function updateWhopPendingBatch(ids, status) {
+  const response=await fetch(`${WHOP_PENDING_API_URL}/batch`,{
+    method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({ids,status})
+  });
+  const result=await response.json().catch(()=>({}));
+  if(!response.ok||!result.ok)throw new Error(result.error||"批量状态更新失败");
+  return result;
+}
+async function syncWhopBatch(trades, pendingIds) {
+  const response=await fetch(TRADE_BATCH_API_URL,{
+    method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({trades,pendingIds})
+  });
+  const result=await response.json().catch(()=>({}));
+  if(!response.ok||!result.ok)throw new Error(result.error||"批量同步失败");
   return result;
 }
 function esc(value="") { return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
@@ -1122,7 +1153,147 @@ function validateTrades(items) {
   });
 }
 
+function parseWhopDate(sourceTime, capturedAt) {
+  const captured=new Date(capturedAt||Date.now());
+  const match=String(sourceTime||"").match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if(!match)return captured.toISOString();
+  let hour=Number(match[1])%12;
+  if(match[3].toUpperCase()==="PM")hour+=12;
+  const result=new Date(captured);
+  result.setSeconds(0,0); result.setHours(hour,Number(match[2]),0,0);
+  const label=String(sourceTime||"").toLowerCase();
+  if(label.includes("yesterday"))result.setDate(result.getDate()-1);
+  else {
+    const weekdays={sunday:0,monday:1,tuesday:2,wednesday:3,thursday:4,friday:5,saturday:6};
+    const named=Object.keys(weekdays).find(day=>label.includes(day));
+    if(named){const back=(result.getDay()-weekdays[named]+7)%7;result.setDate(result.getDate()-back);}
+    else if(result.getTime()>captured.getTime()+60*60*1000)result.setDate(result.getDate()-1);
+  }
+  return result.toISOString();
+}
+function parseWhopCandidate(item) {
+  const text=String(item.content||"").replace(/\s+/g," ").trim();
+  const operations=text.match(/加了|加仓|加回|买入|出掉|出一半|卖出|减仓|清仓|清掉/g)||[];
+  const symbols=(text.match(/\b[A-Za-z]{2,8}\b/g)||[]).filter(symbol=>!["BTC"].includes(symbol.toUpperCase()));
+  const alias=/谷歌\s*A/i.test(text)?"GOOGL":"";
+  const code=(symbols.at(-1)||alias).toUpperCase();
+  const numbers=(text.match(/\d+(?:\.\d+)?/g)||[]).map(Number);
+  if(!code||!numbers.length||operations.length!==1)return {ok:false,reason:"包含多笔或语义较复杂，需要人工核对"};
+  const price=numbers[0];
+  const date=parseWhopDate(item.sourceTime,item.capturedAt);
+  const base={code,name:code,price,date,positionType:"波段仓",note:`Whop：${text}`};
+  if(/加了|加仓|买入/.test(operations[0])&&/(?:6|六)分之一/.test(text))return {ok:true,trade:{...base,action:"加仓",positionChange:1.65}};
+  if(/加回/.test(operations[0]))return {ok:false,reason:"“加回”需要确认恢复的具体仓位"};
+  if(/出一半/.test(operations[0]))return {ok:true,trade:{...base,action:"减仓",positionChange:0.825},referencePrice:numbers[1],half:true};
+  if(/出掉|卖出|清仓|清掉/.test(operations[0]))return {ok:true,trade:{...base,action:"清仓",positionChange:1.65},referencePrice:numbers[1],half:false};
+  return {ok:false,reason:"暂时无法可靠识别操作类型"};
+}
+function whopPreview(parsed) {
+  if(!parsed.ok)return parsed.reason;
+  const t=parsed.trade;
+  return `${t.code} · ${t.action} · ${money(t.price)} · ${fmt(t.positionChange,3)}%${parsed.referencePrice?` · 关联 ${money(parsed.referencePrice)}`:""}`;
+}
+function renderWhopInbox() {
+  const count=document.getElementById("whopInboxCount");
+  count.textContent=String(whopPendingItems.length); count.hidden=!whopPendingItems.length;
+  document.getElementById("whopInboxStatus").textContent=`本机监听已连接 · ${whopPendingItems.length} 条等待确认`;
+  document.getElementById("whopInboxEmpty").hidden=Boolean(whopPendingItems.length);
+  document.getElementById("ignoreAllWhop").disabled=!whopPendingItems.length;
+  document.getElementById("confirmAllWhop").disabled=!whopPendingItems.some(item=>parseWhopCandidate(item).ok);
+  document.getElementById("whopInboxList").innerHTML=whopPendingItems.map(item=>{
+    const parsed=parseWhopCandidate(item);
+    return `<article class="whop-message"><div class="whop-message-main"><div class="whop-message-meta"><b>WHOP</b><span>${esc(item.sourceTime||formatDate(item.capturedAt,true))}</span><span>${esc(item.author)}</span></div><div class="whop-message-content">${esc(item.content)}</div><div class="whop-message-preview ${parsed.ok?"":"uncertain"}">${parsed.ok?"已识别：":"需核对："}${esc(whopPreview(parsed))}</div></div><div class="whop-message-actions"><button class="btn btn-secondary" onclick="ignoreWhopMessage('${item.id}')">忽略</button><button class="btn btn-primary" onclick="reviewWhopMessage('${item.id}')">${parsed.ok?"核对并填写":"人工填写"}</button></div></article>`;
+  }).join("");
+}
+async function loadWhopPending(showErrors=false) {
+  try {
+    const response=await fetch(`${WHOP_PENDING_API_URL}?v=${Date.now()}`,{cache:"no-store"});
+    const result=await response.json().catch(()=>({}));
+    if(!response.ok)throw new Error(result.error||`HTTP ${response.status}`);
+    whopPendingItems=Array.isArray(result.items)?result.items:[];
+    renderWhopInbox();
+  } catch(error) {
+    document.getElementById("whopInboxStatus").textContent="本机监听服务未连接";
+    if(showErrors)toast("无法连接 Whop 本机监听服务");
+  }
+}
+window.ignoreWhopMessage=async id=>{
+  if(!confirm("忽略这条 Whop 消息？它不会写入账本。"))return;
+  try{await updateWhopPending(id,"ignored");await loadWhopPending();toast("已忽略");}catch(error){alert(error.message);}
+};
+window.ignoreAllWhopMessages=async()=>{
+  if(!whopPendingItems.length)return;
+  if(!confirm(`忽略全部 ${whopPendingItems.length} 条 Whop 消息？它们都不会写入账本。`))return;
+  const button=document.getElementById("ignoreAllWhop");button.disabled=true;button.textContent="处理中…";
+  try{
+    await updateWhopPendingBatch(whopPendingItems.map(item=>item.id),"ignored");
+    await loadWhopPending();toast("已忽略全部待确认消息");
+  }catch(error){alert(`批量忽略未完成：${error.message}`);await loadWhopPending();}
+  finally{button.textContent="一键忽略";}
+};
+function buildWhopBatchTrade(item,trades) {
+  const parsed=parseWhopCandidate(item);if(!parsed.ok)return null;
+  const trade=normalizeTrade({...parsed.trade,id:crypto.randomUUID()});
+  if(parsed.referencePrice){
+    const lots=computeLedger(trades).lots.filter(l=>l.code===trade.code&&l.remainingPosition>0.0001);
+    const lot=lots.find(entry=>Math.abs(Number(entry.price)-parsed.referencePrice)<0.011);
+    if(!lot)return null;
+    trade.closeLotId=lot.lotId;
+    trade.positionChange=Number((parsed.half?lot.remainingPosition/2:lot.remainingPosition).toFixed(3));
+  }
+  return trade;
+}
+window.confirmAllWhopMessages=async()=>{
+  const additions=[],pendingIds=[],working=[...state.trades];
+  for(const item of whopPendingItems){
+    const trade=buildWhopBatchTrade(item,working);
+    if(!trade)continue;
+    additions.push(trade);pendingIds.push(item.id);working.push(trade);
+  }
+  const skipped=whopPendingItems.length-additions.length;
+  if(!additions.length){toast("没有可安全一键确认的消息");return;}
+  const suffix=skipped?`；另有 ${skipped} 条需人工核对，将继续保留`:"";
+  if(!confirm(`确认将 ${additions.length} 条已识别操作一次写入正式账本${suffix}？`))return;
+  const button=document.getElementById("confirmAllWhop");button.disabled=true;button.textContent="正在同步…";
+  try{
+    const result=await syncWhopBatch(additions,pendingIds);
+    state.trades.push(...additions);state.updatedAt=result.updatedAt;state.isDemo=false;state.source="shared";saveState();render();
+    await loadWhopPending();toast(`已确认 ${additions.length} 条${skipped?`，保留 ${skipped} 条待核对`:""}`);
+  }catch(error){alert(`一键确认失败：${error.message}`);}
+  finally{button.textContent="一键确认";renderWhopInbox();}
+};
+window.reviewWhopMessage=id=>{
+  const item=whopPendingItems.find(entry=>entry.id===id);if(!item)return;
+  const parsed=parseWhopCandidate(item);
+  close("whopInboxDialog");
+  openTrade();
+  document.getElementById("whopPendingId").value=id;
+  document.getElementById("note").value=`Whop：${item.content}`;
+  document.getElementById("tradeDate").value=toLocalInput(parseWhopDate(item.sourceTime,item.capturedAt));
+  if(parsed.ok){
+    const trade=parsed.trade;
+    document.getElementById("name").value=trade.code;
+    document.getElementById("action").value=trade.action;
+    document.getElementById("positionType").value=trade.positionType;
+    document.getElementById("price").value=trade.price;
+    let position=trade.positionChange, lotId="";
+    if(parsed.referencePrice){
+      const lot=getOpenLotsForForm().find(entry=>entry.code===trade.code&&Math.abs(Number(entry.price)-parsed.referencePrice)<0.011);
+      if(lot){lotId=lot.lotId;position=parsed.half?lot.remainingPosition/2:lot.remainingPosition;}
+    }
+    document.getElementById("positionChange").value=Number(position.toFixed(3));
+    document.getElementById("quickPosition").value="";
+    refreshCloseLotOptions();
+    if(lotId)document.getElementById("closeLotId").value=lotId;
+  }
+};
+
 document.getElementById("addBtn").onclick=()=>openTrade();
+document.getElementById("whopInboxBtn").onclick=async()=>{await loadWhopPending(true);document.getElementById("whopInboxDialog").showModal();};
+document.getElementById("closeWhopInbox").onclick=()=>close("whopInboxDialog");
+document.getElementById("refreshWhopInbox").onclick=()=>loadWhopPending(true);
+document.getElementById("ignoreAllWhop").onclick=ignoreAllWhopMessages;
+document.getElementById("confirmAllWhop").onclick=confirmAllWhopMessages;
 document.getElementById("closeDialog").onclick=()=>close("tradeDialog");
 document.getElementById("cancelDialog").onclick=()=>close("tradeDialog");
 document.getElementById("exportBtn").onclick=()=>document.getElementById("exportDialog").showModal();
@@ -1150,6 +1321,7 @@ document.getElementById("fileInput").onchange=async e=>{
 document.getElementById("tradeForm").onsubmit=async e=>{
   e.preventDefault();
   const id=document.getElementById("editId").value;
+  const whopPendingId=document.getElementById("whopPendingId").value;
   const trade=normalizeTrade({id:id||crypto.randomUUID(),name:value("name").trim(),action:value("action"),positionType:value("positionType"),price:Number(value("price")),positionChange:Number(value("positionChange")),date:new Date(value("tradeDate")).toISOString(),closeLotId:value("closeLotId"),note:value("note").trim()});
   const submit = e.currentTarget.querySelector('button[type="submit"]');
   submit.disabled=true; submit.textContent="正在同步…";
@@ -1157,6 +1329,7 @@ document.getElementById("tradeForm").onsubmit=async e=>{
     const result = await syncSharedTrade(id?"update":"create", trade);
     if(id) state.trades=state.trades.map(t=>t.id===id?trade:t); else state.trades.push(trade);
     state.updatedAt=result.updatedAt; state.isDemo=false; state.source="shared"; saveState();
+    if(whopPendingId){try{await updateWhopPending(whopPendingId,"confirmed");await loadWhopPending();}catch(error){console.warn("Whop pending status update failed",error);}}
     close("tradeDialog"); render();
     toast(id?"已同步更新，线上面板正在刷新":"已同步记录，线上面板正在刷新");
   } catch (error) {
@@ -1248,7 +1421,9 @@ async function init() {
   render();
   refreshQuotes();
   refreshAccountReturnHistory();
+  loadWhopPending();
   window.setInterval(refreshQuotes, QUOTE_REFRESH_MS);
+  window.setInterval(loadWhopPending, 10000);
   if (state.source === "shared") toast("已加载 GitHub 共享数据");
   else if (state.loadError) toast("共享数据加载失败，已使用本机数据");
 }

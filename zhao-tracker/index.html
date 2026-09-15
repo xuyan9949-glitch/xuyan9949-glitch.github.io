@@ -7,7 +7,7 @@
   <title>Lucky Follow</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260912-daily-pnl">
+  <link rel="stylesheet" href="styles.css?v=20260916-whop-bulk">
   <link rel="stylesheet" href="workspace.css?v=20260915-design">
 </head>
 <body>
@@ -27,6 +27,7 @@
       <div class="header-actions">
         <button id="quoteStatus" class="market-status quote-status" title="连接本机长桥只读行情服务，可点击重试">行情连接中</button>
         <button id="themeBtn" class="icon-btn" title="切换主题">◐</button>
+        <button id="whopInboxBtn" class="btn btn-secondary whop-inbox-btn" title="查看从 Whop 捕获、尚未写入账本的消息">Whop 待确认 <span id="whopInboxCount" hidden>0</span></button>
         <button id="importBtn" class="btn btn-secondary">导入</button>
         <button id="exportBtn" class="btn btn-secondary">导出</button>
         <button id="addBtn" class="btn btn-primary">＋ 记录操作</button>
@@ -295,6 +296,7 @@
         <button type="button" class="close-btn" id="closeDialog">×</button>
       </div>
       <input id="editId" type="hidden">
+      <input id="whopPendingId" type="hidden">
       <div class="form-grid">
         <label>标的<input id="name" required placeholder="例如：AVGO"></label>
         <label>操作类型
@@ -331,6 +333,23 @@
     </form>
   </dialog>
 
+  <dialog id="whopInboxDialog" class="whop-inbox-dialog">
+    <div class="dialog-header">
+      <div><h2>Whop 待确认</h2><p>本机监听只负责收集；确认保存后才会写入正式账本</p></div>
+      <button type="button" class="close-btn" id="closeWhopInbox">×</button>
+    </div>
+    <div class="whop-inbox-toolbar">
+      <span id="whopInboxStatus">正在连接本机监听服务…</span>
+      <div class="whop-inbox-bulk-actions">
+        <button type="button" class="mini-btn" id="refreshWhopInbox">刷新</button>
+        <button type="button" class="btn btn-secondary" id="ignoreAllWhop">一键忽略</button>
+        <button type="button" class="btn btn-primary" id="confirmAllWhop">一键确认</button>
+      </div>
+    </div>
+    <div id="whopInboxList" class="whop-inbox-list"></div>
+    <div id="whopInboxEmpty" class="empty-state" hidden><div>没有待确认消息</div><p>保持 Whop 目标频道打开，新操作消息会自动出现在这里。</p></div>
+  </dialog>
+
   <dialog id="exportDialog" class="small-dialog">
     <div class="dialog-header"><div><h2>导出数据</h2><p>选择需要的文件格式</p></div><button class="close-btn" id="closeExport">×</button></div>
     <div class="export-options">
@@ -362,7 +381,7 @@
 
   <div id="toast" role="status" aria-live="polite"></div>
   <script src="daily-pnl.js?v=20260912-daily-pnl"></script>
-  <script src="app.js?v=20260915-design"></script>
+  <script src="app.js?v=20260916-whop-bulk"></script>
   <script src="workspace.js?v=20260915-design"></script>
   <dialog id="periodTradesDialog" class="period-trades-dialog">
     <div class="dialog-header"><div><h2 id="periodDialogTitle">本期操作</h2><p id="periodDialogMeta"></p></div><button class="icon-btn" aria-label="关闭本期操作" onclick="document.getElementById('periodTradesDialog').close()">×</button></div>
