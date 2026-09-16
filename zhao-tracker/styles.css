@@ -428,3 +428,4 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
 .daily-explanation summary { cursor:pointer; width:fit-content; }
 .daily-explanation p { margin:8px 0 0; }
 @media(max-width:700px) { .daily-summary {grid-template-columns:1fr 1fr;gap:20px;padding:18px;} .daily-main {grid-column:1/-1;} .daily-main strong .review-badge {font-size:28px;} }
+#whopInboxBtn{display:none!important}

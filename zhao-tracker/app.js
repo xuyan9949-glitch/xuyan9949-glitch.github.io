@@ -8,6 +8,8 @@ const CANDLE_API_URL = `${MARKET_API_BASE}/candles`;
 const TRADE_API_URL = "http://127.0.0.1:18765/trades";
 const TRADE_BATCH_API_URL = "http://127.0.0.1:18765/trades/batch";
 const WHOP_PENDING_API_URL = "http://127.0.0.1:18765/whop-pending";
+// Whop 自动同步暂时停用；记录继续通过手工表单补充。
+const WHOP_SYNC_ENABLED = false;
 const QUOTE_REFRESH_MS = 30000;
 // Kept only for earlier browser-local records created before the shared ledger
 // standardized the instrument name to its actual market code.
@@ -1289,7 +1291,12 @@ window.reviewWhopMessage=id=>{
 };
 
 document.getElementById("addBtn").onclick=()=>openTrade();
-document.getElementById("whopInboxBtn").onclick=async()=>{await loadWhopPending(true);document.getElementById("whopInboxDialog").showModal();};
+if(!WHOP_SYNC_ENABLED){
+  const whopButton=document.getElementById("whopInboxBtn");
+  if(whopButton)whopButton.hidden=true;
+}else{
+  document.getElementById("whopInboxBtn").onclick=async()=>{await loadWhopPending(true);document.getElementById("whopInboxDialog").showModal();};
+}
 document.getElementById("closeWhopInbox").onclick=()=>close("whopInboxDialog");
 document.getElementById("refreshWhopInbox").onclick=()=>loadWhopPending(true);
 document.getElementById("ignoreAllWhop").onclick=ignoreAllWhopMessages;
@@ -1421,9 +1428,9 @@ async function init() {
   render();
   refreshQuotes();
   refreshAccountReturnHistory();
-  loadWhopPending();
+  if(WHOP_SYNC_ENABLED) loadWhopPending();
   window.setInterval(refreshQuotes, QUOTE_REFRESH_MS);
-  window.setInterval(loadWhopPending, 10000);
+  if(WHOP_SYNC_ENABLED) window.setInterval(loadWhopPending, 10000);
   if (state.source === "shared") toast("已加载 GitHub 共享数据");
   else if (state.loadError) toast("共享数据加载失败，已使用本机数据");
 }

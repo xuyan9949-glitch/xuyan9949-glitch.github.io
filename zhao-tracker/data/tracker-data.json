@@ -4571,6 +4571,11 @@
     {"id":"lite-839-add-20260915","name":"LITE","action":"加仓","positionType":"波段仓","price":839,"positionChange":1.65,"date":"2026-09-15T00:11:00+08:00","note":"加了六分之一常规仓"},
     {"id":"nbis-2135-readd-2187-20260915","name":"NBIS","action":"加仓","positionType":"波段仓","price":213.5,"positionChange":0.825,"date":"2026-09-15T00:19:00+08:00","note":"加回 218.7 卖出的那部分 NBIS"},
     {"id":"spyu-3312-add-20260915","name":"SPYU","action":"加仓","positionType":"波段仓","price":33.12,"positionChange":1.65,"date":"2026-09-15T21:37:00+08:00","note":"加了六分之一常规仓"},
-    {"id":"cifr-1543-add-20260915","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.43,"positionChange":1.65,"date":"2026-09-15T21:40:00+08:00","note":"加了六分之一常规仓"}
+    {"id":"cifr-1543-add-20260915","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.43,"positionChange":1.65,"date":"2026-09-15T21:40:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"cifr-1650-half-close-1613-20260916","name":"CIFR","action":"减仓","positionType":"波段仓","price":16.5,"positionChange":0.825,"date":"2026-09-16T21:30:00+08:00","closeLotId":"cifr-1613-add-20260914","note":"出掉一半 16.12 的 CIFR"},
+    {"id":"cifr-1640-close-1613-rest-20260916","name":"CIFR","action":"清仓","positionType":"波段仓","price":16.4,"positionChange":0.825,"date":"2026-09-16T21:31:00+08:00","closeLotId":"cifr-1613-add-20260914","note":"出掉剩下一半 16.12 的 CIFR"},
+    {"id":"dram-562-half-close-562-20260916","name":"DRAM","action":"减仓","positionType":"波段仓","price":56.2,"positionChange":0.825,"date":"2026-09-16T21:36:00+08:00","closeLotId":"dram-562-add-20260914","note":"出一半 56.2 的 DRAM"},
+    {"id":"intc-1027-half-close-983-20260916","name":"INTC","action":"减仓","positionType":"波段仓","price":102.7,"positionChange":0.825,"date":"2026-09-16T21:37:00+08:00","closeLotId":"intc-983-add-20260914","note":"出一半 98.3 的 INTC"},
+    {"id":"lite-8825-close-863-20260916","name":"LITE","action":"清仓","positionType":"波段仓","price":882.5,"positionChange":1.65,"date":"2026-09-16T21:44:00+08:00","closeLotId":"lite-863-add-20260914","note":"出掉 863 的 LITE"}
   ]
 }
