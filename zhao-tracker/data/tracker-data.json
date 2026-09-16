@@ -4576,6 +4576,11 @@
     {"id":"cifr-1640-close-1613-rest-20260916","name":"CIFR","action":"清仓","positionType":"波段仓","price":16.4,"positionChange":0.825,"date":"2026-09-16T21:31:00+08:00","closeLotId":"cifr-1613-add-20260914","note":"出掉剩下一半 16.12 的 CIFR"},
     {"id":"dram-562-half-close-562-20260916","name":"DRAM","action":"减仓","positionType":"波段仓","price":56.2,"positionChange":0.825,"date":"2026-09-16T21:36:00+08:00","closeLotId":"dram-562-add-20260914","note":"出一半 56.2 的 DRAM"},
     {"id":"intc-1027-half-close-983-20260916","name":"INTC","action":"减仓","positionType":"波段仓","price":102.7,"positionChange":0.825,"date":"2026-09-16T21:37:00+08:00","closeLotId":"intc-983-add-20260914","note":"出一半 98.3 的 INTC"},
-    {"id":"lite-8825-close-863-20260916","name":"LITE","action":"清仓","positionType":"波段仓","price":882.5,"positionChange":1.65,"date":"2026-09-16T21:44:00+08:00","closeLotId":"lite-863-add-20260914","note":"出掉 863 的 LITE"}
+    {"id":"lite-8825-close-863-20260916","name":"LITE","action":"清仓","positionType":"波段仓","price":882.5,"positionChange":1.65,"date":"2026-09-16T21:44:00+08:00","closeLotId":"lite-863-add-20260914","note":"出掉 863 的 LITE"},
+    {"id":"soxl-1081-half-close-104-20260916","name":"SOXL","action":"减仓","positionType":"波段仓","price":108.1,"positionChange":0.825,"date":"2026-09-16T21:52:00+08:00","closeLotId":"soxl-104-add-20260914","note":"出一半 104 的 SOXL"},
+    {"id":"cifr-1694-half-close-1545-20260916","name":"CIFR","action":"减仓","positionType":"波段仓","price":16.94,"positionChange":0.825,"date":"2026-09-16T21:53:00+08:00","closeLotId":"cifr-1543-add-20260915","note":"出一半 15.45 的 CIFR；日内 12%"},
+    {"id":"cohr-286-half-close-276-20260916","name":"COHR","action":"减仓","positionType":"波段仓","price":286,"positionChange":0.825,"date":"2026-09-16T22:00:00+08:00","closeLotId":"cohr-276-add-20260914","note":"出一半 276 的 COHR"},
+    {"id":"cohr-2905-close-291-20260916","name":"COHR","action":"清仓","positionType":"波段仓","price":290.5,"positionChange":1.65,"date":"2026-09-16T22:15:00+08:00","closeLotId":"cohr-291-add-20260914","note":"出掉 291 的 COHR"},
+    {"id":"lite-8924-half-close-839-20260916","name":"LITE","action":"减仓","positionType":"波段仓","price":892.4,"positionChange":0.825,"date":"2026-09-16T22:15:05+08:00","closeLotId":"lite-839-add-20260915","note":"出一半 839 的 LITE"}
   ]
 }
