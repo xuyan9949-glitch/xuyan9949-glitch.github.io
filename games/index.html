@@ -29,6 +29,139 @@
 .end-panel{max-height:94vh;overflow:auto}.card-guidance{font-size:10px}.upgrade-card{min-height:365px}
 @media(max-height:740px){.start-screen h1{font-size:53px;margin:8px 0}.start-screen h2{margin:8px 0}#hero-picker{margin:10px 0 8px}#hero-picker button{padding:9px}#hero-picker b{font-size:21px}.start-screen{max-height:97vh}.start-controls,#best-label{font-size:9px}.title-seal{top:34px;left:192px}}
 @media(max-width:750px){.hero-hud{left:7px;padding:8px}.time-hud{left:57%;min-width:170px;padding:8px}.time-hud>span{font-size:23px}#build-hud{left:7px;top:180px;max-width:210px}#training-cards{grid-template-columns:1fr}.training-card{gap:8px;padding:14px}#boss-hud{top:145px}#meta-summary{display:block}.start-screen{left:5vw}}
+
+/* V0.6 mobile controls: a phone should be playable with thumbs only. */
+#touch-controls{display:none;position:absolute;inset:0;z-index:5;pointer-events:none;touch-action:none}
+#joystick{position:absolute;left:max(16px,env(safe-area-inset-left));bottom:max(18px,env(safe-area-inset-bottom));width:116px;height:116px;border:1px solid #d7d8b768;border-radius:50%;background:radial-gradient(circle,#8db9ac22 0 29%,#183b3c4d 30% 62%,#0b2028a8 63%);box-shadow:0 8px 30px #00101866;pointer-events:auto;touch-action:none;user-select:none}
+#joystick::before{content:"";position:absolute;inset:25px;border:1px solid #d6d8c72e;border-radius:50%}
+#joystick-knob{position:absolute;left:50%;top:50%;width:48px;height:48px;margin:-24px;border:1px solid #f0d18e99;border-radius:50%;background:#d8bd7d55;box-shadow:0 0 20px #e9bf7333;transform:translate(0,0);transition:transform .06s ease-out}
+#joystick small{position:absolute;left:0;right:0;bottom:11px;text-align:center;font-size:9px;color:#e0d4a9;letter-spacing:.15em;pointer-events:none}
+#touch-hint{position:absolute;left:145px;bottom:max(25px,env(safe-area-inset-bottom));font-size:9px;color:#b5c8bc;background:#09202cb8;padding:7px 9px;border-radius:3px;opacity:.85}
+.mobile-help{display:none}
+@media (pointer:coarse), (max-width:750px){
+  html,body{overscroll-behavior:none;touch-action:none}
+  #game{touch-action:none;cursor:default}
+  #touch-controls{display:block}
+  .top-tools{right:max(9px,env(safe-area-inset-right));top:max(9px,env(safe-area-inset-top));gap:5px;flex-direction:row}
+  .top-tools button{min-height:38px;padding:7px 9px;font-size:9px}
+  .hero-hud{max-width:53vw;min-width:170px}
+  .hero-hud h2{margin-bottom:5px}
+  .hero-hud small{letter-spacing:.08em}
+  .time-hud{max-width:39vw;min-width:125px!important;padding:7px 8px!important}
+  .time-hud>span{font-size:21px}
+  .time-hud small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .score-hud{top:91px;padding:7px 9px}
+  .score-hud b{font-size:22px}
+  #boss-hud{top:136px!important;width:54vw!important}
+  #build-hud{top:178px!important;max-width:47vw!important;padding:7px 9px}
+  .bottom-hud{bottom:max(18px,env(safe-area-inset-bottom));width:auto!important;left:auto;right:12px;transform:none}
+  #weapon-strip{display:none}
+  .action-row{gap:7px;margin:0}
+  .action-row button{width:76px;min-width:76px;min-height:62px;padding:8px 6px;display:grid;grid-template-columns:1fr;gap:1px;justify-items:center;border-radius:11px;background:#071b22e8}
+  .action-row button kbd{font-size:8px;padding:2px 5px;opacity:.65}
+  .action-row button strong{font-size:13px}
+  .action-row button small{font-size:8px}
+  #ult-button i{height:4px}
+  .hint{display:none}
+  .desktop-help{display:none}.mobile-help{display:inline}
+  #combo{right:10px;top:39%;width:68px}
+  #combo b{font-size:38px}
+  .announcement{max-width:90vw}
+  .overlay{padding:max(10px,env(safe-area-inset-top)) 10px max(10px,env(safe-area-inset-bottom))}
+  .upgrade-panel{max-height:96vh;padding:6px 2px}
+  .upgrade-panel h2{font-size:27px;margin:6px 0}
+  .upgrade-panel>p{font-size:10px;margin:0 0 8px}
+  #upgrade-slots{font-size:9px;margin-bottom:8px}
+  #upgrade-cards{gap:7px}
+  .upgrade-card{min-height:0!important;padding:11px;grid-template-columns:39px 1fr;gap:2px 9px}
+  .card-icon{width:36px;height:36px;margin:2px 0;font-size:20px}
+  .card-title{font-size:17px}
+  .card-desc{font-size:10px;line-height:1.55}
+  .card-guidance{font-size:9px;line-height:1.5;padding:4px 0 5px}
+  .card-level{font-size:9px;padding-top:5px}
+  .upgrade-footer{margin-top:8px;gap:8px}
+  .choose-hint{font-size:8px}
+  .upgrade-footer button{padding:8px 9px;font-size:9px}
+  .pause-panel,.end-panel{padding:24px 18px}
+  .pause-panel h2,.end-panel h2{font-size:29px}
+}
+@media (max-width:500px){
+  .start-screen{left:4vw;width:92vw;padding:8px 2px;max-height:98vh}
+  .start-screen h1{font-size:clamp(48px,17vw,70px);margin:8px 0 10px}
+  .start-screen h1 span{margin-left:48px}
+  .start-screen h2{font-size:15px;margin:7px 0}
+  .title-seal{display:none}
+  #hero-picker{gap:5px;margin:9px 0 7px}
+  #hero-picker button{padding:9px 6px;min-height:58px}
+  #hero-picker b{font-size:18px}
+  #hero-picker small{font-size:8px;margin-bottom:4px}
+  #hero-details p{font-size:9px;line-height:1.55;margin:3px 0}
+  #hero-exclusive{padding-left:6px}
+  .training-link{font-size:9px;padding:7px 9px;margin:1px 5px 6px 0}
+  #meta-summary{font-size:8px;margin-bottom:6px}
+  .primary-button{min-height:48px;padding:11px 18px;font-size:12px}
+  .start-milestones{gap:9px;margin:7px 0 5px;font-size:8px}
+  .start-controls,#best-label{font-size:8px;margin-top:4px}
+  .edition{font-size:8px}
+  .hero-hud{top:max(7px,env(safe-area-inset-top));left:5px;padding:6px 8px;min-width:145px}
+  .hero-hud h2{font-size:15px}
+  .hp-track{width:105px;height:4px}
+  .hero-hud small{font-size:8px}
+  .time-hud{top:max(7px,env(safe-area-inset-top));left:52%;min-width:100px!important;max-width:27vw}
+  .time-hud>span{font-size:18px}
+  .time-hud small{font-size:8px}
+  .score-hud{top:78px;right:8px}
+  .score-hud b{font-size:19px}
+  #build-hud{top:151px!important;left:5px;max-width:53vw!important;font-size:8px}
+  #slot-label{font-size:7px;line-height:1.45}
+  .tag{font-size:7px;padding:3px 4px}
+  #boss-hud{top:116px!important}
+  #touch-hint{display:none}
+  #joystick{width:104px;height:104px}
+  #joystick-knob{width:44px;height:44px;margin:-22px}
+  .bottom-hud{right:8px;bottom:max(12px,env(safe-area-inset-bottom))}
+  .action-row button{width:68px;min-width:68px;min-height:57px}
+  .action-row button strong{font-size:12px}
+  #announcement{top:31%;max-width:94vw}
+  #announcement strong{font-size:27px}
+  #announcement span{font-size:9px}
+}
+@media (orientation:landscape) and (max-height:600px){
+  #touch-controls{display:block}
+  #game{touch-action:none;cursor:default}
+  .hint{display:none}
+  #weapon-strip{display:none}
+  .bottom-hud{bottom:max(12px,env(safe-area-inset-bottom));width:auto;left:auto;right:18px;transform:none}
+  .action-row{margin:0;gap:7px}
+  .action-row button{width:78px;min-width:78px;min-height:58px;padding:7px 6px;display:grid;grid-template-columns:1fr;gap:1px;justify-items:center;border-radius:10px;background:#071b22e8}
+  .action-row button kbd{font-size:8px;padding:2px 5px;opacity:.65}
+  .action-row button strong{font-size:13px}
+  .action-row button small{font-size:8px}
+  .start-screen{left:6vw;width:min(430px,48vw);max-height:94vh;padding:4px 2px}
+  .start-screen h1{font-size:clamp(42px,13vh,62px);margin:5px 0 7px}
+  .start-screen h1 span{margin-left:38px}
+  .start-screen h2{font-size:14px;margin:5px 0}
+  #hero-picker{gap:5px;margin:7px 0 5px}
+  #hero-picker button{padding:7px 6px;min-height:45px}
+  #hero-picker b{font-size:18px}
+  #hero-picker small{font-size:8px;margin-bottom:2px}
+  #hero-details p{font-size:8px;line-height:1.4;margin:2px 0}
+  #hero-details{margin-bottom:5px}
+  .training-link{font-size:8px;padding:6px 8px;margin:0 4px 3px 0}
+  #meta-summary{font-size:7px;margin-bottom:3px}
+  .primary-button{min-height:39px;padding:8px 14px;font-size:10px}
+  .start-milestones{gap:10px;margin:4px 0 2px;font-size:7px}
+  .start-controls,#best-label{font-size:7px;margin-top:2px}
+  .edition{font-size:8px}
+  #title-aside{right:4vw;bottom:8vh}
+  #title-aside span{font-size:22px}
+  .hero-hud{top:7px;left:7px}
+  .time-hud{top:7px;left:50%;min-width:145px!important;max-width:none}
+  .score-hud{top:65px;right:8px}
+  #build-hud{top:125px!important;left:7px}
+  #boss-hud{top:105px!important}
+  #touch-hint{display:block;left:135px;bottom:21px}
+}
 </style></head>
 <body><main id="game-shell">
 <canvas id="game" aria-label="华山试剑战场"></canvas><div class="vignette"></div>
@@ -43,6 +176,7 @@
  <div id="build-hud"><div id="slot-label"></div><div id="tag-strip"></div></div>
  <div class="bottom-hud"><div id="weapon-strip"></div><div class="action-row"><button id="dash-button"><kbd>SHIFT</kbd><strong>闪身</strong><small id="dash-label">就绪</small></button><button id="ult-button"><kbd>空格</kbd><strong id="ult-name">亢龙有悔</strong><small id="qi-label">真气 0%</small><i id="qi-bar"></i></button></div></div>
  <div class="hint">WASD 移动 · 自动索敌 · 按住鼠标瞄准 · SHIFT 闪身 · 空格绝招</div>
+ <div id="touch-controls" aria-label="触控操作"><div id="joystick" role="application" aria-label="虚拟摇杆"><span id="joystick-knob"></span><small>移动</small></div><small id="touch-hint">拖动左侧摇杆移动 · 右下方释放绝招</small></div>
 </section>
 <section id="start-screen" class="start-screen">
  <div class="edition"><span></span>华山问道 · 本命绝学 / 局外修炼</div><div class="title-seal">华山<br>论剑</div>
@@ -52,11 +186,11 @@
  <button id="training-button" class="training-link">山下修炼 · 阅历 0</button><small id="meta-summary"></small>
  <button id="start-button" class="primary-button">踏入江湖 <span>→</span></button>
  <div class="start-milestones"><span><b>01:00</b> 铁掌来袭</span><span><b>03:00</b> 剑阵问心</span><span><b>04:30</b> 掌门决战</span></div>
- <small class="start-controls">WASD 移动 / SHIFT 闪身 / 空格绝招</small><small id="best-label"></small>
+ <small class="start-controls"><span class="desktop-help">WASD 移动 / SHIFT 闪身 / 空格绝招</span><span class="mobile-help">左侧摇杆移动 / 右下闪身与绝招</span></small><small id="best-label"></small>
 </section>
 <div id="title-aside"><span>华山论剑</span><small>西岳绝顶 · 问道</small></div>
 <section id="upgrade-screen" class="overlay hidden"><div class="upgrade-panel"><small class="eyebrow" id="upgrade-kicker">破境 · 武道有成</small><h2 id="upgrade-title">择一门绝学</h2><p id="upgrade-subtitle">每一次领悟，都让这一掌不同。</p><div id="upgrade-slots"></div><div id="upgrade-cards"></div><div class="upgrade-footer"><small class="choose-hint">点击武学帖，或按 1 / 2 / 3 · 战斗暂停</small><button id="reroll-button">换一批 · 2</button></div></div></section>
-<section id="pause-screen" class="overlay hidden"><div class="pause-panel"><small class="eyebrow">稍息 · 蓄势</small><h2>江湖等你回来</h2><p>WASD 移动，SHIFT 闪身躲避红色预警。<br>自动索敌；按住鼠标可手动瞄准。<br>真气满后，按空格释放人物绝招。</p><button id="resume-button" class="primary-button">继续试剑 →</button></div></section>
+<section id="pause-screen" class="overlay hidden"><div class="pause-panel"><small class="eyebrow">稍息 · 蓄势</small><h2>江湖等你回来</h2><p><span class="desktop-help">WASD 移动，SHIFT 闪身躲避红色预警。<br>自动索敌；按住鼠标可手动瞄准。<br>真气满后，按空格释放人物绝招。</span><span class="mobile-help">拖动左侧摇杆移动，点击右下按钮闪身或释放绝招。<br>自动索敌；真气满后点击绝招按钮。</span></p><button id="resume-button" class="primary-button">继续试剑 →</button></div></section>
 <section id="end-screen" class="overlay hidden"><div class="end-panel"><small class="eyebrow" id="end-kicker"></small><div class="end-seal" id="end-seal">侠</div><h2 id="end-title"></h2><p id="end-description"></p><div class="result-grid"><div><small>试剑时间</small><b id="result-time"></b></div><div><small>击破群雄</small><b id="result-kills"></b></div><div><small>最高境界</small><b id="result-level"></b></div></div><div id="result-build"></div><button id="restart-button" class="primary-button">再入江湖 <span>↻</span></button></div></section>
 <div id="announcement" class="hidden"><small id="announce-kicker"></small><strong id="announce-title"></strong><span id="announce-detail"></span></div>
 <div id="toast" role="status" class="hidden"></div>
@@ -204,6 +338,7 @@ const Huashan=(()=>{
   const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y),angle=(a,b)=>Math.atan2(b.y-a.y,b.x-a.x);
   const timeText=t=>String(Math.floor(t/60)).padStart(2,'0')+':'+String(Math.floor(t%60)).padStart(2,'0');
   const keys=new Set(),mouse={x:0,y:0,down:false};
+  const touch={active:false,pointerId:null,x:0,y:0,originX:0,originY:0,max:42};
   const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let W=innerWidth,H=innerHeight,DPR=1,game,last=0,hudClock=0,visualTime=0,uid=0;
   function resize(){W=innerWidth;H=innerHeight;DPR=Math.min(devicePixelRatio||1,2);canvas.width=W*DPR;canvas.height=H*DPR;canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(DPR,0,0,DPR,0,0);}
@@ -270,9 +405,15 @@ const Huashan=(()=>{
   addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));
   addEventListener('blur',()=>{keys.clear();mouse.down=false;if(game.phase==='running')pause();});
   document.addEventListener('visibilitychange',()=>{if(document.hidden&&game.phase==='running')pause();});
+  const joystick=$('#joystick'),joystickKnob=$('#joystick-knob');
+  function updateJoystick(e){const dx=e.clientX-touch.originX,dy=e.clientY-touch.originY,len=Math.hypot(dx,dy)||1,scale=Math.min(1,touch.max/len);touch.x=dx*scale;touch.y=dy*scale;joystickKnob.style.transform='translate('+touch.x+'px,'+touch.y+'px)';}
+  function endJoystick(){touch.active=false;touch.pointerId=null;touch.x=0;touch.y=0;joystickKnob.style.transform='translate(0,0)';}
+  joystick.addEventListener('pointerdown',e=>{if(game.phase!=='running')return;e.preventDefault();touch.active=true;touch.pointerId=e.pointerId;touch.originX=e.clientX;touch.originY=e.clientY;joystick.setPointerCapture?.(e.pointerId);updateJoystick(e);});
+  joystick.addEventListener('pointermove',e=>{if(touch.active&&e.pointerId===touch.pointerId){e.preventDefault();updateJoystick(e);}});
+  joystick.addEventListener('pointerup',endJoystick);joystick.addEventListener('pointercancel',endJoystick);joystick.addEventListener('lostpointercapture',endJoystick);
   canvas.addEventListener('pointermove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
   canvas.addEventListener('pointerdown',e=>{if(e.button===0){mouse.down=true;mouse.x=e.clientX;mouse.y=e.clientY;}});
-  addEventListener('pointerup',()=>mouse.down=false);
+  addEventListener('pointerup',()=>{mouse.down=false;if(touch.active)endJoystick();});
   $('#dash-button').onclick=dash;$('#ult-button').onclick=unleash;
   function nearest(x=game.player.x,y=game.player.y,max=900){let result=null;for(const e of game.enemies){if(e.dead)continue;const d=Math.hypot(e.x-x,e.y-y);if(d<max){max=d;result=e;}}return result;}
   function aim(){if(mouse.down)return Math.atan2(mouse.y-H/2,mouse.x-W/2);const e=nearest();return e?angle(game.player,e):game.aim;}
@@ -298,8 +439,9 @@ const Huashan=(()=>{
     const e=game.enemies.at(-1);Object.assign(e,Balance.bound(e.x,e.y,35));e.armor=12+index*12;e.xp*=Balance.xpDrop;
     game.bossIndex=index+1;announce('强敌现身 · '+timeText(b.at),b.title,b.detail,3);sound('boss');shake(5);fx(p.x,p.y,'ring',RED,380,.9);
   }
-  function dash(){const p=game.player;if(game.phase!=='running'||p.dashCd>0)return;const mx=(keys.has('d')||keys.has('arrowright')?1:0)-(keys.has('a')||keys.has('arrowleft')?1:0),my=(keys.has('s')||keys.has('arrowdown')?1:0)-(keys.has('w')||keys.has('arrowup')?1:0);p.dashAngle=mx||my?Math.atan2(my,mx):p.moveAngle;p.dash=.18;p.dashCd=2.6-game.weapons.step*.3;p.invuln=.32;if(game.hero==='linghu')p.wind=3;sound('dash');fx(p.x,p.y,'ring',hero().accent,50,.3);}
-  function movePlayer(dt){const p=game.player;let mx=(keys.has('d')||keys.has('arrowright')?1:0)-(keys.has('a')||keys.has('arrowleft')?1:0),my=(keys.has('s')||keys.has('arrowdown')?1:0)-(keys.has('w')||keys.has('arrowup')?1:0);p.moving=!!(mx||my);let speed=p.speed*(1+game.weapons.step*.07);
+  function moveInput(){if(touch.active)return {mx:touch.x/touch.max,my:touch.y/touch.max};return {mx:(keys.has('d')||keys.has('arrowright')?1:0)-(keys.has('a')||keys.has('arrowleft')?1:0),my:(keys.has('s')||keys.has('arrowdown')?1:0)-(keys.has('w')||keys.has('arrowup')?1:0)};}
+  function dash(){const p=game.player;if(game.phase!=='running'||p.dashCd>0)return;const {mx,my}=moveInput();p.dashAngle=mx||my?Math.atan2(my,mx):p.moveAngle;p.dash=.18;p.dashCd=2.6-game.weapons.step*.3;p.invuln=.32;if(game.hero==='linghu')p.wind=3;sound('dash');fx(p.x,p.y,'ring',hero().accent,50,.3);}
+  function movePlayer(dt){const p=game.player;let {mx,my}=moveInput();p.moving=!!(mx||my);let speed=p.speed*(1+game.weapons.step*.07);
     if(p.dash>0){mx=Math.cos(p.dashAngle);my=Math.sin(p.dashAngle);speed=850;}else if(p.moving){const len=Math.hypot(mx,my);mx/=len;my/=len;p.moveAngle=Math.atan2(my,mx);}
     Object.assign(p,Balance.bound(p.x+mx*speed*dt,p.y+my*speed*dt,20));p.step+=dt*(p.moving?13:2);p.ghostCd-=dt;
     if((p.dash>0||(p.moving&&game.weapons.step))&&p.ghostCd<=0){p.ghostCd=p.dash>0?.025:.22;game.ghosts.push({x:p.x,y:p.y,a:game.aim,life:.35,max:.35});if(game.weapons.step&&p.dash>0)for(const e of game.enemies)if(!e.dead&&distance(e,p)<72)hitEnemy(e,14+game.weapons.step*5,'step');}
