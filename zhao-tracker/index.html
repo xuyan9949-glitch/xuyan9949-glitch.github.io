@@ -7,7 +7,7 @@
   <title>Lucky Follow</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260916-whop-bulk">
+  <link rel="stylesheet" href="styles.css?v=20260916-whop-off">
   <link rel="stylesheet" href="workspace.css?v=20260915-design">
 </head>
 <body>
@@ -27,7 +27,7 @@
       <div class="header-actions">
         <button id="quoteStatus" class="market-status quote-status" title="连接本机长桥只读行情服务，可点击重试">行情连接中</button>
         <button id="themeBtn" class="icon-btn" title="切换主题">◐</button>
-        <button id="whopInboxBtn" class="btn btn-secondary whop-inbox-btn" title="查看从 Whop 捕获、尚未写入账本的消息">Whop 待确认 <span id="whopInboxCount" hidden>0</span></button>
+        <button id="whopInboxBtn" class="btn btn-secondary whop-inbox-btn" title="查看从 Whop 捕获、尚未写入账本的消息" hidden>Whop 待确认 <span id="whopInboxCount" hidden>0</span></button>
         <button id="importBtn" class="btn btn-secondary">导入</button>
         <button id="exportBtn" class="btn btn-secondary">导出</button>
         <button id="addBtn" class="btn btn-primary">＋ 记录操作</button>
@@ -381,7 +381,7 @@
 
   <div id="toast" role="status" aria-live="polite"></div>
   <script src="daily-pnl.js?v=20260912-daily-pnl"></script>
-  <script src="app.js?v=20260916-whop-bulk"></script>
+  <script src="app.js?v=20260916-whop-off"></script>
   <script src="workspace.js?v=20260915-design"></script>
   <dialog id="periodTradesDialog" class="period-trades-dialog">
     <div class="dialog-header"><div><h2 id="periodDialogTitle">本期操作</h2><p id="periodDialogMeta"></p></div><button class="icon-btn" aria-label="关闭本期操作" onclick="document.getElementById('periodTradesDialog').close()">×</button></div>
