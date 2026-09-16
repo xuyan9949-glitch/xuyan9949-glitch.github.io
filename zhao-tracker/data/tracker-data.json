@@ -4581,6 +4581,7 @@
     {"id":"cifr-1694-half-close-1545-20260916","name":"CIFR","action":"减仓","positionType":"波段仓","price":16.94,"positionChange":0.825,"date":"2026-09-16T21:53:00+08:00","closeLotId":"cifr-1543-add-20260915","note":"出一半 15.45 的 CIFR；日内 12%"},
     {"id":"cohr-286-half-close-276-20260916","name":"COHR","action":"减仓","positionType":"波段仓","price":286,"positionChange":0.825,"date":"2026-09-16T22:00:00+08:00","closeLotId":"cohr-276-add-20260914","note":"出一半 276 的 COHR"},
     {"id":"cohr-2905-close-291-20260916","name":"COHR","action":"清仓","positionType":"波段仓","price":290.5,"positionChange":1.65,"date":"2026-09-16T22:15:00+08:00","closeLotId":"cohr-291-add-20260914","note":"出掉 291 的 COHR"},
-    {"id":"lite-8924-half-close-839-20260916","name":"LITE","action":"减仓","positionType":"波段仓","price":892.4,"positionChange":0.825,"date":"2026-09-16T22:15:05+08:00","closeLotId":"lite-839-add-20260915","note":"出一半 839 的 LITE"}
+    {"id":"lite-8924-half-close-839-20260916","name":"LITE","action":"减仓","positionType":"波段仓","price":892.4,"positionChange":0.825,"date":"2026-09-16T22:15:05+08:00","closeLotId":"lite-839-add-20260915","note":"出一半 839 的 LITE"},
+    {"id":"nbis-219-close-215-rest-20260917","name":"NBIS","action":"清仓","positionType":"波段仓","price":219,"positionChange":0.825,"date":"2026-09-17T02:11:00+08:00","closeLotId":"nbis-215-add-20260914","note":"出掉剩下一半 215 的 NBIS"}
   ]
 }
