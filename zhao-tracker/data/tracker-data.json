@@ -4624,6 +4624,7 @@
     {"id":"cbrs-1973-close-1964-20260917","name":"CBRS","action":"清仓","positionType":"波段仓","price":197.3,"positionChange":1.65,"date":"2026-09-17T21:53:00+08:00","closeLotId":"cbrs-1964-add-20260909","note":"出掉 196.4 的 CBRS"},
     {"id":"iren-431-add-20260917","name":"IREN","action":"加仓","positionType":"波段仓","price":43.1,"positionChange":1.65,"date":"2026-09-17T21:50:00+08:00","note":"加了六分之一常规仓"},
     {"id":"intc-109-close-983-rest-20260917","name":"INTC","action":"清仓","positionType":"波段仓","price":109,"positionChange":0.825,"date":"2026-09-17T22:03:00+08:00","closeLotId":"intc-983-add-20260914","note":"出掉 98.3 剩下一半的 INTC"},
-    {"id":"soxl-1145-close-1015-20260917","name":"SOXL","action":"清仓","positionType":"波段仓","price":114.5,"positionChange":0.825,"date":"2026-09-17T22:05:00+08:00","closeLotId":"soxl-1015-readd-1081-20260917","note":"出掉 101.5 的 SOXL"}
+    {"id":"soxl-1145-close-1015-20260917","name":"SOXL","action":"清仓","positionType":"波段仓","price":114.5,"positionChange":0.825,"date":"2026-09-17T22:05:00+08:00","closeLotId":"soxl-1015-readd-1081-20260917","note":"出掉 101.5 的 SOXL"},
+    {"id":"cohr-292-add-20260917","name":"COHR","action":"加仓","positionType":"波段仓","price":292,"positionChange":1.65,"date":"2026-09-17T22:30:00+08:00","note":"加了六分之一常规仓"}
   ]
 }
