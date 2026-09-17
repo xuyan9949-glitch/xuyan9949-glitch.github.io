@@ -4593,6 +4593,23 @@
     {"id":"intc-998-readd-1025-20260917","name":"INTC","action":"加仓","positionType":"波段仓","price":99.8,"positionChange":0.825,"date":"2026-09-17T03:29:20+08:00","note":"加回 102.5 卖出的 INTC"},
     {"id":"aehr-82-add-20260917","name":"AEHR","action":"加仓","positionType":"波段仓","price":82,"positionChange":1.65,"date":"2026-09-17T03:29:25+08:00","note":"加了六分之一常规仓"},
     {"id":"oklo-3495-add-20260917","name":"OKLO","action":"加仓","positionType":"波段仓","price":34.95,"positionChange":1.65,"date":"2026-09-17T03:29:30+08:00","note":"加了六分之一常规仓"},
-    {"id":"ionq-3645-add-20260917","name":"IONQ","action":"加仓","positionType":"波段仓","price":36.45,"positionChange":1.65,"date":"2026-09-17T03:29:35+08:00","note":"加了六分之一常规仓"}
+    {"id":"ionq-3645-add-20260917","name":"IONQ","action":"加仓","positionType":"波段仓","price":36.45,"positionChange":1.65,"date":"2026-09-17T03:29:35+08:00","note":"加了六分之一常规仓"},
+    {"id":"crwv-845-close-819-20260917","name":"CRWV","action":"清仓","positionType":"波段仓","price":84.5,"positionChange":1.65,"date":"2026-09-17T19:18:00+08:00","closeLotId":"crwv-819-add-20260917","note":"出掉 81.9 的 CRWV"},
+    {"id":"nbis-2291-half-close-2135-20260917","name":"NBIS","action":"减仓","positionType":"波段仓","price":229.1,"positionChange":0.4125,"date":"2026-09-17T19:21:00+08:00","closeLotId":"nbis-2135-readd-219-20260917","note":"出一半 213.5 的 NBIS"},
+    {"id":"soxl-1104-close-104-rest-20260917","name":"SOXL","action":"清仓","positionType":"波段仓","price":110.4,"positionChange":0.825,"date":"2026-09-17T19:21:05+08:00","closeLotId":"soxl-104-add-20260914","note":"出掉 104 剩下一半 SOXL"},
+    {"id":"spyu-3326-close-3312-20260917","name":"SPYU","action":"清仓","positionType":"波段仓","price":33.26,"positionChange":1.65,"date":"2026-09-17T19:28:00+08:00","closeLotId":"spyu-3312-add-20260915","note":"出掉 33.12 的 SPYU"},
+    {"id":"cohr-3012-close-2983-20260917","name":"COHR","action":"清仓","positionType":"波段仓","price":301.2,"positionChange":1.65,"date":"2026-09-17T19:32:00+08:00","closeLotId":"cohr-2983-add-20260911","note":"出掉 298.3 的 COHR"},
+    {"id":"iren-4495-close-422-20260917","name":"IREN","action":"清仓","positionType":"波段仓","price":44.95,"positionChange":0.825,"date":"2026-09-17T19:32:05+08:00","closeLotId":"iren-422-add-20260914","note":"出掉 42.2 的 IREN"},
+    {"id":"dram-5635-half-close-5485-20260917","name":"DRAM","action":"减仓","positionType":"波段仓","price":56.35,"positionChange":0.825,"date":"2026-09-17T19:32:10+08:00","closeLotId":"dram-5485-add-20260917","note":"出一半 54.85 的 DRAM"},
+    {"id":"crwv-852-close-852-20260917","name":"CRWV","action":"清仓","positionType":"波段仓","price":85.2,"positionChange":1.65,"date":"2026-09-17T19:32:15+08:00","closeLotId":"crwv-819-add-20260917","note":"出掉 85.2 的 CRWV"},
+    {"id":"intc-10415-close-998-20260917","name":"INTC","action":"清仓","positionType":"波段仓","price":104.15,"positionChange":0.825,"date":"2026-09-17T19:41:00+08:00","closeLotId":"intc-998-readd-1025-20260917","note":"出掉 99.8 的 INTC"},
+    {"id":"spyu-3375-close-3371-20260917","name":"SPYU","action":"清仓","positionType":"波段仓","price":33.75,"positionChange":0.825,"date":"2026-09-17T20:32:00+08:00","closeLotId":"spyu-3371-add-20260911","note":"出掉 33.71 的 SPYU"},
+    {"id":"spyu-3375-close-33-20260917","name":"SPYU","action":"清仓","positionType":"波段仓","price":33.75,"positionChange":0.825,"date":"2026-09-17T20:32:05+08:00","closeLotId":"spyu-33-add-20260914","note":"出掉 33 的 SPYU"},
+    {"id":"spyu-3375-close-3155-20260917","name":"SPYU","action":"清仓","positionType":"波段仓","price":33.75,"positionChange":1.65,"date":"2026-09-17T20:32:10+08:00","closeLotId":"spyu-3155-add-20260917","note":"出掉 31.55 的 SPYU"},
+    {"id":"soxl-11355-close-1112-20260917","name":"SOXL","action":"清仓","positionType":"波段仓","price":113.55,"positionChange":1.65,"date":"2026-09-17T20:38:00+08:00","closeLotId":"soxl-1112-add-20260914","note":"出掉 111.2 的 SOXL"},
+    {"id":"aehr-91-half-close-82-20260917","name":"AEHR","action":"减仓","positionType":"波段仓","price":91,"positionChange":0.825,"date":"2026-09-17T20:38:05+08:00","closeLotId":"aehr-82-add-20260917","note":"出一半 82 的 AEHR"},
+    {"id":"wdc-433-half-close-431-20260917","name":"WDC","action":"减仓","positionType":"波段仓","price":433,"positionChange":0.825,"date":"2026-09-17T20:42:00+08:00","closeLotId":"wdc-431-add-20260914","note":"出一半 431 的 WDC"},
+    {"id":"cifr-181-close-1543-rest-20260917","name":"CIFR","action":"清仓","positionType":"波段仓","price":18.1,"positionChange":0.825,"date":"2026-09-17T20:48:00+08:00","closeLotId":"cifr-1543-add-20260915","note":"出掉 15.43 剩下一半的 CIFR；日内三天达到 30 点"},
+    {"id":"ionq-38-half-close-3645-20260917","name":"IONQ","action":"减仓","positionType":"波段仓","price":38,"positionChange":0.825,"date":"2026-09-17T20:55:00+08:00","closeLotId":"ionq-3645-add-20260917","note":"出一半 36.45 的 IONQ"}
   ]
 }
