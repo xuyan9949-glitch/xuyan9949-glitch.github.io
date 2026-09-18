@@ -342,7 +342,7 @@ const Huashan=(()=>{
   const keys=new Set(),mouse={x:0,y:0,down:false};
   const touch={active:false,pointerId:null,x:0,y:0,originX:0,originY:0,max:42};
   const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const guojingSprite=typeof Image!=='undefined'?new Image():{complete:false};if(guojingSprite.src!==undefined)guojingSprite.src='assets/guojing-battle-sprite-v2.png';
+  const guojingSprite=typeof Image!=='undefined'?new Image():{complete:false};if(guojingSprite.src!==undefined)guojingSprite.src='assets/guojing-battle-sprite-v3.png?rev=20260918b';
   let W=innerWidth,H=innerHeight,DPR=1,game,last=0,hudClock=0,visualTime=0,uid=0;
   function resize(){W=innerWidth;H=innerHeight;DPR=Math.min(devicePixelRatio||1,2);canvas.width=W*DPR;canvas.height=H*DPR;canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(DPR,0,0,DPR,0,0);}
   addEventListener('resize',resize);resize();
