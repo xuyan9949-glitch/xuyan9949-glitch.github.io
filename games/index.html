@@ -216,11 +216,11 @@ const Jianghu = (() => {
     yangguo:{name:'杨过',seal:'过',title:'神雕大侠',weapon:'heavy',hp:160,speed:205,color:'#465568',accent:'#c9b6ec',ult:'黯然销魂',talent:'重剑之意：对 200 范围内的敌人造成伤害 +20%。',style:'近战 · 重剑横扫',intro:'黯然震八方 · 近身破敌'}
   };
   const defs = {
-    heavy:{name:'玄铁剑法',short:'玄铁',icon:'重',color:'#c9b6ec',kind:'刚猛 · 横扫',max:5,group:'attack',tags:['刚猛']},
+    heavy:{name:'蒙古摔跤',short:'摔跤',icon:'摔',color:'#c9b6ec',kind:'大漠 · 控制',max:5,group:'attack',tags:['刚猛']},
     heavyFusion:{name:'重剑无锋',short:'无锋',icon:'玄',color:'#e2d3ff',kind:'融会贯通 · 重剑',max:1,group:'fusion',tags:[]},
     palm:{name:'普通掌',short:'普通掌',icon:'掌',color:'#d9bd83',kind:'掌法 · 击退',max:3,group:'attack',tags:['刚猛']},
     dragon:{name:'降龙十八掌',short:'降龙',icon:'龙',color:'#f0c77e',kind:'刚猛 · 穿透',max:6,group:'attack',tags:['刚猛']},
-    sword:{name:'独孤九剑',short:'独孤',icon:'剑',color:'#bfe8ee',kind:'凌厉 · 寻敌',max:5,group:'attack',tags:['凌厉']},
+    sword:{name:'越女剑法',short:'越女',icon:'剑',color:'#bfe8ee',kind:'七怪 · 快剑',max:5,group:'attack',tags:['凌厉']},
     pulse:{name:'六脉神剑',short:'六脉',icon:'脉',color:'#bdadf5',kind:'内力 · 贯穿',max:5,group:'attack',tags:['内力']},
     talisman:{name:'生死符',short:'生死',icon:'符',color:'#88d8c4',kind:'阴柔 · 冰爆',max:5,group:'attack',tags:['阴柔']},
     yang:{name:'九阳神功',short:'九阳',icon:'阳',color:'#f4a66e',kind:'内功 · 生息',max:4,group:'support',tags:['刚猛','守御']},
@@ -252,7 +252,7 @@ const Jianghu = (() => {
   };
   const slots={attack:2,support:2};
   const count=(w,g)=>Object.keys(defs).filter(id=>defs[id].group===g&&w[id]>0).length;
-  function canLearn(w,id){const d=defs[id];if(!d)return false;if(d.group==='supply')return true;if((w[id]||0)>=d.max)return false;if(id==='dragon'&&w.palm>0&&!(w.palm>=3&&w.yang>=2))return false;if(d.group==='fusion'){const r=recipes.find(r=>r.id===id);return w[r.attack]>=3&&w[r.support]>=2;}return w[id]>0||count(w,d.group)<slots[d.group];}
+  function canLearn(w,id){const d=defs[id];if(!d)return false;if(d.group==='supply')return true;if((w[id]||0)>=d.max)return false;if(['dragon','pulse','talisman','yin','yijin','beiming','fusion','swordFusion','pulseFusion','iceFusion'].includes(id))return false;if(d.group==='fusion'){const r=recipes.find(r=>r.id===id);return w[r.attack]>=3&&w[r.support]>=2;}return w[id]>0||count(w,d.group)<slots[d.group];}
   function tags(w){const counts={};for(const [id,d] of Object.entries(defs))if(w[id]>0)for(const tag of d.tags)counts[tag]=(counts[tag]||0)+1;return counts;}
   function stats(w){const t=tags(w),has=k=>(t[k]||0)>=2;return {tags:t,palm:has('刚猛')?1.22:1,pierce:has('刚猛')?1:0,crit:.22+(w.yijin||0)*.035+(has('凌厉')?.18:0),swordRate:has('凌厉')?1.15:1,qi:has('内力')?1.45:1,pulse:has('内力')?1.2:1,ice:has('阴柔')?1.2:1,iceRadius:has('阴柔')?1.25:1,defense:has('守御')?.85:1};}
   const training={body:{name:'锻体',detail:'每重气血上限 +12',max:5},power:{name:'练劲',detail:'每重全部伤害 +3%',max:5},insight:{name:'悟性',detail:'每重修为获取 +3%',max:5}};
@@ -360,10 +360,10 @@ const Huashan=(()=>{
   addEventListener('resize',resize);resize();
   const ui=Object.fromEntries(['timer','objective','level-label','hp-bar','hp-label','xp-bar','xp-label','kill-label','boss-hud','boss-name','boss-hint','boss-bar','combo','combo-caption','combo-label','combo-bar','dash-label','dash-button','ult-button','qi-label','qi-bar'].map(id=>[id,$('#'+id)]));
   const {defs,recipes,tagDefs,heroes}=Jianghu;
-  let selectedHero='guojing';
+  let selectedHero='guojing',starterChoice='palm';
   const hero=()=>heroes[game.hero];
-  function selectHero(id){if(game&&game.phase!=='title')return;if(!Object.hasOwn(heroes,id))return;selectedHero=id;game=fresh();prepareHero();renderHeroChoice();}
-  function renderHeroChoice(){const h=heroes[selectedHero],m=Jianghu.metaStats(profile);for(const id of Object.keys(heroes))$('#pick-'+id).setAttribute('aria-pressed',String(id===selectedHero));$('#hero-style').textContent=h.title+' · '+h.style;$('#hero-loadout').textContent=(h.starter?'起手：'+defs[h.starter].name+' · ':'本命：')+'本命：'+defs[h.weapon].name+' · 绝招：'+h.ult+' · 气血 '+(h.hp+m.hp);$('#hero-talent').textContent=h.talent;$('#hero-exclusive').textContent='专属 · '+Balance.exclusive(selectedHero,1);$('#training-button').textContent='山下修炼 · 阅历 '+profile.wisdom;$('#meta-summary').textContent='局外：气血 +'+m.hp+' · 伤害 +'+Math.round((m.damage-1)*100)+'% · 修为 +'+Math.round((m.xp-1)*100)+'%';}
+  function selectHero(id){if(game&&game.phase!=='title')return;starterChoice=id==='linghu'?'sword':id==='yangguo'?'heavy':'palm';selectedHero='guojing';game=fresh();prepareHero();renderHeroChoice();}
+  function renderHeroChoice(){const h=heroes[selectedHero],m=Jianghu.metaStats(profile);$('#upgrade-title').textContent='少年所长';$('#hero-style').textContent='郭靖 · '+(starterChoice==='palm'?'哲别神射':starterChoice==='sword'?'七怪真传':'草原角抵');$('#hero-loadout').textContent='本章起手：'+defs[starterChoice].name+' · 本命绝学将在后续章节获得';$('#hero-talent').textContent='第一章：大漠风雪 · 05:00 铜尸陈玄风';$('#hero-exclusive').textContent='只开放第一章合法武学池';$('#training-button').classList.add('hidden');$('#meta-summary').textContent='攻击槽 3 · 功法槽 2 · 奇技槽 尚未领悟';for(const id of Object.keys(heroes))$('#pick-'+id).setAttribute('aria-pressed',String((id==='guojing'&&starterChoice==='palm')||(id==='linghu'&&starterChoice==='sword')||(id==='yangguo'&&starterChoice==='heavy')));}
   for(const id of Object.keys(heroes))$('#pick-'+id).onclick=()=>selectHero(id);
   let storage;try{storage=localStorage;}catch{}
   const loaded=Jianghu.load(storage),profile=loaded.profile;
@@ -409,7 +409,7 @@ const Huashan=(()=>{
   function sound(kind){if(kind==='palm')tone(130,42,.16,.045,'triangle');else if(kind==='hit')tone(170,45,.08,.04,'triangle');else if(kind==='ult'){tone(150,28,.7,.09,'triangle');tone(500,70,.35,.025,'sawtooth',.1);}else if(kind==='level'){[330,440,660].forEach((f,i)=>tone(f,f,.25,.04,'sine',i*.09));}else if(kind==='dash')tone(350,70,.14,.02,'triangle');else if(kind==='boss'){tone(80,42,.8,.07,'triangle');tone(180,55,.5,.025,'sawtooth',.2);}else if(kind==='pickup')tone(950,1300,.055,.014);}
   $('#sound-button').onclick=()=>{muted=!muted;initAudio();soundUI();try{localStorage.setItem('jianghu-muted',muted?'1':'0');}catch{}};
   function fresh(){return {phase:'title',time:0,level:1,xp:0,xpNeed:16,kills:0,combo:0,comboMax:0,comboTime:0,frenzy:0,frenzyGate:20,qi:25,spawn:.5,wave:0,bossIndex:0,bossKills:0,finalDefeated:false,reward:0,shake:0,flash:0,hitStop:0,slow:0,announcement:0,toast:0,orbSound:0,aim:0,options:[],enemies:[],shots:[],hostile:[],orbs:[],fx:[],texts:[],ghosts:[],hazards:[],corpses:[],weapons:{palm:0,dragon:0,sword:0,pulse:0,talisman:0,yang:0,step:0,yijin:0,beiming:0,yin:0,fusion:0,swordFusion:0,pulseFusion:0,iceFusion:0},mods:Jianghu.stats({}),focus:'palm',rerolls:2,echoCd:0,newDiscoveries:[],metrics:{echoes:0,radialVolleys:0,chains:0},iceQueue:[],cooldowns:{palm:.25,dragon:1,sword:.5,pulse:.7,talisman:1,fusion:3},player:{x:0,y:0,hp:140,maxHp:140,shield:0,r:15,speed:215,invuln:0,dash:0,dashCd:0,dashAngle:0,moveAngle:0,moving:false,cast:0,step:0,ghostCd:0}};}
-  function prepareHero(){const h=heroes[selectedHero],starter=h.starter||h.weapon;game.hero=selectedHero;game.meta=Jianghu.metaStats(profile);game.xpNeed=Balance.xpNeed(1);game.pressureStage=0;game.nextElite=45;game.nativeCasts={dragon:0,heavy:0};game.exclusiveHits=0;game.weapons=Object.fromEntries(Object.keys(defs).filter(id=>defs[id].group!=='supply').map(id=>[id,id===starter?1:0]));game.focus=starter;game.mods=Jianghu.stats(game.weapons);game.cooldowns.heavy=.35;game.player.hp=game.player.maxHp=h.hp+game.meta.hp;game.player.speed=h.speed;game.player.wind=0;}
+  function prepareHero(){const h=heroes[selectedHero],starter=starterChoice;game.hero=selectedHero;game.meta=Jianghu.metaStats(profile);game.xpNeed=Balance.xpNeed(1);game.pressureStage=0;game.nextElite=195;game.nativeCasts={dragon:0,heavy:0};game.exclusiveHits=0;game.weapons=Object.fromEntries(Object.keys(defs).filter(id=>defs[id].group!=='supply').map(id=>[id,id===starter?1:0]));game.focus=starter;game.mods=Jianghu.stats(game.weapons);game.cooldowns.heavy=.35;game.player.hp=game.player.maxHp=h.hp+game.meta.hp;game.player.speed=h.speed;game.player.wind=0;}
   game=fresh();prepareHero();renderHeroChoice();
   function startGame(){if(['training','journal'].includes(game.phase))return;initAudio();keys.clear();mouse.down=false;game=fresh();prepareHero();game.phase='running';$('#hero-name').textContent=hero().name;$('#hero-seal').textContent=hero().seal;$('#ult-name').textContent=hero().ult;for(const id of ['start-screen','title-aside','end-screen','upgrade-screen','pause-screen','journal-screen'])$('#'+id).classList.add('hidden');$('#hud').classList.remove('hidden');$('#pause-button').classList.remove('hidden');for(let i=0;i<9;i++)spawnEnemy('swordsman',180+i*17,i/9*TAU);announce(hero().title,hero().name+' · 入江湖','击破群雄，拾取修为 · 一分钟后铁掌来袭',2.6);renderWeapons();updateHUD();}
   function returnToTitle(){if(!['dead','win'].includes(game.phase))return;game=fresh();prepareHero();keys.clear();mouse.down=false;for(const id of ['end-screen','hud','pause-button','announcement'])$('#'+id).classList.add('hidden');$('#start-screen').classList.remove('hidden');$('#title-aside').classList.remove('hidden');renderHeroChoice();}
@@ -448,7 +448,7 @@ const Huashan=(()=>{
     if(!radius&&distance(pos,p)<210)pos=Balance.bound(p.x-Math.cos(a)*r,p.y-Math.sin(a)*r,5);
     game.enemies.push({...def,...pos,id:++uid,type,elite,armor:pressure.armor+(type==='monk'?18:type==='bandit'?8:0)+(elite?22:0),damage:def.damage*pressure.damage*(elite?1.2:1),speed:def.speed*pressure.speed,xp:def.xp*Balance.xpDrop*(elite?3:1),r:def.r*(elite?1.3:1),hp:def.hp*scale,maxHp:def.hp*scale,hit:0,stun:0,slow:0,vx:0,vy:0,mark:0,dead:false,phase:rand(0,TAU),attackCd:rand(2,4)});
   }
-  const bosses=[{at:60,name:'铁掌执事',title:'铁掌封山',hp:6200,speed:112,color:'#cd9471',detail:'红线将至，闪身避掌'},{at:180,name:'华山剑宗',title:'万剑问心',hp:22000,speed:108,color:'#a9c7dd',detail:'避开剑阵，贴近破敌'},{at:270,name:'华山掌门',title:'一掌定乾坤',hp:65000,speed:119,color:'#e9c279',detail:'破尽三关，方可华山留名'}];
+  const bosses=[{at:300,name:'铜尸·陈玄风',title:'铜尸护体',hp:9800,speed:108,color:'#9a8d79',detail:'看清冲阵预警，抓住罩门破绽'}];
   function spawnBoss(index){const b=bosses[index],p=game.player,a=-Math.PI/2+.5;
     game.enemies.push({id:++uid,type:'boss',boss:index,name:b.name,x:p.x+Math.cos(a)*310,y:p.y+Math.sin(a)*310,hp:b.hp,maxHp:b.hp,speed:b.speed,r:29+index*3,damage:38+index*7,xp:60+index*20,color:b.color,hit:0,stun:0,slow:0,vx:0,vy:0,mark:0,dead:false,attackCd:1.5,state:'chase',stateTime:0,sequence:0,phase:0});
     const e=game.enemies.at(-1);Object.assign(e,Balance.bound(e.x,e.y,35));e.armor=12+index*12;e.xp*=Balance.xpDrop;
@@ -520,7 +520,7 @@ const Huashan=(()=>{
   }
   function hitEnemy(e,damage,type){if(e.dead)return;const crit=['sword','swordBreak'].includes(type)&&Math.random()<game.mods.crit+(game.player.wind>0?.15:0);
     const ignore=type==='swordBreak'?(game.weapons.sword>=5?1:.6):['heavyNative','heavyWave'].includes(type)?.75:type==='dragonNative'?.4:0;
-    damage*=game.meta.damage*Balance.armorFactor(e.armor||0,ignore)*(crit?1.8:1)*(e.type==='boss'&&e.state==='recover'?1.35:1)*(game.hero==='yangguo'&&distance(e,game.player)<=200?1.2:1);e.hp-=damage;e.hit=.12;
+    const effectiveArmor=e.type==='boss'&&e.state==='recover'?0:e.armor||0;damage*=game.meta.damage*Balance.armorFactor(effectiveArmor,ignore)*(crit?1.8:1)*(e.type==='boss'&&e.state==='recover'?1.7:1)*(game.hero==='yangguo'&&distance(e,game.player)<=200?1.2:1);e.hp-=damage;e.hit=.12;
     const a=angle(game.player,e),force=['ult','heavyUlt','heavyNative'].includes(type)?320:type==='heavy'?200:type==='dragon'?130:40;e.vx+=Math.cos(a)*force*(e.type==='boss'?0:e.elite?.4:1);e.vy+=Math.sin(a)*force*(e.type==='boss'?0:e.elite?.4:1);e.stun=e.type==='boss'?0:.08;
     if(['heavy','heavyUlt','swordUlt','heavyNative','heavyWave','dragonNative'].includes(type)){burst(e.x,e.y,hero().accent,4);fx(e.x,e.y,'slash',hero().accent,55,.28,a);game.hitStop=Math.max(game.hitStop,.018);}
     if(type==='dragon'||type==='ult'){fx(e.x,e.y,'slash',GOLD,type==='ult'?75:36,.24,a);burst(e.x,e.y,GOLD,3);shake(type==='ult'?6:1.5);if(type==='ult'||e.type==='boss')game.hitStop=Math.max(game.hitStop,type==='ult'?.035:.012);if(game.orbSound<=0){sound('hit');game.orbSound=.055;}}
@@ -690,10 +690,10 @@ const Huashan=(()=>{
     if(game.bossIndex<bosses.length&&game.time>=bosses[game.bossIndex].at)spawnBoss(game.bossIndex);
     const pressure=Balance.pressure(game.time);if(pressure.stage>game.pressureStage){game.pressureStage=pressure.stage;toast(pressure.name+' · 敌群与护甲提升');}
     if(game.time>=game.nextElite){game.nextElite+=45;spawnEnemy('monk',350,rand(0,TAU),true);if(game.time>=180)spawnEnemy('bandit',380,rand(0,TAU),true);}
-    const wave=Math.floor(game.time/30);if(wave>game.wave){game.wave=wave;for(let i=0;i<8+wave;i++)spawnEnemy(i%3===0&&wave>2?'assassin':'swordsman',390,i/(8+wave)*TAU);if(game.time%60<1&&game.bossIndex<3)toast('群雄压境 · 留意四周');}
+    const wave=Math.floor(game.time/30);if(wave>game.wave){game.wave=wave;for(let i=0;i<8+wave;i++)spawnEnemy(i%4===0&&wave>4?'archer':i%3===0?'bandit':'swordsman',390,i/(8+wave)*TAU);if(game.time<285&&game.time%60<1)toast('大漠风雪 · 留意四周');}
     movePlayer(dt);game.spawn-=dt;if(game.spawn<=0){for(let i=0;i<pressure.count;i++)spawnEnemy();game.spawn=pressure.interval;}
     autoAttack(dt);updateShots(dt);updateEnemies(dt);if(game.phase!=='running')return;collectOrbs(dt);updateFx(dt);
-    if(game.finalDefeated&&game.bossKills===3){endGame(true);return;}
+    if(game.finalDefeated&&game.bossKills===1){endGame(true);return;}
     if(game.reward>0)levelUp(true);else if(game.xp>=game.xpNeed)levelUp();
   }
   function updateFx(dt){for(const f of game.fx){f.life-=dt;if(f.vx!==undefined){f.x+=f.vx*dt;f.y+=f.vy*dt;f.vx*=Math.exp(-dt*4);f.vy*=Math.exp(-dt*4);}}game.fx=game.fx.filter(f=>f.life>0);for(const arr of [game.texts,game.ghosts,game.corpses]){for(const x of arr){x.life-=dt;if(x.label)x.y-=dt*(x.big?26:36);}for(let i=arr.length-1;i>=0;i--)if(arr[i].life<=0)arr.splice(i,1);}}
