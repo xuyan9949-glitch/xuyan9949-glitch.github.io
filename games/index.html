@@ -726,8 +726,9 @@ const Huashan=(()=>{
   }
   function drawActor(x,y,a,color,scale=1,hero=false,cast=0,walk=0,hit=0){ctx.save();ctx.translate(x,y);ctx.scale(scale,scale);ctx.fillStyle='#05131b66';ctx.beginPath();ctx.ellipse(0,17,18,7,0,0,TAU);ctx.fill();const bob=Math.sin(walk)*1.6;ctx.translate(0,bob);const side=Math.cos(a)<0?-1:1,robe=hit>0?'#fff0c6':color;
     if(hero&&game.hero==='guojing'&&guojingSprite.complete){
-      ctx.save();ctx.globalAlpha=hit>0?.78:1;ctx.translate(0,-20);if(Math.cos(a)>0)ctx.scale(-1,1);ctx.drawImage(guojingSprite,-54,-54,108,108);ctx.restore();
-      if(cast>0){ctx.save();ctx.globalCompositeOperation='lighter';ctx.globalAlpha=.35+cast;circle(Math.cos(a)*30,Math.sin(a)*18-18,18*cast/.24,'#ffe6a0');ctx.restore();}
+      const step=Math.sin(walk)*.9,sway=Math.sin(walk*1.7)*.045,pulse=cast>0?1+Math.sin((.24-cast)*32)*.08:1;
+      ctx.save();ctx.globalAlpha=hit>0?.78:1;ctx.translate(0,-14+step);ctx.rotate(sway);ctx.scale((Math.cos(a)>0?-1:1)*pulse,pulse);ctx.drawImage(guojingSprite,-38,-38,76,76);ctx.restore();
+      if(cast>0){ctx.save();ctx.globalCompositeOperation='lighter';ctx.globalAlpha=.35+cast;circle(Math.cos(a)*25,Math.sin(a)*15-13,14*cast/.24,'#ffe6a0');ctx.restore();}
       ctx.restore();return;
     }
     line([[-6,13],[-7+Math.sin(walk)*3,22]],'#11202a',6);line([[6,13],[7-Math.sin(walk)*3,22]],'#11202a',6);
@@ -744,7 +745,7 @@ const Huashan=(()=>{
     if(boss){circle(e.x,e.y+15,e.r+13,'#db9d663d',true,2);if(e.state==='windup'){ctx.save();ctx.translate(e.x,e.y);
       if(e.attack==='charge'){ctx.rotate(e.chargeAngle);const half=e.r+game.player.r;ctx.fillStyle='#f5726233';ctx.fillRect(0,-half,365,half*2);ctx.strokeStyle='#faad90aa';ctx.lineWidth=1;ctx.strokeRect(0,-half,365,half*2);line([[25,0],[340,0]],'#fdb998',2);for(let i=0;i<5;i++)line([[65+i*55,-12],[80+i*55,0],[65+i*55,12]],'#ffc3a0aa',2);}
       else{circle(0,0,145+e.boss*15,'#f66f5935');circle(0,0,(145+e.boss*15)*(1-e.stateTime/1.1),'#f99e82aa',true,3);}ctx.restore();}}
-    drawActor(e.x,e.y,a,e.hit>0?'#fff0c6':e.color,e.r/15,false,boss&&e.state==='windup'?.2:0,e.phase,e.hit);
+    drawActor(e.x,e.y,a,e.hit>0?'#fff0c6':e.color,Math.min(1.35,e.r/15*1.18),false,boss&&e.state==='windup'?.2:0,e.phase,e.hit);
     ctx.save();ctx.translate(e.x,e.y+Math.sin(e.phase)*1.6*e.r/15);ctx.scale(e.r/15,e.r/15);
     if(e.type==='monk'){circle(0,-17,10,e.hit>0?'#fff0c6':'#d7b78d');for(let i=0;i<7;i++)circle(Math.cos(i*Math.PI/6)*10,Math.sin(i*Math.PI/6)*8-4,2,'#6e513c');}
     if(e.type==='bandit'||e.type==='assassin'){path([[-9,-16],[9,-16],[7,-7],[-6,-8]],e.type==='assassin'?'#373849':'#343234');line([[8,-13],[24,-8],[32,-11]],e.type==='assassin'?'#a5aac9':'#98624e',3);}
@@ -776,7 +777,7 @@ const Huashan=(()=>{
     for(const o of game.orbs){const r=o.big?9:4;ctx.save();ctx.translate(o.x,o.y+Math.sin(visualTime*3+o.x)*2);circle(0,0,r*2.5,o.big?'#e7c77e1a':'#81d8bb16');path([[0,-r],[r*.75,0],[0,r],[-r*.75,0]],o.big?GOLD:JADE);ctx.restore();}
     for(const ghost of game.ghosts){ctx.save();ctx.globalAlpha=Math.max(0,ghost.life/ghost.max)*.28;drawActor(ghost.x,ghost.y,ghost.a,'#8ecfd9',1.1,true);ctx.restore();}
     const actors=game.phase==='title'?[]:[...game.enemies.filter(e=>!e.dead),{...game.player,type:'player'}].sort((a,b)=>a.y-b.y);
-    for(const actor of actors){if(actor.type==='player'){const p=game.player;ctx.save();if(p.invuln>0)ctx.globalAlpha=.6+Math.sin(visualTime*50)*.3;if(game.qi>=100||p.wind>0)circle(p.x,p.y+10,33+Math.sin(visualTime*4)*3,hero().accent+'80',true,1.5);drawActor(p.x,p.y,game.aim,hero().color,1.18,true,p.cast,p.step);ctx.restore();}else drawEnemy(actor);}
+    for(const actor of actors){if(actor.type==='player'){const p=game.player;ctx.save();if(p.invuln>0)ctx.globalAlpha=.6+Math.sin(visualTime*50)*.3;if(game.qi>=100||p.wind>0)circle(p.x,p.y+10,28+Math.sin(visualTime*4)*3,hero().accent+'80',true,1.5);drawActor(p.x,p.y,game.aim,hero().color,.88,true,p.cast,p.step);ctx.restore();}else drawEnemy(actor);}
     for(const s of game.shots){const alpha=Math.min(1,s.life*5);if(s.type==='dragon'||s.type==='ult')drawDragon(s.x,s.y,s.a,s.size,alpha,s.seed,s.type==='ult');else{ctx.save();ctx.translate(s.x,s.y);ctx.rotate(s.a);ctx.globalAlpha=alpha;ctx.globalCompositeOperation='lighter';
       if(s.type==='heavyWave'){line([[-85,0],[22,0]],'#fff0bd44',32);line([[-75,0],[26,0]],'#f5d996',9);ctx.beginPath();ctx.arc(0,0,48,-1.1,1.1);ctx.strokeStyle='#fff0bd';ctx.lineWidth=5;ctx.stroke();}
       else if(s.type==='pulse'){line([[-110,0],[25,0]],'#9475e52a',20);line([[-100,0],[25,0]],'#b39ff2',6);line([[-85,0],[27,0]],'#f3e4ff',2);}
