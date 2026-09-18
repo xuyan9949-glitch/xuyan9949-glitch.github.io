@@ -342,6 +342,7 @@ const Huashan=(()=>{
   const keys=new Set(),mouse={x:0,y:0,down:false};
   const touch={active:false,pointerId:null,x:0,y:0,originX:0,originY:0,max:42};
   const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const guojingSprite=typeof Image!=='undefined'?new Image():{complete:false};if(guojingSprite.src!==undefined)guojingSprite.src='assets/guojing-combat-v1.png';
   let W=innerWidth,H=innerHeight,DPR=1,game,last=0,hudClock=0,visualTime=0,uid=0;
   function resize(){W=innerWidth;H=innerHeight;DPR=Math.min(devicePixelRatio||1,2);canvas.width=W*DPR;canvas.height=H*DPR;canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(DPR,0,0,DPR,0,0);}
   addEventListener('resize',resize);resize();
@@ -724,6 +725,11 @@ const Huashan=(()=>{
     path([[-16,-9],[-33,-16],[-25,-4],[-38,0],[-23,6],[-27,16],[-13,9]],'#f1a64a99');ctx.restore();
   }
   function drawActor(x,y,a,color,scale=1,hero=false,cast=0,walk=0,hit=0){ctx.save();ctx.translate(x,y);ctx.scale(scale,scale);ctx.fillStyle='#05131b66';ctx.beginPath();ctx.ellipse(0,17,18,7,0,0,TAU);ctx.fill();const bob=Math.sin(walk)*1.6;ctx.translate(0,bob);const side=Math.cos(a)<0?-1:1,robe=hit>0?'#fff0c6':color;
+    if(hero&&game.hero==='guojing'&&guojingSprite.complete){
+      ctx.save();ctx.globalAlpha=hit>0?.78:1;ctx.translate(0,-20);if(Math.cos(a)>0)ctx.scale(-1,1);ctx.drawImage(guojingSprite,-54,-54,108,108);ctx.restore();
+      if(cast>0){ctx.save();ctx.globalCompositeOperation='lighter';ctx.globalAlpha=.35+cast;circle(Math.cos(a)*30,Math.sin(a)*18-18,18*cast/.24,'#ffe6a0');ctx.restore();}
+      ctx.restore();return;
+    }
     line([[-6,13],[-7+Math.sin(walk)*3,22]],'#11202a',6);line([[6,13],[7-Math.sin(walk)*3,22]],'#11202a',6);
     path([[-10,-8],[-16,11],[-21-side*Math.sin(walk)*3,22],[-5,17],[0,22],[10,17],[18,21],[12,-7]],robe,'#d6c69a45');
     path([[-8,-8],[-3,3],[-7,17],[3,14],[4,-6]],hero?'#608e9b':'#ded5b455');line([[-10,6],[10,6]],hero?'#d7bc7c':'#544648',3);
