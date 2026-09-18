@@ -452,11 +452,11 @@ const Huashan=(()=>{
   function shot(type,a,damage,speed=540,life=.8,size=1,pierce=2,x=game.player.x,y=game.player.y){if(game.shots.length>=180)return;game.shots.push({type,a,x,y,px:x,py:y,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,damage,life,max:life,size,r:type==='dragon'||type==='ult'?19*size:9,hit:new Set(),pierce,seed:rand(0,TAU)});}
   function autoAttack(dt){const p=game.player,w=game.weapons;for(const id of Object.keys(game.cooldowns))game.cooldowns[id]-=dt*(game.frenzy>0?1.4:1)*(id==='sword'?game.mods.swordRate*(p.wind>0?1.4:1):1);
     const target=nearest();if(!target)return;game.aim=aim();
-    if(w.dragon&&game.cooldowns.dragon<=0){const s=Balance.weapon('dragon',w.dragon),n=s.count;game.cooldowns.dragon=s.cooldown*(w.fusion?.82:1);p.cast=.24;
+    if(w.dragon&&game.cooldowns.dragon<=0){const s=Balance.weapon('dragon',w.dragon),n=s.count;game.cooldowns.dragon=s.cooldown*(w.fusion?.82:1);p.cast=.42;game.flash=.045;shake(2);
       for(let i=0;i<n;i++)shot('dragon',game.aim+(i-(n-1)/2)*.21,s.damage*(1+w.yang*.06)*(w.fusion?1.38:1)*game.mods.palm,500+w.dragon*24,.9+w.dragon*.025,1+w.dragon*.075+(w.fusion?.3:0),2+Math.floor(w.dragon/2)+game.mods.pierce);
       if(game.hero==='guojing'&&++game.nativeCasts.dragon%4===0){const radius=w.dragon>=3?165:125;fx(target.x,target.y,'dragonSeal',GOLD,radius,.65);for(const e of game.enemies)if(!e.dead&&distance(e,target)<radius)hitEnemy(e,s.damage*1.25*game.mods.palm,'dragonNative');if(w.dragon>=5)p.shield=Math.min(80,p.shield+8);game.exclusiveHits++;text(p.x,p.y-65,'见龙在田',GOLD,true);}
-      fx(p.x+Math.cos(game.aim)*18,p.y+Math.sin(game.aim)*18,'palmWindup',GOLD,58,.22,game.aim);
-      fx(target.x,target.y,'palmBurst',GOLD,78,.34,game.aim);sound('palm');
+      fx(p.x+Math.cos(game.aim)*22,p.y+Math.sin(game.aim)*22,'palmWindup',GOLD,92,.4,game.aim);
+      fx(target.x,target.y,'palmBurst',GOLD,132,.52,game.aim);sound('palm');
     }
     if(w.sword&&game.cooldowns.sword<=0){
       p.cast=.24;
@@ -768,8 +768,8 @@ const Huashan=(()=>{
     }
     else if(f.type==='swordStorm'){ctx.translate(f.x,f.y);ctx.rotate(f.a);for(let i=0;i<12;i++){const a=(i-5.5)*.14,r=70+t*f.size;line([[Math.cos(a)*r,Math.sin(a)*r],[Math.cos(a)*(r+65),Math.sin(a)*(r+65)]],f.color,3);}}
     else if(f.type==='ring')circle(f.x,f.y,f.size*(1-Math.pow(1-t,3)),f.color,true,3*(1-t)+.5);
-    else if(f.type==='palmWindup'){ctx.translate(f.x,f.y);ctx.rotate(f.a);const r=f.size*(.2+.8*t);ctx.globalAlpha*=1-t;circle(-r*.2,0,r*.38,'#f3aa4d',true,3);line([[-r*.3,0],[r*.25,0]],'#fff4be',4);for(let i=0;i<4;i++)line([[-r*.1,i*6-9],[r*.55,i*8-13]],'#f7c96e99',2);}
-    else if(f.type==='palmBurst'){ctx.translate(f.x,f.y);ctx.rotate(f.a);const r=f.size*(.25+t*.75);ctx.globalCompositeOperation='lighter';ctx.globalAlpha*=1-t*.7;circle(0,0,r*.45,'#f7bf5e44',true,5);for(let i=0;i<5;i++){const y=(i-2)*r*.18;line([[-r*.18,y],[r*.72,y*.55]],i===2?'#fff4c0':'#e7a54c',Math.max(1,5*(1-t)));}ctx.strokeStyle='#fff2b2';ctx.lineWidth=3;ctx.beginPath();ctx.arc(r*.35,0,r*.38,-1.2,1.2);ctx.stroke();}
+    else if(f.type==='palmWindup'){ctx.translate(f.x,f.y);ctx.rotate(f.a);const r=f.size*(.2+.8*t);ctx.globalAlpha*=1-t;circle(-r*.2,0,r*.38,'#f3aa4d',true,5);line([[-r*.3,0],[r*.25,0]],'#fff4be',7);for(let i=0;i<7;i++)line([[-r*.1,i*7-21],[r*.55,i*9-27]],'#f7c96ecc',3);}
+    else if(f.type==='palmBurst'){ctx.translate(f.x,f.y);ctx.rotate(f.a);const r=f.size*(.25+t*.75);ctx.globalCompositeOperation='lighter';ctx.globalAlpha*=1-t*.55;circle(0,0,r*.55,'#f7bf5e66',true,9);for(let i=0;i<7;i++){const y=(i-3)*r*.16;line([[-r*.2,y],[r*.78,y*.55]],i===3?'#fff4c0':'#e7a54c',Math.max(2,8*(1-t)));}ctx.strokeStyle='#fff2b2';ctx.lineWidth=5;ctx.beginPath();ctx.arc(r*.35,0,r*.42,-1.2,1.2);ctx.stroke();}
     else if(f.type==='slash'){ctx.translate(f.x,f.y);ctx.rotate(f.a);ctx.strokeStyle=f.color;ctx.lineWidth=4*(1-t)+1;ctx.beginPath();ctx.ellipse(0,0,f.size*.35,f.size*.55,0,-1.3,1.3);ctx.stroke();line([[-f.size*.4,0],[f.size*.55,0]],'#fff3cf',2);}
     else if(f.type==='rune'){ctx.translate(f.x,f.y);ctx.rotate(t*2);path([[0,-f.size],[f.size,0],[0,f.size],[-f.size,0]],null,f.color,1.5);}
     else line([[f.x,f.y],[f.x-Math.cos(f.a||0)*f.size*3,f.y-Math.sin(f.a||0)*f.size*3]],f.color,f.size);ctx.restore();
