@@ -21,6 +21,16 @@
 #journal-screen{z-index:10}.journal-panel{width:min(940px,100%);max-height:90vh;overflow:auto;padding:30px 34px;border:1px solid #c9b78360;background:linear-gradient(135deg,#203335f8,#0b1920fa);box-shadow:0 25px 100px #0005}.journal-heading{display:flex;justify-content:space-between;gap:12px;align-items:center}.journal-heading h2{font:34px 'Songti SC',serif;margin:10px 0 16px}#journal-stats{font-size:13px;color:var(--gold);border-block:1px solid var(--line);padding:14px 0}#storage-note{font-size:11px;color:#a2b6ab;line-height:1.7}.journal-panel h3{font:20px 'Songti SC',serif;margin:27px 0 13px}.journal-panel h3 small{display:inline-block;margin-left:13px;font:10px system-ui;color:#90a69d}#recipe-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}.recipe{padding:17px 20px;border:1px solid #839a8f44;background:#0f252a99}.recipe.known{border-color:#e9bf7380;background:linear-gradient(140deg,#4a3c2440,#12292c)}.recipe>small{color:#9eafa1;font-size:10px}.recipe.known>small{color:var(--gold)}.recipe h4{font:22px 'Songti SC',serif;margin:10px 0}.recipe p{font-size:11px;color:#bbcabd;line-height:1.8;margin:7px 0}.recipe>span{display:block;font-size:10px;color:#dbc68f;border-top:1px solid #a5bda225;margin-top:12px;padding-top:10px}#unlock-list{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.unlock{display:flex;flex-direction:column;gap:8px;padding:14px 10px;text-align:center;border:1px solid #718e7944;color:#92a599}.unlock.known{border-color:#d5b97880;color:var(--gold)}.unlock b{font:17px 'Songti SC',serif}.unlock small{font-size:9px}.unlock span{font-size:9px;color:#c1cfb4}.run-row{display:grid;grid-template-columns:45px 1fr;gap:5px 12px;padding:12px 0;border-bottom:1px solid #8aaf972a}.run-row b{font-size:12px;color:var(--gold)}.run-row span{font-size:11px;color:#c5d0bf}.run-row small{grid-column:2;font-size:10px;color:#90ab9f}.empty-record{font-size:12px;color:#92a599}
 @media(max-width:750px){#build-hud{top:159px;left:14px;max-width:230px}#slot-label{max-width:175px;font-size:8px}.tag{font-size:8px}.journal-panel{padding:20px 18px}#recipe-list{gap:8px}.recipe{padding:13px}.recipe h4{font-size:19px}#unlock-list{grid-template-columns:repeat(2,1fr)}.journal-panel h3 small{display:block;margin:8px 0 0}.upgrade-card{min-height:350px}.card-guidance{font-size:9px}.bottom-hud{width:99vw}.weapon-badge{gap:4px}#weapon-strip{flex-wrap:wrap}}
 @media(max-width:500px){#upgrade-cards{grid-template-columns:1fr}.upgrade-card{min-height:0;display:grid;grid-template-columns:43px 1fr;gap:4px 12px;padding:14px}.card-icon{grid-row:1/5;width:40px;height:40px;margin:4px 0}.card-title{margin:2px 0;font-size:19px}.card-desc,.card-guidance,.card-level{grid-column:2;padding:0;margin:0}.card-guidance{margin-bottom:7px}.card-kind{padding-right:22px}#recipe-list{grid-template-columns:1fr}.upgrade-panel h2{font-size:29px}}
+
+/* Upgrade choices are a decision screen, not a stat sheet. */
+#upgrade-slots{font-size:11px;color:#b3c4b7;margin:0 0 16px}
+.upgrade-card{min-height:225px;padding:20px 19px}
+.card-icon{margin-bottom:16px}
+.card-kind{font-size:10px}
+.card-title{font-size:25px;margin:6px 0 12px}
+.card-desc{font-size:13px;line-height:1.65;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin-bottom:12px}
+.card-guidance{display:none}
+.card-level{font-size:11px;padding-top:11px}
 /* V0.5: summit contrast, training and native-move previews. */
 .start-screen{width:min(490px,87vw)}.start-screen h1{font-size:62px;margin:12px 0}.start-screen h2{margin:10px 0;font-size:17px}.title-seal{top:43px;left:215px}
 #hero-details{min-height:0;margin-bottom:10px}#hero-details p{margin:5px 0;font-size:10px}#hero-exclusive{color:#ead2a1!important;border-left:2px solid #ba965c;padding-left:9px;max-width:475px}
@@ -611,7 +621,7 @@ const Huashan=(()=>{
     for(const id of ['heal','breath','guard'])add(id);
     return result;
   }
-  function slotText(w){return '攻击 '+Jianghu.count(w,'attack')+'/2（含初始武学） · 内功 / 轻功 '+Jianghu.count(w,'support')+'/2 · 融合沿用原槽';}
+  function slotText(w){return '攻击 '+Jianghu.count(w,'attack')+'/2  ·  内功 '+Jianghu.count(w,'support')+'/2';}
   function cardGuidance(id){
     const d=defs[id],w=game.weapons,related=recipes.filter(r=>[r.id,r.attack,r.support].includes(id));
     const recipe=related.find(r=>w[r.attack]>0)||related[0];
@@ -633,7 +643,7 @@ const Huashan=(()=>{
     const reward=game.rewardChoice,hasFusion=game.options.some(id=>defs[id].group==='fusion');
     $('#upgrade-kicker').textContent=reward?'强敌已破 · 绝学相授':'境界 '+game.level+' · 武道有成';
     $('#upgrade-title').textContent=hasFusion?'融会贯通':game.level===2?'先立根基，再修百家':'择一门绝学';
-    $('#upgrade-subtitle').textContent='本命三重、五重解锁专属变化；同门武学，原主自有绝招。';
+    $('#upgrade-subtitle').textContent='选一门，继续变强。';
     $('#upgrade-slots').textContent=slotText(game.weapons);
     const wrap=$('#upgrade-cards');wrap.replaceChildren();
     game.options.forEach((id,i)=>{
