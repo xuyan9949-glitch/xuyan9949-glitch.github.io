@@ -771,7 +771,7 @@ const Huashan=(()=>{
     else if(f.type==='rune'){ctx.translate(f.x,f.y);ctx.rotate(t*2);path([[0,-f.size],[f.size,0],[0,f.size],[-f.size,0]],null,f.color,1.5);}
     else line([[f.x,f.y],[f.x-Math.cos(f.a||0)*f.size*3,f.y-Math.sin(f.a||0)*f.size*3]],f.color,f.size);ctx.restore();
   }}
-  function drawWorld(){Huashan.sky(ctx,W,H,visualTime,game.player);ctx.save();const j=game.shake,zoom=game.phase==='title'?.56:.7;ctx.translate(W/2+(j?rand(-j,j):0),H/2+(j?rand(-j,j):0));ctx.scale(zoom,zoom);ctx.translate(-game.player.x,-game.player.y);drawArena();
+  function drawWorld(){Huashan.sky(ctx,W,H,visualTime,game.player);ctx.save();const j=game.shake,zoom=game.phase==='title'?.56:.84;ctx.translate(W/2+(j?rand(-j,j):0),H/2+(j?rand(-j,j):0));ctx.scale(zoom,zoom);ctx.translate(-game.player.x,-game.player.y);drawArena();
     for(const h of game.hazards){circle(h.x,h.y,h.r,'#ef716522');circle(h.x,h.y,h.r,RED,true,1);circle(h.x,h.y,h.r*(1-h.life/h.max),'#ffa583',true,2);}
     for(const c of game.corpses){ctx.save();ctx.globalAlpha=Math.max(0,c.life/c.max)*.6;ctx.translate(c.x,c.y);ctx.rotate(c.a);path([[-15,-10],[15,-8],[24,10],[-20,12]],c.color);ctx.restore();}
     for(const o of game.orbs){const r=o.big?9:4;ctx.save();ctx.translate(o.x,o.y+Math.sin(visualTime*3+o.x)*2);circle(0,0,r*2.5,o.big?'#e7c77e1a':'#81d8bb16');path([[0,-r],[r*.75,0],[0,r],[-r*.75,0]],o.big?GOLD:JADE);ctx.restore();}
