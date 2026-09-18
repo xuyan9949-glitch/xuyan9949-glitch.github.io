@@ -10,6 +10,7 @@ const TRADE_BATCH_API_URL = "http://127.0.0.1:18765/trades/batch";
 const WHOP_PENDING_API_URL = "http://127.0.0.1:18765/whop-pending";
 // Whop 自动同步暂时停用；记录继续通过手工表单补充。
 const WHOP_SYNC_ENABLED = false;
+let symbolLotView = { lots: [], pairs: [], capital: 100000 };
 const QUOTE_REFRESH_MS = 30000;
 // Kept only for earlier browser-local records created before the shared ledger
 // standardized the instrument name to its actual market code.
@@ -734,10 +735,21 @@ window.openSymbolDetail=(code,archive=false)=>{
     return `<div class="symbol-trade"><div class="symbol-trade-head"><b class="pnl ${buy?"up":"down"}">${esc(t.action)} · ${money(t.price)}</b><time>${formatDate(t.date,true)}</time></div><div class="symbol-trade-meta">仓位 ${buy?"+":"−"}${fmt(t.positionChange)}% · ${esc(t.positionType)}</div>${t.note?`<div class="symbol-trade-note">${esc(t.note)}</div>`:""}</div>`;
   }).join(""):'<div class="symbol-empty">暂无操作流水</div>';
   const lots=computeLedger().lots.filter(l=>l.code===code).sort((a,b)=>Number(b.remainingPosition>0.0001)-Number(a.remainingPosition>0.0001)||new Date(b.date)-new Date(a.date));
-  setText("symbolPairCount",`${lots.length} 个开仓批次 · ${summary.pairs.length} 笔平仓`);
-  document.getElementById("symbolPairs").innerHTML=renderLotHistory(lots,summary.pairs,capital);
+  symbolLotView={lots,pairs:summary.pairs,capital};
+  const dateFilter=document.getElementById("symbolDateFilter");
+  const dates=[...new Set(lots.map(l=>String(l.date).slice(0,10)))];
+  dateFilter.innerHTML='<option value="all">全部日期</option>'+dates.map(d=>`<option value="${d}">${d.slice(5).replace('-','月')}日</option>`).join('');
+  dateFilter.onchange=()=>renderSymbolLots();
+  renderSymbolLots();
   document.getElementById("symbolDialog").showModal();
 };
+
+function renderSymbolLots(){
+  const filter=document.getElementById("symbolDateFilter")?.value||"all";
+  const lots=filter==="all"?symbolLotView.lots:symbolLotView.lots.filter(l=>String(l.date).startsWith(filter));
+  setText("symbolPairCount",`${lots.length} 个开仓批次 · ${symbolLotView.pairs.filter(p=>filter==="all"||String(p.openTrade.date).startsWith(filter)).length} 笔平仓`);
+  document.getElementById("symbolPairs").innerHTML=renderLotHistory(lots,symbolLotView.pairs,symbolLotView.capital);
+}
 
 function renderLotHistory(lots,pairs,capital) {
   const position=value=>`${Number(Number(value).toFixed(4))}%`;
