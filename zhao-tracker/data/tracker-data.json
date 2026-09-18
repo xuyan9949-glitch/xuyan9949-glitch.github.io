@@ -4627,6 +4627,14 @@
     {"id":"soxl-1145-close-1015-20260917","name":"SOXL","action":"清仓","positionType":"波段仓","price":114.5,"positionChange":0.825,"date":"2026-09-17T22:05:00+08:00","closeLotId":"soxl-1015-readd-1081-20260917","note":"出掉 101.5 的 SOXL"},
     {"id":"cohr-292-add-20260917","name":"COHR","action":"加仓","positionType":"波段仓","price":292,"positionChange":1.65,"date":"2026-09-17T22:30:00+08:00","note":"加了六分之一常规仓"},
     {"id":"oklo-387-half-close-389-20260917","name":"OKLO","action":"减仓","positionType":"波段仓","price":38.7,"positionChange":0.825,"date":"2026-09-17T23:00:00+08:00","closeLotId":"oklo-389-add-20260911","note":"出一半 38.9 的 OKLO"},
-    {"id":"ionq-403-close-356-rest-20260917","name":"IONQ","action":"清仓","positionType":"波段仓","price":40.3,"positionChange":0.825,"date":"2026-09-17T23:00:05+08:00","closeLotId":"ionq-356-add-20260914","note":"出掉 35.6 剩下一半的 IONQ"}
+    {"id":"ionq-403-close-356-rest-20260917","name":"IONQ","action":"清仓","positionType":"波段仓","price":40.3,"positionChange":0.825,"date":"2026-09-17T23:00:05+08:00","closeLotId":"ionq-356-add-20260914","note":"出掉 35.6 剩下一半的 IONQ"},
+    {"id":"cohr-3085-close-292-20260918","name":"COHR","action":"清仓","positionType":"波段仓","price":308.5,"positionChange":1.65,"date":"2026-09-18T21:31:00+08:00","closeLotId":"cohr-292-add-20260917","note":"出掉 292 的 COHR"},
+    {"id":"lite-932-close-839-rest-20260918","name":"LITE","action":"清仓","positionType":"波段仓","price":932,"positionChange":0.825,"date":"2026-09-18T21:31:05+08:00","closeLotId":"lite-839-add-20260915","note":"出掉 839 剩下一半的 LITE"},
+    {"id":"googl-357-close-3497-20260918","name":"GOOGL","action":"清仓","positionType":"波段仓","price":357,"positionChange":1.65,"date":"2026-09-18T21:31:10+08:00","closeLotId":"googl-3497-add-20260811","note":"出掉 349.7 的谷歌A"},
+    {"id":"wdc-4346-close-422-20260918","name":"WDC","action":"清仓","positionType":"波段仓","price":434.6,"positionChange":0.825,"date":"2026-09-18T21:31:15+08:00","closeLotId":"wdc-422-readd-433-20260917","note":"出掉 422 的 WDC"},
+    {"id":"wdc-4346-close-431-20260918","name":"WDC","action":"清仓","positionType":"波段仓","price":434.6,"positionChange":0.825,"date":"2026-09-18T21:31:20+08:00","closeLotId":"wdc-431-add-20260914","note":"出掉 431 的 WDC"},
+    {"id":"iren-447-half-close-431-20260918","name":"IREN","action":"减仓","positionType":"波段仓","price":44.7,"positionChange":0.825,"date":"2026-09-18T21:31:25+08:00","closeLotId":"iren-431-add-20260917","note":"出一半 43.1 的 IREN"},
+    {"id":"nbis-220-close-2135-rest-20260918","name":"NBIS","action":"清仓","positionType":"波段仓","price":220,"positionChange":0.4125,"date":"2026-09-18T21:39:00+08:00","closeLotId":"nbis-2135-readd-219-20260917","note":"出掉 213.5 剩下一半的 NBIS"},
+    {"id":"iren-452-close-431-rest-20260918","name":"IREN","action":"清仓","positionType":"波段仓","price":45.2,"positionChange":0.825,"date":"2026-09-18T21:39:05+08:00","closeLotId":"iren-431-add-20260917","note":"出掉 43.1 剩下一半的 IREN"}
   ]
 }
