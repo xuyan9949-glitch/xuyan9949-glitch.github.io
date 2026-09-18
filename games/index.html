@@ -211,14 +211,15 @@
 </main><script>/* Pure build rules and versioned, validated local progression. No combat or DOM dependency. */
 const Jianghu = (() => {
   const heroes={
-    guojing:{name:'郭靖',seal:'靖',title:'侠之大者',weapon:'dragon',hp:140,speed:215,color:'#3c6876',accent:'#f0c77e',ult:'亢龙有悔',talent:'守城：释放绝招获得 35 护盾（上限 80）。',style:'稳健 · 龙掌压阵',intro:'三龙破阵 · 金钟护身'},
+    guojing:{name:'郭靖',seal:'靖',title:'侠之大者',weapon:'dragon',starter:'palm',hp:140,speed:215,color:'#3c6876',accent:'#f0c77e',ult:'亢龙有悔',talent:'守城：释放绝招获得 35 护盾（上限 80）。',style:'稳健 · 由掌入龙',intro:'三龙破阵 · 金钟护身'},
     linghu:{name:'令狐冲',seal:'冲',title:'笑傲江湖',weapon:'sword',hp:115,speed:238,color:'#d3d9d0',accent:'#bfe8ee',ult:'独孤破阵',talent:'乘风：闪身后 3 秒，剑气出招 +40%，暴击率 +15%。',style:'灵动 · 暴击追剑',intro:'十二剑齐发 · 贯穿剑阵'},
     yangguo:{name:'杨过',seal:'过',title:'神雕大侠',weapon:'heavy',hp:160,speed:205,color:'#465568',accent:'#c9b6ec',ult:'黯然销魂',talent:'重剑之意：对 200 范围内的敌人造成伤害 +20%。',style:'近战 · 重剑横扫',intro:'黯然震八方 · 近身破敌'}
   };
   const defs = {
     heavy:{name:'玄铁剑法',short:'玄铁',icon:'重',color:'#c9b6ec',kind:'刚猛 · 横扫',max:5,group:'attack',tags:['刚猛']},
     heavyFusion:{name:'重剑无锋',short:'无锋',icon:'玄',color:'#e2d3ff',kind:'融会贯通 · 重剑',max:1,group:'fusion',tags:[]},
-    dragon:{name:'降龙十八掌',short:'降龙',icon:'掌',color:'#f0c77e',kind:'刚猛 · 穿透',max:6,group:'attack',tags:['刚猛']},
+    palm:{name:'普通掌',short:'普通掌',icon:'掌',color:'#d9bd83',kind:'掌法 · 击退',max:3,group:'attack',tags:['刚猛']},
+    dragon:{name:'降龙十八掌',short:'降龙',icon:'龙',color:'#f0c77e',kind:'刚猛 · 穿透',max:6,group:'attack',tags:['刚猛']},
     sword:{name:'独孤九剑',short:'独孤',icon:'剑',color:'#bfe8ee',kind:'凌厉 · 寻敌',max:5,group:'attack',tags:['凌厉']},
     pulse:{name:'六脉神剑',short:'六脉',icon:'脉',color:'#bdadf5',kind:'内力 · 贯穿',max:5,group:'attack',tags:['内力']},
     talisman:{name:'生死符',short:'生死',icon:'符',color:'#88d8c4',kind:'阴柔 · 冰爆',max:5,group:'attack',tags:['阴柔']},
@@ -251,7 +252,7 @@ const Jianghu = (() => {
   };
   const slots={attack:2,support:2};
   const count=(w,g)=>Object.keys(defs).filter(id=>defs[id].group===g&&w[id]>0).length;
-  function canLearn(w,id){const d=defs[id];if(!d)return false;if(d.group==='supply')return true;if((w[id]||0)>=d.max)return false;if(d.group==='fusion'){const r=recipes.find(r=>r.id===id);return w[r.attack]>=3&&w[r.support]>=2;}return w[id]>0||count(w,d.group)<slots[d.group];}
+  function canLearn(w,id){const d=defs[id];if(!d)return false;if(d.group==='supply')return true;if((w[id]||0)>=d.max)return false;if(id==='dragon'&&w.palm>0&&!(w.palm>=3&&w.yang>=2))return false;if(d.group==='fusion'){const r=recipes.find(r=>r.id===id);return w[r.attack]>=3&&w[r.support]>=2;}return w[id]>0||count(w,d.group)<slots[d.group];}
   function tags(w){const counts={};for(const [id,d] of Object.entries(defs))if(w[id]>0)for(const tag of d.tags)counts[tag]=(counts[tag]||0)+1;return counts;}
   function stats(w){const t=tags(w),has=k=>(t[k]||0)>=2;return {tags:t,palm:has('刚猛')?1.22:1,pierce:has('刚猛')?1:0,crit:.22+(w.yijin||0)*.035+(has('凌厉')?.18:0),swordRate:has('凌厉')?1.15:1,qi:has('内力')?1.45:1,pulse:has('内力')?1.2:1,ice:has('阴柔')?1.2:1,iceRadius:has('阴柔')?1.25:1,defense:has('守御')?.85:1};}
   const training={body:{name:'锻体',detail:'每重气血上限 +12',max:5},power:{name:'练劲',detail:'每重全部伤害 +3%',max:5},insight:{name:'悟性',detail:'每重修为获取 +3%',max:5}};
@@ -274,6 +275,7 @@ const Jianghu = (() => {
 </script><script>/* One source of truth for combat and upgrade previews. Values are before bonuses/armor. */
 const Balance=(()=>{
   const levels={
+    palm:{damage:[34,48,66],cooldown:[.72,.63,.55]},
     dragon:{damage:[38,49,65,86,114,151],cooldown:[1.02,.97,.91,.84,.76,.68]},
     sword:{damage:[30,40,54,73,99],cooldown:[1.3,1.2,1.09,.97,.84]},
     heavy:{damage:[78,104,142,194,264],cooldown:[1.65,1.55,1.42,1.27,1.1]},
@@ -361,7 +363,7 @@ const Huashan=(()=>{
   let selectedHero='guojing';
   const hero=()=>heroes[game.hero];
   function selectHero(id){if(game&&game.phase!=='title')return;if(!Object.hasOwn(heroes,id))return;selectedHero=id;game=fresh();prepareHero();renderHeroChoice();}
-  function renderHeroChoice(){const h=heroes[selectedHero],m=Jianghu.metaStats(profile);for(const id of Object.keys(heroes))$('#pick-'+id).setAttribute('aria-pressed',String(id===selectedHero));$('#hero-style').textContent=h.title+' · '+h.style;$('#hero-loadout').textContent='本命：'+defs[h.weapon].name+' · 绝招：'+h.ult+' · 气血 '+(h.hp+m.hp);$('#hero-talent').textContent=h.talent;$('#hero-exclusive').textContent='专属 · '+Balance.exclusive(selectedHero,1);$('#training-button').textContent='山下修炼 · 阅历 '+profile.wisdom;$('#meta-summary').textContent='局外：气血 +'+m.hp+' · 伤害 +'+Math.round((m.damage-1)*100)+'% · 修为 +'+Math.round((m.xp-1)*100)+'%';}
+  function renderHeroChoice(){const h=heroes[selectedHero],m=Jianghu.metaStats(profile);for(const id of Object.keys(heroes))$('#pick-'+id).setAttribute('aria-pressed',String(id===selectedHero));$('#hero-style').textContent=h.title+' · '+h.style;$('#hero-loadout').textContent=(h.starter?'起手：'+defs[h.starter].name+' · ':'本命：')+'本命：'+defs[h.weapon].name+' · 绝招：'+h.ult+' · 气血 '+(h.hp+m.hp);$('#hero-talent').textContent=h.talent;$('#hero-exclusive').textContent='专属 · '+Balance.exclusive(selectedHero,1);$('#training-button').textContent='山下修炼 · 阅历 '+profile.wisdom;$('#meta-summary').textContent='局外：气血 +'+m.hp+' · 伤害 +'+Math.round((m.damage-1)*100)+'% · 修为 +'+Math.round((m.xp-1)*100)+'%';}
   for(const id of Object.keys(heroes))$('#pick-'+id).onclick=()=>selectHero(id);
   let storage;try{storage=localStorage;}catch{}
   const loaded=Jianghu.load(storage),profile=loaded.profile;
@@ -406,8 +408,8 @@ const Huashan=(()=>{
   function tone(f,end,duration,gain,type='sine',delay=0){if(!audio||muted)return;const t=audio.currentTime+delay,o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.setValueAtTime(f,t);o.frequency.exponentialRampToValueAtTime(Math.max(20,end),t+duration);g.gain.setValueAtTime(.001,t);g.gain.exponentialRampToValueAtTime(gain,t+.012);g.gain.exponentialRampToValueAtTime(.001,t+duration);o.connect(g);g.connect(audio.destination);o.start(t);o.stop(t+duration+.015);o.onended=()=>{o.disconnect();g.disconnect();};}
   function sound(kind){if(kind==='palm')tone(130,42,.16,.045,'triangle');else if(kind==='hit')tone(170,45,.08,.04,'triangle');else if(kind==='ult'){tone(150,28,.7,.09,'triangle');tone(500,70,.35,.025,'sawtooth',.1);}else if(kind==='level'){[330,440,660].forEach((f,i)=>tone(f,f,.25,.04,'sine',i*.09));}else if(kind==='dash')tone(350,70,.14,.02,'triangle');else if(kind==='boss'){tone(80,42,.8,.07,'triangle');tone(180,55,.5,.025,'sawtooth',.2);}else if(kind==='pickup')tone(950,1300,.055,.014);}
   $('#sound-button').onclick=()=>{muted=!muted;initAudio();soundUI();try{localStorage.setItem('jianghu-muted',muted?'1':'0');}catch{}};
-  function fresh(){return {phase:'title',time:0,level:1,xp:0,xpNeed:16,kills:0,combo:0,comboMax:0,comboTime:0,frenzy:0,frenzyGate:20,qi:25,spawn:.5,wave:0,bossIndex:0,bossKills:0,finalDefeated:false,reward:0,shake:0,flash:0,hitStop:0,slow:0,announcement:0,toast:0,orbSound:0,aim:0,options:[],enemies:[],shots:[],hostile:[],orbs:[],fx:[],texts:[],ghosts:[],hazards:[],corpses:[],weapons:{dragon:1,sword:0,pulse:0,talisman:0,yang:0,step:0,yijin:0,beiming:0,yin:0,fusion:0,swordFusion:0,pulseFusion:0,iceFusion:0},mods:Jianghu.stats({dragon:1}),focus:'dragon',rerolls:2,echoCd:0,newDiscoveries:[],metrics:{echoes:0,radialVolleys:0,chains:0},iceQueue:[],cooldowns:{dragon:.25,sword:.5,pulse:.7,talisman:1,fusion:3},player:{x:0,y:0,hp:140,maxHp:140,shield:0,r:15,speed:215,invuln:0,dash:0,dashCd:0,dashAngle:0,moveAngle:0,moving:false,cast:0,step:0,ghostCd:0}};}
-  function prepareHero(){const h=heroes[selectedHero];game.hero=selectedHero;game.meta=Jianghu.metaStats(profile);game.xpNeed=Balance.xpNeed(1);game.pressureStage=0;game.nextElite=45;game.nativeCasts={dragon:0,heavy:0};game.exclusiveHits=0;game.weapons=Object.fromEntries(Object.keys(defs).filter(id=>defs[id].group!=='supply').map(id=>[id,id===h.weapon?1:0]));game.focus=h.weapon;game.mods=Jianghu.stats(game.weapons);game.cooldowns.heavy=.35;game.player.hp=game.player.maxHp=h.hp+game.meta.hp;game.player.speed=h.speed;game.player.wind=0;}
+  function fresh(){return {phase:'title',time:0,level:1,xp:0,xpNeed:16,kills:0,combo:0,comboMax:0,comboTime:0,frenzy:0,frenzyGate:20,qi:25,spawn:.5,wave:0,bossIndex:0,bossKills:0,finalDefeated:false,reward:0,shake:0,flash:0,hitStop:0,slow:0,announcement:0,toast:0,orbSound:0,aim:0,options:[],enemies:[],shots:[],hostile:[],orbs:[],fx:[],texts:[],ghosts:[],hazards:[],corpses:[],weapons:{palm:0,dragon:0,sword:0,pulse:0,talisman:0,yang:0,step:0,yijin:0,beiming:0,yin:0,fusion:0,swordFusion:0,pulseFusion:0,iceFusion:0},mods:Jianghu.stats({}),focus:'palm',rerolls:2,echoCd:0,newDiscoveries:[],metrics:{echoes:0,radialVolleys:0,chains:0},iceQueue:[],cooldowns:{palm:.25,dragon:1,sword:.5,pulse:.7,talisman:1,fusion:3},player:{x:0,y:0,hp:140,maxHp:140,shield:0,r:15,speed:215,invuln:0,dash:0,dashCd:0,dashAngle:0,moveAngle:0,moving:false,cast:0,step:0,ghostCd:0}};}
+  function prepareHero(){const h=heroes[selectedHero],starter=h.starter||h.weapon;game.hero=selectedHero;game.meta=Jianghu.metaStats(profile);game.xpNeed=Balance.xpNeed(1);game.pressureStage=0;game.nextElite=45;game.nativeCasts={dragon:0,heavy:0};game.exclusiveHits=0;game.weapons=Object.fromEntries(Object.keys(defs).filter(id=>defs[id].group!=='supply').map(id=>[id,id===starter?1:0]));game.focus=starter;game.mods=Jianghu.stats(game.weapons);game.cooldowns.heavy=.35;game.player.hp=game.player.maxHp=h.hp+game.meta.hp;game.player.speed=h.speed;game.player.wind=0;}
   game=fresh();prepareHero();renderHeroChoice();
   function startGame(){if(['training','journal'].includes(game.phase))return;initAudio();keys.clear();mouse.down=false;game=fresh();prepareHero();game.phase='running';$('#hero-name').textContent=hero().name;$('#hero-seal').textContent=hero().seal;$('#ult-name').textContent=hero().ult;for(const id of ['start-screen','title-aside','end-screen','upgrade-screen','pause-screen','journal-screen'])$('#'+id).classList.add('hidden');$('#hud').classList.remove('hidden');$('#pause-button').classList.remove('hidden');for(let i=0;i<9;i++)spawnEnemy('swordsman',180+i*17,i/9*TAU);announce(hero().title,hero().name+' · 入江湖','击破群雄，拾取修为 · 一分钟后铁掌来袭',2.6);renderWeapons();updateHUD();}
   function returnToTitle(){if(!['dead','win'].includes(game.phase))return;game=fresh();prepareHero();keys.clear();mouse.down=false;for(const id of ['end-screen','hud','pause-button','announcement'])$('#'+id).classList.add('hidden');$('#start-screen').classList.remove('hidden');$('#title-aside').classList.remove('hidden');renderHeroChoice();}
@@ -462,6 +464,7 @@ const Huashan=(()=>{
   function shot(type,a,damage,speed=540,life=.8,size=1,pierce=2,x=game.player.x,y=game.player.y){if(game.shots.length>=180)return;game.shots.push({type,a,x,y,px:x,py:y,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,damage,life,max:life,size,r:type==='dragon'||type==='ult'?19*size:9,hit:new Set(),pierce,seed:rand(0,TAU)});}
   function autoAttack(dt){const p=game.player,w=game.weapons;for(const id of Object.keys(game.cooldowns))game.cooldowns[id]-=dt*(game.frenzy>0?1.4:1)*(id==='sword'?game.mods.swordRate*(p.wind>0?1.4:1):1);
     const target=nearest();if(!target)return;game.aim=aim();
+    if(w.palm&&game.cooldowns.palm<=0){const s=Balance.weapon('palm',w.palm);game.cooldowns.palm=s.cooldown;p.cast=.16;shot('palm',game.aim,s.damage*game.mods.palm,560,.46,.72,1);fx(p.x+Math.cos(game.aim)*18,p.y+Math.sin(game.aim)*18,'slash', '#e8c98a',42,.18,game.aim);sound('palm');}
     if(w.dragon&&game.cooldowns.dragon<=0){const s=Balance.weapon('dragon',w.dragon),n=s.count;game.cooldowns.dragon=s.cooldown*(w.fusion?.82:1);p.cast=.42;game.flash=.045;shake(2);
       for(let i=0;i<n;i++)shot('dragon',game.aim+(i-(n-1)/2)*.21,s.damage*(1+w.yang*.06)*(w.fusion?1.38:1)*game.mods.palm,500+w.dragon*24,.9+w.dragon*.025,1+w.dragon*.075+(w.fusion?.3:0),2+Math.floor(w.dragon/2)+game.mods.pierce);
       if(game.hero==='guojing'&&++game.nativeCasts.dragon%4===0){const radius=w.dragon>=3?165:125;fx(target.x,target.y,'dragonSeal',GOLD,radius,.65);for(const e of game.enemies)if(!e.dead&&distance(e,target)<radius)hitEnemy(e,s.damage*1.25*game.mods.palm,'dragonNative');if(w.dragon>=5)p.shield=Math.min(80,p.shield+8);game.exclusiveHits++;text(p.x,p.y-65,'见龙在田',GOLD,true);}
@@ -610,7 +613,7 @@ const Huashan=(()=>{
   const shuffled=items=>{const a=[...items];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
   function makeOptions(reroll=false){
     const w=game.weapons,ready=recipes.filter(r=>Jianghu.canLearn(w,r.id)).map(r=>r.id);
-    if(game.level===2&&!reroll&&Jianghu.count(w,'attack')===1){const r=recipes.find(r=>r.attack===hero().weapon);return [r.attack,r.support,game.hero==='guojing'?'sword':'dragon'].filter(id=>Jianghu.canLearn(w,id));}
+    if(game.level===2&&!reroll&&Jianghu.count(w,'attack')===1){const r=recipes.find(r=>r.attack===hero().weapon);if(r)return [r.attack,r.support,game.hero==='guojing'?'sword':'dragon'].filter(id=>Jianghu.canLearn(w,id));}
     const candidates=Object.keys(defs).filter(id=>['attack','support'].includes(defs[id].group)&&Jianghu.canLearn(w,id));
     const result=ready.slice(0,3),add=id=>{if(id&&!result.includes(id)&&result.length<3&&Jianghu.canLearn(w,id))result.push(id);};
     const focus=recipes.find(r=>r.attack===game.focus)||recipes[0];
@@ -792,7 +795,8 @@ const Huashan=(()=>{
     const actors=game.phase==='title'?[]:[...game.enemies.filter(e=>!e.dead),{...game.player,type:'player'}].sort((a,b)=>a.y-b.y);
     for(const actor of actors){if(actor.type==='player'){const p=game.player;ctx.save();if(p.invuln>0)ctx.globalAlpha=.6+Math.sin(visualTime*50)*.3;if(game.qi>=100||p.wind>0)circle(p.x,p.y+10,28+Math.sin(visualTime*4)*3,hero().accent+'80',true,1.5);drawActor(p.x,p.y,game.aim,hero().color,.88,true,p.cast,p.step);ctx.restore();}else drawEnemy(actor);}
     for(const s of game.shots){const alpha=Math.min(1,s.life*5);if(s.type==='dragon'||s.type==='ult')drawDragon(s.x,s.y,s.a,s.size,alpha,s.seed,s.type==='ult');else{ctx.save();ctx.translate(s.x,s.y);ctx.rotate(s.a);ctx.globalAlpha=alpha;ctx.globalCompositeOperation='lighter';
-      if(s.type==='heavyWave'){line([[-85,0],[22,0]],'#fff0bd44',32);line([[-75,0],[26,0]],'#f5d996',9);ctx.beginPath();ctx.arc(0,0,48,-1.1,1.1);ctx.strokeStyle='#fff0bd';ctx.lineWidth=5;ctx.stroke();}
+      if(s.type==='palm'){line([[-28,0],[18,0]],'#d7b87555',18);line([[-22,0],[20,0]],'#f1d59a',7);circle(17,0,9,'#fff0bd',true,2);}
+      else if(s.type==='heavyWave'){line([[-85,0],[22,0]],'#fff0bd44',32);line([[-75,0],[26,0]],'#f5d996',9);ctx.beginPath();ctx.arc(0,0,48,-1.1,1.1);ctx.strokeStyle='#fff0bd';ctx.lineWidth=5;ctx.stroke();}
       else if(s.type==='pulse'){line([[-110,0],[25,0]],'#9475e52a',20);line([[-100,0],[25,0]],'#b39ff2',6);line([[-85,0],[27,0]],'#f3e4ff',2);}
       else if(s.type==='swordBreak'){line([[-65,0],[28,0]],'#91f5ff66',23);path([[34,0],[-4,-5],[-36,0],[-4,5]],'#efffff');line([[0,-11],[0,11]],'#a8f8ff',2);}
       else{line([[-55,0],[20,0]],s.type==='swordEcho'||s.type==='swordUlt'?'#e4fbff77':'#92d7dd25',s.type==='swordEcho'||s.type==='swordUlt'?18:12);path([[24,0],[-4,-3],[-24,0],[-4,3]],'#e1f7f2');line([[-9,-6],[-9,6]],GOLD,2);}ctx.restore();}}
