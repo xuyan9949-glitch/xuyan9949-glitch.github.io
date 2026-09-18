@@ -431,3 +431,14 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
 #whopInboxBtn{display:none!important}
 .detail-section-tools{display:flex;align-items:center;gap:12px}
 .detail-section-tools select{border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text);padding:7px 10px;font:inherit}
+.detail-section-tools{flex-wrap:wrap;justify-content:flex-end}
+.lot-history.is-open{border-color:#cfdcff;box-shadow:inset 3px 0 #2864dc}
+.lot-history.is-closed{box-shadow:inset 3px 0 #cbd2dc}
+.lot-timeline{margin:4px 14px 2px 18px;padding:2px 0 4px 19px;border-left:2px solid var(--line)}
+.lot-node{position:relative;display:flex;gap:10px;padding:9px 0;font-size:12px}
+.lot-node i{position:absolute;left:-25px;top:14px;width:10px;height:10px;border-radius:50%;background:#2864dc;border:3px solid var(--panel)}
+.lot-node-exit i{background:#e25565}
+.lot-node time{display:block;color:var(--muted);font-size:11px;margin-bottom:3px}
+.lot-node strong{display:inline-block;margin-right:8px}
+.lot-node span{color:var(--muted)}
+.lot-node .pnl{font-weight:700}
