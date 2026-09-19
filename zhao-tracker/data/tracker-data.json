@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-19T12:14:23+08:00",
+  "updatedAt": "2026-09-19T12:18:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4619,6 +4619,8 @@
     {"id":"nbis-2114-add-20260918","name":"NBIS","action":"加仓","positionType":"波段仓","price":211.4,"positionChange":1.65,"date":"2026-09-18T22:04:00+08:00","note":"加了六分之一常规仓"},
     {"id":"nbis-2211-half-close-2114-20260918","name":"NBIS","action":"减仓","positionType":"波段仓","price":221.1,"positionChange":0.825,"date":"2026-09-18T23:58:00+08:00","closeLotId":"nbis-2114-add-20260918","note":"221.1 出一半 211.4 的 NBIS"},
     {"id":"cohr-318-close-276-rest-20260919","name":"COHR","action":"清仓","positionType":"波段仓","price":318,"positionChange":0.825,"date":"2026-09-19T04:00:00+08:00","closeLotId":"cohr-276-add-20260914","note":"318 出掉 276 剩下一半的 COHR"},
-    {"id":"dram-5978-close-595-20260919","name":"DRAM","action":"清仓","positionType":"波段仓","price":59.78,"positionChange":1.65,"date":"2026-09-19T04:09:00+08:00","closeLotId":"dram-595-add-20260910","note":"59.78 出掉 59.5 的 DRAM"}
+    {"id":"dram-5978-close-595-20260919","name":"DRAM","action":"清仓","positionType":"波段仓","price":59.78,"positionChange":1.65,"date":"2026-09-19T04:09:00+08:00","closeLotId":"dram-595-add-20260910","note":"59.78 出掉 59.5 的 DRAM"},
+    {"id":"iren-44-close-44-rest-20260918","name":"IREN","action":"清仓","positionType":"波段仓","price":44,"positionChange":0.825,"date":"2026-09-18T22:00:00+08:00","closeLotId":"iren-44-add-20260911","note":"44 平掉 44 的 IREN 剩余部分"},
+    {"id":"iren-44-close-437-rest-20260918","name":"IREN","action":"清仓","positionType":"波段仓","price":44,"positionChange":0.825,"date":"2026-09-18T22:00:00+08:00","closeLotId":"iren-437-add-20260911","note":"44 平掉 43.7 的 IREN 剩余部分"}
   ]
 }
