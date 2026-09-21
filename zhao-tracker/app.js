@@ -580,9 +580,14 @@ function render() {
   const unrealizedPct = quotedCost ? unrealizedDollar / quotedCost * 100 : 0;
   const accountTotalDollar = realizedDollar + unrealizedDollar;
   const accountTotalPct = capital ? accountTotalDollar / capital * 100 : 0;
+  const currentNetWorth = capital + accountTotalDollar;
+  const currentValuePosition = quotedHoldings.length === holdings.length && currentNetWorth > 0 ? usedCapital / currentNetWorth * 100 : null;
+  const currentValueAvailable = currentValuePosition == null ? null : Math.max(0, 100 - currentValuePosition);
 
   setText("totalPosition",`${fmt(total)}%`);
+  setText("currentValuePosition",currentValuePosition == null ? "—" : `${fmt(currentValuePosition)}%`);
   setText("availablePosition",`${fmt(availablePosition)}%`);
+  setText("currentValueAvailable",currentValueAvailable == null ? "—" : `${fmt(currentValueAvailable)}%`);
   setText("accountTotalReturn",quotedHoldings.length || !holdings.length ? `${accountTotalPct>=0?"+":""}${fmt(accountTotalPct,2)}%` : "—");
   setText("accountTotalPnl",quotedHoldings.length || !holdings.length ? usd(accountTotalDollar) : "—");
   setText("accountTotalMeta",quotedHoldings.length || !holdings.length ? `本金 ${usd(capital)} · 已实现 ${usd(realizedDollar)} · 按 ${quotedHoldings.length}/${holdings.length} 只当前报价估算` : `本金 ${usd(capital)} · 等待长桥行情`);

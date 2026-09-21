@@ -7,7 +7,7 @@
   <title>Lucky Follow</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260916-whop-off">
+  <link rel="stylesheet" href="styles.css?v=20260921-dual-basis">
   <link rel="stylesheet" href="workspace.css?v=20260915-design">
 </head>
 <body>
@@ -55,14 +55,23 @@
       <section id="overview" class="summary-grid section-anchor" aria-label="仓位概览">
         <article class="summary-card featured capacity-overview">
           <div class="card-label">仓位与可用资金 <span class="live-dot"></span><button id="capitalBtn" class="mini-btn">修改本金</button></div>
+          <div class="capacity-kicker"><span class="basis-dot basis-fixed"></span>初始本金口径 <b>固定基准</b><span class="basis-dot basis-live"></span>当前净值口径 <b>随盈亏变化</b></div>
           <div class="capacity-metrics">
             <div class="capacity-metric">
-              <span>当前总仓位</span>
+              <span>总仓位 · 初始本金</span>
               <div><strong id="totalPosition">0%</strong><em id="totalChange" class="change neutral">—</em></div>
             </div>
             <div class="capacity-metric available">
-              <span>可用仓位</span>
+              <span>总仓位 · 当前净值</span>
+              <div><strong id="currentValuePosition">—</strong></div>
+            </div>
+            <div class="capacity-metric">
+              <span>可用仓位 · 初始本金</span>
               <div><strong id="availablePosition">0%</strong></div>
+            </div>
+            <div class="capacity-metric available">
+              <span>可用仓位 · 当前净值</span>
+              <div><strong id="currentValueAvailable">—</strong></div>
             </div>
           </div>
           <div class="progress"><span id="totalBar"></span></div>
@@ -381,7 +390,7 @@
 
   <div id="toast" role="status" aria-live="polite"></div>
   <script src="daily-pnl.js?v=20260912-daily-pnl"></script>
-  <script src="app.js?v=20260916-whop-off"></script>
+  <script src="app.js?v=20260921-dual-basis"></script>
   <script src="workspace.js?v=20260915-design"></script>
   <dialog id="periodTradesDialog" class="period-trades-dialog">
     <div class="dialog-header"><div><h2 id="periodDialogTitle">本期操作</h2><p id="periodDialogMeta"></p></div><button class="icon-btn" aria-label="关闭本期操作" onclick="document.getElementById('periodTradesDialog').close()">×</button></div>
