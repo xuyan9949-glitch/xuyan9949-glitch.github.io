@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-21T09:35:00+08:00",
+  "updatedAt": "2026-09-22T09:10:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4624,6 +4624,15 @@
     {"id":"iren-44-close-437-rest-20260918","name":"IREN","action":"清仓","positionType":"波段仓","price":44,"positionChange":0.825,"date":"2026-09-18T22:00:00+08:00","closeLotId":"iren-437-add-20260911","note":"44 平掉 43.7 的 IREN 剩余部分"},
     {"id":"nok-1524-add-20260605","name":"NOK","action":"买入","positionType":"波段仓","price":15.24,"positionChange":3.3,"date":"2026-06-05T12:00:00+08:00","note":"历史补录：1/3 仓"},
     {"id":"nfxl-2405-add-20260512","name":"NFXL","action":"买入","positionType":"波段仓","price":24.05,"positionChange":1.65,"date":"2026-05-12T12:00:00+08:00","note":"历史补录：1/6 仓"},
-    {"id":"qcom-2025-add-20260626","name":"QCOM","action":"买入","positionType":"波段仓","price":202.5,"positionChange":3.3,"date":"2026-06-26T12:00:00+08:00","note":"历史补录：1/3 仓"}
+    {"id":"qcom-2025-add-20260626","name":"QCOM","action":"买入","positionType":"波段仓","price":202.5,"positionChange":3.3,"date":"2026-06-26T12:00:00+08:00","note":"历史补录：1/3 仓"},
+    {"id":"wdc-453-half-close-453-20260921","name":"WDC","action":"减仓","positionType":"波段仓","price":453,"positionChange":0.825,"date":"2026-09-21T21:32:00+08:00","closeLotId":"wdc-453-add-20260911","note":"453 出一半 453 的 WDC"},
+    {"id":"dram-614-half-close-489-20260921","name":"DRAM","action":"减仓","positionType":"波段仓","price":61.4,"positionChange":0.825,"date":"2026-09-21T21:33:00+08:00","closeLotId":"dram-489-add-20260803","note":"61.4 出掉 48.9 的 DRAM 一半"},
+    {"id":"spyu-3458-close-3478-half-20260921","name":"SPYU","action":"减仓","positionType":"波段仓","price":34.58,"positionChange":0.825,"date":"2026-09-21T21:36:00+08:00","closeLotId":"spyu-3478-add-20260908","note":"34.58 出掉 34.78 的 SPYU 一半"},
+    {"id":"nbis-2225-add-20260921","name":"NBIS","action":"加仓","positionType":"波段仓","price":222.5,"positionChange":1.65,"date":"2026-09-21T21:36:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"crwv-825-add-20260921","name":"CRWV","action":"加仓","positionType":"波段仓","price":82.5,"positionChange":1.65,"date":"2026-09-21T21:36:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"iren-465-add-20260921","name":"IREN","action":"加仓","positionType":"波段仓","price":46.5,"positionChange":1.65,"date":"2026-09-21T21:36:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-2352-close-235-20260921","name":"NBIS","action":"清仓","positionType":"波段仓","price":235.2,"positionChange":0.825,"date":"2026-09-21T23:23:00+08:00","closeLotId":"nbis-235-readd-20260910","note":"235.2 出掉之前 235 的 NBIS"},
+    {"id":"crwv-855-half-close-825-20260921","name":"CRWV","action":"减仓","positionType":"波段仓","price":85.5,"positionChange":0.825,"date":"2026-09-21T23:28:00+08:00","closeLotId":"crwv-825-add-20260921","note":"85.5 出一半 82.5 的 CRWV"},
+    {"id":"iren-4785-half-close-465-20260921","name":"IREN","action":"减仓","positionType":"波段仓","price":47.85,"positionChange":0.825,"date":"2026-09-21T23:28:00+08:00","closeLotId":"iren-465-add-20260921","note":"47.85 出一半 46.5 的 IREN"}
   ]
 }
