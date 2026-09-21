@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-19T12:18:00+08:00",
+  "updatedAt": "2026-09-21T09:35:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4621,6 +4621,9 @@
     {"id":"cohr-318-close-276-rest-20260919","name":"COHR","action":"清仓","positionType":"波段仓","price":318,"positionChange":0.825,"date":"2026-09-19T04:00:00+08:00","closeLotId":"cohr-276-add-20260914","note":"318 出掉 276 剩下一半的 COHR"},
     {"id":"dram-5978-close-595-20260919","name":"DRAM","action":"清仓","positionType":"波段仓","price":59.78,"positionChange":1.65,"date":"2026-09-19T04:09:00+08:00","closeLotId":"dram-595-add-20260910","note":"59.78 出掉 59.5 的 DRAM"},
     {"id":"iren-44-close-44-rest-20260918","name":"IREN","action":"清仓","positionType":"波段仓","price":44,"positionChange":0.825,"date":"2026-09-18T22:00:00+08:00","closeLotId":"iren-44-add-20260911","note":"44 平掉 44 的 IREN 剩余部分"},
-    {"id":"iren-44-close-437-rest-20260918","name":"IREN","action":"清仓","positionType":"波段仓","price":44,"positionChange":0.825,"date":"2026-09-18T22:00:00+08:00","closeLotId":"iren-437-add-20260911","note":"44 平掉 43.7 的 IREN 剩余部分"}
+    {"id":"iren-44-close-437-rest-20260918","name":"IREN","action":"清仓","positionType":"波段仓","price":44,"positionChange":0.825,"date":"2026-09-18T22:00:00+08:00","closeLotId":"iren-437-add-20260911","note":"44 平掉 43.7 的 IREN 剩余部分"},
+    {"id":"nok-1524-add-20260605","name":"NOK","action":"买入","positionType":"波段仓","price":15.24,"positionChange":3.3,"date":"2026-06-05T12:00:00+08:00","note":"历史补录：1/3 仓"},
+    {"id":"nfxl-2405-add-20260512","name":"NFXL","action":"买入","positionType":"波段仓","price":24.05,"positionChange":1.65,"date":"2026-05-12T12:00:00+08:00","note":"历史补录：1/6 仓"},
+    {"id":"qcom-2025-add-20260626","name":"QCOM","action":"买入","positionType":"波段仓","price":202.5,"positionChange":3.3,"date":"2026-06-26T12:00:00+08:00","note":"历史补录：1/3 仓"}
   ]
 }
