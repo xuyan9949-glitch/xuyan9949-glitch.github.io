@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-22T22:34:00+08:00",
+  "updatedAt": "2026-09-24T04:13:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4640,6 +4640,9 @@
     {"id":"cbrs-2015-add-20260922","name":"CBRS","action":"加仓","positionType":"波段仓","price":201.5,"positionChange":1.65,"date":"2026-09-22T21:44:15+08:00","note":"加了六分之一常规仓"},
     {"id":"wdc-470-close-453-rest-20260922","name":"WDC","action":"清仓","positionType":"波段仓","price":470,"positionChange":0.825,"date":"2026-09-22T21:51:00+08:00","closeLotId":"wdc-453-add-20260911","note":"470 出掉 453 剩下一半的 WDC"},
     {"id":"dram-633-close-562-rest-20260922","name":"DRAM","action":"清仓","positionType":"波段仓","price":63.3,"positionChange":0.825,"date":"2026-09-22T21:58:00+08:00","closeLotId":"dram-562-add-20260914","note":"63.3 出掉 56.2 剩下一半的 DRAM"},
-    {"id":"cbrs-20825-half-close-2015-20260922","name":"CBRS","action":"减仓","positionType":"波段仓","price":208.25,"positionChange":0.825,"date":"2026-09-22T22:34:00+08:00","closeLotId":"cbrs-2015-add-20260922","note":"208.25 出一半 201.5 的 CBRS"}
+    {"id":"cbrs-20825-half-close-2015-20260922","name":"CBRS","action":"减仓","positionType":"波段仓","price":208.25,"positionChange":0.825,"date":"2026-09-22T22:34:00+08:00","closeLotId":"cbrs-2015-add-20260922","note":"208.25 出一半 201.5 的 CBRS"},
+    {"id":"googl-338-readd-357-20260924","name":"GOOGL","action":"加仓","positionType":"波段仓","price":338,"positionChange":1.65,"date":"2026-09-24T01:19:00+08:00","note":"加回 357 卖出的那部分谷歌A"},
+    {"id":"iren-4775-readd-482-20260924","name":"IREN","action":"加仓","positionType":"波段仓","price":47.75,"positionChange":0.825,"date":"2026-09-24T01:19:05+08:00","note":"加回 48.2 卖出的那部分 IREN"},
+    {"id":"nbis-2262-add-20260924","name":"NBIS","action":"加仓","positionType":"波段仓","price":226.2,"positionChange":1.65,"date":"2026-09-24T04:13:00+08:00","note":"加了六分之一常规仓"}
   ]
 }
