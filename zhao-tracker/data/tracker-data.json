@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-24T04:13:00+08:00",
+  "updatedAt": "2026-09-24T22:44:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4643,6 +4643,9 @@
     {"id":"cbrs-20825-half-close-2015-20260922","name":"CBRS","action":"减仓","positionType":"波段仓","price":208.25,"positionChange":0.825,"date":"2026-09-22T22:34:00+08:00","closeLotId":"cbrs-2015-add-20260922","note":"208.25 出一半 201.5 的 CBRS"},
     {"id":"googl-338-readd-357-20260924","name":"GOOGL","action":"加仓","positionType":"波段仓","price":338,"positionChange":1.65,"date":"2026-09-24T01:19:00+08:00","note":"加回 357 卖出的那部分谷歌A"},
     {"id":"iren-4775-readd-482-20260924","name":"IREN","action":"加仓","positionType":"波段仓","price":47.75,"positionChange":0.825,"date":"2026-09-24T01:19:05+08:00","note":"加回 48.2 卖出的那部分 IREN"},
-    {"id":"nbis-2262-add-20260924","name":"NBIS","action":"加仓","positionType":"波段仓","price":226.2,"positionChange":1.65,"date":"2026-09-24T04:13:00+08:00","note":"加了六分之一常规仓"}
+    {"id":"nbis-2262-add-20260924","name":"NBIS","action":"加仓","positionType":"波段仓","price":226.2,"positionChange":1.65,"date":"2026-09-24T04:13:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-2305-readd-2425-20260923","name":"NBIS","action":"加仓","positionType":"波段仓","price":230.5,"positionChange":0.825,"date":"2026-09-23T19:46:00+08:00","note":"加回 242.5 卖出的那部分 NBIS"},
+    {"id":"cbrs-2044-readd-20825-20260923","name":"CBRS","action":"加仓","positionType":"波段仓","price":204.4,"positionChange":0.825,"date":"2026-09-23T22:35:00+08:00","note":"加回 208.25 卖出的那部分 CBRS"},
+    {"id":"cohr-3022-readd-317-20260923","name":"COHR","action":"加仓","positionType":"波段仓","price":302.2,"positionChange":0.825,"date":"2026-09-23T22:44:00+08:00","note":"加回 317 卖出的那部分 COHR"}
   ]
 }
