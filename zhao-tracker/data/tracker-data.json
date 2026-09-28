@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-28T16:27:00+08:00",
+  "updatedAt": "2026-09-28T23:10:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4703,6 +4703,17 @@
     {"id":"be-2805-readd-291-20260928","name":"BE","action":"加仓","positionType":"波段仓","price":280.5,"positionChange":0.825,"date":"2026-09-28T16:16:20+08:00","note":"加回 291 卖出的那部分 BE"},
     {"id":"lite-922-readd-9435-20260928","name":"LITE","action":"加仓","positionType":"波段仓","price":922,"positionChange":0.4125,"date":"2026-09-28T16:16:25+08:00","note":"加回 943.5 卖出的那部分 LITE"},
     {"id":"cbrs-2025-readd-2061-20260928","name":"CBRS","action":"加仓","positionType":"波段仓","price":202.5,"positionChange":0.825,"date":"2026-09-28T16:16:30+08:00","note":"加回 206.1 卖出的那部分 CBRS"},
-    {"id":"dram-60-readd-6195-20260928","name":"DRAM","action":"加仓","positionType":"波段仓","price":60,"positionChange":0.825,"date":"2026-09-28T16:27:00+08:00","note":"加回 61.95 卖出的那部分 DRAM"}
+    {"id":"dram-60-readd-6195-20260928","name":"DRAM","action":"加仓","positionType":"波段仓","price":60,"positionChange":0.825,"date":"2026-09-28T16:27:00+08:00","note":"加回 61.95 卖出的那部分 DRAM"},
+    {"id":"nbis-242-half-close-236-20260928","name":"NBIS","action":"减仓","positionType":"波段仓","price":242,"positionChange":0.825,"date":"2026-09-28T21:36:00+08:00","closeLotId":"nbis-236-add-20260926","note":"242 出一半 236 的 NBIS"},
+    {"id":"crwv-88-half-close-8555-20260928","name":"CRWV","action":"减仓","positionType":"波段仓","price":88,"positionChange":0.825,"date":"2026-09-28T21:39:00+08:00","closeLotId":"crwv-8555-add-20260928","note":"88 出一半 85.55 的 CRWV"},
+    {"id":"nbis-245-close-236-rest-20260928","name":"NBIS","action":"清仓","positionType":"波段仓","price":245,"positionChange":0.825,"date":"2026-09-28T21:44:00+08:00","closeLotId":"nbis-236-add-20260926","note":"245 出掉 236 剩下一半的 NBIS"},
+    {"id":"coin-1975-half-close-1934-20260928","name":"COIN","action":"减仓","positionType":"波段仓","price":197.5,"positionChange":0.825,"date":"2026-09-28T21:46:00+08:00","closeLotId":"coin-1934-add-20260926","note":"197.5 出一半 193.4 的 COIN"},
+    {"id":"be-267-add-20260928","name":"BE","action":"加仓","positionType":"波段仓","price":267,"positionChange":1.65,"date":"2026-09-28T21:46:05+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-239-readd-245-20260928","name":"NBIS","action":"加仓","positionType":"波段仓","price":239,"positionChange":0.825,"date":"2026-09-28T21:51:00+08:00","note":"加回 245 卖出的那部分 NBIS"},
+    {"id":"crwv-86-readd-88-20260928","name":"CRWV","action":"加仓","positionType":"波段仓","price":86,"positionChange":0.825,"date":"2026-09-28T21:51:05+08:00","note":"加回 88 卖出的那部分 CRWV"},
+    {"id":"tsla-3615-add-20260928","name":"TSLA","action":"加仓","positionType":"波段仓","price":361.5,"positionChange":1.65,"date":"2026-09-28T21:51:10+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-23115-add-20260928","name":"NBIS","action":"加仓","positionType":"波段仓","price":231.15,"positionChange":1.65,"date":"2026-09-28T22:51:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"coin-1915-readd-1975-20260928","name":"COIN","action":"加仓","positionType":"波段仓","price":191.5,"positionChange":0.825,"date":"2026-09-28T22:51:05+08:00","note":"加回 197.5 卖出的那部分 COIN"},
+    {"id":"cohr-2786-add-20260928","name":"COHR","action":"加仓","positionType":"波段仓","price":278.6,"positionChange":1.65,"date":"2026-09-28T23:10:00+08:00","note":"加了六分之一常规仓"}
   ]
 }
