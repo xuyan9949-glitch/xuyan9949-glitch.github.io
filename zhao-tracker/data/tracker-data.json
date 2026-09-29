@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-29T22:06:10+08:00",
+  "updatedAt": "2026-09-29T22:45:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4741,6 +4741,11 @@
     {"id":"nfxl-141-add-20260929","name":"NFXL","action":"加仓","positionType":"波段仓","price":14.1,"positionChange":1.65,"date":"2026-09-29T22:00:15+08:00","note":"加了六分之一常规仓"},
     {"id":"nbis-2373-readd-2421-20260929","name":"NBIS","action":"加仓","positionType":"波段仓","price":237.3,"positionChange":0.825,"date":"2026-09-29T22:06:00+08:00","note":"加回 242.1 卖出的那部分 NBIS"},
     {"id":"dram-611-close-60-20260929","name":"DRAM","action":"清仓","positionType":"波段仓","price":61.1,"positionChange":0.825,"date":"2026-09-29T22:06:05+08:00","closeLotId":"dram-60-readd-6195-20260928","note":"61.1 出掉 60 的 DRAM"},
-    {"id":"tsla-353-add-20260929","name":"TSLA","action":"加仓","positionType":"波段仓","price":353,"positionChange":1.65,"date":"2026-09-29T22:06:10+08:00","note":"加了六分之一常规仓"}
+    {"id":"tsla-353-add-20260929","name":"TSLA","action":"加仓","positionType":"波段仓","price":353,"positionChange":1.65,"date":"2026-09-29T22:06:10+08:00","note":"加了六分之一常规仓"},
+    {"id":"asts-606-add-20260929","name":"ASTS","action":"加仓","positionType":"波段仓","price":60.6,"positionChange":1.65,"date":"2026-09-29T22:17:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-2426-close-2373-20260929","name":"NBIS","action":"清仓","positionType":"波段仓","price":242.6,"positionChange":0.825,"date":"2026-09-29T22:17:05+08:00","closeLotId":"nbis-2373-readd-2421-20260929","note":"242.6 出掉 237.3 日内的 NBIS"},
+    {"id":"crwv-904-close-902-20260929","name":"CRWV","action":"清仓","positionType":"波段仓","price":90.4,"positionChange":1.65,"date":"2026-09-29T22:27:00+08:00","closeLotId":"crwv-902-add-20260911","note":"90.4 出掉 90.2 的 CRWV"},
+    {"id":"cifr-1727-half-close-166-20260929","name":"CIFR","action":"减仓","positionType":"波段仓","price":17.27,"positionChange":0.825,"date":"2026-09-29T22:37:00+08:00","closeLotId":"cifr-166-add-20260929","note":"17.27 出一半 16.6 的 CIFR"},
+    {"id":"cbrs-2128-close-2015-rest-20260929","name":"CBRS","action":"清仓","positionType":"波段仓","price":212.8,"positionChange":0.825,"date":"2026-09-29T22:45:00+08:00","closeLotId":"cbrs-2015-add-20260922","note":"212.8 出掉 201.5 剩下一半的 CBRS"}
   ]
 }
