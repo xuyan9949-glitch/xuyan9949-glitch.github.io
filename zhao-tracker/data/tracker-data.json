@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-28T23:10:00+08:00",
+  "updatedAt": "2026-09-29T22:00:15+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4714,6 +4714,30 @@
     {"id":"tsla-3615-add-20260928","name":"TSLA","action":"加仓","positionType":"波段仓","price":361.5,"positionChange":1.65,"date":"2026-09-28T21:51:10+08:00","note":"加了六分之一常规仓"},
     {"id":"nbis-23115-add-20260928","name":"NBIS","action":"加仓","positionType":"波段仓","price":231.15,"positionChange":1.65,"date":"2026-09-28T22:51:00+08:00","note":"加了六分之一常规仓"},
     {"id":"coin-1915-readd-1975-20260928","name":"COIN","action":"加仓","positionType":"波段仓","price":191.5,"positionChange":0.825,"date":"2026-09-28T22:51:05+08:00","note":"加回 197.5 卖出的那部分 COIN"},
-    {"id":"cohr-2786-add-20260928","name":"COHR","action":"加仓","positionType":"波段仓","price":278.6,"positionChange":1.65,"date":"2026-09-28T23:10:00+08:00","note":"加了六分之一常规仓"}
+    {"id":"cohr-2786-add-20260928","name":"COHR","action":"加仓","positionType":"波段仓","price":278.6,"positionChange":1.65,"date":"2026-09-28T23:10:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-2355-half-close-23115-20260929","name":"NBIS","action":"减仓","positionType":"波段仓","price":235.5,"positionChange":0.825,"date":"2026-09-29T00:30:00+08:00","closeLotId":"nbis-23115-add-20260928","note":"235.5 出一半 231.15 的 NBIS"},
+    {"id":"asts-62-close-606-20260929","name":"ASTS","action":"清仓","positionType":"波段仓","price":62,"positionChange":0.825,"date":"2026-09-29T00:30:05+08:00","closeLotId":"asts-606-readd-631-20260928","note":"62 出掉 60.6 的 ASTS"},
+    {"id":"lite-922-close-922-20260929","name":"LITE","action":"清仓","positionType":"波段仓","price":922,"positionChange":0.4125,"date":"2026-09-29T03:16:00+08:00","closeLotId":"lite-922-readd-9435-20260928","note":"922 出掉 922 的 LITE"},
+    {"id":"be-2713-half-close-267-20260929","name":"BE","action":"减仓","positionType":"波段仓","price":271.3,"positionChange":0.825,"date":"2026-09-29T20:26:00+08:00","closeLotId":"be-267-add-20260928","note":"271.3 出一半 267 的 BE"},
+    {"id":"cohr-286-half-close-2786-20260929","name":"COHR","action":"减仓","positionType":"波段仓","price":286,"positionChange":0.825,"date":"2026-09-29T20:26:05+08:00","closeLotId":"cohr-2786-add-20260928","note":"286 出一半 278.6 的 COHR"},
+    {"id":"coin-19625-half-close-1915-20260929","name":"COIN","action":"减仓","positionType":"波段仓","price":196.25,"positionChange":0.4125,"date":"2026-09-29T20:26:10+08:00","closeLotId":"coin-1915-readd-1975-20260928","note":"196.25 出一半 191.5 的 COIN"},
+    {"id":"be-283-close-2805-20260929","name":"BE","action":"清仓","positionType":"波段仓","price":283,"positionChange":0.825,"date":"2026-09-29T21:28:00+08:00","closeLotId":"be-2805-readd-291-20260928","note":"283 出掉 280.5 的 BE"},
+    {"id":"be-283-close-267-rest-20260929","name":"BE","action":"清仓","positionType":"波段仓","price":283,"positionChange":0.825,"date":"2026-09-29T21:28:05+08:00","closeLotId":"be-267-add-20260928","note":"283 出掉 267 剩下一半的 BE"},
+    {"id":"asts-65-close-592-rest-20260929","name":"ASTS","action":"清仓","positionType":"波段仓","price":65,"positionChange":0.825,"date":"2026-09-29T21:28:10+08:00","closeLotId":"asts-592-add-20260924","note":"65 出掉 59.2 剩下一半的 ASTS"},
+    {"id":"cifr-166-add-20260929","name":"CIFR","action":"加仓","positionType":"波段仓","price":16.6,"positionChange":1.65,"date":"2026-09-29T21:36:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"lite-951-close-913-rest-20260929","name":"LITE","action":"清仓","positionType":"波段仓","price":951,"positionChange":0.4125,"date":"2026-09-29T21:39:00+08:00","closeLotId":"lite-913-readd-932-20260924","note":"951 出掉 913 剩下一半的 LITE"},
+    {"id":"cbrs-2055-close-2025-20260929","name":"CBRS","action":"清仓","positionType":"波段仓","price":205.5,"positionChange":0.825,"date":"2026-09-29T21:39:05+08:00","closeLotId":"cbrs-2025-readd-2061-20260928","note":"205.5 出掉 202.5 的 CBRS"},
+    {"id":"cohr-292-half-close-2866-20260929","name":"COHR","action":"减仓","positionType":"波段仓","price":292,"positionChange":0.825,"date":"2026-09-29T21:39:10+08:00","closeLotId":"cohr-2866-add-20260928","note":"292 出一半 286.6 的 COHR"},
+    {"id":"intc-114-add-20260929","name":"INTC","action":"加仓","positionType":"波段仓","price":114,"positionChange":1.65,"date":"2026-09-29T21:39:15+08:00","note":"加了六分之一常规仓"},
+    {"id":"asts-622-readd-65-20260929","name":"ASTS","action":"加仓","positionType":"波段仓","price":62.2,"positionChange":0.825,"date":"2026-09-29T21:39:20+08:00","note":"加回 65 卖出的那部分 ASTS"},
+    {"id":"pl-1655-add-20260929","name":"PL","action":"加仓","positionType":"波段仓","price":16.55,"positionChange":1.65,"date":"2026-09-29T21:39:25+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-2414-close-23115-rest-20260929","name":"NBIS","action":"清仓","positionType":"波段仓","price":241.4,"positionChange":0.825,"date":"2026-09-29T21:39:30+08:00","closeLotId":"nbis-23115-add-20260928","note":"241.4 出掉 231.15 剩下一半的 NBIS"},
+    {"id":"nbis-2421-close-239-20260929","name":"NBIS","action":"清仓","positionType":"波段仓","price":242.1,"positionChange":0.825,"date":"2026-09-29T21:39:35+08:00","closeLotId":"nbis-239-readd-245-20260928","note":"242.1 出掉 239 的 NBIS"},
+    {"id":"crwv-874-close-86-20260929","name":"CRWV","action":"清仓","positionType":"波段仓","price":87.4,"positionChange":0.825,"date":"2026-09-29T21:39:40+08:00","closeLotId":"crwv-86-readd-88-20260928","note":"87.4 出掉 86 的 CRWV"},
+    {"id":"cohr-2985-close-2907-rest-20260929","name":"COHR","action":"清仓","positionType":"波段仓","price":298.5,"positionChange":0.825,"date":"2026-09-29T21:39:45+08:00","closeLotId":"cohr-2907-add-20260924","note":"298.5 出掉 290.7 剩下一半的 COHR"},
+    {"id":"aehr-108-close-82-rest-20260929","name":"AEHR","action":"清仓","positionType":"波段仓","price":108,"positionChange":0.825,"date":"2026-09-29T22:00:00+08:00","closeLotId":"aehr-82-add-20260917","note":"108 出掉 82 剩下一半的 AEHR"},
+    {"id":"gld-3813-add-20260929","name":"GLD","action":"加仓","positionType":"波段仓","price":381.3,"positionChange":1.65,"date":"2026-09-29T22:00:05+08:00","note":"加了六分之一常规仓"},
+    {"id":"baba-1078-add-20260929","name":"BABA","action":"加仓","positionType":"波段仓","price":107.8,"positionChange":1.65,"date":"2026-09-29T22:00:10+08:00","note":"加了六分之一常规仓"},
+    {"id":"nfxl-141-add-20260929","name":"NFXL","action":"加仓","positionType":"波段仓","price":14.1,"positionChange":1.65,"date":"2026-09-29T22:00:15+08:00","note":"加了六分之一常规仓"}
   ]
 }
