@@ -7,7 +7,7 @@
   <title>Lucky Follow</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260929-lot-clarity">
+  <link rel="stylesheet" href="styles.css?v=20260929-compact-archive">
   <link rel="stylesheet" href="workspace.css?v=20260915-design">
 </head>
 <body>
@@ -381,18 +381,19 @@
           <summary class="detail-section-title">原始操作流水 · 点击展开<span id="symbolTradeCount"></span></summary>
           <div id="symbolTrades" class="symbol-trades"></div>
         </details>
-        <section class="symbol-detail-section">
+        <details id="symbolArchive" class="symbol-detail-section symbol-archive">
+          <summary class="detail-section-title"><h3>历史批次备查</h3><span>点击展开 · 查看开仓、减仓、平仓明细</span></summary>
           <div class="detail-section-title"><h3>开仓 → 分批平仓</h3><div class="detail-section-tools"><label><span>查看方式</span><select id="symbolDateMode" aria-label="选择日期筛选口径"><option value="operation">操作日期</option><option value="open">开仓日期</option></select></label><label><span>选择日期</span><select id="symbolDateFilter" aria-label="选择具体日期"><option value="all">全部操作日</option></select></label><label><span>批次状态</span><select id="symbolStatusFilter" aria-label="按批次状态筛选"><option value="all">全部状态</option><option value="open">持仓中</option><option value="closed">已平仓</option></select></label><span id="symbolPairCount"></span></div></div>
           <p id="symbolDateHint" class="symbol-date-hint"></p>
           <div id="symbolPairs" class="symbol-pairs"></div>
-        </section>
+        </details>
       </div>
     </div>
   </dialog>
 
   <div id="toast" role="status" aria-live="polite"></div>
   <script src="daily-pnl.js?v=20260912-daily-pnl"></script>
-  <script src="app.js?v=20260929-lot-clarity"></script>
+  <script src="app.js?v=20260929-compact-archive"></script>
   <script src="workspace.js?v=20260915-design"></script>
   <dialog id="periodTradesDialog" class="period-trades-dialog">
     <div class="dialog-header"><div><h2 id="periodDialogTitle">本期操作</h2><p id="periodDialogMeta"></p></div><button class="icon-btn" aria-label="关闭本期操作" onclick="document.getElementById('periodTradesDialog').close()">×</button></div>
