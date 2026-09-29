@@ -772,7 +772,7 @@ function renderSymbolLots(){
   const status=document.getElementById("symbolStatusFilter")?.value||"all";
   const matchesDate=value=>filter==="all"||marketDateKey(value)===filter;
   const pairsForLot=lotId=>symbolLotView.pairs.filter(pair=>pair.openTrade.lotId===lotId);
-  const lots=filter==="all"?symbolLotView.lots
+  let lots=filter==="all"?symbolLotView.lots
     :symbolLotView.lots.filter(lot=>matchesDate(lot.date)||pairsForLot(lot.lotId).some(pair=>matchesDate(pair.closeTrade.date)));
   if(status!=="all")lots=lots.filter(l=>status==="open"?l.remainingPosition>0.0001:l.remainingPosition<=0.0001);
   const visibleIds=new Set(lots.map(l=>l.lotId));
