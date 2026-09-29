@@ -7,7 +7,7 @@
   <title>Lucky Follow</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260921-dual-basis">
+  <link rel="stylesheet" href="styles.css?v=20260929-lot-clarity">
   <link rel="stylesheet" href="workspace.css?v=20260915-design">
 </head>
 <body>
@@ -375,6 +375,7 @@
     <div class="symbol-detail-body">
       <div id="symbolStatus" class="symbol-status-line"></div>
       <div id="symbolMetrics" class="symbol-metrics"></div>
+      <section id="symbolRemaining" class="remaining-lots" aria-label="当前剩余批次"></section>
       <div class="symbol-detail-grid">
         <details class="symbol-detail-section symbol-raw-history">
           <summary class="detail-section-title">原始操作流水 · 点击展开<span id="symbolTradeCount"></span></summary>
@@ -391,7 +392,7 @@
 
   <div id="toast" role="status" aria-live="polite"></div>
   <script src="daily-pnl.js?v=20260912-daily-pnl"></script>
-  <script src="app.js?v=20260929-operation-date"></script>
+  <script src="app.js?v=20260929-lot-clarity"></script>
   <script src="workspace.js?v=20260915-design"></script>
   <dialog id="periodTradesDialog" class="period-trades-dialog">
     <div class="dialog-header"><div><h2 id="periodDialogTitle">本期操作</h2><p id="periodDialogMeta"></p></div><button class="icon-btn" aria-label="关闭本期操作" onclick="document.getElementById('periodTradesDialog').close()">×</button></div>
