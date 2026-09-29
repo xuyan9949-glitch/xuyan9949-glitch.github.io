@@ -435,12 +435,17 @@ body.dark .brand-mark { background:#e8edf5; color:#111827; }
 @media(max-width:700px) { .daily-summary {grid-template-columns:1fr 1fr;gap:20px;padding:18px;} .daily-main {grid-column:1/-1;} .daily-main strong .review-badge {font-size:28px;} }
 #whopInboxBtn{display:none!important}
 .detail-section-tools{display:flex;align-items:center;gap:12px}
+.detail-section-tools label{display:grid;gap:4px;color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.04em}
 .detail-section-tools select{border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text);padding:7px 10px;font:inherit}
 .detail-section-tools{flex-wrap:wrap;justify-content:flex-end}
+.symbol-date-hint{margin:0;padding:10px 18px 2px;color:var(--muted);font-size:12px;line-height:1.6;border-top:1px solid var(--line)}
 .lot-history.is-open{border-color:#cfdcff;box-shadow:inset 3px 0 #2864dc}
 .lot-history.is-closed{box-shadow:inset 3px 0 #cbd2dc}
 .lot-timeline{margin:4px 14px 2px 18px;padding:2px 0 4px 19px;border-left:2px solid var(--line)}
 .lot-node{position:relative;display:flex;gap:10px;padding:9px 0;font-size:12px}
+.lot-node.is-muted{opacity:.3}
+.lot-node.is-focus{margin-left:-10px;padding-left:10px;border-radius:8px;background:color-mix(in srgb,#2864dc 10%,transparent)}
+.lot-node-exit.is-focus{background:color-mix(in srgb,#e25565 10%,transparent)}
 .lot-node i{position:absolute;left:-25px;top:14px;width:10px;height:10px;border-radius:50%;background:#2864dc;border:3px solid var(--panel)}
 .lot-node-exit i{background:#e25565}
 .lot-node time{display:block;color:var(--muted);font-size:11px;margin-bottom:3px}

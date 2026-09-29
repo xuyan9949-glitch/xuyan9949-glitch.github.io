@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-29T22:00:15+08:00",
+  "updatedAt": "2026-09-29T22:06:10+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4738,6 +4738,9 @@
     {"id":"aehr-108-close-82-rest-20260929","name":"AEHR","action":"清仓","positionType":"波段仓","price":108,"positionChange":0.825,"date":"2026-09-29T22:00:00+08:00","closeLotId":"aehr-82-add-20260917","note":"108 出掉 82 剩下一半的 AEHR"},
     {"id":"gld-3813-add-20260929","name":"GLD","action":"加仓","positionType":"波段仓","price":381.3,"positionChange":1.65,"date":"2026-09-29T22:00:05+08:00","note":"加了六分之一常规仓"},
     {"id":"baba-1078-add-20260929","name":"BABA","action":"加仓","positionType":"波段仓","price":107.8,"positionChange":1.65,"date":"2026-09-29T22:00:10+08:00","note":"加了六分之一常规仓"},
-    {"id":"nfxl-141-add-20260929","name":"NFXL","action":"加仓","positionType":"波段仓","price":14.1,"positionChange":1.65,"date":"2026-09-29T22:00:15+08:00","note":"加了六分之一常规仓"}
+    {"id":"nfxl-141-add-20260929","name":"NFXL","action":"加仓","positionType":"波段仓","price":14.1,"positionChange":1.65,"date":"2026-09-29T22:00:15+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-2373-readd-2421-20260929","name":"NBIS","action":"加仓","positionType":"波段仓","price":237.3,"positionChange":0.825,"date":"2026-09-29T22:06:00+08:00","note":"加回 242.1 卖出的那部分 NBIS"},
+    {"id":"dram-611-close-60-20260929","name":"DRAM","action":"清仓","positionType":"波段仓","price":61.1,"positionChange":0.825,"date":"2026-09-29T22:06:05+08:00","closeLotId":"dram-60-readd-6195-20260928","note":"61.1 出掉 60 的 DRAM"},
+    {"id":"tsla-353-add-20260929","name":"TSLA","action":"加仓","positionType":"波段仓","price":353,"positionChange":1.65,"date":"2026-09-29T22:06:10+08:00","note":"加了六分之一常规仓"}
   ]
 }

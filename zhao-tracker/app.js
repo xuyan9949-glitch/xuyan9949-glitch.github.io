@@ -10,7 +10,7 @@ const TRADE_BATCH_API_URL = "http://127.0.0.1:18765/trades/batch";
 const WHOP_PENDING_API_URL = "http://127.0.0.1:18765/whop-pending";
 // Whop 自动同步暂时停用；记录继续通过手工表单补充。
 const WHOP_SYNC_ENABLED = false;
-let symbolLotView = { lots: [], pairs: [], capital: 100000 };
+let symbolLotView = { lots: [], pairs: [], trades: [], capital: 100000 };
 const QUOTE_REFRESH_MS = 30000;
 // Kept only for earlier browser-local records created before the shared ledger
 // standardized the instrument name to its actual market code.
@@ -740,34 +740,64 @@ window.openSymbolDetail=(code,archive=false)=>{
     return `<div class="symbol-trade"><div class="symbol-trade-head"><b class="pnl ${buy?"up":"down"}">${esc(t.action)} · ${money(t.price)}</b><time>${formatDate(t.date,true)}</time></div><div class="symbol-trade-meta">仓位 ${buy?"+":"−"}${fmt(t.positionChange)}% · ${esc(t.positionType)}</div>${t.note?`<div class="symbol-trade-note">${esc(t.note)}</div>`:""}</div>`;
   }).join(""):'<div class="symbol-empty">暂无操作流水</div>';
   const lots=computeLedger().lots.filter(l=>l.code===code).sort((a,b)=>Number(b.remainingPosition>0.0001)-Number(a.remainingPosition>0.0001)||new Date(b.date)-new Date(a.date));
-  symbolLotView={lots,pairs:summary.pairs,capital};
+  symbolLotView={lots,pairs:summary.pairs,trades:summary.trades,capital};
+  const dateMode=document.getElementById("symbolDateMode");
+  dateMode.value="operation";
+  dateMode.onchange=()=>refreshSymbolDateOptions();
   const dateFilter=document.getElementById("symbolDateFilter");
-  const dates=[...new Set(lots.map(l=>String(l.date).slice(0,10)))];
-  dateFilter.innerHTML='<option value="all">全部日期</option>'+dates.map(d=>`<option value="${d}">${d.slice(5).replace('-','月')}日</option>`).join('');
   dateFilter.onchange=()=>renderSymbolLots();
   const statusFilter=document.getElementById("symbolStatusFilter");
   statusFilter.value="all";
   statusFilter.onchange=()=>renderSymbolLots();
-  renderSymbolLots();
+  refreshSymbolDateOptions();
   document.getElementById("symbolDialog").showModal();
 };
 
-function renderSymbolLots(){
-  const filter=document.getElementById("symbolDateFilter")?.value||"all";
-  const status=document.getElementById("symbolStatusFilter")?.value||"all";
-  let lots=filter==="all"?symbolLotView.lots:symbolLotView.lots.filter(l=>String(l.date).startsWith(filter));
-  if(status!=="all")lots=lots.filter(l=>status==="open"?l.remainingPosition>0.0001:l.remainingPosition<=0.0001);
-  setText("symbolPairCount",`${lots.length} 个开仓批次 · ${symbolLotView.pairs.filter(p=>filter==="all"||String(p.openTrade.date).startsWith(filter)).length} 笔平仓`);
-  document.getElementById("symbolPairs").innerHTML=renderLotHistory(lots,symbolLotView.pairs,symbolLotView.capital);
+function refreshSymbolDateOptions(){
+  const mode=document.getElementById("symbolDateMode")?.value||"operation";
+  const dateFilter=document.getElementById("symbolDateFilter");
+  if(!dateFilter)return;
+  const source=mode==="operation"?symbolLotView.trades:symbolLotView.lots;
+  const dates=[...new Set(source.map(item=>marketDateKey(item.date)))].sort((a,b)=>b.localeCompare(a));
+  const today=marketDateKey(new Date());
+  const todayLabel=mode==="operation"?"今日操作":"今日开仓";
+  dateFilter.innerHTML=`<option value="all">全部${mode==="operation"?"操作日":"开仓日"}</option>`+
+    `<option value="${today}">${todayLabel} · ${today.slice(5).replace("-","月")}日</option>`+
+    dates.filter(date=>date!==today).map(date=>`<option value="${date}">${date.slice(5).replace("-","月")}日</option>`).join("");
+  dateFilter.value="all";
+  renderSymbolLots();
 }
 
-function renderLotHistory(lots,pairs,capital) {
+function renderSymbolLots(){
+  const mode=document.getElementById("symbolDateMode")?.value||"operation";
+  const filter=document.getElementById("symbolDateFilter")?.value||"all";
+  const status=document.getElementById("symbolStatusFilter")?.value||"all";
+  const matchesDate=value=>filter==="all"||marketDateKey(value)===filter;
+  const pairsForLot=lotId=>symbolLotView.pairs.filter(pair=>pair.openTrade.lotId===lotId);
+  let lots=filter==="all"?symbolLotView.lots:mode==="open"
+    ?symbolLotView.lots.filter(lot=>matchesDate(lot.date))
+    :symbolLotView.lots.filter(lot=>matchesDate(lot.date)||pairsForLot(lot.lotId).some(pair=>matchesDate(pair.closeTrade.date)));
+  if(status!=="all")lots=lots.filter(l=>status==="open"?l.remainingPosition>0.0001:l.remainingPosition<=0.0001);
+  const selectedPairs=symbolLotView.pairs.filter(pair=>mode==="operation"?matchesDate(pair.closeTrade.date):matchesDate(pair.openTrade.date));
+  const selectedTrades=symbolLotView.trades.filter(trade=>matchesDate(trade.date));
+  setText("symbolPairCount",mode==="operation"&&filter!=="all"
+    ?`${selectedTrades.length} 笔当日操作 · ${lots.length} 个相关批次`
+    :`${lots.length} 个开仓批次 · ${selectedPairs.length} 笔平仓`);
+  setText("symbolDateHint",mode==="operation"
+    ?filter==="all"?"按买入、加仓、减仓或卖出的实际发生日期查看。":"仅展示当天发生过操作的批次；彩色节点是当日操作，浅色节点用于补充批次上下文。"
+    :"按每个批次最初的开仓日期筛选，并展示该批次后续的完整平仓时间线。");
+  document.getElementById("symbolPairs").innerHTML=renderLotHistory(lots,symbolLotView.pairs,symbolLotView.capital,{mode,focusDate:filter});
+}
+
+function renderLotHistory(lots,pairs,capital,{mode="open",focusDate="all"}={}) {
   const position=value=>`${Number(Number(value).toFixed(4))}%`;
+  const focusEnabled=mode==="operation"&&focusDate!=="all";
+  const nodeClass=date=>focusEnabled?(marketDateKey(date)===focusDate?" is-focus":" is-muted"):"";
   return lots.length?lots.map(lot=>{
     const exits=pairs.filter(p=>p.openTrade.lotId===lot.lotId).sort((a,b)=>new Date(a.closeTrade.date)-new Date(b.closeTrade.date));
     const profit=exits.reduce((sum,p)=>sum+capital*p.contribution/100,0);
-    return `<article class="lot-history ${lot.remainingPosition>0.0001?'is-open':'is-closed'}"><header><b>开仓 ${money(lot.price)}</b><span class="lot-badge ${lot.remainingPosition>0.0001?'active':''}">${lot.remainingPosition>0.0001?'仍有持仓':'已全部平仓'}</span></header><div class="lot-timeline"><div class="lot-node lot-node-open"><i></i><div><time>${formatDate(lot.date,true)}</time><strong>开仓 ${money(lot.price)}</strong><span>仓位 ${position(lot.openPosition)}</span></div></div>${exits.map(p=>`<div class="lot-node lot-node-exit"><i></i><div><time>${formatDate(p.closeTrade.date,true)}</time><strong>平仓 ${money(p.sellPrice)}</strong><span>仓位 ${position(p.position)} · <b class="pnl ${p.pnlPct>=0?'up':'down'}">${p.pnlPct>=0?'+':''}${fmt(p.pnlPct,2)}%</b></span></div></div>`).join('')||'<div class="lot-wait">尚未平仓</div>'}</div><footer><span>剩余仓位 <b>${position(lot.remainingPosition)}</b></span><span>已实现 <b class="pnl ${profit>=0?'up':'down'}">${usd(profit)}</b></span></footer></article>`;
-  }).join(''):'<div class="symbol-empty">暂无开仓记录</div>';
+    return `<article class="lot-history ${lot.remainingPosition>0.0001?'is-open':'is-closed'}"><header><b>开仓 ${money(lot.price)}</b><span class="lot-badge ${lot.remainingPosition>0.0001?'active':''}">${lot.remainingPosition>0.0001?'仍有持仓':'已全部平仓'}</span></header><div class="lot-timeline"><div class="lot-node lot-node-open${nodeClass(lot.date)}"><i></i><div><time>${formatDate(lot.date,true)}</time><strong>开仓 ${money(lot.price)}</strong><span>仓位 ${position(lot.openPosition)}</span></div></div>${exits.map(p=>`<div class="lot-node lot-node-exit${nodeClass(p.closeTrade.date)}"><i></i><div><time>${formatDate(p.closeTrade.date,true)}</time><strong>平仓 ${money(p.sellPrice)}</strong><span>仓位 ${position(p.position)} · <b class="pnl ${p.pnlPct>=0?'up':'down'}">${p.pnlPct>=0?'+':''}${fmt(p.pnlPct,2)}%</b></span></div></div>`).join('')||'<div class="lot-wait">尚未平仓</div>'}</div><footer><span>剩余仓位 <b>${position(lot.remainingPosition)}</b></span><span>已实现 <b class="pnl ${profit>=0?'up':'down'}">${usd(profit)}</b></span></footer></article>`;
+  }).join(''):`<div class="symbol-empty">${mode==="operation"&&focusDate!=="all"?"该日期暂无操作":"暂无开仓记录"}</div>`;
 }
 
 function statTags(s) {
