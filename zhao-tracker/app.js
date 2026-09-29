@@ -743,9 +743,6 @@ window.openSymbolDetail=(code,archive=false)=>{
   symbolLotView={lots,pairs:summary.pairs,trades:summary.trades,capital};
   const remaining=lots.filter(l=>l.remainingPosition>0.0001);
   document.getElementById("symbolRemaining").innerHTML=`<header><h3>现在还剩哪些价位</h3><span>${remaining.length} 个批次 · 合计 ${lotPosition(remaining.reduce((sum,l)=>sum+l.remainingPosition,0))}</span></header><p>当前实际剩余仓位，不受下方日期筛选影响。仓位按账户初始本金计算。</p>${remaining.length?`<div class="remaining-table-wrap"><table><thead><tr><th>开仓时间 · 北京时间</th><th>开仓价</th><th>原始仓位</th><th>已卖出</th><th>还剩仓位</th><th>卖出记录 · 日期 / 价格 / 仓位</th></tr></thead><tbody>${remaining.map(l=>`<tr><td>${lotDate(l.date)}</td><td><b>${money(l.price)}</b></td><td>${lotPosition(l.openPosition)}</td><td>${lotPosition(l.openPosition-l.remainingPosition)}</td><td class="remaining-emphasis">${lotPosition(l.remainingPosition)}</td><td class="remaining-exits">${summary.pairs.filter(p=>p.openTrade.lotId===l.lotId).sort((a,b)=>new Date(a.closeTrade.date)-new Date(b.closeTrade.date)).map(p=>`<div><time>${lotDate(p.closeTrade.date)}</time> · <b>${money(p.sellPrice)}</b> · 卖出 ${lotPosition(p.position)}</div>`).join("")||"尚未卖出"}</td></tr>`).join('')}</tbody></table></div>`:'<div class="symbol-empty">所有批次均已平仓</div>'}`;
-  const dateMode=document.getElementById("symbolDateMode");
-  dateMode.value="operation";
-  dateMode.onchange=()=>refreshSymbolDateOptions();
   const dateFilter=document.getElementById("symbolDateFilter");
   dateFilter.onchange=()=>renderSymbolLots();
   const statusFilter=document.getElementById("symbolStatusFilter");
@@ -757,14 +754,13 @@ window.openSymbolDetail=(code,archive=false)=>{
 };
 
 function refreshSymbolDateOptions(){
-  const mode=document.getElementById("symbolDateMode")?.value||"operation";
   const dateFilter=document.getElementById("symbolDateFilter");
   if(!dateFilter)return;
-  const source=mode==="operation"?symbolLotView.trades:symbolLotView.lots;
+  const source=symbolLotView.trades;
   const dates=[...new Set(source.map(item=>marketDateKey(item.date)))].sort((a,b)=>b.localeCompare(a));
   const today=marketDateKey(new Date());
-  const todayLabel=mode==="operation"?"今日操作":"今日开仓";
-  dateFilter.innerHTML=`<option value="all">全部${mode==="operation"?"操作日":"开仓日"}</option>`+
+  const todayLabel="今日操作";
+  dateFilter.innerHTML=`<option value="all">全部操作日</option>`+
     `<option value="${today}">${todayLabel} · ${today.slice(5).replace("-","月")}日</option>`+
     dates.filter(date=>date!==today).map(date=>`<option value="${date}">${date.slice(5).replace("-","月")}日</option>`).join("");
   dateFilter.value="all";
@@ -772,26 +768,22 @@ function refreshSymbolDateOptions(){
 }
 
 function renderSymbolLots(){
-  const mode=document.getElementById("symbolDateMode")?.value||"operation";
   const filter=document.getElementById("symbolDateFilter")?.value||"all";
   const status=document.getElementById("symbolStatusFilter")?.value||"all";
   const matchesDate=value=>filter==="all"||marketDateKey(value)===filter;
   const pairsForLot=lotId=>symbolLotView.pairs.filter(pair=>pair.openTrade.lotId===lotId);
-  let lots=filter==="all"?symbolLotView.lots:mode==="open"
-    ?symbolLotView.lots.filter(lot=>matchesDate(lot.date))
+  const lots=filter==="all"?symbolLotView.lots
     :symbolLotView.lots.filter(lot=>matchesDate(lot.date)||pairsForLot(lot.lotId).some(pair=>matchesDate(pair.closeTrade.date)));
   if(status!=="all")lots=lots.filter(l=>status==="open"?l.remainingPosition>0.0001:l.remainingPosition<=0.0001);
   const visibleIds=new Set(lots.map(l=>l.lotId));
-  const selectedPairs=symbolLotView.pairs.filter(pair=>visibleIds.has(pair.openTrade.lotId)&&(mode==="operation"?matchesDate(pair.closeTrade.date):matchesDate(pair.openTrade.date)));
+  const selectedPairs=symbolLotView.pairs.filter(pair=>visibleIds.has(pair.openTrade.lotId)&&matchesDate(pair.closeTrade.date));
   const visibleTradeIds=new Set([...lots.filter(l=>matchesDate(l.date)).map(l=>l.id),...selectedPairs.map(p=>p.closeTrade.id)]);
   const selectedTrades=symbolLotView.trades.filter(trade=>visibleTradeIds.has(trade.id));
-  setText("symbolPairCount",mode==="operation"&&filter!=="all"
+  setText("symbolPairCount",filter!=="all"
     ?`${selectedTrades.length} 笔当日操作 · ${lots.length} 个相关批次`
     :`${lots.length} 个开仓批次 · ${selectedPairs.length} 笔卖出配对`);
-  setText("symbolDateHint",mode==="operation"
-    ?filter==="all"?"按买入、加仓、减仓或卖出的实际发生日期查看。":"仅展示当天发生过操作的批次；彩色节点是当日操作，浅色节点用于补充批次上下文。"
-    :"按每个批次最初的开仓日期筛选，并展示该批次后续的完整平仓时间线。");
-  document.getElementById("symbolPairs").innerHTML=renderLotHistory(lots,symbolLotView.pairs,symbolLotView.capital,{mode,focusDate:filter});
+  setText("symbolDateHint",filter==="all"?"按买入、加仓、减仓或卖出的实际发生日期查看。":"仅展示当天发生过操作的批次；彩色节点是当日操作，浅色节点用于补充批次上下文。");
+  document.getElementById("symbolPairs").innerHTML=renderLotHistory(lots,symbolLotView.pairs,symbolLotView.capital,{mode:"operation",focusDate:filter});
 }
 
 function lotPosition(value){return `${Number(Number(value).toFixed(4))}%`;}
