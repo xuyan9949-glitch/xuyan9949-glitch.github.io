@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-01T04:08:00+08:00",
+  "updatedAt": "2026-10-01T04:22:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4766,6 +4766,9 @@
     {"id":"soun-608-half-close-59-20260930","name":"SOUN","action":"减仓","positionType":"波段仓","price":6.08,"positionChange":0.825,"date":"2026-09-30T22:05:05+08:00","closeLotId":"soun-59-add-20260924","note":"6.08 出一半 5.9 的 SOUN；同组消息时间为 22:05"},
     {"id":"nbis-2371-readd-2445-20260930","name":"NBIS","action":"加仓","positionType":"波段仓","price":237.1,"positionChange":0.4125,"date":"2026-09-30T23:29:00+08:00","note":"加回 244.5 卖出的那部分 NBIS（对应原 238.3 批次的一半）"},
     {"id":"googl-3545-close-338-rest-20261001","name":"GOOGL","action":"清仓","positionType":"波段仓","price":354.5,"positionChange":0.825,"date":"2026-10-01T04:08:00+08:00","closeLotId":"googl-338-readd-357-20260924","note":"354.5 出掉 338 剩下一半谷歌 A"},
-    {"id":"googl-354-half-close-3404-20261001","name":"GOOGL","action":"减仓","positionType":"波段仓","price":354,"positionChange":0.825,"date":"2026-10-01T04:08:00+08:00","closeLotId":"googl-3404-add-20260829","note":"354 出掉 340.4 一半谷歌 A；同组消息时间 04:08"}
+    {"id":"googl-354-half-close-3404-20261001","name":"GOOGL","action":"减仓","positionType":"波段仓","price":354,"positionChange":0.825,"date":"2026-10-01T04:08:00+08:00","closeLotId":"googl-3404-add-20260829","note":"354 出掉 340.4 一半谷歌 A；同组消息时间 04:08"},
+    {"id":"asts-5905-add-20261001","name":"ASTS","action":"加仓","positionType":"波段仓","price":59.05,"positionChange":1.65,"date":"2026-10-01T04:13:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"crwv-868-readd-89-20261001","name":"CRWV","action":"加仓","positionType":"波段仓","price":86.8,"positionChange":0.825,"date":"2026-10-01T04:18:00+08:00","note":"加回 89 卖出的那部分 CRWV（对应 86.9 批次的一半）"},
+    {"id":"cifr-1585-add-20261001","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.85,"positionChange":1.65,"date":"2026-10-01T04:22:00+08:00","note":"加了六分之一常规仓"}
   ]
 }
