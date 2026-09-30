@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-30T02:39:05+08:00",
+  "updatedAt": "2026-09-30T21:05:36+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4754,6 +4754,7 @@
     {"id":"aehr-988-readd-108-20260930","name":"AEHR","action":"加仓","positionType":"波段仓","price":98.8,"positionChange":0.825,"date":"2026-09-30T02:14:00+08:00","note":"加回 108 卖出的那部分 AEHR"},
     {"id":"cbrs-198-add-20260930","name":"CBRS","action":"加仓","positionType":"波段仓","price":198,"positionChange":1.65,"date":"2026-09-30T02:26:00+08:00","note":"加了六分之一常规仓"},
     {"id":"nbis-2383-readd-2426-20260930","name":"NBIS","action":"加仓","positionType":"波段仓","price":238.3,"positionChange":0.825,"date":"2026-09-30T02:39:00+08:00","note":"加回 242.6 卖出的 NBIS"},
-    {"id":"cohr-291-readd-2985-20260930","name":"COHR","action":"加仓","positionType":"波段仓","price":291,"positionChange":0.825,"date":"2026-09-30T02:39:05+08:00","note":"加回 298.5 卖出的那部分 COHR；截图承接 02:39 同组时间"}
+    {"id":"cohr-291-readd-2985-20260930","name":"COHR","action":"加仓","positionType":"波段仓","price":291,"positionChange":0.825,"date":"2026-09-30T02:39:05+08:00","note":"加回 298.5 卖出的那部分 COHR；截图承接 02:39 同组时间"},
+    {"id":"nbis-2445-half-close-2383-20260930","name":"NBIS","action":"减仓","positionType":"波段仓","price":244.5,"positionChange":0.4125,"date":"2026-09-30T21:05:36+08:00","closeLotId":"nbis-2383-readd-2426-20260930","note":"244.5 出一半 238.3 的 NBIS；原消息时间未显示，暂按截图时间 2026-09-30 21:05:36 登记"}
   ]
 }
