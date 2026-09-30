@@ -270,6 +270,14 @@ tr:hover .row-actions { opacity:1; }
 .analysis-tags { display:flex; flex-wrap:wrap; gap:5px; max-width:190px; }
 .analysis-tag { display:inline-flex; padding:2px 7px; border-radius:999px; background:var(--blue-soft); color:var(--blue); font-size:11px; font-weight:700; }
 .activity-panel { min-height:210px; }
+.activity-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; padding:16px 20px; border-bottom:1px solid var(--line); background:var(--panel); }
+.activity-summary-stat { display:flex; flex-direction:column; gap:5px; }
+.activity-summary-stat span,.activity-summary-stat small { color:var(--muted); font-size:12px; }
+.activity-summary-stat strong { font-size:23px; font-variant-numeric:tabular-nums; }
+.activity-summary-stat .buy-total { color:#ed526c; }
+.activity-summary-stat .sell-total { color:#168e79; }
+.activity-summary p { grid-column:1/-1; margin:2px 0 0; color:var(--muted); font-size:11px; }
+@media(max-width:600px) { .activity-summary { grid-template-columns:1fr; gap:14px; } .activity-summary-stat strong { font-size:21px; } }
 .activity-controls { display:flex; align-items:center; flex-wrap:wrap; gap:9px; color:var(--muted); font-size:12px; }
 .activity-controls select { max-width:260px; padding:8px 10px; border:1px solid var(--line); border-radius:7px; background:var(--panel); color:var(--text); font:inherit; }
 .activity-controls #activityCount { min-width:65px; }

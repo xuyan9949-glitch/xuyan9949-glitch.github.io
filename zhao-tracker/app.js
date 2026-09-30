@@ -1033,6 +1033,18 @@ function renderActivity() {
   dateFilter.value=counts.has(selectedDate)?selectedDate:'all';
   const ordered=state.trades.filter(t=>dateFilter.value==='all'||marketDateKey(t.date)===dateFilter.value).sort((a,b)=>new Date(b.date)-new Date(a.date));
   setText('activityCount',dateFilter.value==='all'?`共 ${state.trades.length} 笔`:`当日 ${ordered.length} 笔`);
+  const purchases=ordered.filter(t=>buyActions.includes(t.action));
+  const sales=ordered.filter(t=>sellActions.includes(t.action));
+  const sumPosition=trades=>trades.reduce((sum,t)=>sum+Number(t.positionChange||0),0);
+  const bought=sumPosition(purchases),sold=sumPosition(sales);
+  const net=Math.round((bought-sold)*1000000)/1000000;
+  const precise=value=>Number(value).toLocaleString('zh-CN',{maximumFractionDigits:4});
+  const period=dateFilter.value==='all'?'全部日期':dateFilter.value.replaceAll('-','/');
+  document.getElementById('activitySummary').innerHTML=`
+    <div class="activity-summary-stat"><span>${period} · 买入合计</span><strong class="buy-total">${precise(bought)}%</strong><small>${purchases.length} 笔买入 / 加仓 · ${usd(capital*bought/100)}</small></div>
+    <div class="activity-summary-stat"><span>卖出合计</span><strong class="sell-total">${precise(sold)}%</strong><small>${sales.length} 笔减仓 / 平仓 · ${usd(capital*sold/100)}</small></div>
+    <div class="activity-summary-stat"><span>仓位净变化 · ${net>0?'净增仓':net<0?'净减仓':'无净变化'}</span><strong class="${net>0?'buy-total':net<0?'sell-total':''}">${net>0?'+':net<0?'−':''}${precise(Math.abs(net))} 个百分点</strong><small>买入 − 卖出 · ${net>0?'+':net<0?'−':''}${usd(capital*Math.abs(net)/100)}</small></div>
+    <p>仓位按账户初始本金计算；汇总包含所选日期的全部操作，不代表当前剩余持仓。</p>`;
   list.innerHTML=ordered.map(t=>{
     const buy=buyActions.includes(t.action);
     return `<div class="activity-item">
