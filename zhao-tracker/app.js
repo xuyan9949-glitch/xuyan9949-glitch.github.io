@@ -195,10 +195,16 @@ async function refreshAccountReturnHistory() {
   const symbols = [...new Set(state.trades.map(trade=>quoteSymbol(trade.code)).filter(code=>/^[A-Z0-9.-]{1,20}$/.test(code)))];
   if (!symbols.length) return;
   try {
-    const response = await fetch(`${CANDLE_API_URL}?symbols=${encodeURIComponent(symbols.join(","))}&days=90`, { cache:"no-store" });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
-    state.candles = data.candles || {};
+    // The quote bridge accepts at most 40 symbols per request. Use smaller
+    // batches so historical growth cannot silently disable the entire chart.
+    const batches=[];
+    for(let i=0;i<symbols.length;i+=10) batches.push(symbols.slice(i,i+10));
+    const results=await Promise.all(batches.map(async batch=>{
+      const response=await fetch(`${CANDLE_API_URL}?symbols=${encodeURIComponent(batch.join(","))}&days=90`,{cache:"no-store"});
+      if(!response.ok) throw new Error(`HTTP ${response.status}`);
+      return response.json();
+    }));
+    state.candles=Object.assign({},...results.map(data=>data.candles||{}));
     state.candleError = "";
   } catch (error) {
     state.candleError = error.message;
