@@ -270,14 +270,21 @@ tr:hover .row-actions { opacity:1; }
 .analysis-tags { display:flex; flex-wrap:wrap; gap:5px; max-width:190px; }
 .analysis-tag { display:inline-flex; padding:2px 7px; border-radius:999px; background:var(--blue-soft); color:var(--blue); font-size:11px; font-weight:700; }
 .activity-panel { min-height:210px; }
-.activity-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; padding:16px 20px; border-bottom:1px solid var(--line); background:var(--panel); }
-.activity-summary-stat { display:flex; flex-direction:column; gap:5px; }
-.activity-summary-stat span,.activity-summary-stat small { color:var(--muted); font-size:12px; }
-.activity-summary-stat strong { font-size:23px; font-variant-numeric:tabular-nums; }
-.activity-summary-stat .buy-total { color:#ed526c; }
-.activity-summary-stat .sell-total { color:#168e79; }
-.activity-summary p { grid-column:1/-1; margin:2px 0 0; color:var(--muted); font-size:11px; }
-@media(max-width:600px) { .activity-summary { grid-template-columns:1fr; gap:14px; } .activity-summary-stat strong { font-size:21px; } }
+.activity-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; padding:20px 24px; border-bottom:1px solid var(--line); }
+.activity-summary-heading { grid-column:1/-1; display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:2px; font-size:12px; }
+.activity-summary-heading span { color:var(--muted); font-size:11px; }
+.activity-summary-stat { display:flex; flex-direction:column; gap:10px; padding:18px 20px; border:1px solid var(--line); border-radius:12px; background:var(--panel-2); }
+.activity-summary-stat>span { display:flex; align-items:center; gap:7px; font-size:12px; font-weight:600; }
+.activity-summary-stat i { font-style:normal; font-size:16px; }
+.activity-summary-stat em { margin-left:auto; font-style:normal; font-size:10px; font-weight:500; color:var(--muted); }
+.activity-summary-stat strong { font-size:28px; line-height:1.2; letter-spacing:-.7px; font-variant-numeric:tabular-nums; }
+.activity-summary-stat strong small { margin-left:5px; font-size:12px; font-weight:500; letter-spacing:0; }
+.activity-summary-stat>small { color:var(--muted); font-size:11px; }
+.summary-buy strong,.summary-buy i { color:var(--red); }
+.summary-sell strong,.summary-sell i { color:var(--green); }
+.summary-net { background:var(--blue-soft); border-color:#dce2ff; }
+.summary-net strong,.summary-net>span { color:var(--blue); }
+@media(max-width:600px) { .activity-summary { padding:16px; grid-template-columns:1fr; gap:10px; } .activity-summary-heading { align-items:flex-start; flex-direction:column; gap:4px; } .activity-summary-stat { padding:14px 16px; } .activity-summary-stat strong { font-size:25px; } }
 .activity-controls { display:flex; align-items:center; flex-wrap:wrap; gap:9px; color:var(--muted); font-size:12px; }
 .activity-controls select { max-width:260px; padding:8px 10px; border:1px solid var(--line); border-radius:7px; background:var(--panel); color:var(--text); font:inherit; }
 .activity-controls #activityCount { min-width:65px; }
