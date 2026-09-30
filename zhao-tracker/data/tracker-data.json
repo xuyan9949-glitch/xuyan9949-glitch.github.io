@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-29T22:45:00+08:00",
+  "updatedAt": "2026-09-30T02:39:05+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4746,6 +4746,14 @@
     {"id":"nbis-2426-close-2373-20260929","name":"NBIS","action":"清仓","positionType":"波段仓","price":242.6,"positionChange":0.825,"date":"2026-09-29T22:17:05+08:00","closeLotId":"nbis-2373-readd-2421-20260929","note":"242.6 出掉 237.3 日内的 NBIS"},
     {"id":"crwv-904-close-902-20260929","name":"CRWV","action":"清仓","positionType":"波段仓","price":90.4,"positionChange":1.65,"date":"2026-09-29T22:27:00+08:00","closeLotId":"crwv-902-add-20260911","note":"90.4 出掉 90.2 的 CRWV"},
     {"id":"cifr-1727-half-close-166-20260929","name":"CIFR","action":"减仓","positionType":"波段仓","price":17.27,"positionChange":0.825,"date":"2026-09-29T22:37:00+08:00","closeLotId":"cifr-166-add-20260929","note":"17.27 出一半 16.6 的 CIFR"},
-    {"id":"cbrs-2128-close-2015-rest-20260929","name":"CBRS","action":"清仓","positionType":"波段仓","price":212.8,"positionChange":0.825,"date":"2026-09-29T22:45:00+08:00","closeLotId":"cbrs-2015-add-20260922","note":"212.8 出掉 201.5 剩下一半的 CBRS"}
+    {"id":"cbrs-2128-close-2015-rest-20260929","name":"CBRS","action":"清仓","positionType":"波段仓","price":212.8,"positionChange":0.825,"date":"2026-09-29T22:45:00+08:00","closeLotId":"cbrs-2015-add-20260922","note":"212.8 出掉 201.5 剩下一半的 CBRS"},
+    {"id":"intc-11855-half-close-114-20260929","name":"INTC","action":"减仓","positionType":"波段仓","price":118.55,"positionChange":0.825,"date":"2026-09-29T22:59:00+08:00","closeLotId":"intc-114-add-20260929","note":"118.55 出一半 114 的 INTC"},
+    {"id":"crwv-869-readd-904-20260929","name":"CRWV","action":"加仓","positionType":"波段仓","price":86.9,"positionChange":1.65,"date":"2026-09-29T23:21:00+08:00","note":"加回 90.4 卖出的那部分 CRWV"},
+    {"id":"cifr-167-readd-1727-20260929","name":"CIFR","action":"加仓","positionType":"波段仓","price":16.7,"positionChange":0.825,"date":"2026-09-29T23:34:00+08:00","note":"加回 17.27 卖出的那部分 CIFR"},
+    {"id":"cbrs-2043-readd-2128-20260930","name":"CBRS","action":"加仓","positionType":"波段仓","price":204.3,"positionChange":0.825,"date":"2026-09-30T02:09:00+08:00","note":"加回 212.8 卖出的 CBRS"},
+    {"id":"aehr-988-readd-108-20260930","name":"AEHR","action":"加仓","positionType":"波段仓","price":98.8,"positionChange":0.825,"date":"2026-09-30T02:14:00+08:00","note":"加回 108 卖出的那部分 AEHR"},
+    {"id":"cbrs-198-add-20260930","name":"CBRS","action":"加仓","positionType":"波段仓","price":198,"positionChange":1.65,"date":"2026-09-30T02:26:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-2383-readd-2426-20260930","name":"NBIS","action":"加仓","positionType":"波段仓","price":238.3,"positionChange":0.825,"date":"2026-09-30T02:39:00+08:00","note":"加回 242.6 卖出的 NBIS"},
+    {"id":"cohr-291-readd-2985-20260930","name":"COHR","action":"加仓","positionType":"波段仓","price":291,"positionChange":0.825,"date":"2026-09-30T02:39:05+08:00","note":"加回 298.5 卖出的那部分 COHR；截图承接 02:39 同组时间"}
   ]
 }
