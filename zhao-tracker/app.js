@@ -1011,7 +1011,22 @@ function renderPairs(pairs) {
 function renderActivity() {
   const capital = Number(state.accountCapital) || 100000;
   const list=document.getElementById("activityList");
-  const ordered=[...state.trades].sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const dateFilter=document.getElementById("activityDateFilter");
+  const selectedDate=dateFilter.value;
+  const counts=new Map();
+  for(const trade of state.trades){
+    const date=marketDateKey(trade.date);
+    counts.set(date,(counts.get(date)||0)+1);
+  }
+  const today=marketDateKey(new Date());
+  const yesterday=marketDateKey(new Date(Date.now()-86400000));
+  dateFilter.innerHTML='<option value="all">全部日期</option>'+[...counts.keys()].sort((a,b)=>b.localeCompare(a)).map(date=>{
+    const prefix=date===today?'今天 · ':date===yesterday?'昨天 · ':'';
+    return `<option value="${date}">${prefix}${date.slice(0,4)}年${date.slice(5,7)}月${date.slice(8,10)}日 · ${counts.get(date)}笔</option>`;
+  }).join('');
+  dateFilter.value=counts.has(selectedDate)?selectedDate:'all';
+  const ordered=state.trades.filter(t=>dateFilter.value==='all'||marketDateKey(t.date)===dateFilter.value).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  setText('activityCount',dateFilter.value==='all'?`共 ${state.trades.length} 笔`:`当日 ${ordered.length} 笔`);
   list.innerHTML=ordered.map(t=>{
     const buy=buyActions.includes(t.action);
     return `<div class="activity-item">
@@ -1024,7 +1039,9 @@ function renderActivity() {
       <div class="activity-actions"><button class="mini-btn" onclick="editTrade('${t.id}')" title="编辑">✎</button><button class="mini-btn danger" onclick="deleteTrade('${t.id}')" title="删除">×</button></div>
     </div>`;
   }).join("");
-  document.getElementById("activityEmpty").hidden=ordered.length>0;
+  const empty=document.getElementById("activityEmpty");
+  empty.hidden=ordered.length>0;
+  empty.innerHTML=dateFilter.value==='all'?'<div>还没有操作记录</div><p>点击右上角“记录操作”开始追踪。</p>':'<div>这一天没有操作记录</div><p>请选择其他日期或查看全部日期。</p>';
 }
 
 function renderChart() {
@@ -1418,6 +1435,7 @@ document.getElementById("closedSearchInput").oninput=()=>renderClosedSymbols(get
 document.getElementById('periodSort').onchange=()=>renderPeriodReview();
 document.getElementById('closedFilter').onchange=()=>renderClosedSymbols(getHoldings(),computeLedger());
 document.getElementById('closedSort').onchange=()=>renderClosedSymbols(getHoldings(),computeLedger());
+document.getElementById('activityDateFilter').onchange=renderActivity;
 document.querySelectorAll(".sortable").forEach(th=>th.onclick=()=>{
   const key=th.dataset.sort; if(sortKey===key)sortDirection*=-1;else{sortKey=key;sortDirection=-1;}renderHoldings(getHoldings());
 });

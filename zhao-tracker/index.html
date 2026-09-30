@@ -7,7 +7,7 @@
   <title>Lucky Follow</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20260930-archive-filter">
+  <link rel="stylesheet" href="styles.css?v=20260930-activity-date">
   <link rel="stylesheet" href="workspace.css?v=20260915-design">
 </head>
 <body>
@@ -289,7 +289,12 @@
       <section id="history" class="panel activity-panel section-anchor">
         <div class="panel-header">
           <div><h2>操作流水</h2><p>完整记录每次仓位变化</p></div>
-          <button id="clearBtn" class="text-btn danger">清空全部</button>
+          <div class="activity-controls">
+            <label for="activityDateFilter">操作日期</label>
+            <select id="activityDateFilter" aria-label="按操作日期筛选流水"><option value="all">全部日期</option></select>
+            <span id="activityCount" aria-live="polite"></span>
+            <button id="clearBtn" class="text-btn danger">清空全部</button>
+          </div>
         </div>
         <div id="activityList" class="activity-list"></div>
         <div id="activityEmpty" class="empty-state"><div>还没有操作记录</div><p>点击右上角“记录操作”开始追踪。</p></div>
@@ -393,7 +398,7 @@
 
   <div id="toast" role="status" aria-live="polite"></div>
   <script src="daily-pnl.js?v=20260912-daily-pnl"></script>
-  <script src="app.js?v=20260930-detail-fix"></script>
+  <script src="app.js?v=20260930-activity-date"></script>
   <script src="workspace.js?v=20260915-design"></script>
   <dialog id="periodTradesDialog" class="period-trades-dialog">
     <div class="dialog-header"><div><h2 id="periodDialogTitle">本期操作</h2><p id="periodDialogMeta"></p></div><button class="icon-btn" aria-label="关闭本期操作" onclick="document.getElementById('periodTradesDialog').close()">×</button></div>
