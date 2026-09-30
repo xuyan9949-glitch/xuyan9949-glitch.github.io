@@ -1026,22 +1026,23 @@ function renderActivity() {
   }
   const today=marketDateKey(new Date());
   const yesterday=marketDateKey(new Date(Date.now()-86400000));
-  dateFilter.innerHTML='<option value="all">全部日期</option>'+[...counts.keys()].sort((a,b)=>b.localeCompare(a)).map(date=>{
+  const availableDates=[...counts.keys()].sort((a,b)=>b.localeCompare(a));
+  dateFilter.innerHTML=availableDates.map(date=>{
     const prefix=date===today?'今天 · ':date===yesterday?'昨天 · ':'';
     return `<option value="${date}">${prefix}${date.slice(0,4)}年${date.slice(5,7)}月${date.slice(8,10)}日 · ${counts.get(date)}笔</option>`;
   }).join('');
-  dateFilter.value=counts.has(selectedDate)?selectedDate:'all';
-  const ordered=state.trades.filter(t=>dateFilter.value==='all'||marketDateKey(t.date)===dateFilter.value).sort((a,b)=>new Date(b.date)-new Date(a.date));
-  setText('activityCount',dateFilter.value==='all'?`共 ${state.trades.length} 笔`:`当日 ${ordered.length} 笔`);
+  dateFilter.value=counts.has(selectedDate)?selectedDate:counts.has(today)?today:availableDates[0]||'';
+  const ordered=state.trades.filter(t=>marketDateKey(t.date)===dateFilter.value).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  setText('activityCount',`当日 ${ordered.length} 笔`);
   const purchases=ordered.filter(t=>buyActions.includes(t.action));
   const sales=ordered.filter(t=>sellActions.includes(t.action));
   const sumPosition=trades=>trades.reduce((sum,t)=>sum+Number(t.positionChange||0),0);
   const bought=sumPosition(purchases),sold=sumPosition(sales);
   const net=Math.round((bought-sold)*1000000)/1000000;
   const precise=value=>Number(value).toLocaleString('zh-CN',{maximumFractionDigits:4});
-  const period=dateFilter.value==='all'?'全部日期':dateFilter.value.replaceAll('-','/');
+  const period=dateFilter.value.replaceAll('-','/');
   document.getElementById('activitySummary').innerHTML=`
-    <div class="activity-summary-heading"><b>${period==='全部日期'?'累计操作汇总':period+' 操作汇总'}</b><span>按初始本金计算 · 非当前持仓</span></div>
+    <div class="activity-summary-heading"><b>${period?period+' 操作汇总':'暂无操作记录'}</b><span>仅统计所选日期 · 按初始本金计算</span></div>
     <div class="activity-summary-stat summary-buy"><span><i>↑</i> 买入仓位 <em>${purchases.length} 笔</em></span><strong>${precise(bought)}<small>%</small></strong><small>买入 / 加仓 · ${usd(capital*bought/100)}</small></div>
     <div class="activity-summary-stat summary-sell"><span><i>↓</i> 卖出仓位 <em>${sales.length} 笔</em></span><strong>${precise(sold)}<small>%</small></strong><small>减仓 / 平仓 · ${usd(capital*sold/100)}</small></div>
     <div class="activity-summary-stat summary-net"><span>仓位净变化 <em>${net>0?'净增仓':net<0?'净减仓':'持平'}</em></span><strong>${net>0?'+':net<0?'−':''}${precise(Math.abs(net))}<small>百分点</small></strong><small>买入 − 卖出 · ${net>0?'+':net<0?'−':''}${usd(capital*Math.abs(net)/100)}</small></div>`;
