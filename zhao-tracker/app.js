@@ -576,9 +576,26 @@ function renderRecordOrigin(now=new Date()) {
   document.getElementById('recordOriginLabel').textContent=`记录始于 ${dayText} · 第 ${days} 天`;
   document.getElementById('recordOriginDetail').textContent=`首笔交易：${dayText} ${timeText}（北京时间） · ${first.code||first.name} · ${first.action}。按账本最早交易计算，含首日。`;
 }
+function renderHoldingAllocation(holdings) {
+  const el=document.getElementById('holdingAllocation');
+  if(!el)return;
+  const colors=['#4263eb','#16a394','#e7a33e','#a16bd4','#e47391','#4a9ac4','#83aa46','#cd7953','#6974ad','#b794ba','#43877c','#b09242'];
+  const sorted=[...holdings].sort((a,b)=>b.position-a.position);
+  const total=sorted.reduce((sum,h)=>sum+h.position,0),base=Math.max(100,total);
+  const slices=sorted.map((h,i)=>({label:h.code,value:h.position,color:colors[i%colors.length]}));
+  if(total<100)slices.push({label:'未占用仓位',value:100-total,color:'#dce2ec'});
+  let offset=0;
+  const precise=n=>Number(n.toFixed(4)).toLocaleString('zh-CN',{maximumFractionDigits:4});
+  const arcs=slices.map(s=>{
+    const length=s.value/base*100,start=offset;offset+=length;
+    return `<circle cx="100" cy="100" r="76" fill="none" stroke="${s.color}" stroke-width="25" pathLength="100" stroke-dasharray="${length} ${100-length}" stroke-dashoffset="${-start}" transform="rotate(-90 100 100)"><title>${esc(s.label)}：${precise(s.value)}%</title></circle>`;
+  }).join('');
+  el.innerHTML=`<div class="allocation-visual"><svg viewBox="0 0 200 200" role="img" aria-label="当前总仓位 ${precise(total)}%，${sorted.length} 个标的">${arcs}</svg><div class="allocation-center"><span>当前总仓位</span><strong>${precise(total)}<small>%</small></strong><span>${sorted.length} 个标的</span></div></div><div class="allocation-detail"><div class="allocation-legend">${slices.map(s=>`<div class="allocation-key"><i style="background:${s.color}"></i><span>${esc(s.label)}</span><b>${precise(s.value)}%</b></div>`).join('')}</div><p>${total>100?'总仓位超过100%，圆环按实际总仓位归一化；图例仍显示占初始本金比例。':'未占用仓位 = 100% − 当前仓位；不等同于券商实际现金或含杠杆购买力。'}</p></div>`;
+}
 function render() {
   renderRecordOrigin();
   const holdings = getHoldings();
+  renderHoldingAllocation(holdings);
   const ledger = computeLedger();
   const capital = Number(state.accountCapital) || 100000;
   const total = holdings.reduce((s,h)=>s+h.position,0);
