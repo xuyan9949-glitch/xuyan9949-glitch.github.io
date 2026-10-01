@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-01T04:22:00+08:00",
+  "updatedAt": "2026-10-01T21:25:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4769,6 +4769,7 @@
     {"id":"googl-354-half-close-3404-20261001","name":"GOOGL","action":"减仓","positionType":"波段仓","price":354,"positionChange":0.825,"date":"2026-10-01T04:08:00+08:00","closeLotId":"googl-3404-add-20260829","note":"354 出掉 340.4 一半谷歌 A；同组消息时间 04:08"},
     {"id":"asts-5905-add-20261001","name":"ASTS","action":"加仓","positionType":"波段仓","price":59.05,"positionChange":1.65,"date":"2026-10-01T04:13:00+08:00","note":"加了六分之一常规仓"},
     {"id":"crwv-868-readd-89-20261001","name":"CRWV","action":"加仓","positionType":"波段仓","price":86.8,"positionChange":0.825,"date":"2026-10-01T04:18:00+08:00","note":"加回 89 卖出的那部分 CRWV（对应 86.9 批次的一半）"},
-    {"id":"cifr-1585-add-20261001","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.85,"positionChange":1.65,"date":"2026-10-01T04:22:00+08:00","note":"加了六分之一常规仓"}
+    {"id":"cifr-1585-add-20261001","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.85,"positionChange":1.65,"date":"2026-10-01T04:22:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"cbrs-184-half-close-1795-20261001","name":"CBRS","action":"减仓","positionType":"波段仓","price":184,"positionChange":0.825,"date":"2026-10-01T21:25:00+08:00","closeLotId":"cbrs-1795-add-20260930","note":"盘前小直线；184 出一半 179.5 的 CBRS"}
   ]
 }
