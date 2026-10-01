@@ -7,7 +7,7 @@
   <title>Lucky Follow</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
   <link rel="shortcut icon" type="image/svg+xml" href="./favicon.svg?v=20260710">
-  <link rel="stylesheet" href="styles.css?v=20261002-allocation">
+  <link rel="stylesheet" href="styles.css?v=20261002-sector-allocation">
   <link rel="stylesheet" href="workspace.css?v=20260915-design">
 </head>
 <body>
@@ -101,7 +101,7 @@
       </section>
 
       <section class="panel allocation-panel" aria-label="当前仓位分布">
-        <div class="panel-header"><div><h2>当前仓位分布</h2><p>按剩余仓位占初始本金的比例计算 · 不依赖实时行情</p></div></div>
+        <div class="panel-header"><div><h2 id="allocationTitle">当前仓位分布</h2><p id="allocationSubtitle">按剩余仓位占初始本金的比例计算 · 不依赖实时行情</p></div><div id="allocationMode" class="allocation-mode" aria-label="仓位分组方式"><button type="button" class="active" data-mode="symbol">按标的</button><button type="button" data-mode="sector">按板块</button></div></div>
         <div id="holdingAllocation" class="holding-allocation"></div>
       </section>
       <section id="holdings" class="workspace-grid section-anchor">
@@ -403,7 +403,7 @@
 
   <div id="toast" role="status" aria-live="polite"></div>
   <script src="daily-pnl.js?v=20260912-daily-pnl"></script>
-  <script src="app.js?v=20261002-allocation"></script>
+  <script src="app.js?v=20261002-sector-allocation"></script>
   <script src="workspace.js?v=20260915-design"></script>
   <dialog id="periodTradesDialog" class="period-trades-dialog">
     <div class="dialog-header"><div><h2 id="periodDialogTitle">本期操作</h2><p id="periodDialogMeta"></p></div><button class="icon-btn" aria-label="关闭本期操作" onclick="document.getElementById('periodTradesDialog').close()">×</button></div>
