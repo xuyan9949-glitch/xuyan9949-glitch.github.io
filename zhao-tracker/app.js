@@ -168,10 +168,18 @@ async function refreshQuotes() {
   const todayTrades=state.trades.filter(t=>marketDate(t.date)===marketDate(new Date()));
   if (!holdings.length && !todayTrades.length) { render(); return; }
   const status = document.getElementById("quoteStatus");
+  if (status?.disabled) return;
+  if (status) {
+    status.disabled = true;
+    status.textContent = "行情重试中…";
+    status.title = "正在连接行情服务，最多等待 15 秒";
+  }
+  const controller = new AbortController();
+  const timeout = setTimeout(()=>controller.abort(),15000);
   try {
     const symbols = [...new Set([...holdings,...todayTrades].map(h=>quoteSymbol(h.code)).filter(code=>/^[A-Z0-9.-]{1,20}$/.test(code)))].join(",");
     if (!symbols) throw new Error("没有可查询的股票代码");
-    const response = await fetch(`${QUOTE_API_URL}?symbols=${encodeURIComponent(symbols)}`, { cache:"no-store" });
+    const response = await fetch(`${QUOTE_API_URL}?symbols=${encodeURIComponent(symbols)}`, { cache:"no-store", signal:controller.signal });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     state.quotes = data.quotes || {};
@@ -182,12 +190,15 @@ async function refreshQuotes() {
       status.textContent = `实时行情 · ${new Intl.DateTimeFormat("zh-CN",{hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date(state.quoteUpdatedAt))}`;
     }
   } catch (error) {
-    state.quoteError = error.message;
+    state.quoteError = error.name==='AbortError'?'行情服务连接超时':error.message;
     if (status) {
       status.className = "market-status quote-status disconnected";
-      status.textContent = "行情暂不可用 · 点击重试";
-      status.title = "行情服务未连接。请确认长桥美股 Open API 行情权限与本机网络，然后点击重试。";
+      status.textContent = "重试失败 · 点击再试";
+      status.title = `行情连接失败：${state.quoteError}。网页重试无法启动本机服务或修复公网隧道。`;
     }
+  } finally {
+    clearTimeout(timeout);
+    if (status) status.disabled = false;
   }
   render();
 }
