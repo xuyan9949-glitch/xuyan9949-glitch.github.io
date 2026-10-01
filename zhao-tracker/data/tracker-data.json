@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-01T22:18:48+08:00",
+  "updatedAt": "2026-10-01T22:26:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4776,6 +4776,9 @@
     {"id":"cohr-3055-close-3022-20261001","name":"COHR","action":"清仓","positionType":"波段仓","price":305.5,"positionChange":0.825,"date":"2026-10-01T22:10:00+08:00","closeLotId":"cohr-3022-readd-317-20260923","note":"COHR 二次直线；305.5 出掉 302.2 的 COHR"},
     {"id":"soxl-1458-add-20261001","name":"SOXL","action":"加仓","positionType":"波段仓","price":145.8,"positionChange":1.65,"date":"2026-10-01T22:13:00+08:00","note":"加了六分之一常规仓"},
     {"id":"aehr-1013-half-close-988-20261001","name":"AEHR","action":"减仓","positionType":"波段仓","price":101.3,"positionChange":0.4125,"date":"2026-10-01T22:13:00+08:00","closeLotId":"aehr-988-readd-108-20260930","note":"101.3 出一半 98.8 的 AEHR；同组消息时间 22:13"},
-    {"id":"cohr-310-close-2866-rest-20261001","name":"COHR","action":"清仓","positionType":"波段仓","price":310,"positionChange":0.825,"date":"2026-10-01T22:18:48+08:00","closeLotId":"cohr-2866-add-20260928","note":"310 出掉 286 剩下一半 COHR；用户确认 286 指 286.6 批次。实际消息时间未显示，经用户同意暂按截图时间 2026-10-01 22:18:48 登记"}
+    {"id":"cohr-310-close-2866-rest-20261001","name":"COHR","action":"清仓","positionType":"波段仓","price":310,"positionChange":0.825,"date":"2026-10-01T22:18:48+08:00","closeLotId":"cohr-2866-add-20260928","note":"310 出掉 286 剩下一半 COHR；用户确认 286 指 286.6 批次。实际消息时间未显示，经用户同意暂按截图时间 2026-10-01 22:18:48 登记"},
+    {"id":"cbrs-172-add-20261001","name":"CBRS","action":"加仓","positionType":"波段仓","price":172,"positionChange":1.65,"date":"2026-10-01T22:26:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"iren-395-add-20261001","name":"IREN","action":"加仓","positionType":"波段仓","price":39.5,"positionChange":1.65,"date":"2026-10-01T22:26:00+08:00","note":"加了六分之一常规仓；同组消息时间 22:26"},
+    {"id":"cifr-1495-add-20261001","name":"CIFR","action":"加仓","positionType":"波段仓","price":14.95,"positionChange":1.65,"date":"2026-10-01T22:26:00+08:00","note":"加了六分之一常规仓；同组消息时间 22:26"}
   ]
 }
