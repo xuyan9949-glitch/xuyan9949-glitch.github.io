@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-02T01:36:08+08:00",
+  "updatedAt": "2026-10-02T20:33:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4784,6 +4784,12 @@
     {"id":"soxl-150-half-close-1458-20261001","name":"SOXL","action":"减仓","positionType":"波段仓","price":150,"positionChange":0.825,"date":"2026-10-01T22:50:27+08:00","closeLotId":"soxl-1458-add-20261001","note":"150 出一半 145.8 的 SOXL；实际消息时间未显示，经用户同意暂按截图时间 2026-10-01 22:50:27 登记"},
     {"id":"soxl-1555-close-1458-rest-20261002","name":"SOXL","action":"清仓","positionType":"波段仓","price":155.5,"positionChange":0.825,"date":"2026-10-02T01:32:00+08:00","closeLotId":"soxl-1458-add-20261001","note":"155.5 出掉 145.8 剩下一半 SOXL；再次吃大肉"},
     {"id":"nbis-2385-close-2371-20261002","name":"NBIS","action":"清仓","positionType":"波段仓","price":238.5,"positionChange":0.4125,"date":"2026-10-02T01:32:00+08:00","closeLotId":"nbis-2371-readd-2445-20260930","note":"NBIS 直线；238.5 出掉 237.1 的 NBIS"},
-    {"id":"cifr-156-half-close-1495-20261002","name":"CIFR","action":"减仓","positionType":"波段仓","price":15.6,"positionChange":0.825,"date":"2026-10-02T01:36:08+08:00","closeLotId":"cifr-1495-add-20261001","note":"15.6 出一半 14.95 的 CIFR；实际消息时间未显示，经用户同意暂按截图时间 2026-10-02 01:36:08 登记"}
+    {"id":"cifr-156-half-close-1495-20261002","name":"CIFR","action":"减仓","positionType":"波段仓","price":15.6,"positionChange":0.825,"date":"2026-10-02T01:36:08+08:00","closeLotId":"cifr-1495-add-20261001","note":"15.6 出一半 14.95 的 CIFR；实际消息时间未显示，经用户同意暂按截图时间 2026-10-02 01:36:08 登记"},
+    {"id":"iren-4127-half-close-395-20261002","name":"IREN","action":"减仓","positionType":"波段仓","price":41.27,"positionChange":0.825,"date":"2026-10-02T19:46:00+08:00","closeLotId":"iren-395-add-20261001","note":"41.27 出一半 39.5 的 IREN"},
+    {"id":"crwv-893-half-close-868-20261002","name":"CRWV","action":"减仓","positionType":"波段仓","price":89.3,"positionChange":0.4125,"date":"2026-10-02T19:48:00+08:00","closeLotId":"crwv-868-readd-89-20261001","note":"89.3 出一半 86.8 的 CRWV"},
+    {"id":"gld-3862-half-close-3813-20261002","name":"GLD","action":"减仓","positionType":"波段仓","price":386.2,"positionChange":0.825,"date":"2026-10-02T20:33:00+08:00","closeLotId":"gld-3813-add-20260929","note":"386.2 出一半 381.3 的 GLD"},
+    {"id":"asts-5725-add-20261002","name":"ASTS","action":"加仓","positionType":"波段仓","price":57.25,"positionChange":1.65,"date":"2026-10-02T20:33:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-2352-readd-2385-20261002","name":"NBIS","action":"加仓","positionType":"波段仓","price":235.2,"positionChange":0.4125,"date":"2026-10-02T20:33:00+08:00","note":"加回 238.5 出掉的那部分 NBIS"},
+    {"id":"onds-72-add-20261002","name":"ONDS","action":"加仓","positionType":"波段仓","price":7.2,"positionChange":1.65,"date":"2026-10-02T20:33:00+08:00","note":"加了六分之一常规仓"}
   ]
 }
