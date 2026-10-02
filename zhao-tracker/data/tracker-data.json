@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-02T20:33:00+08:00",
+  "updatedAt": "2026-10-02T21:32:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4790,6 +4790,10 @@
     {"id":"gld-3862-half-close-3813-20261002","name":"GLD","action":"减仓","positionType":"波段仓","price":386.2,"positionChange":0.825,"date":"2026-10-02T20:33:00+08:00","closeLotId":"gld-3813-add-20260929","note":"386.2 出一半 381.3 的 GLD"},
     {"id":"asts-5725-add-20261002","name":"ASTS","action":"加仓","positionType":"波段仓","price":57.25,"positionChange":1.65,"date":"2026-10-02T20:33:00+08:00","note":"加了六分之一常规仓"},
     {"id":"nbis-2352-readd-2385-20261002","name":"NBIS","action":"加仓","positionType":"波段仓","price":235.2,"positionChange":0.4125,"date":"2026-10-02T20:33:00+08:00","note":"加回 238.5 出掉的那部分 NBIS"},
-    {"id":"onds-72-add-20261002","name":"ONDS","action":"加仓","positionType":"波段仓","price":7.2,"positionChange":1.65,"date":"2026-10-02T20:33:00+08:00","note":"加了六分之一常规仓"}
+    {"id":"onds-72-add-20261002","name":"ONDS","action":"加仓","positionType":"波段仓","price":7.2,"positionChange":1.65,"date":"2026-10-02T20:33:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"cifr-161-half-close-1585-20261002","name":"CIFR","action":"减仓","positionType":"波段仓","price":16.1,"positionChange":0.825,"date":"2026-10-02T21:32:00+08:00","closeLotId":"cifr-1585-add-20261001","note":"16.1 出一半 15.85 的 CIFR"},
+    {"id":"crwv-923-close-868-rest-20261002","name":"CRWV","action":"清仓","positionType":"波段仓","price":92.3,"positionChange":0.4125,"date":"2026-10-02T21:32:00+08:00","closeLotId":"crwv-868-readd-89-20261001","note":"92.3 出掉 86.8 剩下一半 CRWV"},
+    {"id":"iren-427-half-close-4185-20261002","name":"IREN","action":"减仓","positionType":"波段仓","price":42.7,"positionChange":0.4125,"date":"2026-10-02T21:32:00+08:00","closeLotId":"iren-4185-add-20260917","note":"42.7 出 41.85 一半的 IREN"},
+    {"id":"nbis-242-close-2352-20261002","name":"NBIS","action":"清仓","positionType":"波段仓","price":242,"positionChange":0.4125,"date":"2026-10-02T21:32:00+08:00","closeLotId":"nbis-2352-readd-2385-20261002","note":"242 出掉 235.2 的 NBIS"}
   ]
 }
