@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-02T23:59:00+08:00",
+  "updatedAt": "2026-10-03T04:37:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4810,6 +4810,13 @@
     {"id":"pl-1761-close-1655-rest-20261002","name":"PL","action":"清仓","positionType":"波段仓","price":17.61,"positionChange":0.825,"date":"2026-10-02T22:59:00+08:00","closeLotId":"pl-1655-add-20260929","note":"17.61 出掉剩下一半 16.55 的 PL"},
     {"id":"iren-418-add-20261002","name":"IREN","action":"加仓","positionType":"波段仓","price":41.8,"positionChange":1.65,"date":"2026-10-02T23:28:00+08:00","note":"加了六分之一常规仓"},
     {"id":"gld-37945-add-20261002","name":"GLD","action":"加仓","positionType":"波段仓","price":379.45,"positionChange":1.65,"date":"2026-10-02T23:30:00+08:00","note":"加了六分之一常规仓"},
-    {"id":"cifr-155-readd-161-20261002","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.5,"positionChange":0.825,"date":"2026-10-02T23:59:00+08:00","note":"加回 16.1 卖出的那部分 CIFR"}
+    {"id":"cifr-155-readd-161-20261002","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.5,"positionChange":0.825,"date":"2026-10-02T23:59:00+08:00","note":"加回 16.1 卖出的那部分 CIFR"},
+    {"id":"coin-1828-add-20261003","name":"COIN","action":"加仓","positionType":"波段仓","price":182.8,"positionChange":1.65,"date":"2026-10-03T04:25:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"hood-1128-add-20261003","name":"HOOD","action":"加仓","positionType":"波段仓","price":112.8,"positionChange":1.65,"date":"2026-10-03T04:25:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"crwv-893-readd-923-20261003","name":"CRWV","action":"加仓","positionType":"波段仓","price":89.3,"positionChange":0.4125,"date":"2026-10-03T04:28:00+08:00","note":"加回 92.3 卖出的那部分 CRWV"},
+    {"id":"onds-725-readd-744-20261003","name":"ONDS","action":"加仓","positionType":"波段仓","price":7.25,"positionChange":0.825,"date":"2026-10-03T04:29:00+08:00","note":"加回 7.44 卖出的那部分 ONDS"},
+    {"id":"sco-1947-add-20261003","name":"SCO","action":"加仓","positionType":"波段仓","price":19.47,"positionChange":1.65,"date":"2026-10-03T04:32:00+08:00","note":"加了六分之一常规仓；截图消息时间被截断，按相邻可见消息时间暂估 04:32"},
+    {"id":"intc-1193-add-20261003","name":"INTC","action":"加仓","positionType":"波段仓","price":119.3,"positionChange":1.65,"date":"2026-10-03T04:35:00+08:00","note":"加了六分之一常规仓；截图消息时间被截断，按相邻可见消息时间暂估 04:35"},
+    {"id":"soun-585-add-20261003","name":"SOUN","action":"加仓","positionType":"波段仓","price":5.85,"positionChange":1.65,"date":"2026-10-03T04:37:00+08:00","note":"加了六分之一常规仓"}
   ]
 }
