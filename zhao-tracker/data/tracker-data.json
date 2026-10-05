@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-03T04:37:00+08:00",
+  "updatedAt": "2026-10-05T21:50:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4817,6 +4817,18 @@
     {"id":"onds-725-readd-744-20261003","name":"ONDS","action":"加仓","positionType":"波段仓","price":7.25,"positionChange":0.825,"date":"2026-10-03T04:29:00+08:00","note":"加回 7.44 卖出的那部分 ONDS"},
     {"id":"sco-1947-add-20261003","name":"SCO","action":"加仓","positionType":"波段仓","price":19.47,"positionChange":1.65,"date":"2026-10-03T04:32:00+08:00","note":"加了六分之一常规仓；截图消息时间被截断，按相邻可见消息时间暂估 04:32"},
     {"id":"intc-1193-add-20261003","name":"INTC","action":"加仓","positionType":"波段仓","price":119.3,"positionChange":1.65,"date":"2026-10-03T04:35:00+08:00","note":"加了六分之一常规仓；截图消息时间被截断，按相邻可见消息时间暂估 04:35"},
-    {"id":"soun-585-add-20261003","name":"SOUN","action":"加仓","positionType":"波段仓","price":5.85,"positionChange":1.65,"date":"2026-10-03T04:37:00+08:00","note":"加了六分之一常规仓"}
+    {"id":"soun-585-add-20261003","name":"SOUN","action":"加仓","positionType":"波段仓","price":5.85,"positionChange":1.65,"date":"2026-10-03T04:37:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"coin-1885-half-close-1828-20261005","name":"COIN","action":"减仓","positionType":"波段仓","price":188.5,"positionChange":0.825,"date":"2026-10-05T20:05:00+08:00","closeLotId":"coin-1828-add-20261003","note":"188.5 出一半 182.8 的 COIN"},
+    {"id":"onds-741-close-72-rest-20261005","name":"ONDS","action":"清仓","positionType":"波段仓","price":7.41,"positionChange":0.825,"date":"2026-10-05T20:07:00+08:00","closeLotId":"onds-72-add-20261002","note":"7.41 出掉 7.2 的 ONDS"},
+    {"id":"cbrs-179-half-close-172-20261005","name":"CBRS","action":"减仓","positionType":"波段仓","price":179,"positionChange":0.825,"date":"2026-10-05T21:30:00+08:00","closeLotId":"cbrs-172-add-20261001","note":"179 出一半 172 的 CBRS"},
+    {"id":"cbrs-184-close-1795-rest-20261005","name":"CBRS","action":"清仓","positionType":"波段仓","price":184,"positionChange":0.825,"date":"2026-10-05T21:33:00+08:00","closeLotId":"cbrs-1795-add-20260930","note":"184 出掉 179.5 剩下一半的 CBRS；截图未显示具体时间，按相邻可见消息时间暂估 21:33"},
+    {"id":"nbis-2375-add-20261005","name":"NBIS","action":"加仓","positionType":"波段仓","price":237.5,"positionChange":1.65,"date":"2026-10-05T21:35:00+08:00","note":"加了六分之一常规仓；截图未显示具体时间，按相邻可见消息时间暂估 21:35"},
+    {"id":"pl-1705-readd-1761-20261005","name":"PL","action":"加仓","positionType":"波段仓","price":17.05,"positionChange":0.825,"date":"2026-10-05T21:37:00+08:00","note":"加回 17.61 卖出的那部分 PL；截图未显示具体时间，按相邻可见消息时间暂估 21:37"},
+    {"id":"cbrs-1783-readd-184-20261005","name":"CBRS","action":"加仓","positionType":"波段仓","price":178.3,"positionChange":0.825,"date":"2026-10-05T21:40:00+08:00","note":"加回 184 卖出的那部分 CBRS"},
+    {"id":"onds-755-half-close-725-20261005","name":"ONDS","action":"减仓","positionType":"波段仓","price":7.55,"positionChange":0.4125,"date":"2026-10-05T21:42:00+08:00","closeLotId":"onds-725-readd-744-20261003","note":"7.55 出一半 7.25 的 ONDS；截图未显示具体时间，按相邻可见消息时间暂估 21:42"},
+    {"id":"akam-1074-add-20261005","name":"AKAM","action":"加仓","positionType":"波段仓","price":107.4,"positionChange":1.65,"date":"2026-10-05T21:44:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"onds-766-close-725-rest-20261005","name":"ONDS","action":"清仓","positionType":"波段仓","price":7.66,"positionChange":0.4125,"date":"2026-10-05T21:44:00+08:00","closeLotId":"onds-725-readd-744-20261003","note":"7.66 出掉 7.25 剩下一半的 ONDS；截图未显示具体时间，按相邻可见消息时间暂估 21:44"},
+    {"id":"cifr-1505-readd-156-20261005","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.05,"positionChange":0.825,"date":"2026-10-05T21:50:00+08:00","note":"加回 15.6 卖出的那部分 CIFR"},
+    {"id":"iren-404-readd-432-20261005","name":"IREN","action":"加仓","positionType":"波段仓","price":40.4,"positionChange":0.825,"date":"2026-10-05T21:50:00+08:00","note":"加回 43.2 卖出的那部分 IREN；按相邻可见 21:50 消息时间记录"}
   ]
 }
