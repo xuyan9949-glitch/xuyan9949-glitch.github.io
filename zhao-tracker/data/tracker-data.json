@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-06T22:12:45+08:00",
+  "updatedAt": "2026-10-06T22:14:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4849,6 +4849,7 @@
     {"id":"akam-111-half-close-1074-20261006","name":"AKAM","action":"减仓","positionType":"波段仓","price":111,"positionChange":0.825,"date":"2026-10-06T21:46:00+08:00","closeLotId":"akam-1074-add-20261005","note":"111 出一半 107.4 的 AKAM；按同组 21:46 消息时间记录"},
     {"id":"crwv-908-close-893-rest-20261006","name":"CRWV","action":"清仓","positionType":"波段仓","price":90.8,"positionChange":0.20625,"date":"2026-10-06T21:50:00+08:00","closeLotId":"crwv-893-readd-923-20261003","note":"90.8 出掉剩下一半 89.3 的 CRWV"},
     {"id":"iren-412-half-close-404-20261006","name":"IREN","action":"减仓","positionType":"波段仓","price":41.2,"positionChange":0.4125,"date":"2026-10-06T21:54:00+08:00","closeLotId":"iren-404-readd-432-20261005","note":"41.2 出一半 40.4 的 IREN"},
-    {"id":"crwv-919-close-869-rest-20261006","name":"CRWV","action":"清仓","positionType":"波段仓","price":91.9,"positionChange":0.825,"date":"2026-10-06T22:12:45+08:00","closeLotId":"crwv-869-readd-904-20260929","note":"91.9 出掉 86.9 剩下一半的 CRWV；按截图时间 2026-10-06 22:12:45 记录"}
+    {"id":"crwv-919-close-869-rest-20261006","name":"CRWV","action":"清仓","positionType":"波段仓","price":91.9,"positionChange":0.825,"date":"2026-10-06T22:12:45+08:00","closeLotId":"crwv-869-readd-904-20260929","note":"91.9 出掉 86.9 剩下一半的 CRWV；按截图时间 2026-10-06 22:12:45 记录"},
+    {"id":"coin-1915-half-close-1915-20261006","name":"COIN","action":"减仓","positionType":"波段仓","price":191.5,"positionChange":0.825,"date":"2026-10-06T22:14:00+08:00","closeLotId":"coin-1915-add-20261002","note":"191.5 出一半 191.5 的 COIN"}
   ]
 }
