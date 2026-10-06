@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-06T23:12:00+08:00",
+  "updatedAt": "2026-10-06T23:22:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4859,6 +4859,7 @@
     {"id":"coin-1924-close-1915-rest-20261006","name":"COIN","action":"清仓","positionType":"波段仓","price":192.4,"positionChange":0.825,"date":"2026-10-06T23:07:00+08:00","closeLotId":"coin-1915-add-20261002","note":"192.4 出掉 191.5 剩下一半的 COIN"},
     {"id":"iren-4185-half-close-418-20261006","name":"IREN","action":"减仓","positionType":"波段仓","price":41.85,"positionChange":0.825,"date":"2026-10-06T23:07:00+08:00","closeLotId":"iren-418-add-20261002","note":"41.85 出一半 41.8 的 IREN；按同组 23:07 消息时间记录"},
     {"id":"riot-1923-add-20261006","name":"RIOT","action":"加仓","positionType":"波段仓","price":19.23,"positionChange":1.65,"date":"2026-10-06T23:07:00+08:00","note":"加了六分之一常规仓"},
-    {"id":"akam-109-readd-111-20261006","name":"AKAM","action":"加仓","positionType":"波段仓","price":109,"positionChange":0.825,"date":"2026-10-06T23:12:00+08:00","note":"加回 111 卖出的那部分 AKAM"}
+    {"id":"akam-109-readd-111-20261006","name":"AKAM","action":"加仓","positionType":"波段仓","price":109,"positionChange":0.825,"date":"2026-10-06T23:12:00+08:00","note":"加回 111 卖出的那部分 AKAM"},
+    {"id":"cbrs-1766-readd-1847-20261006","name":"CBRS","action":"加仓","positionType":"波段仓","price":176.6,"positionChange":0.4125,"date":"2026-10-06T23:22:00+08:00","note":"加回 184.7 卖出的那部分 CBRS"}
   ]
 }
