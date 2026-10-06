@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-05T21:50:00+08:00",
+  "updatedAt": "2026-10-06T20:33:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4829,6 +4829,12 @@
     {"id":"akam-1074-add-20261005","name":"AKAM","action":"加仓","positionType":"波段仓","price":107.4,"positionChange":1.65,"date":"2026-10-05T21:44:00+08:00","note":"加了六分之一常规仓"},
     {"id":"onds-766-close-725-rest-20261005","name":"ONDS","action":"清仓","positionType":"波段仓","price":7.66,"positionChange":0.4125,"date":"2026-10-05T21:44:00+08:00","closeLotId":"onds-725-readd-744-20261003","note":"7.66 出掉 7.25 剩下一半的 ONDS；截图未显示具体时间，按相邻可见消息时间暂估 21:44"},
     {"id":"cifr-1505-readd-156-20261005","name":"CIFR","action":"加仓","positionType":"波段仓","price":15.05,"positionChange":0.825,"date":"2026-10-05T21:50:00+08:00","note":"加回 15.6 卖出的那部分 CIFR"},
-    {"id":"iren-404-readd-432-20261005","name":"IREN","action":"加仓","positionType":"波段仓","price":40.4,"positionChange":0.825,"date":"2026-10-05T21:50:00+08:00","note":"加回 43.2 卖出的那部分 IREN；按相邻可见 21:50 消息时间记录"}
+    {"id":"iren-404-readd-432-20261005","name":"IREN","action":"加仓","positionType":"波段仓","price":40.4,"positionChange":0.825,"date":"2026-10-05T21:50:00+08:00","note":"加回 43.2 卖出的那部分 IREN；按相邻可见 21:50 消息时间记录"},
+    {"id":"cbrs-1847-half-close-1783-20261005","name":"CBRS","action":"减仓","positionType":"波段仓","price":184.7,"positionChange":0.4125,"date":"2026-10-05T22:54:00+08:00","closeLotId":"cbrs-1783-readd-184-20261005","note":"184.7 出一半 178.3 的 CBRS"},
+    {"id":"cifr-1552-half-close-1505-20261006","name":"CIFR","action":"减仓","positionType":"波段仓","price":15.52,"positionChange":0.4125,"date":"2026-10-06T03:22:00+08:00","closeLotId":"cifr-1505-readd-156-20261005","note":"15.52 出一半 15.05 的 CIFR"},
+    {"id":"baba-1111-half-close-1078-20261006","name":"BABA","action":"减仓","positionType":"波段仓","price":111.1,"positionChange":0.825,"date":"2026-10-06T03:27:00+08:00","closeLotId":"baba-1078-add-20260929","note":"111.1 出一半 107.8 的 BABA"},
+    {"id":"sco-2012-half-close-1947-20261006","name":"SCO","action":"减仓","positionType":"波段仓","price":20.12,"positionChange":0.825,"date":"2026-10-06T20:12:00+08:00","closeLotId":"sco-1947-add-20261003","note":"20.12 出一半 19.47 的 SCO"},
+    {"id":"pl-1791-half-close-1705-20261006","name":"PL","action":"减仓","positionType":"波段仓","price":17.91,"positionChange":0.4125,"date":"2026-10-06T20:31:00+08:00","closeLotId":"pl-1705-readd-1761-20261005","note":"17.91 出一半 17.05 的 PL"},
+    {"id":"asts-6003-half-close-5905-20261006","name":"ASTS","action":"减仓","positionType":"波段仓","price":60.03,"positionChange":0.825,"date":"2026-10-06T20:33:00+08:00","closeLotId":"asts-5905-add-20261001","note":"60.03 出一半 59.05 的 ASTS"}
   ]
 }
