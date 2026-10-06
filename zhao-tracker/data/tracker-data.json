@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-06T20:33:00+08:00",
+  "updatedAt": "2026-10-06T21:54:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4835,6 +4835,19 @@
     {"id":"baba-1111-half-close-1078-20261006","name":"BABA","action":"减仓","positionType":"波段仓","price":111.1,"positionChange":0.825,"date":"2026-10-06T03:27:00+08:00","closeLotId":"baba-1078-add-20260929","note":"111.1 出一半 107.8 的 BABA"},
     {"id":"sco-2012-half-close-1947-20261006","name":"SCO","action":"减仓","positionType":"波段仓","price":20.12,"positionChange":0.825,"date":"2026-10-06T20:12:00+08:00","closeLotId":"sco-1947-add-20261003","note":"20.12 出一半 19.47 的 SCO"},
     {"id":"pl-1791-half-close-1705-20261006","name":"PL","action":"减仓","positionType":"波段仓","price":17.91,"positionChange":0.4125,"date":"2026-10-06T20:31:00+08:00","closeLotId":"pl-1705-readd-1761-20261005","note":"17.91 出一半 17.05 的 PL"},
-    {"id":"asts-6003-half-close-5905-20261006","name":"ASTS","action":"减仓","positionType":"波段仓","price":60.03,"positionChange":0.825,"date":"2026-10-06T20:33:00+08:00","closeLotId":"asts-5905-add-20261001","note":"60.03 出一半 59.05 的 ASTS"}
+    {"id":"asts-6003-half-close-5905-20261006","name":"ASTS","action":"减仓","positionType":"波段仓","price":60.03,"positionChange":0.825,"date":"2026-10-06T20:33:00+08:00","closeLotId":"asts-5905-add-20261001","note":"60.03 出一半 59.05 的 ASTS"},
+    {"id":"nbis-2424-half-close-2375-20261006","name":"NBIS","action":"减仓","positionType":"波段仓","price":242.4,"positionChange":0.825,"date":"2026-10-06T21:32:00+08:00","closeLotId":"nbis-2375-add-20261005","note":"242.4 出一半 237.5 的 NBIS"},
+    {"id":"nbis-244-close-2375-rest-20261006","name":"NBIS","action":"清仓","positionType":"波段仓","price":244,"positionChange":0.825,"date":"2026-10-06T21:32:00+08:00","closeLotId":"nbis-2375-add-20261005","note":"244 出掉 237.5 剩下一半的 NBIS；按同组 21:32 消息时间记录"},
+    {"id":"oklo-39-half-close-362-20261006","name":"OKLO","action":"减仓","positionType":"波段仓","price":39,"positionChange":0.825,"date":"2026-10-06T21:32:00+08:00","closeLotId":"oklo-362-add-20261002","note":"39 出一半 36.2 的 OKLO；截图未显示单独时间，按相邻可见 21:32 消息时间暂估"},
+    {"id":"asts-628-close-606-rest-20261006","name":"ASTS","action":"清仓","positionType":"波段仓","price":62.8,"positionChange":0.825,"date":"2026-10-06T21:32:00+08:00","closeLotId":"asts-606-add-20260929","note":"62.8 出掉 60.6 剩下一半的 ASTS；截图未显示单独时间，按相邻可见 21:32 消息时间暂估"},
+    {"id":"asts-628-close-5905-rest-20261006","name":"ASTS","action":"清仓","positionType":"波段仓","price":62.8,"positionChange":0.825,"date":"2026-10-06T21:38:00+08:00","closeLotId":"asts-5905-add-20261001","note":"62.8 出掉 59.05 剩下一半的 ASTS；截图未显示具体时间，按相邻可见消息时间暂估 21:38"},
+    {"id":"vst-156-close-1398-rest-20261006","name":"VST","action":"清仓","positionType":"波段仓","price":156,"positionChange":0.825,"date":"2026-10-06T21:40:00+08:00","closeLotId":"vst-1398-add-20260819","note":"156 出掉 139.8 的 VST 剩余仓位；此前已卖出一半；时间按相邻可见消息暂估 21:40"},
+    {"id":"pl-184-close-1705-rest-20261006","name":"PL","action":"清仓","positionType":"波段仓","price":18.4,"positionChange":0.4125,"date":"2026-10-06T21:42:00+08:00","closeLotId":"pl-1705-readd-1761-20261005","note":"18.4 出掉 17.05 剩下一半的 PL；截图未显示具体时间，按相邻可见消息时间暂估 21:42"},
+    {"id":"crwv-90-half-close-893-20261006","name":"CRWV","action":"减仓","positionType":"波段仓","price":90,"positionChange":0.20625,"date":"2026-10-06T21:44:00+08:00","closeLotId":"crwv-893-readd-923-20261003","note":"90 出一半 89.3 的 CRWV；截图未显示具体时间，按相邻可见消息时间暂估 21:44"},
+    {"id":"tsla-3805-close-3615-rest-20261006","name":"TSLA","action":"清仓","positionType":"波段仓","price":380.5,"positionChange":0.825,"date":"2026-10-06T21:44:00+08:00","closeLotId":"tsla-3615-add-20260928","note":"380.5 出掉 361.5 剩下一半的 TSLA；截图未显示具体时间，按相邻可见消息时间暂估 21:44"},
+    {"id":"cifr-1555-close-1505-rest-20261006","name":"CIFR","action":"清仓","positionType":"波段仓","price":15.55,"positionChange":0.4125,"date":"2026-10-06T21:46:00+08:00","closeLotId":"cifr-1505-readd-156-20261005","note":"15.55 出掉 15.05 剩下一半的 CIFR"},
+    {"id":"akam-111-half-close-1074-20261006","name":"AKAM","action":"减仓","positionType":"波段仓","price":111,"positionChange":0.825,"date":"2026-10-06T21:46:00+08:00","closeLotId":"akam-1074-add-20261005","note":"111 出一半 107.4 的 AKAM；按同组 21:46 消息时间记录"},
+    {"id":"crwv-908-close-893-rest-20261006","name":"CRWV","action":"清仓","positionType":"波段仓","price":90.8,"positionChange":0.20625,"date":"2026-10-06T21:50:00+08:00","closeLotId":"crwv-893-readd-923-20261003","note":"90.8 出掉剩下一半 89.3 的 CRWV"},
+    {"id":"iren-412-half-close-404-20261006","name":"IREN","action":"减仓","positionType":"波段仓","price":41.2,"positionChange":0.4125,"date":"2026-10-06T21:54:00+08:00","closeLotId":"iren-404-readd-432-20261005","note":"41.2 出一半 40.4 的 IREN"}
   ]
 }
