@@ -579,16 +579,20 @@ function renderRecordOrigin(now=new Date()) {
 let allocationMode='symbol';
 const HOLDING_SECTORS={
   'AI算力与数据中心':['CRWV','NBIS','IREN','CIFR','CBRS'],
-  '半导体与硬件':['SOXL','QCOM','MU','AVGO','DRAM','INTC','AEHR','WDC','GLW'],
-  '电动车与汽车':['TSLA','TSLL'],
-  '通信与航天':['NOK','ASTS','PL'],
-  '互联网与数字平台':['GOOGL','BABA','UBER','SOUN','NFXL','FBL'],
-  '数字资产':['COIN','CONL','RIOT'],
+  '半导体与存储':['QCOM','MU','WDC','INTC','AVGO','AEHR','SOXL','DRAM'],
+  '光通信与网络基础设施':['GLW','NOK'],
+  '航天与无人系统':['PL','ASTS','ONDS'],
+  '互联网与数字平台':['NFLX','NFXL','META','FBL','GOOGL','UBER','BABA'],
+  '互联网基础设施 / 边缘云 / 网络安全':['AKAM'],
+  'AI软件与应用':['SOUN'],
+  '数字资产与金融科技':['COIN','CONL','RIOT','HOOD'],
   '能源与电力':['OKLO','VST'],
-  '指数策略':['SPYU'],
+  '电动车与汽车':['TSLA','TSLL'],
   '贵金属':['GLD'],
-  '原油策略':['SCO']
+  '原油策略':['SCO'],
+  '指数杠杆策略':['SPYU']
 };
+const ALLOCATION_SYMBOL_LABELS={FBL:'META (账本代码 FBL)'};
 function renderHoldingAllocation(holdings) {
   const el=document.getElementById('holdingAllocation');
   if(!el)return;
@@ -596,7 +600,7 @@ function renderHoldingAllocation(holdings) {
   const grouped=new Map();
   for(const holding of holdings){
     const label=allocationMode==='symbol'?holding.code:Object.keys(HOLDING_SECTORS).find(sector=>HOLDING_SECTORS[sector].includes(holding.code))||'其他 / 待分类';
-    const item=grouped.get(label)||{label,value:0,codes:[]};item.value+=holding.position;item.codes.push(holding.code);grouped.set(label,item);
+    const item=grouped.get(label)||{label,value:0,codes:[]};item.value+=holding.position;item.codes.push(ALLOCATION_SYMBOL_LABELS[holding.code]||holding.code);grouped.set(label,item);
   }
   const sorted=[...grouped.values()].sort((a,b)=>b.value-a.value);
   const total=sorted.reduce((sum,h)=>sum+h.value,0),base=Math.max(100,total);
