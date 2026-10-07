@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-06T23:22:00+08:00",
+  "updatedAt": "2026-10-08T00:27:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4860,6 +4860,26 @@
     {"id":"iren-4185-half-close-418-20261006","name":"IREN","action":"减仓","positionType":"波段仓","price":41.85,"positionChange":0.825,"date":"2026-10-06T23:07:00+08:00","closeLotId":"iren-418-add-20261002","note":"41.85 出一半 41.8 的 IREN；按同组 23:07 消息时间记录"},
     {"id":"riot-1923-add-20261006","name":"RIOT","action":"加仓","positionType":"波段仓","price":19.23,"positionChange":1.65,"date":"2026-10-06T23:07:00+08:00","note":"加了六分之一常规仓"},
     {"id":"akam-109-readd-111-20261006","name":"AKAM","action":"加仓","positionType":"波段仓","price":109,"positionChange":0.825,"date":"2026-10-06T23:12:00+08:00","note":"加回 111 卖出的那部分 AKAM"},
-    {"id":"cbrs-1766-readd-1847-20261006","name":"CBRS","action":"加仓","positionType":"波段仓","price":176.6,"positionChange":0.4125,"date":"2026-10-06T23:22:00+08:00","note":"加回 184.7 卖出的那部分 CBRS"}
+    {"id":"cbrs-1766-readd-1847-20261006","name":"CBRS","action":"加仓","positionType":"波段仓","price":176.6,"positionChange":0.4125,"date":"2026-10-06T23:22:00+08:00","note":"加回 184.7 卖出的那部分 CBRS"},
+    {"id":"aehr-985-readd-1067-20261007","name":"AEHR","action":"加仓","positionType":"波段仓","price":98.5,"positionChange":0.4125,"date":"2026-10-07T01:26:00+08:00","note":"加回 106.7 卖出的那部分 AEHR"},
+    {"id":"dram-595-readd-611-20261007","name":"DRAM","action":"加仓","positionType":"波段仓","price":59.5,"positionChange":0.825,"date":"2026-10-07T03:46:00+08:00","note":"加回 61.1 卖出的 DRAM"},
+    {"id":"coin-185-add-20261007","name":"COIN","action":"加仓","positionType":"波段仓","price":185,"positionChange":1.65,"date":"2026-10-07T03:50:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-243-readd-252-20261007","name":"NBIS","action":"加仓","positionType":"波段仓","price":243,"positionChange":0.825,"date":"2026-10-07T19:23:00+08:00","note":"加回 252 卖出的那部分 NBIS"},
+    {"id":"crwv-895-readd-9123-20261007","name":"CRWV","action":"加仓","positionType":"波段仓","price":89.5,"positionChange":0.825,"date":"2026-10-07T19:23:00+08:00","note":"加回 91.23 卖出的那部分 CRWV"},
+    {"id":"iren-401-readd-4185-20261007","name":"IREN","action":"加仓","positionType":"波段仓","price":40.1,"positionChange":0.825,"date":"2026-10-07T19:23:00+08:00","note":"加回 41.85 卖出的那部分 IREN"},
+    {"id":"nbis-236-add-20261007","name":"NBIS","action":"加仓","positionType":"波段仓","price":236,"positionChange":1.65,"date":"2026-10-07T21:39:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"cifr-148-add-20261007","name":"CIFR","action":"加仓","positionType":"波段仓","price":14.8,"positionChange":1.65,"date":"2026-10-07T21:42:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"oklo-36-readd-39-20261007","name":"OKLO","action":"加仓","positionType":"波段仓","price":36,"positionChange":0.825,"date":"2026-10-07T21:42:00+08:00","note":"加回 39 卖出的那部分 OKLO"},
+    {"id":"riot-182-add-20261007","name":"RIOT","action":"加仓","positionType":"波段仓","price":18.2,"positionChange":1.65,"date":"2026-10-07T21:42:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"asts-596-add-20261007","name":"ASTS","action":"加仓","positionType":"波段仓","price":59.6,"positionChange":1.65,"date":"2026-10-07T21:47:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"pl-174-readd-184-20261007","name":"PL","action":"加仓","positionType":"波段仓","price":17.4,"positionChange":0.4125,"date":"2026-10-07T21:50:00+08:00","note":"加回 18.4 卖出的那部分 PL"},
+    {"id":"onds-709-add-20261007","name":"ONDS","action":"加仓","positionType":"波段仓","price":7.09,"positionChange":1.65,"date":"2026-10-07T21:50:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"coin-1788-add-20261007","name":"COIN","action":"加仓","positionType":"波段仓","price":178.8,"positionChange":1.65,"date":"2026-10-07T21:54:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"hood-1081-add-20261007","name":"HOOD","action":"加仓","positionType":"波段仓","price":108.1,"positionChange":1.65,"date":"2026-10-07T21:54:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"dram-597-half-close-595-20261007","name":"DRAM","action":"减仓","positionType":"波段仓","price":59.7,"positionChange":0.4125,"date":"2026-10-07T22:41:00+08:00","note":"59.7 出一半 59.5 的 DRAM","closeLotId":"dram-595-readd-611-20261007"},
+    {"id":"dram-5965-close-595-rest-20261007","name":"DRAM","action":"清仓","positionType":"波段仓","price":59.65,"positionChange":0.4125,"date":"2026-10-07T22:50:00+08:00","note":"59.65 出掉剩下一半 59.5 的 DRAM","closeLotId":"dram-595-readd-611-20261007"},
+    {"id":"crwv-878-add-20261007","name":"CRWV","action":"加仓","positionType":"波段仓","price":87.8,"positionChange":1.65,"date":"2026-10-07T23:38:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"hood-10915-close-1081-20261008","name":"HOOD","action":"清仓","positionType":"波段仓","price":109.15,"positionChange":1.65,"date":"2026-10-08T00:27:00+08:00","note":"109.15 出掉 108.1 的 HOOD","closeLotId":"hood-1081-add-20261007"},
+    {"id":"coin-18075-close-1788-20261008","name":"COIN","action":"清仓","positionType":"波段仓","price":180.75,"positionChange":1.65,"date":"2026-10-08T00:27:00+08:00","note":"180.75 出掉 178.8 的 COIN","closeLotId":"coin-1788-add-20261007"}
   ]
 }
