@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-08T22:29:00+08:00",
+  "updatedAt": "2026-10-09T01:12:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4890,6 +4890,13 @@
     {"id":"nfxl-1428-half-close-141-20261008","name":"NFXL","action":"减仓","positionType":"波段仓","price":14.28,"positionChange":0.825,"date":"2026-10-08T21:56:00+08:00","closeLotId":"nfxl-141-add-20260929","note":"14.28 出一半 14.1 的 NFXL"},
     {"id":"asts-579-add-20261008","name":"ASTS","action":"加仓","positionType":"波段仓","price":57.9,"positionChange":1.65,"date":"2026-10-08T22:07:00+08:00","note":"加了六分之一常规仓"},
     {"id":"soxl-1526-half-close-1489-20261008","name":"SOXL","action":"减仓","positionType":"波段仓","price":152.6,"positionChange":0.825,"date":"2026-10-08T22:28:00+08:00","closeLotId":"soxl-1489-add-20261008","note":"152.6 出一半 148.9 的 SOXL；截图未显示该条消息时间，按后一条可见 22:29 记录暂估前一分钟"},
-    {"id":"soxl-1554-close-1489-rest-20261008","name":"SOXL","action":"清仓","positionType":"波段仓","price":155.4,"positionChange":0.825,"date":"2026-10-08T22:29:00+08:00","closeLotId":"soxl-1489-add-20261008","note":"155.4 出掉 148.9 剩下一半的 SOXL"}
+    {"id":"soxl-1554-close-1489-rest-20261008","name":"SOXL","action":"清仓","positionType":"波段仓","price":155.4,"positionChange":0.825,"date":"2026-10-08T22:29:00+08:00","closeLotId":"soxl-1489-add-20261008","note":"155.4 出掉 148.9 剩下一半的 SOXL"},
+    {"id":"soxl-1405-add-20261009","name":"SOXL","action":"加仓","positionType":"波段仓","price":140.5,"positionChange":1.65,"date":"2026-10-09T01:12:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"nbis-221-add-20261009","name":"NBIS","action":"加仓","positionType":"波段仓","price":221,"positionChange":1.65,"date":"2026-10-09T01:12:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"crwv-815-add-20261009","name":"CRWV","action":"加仓","positionType":"波段仓","price":81.5,"positionChange":1.65,"date":"2026-10-09T01:12:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"cbrs-163-add-20261009","name":"CBRS","action":"加仓","positionType":"波段仓","price":163,"positionChange":1.65,"date":"2026-10-09T01:12:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"riot-165-add-20261009","name":"RIOT","action":"加仓","positionType":"波段仓","price":16.5,"positionChange":1.65,"date":"2026-10-09T01:12:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"intc-1065-add-20261009","name":"INTC","action":"加仓","positionType":"波段仓","price":106.5,"positionChange":1.65,"date":"2026-10-09T01:12:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"oklo-34-add-20261009","name":"OKLO","action":"加仓","positionType":"波段仓","price":34,"positionChange":1.65,"date":"2026-10-09T01:12:00+08:00","note":"加了六分之一常规仓"}
   ]
 }
