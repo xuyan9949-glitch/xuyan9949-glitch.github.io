@@ -1067,10 +1067,15 @@ function renderPairs(pairs) {
   document.getElementById("pairsEmpty").hidden=ordered.length>0;
 }
 
+let activityRangeDays=null;
 function renderActivity() {
   const capital = Number(state.accountCapital) || 100000;
   const list=document.getElementById("activityList");
   const dateFilter=document.getElementById("activityDateFilter");
+  const dateControls=document.getElementById('activityDateControls');
+  const dailyMode=document.getElementById('activityDailyMode');
+  const summaryEl=document.getElementById('activitySummary');
+  const rangeModes=document.getElementById('activityRangeModes');
   const selectedDate=dateFilter.value;
   const counts=new Map();
   for(const trade of state.trades){
@@ -1086,19 +1091,45 @@ function renderActivity() {
   }).join('');
   dateFilter.value=counts.has(selectedDate)?selectedDate:counts.has(today)?today:availableDates[0]||'';
   const ordered=state.trades.filter(t=>marketDateKey(t.date)===dateFilter.value).sort((a,b)=>new Date(b.date)-new Date(a.date));
-  setText('activityCount',`当日 ${ordered.length} 笔`);
-  const purchases=ordered.filter(t=>buyActions.includes(t.action));
-  const sales=ordered.filter(t=>sellActions.includes(t.action));
+  const inRange=trade=>{
+    if(activityRangeDays===null)return true;
+    const [year,month,day]=today.split('-').map(Number);
+    const firstDay=new Date(Date.UTC(year,month-1,day)-(activityRangeDays-1)*86400000).toISOString().slice(0,10);
+    const date=marketDateKey(trade.date);
+    return date>=firstDay&&date<=today;
+  };
+  const summaryTrades=activityRangeDays===null?ordered:state.trades.filter(inRange);
+  const purchases=summaryTrades.filter(t=>buyActions.includes(t.action));
+  const sales=summaryTrades.filter(t=>sellActions.includes(t.action));
   const sumPosition=trades=>trades.reduce((sum,t)=>sum+Number(t.positionChange||0),0);
   const bought=sumPosition(purchases),sold=sumPosition(sales);
   const net=Math.round((bought-sold)*1000000)/1000000;
   const precise=value=>Number(value).toLocaleString('zh-CN',{maximumFractionDigits:4});
   const period=dateFilter.value.replaceAll('-','/');
-  document.getElementById('activitySummary').innerHTML=`
-    <div class="activity-summary-heading"><b>${period?period+' 操作汇总':'暂无操作记录'}</b><span>仅统计所选日期 · 按初始本金计算</span></div>
-    <div class="activity-summary-stat summary-buy"><span><i>↑</i> 买入仓位 <em>${purchases.length} 笔</em></span><strong>${precise(bought)}<small>%</small></strong><small>买入 / 加仓 · ${usd(capital*bought/100)}</small></div>
-    <div class="activity-summary-stat summary-sell"><span><i>↓</i> 卖出仓位 <em>${sales.length} 笔</em></span><strong>${precise(sold)}<small>%</small></strong><small>减仓 / 平仓 · ${usd(capital*sold/100)}</small></div>
-    <div class="activity-summary-stat summary-net"><span>仓位净变化 <em>${net>0?'净增仓':net<0?'净减仓':'持平'}</em></span><strong>${net>0?'+':net<0?'−':''}${precise(Math.abs(net))}<small>百分点</small></strong><small>买入 − 卖出 · ${net>0?'+':net<0?'−':''}${usd(capital*Math.abs(net)/100)}</small></div>`;
+  const rangeMode=activityRangeDays!==null;
+  dateControls.hidden=rangeMode;
+  dailyMode.hidden=!rangeMode;
+  list.hidden=rangeMode;
+  rangeModes.querySelectorAll('button[data-days]').forEach(button=>{
+    const active=Number(button.dataset.days)===activityRangeDays;
+    button.classList.toggle('active',active);
+    button.setAttribute('aria-pressed',String(active));
+  });
+  summaryEl.classList.toggle('summary-percent-only',rangeMode);
+  if(rangeMode){
+    summaryEl.innerHTML=`
+      <div class="activity-summary-heading"><b>近${activityRangeDays}日仓位汇总</b></div>
+      <div class="activity-summary-stat summary-buy"><span>买入仓位</span><strong>${precise(bought)}<small>%</small></strong></div>
+      <div class="activity-summary-stat summary-sell"><span>卖出仓位</span><strong>${precise(sold)}<small>%</small></strong></div>
+      <div class="activity-summary-stat summary-net"><span>净买入仓位</span><strong>${net>0?'+':net<0?'−':''}${precise(Math.abs(net))}<small>%</small></strong></div>`;
+  }else{
+    setText('activityCount',`当日 ${ordered.length} 笔`);
+    summaryEl.innerHTML=`
+      <div class="activity-summary-heading"><b>${period?period+' 操作汇总':'暂无操作记录'}</b><span>仅统计所选日期 · 按初始本金计算</span></div>
+      <div class="activity-summary-stat summary-buy"><span><i>↑</i> 买入仓位 <em>${purchases.length} 笔</em></span><strong>${precise(bought)}<small>%</small></strong><small>买入 / 加仓 · ${usd(capital*bought/100)}</small></div>
+      <div class="activity-summary-stat summary-sell"><span><i>↓</i> 卖出仓位 <em>${sales.length} 笔</em></span><strong>${precise(sold)}<small>%</small></strong><small>减仓 / 平仓 · ${usd(capital*sold/100)}</small></div>
+      <div class="activity-summary-stat summary-net"><span>仓位净变化 <em>${net>0?'净增仓':net<0?'净减仓':'持平'}</em></span><strong>${net>0?'+':net<0?'−':''}${precise(Math.abs(net))}<small>百分点</small></strong><small>买入 − 卖出 · ${net>0?'+':net<0?'−':''}${usd(capital*Math.abs(net)/100)}</small></div>`;
+  }
   list.innerHTML=ordered.map(t=>{
     const buy=buyActions.includes(t.action);
     return `<div class="activity-item">
@@ -1112,7 +1143,7 @@ function renderActivity() {
     </div>`;
   }).join("");
   const empty=document.getElementById("activityEmpty");
-  empty.hidden=ordered.length>0;
+  empty.hidden=rangeMode||ordered.length>0;
   empty.innerHTML=dateFilter.value==='all'?'<div>还没有操作记录</div><p>点击右上角“记录操作”开始追踪。</p>':'<div>这一天没有操作记录</div><p>请选择其他日期或查看全部日期。</p>';
 }
 
@@ -1507,7 +1538,14 @@ document.getElementById("closedSearchInput").oninput=()=>renderClosedSymbols(get
 document.getElementById('periodSort').onchange=()=>renderPeriodReview();
 document.getElementById('closedFilter').onchange=()=>renderClosedSymbols(getHoldings(),computeLedger());
 document.getElementById('closedSort').onchange=()=>renderClosedSymbols(getHoldings(),computeLedger());
-document.getElementById('activityDateFilter').onchange=renderActivity;
+document.getElementById('activityDateFilter').onchange=()=>{activityRangeDays=null;renderActivity();};
+document.getElementById('activityDailyMode').onclick=()=>{activityRangeDays=null;renderActivity();};
+document.getElementById('activityRangeModes').onclick=e=>{
+  const button=e.target.closest('button[data-days]');
+  if(!button)return;
+  activityRangeDays=Number(button.dataset.days);
+  renderActivity();
+};
 document.querySelectorAll(".sortable").forEach(th=>th.onclick=()=>{
   const key=th.dataset.sort; if(sortKey===key)sortDirection*=-1;else{sortKey=key;sortDirection=-1;}renderHoldings(getHoldings());
 });
