@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-09T14:56:00+08:00",
+  "updatedAt": "2026-10-09T22:41:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4880,7 +4880,7 @@
     {"id":"dram-5965-close-595-rest-20261007","name":"DRAM","action":"清仓","positionType":"波段仓","price":59.65,"positionChange":0.4125,"date":"2026-10-07T22:50:00+08:00","note":"59.65 出掉剩下一半 59.5 的 DRAM","closeLotId":"dram-595-readd-611-20261007"},
     {"id":"crwv-878-add-20261007","name":"CRWV","action":"加仓","positionType":"波段仓","price":87.8,"positionChange":1.65,"date":"2026-10-07T23:38:00+08:00","note":"加了六分之一常规仓"},
     {"id":"hood-10915-close-1081-20261008","name":"HOOD","action":"清仓","positionType":"波段仓","price":109.15,"positionChange":1.65,"date":"2026-10-08T00:27:00+08:00","note":"109.15 出掉 108.1 的 HOOD","closeLotId":"hood-1081-add-20261007"},
-    {"id":"coin-18075-close-1788-20261008","name":"COIN","action":"清仓","positionType":"波段仓","price":180.75,"positionChange":1.65,"date":"2026-10-08T00:27:00+08:00","note":"180.75 出掉 178.8 的 COIN","closeLotId":"coin-1788-add-20261007"},
+    {"id":"coin-18075-close-1788-20261008","name":"COIN","action":"减仓","positionType":"波段仓","price":180.75,"positionChange":0.825,"date":"2026-10-08T00:27:00+08:00","note":"180.75 出掉一半 178.8 的 COIN；后续截图确认尚有另一半待出","closeLotId":"coin-1788-add-20261007"},
     {"id":"soxl-1489-add-20261008","name":"SOXL","action":"加仓","positionType":"波段仓","price":148.9,"positionChange":1.65,"date":"2026-10-08T18:59:00+08:00","note":"加了六分之一常规仓"},
     {"id":"nbis-2315-add-20261008","name":"NBIS","action":"加仓","positionType":"波段仓","price":231.5,"positionChange":1.65,"date":"2026-10-08T19:19:00+08:00","note":"加了六分之一常规仓"},
     {"id":"iren-379-add-20261008","name":"IREN","action":"加仓","positionType":"波段仓","price":37.9,"positionChange":1.65,"date":"2026-10-08T19:42:00+08:00","note":"加了六分之一常规仓"},
@@ -4901,6 +4901,12 @@
     {"id":"soxl-1503-half-close-1405-20261009","name":"SOXL","action":"减仓","positionType":"波段仓","price":150.3,"positionChange":0.825,"date":"2026-10-09T14:49:00+08:00","closeLotId":"soxl-1405-add-20261009","note":"150.3 出一半 140.5 的 SOXL；剩余一半可挂条件单，跌破 149 都出（条件单计划，未视为已成交）"},
     {"id":"nbis-22787-half-close-221-20261009","name":"NBIS","action":"减仓","positionType":"波段仓","price":227.87,"positionChange":0.825,"date":"2026-10-09T14:49:00+08:00","closeLotId":"nbis-221-add-20261009","note":"227.87 出一半 221 的 NBIS"},
     {"id":"cbrs-17073-half-close-163-20261009","name":"CBRS","action":"减仓","positionType":"波段仓","price":170.73,"positionChange":0.825,"date":"2026-10-09T14:53:00+08:00","closeLotId":"cbrs-163-add-20261009","note":"170.73 出一半 163 的 CBRS"},
-    {"id":"gld-3846-close-3813-rest-20261009","name":"GLD","action":"清仓","positionType":"波段仓","price":384.6,"positionChange":0.825,"date":"2026-10-09T14:56:00+08:00","closeLotId":"gld-3813-add-20260929","note":"384.6 出掉 381.3 剩下一半的 GLD"}
+    {"id":"gld-3846-close-3813-rest-20261009","name":"GLD","action":"清仓","positionType":"波段仓","price":384.6,"positionChange":0.825,"date":"2026-10-09T14:56:00+08:00","closeLotId":"gld-3813-add-20260929","note":"384.6 出掉 381.3 剩下一半的 GLD"},
+    {"id":"soxl-150-close-1405-rest-20261009","name":"SOXL","action":"清仓","positionType":"波段仓","price":150,"positionChange":0.825,"date":"2026-10-09T17:12:00+08:00","closeLotId":"soxl-1405-add-20261009","note":"150 出掉剩下一半 140.5 的 SOXL"},
+    {"id":"riot-172-half-close-165-20261009","name":"RIOT","action":"减仓","positionType":"波段仓","price":17.2,"positionChange":0.825,"date":"2026-10-09T17:12:00+08:00","closeLotId":"riot-165-add-20261009","note":"17.2 出一半 16.5 的 RIOT"},
+    {"id":"nbis-2205-readd-22787-20261009","name":"NBIS","action":"加仓","positionType":"波段仓","price":220.5,"positionChange":0.825,"date":"2026-10-09T21:37:00+08:00","note":"加回 227.87 卖出的那部分 NBIS"},
+    {"id":"soxl-1403-add-20261009","name":"SOXL","action":"加仓","positionType":"波段仓","price":140.3,"positionChange":1.65,"date":"2026-10-09T21:57:00+08:00","note":"加了六分之一常规仓；截图未显示消息时间，按下一条可见 21:58 暂估为前一分钟"},
+    {"id":"tsla-3855-half-close-353-20261009","name":"TSLA","action":"减仓","positionType":"波段仓","price":385.5,"positionChange":0.825,"date":"2026-10-09T21:58:00+08:00","closeLotId":"tsla-353-add-20260929","note":"385.5 出一半 353 的 TSLA"},
+    {"id":"coin-181-close-1788-rest-20261009","name":"COIN","action":"清仓","positionType":"波段仓","price":181,"positionChange":0.825,"date":"2026-10-09T22:41:00+08:00","closeLotId":"coin-1788-add-20261007","note":"181 出掉 178.8 剩下一半的 COIN"}
   ]
 }
