@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-09T01:12:00+08:00",
+  "updatedAt": "2026-10-09T14:49:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4897,6 +4897,8 @@
     {"id":"cbrs-163-add-20261009","name":"CBRS","action":"加仓","positionType":"波段仓","price":163,"positionChange":1.65,"date":"2026-10-09T01:12:00+08:00","note":"加了六分之一常规仓"},
     {"id":"riot-165-add-20261009","name":"RIOT","action":"加仓","positionType":"波段仓","price":16.5,"positionChange":1.65,"date":"2026-10-09T01:12:00+08:00","note":"加了六分之一常规仓"},
     {"id":"intc-1065-add-20261009","name":"INTC","action":"加仓","positionType":"波段仓","price":106.5,"positionChange":1.65,"date":"2026-10-09T01:12:00+08:00","note":"加了六分之一常规仓"},
-    {"id":"oklo-34-add-20261009","name":"OKLO","action":"加仓","positionType":"波段仓","price":34,"positionChange":1.65,"date":"2026-10-09T01:12:00+08:00","note":"加了六分之一常规仓"}
+    {"id":"oklo-34-add-20261009","name":"OKLO","action":"加仓","positionType":"波段仓","price":34,"positionChange":1.65,"date":"2026-10-09T01:12:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"soxl-1503-half-close-1405-20261009","name":"SOXL","action":"减仓","positionType":"波段仓","price":150.3,"positionChange":0.825,"date":"2026-10-09T14:49:00+08:00","closeLotId":"soxl-1405-add-20261009","note":"150.3 出一半 140.5 的 SOXL；剩余一半可挂条件单，跌破 149 都出（条件单计划，未视为已成交）"},
+    {"id":"nbis-22787-half-close-221-20261009","name":"NBIS","action":"减仓","positionType":"波段仓","price":227.87,"positionChange":0.825,"date":"2026-10-09T14:49:00+08:00","closeLotId":"nbis-221-add-20261009","note":"227.87 出一半 221 的 NBIS"}
   ]
 }
