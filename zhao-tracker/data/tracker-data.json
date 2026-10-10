@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-10T02:00:00+08:00",
+  "updatedAt": "2026-10-10T02:30:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4909,6 +4909,7 @@
     {"id":"tsla-3855-half-close-353-20261009","name":"TSLA","action":"减仓","positionType":"波段仓","price":385.5,"positionChange":0.825,"date":"2026-10-09T21:58:00+08:00","closeLotId":"tsla-353-add-20260929","note":"385.5 出一半 353 的 TSLA"},
     {"id":"coin-181-close-1788-rest-20261009","name":"COIN","action":"清仓","positionType":"波段仓","price":181,"positionChange":0.825,"date":"2026-10-09T22:41:00+08:00","closeLotId":"coin-1788-add-20261007","note":"181 出掉 178.8 剩下一半的 COIN"},
     {"id":"akam-1056-half-close-1027-20261010","name":"AKAM","action":"减仓","positionType":"波段仓","price":105.6,"positionChange":0.825,"date":"2026-10-10T01:41:00+08:00","closeLotId":"akam-1027-add-20261008","note":"105.6 出一半 102.7 的 AKAM"},
-    {"id":"akam-1079-close-1027-rest-20261010","name":"AKAM","action":"清仓","positionType":"波段仓","price":107.9,"positionChange":0.825,"date":"2026-10-10T02:00:00+08:00","closeLotId":"akam-1027-add-20261008","note":"107.9 出掉剩下一半 102.7 的 AKAM"}
+    {"id":"akam-1079-close-1027-rest-20261010","name":"AKAM","action":"清仓","positionType":"波段仓","price":107.9,"positionChange":0.825,"date":"2026-10-10T02:00:00+08:00","closeLotId":"akam-1027-add-20261008","note":"107.9 出掉剩下一半 102.7 的 AKAM"},
+    {"id":"akam-109-close-109-readd-20261010","name":"AKAM","action":"清仓","positionType":"波段仓","price":109,"positionChange":0.825,"date":"2026-10-10T02:30:00+08:00","closeLotId":"akam-109-readd-111-20261006","note":"109 出掉 109 的 AKAM"}
   ]
 }
