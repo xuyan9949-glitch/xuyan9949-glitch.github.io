@@ -4,9 +4,11 @@ function load(storage={}){const dom=new JSDOM(fs.readFileSync(path.join(root,rou
 function click(d,s){d.window.document.querySelector(s).click();}
 let d=load(),doc=d.window.document;
 assert.ok(doc.querySelectorAll('#reader-toc a').length>5);
+assert.equal(doc.querySelector('#reader-toc').previousElementSibling.className,'reader-toolbar');
 assert.ok(doc.querySelector('#reader-toc').hidden);click(d,'#reader-toc-toggle');assert.equal(doc.querySelector('#reader-toc-toggle').getAttribute('aria-expanded'),'true');assert.equal(doc.querySelector('#reader-toc').hidden,false);click(d,'#reader-toc a');assert.ok(doc.querySelector('#reader-toc').hidden);
 for(const a of doc.querySelectorAll('.reader-downloads a')){assert.ok(fs.existsSync(path.join(root,a.getAttribute('href'))));assert.ok(a.hasAttribute('download'));}
 assert.equal(doc.querySelectorAll('.reader-downloads a').length,1);
+assert.ok(doc.querySelector('.v0-table-scroll[role=region][tabindex="0"]'));
 click(d,'#reader-focus');assert.ok(doc.body.classList.contains('reader-focused'));click(d,'#reader-focus');assert.ok(!doc.body.classList.contains('reader-focused'));
 doc.querySelector('#reader-size').value='21';doc.querySelector('#reader-size').dispatchEvent(new d.window.Event('change'));assert.equal(doc.querySelector('.article-content').style.getPropertyValue('--reading-font-size'),'21px');assert.equal(d.window.localStorage.getItem('xxyalpha.reading.size'),'21');
 const hash=doc.querySelector('[name=article-source-hash]').content,heading=doc.querySelector('.article-content h2').id;d.window.close();
