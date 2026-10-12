@@ -9,11 +9,36 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 DEPS = '<link rel="icon" href="/images/alpha.svg"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/journal.css"><script defer src="/js/articles.js"></script><script defer src="/js/calendar-data.js"></script><script defer src="/js/archive-data.js"></script><script defer src="/js/journal.js"></script>'
+RESEARCH_DEPS = '<link rel="stylesheet" href="/css/research-v0.css"><script defer src="/js/research-data.js"></script><script defer src="/js/research-v0.js"></script>'
+V0_DEPS = DEPS.replace('<script defer src="/js/journal.js">', RESEARCH_DEPS+'<script defer src="/js/journal.js">')
+
+def sync_research(data, header, footer):
+    """Generate migrated layouts and original-document routes from tracked sources."""
+    source=ROOT/'content/research-documents.json'
+    documents=json.loads(source.read_text())['documents'] if source.exists() else []
+    index=[{k:v for k,v in d.items() if k!='html'} for d in documents]
+    (ROOT/'js/research-data.js').write_text('window.researchDocuments = '+json.dumps(index,ensure_ascii=False,indent=2)+';\n')
+    def page(title, description, body, key, extra='', attributes=''):
+        return '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#164334"><title>'+escape(title)+' | XXY Alpha</title><meta name="description" content="'+escape(description,quote=True)+'">'+V0_DEPS+extra+'</head><body data-page="'+key+'" class="journal research-v0" '+attributes+'><a class="skip-link" href="#main">跳转到正文</a>'+header+body+footer+'</body></html>'
+    for rel,template,title,key in [('index.html','research-home.html','理解公司、产业与时代变化','home'),('research/index.html','research-directory.html','公司研究库','research')]:
+        path=ROOT/'templates'/template
+        if path.exists(): (ROOT/rel).write_text(page(title,'以公司为入口，检索投研档案、公司故事、财报与历史研究记录。',path.read_text(),key))
+    for company in data['companies']:
+        if not company.get('profile'):continue
+        path=ROOT/'research'/company['id'].lower()/'index.html';path.parent.mkdir(parents=True,exist_ok=True)
+        body='<main id="main" class="page-shell detail-shell" data-company="'+escape(company['id'],quote=True)+'"><div id="company-detail"></div></main>'
+        path.write_text(page(company['name']+' '+company['id'],company['profile']['summary'],body,'company-detail'))
+    for d in documents:
+        path=ROOT/d['file'].strip('/')/'index.html';path.parent.mkdir(parents=True,exist_ok=True)
+        context='<div class="v0-document-meta">资料截至 '+escape(d['date'])+' · 原始文稿：'+escape(d['sourceFile'])+'<br><a href="'+escape(d['download'],quote=True)+'" download>下载原始 Word</a> · <a href="/research/'+d['ticker'].lower()+'/">返回公司档案</a></div>'
+        body='<main id="main" class="container article-page v0-full-document"><a class="back" href="/research/'+d['ticker'].lower()+'/">← '+escape(d['ticker'])+' 公司档案</a><h1>'+escape(d['title'])+'</h1>'+context+'<div class="article-content">'+d['html']+'</div></main>'
+        path.write_text(page(d['title'],'资料截止 '+d['date']+'，从原始研究文稿导入的完整阅读版本。',body,'article','<script defer src="/js/reader.js"></script>', 'data-reading-id="'+escape(d['id'],quote=True)+'"'))
 
 def sync_journal():
     header=(ROOT/'templates/journal-header.html').read_text().strip()
     footer=(ROOT/'templates/journal-footer.html').read_text().strip()
     data=json.loads((ROOT/'content/archives.json').read_text())
+    sync_research(data,header,footer)
     (ROOT/'js/archive-data.js').write_text('window.archiveData = '+json.dumps(data,ensure_ascii=False,indent=2)+';\n')
     ids=re.findall(r'"id":\s*"([^"]+)"',(ROOT/'js/articles.js').read_text())
     for rel in ['articles/'+i+'/index.html' for i in ids]+['about/index.html']:
@@ -23,7 +48,7 @@ def sync_journal():
         # Match whole quoted attributes; the old favicon contains literal SVG > characters.
         head=re.search(r'<head>(.*?)</head>',s,re.S).group(1)
         head=re.sub(r'<link\b(?:[^>"\']|"[^"]*"|\'[^\']*\')*>',lambda m:'' if re.search(r'rel=["\'](?:stylesheet|icon)["\']',m.group()) else m.group(),head)
-        head=re.sub(r'<script\b[^>]*src="/js/(?:articles|calendar-data|archive-data|journal|downloads|reader)\.js"[^>]*></script>','',head)
+        head=re.sub(r'<script\b[^>]*src="/js/(?:articles|calendar-data|archive-data|journal|downloads|reader|research-data|research-v0)\.js"[^>]*></script>','',head)
         head=re.sub(r'<meta name="article-source-hash"[^>]*>','',head)
         head='\n'.join(line.rstrip() for line in head.splitlines())
         key='article' if rel.startswith('articles/') else 'about'
@@ -46,6 +71,13 @@ def sync_journal():
     pages=[ROOT/'index.html']+[p for folder in ['events','research','learning','notes','calendar','workbench'] for p in (ROOT/folder).rglob('index.html')]
     for p in pages:
         s=p.read_text();rel=p.relative_to(ROOT).as_posix();route='/' if rel=='index.html' else '/'+rel[:-10]
+        # Retained directory pages need the same research index and components.
+        if rel=='notes/index.html' and '/js/research-v0.js' not in s:
+            s=s.replace('<script defer src="/js/journal.js">',RESEARCH_DEPS+'<script defer src="/js/journal.js">')
+        expected='<meta name="robots" content="noindex,nofollow">' if route=='/workbench/' else '<link rel="canonical" href="https://www.xxyalpha.cn'+route+'">'
+        if expected in s:
+            p.write_text(s)
+            continue
         s=re.sub(r'<link rel="canonical"[^>]*>','',s)
         s=re.sub(r'<meta name="robots"[^>]*>','',s)
         extra='<meta name="robots" content="noindex,nofollow">' if route=='/workbench/' else '<link rel="canonical" href="https://www.xxyalpha.cn'+route+'">'

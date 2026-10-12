@@ -95,3 +95,25 @@ keywords: 搜索关键词 空格分隔
 `/workbench/` 提供粘贴与上传入口，跳转现有 `https://admin.xxyalpha.cn/compose.html`，并传递事件/公司归属。原观察草稿保留在同页折叠区，存储键未变。管理台的新导入功能和档案写入逻辑维护于当前工作区的独立 `publishing-admin` 目录，不放入公开站点。
 
 导入内容在浏览器解析、预览与暂存；确认发布后，正文及档案关联一起提交。DOCX 优先保留格式，DOC/PDF 是文字导入，扫描件需要先识别文字。
+
+## 2026-10 投研研究库 V0
+
+首页与公司目录使用 `templates/research-home.html`、`templates/research-directory.html`，由 `tools/sync_journal.py` 生成。NBIS/LITE/MU 的 `profile` 与文稿索引维护在 `content/archives.json`；摘要按原研究日期展示，不是实时行情。首版图片沿用已选定 V0 Demo。
+
+原稿 HTML、可检索全文和原文件指纹维护在 `content/research-documents.json`；`js/research-data.js` 与文稿阅读页均为生成物。原始 Word 下载在 `downloads/research/<ticker>/`。更新现有原稿可运行：
+
+```sh
+python3 tools/import_research_docx.py /absolute/path/MU_Investment_Dossier.docx --ticker MU --kind dossier --date 2026-10-02
+```
+
+`--date` 必须使用原稿资料截止日期；摘要的日期、财务数值和来源仍须在档案源中单独审核更新。该命令替换指定原稿版本，Git 保留此前版本；不自动重写其他研究和文章。新增普通文章仍走既有发布后台／Markdown 导入，按 `个股:MU` 或 `财报:MU` 自动参与公司归档。
+
+验证命令：
+
+```sh
+python3 tools/sync_journal.py
+NODE_PATH=/tmp/xxyalpha-qa/node_modules node tools/test_journal.cjs
+NODE_PATH=/tmp/xxyalpha-qa/node_modules node tools/test_research_v0.cjs
+```
+
+V0 开发在 PR #3 的分支中。桌面／手机视觉验收前不合并 main。当前 46 篇公开文章的原文、日期与索引保持原有状态。旧站已有一篇 2026-09-15 的 AI 文章缺少 PDF/Word 导出登记，`tools/check_exports.py` 在原分支也失败；原有 45 组下载及指纹需独立核对，不能把这项失败标为本次通过。
