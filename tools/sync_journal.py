@@ -21,7 +21,7 @@ def sync_research(data, header, footer):
     (ROOT/'js/research-data.js').write_text('window.researchDocuments = '+json.dumps(index,ensure_ascii=False,indent=2)+';\n')
     def page(title, description, body, key, extra='', attributes=''):
         return '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#164334"><title>'+escape(title)+' | XXY Alpha</title><meta name="description" content="'+escape(description,quote=True)+'">'+V0_DEPS+extra+'</head><body data-page="'+key+'" class="journal research-v0" '+attributes+'><a class="skip-link" href="#main">跳转到正文</a>'+header+body+footer+'</body></html>'
-    for rel,template,title,key in [('index.html','research-home.html','理解公司、产业与时代变化','home'),('research/index.html','research-directory.html','公司研究库','research')]:
+    for rel,template,title,key in [('index.html','research-home.html','公司档案','research'),('research/index.html','research-directory.html','公司档案','research')]:
         path=ROOT/'templates'/template
         if path.exists(): (ROOT/rel).write_text(page(title,'以公司为入口，检索投研档案、公司故事、财报与历史研究记录。',path.read_text(),key))
     for company in data['companies']:
@@ -66,13 +66,15 @@ def sync_journal():
             if path.exists():continue
             path.parent.mkdir(parents=True,exist_ok=True)
             new=re.sub(r'<main\b.*?</main>',f'<main id="main" class="page-shell detail-shell" {attribute}="{escape(item["id"],quote=True)}"><div id="{target}"></div></main>',shell,flags=re.S)
-            new=new.replace('data-page="home"',f'data-page="{key}"')
+            new=re.sub(r'data-page="[^"]+"',f'data-page="{key}"',new,count=1)
             new=re.sub(r'<title>.*?</title>','<title>'+escape(item.get('title',item.get('name','研究档案')))+' | XXY Alpha</title>',new)
             path.write_text(new)
     # Canonicals are route-specific; the workbench must not be indexed.
     pages=[ROOT/'index.html']+[p for folder in ['events','research','learning','notes','calendar','workbench'] for p in (ROOT/folder).rglob('index.html')]
     for p in pages:
         s=p.read_text();rel=p.relative_to(ROOT).as_posix();route='/' if rel=='index.html' else '/'+rel[:-10]
+        s=re.sub(r'<header class="site-header"[^>]*>.*?</header>',lambda _:header,s,flags=re.S)
+        s=re.sub(r'<footer class="site-footer[^\"]*"[^>]*>.*?</footer>',lambda _:footer,s,flags=re.S)
         # Retained directory pages need the same research index and components.
         if rel=='notes/index.html' and '/js/research-v0.js' not in s:
             s=s.replace('<script defer src="/js/journal.js">',RESEARCH_DEPS+'<script defer src="/js/journal.js">')
