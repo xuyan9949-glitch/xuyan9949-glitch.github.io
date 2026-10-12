@@ -23,14 +23,14 @@ $$('[data-nav]').forEach(a=>{if(a.dataset.nav===navKey){a.classList.add('active'
 $('.mobile-menu')?.addEventListener('click',e=>{const open=$('.primary-nav').classList.toggle('open');e.currentTarget.setAttribute('aria-expanded',String(open));});
 if(page==='home'){
 for(const [id,n] of [['v0-article-count',all.length],['v0-company-count',data.companies.length],['v0-document-count',(window.researchDocuments||[]).length]]){const el=document.getElementById(id);if(el)el.textContent=n;}
-$('#recent-articles').innerHTML=all.slice(0,4).map((a,i)=>articleRow(a,i===0)).join('');
+$('#recent-articles').innerHTML=all.length?all.slice(0,4).map((a,i)=>articleRow(a,i===0)).join(''):(window.researchDocuments||[]).map(window.researchV0.docLink).join('')||'<div class="empty">从第一份正式研究开始。</div>';
 $('#home-companies').innerHTML=['NBIS','LITE','MU'].map(id=>companyCard(data.companies.find(c=>c.id===id))).join('');
-$('#evergreen').innerHTML=['optical-communication-learning-path','industry-glossary-2026','stagg-professionalism'].map(byId).filter(Boolean).map(readingLink).join('');
+$('#evergreen').innerHTML=['optical-communication-learning-path','industry-glossary-2026','stagg-professionalism'].map(byId).filter(Boolean).map(readingLink).join('')||'<div class="empty">研究方法与学习笔记，待重新整理。</div>';
 // Keep old homepage anchor links meaningful.
 const redirects={'#tracking':'/research/','#frameworks':'/learning/','#calendar':'/calendar/','#notes':'/notes/','#contact':'/about/'};
 if(redirects[location.hash])location.replace(redirects[location.hash]);
 }
-if(page==='events')$('#event-list').innerHTML=data.events.map(eventCard).join('');
+if(page==='events')$('#event-list').innerHTML=data.events.map(eventCard).join('')||'<div class="empty"><h2>新的事件档案，从这里开始。</h2><p>旧探索内容已清空，待记录新的事件与验证过程。</p><a href="/workbench/" class="button secondary">记录第一个事件</a></div>';
 const industries=[{title:'AI 基础设施',desc:'从算力、互联，到数据中心与电力。',pattern:/AI|GPU|算力|数据中心/,query:'AI'},{title:'存储与 HBM',desc:'供需、技术升级与财报预期的交汇。',pattern:/存储|HBM|DRAM/,query:'存储'},{title:'光通信与互联',desc:'沿着信号路径，理解产业价值链。',pattern:/光通信|光互联|光模块|InP/,query:'光通信'}];
 if(page==='research'){
 const params=new URLSearchParams(location.search),input=$('#company-search');let mode=params.get('view')==='industries'?'industries':'companies';if(input)input.value=params.get('q')||'';
@@ -57,7 +57,7 @@ $$('[data-company-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.data
 }
 }
 if(page==='learning'){
-function renderLearning(mode){activate('[data-learning]','data-learning',mode);$('#learning-list').innerHTML=mode==='notes'?`<div class="notice">基础学习与经验假说分开保存。以下来自已有学习文章；阅读顺序不代表已经完成学习。</div>${all.filter(a=>type(a)==='学习笔记').map(readingLink).join('')}`:`<div class="notice">以下三条由本次讨论整理成研究问题，状态均为“观察中”，尚未验证。关联文章仅为背景资料。</div>${data.hypotheses.map((h,i)=>`<article class="hypothesis-card"><span class="number">0${i+1}</span><div>${tagged('观察中','amber')}<a href="/learning/${h.id}/"><h2>${h.title}</h2></a><p>${h.boundary}</p><span class="muted">反例：待收集 · 整理于 2026.09.12</span></div><a href="/learning/${h.id}/" aria-label="打开${h.title}">↗</a></article>`).join('')}`;}
+function renderLearning(mode){activate('[data-learning]','data-learning',mode);const list=all.filter(a=>type(a)==='学习笔记');$('#learning-list').innerHTML=mode==='notes'?(list.length?list.map(readingLink).join(''):'<div class="empty"><h2>学习笔记，待重新整理。</h2><p>从一个问题、一条证据开始建立正式知识库。</p></div>'):(data.hypotheses.length?data.hypotheses.map((h,i)=>`<article class="hypothesis-card"><span class="number">0${i+1}</span><div>${tagged('观察中','amber')}<a href="/learning/${h.id}/"><h2>${h.title}</h2></a><p>${h.boundary}</p></div><a href="/learning/${h.id}/" aria-label="打开${h.title}">↗</a></article>`).join(''):'<div class="empty"><h2>新的经验与假说，从这里开始。</h2><p>探索阶段的内容已清空，后续按证据重新建立。</p></div>');}
 $$('[data-learning]').forEach(b=>b.addEventListener('click',()=>renderLearning(b.dataset.learning)));renderLearning('hypotheses');
 }
 if(page==='hypothesis-detail'){

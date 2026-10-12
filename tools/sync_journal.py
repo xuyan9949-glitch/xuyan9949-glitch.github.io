@@ -6,6 +6,7 @@ import json
 import hashlib
 import re
 import xml.etree.ElementTree as ET
+from urllib.parse import urlparse, unquote
 
 ROOT = Path(__file__).resolve().parents[1]
 DEPS = '<link rel="icon" href="/images/alpha.svg"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/journal.css"><script defer src="/js/articles.js"></script><script defer src="/js/calendar-data.js"></script><script defer src="/js/archive-data.js"></script><script defer src="/js/journal.js"></script>'
@@ -32,7 +33,8 @@ def sync_research(data, header, footer):
         path=ROOT/d['file'].strip('/')/'index.html';path.parent.mkdir(parents=True,exist_ok=True)
         context='<div class="v0-document-meta">资料截至 '+escape(d['date'])+' · 原始文稿：'+escape(d['sourceFile'])+'<br><a href="'+escape(d['download'],quote=True)+'" download>下载原始 Word</a> · <a href="/research/'+d['ticker'].lower()+'/">返回公司档案</a></div>'
         body='<main id="main" class="container article-page v0-full-document"><a class="back" href="/research/'+d['ticker'].lower()+'/">← '+escape(d['ticker'])+' 公司档案</a><h1>'+escape(d['title'])+'</h1>'+context+'<div class="article-content">'+d['html']+'</div></main>'
-        path.write_text(page(d['title'],'资料截止 '+d['date']+'，从原始研究文稿导入的完整阅读版本。',body,'article','<script defer src="/js/reader.js"></script>', 'data-reading-id="'+escape(d['id'],quote=True)+'"'))
+        fingerprint=hashlib.sha256(d['html'].encode()).hexdigest()
+        path.write_text(page(d['title'],'资料截止 '+d['date']+'，从原始研究文稿导入的完整阅读版本。',body,'article','<meta name="article-source-hash" content="'+fingerprint+'"><script defer src="/js/reader.js"></script>', 'data-reading-id="'+escape(d['id'],quote=True)+'"'))
 
 def sync_journal():
     header=(ROOT/'templates/journal-header.html').read_text().strip()
@@ -89,8 +91,17 @@ def sync_journal():
         route='/' if rel=='index.html' else '/'+rel[:-10]
         url='https://www.xxyalpha.cn'+route
         if '<loc>'+url+'</loc>' not in s:s=s.replace('</urlset>','  <url><loc>'+url+'</loc></url>\n</urlset>')
-    ET.fromstring(s)
-    p.write_text(s)
+    tree=ET.fromstring(s)
+    # Removed public content must also leave discovery indexes. Keep existing tool routes.
+    for entry in list(tree):
+        loc=next((node for node in entry if node.tag.split('}')[-1]=='loc'),None)
+        if loc is None:continue
+        url=urlparse(loc.text or '')
+        if url.netloc!='www.xxyalpha.cn':continue
+        route=unquote(url.path)
+        if route.startswith(('/articles/','/events/','/learning/')) and not (ROOT/route.strip('/')/'index.html').exists():tree.remove(entry)
+    ET.register_namespace('', 'http://www.sitemaps.org/schemas/sitemap/0.9')
+    p.write_text(ET.tostring(tree,encoding='unicode')+'\n')
     return len(ids)
 
 if __name__=='__main__':

@@ -116,4 +116,4 @@ NODE_PATH=/tmp/xxyalpha-qa/node_modules node tools/test_journal.cjs
 NODE_PATH=/tmp/xxyalpha-qa/node_modules node tools/test_research_v0.cjs
 ```
 
-V0 开发在 PR #3 的分支中。桌面／手机视觉验收前不合并 main。当前 46 篇公开文章的原文、日期与索引保持原有状态。旧站已有一篇 2026-09-15 的 AI 文章缺少 PDF/Word 导出登记，`tools/check_exports.py` 在原分支也失败；原有 45 组下载及指纹需独立核对，不能把这项失败标为本次通过。
+V0 开发在 PR #3 的分支中。桌面／手机视觉验收前不合并 main。2026-10-12 按用户“正式重来”的指令，已删除探索阶段的 47 个文章页面（46 篇公开文章和 1 个测试页）、全部旧文章登记与 45 组 PDF/Word 下载，同时清空关联的旧事件、经验和公司文章 ID。今天新接入的五份 NBIS/LITE/MU 研究原稿保留；搜索和公司更新记录从新内容开始。网站日历、投资工具、浏览器私人草稿不属于文章清理范围。旧内容不再发布，Git 历史保留删除前的版本。
