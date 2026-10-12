@@ -15,4 +15,22 @@ test('Original document reader exposes chapters, font controls and original down
 test('Financial, catalyst and invalidation links resolve to actual original sections',()=>{for(const ticker of ['nbis','lite','mu']){const d=load('/research/'+ticker+'/?tab=financials'),doc=d.window.document;for(const [tab,text] of [['financials','财务'],['catalysts','催化剂'],['thesis','逻辑证伪']]){click(d,`[data-v0-tab=${tab}]`);const a=doc.querySelector('#v0-pane a.text-link'),u=new URL(a.href),original=new JSDOM(fs.readFileSync(path.join(root,u.pathname,'index.html'),'utf8')).window.document;assert.ok(u.hash.startsWith('#section-'));assert.ok(original.getElementById(u.hash.slice(1)).textContent.includes(text));}click(d,'[data-v0-tab=dossier]');assert.ok(doc.querySelector('.v0-chapters'));assert.ok(doc.querySelectorAll('.v0-chapters a').length>15);d.window.close();}});
 test('Tab history avoids duplicate entries and supports back/forward state',()=>{const d=load('/research/mu/'),doc=d.window.document;const start=d.window.history.length;click(d,'[data-v0-tab=overview]');assert.equal(d.window.history.length,start);click(d,'[data-v0-tab=financials]');assert.equal(d.window.history.length,start+1);click(d,'[data-v0-tab=financials]');assert.equal(d.window.history.length,start+1);d.window.history.replaceState(null,'','?tab=story');d.window.dispatchEvent(new d.window.PopStateEvent('popstate'));assert.ok(doc.querySelector('[data-v0-tab=story][aria-current=page]'));d.window.close();});
 test('Chapter URLs survive inserting an unrelated earlier section',()=>{const cp=require('node:child_process');const out=cp.execFileSync('python3',['-c','import sys;sys.path.insert(0,"tools");from sync_journal import document_sections;a={"title":"Doc","html":"<h2>财务</h2><p>正文</p>"};b={"title":"Doc","html":"<h2>新章节</h2><p>新正文</p>"+a["html"]};assert document_sections(a)[1][0]["id"]==document_sections(b)[1][1]["id"];print("stable")'],{cwd:root,encoding:'utf8'});assert.ok(out.includes('stable'));});
+test('Search terms survive company, tab and original chapter navigation',()=>{
+ const query='MU 存储',d=load('/research/?q='+encodeURIComponent(query)),doc=d.window.document;
+ assert.equal(doc.querySelectorAll('#research-list>a').length,1);
+ const companyURL=new URL(doc.querySelector('#research-list>a').href);assert.equal(companyURL.searchParams.get('q'),query);d.window.close();
+ const company=load(companyURL.pathname+companyURL.search),page=company.window.document;
+ assert.equal(new URL(page.querySelector('.breadcrumb').href).searchParams.get('q'),query);
+ for(const a of page.querySelectorAll('[data-v0-tab]'))assert.equal(new URL(a.href).searchParams.get('q'),query);
+ click(company,'[data-v0-tab=dossier]');
+ for(const a of page.querySelectorAll('#v0-pane a'))assert.equal(new URL(a.href).searchParams.get('q'),query);
+ click(company,'[data-v0-tab=financials]');
+ assert.equal(new URL(page.querySelector('#v0-pane .text-link').href).searchParams.get('q'),query);company.window.close();
+});
+test('Escape clears company search and removes its URL query without adding navigation',()=>{
+ const d=load('/research/?q=MU'),doc=d.window.document,search=doc.querySelector('#company-search'),length=d.window.history.length;
+ search.dispatchEvent(new d.window.KeyboardEvent('keydown',{key:'Escape',bubbles:true,cancelable:true}));
+ assert.equal(search.value,'');assert.equal(doc.querySelectorAll('#research-list>a').length,3);
+ assert.equal(new URL(d.window.location.href).searchParams.has('q'),false);assert.equal(d.window.history.length,length);d.window.close();
+});
 console.log(`Completed ${checks} research V0 checks. DOM and data verification; visual QA pending.`);

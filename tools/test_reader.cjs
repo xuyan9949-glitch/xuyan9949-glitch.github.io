@@ -1,6 +1,6 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{JSDOM}=require('jsdom');
 const root=path.resolve(__dirname,'..'),route='/research/mu/dossier/';
-function load(storage={}){const dom=new JSDOM(fs.readFileSync(path.join(root,route,'index.html'),'utf8'),{url:'https://www.xxyalpha.cn'+route,runScripts:'outside-only',pretendToBeVisual:true});const w=dom.window;w.HTMLElement.prototype.scrollIntoView=function(){this.dataset.scrolled='true';};for(const [k,v] of Object.entries(storage))w.localStorage.setItem(k,v);w.eval(['articles','calendar-data','archive-data','research-data','research-v0','journal','downloads','reader'].map(x=>fs.readFileSync(path.join(root,'js/'+x+'.js'),'utf8')).join('\n'));return dom;}
+function load(storage={},query=''){const dom=new JSDOM(fs.readFileSync(path.join(root,route,'index.html'),'utf8'),{url:'https://www.xxyalpha.cn'+route+query,runScripts:'outside-only',pretendToBeVisual:true});const w=dom.window;w.HTMLElement.prototype.scrollIntoView=function(){this.dataset.scrolled='true';};for(const [k,v] of Object.entries(storage))w.localStorage.setItem(k,v);w.eval(['articles','calendar-data','archive-data','research-data','research-v0','journal','downloads','reader'].map(x=>fs.readFileSync(path.join(root,'js/'+x+'.js'),'utf8')).join('\n'));return dom;}
 function click(d,s){d.window.document.querySelector(s).click();}
 let d=load(),doc=d.window.document;
 assert.ok(doc.querySelectorAll('#reader-toc a').length>5);
@@ -15,4 +15,7 @@ const hash=doc.querySelector('[name=article-source-hash]').content,heading=doc.q
 d=load({'xxyalpha.reading.mu-dossier':JSON.stringify({heading,sourceHash:hash})});doc=d.window.document;assert.ok(doc.querySelector('.reader-resume'));click(d,'.reader-resume button');assert.equal(doc.getElementById(heading).dataset.scrolled,'true');assert.ok(!doc.querySelector('.reader-resume'));d.window.close();
 d=load({'xxyalpha.reading.mu-dossier':JSON.stringify({heading,sourceHash:'outdated'})});assert.ok(!d.window.document.querySelector('.reader-resume'));d.window.close();
 d=load({'xxyalpha.reading.mu-dossier':'invalid json','xxyalpha.reading.size':'bad'});assert.equal(d.window.document.querySelector('#reader-size').value,'17');d.window.close();
-console.log('PASS reader TOC, downloads, focus, font preference, resume, stale-content and corrupt-storage handling');
+d=load({},'?q='+encodeURIComponent('MU 存储'));doc=d.window.document;
+for(const a of doc.querySelectorAll('.back,.v0-document-meta a[href^="/research/"]')){const url=new URL(a.href);assert.equal(url.pathname,'/research/mu/');assert.equal(url.searchParams.get('tab'),'dossier');assert.equal(url.searchParams.get('q'),'MU 存储');}
+click(d,'#reader-toc-toggle');click(d,'#reader-toc a');assert.equal(new URL(d.window.location.href).searchParams.get('q'),'MU 存储');d.window.close();
+console.log('PASS reader TOC, downloads, focus, font preference, resume, corrupt-storage handling and contextual return links');
