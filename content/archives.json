@@ -444,6 +444,131 @@
           "sha256": "b9519f813a2a1d7c4bf537ecb7d459fd376e3bcd98fa9cf07f2cf6b48a79a156"
         }
       ]
+    },
+    {
+      "id": "CBRS",
+      "name": "Cerebras Systems",
+      "sector": "晶圆级计算 · AI 推理",
+      "question": "速度如何转化为收入、毛利与资本回报？",
+      "ids": [],
+      "profile": {
+        "ticker": "CBRS",
+        "name": "Cerebras Systems",
+        "chinese": "晶圆级计算 / 超低延迟推理",
+        "category": "芯",
+        "sector": "AI 推理",
+        "industry": "Wafer-Scale Computing",
+        "summary": "以晶圆级芯片和专用算力服务提供高速 AI 推理；核心研究问题是低延迟价值、订单兑现与资本回报。",
+        "headline": "晶圆级 AI 计算",
+        "headline2": "从推理速度走向订单与现金流验证",
+        "tagline": "WAFER-SCALE · FAST INFERENCE · AI CLOUD",
+        "hero": "technology-hero.webp",
+        "sourceDate": "2026-10-01",
+        "thesis": "低延迟推理能否形成独立市场，以及大额订单能否转化为收入、毛利和现金回报，是原档案的核心判断。",
+        "metrics": [
+          [
+            "2026Q2 GAAP 营收",
+            "$180.1M",
+            "原档案披露"
+          ],
+          [
+            "2026Q2 Core 营收",
+            "$209.9M",
+            "原档案调整口径"
+          ],
+          [
+            "剩余履约义务",
+            "$25.4B",
+            "2026-06-30，非当期收入"
+          ],
+          [
+            "2026 Core 营收指引",
+            "$880–890M",
+            "原档案管理层指引"
+          ]
+        ],
+        "points": [
+          [
+            "速度价值",
+            "晶圆级架构针对大模型推理通信瓶颈，关注真实场景的延迟优势。"
+          ],
+          [
+            "商业模式变化",
+            "原档案显示业务从系统销售向 Cloud 与专用算力转变。"
+          ],
+          [
+            "订单兑现",
+            "OpenAI 合同和 RPO 需要结合部署进度、收入确认与客户集中度判断。"
+          ],
+          [
+            "资本回报",
+            "高估值与高资本开支要求增长、利用率和毛利持续兑现。"
+          ]
+        ],
+        "catalysts": [
+          [
+            "下一财报",
+            "Q3 Core Revenue 与毛利率指引兑现（原档案前瞻）"
+          ],
+          [
+            "2026Q4",
+            "AMD 分离式推理方案进入生产（原档案计划）"
+          ],
+          [
+            "2027Q1",
+            "AWS Bedrock 导入进度（原档案计划）"
+          ],
+          [
+            "持续跟踪",
+            "OpenAI 容量部署、CS-4 交付与非 OpenAI 客户增长"
+          ]
+        ],
+        "risks": [
+          "OpenAI 与大客户集中",
+          "高估值对增长兑现敏感",
+          "Cloud 扩张带来的资本开支压力",
+          "GPU 与自研 ASIC 缩小延迟优势"
+        ],
+        "tags": [
+          "Wafer Scale",
+          "Inference",
+          "AI Cloud",
+          "OpenAI",
+          "CS-4",
+          "RPO",
+          "CapEx"
+        ],
+        "sources": [
+          [
+            "SEC 2026Q2 10-Q",
+            "https://www.sec.gov/Archives/edgar/data/2021728/000162828026056357/cbrs-20260630.htm"
+          ],
+          [
+            "OpenAI 合作公告",
+            "https://openai.com/index/cerebras-partnership/"
+          ]
+        ],
+        "provenance": {
+          "kind": "historical-research",
+          "date": "2026-10-01",
+          "importedAt": "2026-10-13",
+          "summaryKind": "research-interpretation",
+          "libraryFileId": "libfile_5a78a826a00481918448b1aac00f7996",
+          "sourceFileModifiedAt": "2026-10-03T06:32:59.405331Z"
+        }
+      },
+      "documents": [
+        {
+          "id": "cbrs-dossier",
+          "kind": "dossier",
+          "title": "CBRS｜Cerebras Systems 个股档案",
+          "date": "2026-10-01",
+          "file": "/research/cbrs/dossier/",
+          "download": "/downloads/research/cbrs/CBRS_Investment_Dossier.docx",
+          "sourceFile": "CBRS_Investment_Dossier.docx",
+          "sha256": "5d86d35c18ba5757fd188d14fbf4ca5aadcb06a93ef45aaed4d0f83329c34163"
+        }
+      ]
     }
   ],
   "hypotheses": []

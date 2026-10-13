@@ -528,5 +528,207 @@ window.researchDocuments = [
         "title": "最后：故事停在一个还没有答案的问题上"
       }
     ]
+  },
+  {
+    "id": "cbrs-dossier",
+    "ticker": "CBRS",
+    "kind": "dossier",
+    "title": "CBRS｜Cerebras Systems 个股档案",
+    "date": "2026-10-01",
+    "file": "/research/cbrs/dossier/",
+    "download": "/downloads/research/cbrs/CBRS_Investment_Dossier.docx",
+    "sourceFile": "CBRS_Investment_Dossier.docx",
+    "sha256": "5d86d35c18ba5757fd188d14fbf4ca5aadcb06a93ef45aaed4d0f83329c34163",
+    "text": "CBRS｜Cerebras Systems 个股档案\n投研版｜更新时间：2026-10-01（美东）\n\n现价$170.76当日涨跌-3.88%市值约 $405.7 亿交易代码NASDAQ: CBRS\n\n核心结论\n1.  Cerebras 是目前 AI 芯片里技术路线最特殊、也最容易出现“非线性爆发”的公司之一。它不是跟 NVIDIA 做同样的 GPU，而是把整张晶圆做成一个超大芯片，用极高片上带宽解决大模型推理的通信瓶颈。\n2.  真正值得赌的不是“Cerebras 打败 NVIDIA”，而是“超低延迟推理能否形成足够大的独立市场，以及 Cerebras 能不能把巨额订单 / RPO 真正兑现成收入和毛利”。Agent Coding、语音、Cybersecurity、实时 Agent 都天然需要这一能力。\n3.  公司已经从“卖机器”快速转向“卖算力”：2025 年 Cloud 只占约 30% 收入，2026Q2 已接近 70%。这会彻底改变它的商业模式。\n4.  OpenAI 同时是最大催化剂和最大风险。750MW 已签约，RPO（剩余履约义务）达到 254 亿美元，但其中相当一部分来自 OpenAI。\n5.  最大问题不是资产负债表——IPO 后公司有约 86 亿美元流动性——而是估值和执行要求极高：按 2026 年收入指引，目前仍约 46 倍销售额。\n6.  最近股价暴跌不是简单技术面问题。市场正在重新质疑：OpenAI 到底会把多少高价值推理真正放到 Cerebras 上，而不是 NVIDIA / 自研 ASIC。\n7.  当前技术结构仍然是明显下降趋势，$160.8 附近是上市以来真正意义上的生死位。现在还不能称为右侧企稳。\n1. 一句话看懂公司\nCerebras 是一家用“整张晶圆做一颗芯片”的方式，试图把大模型推理速度提高一个数量级的 AI 计算公司。\n它卖的真正不是芯片，而是：\n“更快的 Token。”\n如果 NVIDIA 的卖点是“单位数据中心里产生更多 Token”，那么 Cerebras 最核心的卖点是“让单个用户每秒拿到更多 Token”。这两个目标并不完全一样。\n2. 商业模式\nA. 卖硬件\n销售 CS-3 / CS-4 AI 系统，客户自己购买、部署和运行，类似传统 NVIDIA DGX / AI 服务器业务。\nB. Cerebras Cloud\nCerebras 自己建设计算基础设施，客户按照 Token、使用时间或专用计算容量付费。Cloud 已成为最重要的增长来源。\nC. Dedicated Capacity（专用算力）\n这是未来真正的大生意。OpenAI 已签署 750MW Cerebras inference capacity（推理算力）长期合同，并拥有额外购买 1.25GW 的选择权，理论总容量最高达到 2GW。\n因此，Cerebras 正在从“芯片 / 服务器公司”变成“AI 专用算力基础设施公司”。\n来源：SEC 10-Q / 合同披露  https://www.sec.gov/Archives/edgar/data/2021728/000162828026056357/cbrs-20260630.htm\n3. 收入结构\n收入20252026H1Hardware 硬件$3.584亿$1.647亿Cloud & Services 云及服务$1.516亿$2.088亿总收入$5.100亿$3.735亿\n\n2025 年约为“硬件 70% / Cloud 30%”；到 2026Q2，Cloud 收入达到约 1.260 亿美元，而总收入约 1.801 亿美元，Cloud 已接近 70%。Cloud 同比增长约 281%。\n这意味着 Cerebras 的故事正在从“卖几台超级计算机”转向“建设高速 AI inference network（AI 推理网络）”。这也是估值体系发生变化的根本原因。\n来源：SEC 10-Q  https://www.sec.gov/Archives/edgar/data/2021728/000162828026056357/cbrs-20260630.htm\n4. 行业地位\n如果看整个 AI Accelerator（AI 加速器）市场，NVIDIA 依然是绝对主导者，Cerebras 的市场份额远不能与 NVIDIA 相提并论。\n但如果把范围缩小到 Ultra-Low-Latency Inference（超低延迟推理），Cerebras 已经属于全球最重要的厂商之一。\nNVIDIA GPU / LPU 体系\nGroq\nAMD\nAWS Trainium\nGoogle TPU\nSambaNova\n各大 AI Lab 自研 ASIC\nCS-4 官方宣称，在部分推理场景下可以达到 GPU 系统最高约 30 倍 tokens/sec/user；WSE-3T 拥有 4 万亿晶体管、90 万个 AI 核心和 44GB 片上 SRAM。需要注意，这些性能数字高度依赖模型、batch size（批处理规模）、上下文和精度，不能简单理解成“Cerebras 整体性能是 NVIDIA 的 30 倍”。\n来源：Cerebras CS-4 发布资料  https://www.cerebras.ai/press-release/cerebras-unveils-cs-4-up-to-30-times-faster-than-gpu-based-solutions-3347356\n5. 核心竞争力\n第一：Wafer Scale Engine（晶圆级引擎）\n传统 GPU 集群需要不断跨芯片、跨封装、跨网络通信。Cerebras 直接把整张晶圆做成一个巨大 Processor，让大量原本需要“GPU 之间传数据”的动作在晶圆内部完成。WSE-3T 面积约 46,225 mm²，拥有约 90 万个 AI 核心。\n第二：巨大的片上 SRAM\nWSE-3T 将约 44GB SRAM 直接放在芯片内部，内存带宽约 43.2 PB/s。大模型推理很多时候真正卡的不是“算得不够快”，而是“数据搬得不够快”。这正是 Cerebras 架构的核心优势。\n第三：不依赖 HBM / CoWoS\nCerebras 的架构不依赖 HBM、CoWoS 和 3nm，而这些恰恰是当前 AI 芯片供应链最紧张的环节之一。因此它的供应链瓶颈与 NVIDIA 不完全相同。\n来源：Cerebras Q2 2026 业务更新  https://cerebras.gcs-web.com/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples\n第四：Agent 特别适合高速 Inference\n普通 Chat 往往是生成一次就结束；Agent 会“思考→调工具→得到结果→再思考→写代码→运行→Debug→再运行”，可能连续几十甚至几百次 Inference。于是每次节省 1 秒 × 100 次，价值远大于普通 Chat 节省 1 秒。General Compute 的多年度协议，第一个应用方向正是 Agentic Coding（智能体编程）。\n来源：General Compute × Cerebras  https://www.cerebras.ai/press-release/general-compute-selects-cerebras-to-bring-ultra-fast-inference-to-agentic-coding\n6. 主要竞争对手\n第一层是 NVIDIA：CUDA、GPU 生态、网络、软件栈和客户基础构成最强结构性护城河。\n第二层是专业 Inference 架构：Groq、SambaNova。\n第三层反而可能最危险：Hyperscaler / AI Lab 自研 ASIC，例如 AWS Trainium、Google TPU，以及 OpenAI 自研 Inference ASIC。如果未来 AI 巨头发现“为自己的模型专门设计芯片最划算”，Cerebras 的 TAM 会受到挤压。\n7. 未来 12–24 个月增长逻辑\n① OpenAI 750MW 开始兑现\nOpenAI 与 Cerebras 签署 750MW 容量合同，并计划分批上线至 2028 年。这是未来收入爆发最重要的来源。\n来源：OpenAI 官方合作公告  https://openai.com/index/cerebras-partnership/\n② RPO 254 亿美元\n截至 2026 年 6 月 30 日，Remaining Performance Obligations（剩余履约义务）达到约 254 亿美元。相当大一部分来自 OpenAI。约 22% 预计在 2028 年 6 月之前确认，约 43% 在随后 24 个月确认，其余更晚。RPO ≠ 明年收入，这是理解公司订单质量时最容易犯的错误。\n来源：SEC 10-Q  https://www.sec.gov/Archives/edgar/data/2021728/000162828026056357/cbrs-20260630.htm\n③ Cloud 高速增长\nQ2 Cloud 同比增长约 281%。如果持续，Cerebras 会越来越像“芯片公司 + Neocloud + AI 基础设施公司”，而不是普通半导体公司。\n来源：Cerebras Q2 2026 业绩  https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples\n④ CS-4 开始出货\nCS-4 已进入出货阶段。相比 CS-3，推理最高快约 2 倍，throughput/watt 最高提升约 10 倍，wafer-to-wafer latency 低至 2μs。更重要的是，Cerebras 开始系统性解决“如何把 Wafer Scale 大量部署进数据中心”的工程问题。\n来源：CS-4 发布资料  https://www.cerebras.ai/press-release/cerebras-unveils-cs-4-up-to-30-times-faster-than-gpu-based-solutions-3347356\n⑤ AMD + AWS\nCerebras 与 AMD 正在探索 Disaggregated Inference（分离式推理）：AMD 负责更适合 Prefill（理解 Prompt）的部分，Cerebras 负责 Decode（高速生成 Token）。管理层计划 AMD 方案于 2026Q4 进入生产，AWS Bedrock 于 2027Q1 导入。公司不必独占整个 AI 计算系统，也可以只吃掉价值最高的高速 Decode。\n来源：Cerebras 业绩发布 / SEC 8-K  https://www.sec.gov/Archives/edgar/data/2021728/000162828026056186/cbrsannouncesfinancialresu.htm\n8. 核心财务指标\n指标数据2022 Revenue$24.6M2023 Revenue$78.7M2024 Revenue$290.3M2025 Revenue$510.0M2026H1 Revenue$373.5M，+84%2026Q2 GAAP Revenue$180.1M，+74%2026Q2 Core Revenue$209.9M，+103%2026 全年 Core Revenue 指引$880–890MCore Gross Margin 指引41–43%Core Operating Margin 指引-19% 至 -17%\n\n管理层明确表示，计划 2027 年收入超过 3 倍增长。这个数字目前是 CBRS 估值最核心的变量之一。\n来源：SEC S-1 / 历史收入  https://www.sec.gov/Archives/edgar/data/2021728/000162828026025762/cerebras-sx1april2026.htm\n来源：2026Q2 财报  https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples\n9. CapEx / FCF / ROIC\n2026H1 指标金额经营现金流-$47.5M购买 Property & Equipment$548.9M简单口径 FCF约 -$596M\n\n为什么这么烧钱？因为 Cloud 模式需要 Cerebras 系统、数据中心、电力、网络、冷却和基础设施。未来它并不是一个传统“轻资产芯片设计公司”。\n当前 ROIC（投入资本回报率）缺乏传统参考价值：核心经营利润仍为负，而投入资本正在突然扩大。现在更应该跟踪每 MW 投资成本、每 MW 收入、系统利用率、Token 定价、Cloud Gross Margin 和成熟集群回报率。\n来源：SEC 10-Q  https://www.sec.gov/Archives/edgar/data/2021728/000162828026056357/cbrs-20260630.htm\n10. 估值框架\n当前股价约 $170.76，市值约 $40.6B。2026 Core Revenue 指引中值约 $885M，因此 P/S 约 45.8×。即使股票已经从高点跌去一半，估值仍然极高。\n截至 Q2，现金 + 受限现金约 $7.4B，短期投资约 $1.2B，合计约 $8.6B；OpenAI Working Capital Loan 余额约 $918M。粗略净现金约 $7.7B，粗略 EV 约 $33B，对应 2026 EV/Sales 约 37×。\n如果 2027 年收入仅做到管理层所谓的“3 倍”，收入约 $2.65B+，当前市值对应 2027 P/S 约 15.3×。因此 CBRS 的估值逻辑非常清楚：现在不是便宜，而是在赌未来收入暴涨把估值消化掉。\n11. 牛 / 基准 / 熊三情景\n情景2027 收入估值假设对应市值牛$3.5–4.0B15–18× Sales$52–72B基准$2.7–3.0B10–13× Sales$27–39B熊$1.8–2.2B6–8× Sales$11–18B\n\n当前市值约 $40.6B。一个非常重要的结论是：CBRS 即使从 $386 跌到 $170，也不能简单称为“跌便宜了”。目前估值其实已经接近“基准情景上沿 / 牛市情景下沿”，它需要继续高速兑现。\n12. 核心催化剂\nQ3 财报：公司给出的 Q3 Core Revenue 指引约 $214–216M。\nCore Gross Margin 指引约 38–40%。\nCS-4 出货速度。\nAMD 方案 2026Q4 是否正常进入生产。\nAWS Bedrock 2027Q1 是否按计划导入。\nOpenAI 750MW 部署进度。\n2027 收入“3 倍增长”目标是否维持。\n13. 最大风险\n第一：OpenAI\n截至 Q2，OpenAI 相关季度收入约 $56.8M，约占公司 Q2 GAAP 收入 31.5%；更关键的是，RPO 的很大一部分也与 OpenAI 合同有关。\n第二：估值\n$40B 级公司、今年收入不到 $1B，任何增长放缓都可能造成巨大的 Multiple Compression（估值倍数压缩）。\n第三：CapEx\nCloud 增长越快，短期反而可能越烧钱。\n第四：NVIDIA 和自研 ASIC 追赶\nCerebras 当前最宝贵的优势是 Latency。一旦 GPU / LPU / ASIC 把差距压缩，估值逻辑会明显弱化。\n第五：客户集中\nQ2 至少三个客户分别贡献约 34%、32%、10% 的收入。这还不是一个真正分散的商业模式。\n14. 当前市场争议\n争议一：OpenAI 到底是不是在“去 Cerebras 化”？\n2026 年 8 月 13 日，OpenAI 明确宣布 GPT-5.6 Sol Ultrafast 由 Cerebras 提供底层算力，最高可达约 750 output tokens/sec。但随后 SemiAnalysis 相关报道引发市场担忧：OpenAI 最新 Ultrafast workload 可能正在更多使用 NVIDIA。\n目前没有证据表明 750MW 合同已经取消，所以“OpenAI 弃用 Cerebras”说得太重。市场真正担心的是：750MW 合同虽然存在，但未来最高价值的模型到底有多大比例真正跑在 Cerebras 上？\n来源：OpenAI Ultrafast 官方页面  https://openai.com/index/previewing-ultrafast/\n来源：Barron’s 对市场争议的报道  https://www.barrons.com/articles/cerebras-stock-price-fall-openai-d3a73f92\n争议二：Insider Selling\n近期出现大量高管出售，例如 9 月 29 日 CFO Robert Komin 出售约 $6.6M 股票、COO Dhiraj Mallick 披露出售规模约 $80.8M。部分交易来自预先制定的 10b5-1 计划，不能简单理解为“高管看空”，但 IPO 后供给增加确实会影响短期股价。\n来源：Filing Explorer（内部人交易汇总）  https://www.filingexplorer.com/insider-trades/0001628280-26-064044\n15. 股性特征\nCBRS 属于“高 Beta + 高预期 + 高 Event Sensitivity”。不是普通半导体股票。过去 5 个交易日约 -17.3%，10 日约 -12.0%，上市以来距离高点已经超过 50%。这种股票很容易连续出现 +10%、-12%、+15% 的大幅波动。\n因此它更接近 CRWV / NBIS 早期阶段，而不是 NVDA 这种成熟大市值 AI 股。\n16. 与板块相关性\n最相关的是 AI Compute、AI Infrastructure、Inference、Neocloud 和 Semiconductor。但它与 SOX / SMH 并不是完全同步，更容易跟随 OpenAI、AI Agent、AI CapEx、AI Infrastructure 订单变化。因此它的 Alpha 成分明显高于普通半导体股票。\n17. 宏观敏感因素\nAI CapEx：Microsoft / Amazon / Google / OpenAI 等继续扩大 AI 基础设施，利好。\n利率：估值极高、盈利靠未来，天然属于长 Duration Asset（久期资产）；利率上升会显著压缩估值。\n电力：未来 Cerebras 越来越像算力基础设施商，MW 和数据中心电力供给会越来越重要。\nTSMC 产能：公司表示已获得支持未来增长所需的 TSMC wafer supply。\n来源：Cerebras 供应链 / 产能说明  https://cerebras.gcs-web.com/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples\n18. 历史典型走势\nCBRS 上市时间很短。2026 年 5 月 14 日上市，IPO 发行价 $185，首日开盘约 $350，最高约 $386.34。随后进入巨大估值回归：6 月最低约 $160.81；8 月财报前一度重新到 $260 附近；财报后因 Gross Margin 等问题重新下跌；9 月又反弹至 $212 附近；目前回到 $170 附近。\n这是非常典型的新股路径：IPO 狂热 → Price Discovery（价格发现）→ 基本面重新定价。\n来源：Nasdaq IPO 回顾  https://www.nasdaq.com/newsroom/cerebras-ipo-ushering-new-era-ai-hardware\n19. 当前技术结构\n项目位置 / 判断现价约 $170.76当日区间$170.05 – $184.67第一支撑$168–171关键生死位$160.8（上市以来低点）第一压力$177–185更重要压力$194–200上方第二压力$205–213右侧确认条件至少重新站回 185 → 突破 195–200 → 回踩不破\n\n如果 $160.8 有效跌破，下方缺乏历史成交结构，会进入 Price Discovery Downside（向下价格发现）。当前结构仍弱，现在还不能称为右侧企稳。\n20. Thesis 验证清单\n1.  OpenAI 750MW 合同是否保持。\n2.  OpenAI Capacity 上线速度。\n3.  OpenAI 实际使用 Cerebras 的模型数量。\n4.  RPO 是否继续转换成收入。\n5.  Cloud Revenue 增长。\n6.  Cloud Gross Margin。\n7.  2027 收入 3 倍目标是否维持。\n8.  CS-4 部署情况。\n9.  AMD 合作是否 Q4 正常上线。\n10.  AWS Bedrock 是否 2027Q1 上线。\n11.  600MW 数据中心 Capacity 是否按计划兑现。\n12.  非 OpenAI 客户收入占比是否提高。\n13.  CapEx / Revenue 是否逐步下降。\n14.  Mature Cluster utilization（成熟集群利用率）。\n15.  FCF 改善情况。\n16.  OpenAI warrant 和 SBC 带来的摊薄。\n21. 哪些情况意味着逻辑证伪\nOpenAI 显著削减 750MW 承诺。\n2027 收入无法接近 3 倍增长。\nCloud 虽然快速增长，但 Core GM 长期跌到 30–35% 以下。\nCS-4 的 Latency 优势被 NVIDIA / Groq / ASIC 明显缩小。\n数据中心利用率不足：机器买了、电力租了、MW 签了，但没有足够 Token 需求。\n最后一条是最危险的基础设施公司死亡方式：资产先投入，需求兑现不及预期，最终现金流与回报率无法成立。\n22. 最新动态\n① Gimlet Labs\n2026 年 9 月 28 日宣布与 Cerebras 合作，计划部署约 100MW 级别 Cerebras 硬件 capacity，主要服务 Agent、Cybersecurity、Voice、Financial Analysis 等对 Latency 敏感的应用。\n来源：Reuters  https://www.reuters.com/technology/cerebras-supply-ai-systems-cloud-computing-startup-gimlet-labs-2026-09-28/\n② General Compute\n2026 年 9 月 29 日宣布 multi-year agreement（多年协议），第一个用途是 Agentic Coding。这非常符合 Cerebras 最核心的应用逻辑。\n来源：Cerebras × General Compute  https://www.cerebras.ai/press-release/general-compute-selects-cerebras-to-bring-ultra-fast-inference-to-agentic-coding\n③ OpenAI 争议导致股价崩跌\n9 月 30 日 CBRS 下跌约 8.9%，次日截至研究时点又跌约 3.9%。市场重新定价的不是 Gimlet 订单，而是：“OpenAI 的未来 Inference 路线到底会有多少属于 Cerebras？”这才是现在 CBRS 最需要解决的问题。\n来源：Barron’s 市场异动报道  https://www.barrons.com/articles/stock-movers-81984569\n结论：当前我对 CBRS 的理解\nCBRS 和 CRWV / NBIS 有一个关键区别。CRWV 最大的赌注是“GPU 算力需求会不会持续”；Cerebras 最大的赌注则是“速度本身会不会成为一种可以单独收费的计算产品”。\n如果未来 Agent 大量出现，一个 Agent 从 20 秒完成任务变成 2 秒，不只是体验改善，而是同样一天可以完成更多循环。此时低延迟 = 生产力。Cerebras 可能占据一个非常有价值的新计算层：Ultra-Fast Inference Layer（超高速 AI 推理层）。\n但在约 400 亿美元市值 / 不到 10 亿美元今年收入的情况下，市场已经提前给了它相当一部分成功溢价。因此目前更准确的定义是：技术逻辑很强、产业逻辑正在验证、商业逻辑初步成立，但估值仍要求极高执行力。\n跌到 $170 附近后，研究价值反而提高了——不是因为已经“便宜”，而是股价正在重新接近一个很清晰的技术支撑区，同时 OpenAI 争议正好逼市场回答这家公司最核心的问题。\n主要来源\n来源：SEC 10-Q（2026Q2）  https://www.sec.gov/Archives/edgar/data/2021728/000162828026056357/cbrs-20260630.htm\n来源：OpenAI × Cerebras 合作  https://openai.com/index/cerebras-partnership/\n来源：OpenAI Ultrafast  https://openai.com/index/previewing-ultrafast/\n来源：Cerebras CS-4  https://www.cerebras.ai/press-release/cerebras-unveils-cs-4-up-to-30-times-faster-than-gpu-based-solutions-3347356\n来源：Cerebras Q2 2026 业绩  https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples\n来源：Reuters：Gimlet Labs  https://www.reuters.com/technology/cerebras-supply-ai-systems-cloud-computing-startup-gimlet-labs-2026-09-28/\n来源：Nasdaq：Cerebras IPO  https://www.nasdaq.com/newsroom/cerebras-ipo-ushering-new-era-ai-hardware\n",
+    "sections": [
+      {
+        "id": "section-e3b4b7de0268",
+        "title": "核心结论"
+      },
+      {
+        "id": "section-ae30f98d9d0c",
+        "title": "1. 一句话看懂公司"
+      },
+      {
+        "id": "section-c896658fd3d4",
+        "title": "2. 商业模式"
+      },
+      {
+        "id": "section-a4b8347e094f",
+        "title": "A. 卖硬件"
+      },
+      {
+        "id": "section-b6ad1bbec6fc",
+        "title": "B. Cerebras Cloud"
+      },
+      {
+        "id": "section-c2ab05df0bd0",
+        "title": "C. Dedicated Capacity（专用算力）"
+      },
+      {
+        "id": "section-ba445fd89239",
+        "title": "3. 收入结构"
+      },
+      {
+        "id": "section-860919f1e8a9",
+        "title": "4. 行业地位"
+      },
+      {
+        "id": "section-a1b5eba8140c",
+        "title": "5. 核心竞争力"
+      },
+      {
+        "id": "section-890f645c7d77",
+        "title": "第一：Wafer Scale Engine（晶圆级引擎）"
+      },
+      {
+        "id": "section-da0ded74bd62",
+        "title": "第二：巨大的片上 SRAM"
+      },
+      {
+        "id": "section-44574e68852b",
+        "title": "第三：不依赖 HBM / CoWoS"
+      },
+      {
+        "id": "section-bb8f6217226f",
+        "title": "第四：Agent 特别适合高速 Inference"
+      },
+      {
+        "id": "section-76048f453aa4",
+        "title": "6. 主要竞争对手"
+      },
+      {
+        "id": "section-c1e4f0cc1937",
+        "title": "7. 未来 12–24 个月增长逻辑"
+      },
+      {
+        "id": "section-c8b90f402ac2",
+        "title": "① OpenAI 750MW 开始兑现"
+      },
+      {
+        "id": "section-d5c93d96c0d7",
+        "title": "② RPO 254 亿美元"
+      },
+      {
+        "id": "section-189e37ba2418",
+        "title": "③ Cloud 高速增长"
+      },
+      {
+        "id": "section-d06411b9be3f",
+        "title": "④ CS-4 开始出货"
+      },
+      {
+        "id": "section-d716626630e0",
+        "title": "⑤ AMD + AWS"
+      },
+      {
+        "id": "section-fa91d5f300f8",
+        "title": "8. 核心财务指标"
+      },
+      {
+        "id": "section-0431b2e4fdce",
+        "title": "9. CapEx / FCF / ROIC"
+      },
+      {
+        "id": "section-7e6e371de691",
+        "title": "10. 估值框架"
+      },
+      {
+        "id": "section-09931c0f14b1",
+        "title": "11. 牛 / 基准 / 熊三情景"
+      },
+      {
+        "id": "section-b58e721e2fc3",
+        "title": "12. 核心催化剂"
+      },
+      {
+        "id": "section-9a7a9827b5ba",
+        "title": "13. 最大风险"
+      },
+      {
+        "id": "section-d7e7df324a12",
+        "title": "第一：OpenAI"
+      },
+      {
+        "id": "section-7de513553280",
+        "title": "第二：估值"
+      },
+      {
+        "id": "section-e50f14c344ac",
+        "title": "第三：CapEx"
+      },
+      {
+        "id": "section-0e503a4833a7",
+        "title": "第四：NVIDIA 和自研 ASIC 追赶"
+      },
+      {
+        "id": "section-0f8abeb3cbd2",
+        "title": "第五：客户集中"
+      },
+      {
+        "id": "section-99bb984f25a2",
+        "title": "14. 当前市场争议"
+      },
+      {
+        "id": "section-d3c4ed297425",
+        "title": "争议一：OpenAI 到底是不是在“去 Cerebras 化”？"
+      },
+      {
+        "id": "section-ca35b274af83",
+        "title": "争议二：Insider Selling"
+      },
+      {
+        "id": "section-8e75fb4f16fc",
+        "title": "15. 股性特征"
+      },
+      {
+        "id": "section-a9b60a8c4234",
+        "title": "16. 与板块相关性"
+      },
+      {
+        "id": "section-9e6c763d3bbd",
+        "title": "17. 宏观敏感因素"
+      },
+      {
+        "id": "section-a0a02b89bf87",
+        "title": "18. 历史典型走势"
+      },
+      {
+        "id": "section-619942d6ed6e",
+        "title": "19. 当前技术结构"
+      },
+      {
+        "id": "section-a17b27f0effc",
+        "title": "20. Thesis 验证清单"
+      },
+      {
+        "id": "section-e38e2fbcb422",
+        "title": "21. 哪些情况意味着逻辑证伪"
+      },
+      {
+        "id": "section-96526b231fb3",
+        "title": "22. 最新动态"
+      },
+      {
+        "id": "section-8be2286cca85",
+        "title": "① Gimlet Labs"
+      },
+      {
+        "id": "section-6c132cea1057",
+        "title": "② General Compute"
+      },
+      {
+        "id": "section-528dfbb37063",
+        "title": "③ OpenAI 争议导致股价崩跌"
+      },
+      {
+        "id": "section-ec22800fe3f0",
+        "title": "结论：当前我对 CBRS 的理解"
+      },
+      {
+        "id": "section-ff059447b9ed",
+        "title": "主要来源"
+      }
+    ]
   }
 ];
