@@ -122,6 +122,17 @@ def sync_journal():
         if route.startswith(('/articles/','/events/','/learning/')) and not (ROOT/route.strip('/')/'index.html').exists():tree.remove(entry)
     ET.register_namespace('', 'http://www.sitemaps.org/schemas/sitemap/0.9')
     p.write_text(ET.tostring(tree,encoding='unicode')+'\n')
+    # Content fingerprints invalidate stale script/style caches after each update.
+    import hashlib
+    def version_resource(match):
+        asset=ROOT/match.group(2).lstrip('/')
+        if not asset.is_file():return match.group(0)
+        digest=hashlib.sha256(asset.read_bytes()).hexdigest()[:12]
+        return match.group(1)+match.group(2)+'?v='+digest+match.group(3)
+    for page in pages:
+        text=page.read_text()
+        text=re.sub(r'(src="|href=")(/(?:js|css)/[^"?]+\.(?:js|css))(?:\?[^" ]*)?(")',version_resource,text)
+        page.write_text(text)
     return len(ids)
 
 if __name__=='__main__':
