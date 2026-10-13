@@ -583,6 +583,16 @@
           "download": "/downloads/research/nbis/NBIS_Investment_Dossier.docx",
           "sourceFile": "NBIS_个股档案_2026-09-25.docx",
           "sha256": "b9519f813a2a1d7c4bf537ecb7d459fd376e3bcd98fa9cf07f2cf6b48a79a156"
+        },
+        {
+          "id": "hyperscaler-vs-neocloud",
+          "kind": "concept",
+          "title": "Hyperscaler vs Neocloud",
+          "date": "2026-09-28",
+          "file": "/research/concepts/hyperscaler-vs-neocloud/",
+          "download": "/downloads/research/concepts/hyperscaler_vs_neocloud.docx",
+          "sourceFile": "Hyperscaler_vs_Neocloud_2026-09-28.docx",
+          "sha256": "1598cede3ee91b77f21588f7d52898e396a0cb2022f8af6c700d660341424f1d"
         }
       ]
     },
@@ -1279,6 +1289,375 @@
           "sha256": "cf554051daee0fbc305e6dc2755587ec73a690c7b765c0b1ced3beaa16b5e0b7"
         }
       ]
+    },
+    {
+      "id": "AEHR",
+      "name": "Aehr Test Systems",
+      "sector": "半导体测试",
+      "question": "AI 与硅光量产订单已验证转型方向，但客户复购、主营盈利和每股现金创造能力仍需验证。技术需求增长不能直接等同于设备收入持续增长。",
+      "ids": [],
+      "documents": [
+        {
+          "id": "aehr-dossier",
+          "kind": "dossier",
+          "title": "AEHR 投研版",
+          "date": "2026-10-02",
+          "file": "/research/aehr/dossier/",
+          "download": "/downloads/research/aehr/AEHR_Investment_Dossier.docx",
+          "sourceFile": "AEHR_Investment_Dossier.docx",
+          "sha256": "d86f66440e9add7ec3314a0dba34095642148f3055a08d76f9995c2c8be1ca6b"
+        },
+        {
+          "id": "aehr-story",
+          "kind": "story",
+          "title": "AEHR 公司故事版",
+          "date": "2026-10-02",
+          "file": "/research/aehr/story/",
+          "download": "/downloads/research/aehr/AEHR_Company_Story.docx",
+          "sourceFile": "AEHR_Company_Story.docx",
+          "sha256": "e83d056969631dea37e82cd209dde3053317922c42ee25473281144d3002e271"
+        }
+      ],
+      "profile": {
+        "headline": "芯片出厂前的可靠性关卡",
+        "headline2": "从电动车扩产走向 AI 与硅光验证",
+        "tagline": "",
+        "chinese": "半导体可靠性测试",
+        "logoTheme": "light",
+        "provenance": {
+          "kind": "historical-research",
+          "importedAt": "2026-10-14",
+          "summaryKind": "research-interpretation",
+          "date": "2026-10-02"
+        },
+        "name": "Aehr Test Systems",
+        "category": "测",
+        "sector": "半导体测试",
+        "industry": "Semiconductor Reliability",
+        "summary": "为半导体厂商提供老化与可靠性测试设备，FOX 面向晶圆和裸片，Sonoma 面向高功率封装芯片；通过系统、接触器和服务获取收入。",
+        "sourceDate": "2026-10-02",
+        "financialPeriod": "FY2026 全年 / Q4",
+        "thesis": "AI 与硅光量产订单已验证转型方向，但客户复购、主营盈利和每股现金创造能力仍需验证。技术需求增长不能直接等同于设备收入持续增长。",
+        "metrics": [
+          [
+            "全年收入",
+            "$50.001M",
+            "FY2026"
+          ],
+          [
+            "Q4 收入",
+            "$18.835M",
+            "FY2026 Q4"
+          ],
+          [
+            "全年自由现金流",
+            "−$5.376M",
+            "原稿 CFO − 现金资本开支"
+          ],
+          [
+            "现金及等价物",
+            "$116.358M",
+            "FY2026 期末"
+          ]
+        ],
+        "points": [
+          [
+            "量产与验证要分开",
+            "AI 封装级与晶圆级大单属于量产证据，新客户试产、硅光和 HBM 机会不能重复计入增长。"
+          ],
+          [
+            "净利转正不等于主营盈利",
+            "Q4 净利润受到所得税收益影响，收入恢复仍需营业利润和现金流证明。"
+          ],
+          [
+            "增长能否快过摊薄",
+            "融资增加了现金缓冲，最终要看复购与回款能否形成持续的每股价值。"
+          ]
+        ],
+        "catalysts": [
+          [
+            "已有订单交付",
+            "跟踪设备交付、验收与回款，区分合同金额和收入。"
+          ],
+          [
+            "FY2027 原稿指引",
+            "原稿收入指引为 $130–150M，需以真实生产订单与现金转换验证。"
+          ]
+        ],
+        "risks": [
+          "少数大客户扩产和验收节奏变化。",
+          "工艺成熟、测试时间缩短可能改变设备需求。",
+          "高估值、股权摊薄与现金转换不及预期。"
+        ],
+        "tags": [
+          "AI 芯片",
+          "硅光",
+          "老化测试",
+          "FOX",
+          "Sonoma"
+        ],
+        "sources": [
+          [
+            "公司投资者关系",
+            "https://www.aehr.com/investor-relations/"
+          ],
+          [
+            "原稿引用 SEC 10-K",
+            "https://www.sec.gov/Archives/edgar/data/1040470/000165495426006919/aehr_10k.htm"
+          ]
+        ],
+        "logo": "aehr-logo.png",
+        "hero": "aehr-testing.webp",
+        "ticker": "AEHR"
+      }
+    },
+    {
+      "id": "GOOGL",
+      "name": "Alphabet / Google",
+      "sector": "AI 平台",
+      "question": "不能只用受到投资收益影响的账面市盈率判断便宜。关键是 Search 与 Cloud 的经营利润增量，能否覆盖巨额新增资本开支并恢复自由现金流。",
+      "ids": [],
+      "documents": [
+        {
+          "id": "googl-dossier",
+          "kind": "dossier",
+          "title": "Alphabet 个股档案",
+          "date": "2026-09-24",
+          "file": "/research/googl/dossier/",
+          "download": "/downloads/research/googl/GOOGL_Investment_Dossier.docx",
+          "sourceFile": "GOOGL_个股档案_阅读版.docx",
+          "sha256": "7b6a8ce8aa1269931ade0062aface37f3c3389285e568fa41b329ef3e91bec6b"
+        },
+        {
+          "id": "googl-story",
+          "kind": "story",
+          "title": "Alphabet / Google",
+          "date": "2026-09-28",
+          "file": "/research/googl/story/",
+          "download": "/downloads/research/googl/GOOGL_Company_Story.docx",
+          "sourceFile": "GOOGL_Company_Story_CN.docx",
+          "sha256": "bf24f2582c1d90eccd878f49f8fb5471820b564f94753d34d14815c3ee57a5f0"
+        },
+        {
+          "id": "hyperscaler-vs-neocloud",
+          "kind": "concept",
+          "title": "Hyperscaler vs Neocloud",
+          "date": "2026-09-28",
+          "file": "/research/concepts/hyperscaler-vs-neocloud/",
+          "download": "/downloads/research/concepts/hyperscaler_vs_neocloud.docx",
+          "sourceFile": "Hyperscaler_vs_Neocloud_2026-09-28.docx",
+          "sha256": "1598cede3ee91b77f21588f7d52898e396a0cb2022f8af6c700d660341424f1d"
+        }
+      ],
+      "profile": {
+        "headline": "从搜索框到 AI 入口",
+        "headline2": "现金牛如何承担新的资本周期",
+        "tagline": "",
+        "chinese": "搜索 · AI · 云",
+        "logoTheme": "light",
+        "provenance": {
+          "kind": "historical-research",
+          "importedAt": "2026-10-14",
+          "summaryKind": "research-interpretation",
+          "date": "2026-09-24"
+        },
+        "name": "Alphabet / Google",
+        "category": "云",
+        "sector": "AI 平台",
+        "industry": "Search & AI Cloud",
+        "summary": "以搜索广告为现金基础，连接 YouTube、Android、Chrome、Gemini 与 Google Cloud。研究主线是守住信息入口，并把 AI 基础设施投入转化为资本回报。",
+        "sourceDate": "2026-09-24",
+        "financialPeriod": "2026 Q2",
+        "thesis": "不能只用受到投资收益影响的账面市盈率判断便宜。关键是 Search 与 Cloud 的经营利润增量，能否覆盖巨额新增资本开支并恢复自由现金流。",
+        "metrics": [
+          [
+            "季度收入",
+            "$119.8B",
+            "2026 Q2 原稿口径"
+          ],
+          [
+            "Search 增长",
+            "+17%",
+            "同比"
+          ],
+          [
+            "Cloud 增长",
+            "+82%",
+            "同比"
+          ],
+          [
+            "季度自由现金流",
+            "约 −$5.9B",
+            "2026 Q2 原稿口径"
+          ]
+        ],
+        "points": [
+          [
+            "入口与分发",
+            "搜索、浏览器、操作系统和视频构成分发网络，AI 的问题是能否增强查询与商业变现。"
+          ],
+          [
+            "Cloud 的经营兑现",
+            "收入增速需要与云利润、订单转化和产能投入共同观察。"
+          ],
+          [
+            "资本回报的分水岭",
+            "原稿 2026 CapEx 指引为 $195–205B，需验证经营利润和自由现金流能否跟上。"
+          ]
+        ],
+        "catalysts": [
+          [
+            "AI Search",
+            "跟踪 AI 查询使用与广告变现。"
+          ],
+          [
+            "季度财报",
+            "同时核对 Search、Cloud、CapEx 和 FCF。"
+          ]
+        ],
+        "risks": [
+          "AI 搜索单次成本增加、广告变现下降。",
+          "资本开支高峰持续，压低自由现金流。",
+          "搜索与广告监管及模型竞争改变分发优势。"
+        ],
+        "tags": [
+          "搜索",
+          "Google Cloud",
+          "Gemini",
+          "TPU",
+          "AI 入口"
+        ],
+        "sources": [
+          [
+            "Alphabet 投资者关系",
+            "https://abc.xyz/"
+          ],
+          [
+            "原稿引用 Q2 公告",
+            "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000066/googexhibit991q22026.htm"
+          ]
+        ],
+        "logo": "google-logo.svg",
+        "hero": "googl-platform.webp",
+        "ticker": "GOOGL"
+      }
+    },
+    {
+      "id": "CRWV",
+      "name": "CoreWeave",
+      "sector": "AI 云",
+      "question": "公司故事揭示的核心能力，是把客户合同转成融资和产能。规模增长能否创造股东价值，仍取决于资本效率、客户结构和融资成本；本页不替代缺失的独立投研档案。",
+      "ids": [],
+      "documents": [
+        {
+          "id": "crwv-story",
+          "kind": "story",
+          "title": "COREWEAVE",
+          "date": "2026-09-29",
+          "file": "/research/crwv/story/",
+          "download": "/downloads/research/crwv/CRWV_Company_Story.docx",
+          "sourceFile": "cw_story.docx",
+          "sha256": "aa10229bfc5aff4e919d9ceb5e42960655c83f206a31b788539c541bad1fde67"
+        },
+        {
+          "id": "hyperscaler-vs-neocloud",
+          "kind": "concept",
+          "title": "Hyperscaler vs Neocloud",
+          "date": "2026-09-28",
+          "file": "/research/concepts/hyperscaler-vs-neocloud/",
+          "download": "/downloads/research/concepts/hyperscaler_vs_neocloud.docx",
+          "sourceFile": "Hyperscaler_vs_Neocloud_2026-09-28.docx",
+          "sha256": "1598cede3ee91b77f21588f7d52898e396a0cb2022f8af6c700d660341424f1d"
+        }
+      ],
+      "profile": {
+        "headline": "从一张 GPU 到 AI 云",
+        "headline2": "合同、融资与产能的资本循环",
+        "tagline": "",
+        "chinese": "AI 云基础设施",
+        "logoTheme": "light",
+        "provenance": {
+          "kind": "historical-research",
+          "importedAt": "2026-10-14",
+          "summaryKind": "research-interpretation",
+          "date": "2026-09-29"
+        },
+        "name": "CoreWeave",
+        "category": "云",
+        "sector": "AI 云",
+        "industry": "GPU Cloud Infrastructure",
+        "summary": "从加密货币挖矿转向专用 GPU 云，再向训练、推理与 AI 工作流平台扩展。本次已有公司故事原稿，独立投研档案完整正文尚待补充。",
+        "sourceDate": "2026-09-29",
+        "financialPeriod": "2026 Q2 / 后续动态",
+        "thesis": "公司故事揭示的核心能力，是把客户合同转成融资和产能。规模增长能否创造股东价值，仍取决于资本效率、客户结构和融资成本；本页不替代缺失的独立投研档案。",
+        "metrics": [
+          [
+            "收入合同储备",
+            "约 $104B",
+            "故事原稿 · 2026 Q2"
+          ],
+          [
+            "合同功率",
+            "约 3.7GW",
+            "故事原稿 · 2026 年 6 月末"
+          ],
+          [
+            "合同功率",
+            "约 4.2GW",
+            "故事原稿 · 2026 年 8 月"
+          ],
+          [
+            "可转债融资",
+            "$3.7B",
+            "故事原稿 · 2026 年 9 月"
+          ]
+        ],
+        "points": [
+          [
+            "反周期转型",
+            "故事从矿机出发，低价收购 GPU，再转向渲染、机器学习和 AI 云。"
+          ],
+          [
+            "合同驱动资本循环",
+            "长期合同支持融资，融资推动硬件和数据中心建设，但订单不能等同于现金收入。"
+          ],
+          [
+            "从算力走向工作流",
+            "软件、平台和客户关系可能增强黏性，仍需验证能否改善资本效率。"
+          ]
+        ],
+        "catalysts": [
+          [
+            "产能与交付",
+            "以客户实际用量、部署与合同兑现验证扩张。"
+          ],
+          [
+            "资本与平台",
+            "跟踪融资成本、客户结构和软件平台推进。"
+          ]
+        ],
+        "risks": [
+          "大客户集中与资金来源依赖。",
+          "GPU 折旧、利用率与技术迭代压力。",
+          "高杠杆与持续股权融资可能稀释回报。"
+        ],
+        "tags": [
+          "Neocloud",
+          "GPU 云",
+          "融资",
+          "公司故事",
+          "AI 工作流"
+        ],
+        "sources": [
+          [
+            "公司投资者关系",
+            "https://investors.coreweave.com/overview/"
+          ]
+        ],
+        "logo": "coreweave-logo.svg",
+        "hero": "crwv-cloud.webp",
+        "ticker": "CRWV"
+      }
     }
   ],
   "hypotheses": []

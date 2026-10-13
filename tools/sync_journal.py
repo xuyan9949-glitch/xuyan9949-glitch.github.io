@@ -47,10 +47,11 @@ def sync_research(data, header, footer):
         body='<main id="main" class="page-shell detail-shell" data-company="'+escape(company['id'],quote=True)+'"><div id="company-detail"></div></main>'
         path.write_text(page(company['name']+' '+company['id'],company['profile']['summary'],body,'company-detail'))
     for d in documents:
+        return_tab='journal' if d['kind']=='concept' else d['kind']
         path=ROOT/d['file'].strip('/')/'index.html';path.parent.mkdir(parents=True,exist_ok=True)
-        context='<div class="v0-document-meta">资料截至 '+escape(d['date'])+' · 原始文稿：'+escape(d['sourceFile'])+'<br><a href="'+escape(d['download'],quote=True)+'" download>下载原始 Word</a> · <a href="/research/'+d['ticker'].lower()+'/?tab='+d['kind']+'">返回公司档案</a></div>'
+        context='<div class="v0-document-meta">资料截至 '+escape(d['date'])+' · 原始文稿：'+escape(d['sourceFile'])+'<br><a href="'+escape(d['download'],quote=True)+'" download>下载原始 Word</a> · <a href="/research/'+d['ticker'].lower()+'/?tab='+return_tab+'">返回公司档案</a></div>'
         content=prepared[d['id']][0]
-        body='<main id="main" class="container article-page v0-full-document"><a class="back" href="/research/'+d['ticker'].lower()+'/?tab='+d['kind']+'">← '+escape(d['ticker'])+' 公司档案</a><h1>'+escape(d['title'])+'</h1>'+context+'<div class="article-content">'+content+'</div></main>'
+        body='<main id="main" class="container article-page v0-full-document"><a class="back" href="/research/'+d['ticker'].lower()+'/?tab='+return_tab+'">← '+escape(d['ticker'])+' 公司档案</a><h1>'+escape(d['title'])+'</h1>'+context+'<div class="article-content">'+content+'</div></main>'
         fingerprint=hashlib.sha256(content.encode()).hexdigest()
         path.write_text(page(d['title'],'资料截止 '+d['date']+'，从原始研究文稿导入的完整阅读版本。',body,'article','<meta name="article-source-hash" content="'+fingerprint+'"><script defer src="/js/reader.js"></script>', 'data-reading-id="'+escape(d['id'],quote=True)+'"'))
 

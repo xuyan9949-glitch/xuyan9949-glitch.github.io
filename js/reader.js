@@ -7,6 +7,11 @@ content.querySelectorAll('img').forEach(img=>{const missing=()=>{const note=docu
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const jump=heading=>heading?.scrollIntoView({behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches?'auto':'smooth',block:'start'});
 const id=document.body.dataset.readingId||location.pathname.split('/').filter(Boolean).at(-1), key='xxyalpha.reading.'+id;
+const conceptOriginal=(window.researchDocuments||[]).find(d=>d.id===id),params=new URLSearchParams(location.search),originCompany=params.get('company');
+if(conceptOriginal?.kind==='concept'&&conceptOriginal.relatedTickers?.includes(originCompany)){
+ const url='/research/'+originCompany.toLowerCase()+'/?tab=journal'+(params.get('q')?'&q='+encodeURIComponent(params.get('q')):'');
+ main.querySelectorAll('.back,.v0-document-meta a').forEach(a=>{if(new URL(a.href,location.href).pathname.startsWith('/research/')){a.href=url;if(a.classList.contains('back'))a.textContent='← '+originCompany+' 公司档案';}});
+}
 const headings=[...content.querySelectorAll('h2,h3')];
 headings.forEach((h,i)=>{if(!h.id)h.id='reading-section-'+(i+1);});
 const toolbar=document.createElement('section');toolbar.className='reader-toolbar';toolbar.setAttribute('aria-label','阅读工具');
