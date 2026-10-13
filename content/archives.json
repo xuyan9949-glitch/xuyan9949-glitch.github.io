@@ -567,6 +567,16 @@
           "download": "/downloads/research/cbrs/CBRS_Investment_Dossier.docx",
           "sourceFile": "CBRS_Investment_Dossier.docx",
           "sha256": "5d86d35c18ba5757fd188d14fbf4ca5aadcb06a93ef45aaed4d0f83329c34163"
+        },
+        {
+          "id": "cbrs-story",
+          "kind": "story",
+          "title": "CBRS｜Cerebras Systems 公司故事版",
+          "date": "2026-10-01",
+          "file": "/research/cbrs/story/",
+          "download": "/downloads/research/cbrs/CBRS_Company_Story.docx",
+          "sourceFile": "CBRS_Company_Story.docx",
+          "sha256": "c6472c8b1dad8a342d00b5898d9c962ec5bc53b0c470be830cb08d4c1455d3dc"
         }
       ]
     }
