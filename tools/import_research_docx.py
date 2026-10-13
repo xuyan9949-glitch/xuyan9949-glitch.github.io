@@ -67,7 +67,7 @@ for ticker in [args.ticker.upper()]:
     if not content:continue
     ps=element.find(qn('w:pPr'));style=ps.find(qn('w:pStyle')) if ps is not None else None
     sty=style.get(qn('w:val'),'') if style is not None else ''
-    is_head='Heading' in sty or bool(re.fullmatch(r'\d{1,2}\.\s+[^。，；.!?]{1,54}',text)) or text in ['核心摘要','先给核心结论','公司与商业模式','财务与估值','催化剂、风险与市场争议']
+    is_head='Heading' in sty or (kind=='story' and bool(re.fullmatch(r'[一二三四五六七八九十]{1,3}\s+[^。！？；]{2,54}',text))) or bool(re.fullmatch(r'\d{1,2}\.\s+[^。，；.!?]{1,54}',text)) or text in ['核心摘要','先给核心结论','公司与商业模式','财务与估值','催化剂、风险与市场争议']
     if is_head and not heading:level='h2'
     else:level='h2' if is_head else 'p'
     if is_head:heading+=1
