@@ -1,0 +1,43 @@
+(() => {
+'use strict';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const route=c=>'/research/'+c.id.toLowerCase()+'/';
+const docLink=d=>`<a class="v0-document-link" href="${esc(d.file)}"><h3>${esc(d.title)}</h3><p>${d.kind==='story'?'公司故事':'完整投研档案'} · 原稿资料截止 ${esc(d.date)}</p><span>进入全文 · 章节目录 / 阅读进度 / 原始 Word →</span></a>`;
+function chapterLinks(doc){const indexed=(window.researchDocuments||[]).find(d=>d.id===doc.id),sections=indexed?.sections||[];return sections.length?`<details class="v0-chapters"><summary>按章节阅读 <span>${sections.length} 节</span></summary><nav aria-label="${esc(doc.title)}章节">${sections.map(s=>`<a href="${esc(doc.file)}#${esc(s.id)}">${esc(s.title)}</a>`).join('')}</nav></details>`:'';}
+function card(c,count,query=''){const p=c.profile;return `<a class="company-card v0-company-card" href="${route(c)}${query?'?q='+encodeURIComponent(query):''}"><div class="v0-card-image" style="background-image:url('/images/research/${esc(p.hero)}')"><span>${esc(p.category)} · ${esc(p.industry)}</span></div><div class="v0-card-copy"><header><span class="ticker">${esc(c.id)}</span><span>↗</span></header><h3>${esc(p.name)}</h3><p>${esc(p.summary)}</p><footer><span>${esc(p.category)} · ${esc(p.sourceDate)}</span><span>查看档案 →</span></footer></div></a>`;}
+function renderCompany(c,list,articleRow){
+ const p=c.profile, docs=c.documents||[],dossier=docs.find(d=>d.kind==='dossier');
+ const tabNames=[['overview','公司概览'],['thesis','投资逻辑'],['financials','财务分析'],['catalysts','催化剂'],['dossier','投研全文'],['story','公司故事'],['journal','研究记录']];
+ const params=new URLSearchParams(location.search),query=params.get('q')||'';
+ const directory='/research/'+(query?'?q='+encodeURIComponent(query):'');
+ const tabRoute=id=>route(c)+'?'+new URLSearchParams({...(query?{q:query}:{}),tab:id}).toString();
+ let tab=tabNames.some(([id])=>id===params.get('tab'))?params.get('tab'):'overview';
+ const points=()=>`<div class="v0-points">${p.points.map(([title,text],i)=>`<div class="v0-point"><span>0${i+1}</span><div><h3>${esc(title)}</h3><p>${esc(text)}</p></div></div>`).join('')}</div>`;
+ const sources=()=>p.sources.map(([name,url])=>`<p><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(name)} ↗</a></p>`).join('');
+ const archiveLink=`<a class="text-link" href="${esc(dossier.file)}">阅读原始研究及其引用来源 →</a>`;
+ const index=(window.researchDocuments||[]).find(d=>d.id===dossier.id);
+ const sectionLink=(pattern,label)=>{const section=index?.sections?.find(s=>pattern.test(s.title));return `<a class="text-link" href="${esc(dossier.file)}${section?'#'+esc(section.id):''}">${esc(label)} →</a>`;};
+ const panes={
+  overview:()=>`<section class="v0-banner" style="background-image:url('/images/research/${esc(p.hero)}')"><div><div class="eyebrow">${esc(p.name.toUpperCase())}</div><p>${esc(p.tagline)}</p></div></section><section class="v0-prose"><h2>公司概述</h2><p>${esc(p.summary)}</p><blockquote class="v0-quote">${esc(p.thesis)}</blockquote><h2>核心看点</h2>${points()}${archiveLink}</section>`,
+  thesis:()=>`<section class="v0-prose"><div class="eyebrow">INVESTMENT THESIS · 历史研究判断</div><h2>增长怎样变成每股价值？</h2><blockquote class="v0-quote">${esc(p.thesis)}</blockquote>${points()}<h2>需要持续验证的风险</h2><ul>${p.risks.map(r=>`<li>${esc(r)}</li>`).join('')}</ul>${sectionLink(/逻辑证伪/,'查看原稿中的论据失效条件')}</section>`,
+  financials:()=>`<section class="v0-prose"><div class="eyebrow">FINANCIALS · 原档案摘要</div><h2>财务与经营验证</h2><div class="v0-metrics">${p.metrics.map(([label,value,kind])=>`<div class="paper"><small>${esc(label)}</small><strong>${esc(value)}</strong><small>${esc(kind)} · ${esc(p.sourceDate)}</small></div>`).join('')}</div><p>上述指标摘自 ${esc(p.sourceDate)} 研究版本，金额与会计口径沿用原稿。每项指标的原始披露和计算依据见全文对应章节。</p>${sectionLink(/核心财务指标/,'直接阅读财务章节')}</section>`,
+  catalysts:()=>`<section class="v0-prose"><div class="eyebrow">CATALYSTS · RESEARCH WINDOWS</div><h2>催化剂与验证窗口</h2><p>以下为原稿中的研究窗口或管理层计划；正式事件日期请以原始公告为准。</p>${p.catalysts.map(([when,what])=>`<div class="v0-catalyst"><strong>${esc(when)}</strong><span>${esc(what)}</span></div>`).join('')}${sectionLink(/核心催化剂/,'直接阅读催化剂章节')}</section>`,
+  dossier:()=>`<section class="v0-prose"><h2>完整投研档案</h2>${docs.filter(d=>d.kind==='dossier').map(d=>docLink(d)+chapterLinks(d)).join('')}</section>`,
+  story:()=>`<section class="v0-prose"><h2>公司故事</h2>${docs.some(d=>d.kind==='story')?docs.filter(d=>d.kind==='story').map(d=>docLink(d)+chapterLinks(d)).join(''):`<div class="empty"><h3>独立故事版待补充。</h3><p>当前收录 ${esc(c.id)} 完整投研档案；尚未提供独立故事稿。</p></div>`+archiveLink}</section>`,
+  journal:()=>`<section><div class="section-heading"><h2>研究记录</h2></div><div class="tabs"><button data-company-mode="time" class="active" aria-pressed="true">按时间看</button><button data-company-mode="question" aria-pressed="false">按问题看</button></div><div id="company-articles"></div></section>`
+ };
+ const host=document.getElementById('company-detail');
+ function render(){
+  host.innerHTML=`<a class="breadcrumb" href="${esc(directory)}">${query?'← 返回搜索结果':'← 公司档案'}</a><section class="v0-company-head"><div class="v0-symbol">${esc(c.id)}</div><div><h1>${esc(c.id)}<small>${esc(p.name)}</small></h1><div class="tags"><span class="badge">${esc(p.sector)}</span>${p.tags.slice(0,3).map(t=>`<span class="badge">${esc(t)}</span>`).join('')}</div><p>${esc(p.summary)}</p></div><div class="v0-version">研究版本<strong>${esc(p.sourceDate)}</strong><span>历史资料 · 持续更新</span></div></section><nav class="v0-tabs" aria-label="公司研究栏目">${tabNames.map(([id,label])=>`<a href="${esc(tabRoute(id))}" data-v0-tab="${id}" ${id===tab?'aria-current="page"':''}>${label}</a>`).join('')}</nav><p class="v0-date-note">摘要为既有研究的整理与判断 · 资料截至 ${esc(p.sourceDate)} · 当前页不展示实时股价</p><div class="v0-detail-grid"><div id="v0-pane">${panes[tab]()}</div><aside class="v0-side"><section class="paper"><h2>关键研究数据</h2>${p.metrics.map(([label,value])=>`<div class="v0-data-row"><span>${esc(label)}</span><strong>${esc(value)}</strong></div>`).join('')}<small>资料截至 ${esc(p.sourceDate)} · 原档案口径</small>${archiveLink}</section><section class="paper"><h2>原稿与版本</h2>${docs.map(d=>`<p><a href="${esc(d.file)}">${d.kind==='story'?'公司故事':'投研档案'} · ${esc(d.date)} →</a></p>`).join('')}<small>${esc(p.provenance?.importedAt || p.sourceDate)} · 原稿接入研究库</small></section><section class="paper"><h2>相关主题</h2><div class="tags">${p.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div></section><section class="paper"><h2>来源入口</h2>${sources()}<small>具体历史披露与引用位置见原稿。</small></section></aside></div>`;
+  if(query)host.querySelectorAll('a[href]').forEach(a=>{const url=new URL(a.href,location.href);if(docs.some(d=>d.file===url.pathname)){url.searchParams.set('q',query);a.setAttribute('href',url.pathname+url.search+url.hash);}});
+  host.querySelectorAll('[data-v0-tab]').forEach(a=>a.addEventListener('click',e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0)return;e.preventDefault();if(tab===a.dataset.v0Tab)return;tab=a.dataset.v0Tab;const u=new URL(location.href);u.searchParams.set('tab',tab);history.pushState(null,'',u);render();host.querySelector(`[data-v0-tab="${tab}"]`).focus();}));
+  if(tab==='journal'){
+   let mode='time';const draw=()=>{host.querySelectorAll('[data-company-mode]').forEach(b=>{b.classList.toggle('active',b.dataset.companyMode===mode);b.setAttribute('aria-pressed',String(b.dataset.companyMode===mode));});document.getElementById('company-articles').innerHTML=list.length?(mode==='time'?list.map(a=>articleRow(a)).join(''):['财报','公司','产业','其他'].map(group=>{const subset=list.filter(a=>{const financial=/财报|earnings/.test(a.title+' '+a.id);return group==='财报'?financial:group==='公司'?!financial&&a.tags.includes('个股:'+c.id):group==='产业'?!financial&&!a.tags.includes('个股:'+c.id):false;});return subset.length?'<section><h2>'+group+'研究</h2>'+subset.map(a=>articleRow(a)).join('')+'</section>':'';}).join('')):'<div class="empty">暂无新增研究记录，可先阅读完整投研档案。</div>';};
+   host.querySelectorAll('[data-company-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.companyMode;draw();}));draw();
+  }
+ }
+ window.addEventListener('popstate',()=>{const id=new URLSearchParams(location.search).get('tab');tab=panes[id]?id:'overview';render();});render();
+}
+function searchDocuments(q,type,sort){return (window.researchDocuments||[]).filter(d=>(!q||[d.title,d.ticker,d.text].join(' ').toLowerCase().includes(q))&&(!type||type==='公司研究')).sort((a,b)=>sort==='asc'?a.date.localeCompare(b.date):b.date.localeCompare(a.date));}
+window.researchV0={card,renderCompany,docLink,chapterLinks,searchDocuments};
+})();
