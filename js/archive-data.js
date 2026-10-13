@@ -316,7 +316,7 @@ window.archiveData = {
         "industry": "Photonics & Optical Connectivity",
         "sourceDate": "2026-10-02",
         "financialPeriod": "FY2026 Q4",
-        "hero": "technology-hero.webp",
+        "hero": "cohr-photonics.webp",
         "tagline": "PHOTONICS · INP · PHOTONLINK · CPO",
         "provenance": {
           "kind": "historical-research",
@@ -603,7 +603,7 @@ window.archiveData = {
         "headline": "晶圆级 AI 计算",
         "headline2": "从推理速度走向订单与现金流验证",
         "tagline": "WAFER-SCALE · FAST INFERENCE · AI CLOUD",
-        "hero": "technology-hero.webp",
+        "hero": "cbrs-wafer.webp",
         "sourceDate": "2026-10-01",
         "thesis": "低延迟推理能否形成独立市场，以及大额订单能否转化为收入、毛利和现金回报，是原档案的核心判断。",
         "metrics": [
@@ -739,7 +739,7 @@ window.archiveData = {
         "industry": "Security & Distributed Cloud",
         "sourceDate": "2026-10-05",
         "financialPeriod": "2026 Q2",
-        "hero": "technology-hero.webp",
+        "hero": "akam-edge.webp",
         "tagline": "CDN · SECURITY · CIS · EDGE",
         "provenance": {
           "kind": "historical-research",
@@ -878,7 +878,7 @@ window.archiveData = {
         "industry": "Power & AI Cloud",
         "sourceDate": "2026-09-27",
         "financialPeriod": "FY2026 Q4",
-        "hero": "technology-hero.webp",
+        "hero": "iren-power.webp",
         "tagline": "AI CLOUD · POWER · DATA CENTER · GPU",
         "provenance": {
           "kind": "historical-research",
@@ -1017,7 +1017,7 @@ window.archiveData = {
         "industry": "NAND & Enterprise SSD",
         "sourceDate": "2026-10-02",
         "financialPeriod": "FY2026 Q4",
-        "hero": "technology-hero.webp",
+        "hero": "sndk-flash.webp",
         "tagline": "NAND · SSD · NBM · BICS10",
         "provenance": {
           "kind": "historical-research",
@@ -1156,7 +1156,7 @@ window.archiveData = {
         "industry": "HDD & Cloud Storage",
         "sourceDate": "2026-10-02",
         "financialPeriod": "FY2026 Q4",
-        "hero": "technology-hero.webp",
+        "hero": "wdc-storage.webp",
         "tagline": "HDD · HAMR · EPMR · ULTRASMR",
         "provenance": {
           "kind": "historical-research",
