@@ -11,11 +11,15 @@ import argparse
 parser=argparse.ArgumentParser(description="Import original company research Word into the existing research library")
 parser.add_argument('source',type=Path)
 parser.add_argument('--ticker',required=True)
-parser.add_argument('--kind',required=True,choices=['dossier','story'])
+parser.add_argument('--kind',required=True,choices=['dossier','story','concept'])
+parser.add_argument('--id',help='Stable lowercase slug for a concept document')
+parser.add_argument('--related-tickers',default='',help='Comma-separated companies sharing this concept')
 parser.add_argument('--date',required=True)
 parser.add_argument('--source-name')
 parser.add_argument('--dry-run',action='store_true',help='Check source and summarize the import without writing files')
 args=parser.parse_args()
+if args.kind=='concept' and (not args.id or not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*',args.id)):
+ parser.error('Concept imports require a stable lowercase --id')
 import datetime
 try:
  if datetime.date.fromisoformat(args.date).isoformat()!=args.date:raise ValueError()
@@ -82,8 +86,14 @@ for ticker in [args.ticker.upper()]:
     body.append('<div class="v0-table-scroll"><table><tbody>'+''.join(rows)+'</tbody></table></div>')
   original_name=ticker+('_Investment_Dossier.docx' if kind=='dossier' else '_Company_Story.docx')
   dest=ROOT/'downloads/research'/ticker.lower()/original_name
+  if kind=='concept':
+   original_name=args.id.replace('-','_')+'.docx'
+   dest=ROOT/'downloads/research/concepts'/original_name
   title=next((p.text for p in doc.paragraphs if p.text.strip() and p.text.strip()!=ticker),ticker)
   item={'id':ticker.lower()+'-'+kind,'ticker':ticker,'kind':kind,'title':title,'date':args.date,'file':'/research/'+ticker.lower()+'/'+kind+'/','download':'/'+dest.relative_to(ROOT).as_posix(),'sourceFile':args.source_name or source.name,'sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'html':'\n'.join(body),'text':'\n'.join(''.join(t.text or '' for t in e.iter(qn('w:t'))) for e in doc.element.body)}
+  if kind=='concept':
+   item.update(id=args.id,file='/research/concepts/'+args.id+'/',relatedTickers=list(dict.fromkeys([ticker]+[x.strip().upper() for x in args.related_tickers.split(',') if x.strip()])))
+   if any(t not in {co['id'] for co in archive['companies']} for t in item['relatedTickers']):parser.error('Unknown related company')
   if not item['text'].strip():parser.error('Source document contains no readable text')
   if args.dry_run:
    print(json.dumps({'dryRun':True,'action':'replace' if any(d['id']==item['id'] for d in documents) else 'add','id':item['id'],'title':title,'date':args.date,'paragraphs':len(doc.paragraphs),'tables':len(doc.tables),'images':len(image_files),'sha256':item['sha256']},ensure_ascii=False,indent=2))
@@ -95,6 +105,10 @@ for ticker in [args.ticker.upper()]:
   documents=[d for d in documents if d['id']!=item['id']]
   c['documents']=[d for d in c['documents'] if d['id']!=item['id']]
   documents.append(item);c['documents'].append({k:item[k] for k in ['id','kind','title','date','file','download','sourceFile','sha256']})
+  if kind=='concept':
+   for co in archive['companies']:
+    if co['id'] in item['relatedTickers'] and co['id']!=ticker:
+     co['documents']=[d for d in co.get('documents',[]) if d['id']!=item['id']]+[{k:item[k] for k in ['id','kind','title','date','file','download','sourceFile','sha256']}]
 (ROOT/'content/research-documents.json').write_text(json.dumps({'version':1,'documents':documents},ensure_ascii=False,indent=2)+'\n')
 (ROOT/'content/archives.json').write_text(json.dumps(archive,ensure_ascii=False,indent=2)+'\n')
 from sync_journal import sync_journal

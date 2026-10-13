@@ -155,3 +155,7 @@ python3 tools/import_research_docx.py /absolute/path/MU_Investment_Dossier.docx 
 ## 批量归档的正式验收入口
 
 以后批量上传必须执行 [批量公司档案验收规范](BATCH_ARCHIVE_ACCEPTANCE.md)，并出具逐家公司验收结果。项目级 `AGENTS.md` 已将该规范列为维护前必读。自动检查入口：`python3 tools/check_archive_acceptance.py`。
+
+### 共用概念与未完整公司材料
+
+跨公司概念原稿使用 `--kind concept --id <slug> --related-tickers <codes>`，只保留一份原文和下载，关联到对应公司的研究跟踪。只有故事原稿的公司显示投研待补状态，经营摘要明确来自故事；不得冒充完整投研档案。
