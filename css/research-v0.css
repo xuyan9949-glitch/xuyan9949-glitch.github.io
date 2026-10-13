@@ -41,3 +41,13 @@
 }
 
 @media(max-width:760px){.research-v0 .v0-archive-intro{background-position:65% center;background-image:linear-gradient(90deg,#f8f7f2f5 5%,#f8f7f2cc 52%,#f8f7f255),url('/images/research/technology-abstract.webp')}}
+
+/* Editorial technology hero: the artwork and reading surface have distinct space. */
+.research-v0 .v0-archive-intro{display:grid;grid-template-columns:1.05fr 1fr;align-items:stretch;background:none;padding:0;margin:32px 0 24px;border:1px solid var(--line);border-radius:8px;overflow:hidden;min-height:320px}
+.research-v0 .v0-archive-copy{padding:40px;min-width:0;display:flex;flex-direction:column;justify-content:center;background:var(--paper)}
+.research-v0 .v0-archive-intro h1{font-size:44px;letter-spacing:-1px;margin:16px 0 12px;color:var(--green)}
+.research-v0 .v0-archive-intro p{font-size:14px;margin:0;color:var(--muted)}
+.research-v0 .v0-archive-intro .v0-search{max-width:none;width:100%;margin:30px 0 0;border-radius:6px;box-shadow:none;padding:7px 8px 7px 16px;background:var(--bg);gap:10px}
+.research-v0 .v0-archive-intro .v0-search button{border-radius:4px}
+.research-v0 .v0-archive-art{background:#0a2016 url('/images/research/technology-editorial.webp') 58% center/cover;min-width:0}
+@media(max-width:760px){.research-v0 .v0-archive-intro{grid-template-columns:1fr;margin-top:22px;min-height:0}.research-v0 .v0-archive-copy{padding:28px 24px}.research-v0 .v0-archive-intro h1{font-size:34px}.research-v0 .v0-archive-intro .v0-search{margin-top:24px}.research-v0 .v0-archive-art{height:150px;background-position:55% center}}
