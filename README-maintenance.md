@@ -151,3 +151,7 @@ python3 tools/import_research_docx.py /absolute/path/MU_Investment_Dossier.docx 
 ## 公司档案视觉验收
 
 新公司归档须同时完成：原文及故事版、摘要、官方 Logo、独立业务主题配图、卡片裁切与阅读检查。主题配图为业务概念示意，不冒充官方产品照片；不得使用共用占位图作为已完成版本。保持米白与森林绿风格，确认预览后再发布。
+
+## 批量归档的正式验收入口
+
+以后批量上传必须执行 [批量公司档案验收规范](BATCH_ARCHIVE_ACCEPTANCE.md)，并出具逐家公司验收结果。项目级 `AGENTS.md` 已将该规范列为维护前必读。自动检查入口：`python3 tools/check_archive_acceptance.py`。
