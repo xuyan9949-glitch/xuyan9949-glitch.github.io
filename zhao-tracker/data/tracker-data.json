@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-10T02:30:00+08:00",
+  "updatedAt": "2026-10-13T03:46:00+08:00",
   "accountCapital": 100000,
   "trades": [
     {
@@ -4910,6 +4910,18 @@
     {"id":"coin-181-close-1788-rest-20261009","name":"COIN","action":"清仓","positionType":"波段仓","price":181,"positionChange":0.825,"date":"2026-10-09T22:41:00+08:00","closeLotId":"coin-1788-add-20261007","note":"181 出掉 178.8 剩下一半的 COIN"},
     {"id":"akam-1056-half-close-1027-20261010","name":"AKAM","action":"减仓","positionType":"波段仓","price":105.6,"positionChange":0.825,"date":"2026-10-10T01:41:00+08:00","closeLotId":"akam-1027-add-20261008","note":"105.6 出一半 102.7 的 AKAM"},
     {"id":"akam-1079-close-1027-rest-20261010","name":"AKAM","action":"清仓","positionType":"波段仓","price":107.9,"positionChange":0.825,"date":"2026-10-10T02:00:00+08:00","closeLotId":"akam-1027-add-20261008","note":"107.9 出掉剩下一半 102.7 的 AKAM"},
-    {"id":"akam-109-close-109-readd-20261010","name":"AKAM","action":"清仓","positionType":"波段仓","price":109,"positionChange":0.825,"date":"2026-10-10T02:30:00+08:00","closeLotId":"akam-109-readd-111-20261006","note":"109 出掉 109 的 AKAM"}
+    {"id":"akam-109-close-109-readd-20261010","name":"AKAM","action":"清仓","positionType":"波段仓","price":109,"positionChange":0.825,"date":"2026-10-10T02:30:00+08:00","closeLotId":"akam-109-readd-111-20261006","note":"109 出掉 109 的 AKAM"},
+    {"id":"iren-38-half-close-379-20261012","name":"IREN","action":"减仓","positionType":"波段仓","price":38,"positionChange":0.825,"date":"2026-10-12T09:25:00+08:00","closeLotId":"iren-379-add-20261008","note":"38 出一半 37.9 的 IREN；原帖称周末有合同利好，夜盘冲高减仓"},
+    {"id":"asts-542-half-close-579-20261012","name":"ASTS","action":"减仓","positionType":"波段仓","price":54.2,"positionChange":0.825,"date":"2026-10-12T21:34:00+08:00","closeLotId":"asts-579-add-20261008","note":"54.2 出一半 57.9 的 ASTS"},
+    {"id":"asts-537-close-579-rest-20261012","name":"ASTS","action":"清仓","positionType":"波段仓","price":53.7,"positionChange":0.825,"date":"2026-10-12T21:36:00+08:00","closeLotId":"asts-579-add-20261008","note":"53.7 出剩下一半 57.9 的 ASTS"},
+    {"id":"nbis-2086-add-20261013","name":"NBIS","action":"加仓","positionType":"波段仓","price":208.6,"positionChange":1.65,"date":"2026-10-13T00:54:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"iren-351-add-20261013","name":"IREN","action":"加仓","positionType":"波段仓","price":35.1,"positionChange":1.65,"date":"2026-10-13T01:07:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"cohr-287-add-20261013","name":"COHR","action":"加仓","positionType":"波段仓","price":287,"positionChange":1.65,"date":"2026-10-13T03:36:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"be-261-add-20261013","name":"BE","action":"加仓","positionType":"波段仓","price":261,"positionChange":1.65,"date":"2026-10-13T03:36:00+08:00","note":"加了六分之一常规仓；同组截图未单独显示时间"},
+    {"id":"cbrs-148-add-20261013","name":"CBRS","action":"加仓","positionType":"波段仓","price":148,"positionChange":1.65,"date":"2026-10-13T03:39:00+08:00","note":"加了六分之一常规仓"},
+    {"id":"cifr-1298-add-20261013","name":"CIFR","action":"加仓","positionType":"波段仓","price":12.98,"positionChange":1.65,"date":"2026-10-13T03:39:00+08:00","note":"加了六分之一常规仓；同组截图未单独显示时间"},
+    {"id":"ionq-362-add-20261013","name":"IONQ","action":"加仓","positionType":"波段仓","price":36.2,"positionChange":1.65,"date":"2026-10-13T03:39:00+08:00","note":"加了六分之一常规仓；同组截图未单独显示时间"},
+    {"id":"akam-1017-add-20261013","name":"AKAM","action":"加仓","positionType":"波段仓","price":101.7,"positionChange":1.65,"date":"2026-10-13T03:39:00+08:00","note":"加了六分之一常规仓；同组截图未单独显示时间"},
+    {"id":"pl-1602-add-20261013","name":"PL","action":"加仓","positionType":"波段仓","price":16.02,"positionChange":1.65,"date":"2026-10-13T03:46:00+08:00","note":"加了六分之一常规仓"}
   ]
 }
