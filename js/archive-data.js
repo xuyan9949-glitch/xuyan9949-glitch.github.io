@@ -117,7 +117,10 @@ window.archiveData = {
           "date": "2026-10-02",
           "importedAt": "2026-10-12",
           "summaryKind": "research-interpretation"
-        }
+        },
+        "financialPeriod": "FY2026 Q4",
+        "logo": "micron-logo.png",
+        "logoTheme": "light"
       },
       "documents": [
         {
@@ -270,7 +273,10 @@ window.archiveData = {
           "date": "2026-10-02",
           "importedAt": "2026-10-12",
           "summaryKind": "research-interpretation"
-        }
+        },
+        "financialPeriod": "FY2026 Q4",
+        "logo": "lumentum-logo.svg",
+        "logoTheme": "dark"
       },
       "documents": [
         {
@@ -430,7 +436,10 @@ window.archiveData = {
           "date": "2026-09-25",
           "importedAt": "2026-10-12",
           "summaryKind": "research-interpretation"
-        }
+        },
+        "financialPeriod": "2026 Q2",
+        "logo": "nebius-logo.svg",
+        "logoTheme": "light"
       },
       "documents": [
         {
@@ -555,7 +564,10 @@ window.archiveData = {
           "summaryKind": "research-interpretation",
           "libraryFileId": "libfile_5a78a826a00481918448b1aac00f7996",
           "sourceFileModifiedAt": "2026-10-03T06:32:59.405331Z"
-        }
+        },
+        "financialPeriod": "2026 Q2",
+        "logo": "cerebras-logo.svg",
+        "logoTheme": "light"
       },
       "documents": [
         {
