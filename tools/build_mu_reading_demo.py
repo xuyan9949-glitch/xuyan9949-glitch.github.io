@@ -18,7 +18,7 @@ data={'profile':profile,'documents':[{k:d[k] for k in ['kind','date','download',
       'logo':'data:image/png;base64,'+base64.b64encode((ROOT/'images/research'/profile['logo']).read_bytes()).decode(),'assets':assets}
 template=(ROOT/'demos/mu-reading/demo.fragment.html').read_text()
 fragment=template.replace('__MU_DATA__',json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c'))
-target=Path('/workspace/mu-reading-refinement-demo.html');target.write_text(fragment)
+target=Path('/workspace/mu-reading-navigation-demo.html');target.write_text(fragment)
 assert target.stat().st_size<1024*1024
 assert '<!doctype' not in fragment and '<body' not in fragment
 print('MU demo:',target.stat().st_size,'bytes; two complete manuscripts included.')
