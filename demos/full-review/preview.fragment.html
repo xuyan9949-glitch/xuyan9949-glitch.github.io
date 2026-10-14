@@ -1,0 +1,36 @@
+<div id="folio-unified-preview" class="research-v0"><div class="review-state" role="status">正在打开公司研究库…</div><div id="folio-review-app"></div></div>
+<style>__REVIEW_CSS__
+#folio-unified-preview{background:#f8f7f2;color:#253c31;margin:0;overflow-wrap:anywhere;min-width:0}#folio-unified-preview .review-state{padding:30px;font:15px/1.7 -apple-system,'PingFang SC',sans-serif}#folio-unified-preview .skip-link{display:none}#folio-unified-preview .mm-reader-name{min-width:0}#folio-unified-preview a,#folio-unified-preview button{cursor:var(--cursor-interaction,pointer)}
+</style>
+<script id="folio-review-compressed" type="application/octet-stream">__REVIEW_PAYLOAD__</script>
+<script>
+window.folioPreviewReady=(async()=>{
+const root=document.getElementById('folio-unified-preview'),host=root.querySelector('#folio-review-app');
+const bytes=Uint8Array.from(atob(document.getElementById('folio-review-compressed').textContent.trim()),c=>c.charCodeAt(0));
+const data=JSON.parse(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text());
+let current=new URL('https://www.xxyalpha.cn/'),listeners=[];
+const loc={get href(){return current.href},get pathname(){return current.pathname},get search(){return current.search},get hash(){return current.hash}};
+const localHistory={pushState(_,__,url){current=new URL(url,current)},replaceState(_,__,url){current=new URL(url,current)}};
+const app={archiveData:data.archives,researchDocuments:data.documents,lucide:window.lucide,addEventListener(type,fn){listeners.push([type,fn])}};
+const docProxy={get body(){return root},getElementById(id){return root.querySelector('#'+CSS.escape(id))},querySelector(s){return root.querySelector(s)},querySelectorAll(s){return root.querySelectorAll(s)},createElement(tag){return document.createElement(tag)}};
+(function(window,document,location,history){
+__RESEARCH_JS__
+})(app,docProxy,loc,localHistory);
+(function(window,document,location,history,localStorage){
+__MAGAZINE_JS__
+})(app,docProxy,loc,localHistory,window.localStorage);
+function resources(){host.querySelectorAll('img[src]').forEach(img=>{const s=img.getAttribute('src');if(data.assets[s])img.src=data.assets[s];});host.querySelectorAll('[style]').forEach(el=>{let s=el.getAttribute('style');for(const [url,value] of Object.entries(data.assets))if(s.includes(url))s=s.replaceAll(url,value);if(s!==el.getAttribute('style'))el.setAttribute('style',s);});host.querySelectorAll('a[href^="/downloads/"]').forEach(a=>{a.href='https://www.xxyalpha.cn'+a.getAttribute('href');a.target='_blank';a.rel='noopener';});if(window.lucide)lucide.createIcons();}
+function directory(){host.innerHTML=data.directory;root.dataset.page='research';const input=host.querySelector('#company-search');input.value=current.searchParams.get('q')||'';const draw=()=>{const query=input.value.trim(),words=query.toLowerCase().split(/\s+/).filter(Boolean),companies=data.archives.companies.filter(c=>c.profile&&words.every(w=>[c.id,c.name,c.sector,c.question,c.profile.name,c.profile.summary,...c.profile.tags].join(' ').toLowerCase().includes(w))).sort((a,b)=>{const order=['NBIS','LITE','MU'],ai=order.indexOf(a.id),bi=order.indexOf(b.id);return (ai<0?3:ai)-(bi<0?3:bi)});host.querySelector('#research-list').innerHTML=companies.map(c=>app.researchV0.card(c,0,query)).join('')||'<div class="empty">没有匹配的公司。</div>';host.querySelector('#company-result-count').textContent=companies.length+' 家公司';query?current.searchParams.set('q',query):current.searchParams.delete('q');resources();};input.addEventListener('input',draw);input.addEventListener('keydown',e=>{if(e.key==='Escape'){input.value='';draw();}});draw();}
+function render(url){current=new URL(url,current);listeners=[];root.dataset.readingId='';const path=current.pathname;
+ if(path==='/'||path==='/research/'){directory();return;}
+ const c=data.archives.companies.find(c=>'/research/'+c.id.toLowerCase()+'/'===path&&c.profile);
+ if(c){host.innerHTML=data.companyShell.replace('__COMPANY__',c.id);root.dataset.page='company-detail';app.magazineUI.renderCompany(c,[],()=> '');resources();return;}
+ const d=data.layouts.find(d=>d.file===path);
+ if(d){host.innerHTML=data.readerShell;root.dataset.page='article';root.dataset.readingId=d.id;const reader=host.querySelector('[data-magazine-reader]');reader.dataset.magazineReader=d.id;reader.querySelector('.magazine-data').textContent=JSON.stringify(d);reader.querySelector('.mm-reader-name').textContent=d.companyName;reader.querySelector('a[download]').href=d.download;app.magazineUI.renderReader(reader,d);resources();return;}
+ host.innerHTML='<div class="review-state">该页面可在正式网站阅读。</div>';
+}
+root.addEventListener('click',e=>{if(e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;const a=e.target.closest('a[href]');if(!a)return;const href=a.getAttribute('href');if(href.startsWith('#'))return;const u=new URL(href,current);if(u.hostname!=='www.xxyalpha.cn'||u.pathname.startsWith('/downloads/'))return;if(u.pathname==='/'||u.pathname==='/research/'||data.archives.companies.some(c=>u.pathname==='/research/'+c.id.toLowerCase()+'/')||data.layouts.some(d=>d.file===u.pathname)){e.preventDefault();render(u.href);root.scrollIntoView({block:'start',behavior:'auto'});}});
+new MutationObserver(resources).observe(host,{childList:true,subtree:true});root.querySelector('.review-state').remove();render('/');
+return {render,data};
+})().catch(e=>{document.querySelector('#folio-unified-preview .review-state').textContent='预览未能打开：'+e.message;throw e;});
+</script>

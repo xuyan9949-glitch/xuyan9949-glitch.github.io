@@ -111,7 +111,134 @@ window.researchDocuments = [
         "id": "section-96526b231fb3",
         "title": "22. 最新动态"
       }
-    ]
+    ],
+    "reading": {
+      "title": "AI 云基础设施，从需求验证走向规模交付和资本回报。",
+      "parts": [
+        {
+          "title": "理解这门生意",
+          "description": "商业模式 · 产品 · 竞争",
+          "chapters": [
+            {
+              "id": "section-ae30f98d9d0c",
+              "title": "1. 一句话看懂公司"
+            },
+            {
+              "id": "section-c896658fd3d4",
+              "title": "2. 商业模式"
+            },
+            {
+              "id": "section-ba445fd89239",
+              "title": "3. 收入结构"
+            },
+            {
+              "id": "section-860919f1e8a9",
+              "title": "4. 行业地位"
+            },
+            {
+              "id": "section-a1b5eba8140c",
+              "title": "5. 核心竞争力"
+            },
+            {
+              "id": "section-76048f453aa4",
+              "title": "6. 主要竞争对手"
+            }
+          ]
+        },
+        {
+          "title": "增长与盈利兑现",
+          "description": "增长逻辑 · 财务 · 现金流",
+          "chapters": [
+            {
+              "id": "section-4dc9768bc80e",
+              "title": "7. 未来12–24个月增长逻辑"
+            },
+            {
+              "id": "section-fa91d5f300f8",
+              "title": "8. 核心财务指标"
+            },
+            {
+              "id": "section-0431b2e4fdce",
+              "title": "9. CapEx / FCF / ROIC"
+            }
+          ]
+        },
+        {
+          "title": "买入价格与周期风险",
+          "description": "估值 · 情景 · 风险",
+          "chapters": [
+            {
+              "id": "section-7e6e371de691",
+              "title": "10. 估值框架"
+            },
+            {
+              "id": "section-09931c0f14b1",
+              "title": "11. 牛 / 基准 / 熊三情景"
+            },
+            {
+              "id": "section-513d70864d3b",
+              "title": "催化剂、风险与市场争议"
+            },
+            {
+              "id": "section-b58e721e2fc3",
+              "title": "12. 核心催化剂"
+            },
+            {
+              "id": "section-9a7a9827b5ba",
+              "title": "13. 最大风险"
+            },
+            {
+              "id": "section-99bb984f25a2",
+              "title": "14. 当前市场争议"
+            }
+          ]
+        },
+        {
+          "title": "市场如何给它定价",
+          "description": "股性 · 宏观 · 交易结构",
+          "chapters": [
+            {
+              "id": "section-8e75fb4f16fc",
+              "title": "15. 股性特征"
+            },
+            {
+              "id": "section-a9b60a8c4234",
+              "title": "16. 与板块相关性"
+            },
+            {
+              "id": "section-9e6c763d3bbd",
+              "title": "17. 宏观敏感因素"
+            },
+            {
+              "id": "section-a0a02b89bf87",
+              "title": "18. 历史典型走势"
+            },
+            {
+              "id": "section-619942d6ed6e",
+              "title": "19. 当前技术结构"
+            }
+          ]
+        },
+        {
+          "title": "接下来怎样验证",
+          "description": "跟踪清单 · 证伪 · 动态",
+          "chapters": [
+            {
+              "id": "section-7a84a1244490",
+              "title": "20. Thesis验证清单"
+            },
+            {
+              "id": "section-e38e2fbcb422",
+              "title": "21. 哪些情况意味着逻辑证伪"
+            },
+            {
+              "id": "section-96526b231fb3",
+              "title": "22. 最新动态"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "lite-dossier",
@@ -217,7 +344,130 @@ window.researchDocuments = [
         "id": "section-96526b231fb3",
         "title": "22. 最新动态"
       }
-    ]
+    ],
+    "reading": {
+      "title": "AI 时代的光连接，从器件短缺走向交付与盈利验证。",
+      "parts": [
+        {
+          "title": "理解这门生意",
+          "description": "商业模式 · 产品 · 竞争",
+          "chapters": [
+            {
+              "id": "section-ae30f98d9d0c",
+              "title": "1. 一句话看懂公司"
+            },
+            {
+              "id": "section-c896658fd3d4",
+              "title": "2. 商业模式"
+            },
+            {
+              "id": "section-ba445fd89239",
+              "title": "3. 收入结构"
+            },
+            {
+              "id": "section-860919f1e8a9",
+              "title": "4. 行业地位"
+            },
+            {
+              "id": "section-a1b5eba8140c",
+              "title": "5. 核心竞争力"
+            },
+            {
+              "id": "section-76048f453aa4",
+              "title": "6. 主要竞争对手"
+            }
+          ]
+        },
+        {
+          "title": "增长与盈利兑现",
+          "description": "增长逻辑 · 财务 · 现金流",
+          "chapters": [
+            {
+              "id": "section-4dc9768bc80e",
+              "title": "7. 未来12–24个月增长逻辑"
+            },
+            {
+              "id": "section-fa91d5f300f8",
+              "title": "8. 核心财务指标"
+            },
+            {
+              "id": "section-8d9b67c313ef",
+              "title": "9. 资本开支 自由现金流 投入资本回报率"
+            }
+          ]
+        },
+        {
+          "title": "买入价格与周期风险",
+          "description": "估值 · 情景 · 风险",
+          "chapters": [
+            {
+              "id": "section-7e6e371de691",
+              "title": "10. 估值框架"
+            },
+            {
+              "id": "section-7db9cf13f5a6",
+              "title": "11. 牛 基准 熊三情景"
+            },
+            {
+              "id": "section-b58e721e2fc3",
+              "title": "12. 核心催化剂"
+            },
+            {
+              "id": "section-9a7a9827b5ba",
+              "title": "13. 最大风险"
+            },
+            {
+              "id": "section-99bb984f25a2",
+              "title": "14. 当前市场争议"
+            }
+          ]
+        },
+        {
+          "title": "市场如何给它定价",
+          "description": "股性 · 宏观 · 交易结构",
+          "chapters": [
+            {
+              "id": "section-8e75fb4f16fc",
+              "title": "15. 股性特征"
+            },
+            {
+              "id": "section-a9b60a8c4234",
+              "title": "16. 与板块相关性"
+            },
+            {
+              "id": "section-9e6c763d3bbd",
+              "title": "17. 宏观敏感因素"
+            },
+            {
+              "id": "section-a0a02b89bf87",
+              "title": "18. 历史典型走势"
+            },
+            {
+              "id": "section-619942d6ed6e",
+              "title": "19. 当前技术结构"
+            }
+          ]
+        },
+        {
+          "title": "接下来怎样验证",
+          "description": "跟踪清单 · 证伪 · 动态",
+          "chapters": [
+            {
+              "id": "section-7a84a1244490",
+              "title": "20. Thesis验证清单"
+            },
+            {
+              "id": "section-e38e2fbcb422",
+              "title": "21. 哪些情况意味着逻辑证伪"
+            },
+            {
+              "id": "section-96526b231fb3",
+              "title": "22. 最新动态"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "lite-story",
@@ -315,7 +565,126 @@ window.researchDocuments = [
         "id": "section-d73a2a4182be",
         "title": "一条简明时间线"
       }
-    ]
+    ],
+    "reading": {
+      "title": "Lumentum 从老牌光学业务到AI连接的关键供货商",
+      "parts": [
+        {
+          "title": "一场分家与一门老本领",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-77817bb1fcd1",
+              "title": "一 它的出生方式是一场分家"
+            },
+            {
+              "id": "section-219e6f459a47",
+              "title": "二 带队独立的人是一位工业经理人"
+            },
+            {
+              "id": "section-832300a19f8f",
+              "title": "三 它做的是用户看不见 却不能缺的东西"
+            },
+            {
+              "id": "section-4638ca952cc6",
+              "title": "四 手机也曾经是重要的新舞台"
+            }
+          ]
+        },
+        {
+          "title": "用并购补上新能力",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-7d65edbd5a18",
+              "title": "五 2018年 它决定用并购补上一块关键能力"
+            },
+            {
+              "id": "section-5658b3d8f6b3",
+              "title": "六 做大以后 它反而开始做减法"
+            },
+            {
+              "id": "section-2536597b5665",
+              "title": "七 国际客户关系给它上了另一课"
+            },
+            {
+              "id": "section-8731973c51ec",
+              "title": "八 2021年 它差一点变成今天的另一个对手"
+            }
+          ]
+        },
+        {
+          "title": "重回高速网络",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-331ad9d20217",
+              "title": "九 它把下一次并购重新拉回高速网络"
+            },
+            {
+              "id": "section-f6327be2e12d",
+              "title": "十 新的主角来自香港的一家模块公司"
+            },
+            {
+              "id": "section-e993c737498a",
+              "title": "十一 7.5亿美元 让它重新走近完整模块"
+            },
+            {
+              "id": "section-bfd7869d5be0",
+              "title": "十二 买到了未来 并不意味着眼前立刻好转"
+            }
+          ]
+        },
+        {
+          "title": "AI 改变了使用强度",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-366d6c7862b4",
+              "title": "十三 2025年 一位熟悉对手的人接过公司"
+            },
+            {
+              "id": "section-149b6db53dea",
+              "title": "十四 AI改变的是这些老本领的使用强度"
+            },
+            {
+              "id": "section-4cb5b3334d4c",
+              "title": "十五 光路交换让旧技术找到新工作"
+            },
+            {
+              "id": "section-c3c45b6c09dd",
+              "title": "十六 NVIDIA带来的不只是一张大支票"
+            }
+          ]
+        },
+        {
+          "title": "工厂最终留下多少回报",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-7cea094497e5",
+              "title": "十七 真正承接未来的 是一座需要改造的工厂"
+            },
+            {
+              "id": "section-e80ed576f74f",
+              "title": "十八 业务增长以后 财报反而出现一个吓人的亏损"
+            },
+            {
+              "id": "section-d9727cb4688d",
+              "title": "十九 现在可以看清它的性格 但不能替它写好结局"
+            },
+            {
+              "id": "section-e67ea1d8b048",
+              "title": "二十 下一章要回答的是 这些工厂最终留下多少回报"
+            },
+            {
+              "id": "section-d73a2a4182be",
+              "title": "一条简明时间线"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "mu-dossier",
@@ -425,7 +794,134 @@ window.researchDocuments = [
         "id": "section-f70f2ffdb338",
         "title": "我目前对美光的理解"
       }
-    ]
+    ],
+    "reading": {
+      "title": "AI 时代的存储，从涨价周期走向合同与现金流验证。",
+      "parts": [
+        {
+          "title": "理解这门生意",
+          "description": "商业模式 · 产品 · 竞争",
+          "chapters": [
+            {
+              "id": "section-ae30f98d9d0c",
+              "title": "1. 一句话看懂公司"
+            },
+            {
+              "id": "section-c896658fd3d4",
+              "title": "2. 商业模式"
+            },
+            {
+              "id": "section-ba445fd89239",
+              "title": "3. 收入结构"
+            },
+            {
+              "id": "section-860919f1e8a9",
+              "title": "4. 行业地位"
+            },
+            {
+              "id": "section-a1b5eba8140c",
+              "title": "5. 核心竞争力"
+            },
+            {
+              "id": "section-76048f453aa4",
+              "title": "6. 主要竞争对手"
+            }
+          ]
+        },
+        {
+          "title": "增长与盈利兑现",
+          "description": "增长逻辑 · 财务 · 现金流",
+          "chapters": [
+            {
+              "id": "section-4dc9768bc80e",
+              "title": "7. 未来12–24个月增长逻辑"
+            },
+            {
+              "id": "section-fa91d5f300f8",
+              "title": "8. 核心财务指标"
+            },
+            {
+              "id": "section-99f4b87d1c8b",
+              "title": "9. 资本开支 / 自由现金流 / 投入资本回报率（CapEx / FCF / ROIC）"
+            }
+          ]
+        },
+        {
+          "title": "买入价格与周期风险",
+          "description": "估值 · 情景 · 风险",
+          "chapters": [
+            {
+              "id": "section-7e6e371de691",
+              "title": "10. 估值框架"
+            },
+            {
+              "id": "section-09931c0f14b1",
+              "title": "11. 牛 / 基准 / 熊三情景"
+            },
+            {
+              "id": "section-b58e721e2fc3",
+              "title": "12. 核心催化剂"
+            },
+            {
+              "id": "section-9a7a9827b5ba",
+              "title": "13. 最大风险"
+            },
+            {
+              "id": "section-99bb984f25a2",
+              "title": "14. 当前市场争议"
+            }
+          ]
+        },
+        {
+          "title": "市场如何给它定价",
+          "description": "股性 · 宏观 · 交易结构",
+          "chapters": [
+            {
+              "id": "section-8e75fb4f16fc",
+              "title": "15. 股性特征"
+            },
+            {
+              "id": "section-a9b60a8c4234",
+              "title": "16. 与板块相关性"
+            },
+            {
+              "id": "section-9e6c763d3bbd",
+              "title": "17. 宏观敏感因素"
+            },
+            {
+              "id": "section-a0a02b89bf87",
+              "title": "18. 历史典型走势"
+            },
+            {
+              "id": "section-619942d6ed6e",
+              "title": "19. 当前技术结构"
+            }
+          ]
+        },
+        {
+          "title": "接下来怎样验证",
+          "description": "跟踪清单 · 证伪 · 动态",
+          "chapters": [
+            {
+              "id": "section-7a84a1244490",
+              "title": "20. Thesis验证清单"
+            },
+            {
+              "id": "section-e38e2fbcb422",
+              "title": "21. 哪些情况意味着逻辑证伪"
+            },
+            {
+              "id": "section-96526b231fb3",
+              "title": "22. 最新动态"
+            },
+            {
+              "id": "section-f70f2ffdb338",
+              "title": "我目前对美光的理解"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "mu-story",
@@ -527,7 +1023,130 @@ window.researchDocuments = [
         "id": "section-2fd21dc1c0ad",
         "title": "最后：故事停在一个还没有答案的问题上"
       }
-    ]
+    ],
+    "reading": {
+      "title": "MU｜美光：从牙医诊所的地下室，到AI时代的“记忆工厂”",
+      "parts": [
+        {
+          "title": "从地下室走向工厂",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-1fe7e356da2d",
+              "title": "一、故事的起点，不在硅谷"
+            },
+            {
+              "id": "section-58c7d33036cc",
+              "title": "二、双胞胎兄弟，解决的是不同的问题"
+            },
+            {
+              "id": "section-b46cf1e4ef68",
+              "title": "三、从画图的人，变成承担工厂风险的人"
+            },
+            {
+              "id": "section-a0d4b51e8a28",
+              "title": "四、做马铃薯的人，为什么出现在芯片故事里"
+            }
+          ]
+        },
+        {
+          "title": "在残酷的行业里活下来",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-a7b9d841885e",
+              "title": "五、上市很快，残酷的行业教育也来得很快"
+            },
+            {
+              "id": "section-47d7638dd5a0",
+              "title": "六、最朴素的答案：同样的硅，做出更多能卖的芯片"
+            },
+            {
+              "id": "section-59d4d9cdffcd",
+              "title": "七、Steve Appleton，先学会的是生产线"
+            },
+            {
+              "id": "section-2fdf095d7927",
+              "title": "八、1998年：别人退出的地方，成了它扩张的入口"
+            }
+          ]
+        },
+        {
+          "title": "靠选择长成新的公司",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-355f61f0ebaf",
+              "title": "九、2005年：它不能永远只做电脑的工作内存"
+            },
+            {
+              "id": "section-e9f78d183b62",
+              "title": "十、并购不是插曲，而是公司生长的方式"
+            },
+            {
+              "id": "section-99afac5ca0a9",
+              "title": "十一、2012年，退休计划被突然打断"
+            },
+            {
+              "id": "section-25ae329f00fb",
+              "title": "十二、尔必达：买到的，不只是便宜的厂房"
+            },
+            {
+              "id": "section-0552386532e8",
+              "title": "十三、2017年，一位闪存创业者接过DRAM巨头"
+            },
+            {
+              "id": "section-051b2e781543",
+              "title": "十四、3D XPoint：做出来，不等于市场会接受"
+            }
+          ]
+        },
+        {
+          "title": "AI 将内存推向台前",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-8beb4f70e589",
+              "title": "十五、2023年：已经做大，仍然会被周期击中"
+            },
+            {
+              "id": "section-08ea93a80171",
+              "title": "十六、AI让内存从幕后走到了聚光灯下"
+            },
+            {
+              "id": "section-1775461b77e2",
+              "title": "十七、告别Crucial，是一次看得见代价的选择"
+            },
+            {
+              "id": "section-42d7cb16a237",
+              "title": "十八、2026年，美光试图改变的不只是产品"
+            },
+            {
+              "id": "section-1be79ad6e948",
+              "title": "十九、为什么今天又要建这么大的工厂"
+            }
+          ]
+        },
+        {
+          "title": "故事还没有结束",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-c47432b6a4d4",
+              "title": "二十、把几代人的选择放在一起"
+            },
+            {
+              "id": "section-d0c152f0c9c3",
+              "title": "美光关键时间线"
+            },
+            {
+              "id": "section-2fd21dc1c0ad",
+              "title": "最后：故事停在一个还没有答案的问题上"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "cbrs-dossier",
@@ -729,7 +1348,226 @@ window.researchDocuments = [
         "id": "section-ff059447b9ed",
         "title": "主要来源"
       }
-    ]
+    ],
+    "reading": {
+      "title": "晶圆级 AI 计算，从推理速度走向订单与现金流验证。",
+      "parts": [
+        {
+          "title": "理解这门生意",
+          "description": "商业模式 · 产品 · 竞争",
+          "chapters": [
+            {
+              "id": "section-ae30f98d9d0c",
+              "title": "1. 一句话看懂公司"
+            },
+            {
+              "id": "section-c896658fd3d4",
+              "title": "2. 商业模式"
+            },
+            {
+              "id": "section-a4b8347e094f",
+              "title": "A. 卖硬件"
+            },
+            {
+              "id": "section-b6ad1bbec6fc",
+              "title": "B. Cerebras Cloud"
+            },
+            {
+              "id": "section-c2ab05df0bd0",
+              "title": "C. Dedicated Capacity（专用算力）"
+            },
+            {
+              "id": "section-ba445fd89239",
+              "title": "3. 收入结构"
+            },
+            {
+              "id": "section-860919f1e8a9",
+              "title": "4. 行业地位"
+            },
+            {
+              "id": "section-a1b5eba8140c",
+              "title": "5. 核心竞争力"
+            },
+            {
+              "id": "section-890f645c7d77",
+              "title": "第一：Wafer Scale Engine（晶圆级引擎）"
+            },
+            {
+              "id": "section-da0ded74bd62",
+              "title": "第二：巨大的片上 SRAM"
+            },
+            {
+              "id": "section-44574e68852b",
+              "title": "第三：不依赖 HBM / CoWoS"
+            },
+            {
+              "id": "section-bb8f6217226f",
+              "title": "第四：Agent 特别适合高速 Inference"
+            },
+            {
+              "id": "section-76048f453aa4",
+              "title": "6. 主要竞争对手"
+            }
+          ]
+        },
+        {
+          "title": "增长与盈利兑现",
+          "description": "增长逻辑 · 财务 · 现金流",
+          "chapters": [
+            {
+              "id": "section-c1e4f0cc1937",
+              "title": "7. 未来 12–24 个月增长逻辑"
+            },
+            {
+              "id": "section-c8b90f402ac2",
+              "title": "① OpenAI 750MW 开始兑现"
+            },
+            {
+              "id": "section-d5c93d96c0d7",
+              "title": "② RPO 254 亿美元"
+            },
+            {
+              "id": "section-189e37ba2418",
+              "title": "③ Cloud 高速增长"
+            },
+            {
+              "id": "section-d06411b9be3f",
+              "title": "④ CS-4 开始出货"
+            },
+            {
+              "id": "section-d716626630e0",
+              "title": "⑤ AMD + AWS"
+            },
+            {
+              "id": "section-fa91d5f300f8",
+              "title": "8. 核心财务指标"
+            },
+            {
+              "id": "section-0431b2e4fdce",
+              "title": "9. CapEx / FCF / ROIC"
+            }
+          ]
+        },
+        {
+          "title": "买入价格与周期风险",
+          "description": "估值 · 情景 · 风险",
+          "chapters": [
+            {
+              "id": "section-7e6e371de691",
+              "title": "10. 估值框架"
+            },
+            {
+              "id": "section-09931c0f14b1",
+              "title": "11. 牛 / 基准 / 熊三情景"
+            },
+            {
+              "id": "section-b58e721e2fc3",
+              "title": "12. 核心催化剂"
+            },
+            {
+              "id": "section-9a7a9827b5ba",
+              "title": "13. 最大风险"
+            },
+            {
+              "id": "section-d7e7df324a12",
+              "title": "第一：OpenAI"
+            },
+            {
+              "id": "section-7de513553280",
+              "title": "第二：估值"
+            },
+            {
+              "id": "section-e50f14c344ac",
+              "title": "第三：CapEx"
+            },
+            {
+              "id": "section-0e503a4833a7",
+              "title": "第四：NVIDIA 和自研 ASIC 追赶"
+            },
+            {
+              "id": "section-0f8abeb3cbd2",
+              "title": "第五：客户集中"
+            },
+            {
+              "id": "section-99bb984f25a2",
+              "title": "14. 当前市场争议"
+            },
+            {
+              "id": "section-d3c4ed297425",
+              "title": "争议一：OpenAI 到底是不是在“去 Cerebras 化”？"
+            },
+            {
+              "id": "section-ca35b274af83",
+              "title": "争议二：Insider Selling"
+            }
+          ]
+        },
+        {
+          "title": "市场如何给它定价",
+          "description": "股性 · 宏观 · 交易结构",
+          "chapters": [
+            {
+              "id": "section-8e75fb4f16fc",
+              "title": "15. 股性特征"
+            },
+            {
+              "id": "section-a9b60a8c4234",
+              "title": "16. 与板块相关性"
+            },
+            {
+              "id": "section-9e6c763d3bbd",
+              "title": "17. 宏观敏感因素"
+            },
+            {
+              "id": "section-a0a02b89bf87",
+              "title": "18. 历史典型走势"
+            },
+            {
+              "id": "section-619942d6ed6e",
+              "title": "19. 当前技术结构"
+            }
+          ]
+        },
+        {
+          "title": "接下来怎样验证",
+          "description": "跟踪清单 · 证伪 · 动态",
+          "chapters": [
+            {
+              "id": "section-a17b27f0effc",
+              "title": "20. Thesis 验证清单"
+            },
+            {
+              "id": "section-e38e2fbcb422",
+              "title": "21. 哪些情况意味着逻辑证伪"
+            },
+            {
+              "id": "section-96526b231fb3",
+              "title": "22. 最新动态"
+            },
+            {
+              "id": "section-8be2286cca85",
+              "title": "① Gimlet Labs"
+            },
+            {
+              "id": "section-6c132cea1057",
+              "title": "② General Compute"
+            },
+            {
+              "id": "section-528dfbb37063",
+              "title": "③ OpenAI 争议导致股价崩跌"
+            },
+            {
+              "id": "section-ec22800fe3f0",
+              "title": "结论：当前我对 CBRS 的理解"
+            },
+            {
+              "id": "section-ff059447b9ed",
+              "title": "主要来源"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "cbrs-story",
@@ -860,6 +1698,18 @@ window.researchDocuments = [
         "title": "第二十八章｜回头看，Cerebras真正连续做对了什么"
       },
       {
+        "id": "section-d20f8dff3264",
+        "title": "1.  2015 年没有选择做一个普通 AI Accelerator，而是选择 Wafer Scale。"
+      },
+      {
+        "id": "section-1834f4533535",
+        "title": "2.  2017—2019 年长期失败以后，没有缩小目标，继续把晶圆级芯片做出来。"
+      },
+      {
+        "id": "section-f890dd57b709",
+        "title": "3.  没有只卖芯片，而是把 Chip、System、Cooling、Power、Software 全部一起做。"
+      },
+      {
         "id": "section-d73a2a4182be",
         "title": "一条简明时间线"
       },
@@ -871,7 +1721,188 @@ window.researchDocuments = [
         "id": "section-ff059447b9ed",
         "title": "主要来源"
       }
-    ]
+    ],
+    "reading": {
+      "title": "CBRS｜Cerebras Systems 公司故事版",
+      "parts": [
+        {
+          "title": "把一整张晶圆变成芯片",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-fae7ca5d805d",
+              "title": "开场：一家公司的起点，是决定把一整张晶圆变成一颗芯片"
+            },
+            {
+              "id": "section-0b2cdd113279",
+              "title": "第一章｜这五个人并不是第一次一起创业"
+            },
+            {
+              "id": "section-bf3c82814e7b",
+              "title": "第二章｜2015年：他们先决定一起干，再决定干什么"
+            },
+            {
+              "id": "section-3ab36cc50aa5",
+              "title": "第三章｜为什么芯片要大到一整张晶圆"
+            },
+            {
+              "id": "section-427d20d8a641",
+              "title": "第四章｜但整个半导体工业都在告诉他们：这东西做不出来"
+            },
+            {
+              "id": "section-efff97d068ed",
+              "title": "第五章｜2017到2019：最危险的两年，是他们根本造不出来"
+            }
+          ]
+        },
+        {
+          "title": "从奇观变成计算平台",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-6ff62154f17f",
+              "title": "第六章｜第一张真正工作的晶圆，出现在一个改造过的会议室里"
+            },
+            {
+              "id": "section-cf8f3ea475bb",
+              "title": "第七章｜2019年：Cerebras第一次把“餐盘芯片”摆到世界面前"
+            },
+            {
+              "id": "section-c1f3629dac61",
+              "title": "第八章｜Cerebras发现：造出世界最大芯片，只解决了一半问题"
+            },
+            {
+              "id": "section-14d83b3612a6",
+              "title": "第九章｜2021—2022年：技术逐渐从“奇观”变成真正的计算平台"
+            }
+          ]
+        },
+        {
+          "title": "大客户与商业化考验",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-dbb2321679ba",
+              "title": "第十章｜2023年：G42第一次把Cerebras从“技术公司”推向“大型基础设施公司”"
+            },
+            {
+              "id": "section-1ee4160c1cab",
+              "title": "第十一章｜G42救了商业化，却也让Cerebras变成了一家“单一客户公司”"
+            },
+            {
+              "id": "section-0a3e76586701",
+              "title": "第十二章｜第一次IPO，被技术之外的事情卡住了"
+            },
+            {
+              "id": "section-59f6d7ee8285",
+              "title": "第十三章｜但就在IPO停下时，公司真正重要的第二条产品线已经出现"
+            }
+          ]
+        },
+        {
+          "title": "把推理速度卖给开发者",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-08da793073ea",
+              "title": "第十四章｜2024年8月：公司第一次把“速度”直接卖给普通开发者"
+            },
+            {
+              "id": "section-6a5c615aedbd",
+              "title": "第十五章｜推理模型出现以后，“快一点”突然可能变成“完全不同的产品”"
+            },
+            {
+              "id": "section-40c86683959f",
+              "title": "第十六章｜2025年：一个又一个模型开始证明，这条路线可能真有市场"
+            },
+            {
+              "id": "section-2be774e8742d",
+              "title": "第十七章｜2025年：没上市，但资本开始重新相信它"
+            }
+          ]
+        },
+        {
+          "title": "OpenAI 与规模化",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-a95caef81937",
+              "title": "第十八章｜2026年1月14日：真正改变公司命运的客户终于出现"
+            },
+            {
+              "id": "section-a6779ed6956b",
+              "title": "第十九章｜OpenAI和Cerebras，其实早在AI世界还很小时就认识"
+            },
+            {
+              "id": "section-2526ee6d0042",
+              "title": "第二十章｜2026年：Cerebras不再想只做一台特殊机器，而是进入整个AI基础设施网络"
+            },
+            {
+              "id": "section-83d9aaba4bba",
+              "title": "第二十一章｜2026年8月：GPT-5.6 Sol第一次让普通用户真正体验到Wafer Scale的意义"
+            },
+            {
+              "id": "section-09ad1f92d95e",
+              "title": "第二十二章｜CS-4：公司开始从“证明路线正确”，进入“证明路线可以规模化”"
+            },
+            {
+              "id": "section-a3081160f595",
+              "title": "第二十三章｜2026年秋天：越来越多客户买的已经不是芯片，而是“速度这个生产要素”"
+            }
+          ]
+        },
+        {
+          "title": "上市之后的证明题",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-979a7947fa87",
+              "title": "第二十四章｜IPO终于发生时，这已经不是2024年那家公司"
+            },
+            {
+              "id": "section-d43e85994a78",
+              "title": "第二十五章｜今天的Cerebras，已经不是单纯的半导体公司"
+            },
+            {
+              "id": "section-f098ddc50b2a",
+              "title": "第二十六章｜但那个最危险的问题，从来没有消失"
+            },
+            {
+              "id": "section-cbf390b18e08",
+              "title": "第二十七章｜OpenAI既是最好的证明，也是最危险的依赖"
+            },
+            {
+              "id": "section-66a1127810d1",
+              "title": "第二十八章｜回头看，Cerebras真正连续做对了什么"
+            },
+            {
+              "id": "section-d20f8dff3264",
+              "title": "1.  2015 年没有选择做一个普通 AI Accelerator，而是选择 Wafer Scale。"
+            },
+            {
+              "id": "section-1834f4533535",
+              "title": "2.  2017—2019 年长期失败以后，没有缩小目标，继续把晶圆级芯片做出来。"
+            },
+            {
+              "id": "section-f890dd57b709",
+              "title": "3.  没有只卖芯片，而是把 Chip、System、Cooling、Power、Software 全部一起做。"
+            },
+            {
+              "id": "section-d73a2a4182be",
+              "title": "一条简明时间线"
+            },
+            {
+              "id": "section-797420920152",
+              "title": "最后的结语"
+            },
+            {
+              "id": "section-ff059447b9ed",
+              "title": "主要来源"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "akam-dossier",
@@ -1026,7 +2057,174 @@ window.researchDocuments = [
         "id": "section-ff059447b9ed",
         "title": "主要来源"
       }
-    ]
+    ],
+    "reading": {
+      "title": "全球边缘网络，从交付与安全走向算力回报验证。",
+      "parts": [
+        {
+          "title": "理解这门生意",
+          "description": "商业模式 · 产品 · 竞争",
+          "chapters": [
+            {
+              "id": "section-ae30f98d9d0c",
+              "title": "1. 一句话看懂公司"
+            },
+            {
+              "id": "section-c896658fd3d4",
+              "title": "2. 商业模式"
+            },
+            {
+              "id": "section-692dab650d6a",
+              "title": "2.1 Security｜网络安全"
+            },
+            {
+              "id": "section-99b8ce75dd93",
+              "title": "2.2 Delivery + Other Cloud Applications｜传统交付业务"
+            },
+            {
+              "id": "section-2224f8c86ee5",
+              "title": "2.3 Cloud Infrastructure Services（CIS）｜云基础设施"
+            },
+            {
+              "id": "section-ba445fd89239",
+              "title": "3. 收入结构"
+            },
+            {
+              "id": "section-860919f1e8a9",
+              "title": "4. 行业地位"
+            },
+            {
+              "id": "section-a1b5eba8140c",
+              "title": "5. 核心竞争力"
+            },
+            {
+              "id": "section-76048f453aa4",
+              "title": "6. 主要竞争对手"
+            },
+            {
+              "id": "section-c1e4f0cc1937",
+              "title": "7. 未来 12–24 个月增长逻辑"
+            },
+            {
+              "id": "section-146cf684d51d",
+              "title": "7.1 Security：稳定的第一增长发动机"
+            },
+            {
+              "id": "section-f60d8bf38662",
+              "title": "7.2 CIS：最重要的新增长发动机"
+            }
+          ]
+        },
+        {
+          "title": "增长与盈利兑现",
+          "description": "增长逻辑 · 财务 · 现金流",
+          "chapters": [
+            {
+              "id": "section-f854d7338489",
+              "title": "7.3 业务协同：AI Compute 反向拉动 Security"
+            },
+            {
+              "id": "section-fa91d5f300f8",
+              "title": "8. 核心财务指标"
+            },
+            {
+              "id": "section-0431b2e4fdce",
+              "title": "9. CapEx / FCF / ROIC"
+            },
+            {
+              "id": "section-d7ad9b7dfc26",
+              "title": "9.1 CapEx"
+            },
+            {
+              "id": "section-e84809d1a6ca",
+              "title": "9.2 FCF"
+            },
+            {
+              "id": "section-32a93b84b729",
+              "title": "9.3 ROIC"
+            }
+          ]
+        },
+        {
+          "title": "买入价格与周期风险",
+          "description": "估值 · 情景 · 风险",
+          "chapters": [
+            {
+              "id": "section-7e6e371de691",
+              "title": "10. 估值框架"
+            },
+            {
+              "id": "section-09931c0f14b1",
+              "title": "11. 牛 / 基准 / 熊三情景"
+            },
+            {
+              "id": "section-b58e721e2fc3",
+              "title": "12. 核心催化剂"
+            },
+            {
+              "id": "section-9a7a9827b5ba",
+              "title": "13. 最大风险"
+            },
+            {
+              "id": "section-99bb984f25a2",
+              "title": "14. 当前市场争议"
+            }
+          ]
+        },
+        {
+          "title": "市场如何给它定价",
+          "description": "股性 · 宏观 · 交易结构",
+          "chapters": [
+            {
+              "id": "section-8e75fb4f16fc",
+              "title": "15. 股性特征"
+            },
+            {
+              "id": "section-a9b60a8c4234",
+              "title": "16. 与板块相关性"
+            },
+            {
+              "id": "section-9e6c763d3bbd",
+              "title": "17. 宏观敏感因素"
+            },
+            {
+              "id": "section-a0a02b89bf87",
+              "title": "18. 历史典型走势"
+            },
+            {
+              "id": "section-619942d6ed6e",
+              "title": "19. 当前技术结构"
+            }
+          ]
+        },
+        {
+          "title": "接下来怎样验证",
+          "description": "跟踪清单 · 证伪 · 动态",
+          "chapters": [
+            {
+              "id": "section-a17b27f0effc",
+              "title": "20. Thesis 验证清单"
+            },
+            {
+              "id": "section-e38e2fbcb422",
+              "title": "21. 哪些情况意味着逻辑证伪"
+            },
+            {
+              "id": "section-96526b231fb3",
+              "title": "22. 最新动态"
+            },
+            {
+              "id": "section-345266608bc0",
+              "title": "结论：现在应该如何看 AKAM"
+            },
+            {
+              "id": "section-ff059447b9ed",
+              "title": "主要来源"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "akam-story",
@@ -1145,7 +2343,142 @@ window.researchDocuments = [
         "id": "section-ff059447b9ed",
         "title": "主要来源"
       }
-    ]
+    ],
+    "reading": {
+      "title": "AKAM｜Akamai 公司故事版",
+      "parts": [
+        {
+          "title": "从数学问题走向公司",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-3fd814d1a93b",
+              "title": "开场：一个 1995 年就被看见的问题"
+            },
+            {
+              "id": "section-91d331390f30",
+              "title": "1. Tom Leighton：把互联网拥堵当成数学问题"
+            },
+            {
+              "id": "section-3c76da315d8c",
+              "title": "2. Danny Lewin：把理论变成可以运行的系统"
+            },
+            {
+              "id": "section-b769d69d5685",
+              "title": "3. 1998：研究项目变成公司"
+            },
+            {
+              "id": "section-bf3e3f284167",
+              "title": "4. 1999：一枚像素、March Madness 和《星球大战》预告片"
+            }
+          ]
+        },
+        {
+          "title": "繁荣与行业教育",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-b013e4e02331",
+              "title": "5. 2001：公司历史上永远绕不开的一天"
+            },
+            {
+              "id": "section-0da803c7da01",
+              "title": "6. CDN 为什么曾经是一个极好的生意"
+            },
+            {
+              "id": "section-acec41c0019a",
+              "title": "7. 但所有优秀基础设施最终都会被“商品化”"
+            }
+          ]
+        },
+        {
+          "title": "从交付流量到保护流量",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-87e274e34c76",
+              "title": "8. 第二次转型：从“送流量”到“保护流量”"
+            },
+            {
+              "id": "section-3feac3e5d16e",
+              "title": "9. Tom Leighton 亲自成为 CEO：公司身份开始改变"
+            },
+            {
+              "id": "section-ce308b549571",
+              "title": "10. Guardicore：从互联网边缘进入企业内部"
+            }
+          ]
+        },
+        {
+          "title": "第三次转型：云计算",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-db2bacb47ce9",
+              "title": "11. 2022：收购 Linode，第三次转型开始"
+            },
+            {
+              "id": "section-6d9da97f55ce",
+              "title": "12. 2023：Akamai Connected Cloud，把“边缘”重新解释成“云”"
+            },
+            {
+              "id": "section-5f175ce53d4c",
+              "title": "13. 为什么 AI 让这张旧网络突然重新变得性感"
+            },
+            {
+              "id": "section-6c253af1dcf4",
+              "title": "14. 2026：LayerX，把安全延伸到“人如何使用 AI”"
+            },
+            {
+              "id": "section-74ec7f313c8b",
+              "title": "15. 2026 Q2：财报已经能看到公司结构在变"
+            }
+          ]
+        },
+        {
+          "title": "AI 合同怎样变成回报",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-a8e6ed1f1956",
+              "title": "16. 2026 年 9 月 24 日：Anthropic 把故事推进到另一个级别"
+            },
+            {
+              "id": "section-631acbd7702e",
+              "title": "17. 为什么市场没有因为 $11.6B 直接把股价送上天"
+            },
+            {
+              "id": "section-fc4800fe117a",
+              "title": "18. Anthropic 合同真正要算的是 ROIC，而不是 Headlines"
+            },
+            {
+              "id": "section-580671c47352",
+              "title": "19. 今天的 Akamai 到底是什么公司？"
+            },
+            {
+              "id": "section-7726229de24d",
+              "title": "20. 投资者真正应该等待哪一个“证明时刻”"
+            },
+            {
+              "id": "section-a5913a857f16",
+              "title": "时间线：把 Akamai 的三次转型串起来"
+            },
+            {
+              "id": "section-9b91467cc8a4",
+              "title": "结尾：真正值得研究的不是“它有没有 AI”，而是“旧护城河能不能在 AI 时代二次变现”"
+            },
+            {
+              "id": "section-7c69c44838ac",
+              "title": "术语速查"
+            },
+            {
+              "id": "section-ff059447b9ed",
+              "title": "主要来源"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "iren-dossier",
@@ -1404,7 +2737,178 @@ window.researchDocuments = [
         "id": "section-6e89737a00e1",
         "title": "数据来源"
       }
-    ]
+    ],
+    "reading": {
+      "title": "电力与 AI 云，从容量交付走向现金回报。",
+      "parts": [
+        {
+          "title": "理解这门生意",
+          "description": "商业模式 · 产品 · 竞争",
+          "chapters": [
+            {
+              "id": "section-ae30f98d9d0c-2",
+              "title": "1. 一句话看懂公司"
+            },
+            {
+              "id": "section-c896658fd3d4-2",
+              "title": "2. 商业模式"
+            },
+            {
+              "id": "section-5d1cd4ad2a81",
+              "title": "传统业务：Bitcoin Mining（比特币挖矿）"
+            },
+            {
+              "id": "section-12677c558443",
+              "title": "未来核心：AI Cloud（AI云）"
+            },
+            {
+              "id": "section-ba445fd89239-2",
+              "title": "3. 收入结构"
+            },
+            {
+              "id": "section-860919f1e8a9-2",
+              "title": "4. 行业地位"
+            },
+            {
+              "id": "section-a1b5eba8140c-2",
+              "title": "5. 核心竞争力"
+            },
+            {
+              "id": "section-76048f453aa4-2",
+              "title": "6. 主要竞争对手"
+            }
+          ]
+        },
+        {
+          "title": "增长与盈利兑现",
+          "description": "增长逻辑 · 财务 · 现金流",
+          "chapters": [
+            {
+              "id": "section-723c8993974a-2",
+              "title": "7. 未来12-24个月增长逻辑"
+            },
+            {
+              "id": "section-fa91d5f300f8-2",
+              "title": "8. 核心财务指标"
+            },
+            {
+              "id": "section-0431b2e4fdce-2",
+              "title": "9. CapEx / FCF / ROIC"
+            },
+            {
+              "id": "section-0fdda99a3774",
+              "title": "CapEx（资本开支）"
+            },
+            {
+              "id": "section-5c0e183913f1",
+              "title": "FCF（自由现金流）"
+            },
+            {
+              "id": "section-f85db46b042d",
+              "title": "ROIC（投入资本回报率）"
+            }
+          ]
+        },
+        {
+          "title": "买入价格与周期风险",
+          "description": "估值 · 情景 · 风险",
+          "chapters": [
+            {
+              "id": "section-7e6e371de691-2",
+              "title": "10. 估值框架"
+            },
+            {
+              "id": "section-09931c0f14b1-2",
+              "title": "11. 牛 / 基准 / 熊三情景"
+            },
+            {
+              "id": "section-b58e721e2fc3-2",
+              "title": "12. 核心催化剂"
+            },
+            {
+              "id": "section-9a7a9827b5ba-2",
+              "title": "13. 最大风险"
+            },
+            {
+              "id": "section-99bb984f25a2-2",
+              "title": "14. 当前市场争议"
+            },
+            {
+              "id": "section-b393e1ada851",
+              "title": "40亿美元ARR到底值多少钱？"
+            },
+            {
+              "id": "section-eb84b1c4116f",
+              "title": "约2年项目回收期是否可持续？"
+            },
+            {
+              "id": "section-d4609d843cb2",
+              "title": "IREN是AI Cloud公司还是高杠杆数据中心开发商？"
+            },
+            {
+              "id": "section-5e1ef178ea7f",
+              "title": "5GW到底有多大价值？"
+            }
+          ]
+        },
+        {
+          "title": "市场如何给它定价",
+          "description": "股性 · 宏观 · 交易结构",
+          "chapters": [
+            {
+              "id": "section-8e75fb4f16fc-2",
+              "title": "15. 股性特征"
+            },
+            {
+              "id": "section-a9b60a8c4234-2",
+              "title": "16. 与板块相关性"
+            },
+            {
+              "id": "section-9e6c763d3bbd-2",
+              "title": "17. 宏观敏感因素"
+            },
+            {
+              "id": "section-a0a02b89bf87-2",
+              "title": "18. 历史典型走势"
+            },
+            {
+              "id": "section-619942d6ed6e-2",
+              "title": "19. 当前技术结构"
+            }
+          ]
+        },
+        {
+          "title": "接下来怎样验证",
+          "description": "跟踪清单 · 证伪 · 动态",
+          "chapters": [
+            {
+              "id": "section-7a84a1244490-2",
+              "title": "20. Thesis验证清单"
+            },
+            {
+              "id": "section-e38e2fbcb422-2",
+              "title": "21. 哪些情况意味着逻辑证伪"
+            },
+            {
+              "id": "section-96526b231fb3-2",
+              "title": "22. 最新动态"
+            },
+            {
+              "id": "section-512c99b770b7",
+              "title": "附录A：IREN vs CRWV vs NBIS定位"
+            },
+            {
+              "id": "section-2435d69cef64",
+              "title": "附录B：Thesis跟踪卡"
+            },
+            {
+              "id": "section-6e89737a00e1",
+              "title": "数据来源"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "iren-story",
@@ -1515,7 +3019,134 @@ window.researchDocuments = [
         "id": "section-2ea66f15515e",
         "title": "资料来源与阅读说明"
       }
-    ]
+    ],
+    "reading": {
+      "title": "从比特币矿场到 AI 算力工厂",
+      "parts": [
+        {
+          "title": "兄弟、资源与创业起点",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-f97b43fe2070",
+              "title": "先用 3 分钟理解这家公司"
+            },
+            {
+              "id": "section-df81045d34d7",
+              "title": "一、故事从澳大利亚的一对兄弟开始"
+            },
+            {
+              "id": "section-c40ba4a9555b",
+              "title": "二、他们一开始甚至并不相信 Bitcoin"
+            },
+            {
+              "id": "section-103abfe15ddc",
+              "title": "三、他们看到的真正机会，其实不是 Bitcoin"
+            },
+            {
+              "id": "section-a93a9a080c8b",
+              "title": "四、从第一天开始，它就不像普通矿企"
+            }
+          ]
+        },
+        {
+          "title": "第一座基地与上市",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-b148aa29a2fb",
+              "title": "五、第一座真正的基地：加拿大"
+            },
+            {
+              "id": "section-21b08f8f1bb8",
+              "title": "六、2021：上市，故事看起来顺风顺水"
+            }
+          ]
+        },
+        {
+          "title": "危机暴露了公司性格",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-c34d921f6975",
+              "title": "七、2022：差点翻车的一年"
+            },
+            {
+              "id": "section-5e32697dad6b",
+              "title": "八、这一仗暴露了创始人的“公司性格”"
+            }
+          ]
+        },
+        {
+          "title": "保留选择权，转向 AI",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-430ad8f0c469",
+              "title": "九、真正改变命运的事情发生在 2023 年"
+            },
+            {
+              "id": "section-720526542ab3",
+              "title": "十、先小赌注，再放大：Poolside 的验证"
+            },
+            {
+              "id": "section-1308bd401605",
+              "title": "十一、同样一兆瓦的电，AI 可能比 Bitcoin 更值钱"
+            },
+            {
+              "id": "section-f425f3cdbfbb",
+              "title": "十二、改名，是一个明显的身份信号"
+            }
+          ]
+        },
+        {
+          "title": "从身份切换走向规模化",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-2b295162171a",
+              "title": "十三、2025 年 11 月：Microsoft 让身份切换完成"
+            },
+            {
+              "id": "section-847830ca6017",
+              "title": "十四、2026：NVIDIA 与规模化阶段"
+            },
+            {
+              "id": "section-735298976b4f",
+              "title": "十五、所以 IREN 真正是一家什么公司？"
+            },
+            {
+              "id": "section-61a62c4561a9",
+              "title": "十六、创始人后来怎样解释自己的创业逻辑"
+            },
+            {
+              "id": "section-5cd94131b69d",
+              "title": "十七、最有意思的不是“猜中了 AI”，而是一直保留选择权"
+            },
+            {
+              "id": "section-3576379c7612",
+              "title": "十八、当然，这个故事远没有结束"
+            },
+            {
+              "id": "section-a095a4a66ad3",
+              "title": "十九、以后再看到 IREN，可以这样记住"
+            },
+            {
+              "id": "section-04e29e0e54fe",
+              "title": "二十、IREN 八年关键时间线"
+            },
+            {
+              "id": "section-873018d1cffc",
+              "title": "最后：为什么 IREN 这个公司故事值得记住"
+            },
+            {
+              "id": "section-2ea66f15515e",
+              "title": "资料来源与阅读说明"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "sndk-dossier",
@@ -1626,7 +3257,130 @@ window.researchDocuments = [
         "id": "section-96526b231fb3",
         "title": "22. 最新动态"
       }
-    ]
+    ],
+    "reading": {
+      "title": "闪存与固态存储，从涨价周期走向供货合约验证。",
+      "parts": [
+        {
+          "title": "理解这门生意",
+          "description": "商业模式 · 产品 · 竞争",
+          "chapters": [
+            {
+              "id": "section-ae30f98d9d0c",
+              "title": "1. 一句话看懂公司"
+            },
+            {
+              "id": "section-c896658fd3d4",
+              "title": "2. 商业模式"
+            },
+            {
+              "id": "section-ba445fd89239",
+              "title": "3. 收入结构"
+            },
+            {
+              "id": "section-860919f1e8a9",
+              "title": "4. 行业地位"
+            },
+            {
+              "id": "section-a1b5eba8140c",
+              "title": "5. 核心竞争力"
+            },
+            {
+              "id": "section-76048f453aa4",
+              "title": "6. 主要竞争对手"
+            }
+          ]
+        },
+        {
+          "title": "增长与盈利兑现",
+          "description": "增长逻辑 · 财务 · 现金流",
+          "chapters": [
+            {
+              "id": "section-4dc9768bc80e",
+              "title": "7. 未来12–24个月增长逻辑"
+            },
+            {
+              "id": "section-fa91d5f300f8",
+              "title": "8. 核心财务指标"
+            },
+            {
+              "id": "section-99f4b87d1c8b",
+              "title": "9. 资本开支 / 自由现金流 / 投入资本回报率（CapEx / FCF / ROIC）"
+            }
+          ]
+        },
+        {
+          "title": "买入价格与周期风险",
+          "description": "估值 · 情景 · 风险",
+          "chapters": [
+            {
+              "id": "section-7e6e371de691",
+              "title": "10. 估值框架"
+            },
+            {
+              "id": "section-09931c0f14b1",
+              "title": "11. 牛 / 基准 / 熊三情景"
+            },
+            {
+              "id": "section-b58e721e2fc3",
+              "title": "12. 核心催化剂"
+            },
+            {
+              "id": "section-9a7a9827b5ba",
+              "title": "13. 最大风险"
+            },
+            {
+              "id": "section-99bb984f25a2",
+              "title": "14. 当前市场争议"
+            }
+          ]
+        },
+        {
+          "title": "市场如何给它定价",
+          "description": "股性 · 宏观 · 交易结构",
+          "chapters": [
+            {
+              "id": "section-8e75fb4f16fc",
+              "title": "15. 股性特征"
+            },
+            {
+              "id": "section-a9b60a8c4234",
+              "title": "16. 与板块相关性"
+            },
+            {
+              "id": "section-9e6c763d3bbd",
+              "title": "17. 宏观敏感因素"
+            },
+            {
+              "id": "section-a0a02b89bf87",
+              "title": "18. 历史典型走势"
+            },
+            {
+              "id": "section-619942d6ed6e",
+              "title": "19. 当前技术结构"
+            }
+          ]
+        },
+        {
+          "title": "接下来怎样验证",
+          "description": "跟踪清单 · 证伪 · 动态",
+          "chapters": [
+            {
+              "id": "section-7a84a1244490",
+              "title": "20. Thesis验证清单"
+            },
+            {
+              "id": "section-e38e2fbcb422",
+              "title": "21. 哪些情况意味着逻辑证伪"
+            },
+            {
+              "id": "section-96526b231fb3",
+              "title": "22. 最新动态"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "sndk-story",
@@ -1741,7 +3495,138 @@ window.researchDocuments = [
         "id": "section-887ba7763416",
         "title": "最后：它已经学会保存数据，还要学会保存利润"
       }
-    ]
+    ],
+    "reading": {
+      "title": "SanDisk 闪迪公司故事：从一张存储卡，到试图改写闪存生意的公司",
+      "parts": [
+        {
+          "title": "三位创始人与一道技术题",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-eeeb0219ecf2",
+              "title": "一、Harari带来的，并不是一张存储卡的点子"
+            },
+            {
+              "id": "section-34c336c3aabc",
+              "title": "二、三位创始人，刚好对应三类难题"
+            },
+            {
+              "id": "section-4cfc57136354",
+              "title": "三、第一道考试：先撑过一个周末"
+            },
+            {
+              "id": "section-791d3641aaf4",
+              "title": "四、真正大的市场，不一定是一台更贵的电脑"
+            }
+          ]
+        },
+        {
+          "title": "市场、联盟与制造承诺",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-f17617af58d3",
+              "title": "五、面对柯达，选择的是一家公司，还是整个市场"
+            },
+            {
+              "id": "section-83bfb4cc6c19",
+              "title": "六、SD卡为什么是一场联盟工程"
+            },
+            {
+              "id": "section-86445e30efd6",
+              "title": "七、与东芝结盟，也意味着换一条技术路"
+            },
+            {
+              "id": "section-778d13d744db",
+              "title": "八、工厂像一道护城河，也像一项长期承诺"
+            }
+          ]
+        },
+        {
+          "title": "周期低谷里的取舍",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-cfa1f99a6a4d",
+              "title": "九、2006年收购M-Systems：不只守着相机卡"
+            },
+            {
+              "id": "section-953721fe6bd5",
+              "title": "十、2008年：出货翻倍，收入反而下降"
+            },
+            {
+              "id": "section-bbf0f80e5881",
+              "title": "十一、拒绝三星，不等于没有代价"
+            },
+            {
+              "id": "section-5591ec1a03bc",
+              "title": "十二、2009年的选择：不必保住每一份产能"
+            },
+            {
+              "id": "section-502f22174b24",
+              "title": "十三、创始人的下一棒，开始面向数据中心"
+            }
+          ]
+        },
+        {
+          "title": "并入集团，再次独立",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-953b59183af3",
+              "title": "十四、2016年：名字还在，股票先消失了"
+            },
+            {
+              "id": "section-81d7ab401cb7",
+              "title": "十五、两种存储，装进一个集团之后"
+            },
+            {
+              "id": "section-bd3b01b3a761",
+              "title": "十六、2022年的污染，提醒人们芯片仍是物理产品"
+            },
+            {
+              "id": "section-367f47e2400d",
+              "title": "十七、2023年：市场并不会因为技术进步就永远缺货"
+            },
+            {
+              "id": "section-5ad3a7dc98f8",
+              "title": "十八、Goeckeler接过的，是一次组织重建"
+            }
+          ]
+        },
+        {
+          "title": "AI、长约与利润持续性",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-3a3e81211581",
+              "title": "十九、AI到来时，闪迪并非从零开始"
+            },
+            {
+              "id": "section-a02696839ec1",
+              "title": "二十、2026年最大的变化，是开始重写买卖关系"
+            },
+            {
+              "id": "section-b0746bb13e4e",
+              "title": "二十一、老伙伴续约，新技术又在寻找共同标准"
+            },
+            {
+              "id": "section-8353ee71d406",
+              "title": "二十二、这家公司的“性格”，可以怎样理解"
+            },
+            {
+              "id": "section-a009a3b9c43b",
+              "title": "二十三、把三十多年放在一条时间线上"
+            },
+            {
+              "id": "section-887ba7763416",
+              "title": "最后：它已经学会保存数据，还要学会保存利润"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "wdc-dossier",
@@ -1856,7 +3741,134 @@ window.researchDocuments = [
         "id": "section-3d984166cdd5",
         "title": "我目前对WDC的理解"
       }
-    ]
+    ],
+    "reading": {
+      "title": "云数据的长期存储，从高容量产品走向利润兑现。",
+      "parts": [
+        {
+          "title": "理解这门生意",
+          "description": "商业模式 · 产品 · 竞争",
+          "chapters": [
+            {
+              "id": "section-ae30f98d9d0c",
+              "title": "1. 一句话看懂公司"
+            },
+            {
+              "id": "section-c896658fd3d4",
+              "title": "2. 商业模式"
+            },
+            {
+              "id": "section-ba445fd89239",
+              "title": "3. 收入结构"
+            },
+            {
+              "id": "section-860919f1e8a9",
+              "title": "4. 行业地位"
+            },
+            {
+              "id": "section-a1b5eba8140c",
+              "title": "5. 核心竞争力"
+            },
+            {
+              "id": "section-76048f453aa4",
+              "title": "6. 主要竞争对手"
+            }
+          ]
+        },
+        {
+          "title": "增长与盈利兑现",
+          "description": "增长逻辑 · 财务 · 现金流",
+          "chapters": [
+            {
+              "id": "section-6d6a4456c5cd",
+              "title": "7. 未来12—24个月增长逻辑"
+            },
+            {
+              "id": "section-fa91d5f300f8",
+              "title": "8. 核心财务指标"
+            },
+            {
+              "id": "section-77e59cb937ab",
+              "title": "9. 资本开支 / 自由现金流 / 投入资本回报率"
+            }
+          ]
+        },
+        {
+          "title": "买入价格与周期风险",
+          "description": "估值 · 情景 · 风险",
+          "chapters": [
+            {
+              "id": "section-7e6e371de691",
+              "title": "10. 估值框架"
+            },
+            {
+              "id": "section-09931c0f14b1",
+              "title": "11. 牛 / 基准 / 熊三情景"
+            },
+            {
+              "id": "section-b58e721e2fc3",
+              "title": "12. 核心催化剂"
+            },
+            {
+              "id": "section-9a7a9827b5ba",
+              "title": "13. 最大风险"
+            },
+            {
+              "id": "section-99bb984f25a2",
+              "title": "14. 当前市场争议"
+            }
+          ]
+        },
+        {
+          "title": "市场如何给它定价",
+          "description": "股性 · 宏观 · 交易结构",
+          "chapters": [
+            {
+              "id": "section-8e75fb4f16fc",
+              "title": "15. 股性特征"
+            },
+            {
+              "id": "section-a9b60a8c4234",
+              "title": "16. 与板块相关性"
+            },
+            {
+              "id": "section-9e6c763d3bbd",
+              "title": "17. 宏观敏感因素"
+            },
+            {
+              "id": "section-a0a02b89bf87",
+              "title": "18. 历史典型走势"
+            },
+            {
+              "id": "section-619942d6ed6e",
+              "title": "19. 当前技术结构"
+            }
+          ]
+        },
+        {
+          "title": "接下来怎样验证",
+          "description": "跟踪清单 · 证伪 · 动态",
+          "chapters": [
+            {
+              "id": "section-7a84a1244490",
+              "title": "20. Thesis验证清单"
+            },
+            {
+              "id": "section-e38e2fbcb422",
+              "title": "21. 哪些情况意味着逻辑证伪"
+            },
+            {
+              "id": "section-96526b231fb3",
+              "title": "22. 最新动态"
+            },
+            {
+              "id": "section-3d984166cdd5",
+              "title": "我目前对WDC的理解"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "wdc-story",
@@ -1967,7 +3979,134 @@ window.researchDocuments = [
         "id": "section-cd0b9b682b9f",
         "title": "一条简短时间线"
       }
-    ]
+    ],
+    "reading": {
+      "title": "Western Digital：把自己拆开以后，重新发现硬盘",
+      "parts": [
+        {
+          "title": "主角最初并不是硬盘",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-1e649533091b",
+              "title": "一、故事开始时，主角还不是硬盘"
+            },
+            {
+              "id": "section-484392fec575",
+              "title": "二、计算器曾经像一个好未来"
+            },
+            {
+              "id": "section-2c09f5c85e37",
+              "title": "三、它先学会指挥硬盘，才自己造硬盘"
+            },
+            {
+              "id": "section-73787156bdc3",
+              "title": "四、Kathryn Braun与一条买来的生产线"
+            }
+          ]
+        },
+        {
+          "title": "制造能力与扩张边界",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-d592174b077f",
+              "title": "五、进入硬盘之后，并没有一直领先"
+            },
+            {
+              "id": "section-8c1c491748ef",
+              "title": "六、一家供应商倒下，改变了它的边界"
+            },
+            {
+              "id": "section-74f6a42c4831",
+              "title": "七、2007年，连“写字的纸”也买下来"
+            },
+            {
+              "id": "section-63096f6db8f2",
+              "title": "八、2011年，战略计划碰上真正的洪水"
+            }
+          ]
+        },
+        {
+          "title": "并购、整合与技术升级",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-48f18b640dfd",
+              "title": "九、洪水之后，又要接住一家大公司"
+            },
+            {
+              "id": "section-a60c880898ed",
+              "title": "十、买下来了，却不能立刻合在一起"
+            },
+            {
+              "id": "section-5515ffac714f",
+              "title": "十一、氦气硬盘：改变盒子里面，而不是换掉盒子"
+            }
+          ]
+        },
+        {
+          "title": "两种存储放进一个集团",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-3aec87d94214",
+              "title": "十二、2016年，硬盘公司决定跨到闪存那一边"
+            },
+            {
+              "id": "section-fb66a445defa",
+              "title": "十三、都叫“存储”，却不是同一种生意"
+            },
+            {
+              "id": "section-c77790fdee4d",
+              "title": "十四、David Goeckeler先把责任分开"
+            },
+            {
+              "id": "section-c44053869c6f",
+              "title": "十五、2022年，股东把问题摆到桌面上"
+            },
+            {
+              "id": "section-a27df776f171",
+              "title": "十六、2023年的决定：不再等待所有东西完美匹配"
+            }
+          ]
+        },
+        {
+          "title": "拆开之后，重新发现硬盘",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-fa59840c724f",
+              "title": "十七、2025年，缩小边界，不等于把一半价值扔掉"
+            },
+            {
+              "id": "section-0187c28f8fbe",
+              "title": "十八、Irving Tan接手的，是制造与客户共同出的考题"
+            },
+            {
+              "id": "section-81a833281172",
+              "title": "十九、它留下的SanDisk股份，也有一段收尾故事"
+            },
+            {
+              "id": "section-041cd62721c8",
+              "title": "二十、2026年，为什么老技术又走到舞台中间？"
+            },
+            {
+              "id": "section-ad9b847bab35",
+              "title": "二十一、这家公司真正反复练习的是什么？"
+            },
+            {
+              "id": "section-d72280fd15b0",
+              "title": "二十二、故事仍然停在一道没有答案的题前"
+            },
+            {
+              "id": "section-cd0b9b682b9f",
+              "title": "一条简短时间线"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "cohr-dossier",
@@ -2074,7 +4213,130 @@ window.researchDocuments = [
         "id": "section-96526b231fb3",
         "title": "22. 最新动态"
       }
-    ]
+    ],
+    "reading": {
+      "title": "跨环节的光子平台，从增长验证走向每股现金回报。",
+      "parts": [
+        {
+          "title": "理解这门生意",
+          "description": "商业模式 · 产品 · 竞争",
+          "chapters": [
+            {
+              "id": "section-ae30f98d9d0c",
+              "title": "1. 一句话看懂公司"
+            },
+            {
+              "id": "section-c896658fd3d4",
+              "title": "2. 商业模式"
+            },
+            {
+              "id": "section-ba445fd89239",
+              "title": "3. 收入结构"
+            },
+            {
+              "id": "section-860919f1e8a9",
+              "title": "4. 行业地位"
+            },
+            {
+              "id": "section-a1b5eba8140c",
+              "title": "5. 核心竞争力"
+            },
+            {
+              "id": "section-76048f453aa4",
+              "title": "6. 主要竞争对手"
+            }
+          ]
+        },
+        {
+          "title": "增长与盈利兑现",
+          "description": "增长逻辑 · 财务 · 现金流",
+          "chapters": [
+            {
+              "id": "section-72537664cbe3",
+              "title": "7. 未来12至24个月增长逻辑"
+            },
+            {
+              "id": "section-fa91d5f300f8",
+              "title": "8. 核心财务指标"
+            },
+            {
+              "id": "section-99f4b87d1c8b",
+              "title": "9. 资本开支 / 自由现金流 / 投入资本回报率（CapEx / FCF / ROIC）"
+            }
+          ]
+        },
+        {
+          "title": "买入价格与周期风险",
+          "description": "估值 · 情景 · 风险",
+          "chapters": [
+            {
+              "id": "section-7e6e371de691",
+              "title": "10. 估值框架"
+            },
+            {
+              "id": "section-09931c0f14b1",
+              "title": "11. 牛 / 基准 / 熊三情景"
+            },
+            {
+              "id": "section-b58e721e2fc3",
+              "title": "12. 核心催化剂"
+            },
+            {
+              "id": "section-9a7a9827b5ba",
+              "title": "13. 最大风险"
+            },
+            {
+              "id": "section-99bb984f25a2",
+              "title": "14. 当前市场争议"
+            }
+          ]
+        },
+        {
+          "title": "市场如何给它定价",
+          "description": "股性 · 宏观 · 交易结构",
+          "chapters": [
+            {
+              "id": "section-8e75fb4f16fc",
+              "title": "15. 股性特征"
+            },
+            {
+              "id": "section-b2c38fd56918",
+              "title": "16. 与板块的相关性"
+            },
+            {
+              "id": "section-9e6c763d3bbd",
+              "title": "17. 宏观敏感因素"
+            },
+            {
+              "id": "section-a0a02b89bf87",
+              "title": "18. 历史典型走势"
+            },
+            {
+              "id": "section-619942d6ed6e",
+              "title": "19. 当前技术结构"
+            }
+          ]
+        },
+        {
+          "title": "接下来怎样验证",
+          "description": "跟踪清单 · 证伪 · 动态",
+          "chapters": [
+            {
+              "id": "section-7a84a1244490",
+              "title": "20. Thesis验证清单"
+            },
+            {
+              "id": "section-e38e2fbcb422",
+              "title": "21. 哪些情况意味着逻辑证伪"
+            },
+            {
+              "id": "section-96526b231fb3",
+              "title": "22. 最新动态"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "cohr-story",
@@ -2181,7 +4443,130 @@ window.researchDocuments = [
         "id": "section-985974a6bf45",
         "title": "二十二 把时间线连起来"
       }
-    ]
+    ],
+    "reading": {
+      "title": "COHR｜Coherent 公司故事版",
+      "parts": [
+        {
+          "title": "材料与激光的两条起点",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-beb6a7d43693",
+              "title": "一 这家公司为什么有两个出生年份"
+            },
+            {
+              "id": "section-11db0fd806b1",
+              "title": "二 Carl Johnson看到的是一块不起眼的材料"
+            },
+            {
+              "id": "section-c995d979ef30",
+              "title": "三 从小零件开始的生意 有自己的耐心"
+            },
+            {
+              "id": "section-510acd5f3107",
+              "title": "四 另一条故事线 在洗衣房里做激光器"
+            }
+          ]
+        },
+        {
+          "title": "从零件走向工业平台",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-579587a7453c",
+              "title": "五 从一种材料 走向更多工业世界"
+            },
+            {
+              "id": "section-b704ffa26bbe",
+              "title": "六 收购开始改变公司的形状"
+            },
+            {
+              "id": "section-cfbff43c12cc",
+              "title": "七 2016年 一口气把晶圆能力补进来"
+            },
+            {
+              "id": "section-87f3927a0679",
+              "title": "八 Chuck Mattera接手时 已经熟悉这条路"
+            }
+          ]
+        },
+        {
+          "title": "走进光网络深处",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-7e73433293c4",
+              "title": "九 Finisar让它真正走进网络深处"
+            },
+            {
+              "id": "section-9b8cc41221f4",
+              "title": "十 2021年 它想买下一家和自己不同的公司"
+            },
+            {
+              "id": "section-e25b8b07cebd",
+              "title": "十一 买下来之后 名字也换了"
+            }
+          ]
+        },
+        {
+          "title": "收购后的账单与重整",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-bcab54a7dc35",
+              "title": "十二 收购后的第一张账单 来得很现实"
+            },
+            {
+              "id": "section-1d5f477e4a58",
+              "title": "十三 碳化硅业务选择引入伙伴"
+            },
+            {
+              "id": "section-4ddd82e017c3",
+              "title": "十四 Jim Anderson接手的是一座已经建得很大的工厂群"
+            },
+            {
+              "id": "section-332d3a110245",
+              "title": "十五 它开始重新决定 哪些业务值得留下"
+            }
+          ]
+        },
+        {
+          "title": "AI 需求与现金回报",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-9fcabd2eba1c",
+              "title": "十六 AI把一个老问题放大了"
+            },
+            {
+              "id": "section-c5a8cffde697",
+              "title": "十七 NVIDIA带来资金 也带来更高的交付要求"
+            },
+            {
+              "id": "section-a7028a526fbd",
+              "title": "十八 Sherman的扩建 把远景变成了具体工程"
+            },
+            {
+              "id": "section-c915c77b0926",
+              "title": "十九 PhotonLink想把所有零件 接成一条路"
+            },
+            {
+              "id": "section-084e713b01b4",
+              "title": "二十 现在 它要把技术平台变成股东的现金"
+            },
+            {
+              "id": "section-2eefd0e44b4e",
+              "title": "二十一 如果要记住这家公司的性格"
+            },
+            {
+              "id": "section-985974a6bf45",
+              "title": "二十二 把时间线连起来"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "aehr-dossier",
@@ -2288,7 +4673,130 @@ window.researchDocuments = [
         "id": "section-96526b231fb3",
         "title": "22. 最新动态"
       }
-    ]
+    ],
+    "reading": {
+      "title": "芯片出厂前的可靠性关卡，从电动车扩产走向 AI 与硅光验证。",
+      "parts": [
+        {
+          "title": "理解这门生意",
+          "description": "商业模式 · 产品 · 竞争",
+          "chapters": [
+            {
+              "id": "section-ae30f98d9d0c",
+              "title": "1. 一句话看懂公司"
+            },
+            {
+              "id": "section-c896658fd3d4",
+              "title": "2. 商业模式"
+            },
+            {
+              "id": "section-ba445fd89239",
+              "title": "3. 收入结构"
+            },
+            {
+              "id": "section-860919f1e8a9",
+              "title": "4. 行业地位"
+            },
+            {
+              "id": "section-a1b5eba8140c",
+              "title": "5. 核心竞争力"
+            },
+            {
+              "id": "section-76048f453aa4",
+              "title": "6. 主要竞争对手"
+            }
+          ]
+        },
+        {
+          "title": "增长与盈利兑现",
+          "description": "增长逻辑 · 财务 · 现金流",
+          "chapters": [
+            {
+              "id": "section-c1e4f0cc1937",
+              "title": "7. 未来 12–24 个月增长逻辑"
+            },
+            {
+              "id": "section-fa91d5f300f8",
+              "title": "8. 核心财务指标"
+            },
+            {
+              "id": "section-8d9b67c313ef",
+              "title": "9. 资本开支 自由现金流 投入资本回报率"
+            }
+          ]
+        },
+        {
+          "title": "买入价格与周期风险",
+          "description": "估值 · 情景 · 风险",
+          "chapters": [
+            {
+              "id": "section-7e6e371de691",
+              "title": "10. 估值框架"
+            },
+            {
+              "id": "section-7db9cf13f5a6",
+              "title": "11. 牛 基准 熊三情景"
+            },
+            {
+              "id": "section-b58e721e2fc3",
+              "title": "12. 核心催化剂"
+            },
+            {
+              "id": "section-9a7a9827b5ba",
+              "title": "13. 最大风险"
+            },
+            {
+              "id": "section-99bb984f25a2",
+              "title": "14. 当前市场争议"
+            }
+          ]
+        },
+        {
+          "title": "市场如何给它定价",
+          "description": "股性 · 宏观 · 交易结构",
+          "chapters": [
+            {
+              "id": "section-8e75fb4f16fc",
+              "title": "15. 股性特征"
+            },
+            {
+              "id": "section-a9b60a8c4234",
+              "title": "16. 与板块相关性"
+            },
+            {
+              "id": "section-9e6c763d3bbd",
+              "title": "17. 宏观敏感因素"
+            },
+            {
+              "id": "section-a0a02b89bf87",
+              "title": "18. 历史典型走势"
+            },
+            {
+              "id": "section-619942d6ed6e",
+              "title": "19. 当前技术结构"
+            }
+          ]
+        },
+        {
+          "title": "接下来怎样验证",
+          "description": "跟踪清单 · 证伪 · 动态",
+          "chapters": [
+            {
+              "id": "section-a17b27f0effc",
+              "title": "20. Thesis 验证清单"
+            },
+            {
+              "id": "section-e38e2fbcb422",
+              "title": "21. 哪些情况意味着逻辑证伪"
+            },
+            {
+              "id": "section-96526b231fb3",
+              "title": "22. 最新动态"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "aehr-story",
@@ -2379,7 +4887,114 @@ window.researchDocuments = [
         "id": "section-0cf1c8a3e050",
         "title": "十八 故事停在一个很有意思的位置"
       }
-    ]
+    ],
+    "reading": {
+      "title": "AEHR 公司故事版",
+      "parts": [
+        {
+          "title": "工程师与可靠性测试",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-0d4185bcb479",
+              "title": "一 故事从一位工程师开始"
+            },
+            {
+              "id": "section-0aa80f6f1ce5",
+              "title": "二 它要解决的 是一个产品出厂后才会暴露的问题"
+            },
+            {
+              "id": "section-20e45d3494a5",
+              "title": "三 上市以后 它也没有立即变成大公司"
+            },
+            {
+              "id": "section-5c72492bd31a",
+              "title": "四 2012 年 新掌门人接过一家仍在寻找突破口的公司"
+            }
+          ]
+        },
+        {
+          "title": "把坏芯片提早找出来",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-f9a4f04822b3",
+              "title": "五 一个越来越重要的想法 把坏芯片提早找出来"
+            },
+            {
+              "id": "section-b284db09588e",
+              "title": "六 2015 到 2016 年 FOX 平台走到关键一步"
+            },
+            {
+              "id": "section-343d62e9451c",
+              "title": "七 机器后面 还有一门跟着芯片设计走的生意"
+            },
+            {
+              "id": "section-e59366e3f8ef",
+              "title": "八 2021 年 机会还没有放大 疫情先把节奏打乱了"
+            }
+          ]
+        },
+        {
+          "title": "碳化硅的放量与回撤",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-1dceeb66f2e1",
+              "title": "九 碳化硅让它等到一次真正的放量"
+            },
+            {
+              "id": "section-65a392f4c6f6",
+              "title": "十 大客户既是最好的入口 也是最难回避的依赖"
+            },
+            {
+              "id": "section-001142edfa68",
+              "title": "十一 2024 年 两次下调指引把这个问题摆到了台前"
+            },
+            {
+              "id": "section-74c5656e89a6",
+              "title": "十二 同一年 公司买进了一块新的能力"
+            },
+            {
+              "id": "section-19b1b8ac623e",
+              "title": "十三 两条路线 让公司有了更灵活的位置"
+            }
+          ]
+        },
+        {
+          "title": "AI 与硅光成为订单",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-5bcbb7f0b327",
+              "title": "十四 2026 年 AI 终于从讨论变成了大额生产订单"
+            },
+            {
+              "id": "section-23e0771d365b",
+              "title": "十五 硅光的故事 其实也没有离开老本行"
+            },
+            {
+              "id": "section-551682ca1c12",
+              "title": "十六 新机会到来后 公司仍要面对老问题"
+            }
+          ]
+        },
+        {
+          "title": "下一步是经营兑现",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-dbaad38cbe0e",
+              "title": "十七 这段历史 显露出怎样的公司性格"
+            },
+            {
+              "id": "section-0cf1c8a3e050",
+              "title": "十八 故事停在一个很有意思的位置"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "googl-dossier",
@@ -2590,7 +5205,138 @@ window.researchDocuments = [
         "id": "section-653ea30d8790",
         "title": "资料来源与口径说明"
       }
-    ]
+    ],
+    "reading": {
+      "title": "从搜索框到 AI 入口，现金牛如何承担新的资本周期。",
+      "parts": [
+        {
+          "title": "理解这门生意",
+          "description": "商业模式 · 产品 · 竞争",
+          "chapters": [
+            {
+              "id": "section-ae30f98d9d0c-2",
+              "title": "1. 一句话看懂公司"
+            },
+            {
+              "id": "section-c896658fd3d4-2",
+              "title": "2. 商业模式"
+            },
+            {
+              "id": "section-ba445fd89239-2",
+              "title": "3. 收入结构"
+            },
+            {
+              "id": "section-860919f1e8a9-2",
+              "title": "4. 行业地位"
+            },
+            {
+              "id": "section-a1b5eba8140c-2",
+              "title": "5. 核心竞争力"
+            },
+            {
+              "id": "section-76048f453aa4-2",
+              "title": "6. 主要竞争对手"
+            }
+          ]
+        },
+        {
+          "title": "增长与盈利兑现",
+          "description": "增长逻辑 · 财务 · 现金流",
+          "chapters": [
+            {
+              "id": "section-4dc9768bc80e-2",
+              "title": "7. 未来12–24个月增长逻辑"
+            },
+            {
+              "id": "section-fa91d5f300f8-2",
+              "title": "8. 核心财务指标"
+            },
+            {
+              "id": "section-0431b2e4fdce-2",
+              "title": "9. CapEx / FCF / ROIC"
+            }
+          ]
+        },
+        {
+          "title": "买入价格与周期风险",
+          "description": "估值 · 情景 · 风险",
+          "chapters": [
+            {
+              "id": "section-7e6e371de691-2",
+              "title": "10. 估值框架"
+            },
+            {
+              "id": "section-09931c0f14b1-2",
+              "title": "11. 牛 / 基准 / 熊三情景"
+            },
+            {
+              "id": "section-b58e721e2fc3-2",
+              "title": "12. 核心催化剂"
+            },
+            {
+              "id": "section-9a7a9827b5ba-2",
+              "title": "13. 最大风险"
+            },
+            {
+              "id": "section-99bb984f25a2-2",
+              "title": "14. 当前市场争议"
+            }
+          ]
+        },
+        {
+          "title": "市场如何给它定价",
+          "description": "股性 · 宏观 · 交易结构",
+          "chapters": [
+            {
+              "id": "section-8e75fb4f16fc-2",
+              "title": "15. 股性特征"
+            },
+            {
+              "id": "section-a9b60a8c4234-2",
+              "title": "16. 与板块相关性"
+            },
+            {
+              "id": "section-9e6c763d3bbd-2",
+              "title": "17. 宏观敏感因素"
+            },
+            {
+              "id": "section-a0a02b89bf87-2",
+              "title": "18. 历史典型走势"
+            },
+            {
+              "id": "section-619942d6ed6e-2",
+              "title": "19. 当前技术结构"
+            }
+          ]
+        },
+        {
+          "title": "接下来怎样验证",
+          "description": "跟踪清单 · 证伪 · 动态",
+          "chapters": [
+            {
+              "id": "section-a17b27f0effc-2",
+              "title": "20. Thesis 验证清单"
+            },
+            {
+              "id": "section-e38e2fbcb422",
+              "title": "21. 哪些情况意味着逻辑证伪"
+            },
+            {
+              "id": "section-96526b231fb3-2",
+              "title": "22. 最新动态"
+            },
+            {
+              "id": "section-87ac417821f6",
+              "title": "最终结论"
+            },
+            {
+              "id": "section-653ea30d8790",
+              "title": "资料来源与口径说明"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "googl-story",
@@ -2614,16 +5360,60 @@ window.researchDocuments = [
         "title": "01. 一句话先把 Google 讲明白"
       },
       {
+        "id": "section-58ac72f5227f",
+        "title": "02. 最开始，它甚至不是一家公司"
+      },
+      {
         "id": "section-123facaf62d2",
         "title": "03. 为什么偏偏是 Page 和 Brin"
+      },
+      {
+        "id": "section-996d8a08ef8a",
+        "title": "04. 真正改变 Google 命运的不是搜索，而是广告"
+      },
+      {
+        "id": "section-dccc03f33ddb",
+        "title": "05. IPO 之后，Google 有了“拿现金流去下注”的能力"
+      },
+      {
+        "id": "section-5abec1be6497",
+        "title": "06. Android：看似免费的系统，其实是 Google 最重要的一份保险"
+      },
+      {
+        "id": "section-41f40ae5b424",
+        "title": "07. YouTube：自己做不好，就把赢家买下来"
+      },
+      {
+        "id": "section-9ab7cdaea4b0",
+        "title": "08. Chrome：浏览器战争，本质仍是入口战争"
       },
       {
         "id": "section-3de09878f3bb",
         "title": "09. Google+：工程能力并不能自动制造社交网络"
       },
       {
+        "id": "section-6a04988f9787",
+        "title": "10. Alphabet：公司太大了，于是开始“自己拆自己”"
+      },
+      {
+        "id": "section-a66321e296b8",
+        "title": "11. 最讽刺的一段历史：Google 很早拥有 AI 基础，却不是第一个做出 ChatGPT 的公司"
+      },
+      {
         "id": "section-92a720c37eb9",
         "title": "12. ChatGPT 为什么会触碰 Google 的命门"
+      },
+      {
+        "id": "section-8b1e6ce61ab6",
+        "title": "13. 一个最重要的决定：不要保护旧搜索，主动让 AI 改造搜索"
+      },
+      {
+        "id": "section-a81c8752ba37",
+        "title": "14. Google Cloud：一个长期落后的业务，突然在 AI 时代变得关键"
+      },
+      {
+        "id": "section-ccfb2eff7ef0",
+        "title": "15. Google 正在从轻资产互联网公司，变成 AI 基础设施公司"
       },
       {
         "id": "section-6a291d44076b",
@@ -2641,7 +5431,118 @@ window.researchDocuments = [
         "id": "section-cd27c994788c",
         "title": "19. 最后真正记住 Google"
       }
-    ]
+    ],
+    "reading": {
+      "title": "Alphabet / Google",
+      "parts": [
+        {
+          "title": "搜索问题成为一家公司",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-d4f00a283c49",
+              "title": "01. 一句话先把 Google 讲明白"
+            },
+            {
+              "id": "section-58ac72f5227f",
+              "title": "02. 最开始，它甚至不是一家公司"
+            },
+            {
+              "id": "section-123facaf62d2",
+              "title": "03. 为什么偏偏是 Page 和 Brin"
+            },
+            {
+              "id": "section-996d8a08ef8a",
+              "title": "04. 真正改变 Google 命运的不是搜索，而是广告"
+            }
+          ]
+        },
+        {
+          "title": "守住下一代信息入口",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-dccc03f33ddb",
+              "title": "05. IPO 之后，Google 有了“拿现金流去下注”的能力"
+            },
+            {
+              "id": "section-5abec1be6497",
+              "title": "06. Android：看似免费的系统，其实是 Google 最重要的一份保险"
+            },
+            {
+              "id": "section-41f40ae5b424",
+              "title": "07. YouTube：自己做不好，就把赢家买下来"
+            },
+            {
+              "id": "section-9ab7cdaea4b0",
+              "title": "08. Chrome：浏览器战争，本质仍是入口战争"
+            }
+          ]
+        },
+        {
+          "title": "产品取舍与组织变化",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-3de09878f3bb",
+              "title": "09. Google+：工程能力并不能自动制造社交网络"
+            },
+            {
+              "id": "section-6a04988f9787",
+              "title": "10. Alphabet：公司太大了，于是开始“自己拆自己”"
+            },
+            {
+              "id": "section-a66321e296b8",
+              "title": "11. 最讽刺的一段历史：Google 很早拥有 AI 基础，却不是第一个做出 ChatGPT 的公司"
+            }
+          ]
+        },
+        {
+          "title": "AI 触碰了搜索的命门",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-92a720c37eb9",
+              "title": "12. ChatGPT 为什么会触碰 Google 的命门"
+            },
+            {
+              "id": "section-8b1e6ce61ab6",
+              "title": "13. 一个最重要的决定：不要保护旧搜索，主动让 AI 改造搜索"
+            },
+            {
+              "id": "section-a81c8752ba37",
+              "title": "14. Google Cloud：一个长期落后的业务，突然在 AI 时代变得关键"
+            },
+            {
+              "id": "section-ccfb2eff7ef0",
+              "title": "15. Google 正在从轻资产互联网公司，变成 AI 基础设施公司"
+            }
+          ]
+        },
+        {
+          "title": "今天的押注与资本考验",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-6a291d44076b",
+              "title": "16. Sundar Pichai 今天真正押注的是什么"
+            },
+            {
+              "id": "section-de8826299040",
+              "title": "17. 这家公司的“性格”到底是什么"
+            },
+            {
+              "id": "section-40f8c8b5cf98",
+              "title": "18. 最值得记住的关键节点"
+            },
+            {
+              "id": "section-cd27c994788c",
+              "title": "19. 最后真正记住 Google"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "crwv-story",
@@ -2704,7 +5605,80 @@ window.researchDocuments = [
         "id": "section-37dab1d462e5",
         "title": "附录：术语速查"
       }
-    ]
+    ],
+    "reading": {
+      "title": "COREWEAVE",
+      "parts": [
+        {
+          "title": "矿机，变成了 GPU 云",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-76645caa5e1b",
+              "title": "一、起点很离谱：不是云计算创业，而是“先买一张 GPU 挖币”"
+            },
+            {
+              "id": "section-33fd907fdabd",
+              "title": "二、第一次决定命运的选择：加密寒冬里，他们没有逃跑，反而买更多 GPU"
+            },
+            {
+              "id": "section-e7270d136531",
+              "title": "三、第二次关键转型：从“有 GPU”变成“把 GPU 做成云”"
+            }
+          ]
+        },
+        {
+          "title": "AI 需求与融资机器",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-35433e83038a",
+              "title": "四、ChatGPT 之后，原本的小众能力突然变成全世界最稀缺的东西"
+            },
+            {
+              "id": "section-530f29b23640",
+              "title": "五、2024：公司不再像创业公司，更像“融资驱动的 AI 基础设施开发商”"
+            }
+          ]
+        },
+        {
+          "title": "公开市场与平台扩张",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-31c87e0262aa",
+              "title": "六、2025：OpenAI、IPO、Weights & Biases——CoreWeave 开始从“算力商”向“AI 平台”升级"
+            },
+            {
+              "id": "section-dd150c176185",
+              "title": "七、一次很有价值的失败：收购 Core Scientific 被股东否决"
+            }
+          ]
+        },
+        {
+          "title": "规模怎样变成资本回报",
+          "description": "人物 · 抉择 · 公司演变",
+          "chapters": [
+            {
+              "id": "section-b6ea99c895c6",
+              "title": "八、2026：从 Blackwell 到 Rubin，CoreWeave 的核心能力越来越清楚"
+            },
+            {
+              "id": "section-891700ded484",
+              "title": "九、CoreWeave 最特别的能力可能不是技术，而是“把合同金融化”"
+            },
+            {
+              "id": "section-81441f40543a",
+              "title": "十、一张时间线记住 CoreWeave"
+            },
+            {
+              "id": "section-37dab1d462e5",
+              "title": "附录：术语速查"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "hyperscaler-vs-neocloud",
@@ -2780,6 +5754,87 @@ window.researchDocuments = [
         "id": "section-188540b33033",
         "title": "最后记住这两句话"
       }
-    ]
+    ],
+    "reading": {
+      "title": "Hyperscaler vs Neocloud",
+      "parts": [
+        {
+          "title": "认识两类云",
+          "description": "定义 · 架构 · 工作负载",
+          "chapters": [
+            {
+              "id": "section-e3b4b7de0268",
+              "title": "核心结论"
+            },
+            {
+              "id": "section-2086d029df8f",
+              "title": "差异总表"
+            },
+            {
+              "id": "section-6cb735e6fec2",
+              "title": "1. 本质区别：通用云 vs AI 工厂"
+            },
+            {
+              "id": "section-47553af3184a",
+              "title": "2. Neocloud 真正卖的不是 GPU 数量，而是 GPU 有效产出"
+            }
+          ]
+        },
+        {
+          "title": "生态与技术路线",
+          "description": "客户 · 芯片 · 迁移成本",
+          "chapters": [
+            {
+              "id": "section-e2c9772e39a6",
+              "title": "3. Hyperscaler 最大的护城河：Cloud Ecosystem Lock-in（云生态锁定）"
+            },
+            {
+              "id": "section-bcd83af4b375",
+              "title": "4. 芯片路线：自研加速器 vs NVIDIA 中心化"
+            }
+          ]
+        },
+        {
+          "title": "资本模型与扩张",
+          "description": "资本开支 · 融资 · 杠杆",
+          "chapters": [
+            {
+              "id": "section-104107be5647",
+              "title": "5. 最本质的财务差异：谁来承担 CapEx"
+            },
+            {
+              "id": "section-7869c14cd5f8",
+              "title": "6. 杠杆如何放大 Neocloud 的上行与下行"
+            },
+            {
+              "id": "section-a574116f6db1",
+              "title": "7. 为什么 Neocloud 往往更快、更灵活"
+            }
+          ]
+        },
+        {
+          "title": "投资观察与术语",
+          "description": "趋势 · 跟踪 · 术语",
+          "chapters": [
+            {
+              "id": "section-0c0966311a06",
+              "title": "8. 两类公司正在向中间靠拢"
+            },
+            {
+              "id": "section-4c76278bf2f4",
+              "title": "投资视角：两类公司应该看什么指标"
+            },
+            {
+              "id": "section-7c69c44838ac",
+              "title": "术语速查"
+            },
+            {
+              "id": "section-188540b33033",
+              "title": "最后记住这两句话"
+            }
+          ]
+        }
+      ]
+    }
   }
 ];

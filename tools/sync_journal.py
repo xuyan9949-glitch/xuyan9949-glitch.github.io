@@ -8,6 +8,7 @@ import re
 import xml.etree.ElementTree as ET
 from urllib.parse import urlparse, unquote
 from html import unescape
+from reading_layout import promote_story_headings, build_layout, reader_shell
 
 ROOT = Path(__file__).resolve().parents[1]
 DEPS = '<link rel="icon" href="/images/alpha.svg"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/journal.css"><script defer src="/js/articles.js"></script><script defer src="/js/calendar-data.js"></script><script defer src="/js/archive-data.js"></script><script defer src="/js/journal.js"></script>'
@@ -33,27 +34,36 @@ def sync_research(data, header, footer):
     """Generate migrated layouts and original-document routes from tracked sources."""
     source=ROOT/'content/research-documents.json'
     documents=json.loads(source.read_text())['documents'] if source.exists() else []
-    prepared={d['id']:document_sections(d) for d in documents}
-    index=[dict({k:v for k,v in d.items() if k!='html'},sections=prepared[d['id']][1]) for d in documents]
+    prepared={d['id']:document_sections(dict(d,html=promote_story_headings(d))) for d in documents}
+    companies={c['id']:c for c in data['companies']}
+    layouts={d['id']:build_layout(d,*prepared[d['id']],companies[d['ticker']]) for d in documents}
+    (ROOT/'content/reading-layouts.json').write_text(json.dumps({'documents':list(layouts.values())},ensure_ascii=False,indent=2)+'\n')
+    index=[dict({k:v for k,v in d.items() if k!='html'},sections=prepared[d['id']][1],reading={
+        'title':layouts[d['id']]['readingTitle'],'parts':[{k:p[k] for k in ['title','description','chapters']} for p in layouts[d['id']]['parts']]}) for d in documents]
     (ROOT/'js/research-data.js').write_text('window.researchDocuments = '+json.dumps(index,ensure_ascii=False,indent=2)+';\n')
-    def page(title, description, body, key, extra='', attributes=''):
-        return '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#164334"><title>'+escape(title)+' | XXY Alpha</title><meta name="description" content="'+escape(description,quote=True)+'">'+V0_DEPS+extra+'</head><body data-page="'+key+'" class="journal research-v0" '+attributes+'><a class="skip-link" href="#main">跳转到正文</a>'+header+body+footer+'</body></html>'
+    magazine_deps='<link rel="stylesheet" href="/css/magazine.css"><script defer src="/js/magazine.js"></script>'
+    def page(title, description, body, key, extra='', attributes='', shell=True):
+        dependencies=V0_DEPS
+        if magazine_deps in extra:
+            dependencies=dependencies.replace('<script defer src="/js/journal.js">',magazine_deps+'<script defer src="/js/journal.js">')
+            extra=extra.replace(magazine_deps,'')
+        return '<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#164334"><title>'+escape(title)+' | XXY Alpha</title><meta name="description" content="'+escape(description,quote=True)+'">'+dependencies+extra+'</head><body data-page="'+key+'" class="journal research-v0" '+attributes+'><a class="skip-link" href="#main">跳转到正文</a>'+(header if shell else '')+body+(footer if shell else '')+'</body></html>'
     for rel,template,title,key in [('index.html','research-home.html','公司档案','research'),('research/index.html','research-directory.html','公司档案','research')]:
         path=ROOT/'templates'/template
         if path.exists(): (ROOT/rel).write_text(page(title,'以公司为入口，检索投研档案、公司故事、财报与历史研究记录。',path.read_text(),key))
     for company in data['companies']:
         if not company.get('profile'):continue
         path=ROOT/'research'/company['id'].lower()/'index.html';path.parent.mkdir(parents=True,exist_ok=True)
-        body='<main id="main" class="page-shell detail-shell" data-company="'+escape(company['id'],quote=True)+'"><div id="company-detail"></div></main>'
-        path.write_text(page(company['name']+' '+company['id'],company['profile']['summary'],body,'company-detail'))
+        body='<main id="main" class="magazine-company-host" data-company="'+escape(company['id'],quote=True)+'"><div id="company-detail"></div></main>'
+        path.write_text(page(company['name']+' '+company['id'],company['profile']['summary'],body,'company-detail',magazine_deps))
     for d in documents:
         return_tab='journal' if d['kind']=='concept' else d['kind']
         path=ROOT/d['file'].strip('/')/'index.html';path.parent.mkdir(parents=True,exist_ok=True)
         context='<div class="v0-document-meta">资料截至 '+escape(d['date'])+' · 原始文稿：'+escape(d['sourceFile'])+'<br><a href="'+escape(d['download'],quote=True)+'" download>下载原始 Word</a> · <a href="/research/'+d['ticker'].lower()+'/?tab='+return_tab+'">返回公司档案</a></div>'
         content=prepared[d['id']][0]
-        body='<main id="main" class="container article-page v0-full-document"><a class="back" href="/research/'+d['ticker'].lower()+'/?tab='+return_tab+'">← '+escape(d['ticker'])+' 公司档案</a><h1>'+escape(d['title'])+'</h1>'+context+'<div class="article-content">'+content+'</div></main>'
+        body=reader_shell(layouts[d['id']],content)
         fingerprint=hashlib.sha256(content.encode()).hexdigest()
-        path.write_text(page(d['title'],'资料截止 '+d['date']+'，从原始研究文稿导入的完整阅读版本。',body,'article','<meta name="article-source-hash" content="'+fingerprint+'"><script defer src="/js/reader.js"></script>', 'data-reading-id="'+escape(d['id'],quote=True)+'"'))
+        path.write_text(page(d['title'],'资料截止 '+d['date']+'，从原始研究文稿导入的完整阅读版本。',body,'article','<meta name="article-source-hash" content="'+fingerprint+'">'+magazine_deps, 'data-reading-id="'+escape(d['id'],quote=True)+'"',shell=False))
 
 def sync_journal():
     header=(ROOT/'templates/journal-header.html').read_text().strip()
