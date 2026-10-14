@@ -4,7 +4,23 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const route=c=>'/research/'+c.id.toLowerCase()+'/';
 const docLink=d=>`<a class="v0-document-link" href="${esc(d.file)}"><h3>${esc(d.title)}</h3><p>${d.kind==='story'?'公司故事':d.kind==='concept'?'概念研究':'完整投研档案'} · 原稿资料截止 ${esc(d.date)}</p><span>进入全文 · 章节目录 / 阅读进度 / 原始 Word →</span></a>`;
 function chapterLinks(doc){const indexed=(window.researchDocuments||[]).find(d=>d.id===doc.id),sections=indexed?.sections||[];return sections.length?`<details class="v0-chapters"><summary>按章节阅读 <span>${sections.length} 节</span></summary><nav aria-label="${esc(doc.title)}章节">${sections.map(s=>`<a href="${esc(doc.file)}#${esc(s.id)}">${esc(s.title)}</a>`).join('')}</nav></details>`:'';}
-function card(c,count,query=''){const p=c.profile;return `<a class="company-card v0-company-card" href="${route(c)}${query?'?q='+encodeURIComponent(query):''}"><div class="v0-card-image" style="background-image:url('/images/research/${esc(p.hero)}')"><span>${esc(p.category)} · ${esc(p.industry)}</span></div><div class="v0-card-copy"><header><span class="ticker">${esc(c.id)}</span><span>↗</span></header><h3>${esc(p.name)}</h3><p>${esc(p.summary)}</p><footer><span>${esc(p.category)} · ${esc(p.sourceDate)}</span><span>查看档案 →</span></footer></div></a>`;}
+function card(c,count,query='',sector=''){const p=c.profile;return `<a class="company-card v0-company-card" href="${route(c)}${query||sector?'?'+new URLSearchParams({...(query?{q:query}:{}),...(sector?{sector}: {})}).toString():''}"><div class="v0-card-image" style="background-image:url('/images/research/${esc(p.hero)}')"><span>${esc(p.category)} · ${esc(p.industry)}</span></div><div class="v0-card-copy"><header><span class="ticker">${esc(c.id)}</span><span>↗</span></header><h3>${esc(p.name)}</h3><p>${esc(p.summary)}</p><footer><span>${esc(p.category)} · ${esc(p.sourceDate)}</span><span>查看档案 →</span></footer></div></a>`;}
+
+const sectors=[['云','AI 云与平台'],['光','光通信与光子'],['存','内存与存储'],['芯','芯片与半导体设备']];
+const sectorOf=c=>({NBIS:'云',AKAM:'云',IREN:'云',GOOGL:'云',CRWV:'云',LITE:'光',COHR:'光',MU:'存',SNDK:'存',WDC:'存',CBRS:'芯',AEHR:'芯'}[c.id]||c.profile?.category);
+function renderDirectory(companies,host,input,currentURL,onURL,onRendered){
+ let sector=currentURL.searchParams.get('sector')||'云';if(sector!=='全部'&&!sectors.some(([id])=>id===sector))sector='云';
+ const nav=document.getElementById('company-sectors');
+ function draw(){const query=input.value.trim(),terms=query.toLowerCase().split(/\s+/).filter(Boolean),all=companies.filter(c=>c.profile),items=all.filter(c=>query?terms.every(t=>[c.id,c.name,c.question,c.sector,sectorOf(c),...Object.values(c.profile).filter(x=>typeof x==='string'),...(c.profile.tags||[])].join(' ').toLowerCase().includes(t)):sector==='全部'||sectorOf(c)===sector);
+ nav.innerHTML=[...sectors,['全部','全部公司']].map(([id,label])=>'<button type="button" data-sector="'+id+'" aria-pressed="'+(!query&&id===sector)+'"><strong>'+id+'</strong><span>'+label+'</span><small>'+(id==='全部'?all:all.filter(c=>sectorOf(c)===id)).length+'</small></button>').join('');
+ nav.querySelectorAll('[data-sector]').forEach(b=>b.addEventListener('click',()=>{sector=b.dataset.sector;input.value='';draw();}));
+ host.innerHTML=items.length?items.map(c=>card(c,0,query,sector)).join(''):'<div class="empty">没有匹配的公司，试试公司代码、名称或业务关键词。</div>';
+ document.getElementById('company-result-count').textContent=query?'跨四板块搜索 · '+items.length+' 家公司':sector+' · '+items.length+' 家公司';
+ const u=new URL(currentURL.href);query?u.searchParams.set('q',query):u.searchParams.delete('q');u.searchParams.set('sector',sector);onURL(u);onRendered?.();
+ }
+ input.addEventListener('input',draw);input.addEventListener('keydown',e=>{if(e.key==='Escape'){input.value='';draw();}});document.getElementById('company-search-form')?.addEventListener('submit',e=>{e.preventDefault();draw();});draw();
+}
+
 function renderCompany(c,list,articleRow){
  const p=c.profile, docs=c.documents||[],dossier=docs.find(d=>d.kind==='dossier'),primary=dossier||docs.find(d=>d.kind==='story');
  const tabNames=[['overview','公司概览'],['thesis','投资逻辑'],['financials','财务分析'],['catalysts','催化剂'],['dossier','投研全文'],['story','公司故事'],['journal','研究跟踪']];
@@ -40,5 +56,5 @@ function renderCompany(c,list,articleRow){
  window.addEventListener('popstate',()=>{const id=new URLSearchParams(location.search).get('tab');tab=panes[id]?id:'overview';render();});render();
 }
 function searchDocuments(q,type,sort){return (window.researchDocuments||[]).filter(d=>(!q||[d.title,d.ticker,d.text].join(' ').toLowerCase().includes(q))&&(!type||type==='公司研究')).sort((a,b)=>sort==='asc'?a.date.localeCompare(b.date):b.date.localeCompare(a.date));}
-window.researchV0={card,renderCompany,docLink,chapterLinks,searchDocuments};
+window.researchV0={renderDirectory,sectorOf,sectors,card,renderCompany,docLink,chapterLinks,searchDocuments};
 })();
