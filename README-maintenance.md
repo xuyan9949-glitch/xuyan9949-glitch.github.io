@@ -159,3 +159,8 @@ python3 tools/import_research_docx.py /absolute/path/MU_Investment_Dossier.docx 
 ### 共用概念与未完整公司材料
 
 跨公司概念原稿使用 `--kind concept --id <slug> --related-tickers <codes>`，只保留一份原文和下载，关联到对应公司的研究跟踪。只有故事原稿的公司显示投研待补状态，经营摘要明确来自故事；不得冒充完整投研档案。
+
+
+## 统一杂志阅读规范
+
+公司详情和长文阅读维护以 `MAGAZINE_READING_STANDARD.md` 为准。编辑配置在 `content/reading-design.json`；生成执行 `python3 tools/sync_journal.py`；功能验收执行 `NODE_PATH=../qa/node_modules node tools/test_magazine.cjs`（需已有 jsdom）。`tools/test_reader.cjs` 和旧研究库 UI 断言适用于旧布局，不替代新阅读页验收。统一预览执行 `python3 tools/build_unified_magazine_preview.py --group 1`（另执行 `--group 2`、`--group 3`，每组 4 家，避免单个内联预览加载过大；不再依赖浏览器解压流）。发布须取得本批验收确认。
