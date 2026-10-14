@@ -91,6 +91,6 @@ css=scope("\n".join((ROOT/p).read_text() for p in ["css/style.css","css/journal.
 for url,value in assets.items():css=css.replace(url,value)
 payload=base64.b64encode(gzip.compress(json.dumps(data,ensure_ascii=False,separators=(',',':')).encode(),mtime=0)).decode()
 fragment=(ROOT/'demos/full-review/preview.fragment.html').read_text().replace('__REVIEW_CSS__',css).replace('__REVIEW_PAYLOAD__',payload).replace('__RESEARCH_JS__',(ROOT/'js/research-v0.js').read_text()).replace('__MAGAZINE_JS__',(ROOT/'js/magazine.js').read_text())
-target=Path('/workspace/folio-magazine-unified-review.html');target.write_text(fragment)
+target=Path('/workspace/folio-magazine-review-fixed.html');target.write_text(fragment)
 assert target.stat().st_size<1024*1024
 print('Unified review:',target.stat().st_size,'bytes;',len([c for c in archives['companies'] if c.get('profile')]),'companies;',len(layouts),'complete manuscripts.')
