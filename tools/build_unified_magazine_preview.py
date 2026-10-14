@@ -1,5 +1,6 @@
 """Self-contained full archive review using actual company and reader code."""
 from pathlib import Path
+import argparse
 import ast
 import base64
 import gzip
@@ -10,9 +11,16 @@ from PIL import Image
 from reading_layout import reader_shell
 
 ROOT=Path(__file__).resolve().parents[1]
+parser=argparse.ArgumentParser();parser.add_argument('--group',type=int,choices=[1,2,3],default=1);args=parser.parse_args()
 archives=json.loads((ROOT/'content/archives.json').read_text())
 layouts=json.loads((ROOT/'content/reading-layouts.json').read_text())['documents']
 documents=json.loads((ROOT/'js/research-data.js').read_text().removeprefix('window.researchDocuments = ').strip().removesuffix(';'))
+if args.group:
+    selected=[c['id'] for c in archives['companies'] if c.get('profile')][(args.group-1)*4:args.group*4]
+    archives['companies']=[c for c in archives['companies'] if c['id'] in selected]
+    layouts=[d for d in layouts if d['ticker'] in selected or (d['kind']=='concept' and any(t in selected for t in d.get('relatedTickers',[])))]
+    ids={d['id'] for d in layouts}
+    documents=[d for d in documents if d['id'] in ids]
 for d in documents:d['text']=''
 needed={'/images/research/technology-hero.webp'}
 for c in archives['companies']:
@@ -89,8 +97,11 @@ def scope(css):
     return out
 css=scope("\n".join((ROOT/p).read_text() for p in ["css/style.css","css/journal.css","css/research-v0.css","css/magazine.css"])).replace("#xyan-branch-preview","#folio-unified-preview")
 for url,value in assets.items():css=css.replace(url,value)
-payload=base64.b64encode(gzip.compress(json.dumps(data,ensure_ascii=False,separators=(',',':')).encode(),mtime=0)).decode()
+payload=json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('<','\\u003c')
 fragment=(ROOT/'demos/full-review/preview.fragment.html').read_text().replace('__REVIEW_CSS__',css).replace('__REVIEW_PAYLOAD__',payload).replace('__RESEARCH_JS__',(ROOT/'js/research-v0.js').read_text()).replace('__MAGAZINE_JS__',(ROOT/'js/magazine.js').read_text())
-target=Path('/workspace/folio-magazine-review-fixed.html');target.write_text(fragment)
+fragment=fragment.replace('application/octet-stream','application/json')
+start=fragment.index('const bytes=Uint8Array.from(');end=fragment.index('let current=',start)
+fragment=fragment[:start]+"const data=JSON.parse(document.getElementById('folio-review-compressed').textContent);\n"+fragment[end:]
+target=Path('/workspace/folio-review-group-'+str(args.group or 'all')+'.html');target.write_text(fragment)
 assert target.stat().st_size<1024*1024
 print('Unified review:',target.stat().st_size,'bytes;',len([c for c in archives['companies'] if c.get('profile')]),'companies;',len(layouts),'complete manuscripts.')
