@@ -11,7 +11,7 @@ from PIL import Image
 from reading_layout import reader_shell
 
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--group',type=int,choices=[1,2,3],default=1);args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--group',type=int,choices=[0,1,2,3],default=1);args=parser.parse_args()
 archives=json.loads((ROOT/'content/archives.json').read_text())
 layouts=json.loads((ROOT/'content/reading-layouts.json').read_text())['documents']
 documents=json.loads((ROOT/'js/research-data.js').read_text().removeprefix('window.researchDocuments = ').strip().removesuffix(';'))
@@ -103,5 +103,5 @@ fragment=fragment.replace('application/octet-stream','application/json')
 start=fragment.index('const bytes=Uint8Array.from(');end=fragment.index('let current=',start)
 fragment=fragment[:start]+"const data=JSON.parse(document.getElementById('folio-review-compressed').textContent);\n"+fragment[end:]
 target=Path('/workspace/folio-review-group-'+str(args.group or 'all')+'.html');target.write_text(fragment)
-assert target.stat().st_size<1024*1024
+assert target.stat().st_size<(8*1024*1024 if args.group==0 else 1024*1024)
 print('Unified review:',target.stat().st_size,'bytes;',len([c for c in archives['companies'] if c.get('profile')]),'companies;',len(layouts),'complete manuscripts.')
