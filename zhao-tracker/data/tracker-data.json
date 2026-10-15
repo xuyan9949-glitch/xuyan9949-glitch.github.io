@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-15T11:14:07.603Z",
+  "updatedAt": "2026-10-15T14:21:42.314Z",
   "accountCapital": 100000,
   "trades": [
     {
@@ -10697,6 +10697,26 @@
       "positionChange": 1.65,
       "date": "2026-10-15T03:35:00+08:00",
       "note": "184.3 加了六分之一常规仓；按同组 03:35 消息时间登记"
+    },
+    {
+      "id": "mu-878-add-20261015",
+      "name": "MU",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 878,
+      "positionChange": 1.65,
+      "date": "2026-10-15T22:06:00+08:00",
+      "note": "878 加了六分之一常规仓；截图消息显示已编辑，以截图内容为准"
+    },
+    {
+      "id": "lite-818-add-20261015",
+      "name": "LITE",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 818,
+      "positionChange": 1.65,
+      "date": "2026-10-15T22:08:00+08:00",
+      "note": "818 加了六分之一常规仓"
     }
   ]
 }
