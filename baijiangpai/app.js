@@ -157,7 +157,7 @@
     document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{if(!confirm('删除这条本地对局？未导出备份的记录无法恢复。'))return;const next=rows.filter(r=>r.id!==b.dataset.delete);if(!saveLocal('bjp-journal-v2',next))return;rows=next;if(editId===b.dataset.delete)editId=null;renderJournal();toast('该本地记录已删除；有JSON备份可恢复。');});
     document.getElementById('export-json').onclick=()=>download(JSON.stringify({schema:2,exportedAt:new Date().toISOString(),rows},null,2),'baijiangpai-records.json','application/json');
     document.getElementById('export-csv').onclick=()=>{
-      const quote=v=>{let s=String(v??'');if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';};
+      const quote=v=>{let s=String(v??'');if(typeof v!=='number'&&/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';};
       const table=[['日期','场次','身份','武将','胜负','开局兵力','结束兵力','外部净流入','净对局收益','备注'],...rows.map(r=>[r.date,r.room,r.role,r.hero,r.result,r.start,r.end,r.flow,L.net(r),r.note])];
       download('\ufeff'+table.map(r=>r.map(quote).join(',')).join('\r\n'),'baijiangpai-records.csv','text/csv;charset=utf-8');
     };

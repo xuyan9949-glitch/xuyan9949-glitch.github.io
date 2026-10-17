@@ -3,7 +3,7 @@
 Usage: python3 tools/package_local.py [--offline /absolute/path/library.html]
 """
 from pathlib import Path
-import argparse, json, re
+import argparse, base64, json, re
 
 root=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser();parser.add_argument('--offline',type=Path);args=parser.parse_args()
@@ -22,6 +22,9 @@ if args.offline:
     source=re.sub(r'<link rel="icon"[^>]+>','',source)
     for filename in ('data.js','logic.js','app.js'):
         code=(root/filename).read_text().replace('</script','<\\/script')
+        if filename=='app.js':
+            payload=base64.b64encode((root/'data.json').read_bytes()).decode('ascii')
+            code=code.replace('href="data.json"','href="data:application/json;base64,'+payload+'"')
         source=re.sub(r'<script src="'+re.escape(filename)+r'[^\"]*"(?: defer)?></script>',lambda _:f'<script>{code}</script>',source)
     args.offline.parent.mkdir(parents=True,exist_ok=True)
     args.offline.write_text(source)
