@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-19T14:09:17.693Z",
+  "updatedAt": "2026-10-19T15:57:58.749Z",
   "accountCapital": 100000,
   "trades": [
     {
@@ -10877,6 +10877,28 @@
       "positionChange": 1.65,
       "date": "2026-10-19T22:05:00+08:00",
       "note": "98.5 加了六分之一常规仓"
+    },
+    {
+      "id": "soxl-1019-half-close-985-20261019",
+      "name": "SOXL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 101.9,
+      "positionChange": 0.825,
+      "date": "2026-10-19T22:21:00+08:00",
+      "closeLotId": "soxl-985-add-20261019",
+      "note": "101.9 出一半 98.5 的 SOXL"
+    },
+    {
+      "id": "soxl-103-close-985-rest-20261019",
+      "name": "SOXL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 103,
+      "positionChange": 0.825,
+      "date": "2026-10-19T23:10:00+08:00",
+      "closeLotId": "soxl-985-add-20261019",
+      "note": "103 出剩下一半 98.5 的 SOXL；仅平掉该开仓批次剩余仓位"
     }
   ]
 }
