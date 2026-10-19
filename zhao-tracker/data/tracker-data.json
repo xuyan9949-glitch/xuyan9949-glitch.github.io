@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-19T06:53:24.222Z",
+  "updatedAt": "2026-10-19T14:09:17.693Z",
   "accountCapital": 100000,
   "trades": [
     {
@@ -10856,6 +10856,27 @@
       "date": "2026-10-19T13:49:00+08:00",
       "closeLotId": "soxl-989-add-20261016",
       "note": "101 出掉 98.9 剩下一半 SOXL；仅平掉该开仓批次剩余仓位"
+    },
+    {
+      "id": "mu-914-half-close-878-20261019",
+      "name": "MU",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 914,
+      "positionChange": 0.825,
+      "date": "2026-10-19T21:55:00+08:00",
+      "closeLotId": "mu-878-add-20261015",
+      "note": "914 出一半 878 的 MU"
+    },
+    {
+      "id": "soxl-985-add-20261019",
+      "name": "SOXL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 98.5,
+      "positionChange": 1.65,
+      "date": "2026-10-19T22:05:00+08:00",
+      "note": "98.5 加了六分之一常规仓"
     }
   ]
 }
