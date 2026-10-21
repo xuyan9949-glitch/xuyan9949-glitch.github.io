@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-20T14:13:26.453Z",
+  "updatedAt": "2026-10-21T16:48:16.503Z",
   "accountCapital": 100000,
   "trades": [
     {
@@ -10952,6 +10952,94 @@
       "date": "2026-10-20T22:08:00+08:00",
       "closeLotId": "soxl-986-add-20261020",
       "note": "98.8 出一半昨天 98.6 的 SOXL；匹配截图 TODAY 01:50 的 98.6 开仓批次，保留原文“昨天”"
+    },
+    {
+      "id": "soxl-1017-close-986-rest-20261020",
+      "name": "SOXL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 101.7,
+      "positionChange": 0.825,
+      "date": "2026-10-20T22:28:00+08:00",
+      "closeLotId": "soxl-986-add-20261020",
+      "note": "101.7 卖出 98.6 的 剩余仓位 SOXL；仅涉及指定开仓批次"
+    },
+    {
+      "id": "mu-915-close-878-rest-20261020",
+      "name": "MU",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 915,
+      "positionChange": 0.825,
+      "date": "2026-10-20T22:35:00+08:00",
+      "closeLotId": "mu-878-add-20261015",
+      "note": "915 卖出 878 的 剩余仓位 MU；仅涉及指定开仓批次"
+    },
+    {
+      "id": "nbis-1806-close-179-20261021",
+      "name": "NBIS",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 180.6,
+      "positionChange": 0.825,
+      "date": "2026-10-21T08:36:00+08:00",
+      "closeLotId": "nbis-179-readd-20261016",
+      "note": "180.6 卖出 179 的 剩余仓位 NBIS；仅涉及指定开仓批次"
+    },
+    {
+      "id": "tsla-383-close-353-rest-20261021",
+      "name": "TSLA",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 383,
+      "positionChange": 0.825,
+      "date": "2026-10-21T21:36:00+08:00",
+      "closeLotId": "tsla-353-add-20260929",
+      "note": "383 出掉 351 剩下一半 TSLA；用户确认原文351对应账本353批次，仅退出该批次剩余仓位"
+    },
+    {
+      "id": "be-2354-close-2385-20261021",
+      "name": "BE",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 235.4,
+      "positionChange": 1.65,
+      "date": "2026-10-21T22:05:00+08:00",
+      "closeLotId": "be-2385-add-20261015",
+      "note": "235.4 卖出 238.5 的 剩余仓位 BE；仅涉及指定开仓批次"
+    },
+    {
+      "id": "soxl-102-half-close-1115-20261021",
+      "name": "SOXL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 102,
+      "positionChange": 0.825,
+      "date": "2026-10-21T23:17:00+08:00",
+      "closeLotId": "soxl-1115-add-20261015",
+      "note": "102 卖出 111.5 的 一半 SOXL；仅涉及指定开仓批次"
+    },
+    {
+      "id": "coin-1773-half-close-185-20261021",
+      "name": "COIN",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 177.3,
+      "positionChange": 0.825,
+      "date": "2026-10-21T23:17:00+08:00",
+      "closeLotId": "coin-185-add-20261007",
+      "note": "177.3 卖出 185 的 一半 COIN；仅涉及指定开仓批次；沿用同组23:17消息时间"
+    },
+    {
+      "id": "soxl-1038-close-1115-rest-20261022",
+      "name": "SOXL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 103.8,
+      "positionChange": 0.825,
+      "date": "2026-10-22T00:00:00+08:00",
+      "closeLotId": "soxl-1115-add-20261015",
+      "note": "103.8 卖出 111.5 的 剩余仓位 SOXL；仅涉及指定开仓批次"
     }
   ]
 }
