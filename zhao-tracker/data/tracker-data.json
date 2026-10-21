@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-21T16:48:16.503Z",
+  "updatedAt": "2026-10-21T16:54:50.489Z",
   "accountCapital": 100000,
   "trades": [
     {
@@ -11040,6 +11040,17 @@
       "date": "2026-10-22T00:00:00+08:00",
       "closeLotId": "soxl-1115-add-20261015",
       "note": "103.8 卖出 111.5 的 剩余仓位 SOXL；仅涉及指定开仓批次"
+    },
+    {
+      "id": "coin-180-close-185-rest-20261022",
+      "name": "COIN",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 180,
+      "positionChange": 0.825,
+      "date": "2026-10-22T00:40:00+08:00",
+      "closeLotId": "coin-185-add-20261007",
+      "note": "180 出掉剩下一半 185 的 COIN；仅退出该开仓批次剩余仓位"
     }
   ]
 }
