@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-27T02:01:00.219Z",
+  "updatedAt": "2026-10-27T14:25:38.730Z",
   "accountCapital": 100000,
   "trades": [
     {
@@ -11214,13 +11214,35 @@
     {
       "id": "soxl-91-close-923-rest-20261026",
       "name": "SOXL",
-      "action": "清仓",
+      "action": "减仓",
       "positionType": "波段仓",
       "price": 91,
-      "positionChange": 0.825,
+      "positionChange": 0.4125,
       "date": "2026-10-26T23:09:00+08:00",
       "closeLotId": "soxl-923-add-20261022",
-      "note": "91 出一半 92.3 的 SOXL；此前 93.2 已出一半，本次退出该批次剩余一半"
+      "note": "91 出一半 92.3 的 SOXL；用户根据 10/27 剩余卖出截图确认：本次卖出当时剩余仓位的一半（0.4125%），并非原始仓位另一半；保留原记录 ID"
+    },
+    {
+      "id": "soxl-946-close-923-rest-20261027",
+      "name": "SOXL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 94.6,
+      "positionChange": 0.4125,
+      "date": "2026-10-27T19:23:00+08:00",
+      "closeLotId": "soxl-923-add-20261022",
+      "note": "94.6 出掉剩下的 92.3 的 SOXL；仅退出该批次最后 0.4125%"
+    },
+    {
+      "id": "tsll-1137-close-1225-20261027",
+      "name": "TSLL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 11.37,
+      "positionChange": 3.3,
+      "date": "2026-10-27T22:02:00+08:00",
+      "closeLotId": "tsll-1225-add-20260715",
+      "note": "11.37 出掉 12.25 的 TSLL；退出该批次全部 3.3%"
     }
   ]
 }
