@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-27T14:25:38.730Z",
+  "updatedAt": "2026-10-28T08:40:18.813Z",
   "accountCapital": 100000,
   "trades": [
     {
@@ -11243,6 +11243,39 @@
       "date": "2026-10-27T22:02:00+08:00",
       "closeLotId": "tsll-1225-add-20260715",
       "note": "11.37 出掉 12.25 的 TSLL；退出该批次全部 3.3%"
+    },
+    {
+      "id": "mu-9634-close-933-20261028",
+      "name": "MU",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 963.4,
+      "positionChange": 1.65,
+      "date": "2026-10-28T11:57:00+08:00",
+      "closeLotId": "mu-933-add-20261013",
+      "note": "963.4 出掉 933 的 MU 批次"
+    },
+    {
+      "id": "lite-879-half-close-936-20261028",
+      "name": "LITE",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 879,
+      "positionChange": 0.825,
+      "date": "2026-10-28T12:25:00+08:00",
+      "closeLotId": "lite-936-add-20261014",
+      "note": "879 出一半 936 的 LITE"
+    },
+    {
+      "id": "dram-525-close-543-20261028",
+      "name": "DRAM",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 52.5,
+      "positionChange": 1.65,
+      "date": "2026-10-28T12:27:00+08:00",
+      "closeLotId": "dram-543-add-20260914",
+      "note": "52.5 出掉 54.3 的 DRAM 批次"
     }
   ]
 }
