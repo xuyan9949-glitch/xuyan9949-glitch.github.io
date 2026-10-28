@@ -1,4 +1,23 @@
 {
   "version": 1,
-  "articles": []
+  "articles": [
+    {
+      "id": "mu-update-20261028-buyback",
+      "title": "MU 回购授权升至 351.6 亿美元，下一步看实际执行",
+      "date": "2026-10-28",
+      "category": "美股",
+      "subcategory": "存储",
+      "tags": [
+        "个股:MU",
+        "研究跟踪"
+      ],
+      "pinned": false,
+      "summary": "回购总授权获董事会批准，资本配置证据增强；实际执行、净股数与现金承受力仍需验证。",
+      "keywords": "MU 美光 回购 总授权 351.6 资本回报",
+      "file": "/articles/mu-update-20261028-buyback/",
+      "status": "published",
+      "order": 0,
+      "updatedAt": "2026-10-28T12:38:05.341803+00:00"
+    }
+  ]
 }

@@ -134,7 +134,6 @@ def sync_journal():
     ET.register_namespace('', 'http://www.sitemaps.org/schemas/sitemap/0.9')
     p.write_text(ET.tostring(tree,encoding='unicode')+'\n')
     # Content fingerprints invalidate stale script/style caches after each update.
-    import hashlib
     def version_resource(match):
         asset=ROOT/match.group(2).lstrip('/')
         if not asset.is_file():return match.group(0)

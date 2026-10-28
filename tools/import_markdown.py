@@ -325,18 +325,10 @@ def js_object(article: dict[str, object]) -> str:
 
 
 def update_articles_js(article: dict[str, object]) -> None:
-    text = ARTICLES_JS.read_text(encoding="utf-8")
-    article_id = re.escape(str(article["id"]))
-    existing = re.compile(
-        r"\n  \{\n\s+id:\s+\"" + article_id + r"\",.*?\n  \},?",
-        re.S,
-    )
-    text = existing.sub("", text)
-    insertion = "const articles = [\n" + js_object(article) + ","
-    if not text.startswith("const articles = ["):
-        raise RuntimeError("js/articles.js format not recognized")
-    text = text.replace("const articles = [", insertion, 1)
-    ARTICLES_JS.write_text(text, encoding="utf-8")
+    # Keep the generated index valid JSON for sync and download builders.
+    registry = json.loads(CONTENT_REGISTRY.read_text(encoding="utf-8"))
+    articles = registry["articles"]
+    ARTICLES_JS.write_text("const articles = " + json.dumps(articles, ensure_ascii=False, indent=2) + ";\n", encoding="utf-8")
 
 
 def update_content_registry(article: dict[str, object]) -> None:
