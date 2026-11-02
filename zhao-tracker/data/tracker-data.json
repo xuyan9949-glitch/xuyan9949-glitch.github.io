@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-28T08:40:18.813Z",
+  "updatedAt": "2026-11-02T08:25:11.942Z",
   "accountCapital": 100000,
   "trades": [
     {
@@ -11276,6 +11276,166 @@
       "date": "2026-10-28T12:27:00+08:00",
       "closeLotId": "dram-543-add-20260914",
       "note": "52.5 出掉 54.3 的 DRAM 批次"
+    },
+    {
+      "id": "lite-892-close-936-rest-20261028",
+      "name": "LITE",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 892,
+      "positionChange": 0.825,
+      "date": "2026-10-28T22:00:00+08:00",
+      "closeLotId": "lite-936-add-20261014",
+      "note": "892 出掉剩下一半 936 的 LITE"
+    },
+    {
+      "id": "nbis-1796-close-1843-rest-20261029",
+      "name": "NBIS",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 179.6,
+      "positionChange": 0.825,
+      "date": "2026-10-29T02:39:00+08:00",
+      "closeLotId": "nbis-1843-add-20261015",
+      "note": "179.6 出掉 184.3 剩下一半 NBIS"
+    },
+    {
+      "id": "soxl-1075-close-1188-20261029",
+      "name": "SOXL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 107.5,
+      "positionChange": 1.65,
+      "date": "2026-10-29T02:46:00+08:00",
+      "closeLotId": "soxl-1188-add-20261014",
+      "note": "107.5 出掉 SOXL；原消息写 118，用户确认对应 118.8 开仓批次"
+    },
+    {
+      "id": "soxs-402-add-20261029",
+      "name": "SOXS",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 40.2,
+      "positionChange": 1.65,
+      "date": "2026-10-29T02:56:00+08:00",
+      "note": "加了六分之一常规仓；止损放 38 为计划，不代表执行"
+    },
+    {
+      "id": "soxs-4085-half-close-402-20261029",
+      "name": "SOXS",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 40.85,
+      "positionChange": 0.825,
+      "date": "2026-10-29T03:12:00+08:00",
+      "closeLotId": "soxs-402-add-20261029",
+      "note": "40.85 出一半 40.2 的 SOXS"
+    },
+    {
+      "id": "soxs-4096-close-402-rest-20261029",
+      "name": "SOXS",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 40.96,
+      "positionChange": 0.825,
+      "date": "2026-10-29T04:19:00+08:00",
+      "closeLotId": "soxs-402-add-20261029",
+      "note": "40.96 再出剩下一半 40.2 的 SOXS"
+    },
+    {
+      "id": "lite-1070-close-962-rest-20261029",
+      "name": "LITE",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 1070,
+      "positionChange": 0.825,
+      "date": "2026-10-29T05:06:00+08:00",
+      "closeLotId": "lite-962-add-20261013",
+      "note": "1070 出掉 962 剩下的 LITE；前一条等待转弯为计划，不重复记录"
+    },
+    {
+      "id": "cohr-259-close-2645-20261029",
+      "name": "COHR",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 259,
+      "positionChange": 1.65,
+      "date": "2026-10-29T05:08:00+08:00",
+      "closeLotId": "cohr-2645-add-20261015",
+      "note": "259 出掉 264.5 的 COHR；按同组消息时间记录"
+    },
+    {
+      "id": "soxl-988-add-20261029",
+      "name": "SOXL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 98.8,
+      "positionChange": 0.825,
+      "date": "2026-10-29T21:50:00+08:00",
+      "note": "加了十二分之一常规仓；少量分批"
+    },
+    {
+      "id": "soxl-10145-close-988-20261029",
+      "name": "SOXL",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 101.45,
+      "positionChange": 0.825,
+      "date": "2026-10-29T22:01:00+08:00",
+      "closeLotId": "soxl-988-add-20261029",
+      "note": "101.45 出掉 98.8 的 SOXL"
+    },
+    {
+      "id": "soxl-90-add-20261030",
+      "name": "SOXL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 90,
+      "positionChange": 1.65,
+      "date": "2026-10-30T04:08:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "soxs-465-close-535-rest-20261030",
+      "name": "SOXS",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 46.5,
+      "positionChange": 0.825,
+      "date": "2026-10-30T04:11:00+08:00",
+      "closeLotId": "soxs-535-add-20261023",
+      "note": "46.5 出掉 53.5 剩下一半的 SOXS"
+    },
+    {
+      "id": "soxl-904-add-20261030",
+      "name": "SOXL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 90.4,
+      "positionChange": 1.65,
+      "date": "2026-10-30T04:11:00+08:00",
+      "note": "加了六分之一常规仓；按同组消息时间记录"
+    },
+    {
+      "id": "soxl-843-add-20261030",
+      "name": "SOXL",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 84.3,
+      "positionChange": 1.65,
+      "date": "2026-10-30T09:36:00+08:00",
+      "note": "加了六分之一常规仓"
+    },
+    {
+      "id": "soxl-877-half-close-843-20261030",
+      "name": "SOXL",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 87.7,
+      "positionChange": 0.825,
+      "date": "2026-10-30T14:32:00+08:00",
+      "closeLotId": "soxl-843-add-20261030",
+      "note": "87.7 出一半 84.3 的 SOXL"
     }
   ]
 }
