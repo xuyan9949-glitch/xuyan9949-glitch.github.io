@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-09T07:29:09.897Z",
+  "updatedAt": "2026-11-10T01:17:47.061Z",
   "accountCapital": 100000,
   "trades": [
     {
@@ -11954,6 +11954,61 @@
       "date": "2026-11-07T01:45:00+08:00",
       "closeLotId": "oklo-34-add-20261009",
       "note": "23.1 出掉 OKLO 总仓位的一半；用户确认按各未平仓批次同比例记账分摊，非已知实际卖出批次；同一操作分拆记录 oklo-231-half-total-20261107"
+    },
+    {
+      "id": "tqqq-5565-close-541-rest-20261109",
+      "name": "TQQQ",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 55.65,
+      "positionChange": 0.825,
+      "date": "2026-11-09T22:46:00+08:00",
+      "closeLotId": "tqqq-541-add-20261105",
+      "note": "55.65 出掉 54.1 剩下一半 TQQQ"
+    },
+    {
+      "id": "soxx-143-half-close-1373-20261109",
+      "name": "SOXX",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 143,
+      "positionChange": 0.825,
+      "date": "2026-11-09T22:55:00+08:00",
+      "closeLotId": "soxx-1373-add-20261106",
+      "note": "143 出一半 137.3 的 SOXX（非 SOXL）"
+    },
+    {
+      "id": "tqqq-562-half-close-5615-20261109",
+      "name": "TQQQ",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 56.2,
+      "positionChange": 0.825,
+      "date": "2026-11-09T23:00:00+08:00",
+      "closeLotId": "tqqq-5615-add-20261105",
+      "note": "56.2 出一半 56.15 的 TQQQ"
+    },
+    {
+      "id": "tqqq-573-close-5615-rest-20261110",
+      "name": "TQQQ",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 57.3,
+      "positionChange": 0.825,
+      "date": "2026-11-10T00:05:00+08:00",
+      "closeLotId": "tqqq-5615-add-20261105",
+      "note": "57.3 出掉剩下一半 56.15 的 TQQQ"
+    },
+    {
+      "id": "ionq-3535-close-362-rest-20261110",
+      "name": "IONQ",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 35.35,
+      "positionChange": 0.825,
+      "date": "2026-11-10T00:20:00+08:00",
+      "closeLotId": "ionq-362-add-20261013",
+      "note": "35.35 出掉剩下一半 36.2 的 IONQ"
     }
   ]
 }
