@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-10T01:17:47.061Z",
+  "updatedAt": "2026-11-11T17:23:02.560Z",
   "accountCapital": 100000,
   "trades": [
     {
@@ -12009,6 +12009,159 @@
       "date": "2026-11-10T00:20:00+08:00",
       "closeLotId": "ionq-362-add-20261013",
       "note": "35.35 出掉剩下一半 36.2 的 IONQ"
+    },
+    {
+      "id": "tqqq-5475-add-20261111",
+      "name": "TQQQ",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 54.75,
+      "positionChange": 1.65,
+      "date": "2026-11-11T01:43:00+08:00",
+      "note": "54.75 加了六分之一常规仓；与后续两笔分批卖出一并确认发布"
+    },
+    {
+      "id": "tqqq-582-half-close-5475-20261111",
+      "name": "TQQQ",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 58.2,
+      "positionChange": 0.825,
+      "date": "2026-11-11T09:49:00+08:00",
+      "closeLotId": "tqqq-5475-add-20261111",
+      "note": "58.2 出一半 54.75 的 TQQQ"
+    },
+    {
+      "id": "tqqq-589-close-5475-rest-20261111",
+      "name": "TQQQ",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 58.9,
+      "positionChange": 0.825,
+      "date": "2026-11-11T22:50:00+08:00",
+      "closeLotId": "tqqq-5475-add-20261111",
+      "note": "58.9 出掉剩下一半 54.75 的 TQQQ"
+    },
+    {
+      "id": "soxx-1526-close-1373-rest-20261111",
+      "name": "SOXX",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 152.6,
+      "positionChange": 0.825,
+      "date": "2026-11-11T22:53:00+08:00",
+      "closeLotId": "soxx-1373-add-20261106",
+      "note": "152.6 出掉 137.3 剩下一半 SOXX（非 SOXL）"
+    },
+    {
+      "id": "crwv-585-reduce10pct-20261111--crwv-948-readd-20260910",
+      "name": "CRWV",
+      "action": "减仓",
+      "positionType": "底仓",
+      "price": 58.5,
+      "positionChange": 0.165,
+      "date": "2026-11-11T23:11:00+08:00",
+      "closeLotId": "crwv-948-readd-20260910",
+      "note": "58.5 卖出 CRWV 总持仓的 10%；用户确认包含底仓在内，各剩余批次同比例记账分摊，非已知实际卖出批次；同一操作分拆记录 crwv-585-reduce10pct-20261111"
+    },
+    {
+      "id": "crwv-585-reduce10pct-20261111--crwv-908-add-20260910",
+      "name": "CRWV",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 58.5,
+      "positionChange": 0.0825,
+      "date": "2026-11-11T23:11:00+08:00",
+      "closeLotId": "crwv-908-add-20260910",
+      "note": "58.5 卖出 CRWV 总持仓的 10%；用户确认包含底仓在内，各剩余批次同比例记账分摊，非已知实际卖出批次；同一操作分拆记录 crwv-585-reduce10pct-20261111"
+    },
+    {
+      "id": "crwv-585-reduce10pct-20261111--crwv-852-add-20260914",
+      "name": "CRWV",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 58.5,
+      "positionChange": 0.165,
+      "date": "2026-11-11T23:11:00+08:00",
+      "closeLotId": "crwv-852-add-20260914",
+      "note": "58.5 卖出 CRWV 总持仓的 10%；用户确认包含底仓在内，各剩余批次同比例记账分摊，非已知实际卖出批次；同一操作分拆记录 crwv-585-reduce10pct-20261111"
+    },
+    {
+      "id": "crwv-585-reduce10pct-20261111--crwv-825-add-20260921",
+      "name": "CRWV",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 58.5,
+      "positionChange": 0.0825,
+      "date": "2026-11-11T23:11:00+08:00",
+      "closeLotId": "crwv-825-add-20260921",
+      "note": "58.5 卖出 CRWV 总持仓的 10%；用户确认包含底仓在内，各剩余批次同比例记账分摊，非已知实际卖出批次；同一操作分拆记录 crwv-585-reduce10pct-20261111"
+    },
+    {
+      "id": "crwv-585-reduce10pct-20261111--crwv-8555-add-20260928",
+      "name": "CRWV",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 58.5,
+      "positionChange": 0.0825,
+      "date": "2026-11-11T23:11:00+08:00",
+      "closeLotId": "crwv-8555-add-20260928",
+      "note": "58.5 卖出 CRWV 总持仓的 10%；用户确认包含底仓在内，各剩余批次同比例记账分摊，非已知实际卖出批次；同一操作分拆记录 crwv-585-reduce10pct-20261111"
+    },
+    {
+      "id": "crwv-585-reduce10pct-20261111--crwv-895-readd-9123-20261007",
+      "name": "CRWV",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 58.5,
+      "positionChange": 0.0825,
+      "date": "2026-11-11T23:11:00+08:00",
+      "closeLotId": "crwv-895-readd-9123-20261007",
+      "note": "58.5 卖出 CRWV 总持仓的 10%；用户确认包含底仓在内，各剩余批次同比例记账分摊，非已知实际卖出批次；同一操作分拆记录 crwv-585-reduce10pct-20261111"
+    },
+    {
+      "id": "crwv-585-reduce10pct-20261111--crwv-878-add-20261007",
+      "name": "CRWV",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 58.5,
+      "positionChange": 0.165,
+      "date": "2026-11-11T23:11:00+08:00",
+      "closeLotId": "crwv-878-add-20261007",
+      "note": "58.5 卖出 CRWV 总持仓的 10%；用户确认包含底仓在内，各剩余批次同比例记账分摊，非已知实际卖出批次；同一操作分拆记录 crwv-585-reduce10pct-20261111"
+    },
+    {
+      "id": "crwv-585-reduce10pct-20261111--crwv-854-add-20261008",
+      "name": "CRWV",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 58.5,
+      "positionChange": 0.165,
+      "date": "2026-11-11T23:11:00+08:00",
+      "closeLotId": "crwv-854-add-20261008",
+      "note": "58.5 卖出 CRWV 总持仓的 10%；用户确认包含底仓在内，各剩余批次同比例记账分摊，非已知实际卖出批次；同一操作分拆记录 crwv-585-reduce10pct-20261111"
+    },
+    {
+      "id": "crwv-585-reduce10pct-20261111--crwv-815-add-20261009",
+      "name": "CRWV",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 58.5,
+      "positionChange": 0.165,
+      "date": "2026-11-11T23:11:00+08:00",
+      "closeLotId": "crwv-815-add-20261009",
+      "note": "58.5 卖出 CRWV 总持仓的 10%；用户确认包含底仓在内，各剩余批次同比例记账分摊，非已知实际卖出批次；同一操作分拆记录 crwv-585-reduce10pct-20261111"
+    },
+    {
+      "id": "lite-665-half-close-678-20261111",
+      "name": "LITE",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 665,
+      "positionChange": 0.825,
+      "date": "2026-11-11T23:40:00+08:00",
+      "closeLotId": "lite-678-add-20261104",
+      "note": "665 出一半 678 的 LITE"
     }
   ]
 }
