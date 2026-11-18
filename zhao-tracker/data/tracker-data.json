@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-11T17:23:02.560Z",
+  "updatedAt": "2026-11-18T05:46:40.544Z",
   "accountCapital": 100000,
   "trades": [
     {
@@ -12162,6 +12162,16 @@
       "date": "2026-11-11T23:40:00+08:00",
       "closeLotId": "lite-678-add-20261104",
       "note": "665 出一半 678 的 LITE"
+    },
+    {
+      "id": "nvda-149-add-20261112",
+      "name": "NVDA",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 149,
+      "positionChange": 1.65,
+      "date": "2026-11-12T22:32:00+08:00",
+      "note": "149 加了六分之一常规仓 NVDA 正股；分批加为备注，不额外记成交；用户于 11/18 确认发布，保留原成交日期"
     }
   ]
 }
