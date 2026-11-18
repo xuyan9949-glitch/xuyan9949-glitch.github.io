@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-18T05:46:40.544Z",
+  "updatedAt": "2026-11-18T05:50:23.703Z",
   "accountCapital": 100000,
   "trades": [
     {
@@ -12172,6 +12172,48 @@
       "positionChange": 1.65,
       "date": "2026-11-12T22:32:00+08:00",
       "note": "149 加了六分之一常规仓 NVDA 正股；分批加为备注，不额外记成交；用户于 11/18 确认发布，保留原成交日期"
+    },
+    {
+      "id": "nvda-1695-half-close-149-20261113",
+      "name": "NVDA",
+      "action": "减仓",
+      "positionType": "波段仓",
+      "price": 169.5,
+      "positionChange": 0.825,
+      "date": "2026-11-13T22:30:00+08:00",
+      "closeLotId": "nvda-149-add-20261112",
+      "note": "169.5 出一半 149 的 NVDA 正股"
+    },
+    {
+      "id": "nvda-1615-close-149-rest-20261113",
+      "name": "NVDA",
+      "action": "清仓",
+      "positionType": "波段仓",
+      "price": 161.5,
+      "positionChange": 0.825,
+      "date": "2026-11-13T23:11:00+08:00",
+      "closeLotId": "nvda-149-add-20261112",
+      "note": "161.5 出掉剩下一半 149 的 NVDA 正股"
+    },
+    {
+      "id": "tqqq-529-add-20261117",
+      "name": "TQQQ",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 52.9,
+      "positionChange": 1.65,
+      "date": "2026-11-17T22:41:00+08:00",
+      "note": "52.9 加了六分之一常规仓"
+    },
+    {
+      "id": "soxx-1422-add-20261117",
+      "name": "SOXX",
+      "action": "加仓",
+      "positionType": "波段仓",
+      "price": 142.2,
+      "positionChange": 1.65,
+      "date": "2026-11-17T22:41:00+08:00",
+      "note": "142.2 加了六分之一常规仓 SOXX；按同组消息时间记录"
     }
   ]
 }
